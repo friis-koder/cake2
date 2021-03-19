@@ -220,7 +220,7 @@ class SmtpTransport extends AbstractTransport {
  * @return string
  */
 	protected function _prepareRcptCmd($email) {
-		return 'RCPT TO:<' . $email . '>';
+		return 'RCPT TO:<' . mb_convert_encoding($email, 'ascii', 'auto') . '>';
 	}
 
 /**
