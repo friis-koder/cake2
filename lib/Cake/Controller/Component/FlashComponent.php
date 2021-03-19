@@ -25,6 +25,11 @@ App::uses('CakeSession', 'Model/Datasource');
  * to the session from your controllers, to be rendered in a view with the
  * FlashHelper.
  *
+ * @method void success(string $text)
+ * @method void warning(string $text)
+ * @method void notice(string $text)
+ * @method void error(string $text)
+ *
  * @package       Cake.Controller.Component
  */
 class FlashComponent extends Component {
