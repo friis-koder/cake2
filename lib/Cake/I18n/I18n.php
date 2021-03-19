@@ -686,12 +686,27 @@ class I18n {
 	public static function insertArgs($translated, array $args) {
 		$len = count($args);
 		if ($len === 0 || ($len === 1 && $args[0] === null)) {
-			return $translated;
+			$args = [];
 		}
 
-		if (is_array($args[0])) {
+		if (isset($args[0]) && is_array($args[0])) {
 			$args = $args[0];
 		}
+
+		$paramsMap = array_flip(array_keys($args));
+		$translated = preg_replace_callback('/(^|[^%]){{([a-zA-Z0-9_-]+?)}}/',
+			function ($match) use ($paramsMap) {
+				// if numeric then this is regular vsprintf syntax and we return full match
+				if (is_numeric($match[2])) {
+					return $match[0];
+				}
+
+				// map found named param to printf numbered param in
+				// the order they were found. E.g. {{name}} -> %2$s
+				return $match[1] . '%' . ($paramsMap[$match[2]] + 1) . '$s';
+			},
+			$translated
+		);
 
 		$translated = preg_replace('/(?<!%)%(?![%\'\-+bcdeEfFgGosuxX\d\.])/', '%%', $translated);
 		return vsprintf($translated, $args);
