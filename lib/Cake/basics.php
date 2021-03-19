@@ -315,10 +315,11 @@ if (!function_exists('env')) {
  * environment information.
  *
  * @param string $key Environment variable name.
+ * @param mixed $default Default value.
  * @return string|bool|null Environment variable setting.
  * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#env
  */
-	function env($key) {
+	function env($key, $default = null) {
 		if ($key === 'HTTPS') {
 			if (isset($_SERVER['HTTPS'])) {
 				return (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off');
@@ -405,7 +406,7 @@ if (!function_exists('env')) {
 				array_shift($parts);
 				return '.' . implode('.', $parts);
 		}
-		return null;
+		return $default;
 	}
 
 }
