@@ -1,3 +1,5 @@
+# this is a fork for playing around with cakephp version 2!
+
 # CakePHP
 
 [![Latest Stable Version](https://poser.pugx.org/cakephp/cakephp/v/stable.svg)](https://packagist.org/packages/cakephp/cakephp)
