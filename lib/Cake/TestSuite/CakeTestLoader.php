@@ -32,11 +32,11 @@ class CakeTestLoader
     /**
      * Get the list of files for the test listing.
      *
-     * @param array $params Path parameters
+     * @param array|null $params Path parameters
      *
      * @return array
      */
-    public static function generateTestList(array $params): array
+    public static function generateTestList(?array $params): array
     {
         $directory = static::_basePath($params);
         $fileList = static::_getRecursiveFileList($directory);
@@ -117,11 +117,11 @@ class CakeTestLoader
     /**
      * Generates the base path to a set of tests based on the parameters.
      *
-     * @param array $params The path parameters.
+     * @param array|null $params The path parameters.
      *
-     * @return string The base path.
+     * @return string|null
      */
-    protected static function _basePath(array $params): ?string
+    protected static function _basePath(?array $params): ?string
     {
         $result = null;
 
