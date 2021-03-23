@@ -75,7 +75,7 @@ class DatabaseSessionTest extends CakeTestCase {
  *
  * @return void
  */
-	public function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 		$this->storage = new DatabaseSession();
 	}
@@ -85,7 +85,7 @@ class DatabaseSessionTest extends CakeTestCase {
  *
  * @return void
  */
-	public function tearDown() {
+	protected function tearDown(): void {
 		unset($this->storage);
 		ClassRegistry::flush();
 		parent::tearDown();

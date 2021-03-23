@@ -32,7 +32,7 @@ class ConfigureTest extends CakeTestCase {
  *
  * @return void
  */
-	public function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 		Configure::write('Cache.disable', true);
 		App::build();
@@ -44,7 +44,7 @@ class ConfigureTest extends CakeTestCase {
  *
  * @return void
  */
-	public function tearDown() {
+	protected function tearDown(): void {
 		parent::tearDown();
 		if (file_exists(TMP . 'cache' . DS . 'persistent' . DS . 'cake_core_core_paths')) {
 			unlink(TMP . 'cache' . DS . 'persistent' . DS . 'cake_core_core_paths');

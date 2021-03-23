@@ -202,7 +202,7 @@ class AclBehaviorTest extends CakeTestCase {
  *
  * @return void
  */
-	public function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 		Configure::write('Acl.database', 'test');
 
@@ -215,7 +215,7 @@ class AclBehaviorTest extends CakeTestCase {
  *
  * @return void
  */
-	public function tearDown() {
+	protected function tearDown(): void {
 		parent::tearDown();
 		unset($this->Aro, $this->Aco);
 	}

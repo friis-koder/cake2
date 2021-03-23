@@ -105,7 +105,7 @@ class CakeSessionTest extends CakeTestCase {
  *
  * @return void
  */
-	public function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 		Configure::write('Session', array(
 			'defaults' => 'php',
@@ -121,7 +121,7 @@ class CakeSessionTest extends CakeTestCase {
  *
  * @return void
  */
-	public function tearDown() {
+	protected function tearDown(): void {
 		if (TestCakeSession::started()) {
 			session_write_close();
 		}

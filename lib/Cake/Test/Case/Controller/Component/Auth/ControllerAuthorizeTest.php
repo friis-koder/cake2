@@ -33,7 +33,7 @@ class ControllerAuthorizeTest extends CakeTestCase {
  *
  * @return void
  */
-	public function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 		$this->controller = $this->getMock('Controller', array('isAuthorized'), array(), '', false);
 		$this->components = $this->getMock('ComponentCollection');

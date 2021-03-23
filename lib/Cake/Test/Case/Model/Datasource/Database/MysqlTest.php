@@ -60,7 +60,7 @@ class MysqlTest extends CakeTestCase {
  *
  * @return void
  */
-	public function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 		$this->Dbo = ConnectionManager::getDataSource('test');
 		if (!($this->Dbo instanceof Mysql)) {
@@ -76,7 +76,7 @@ class MysqlTest extends CakeTestCase {
  *
  * @return void
  */
-	public function tearDown() {
+	protected function tearDown(): void {
 		parent::tearDown();
 		unset($this->model);
 		ClassRegistry::flush();

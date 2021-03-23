@@ -67,7 +67,7 @@ class SmtpTransportTest extends CakeTestCase {
  *
  * @return void
  */
-	public function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 		$this->socket = $this->getMock('CakeSocket', array('read', 'write', 'connect', 'enableCrypto'));
 

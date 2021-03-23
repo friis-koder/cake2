@@ -64,7 +64,7 @@ class CakeRequestTest extends CakeTestCase {
  *
  * @return void
  */
-	public function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 		$this->_app = Configure::read('App');
 		$this->_case = null;
@@ -81,7 +81,7 @@ class CakeRequestTest extends CakeTestCase {
  *
  * @return void
  */
-	public function tearDown() {
+	protected function tearDown(): void {
 		parent::tearDown();
 		if (!empty($this->_case)) {
 			$_GET['case'] = $this->_case;

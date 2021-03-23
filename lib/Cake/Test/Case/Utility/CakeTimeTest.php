@@ -37,7 +37,7 @@ class CakeTimeTest extends CakeTestCase {
  *
  * @return void
  */
-	public function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 		$this->Time = new CakeTime();
 		$this->_systemTimezoneIdentifier = date_default_timezone_get();
@@ -49,7 +49,7 @@ class CakeTimeTest extends CakeTestCase {
  *
  * @return void
  */
-	public function tearDown() {
+	protected function tearDown(): void {
 		parent::tearDown();
 		unset($this->Time);
 		$this->_restoreSystemTimezone();

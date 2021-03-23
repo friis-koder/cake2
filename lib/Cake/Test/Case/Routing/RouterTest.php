@@ -35,7 +35,7 @@ class RouterTest extends CakeTestCase {
  *
  * @return void
  */
-	public function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 		Configure::write('Routing', array('admin' => null, 'prefixes' => array()));
 	}
@@ -45,7 +45,7 @@ class RouterTest extends CakeTestCase {
  *
  * @return void
  */
-	public function tearDown() {
+	protected function tearDown(): void {
 		parent::tearDown();
 		CakePlugin::unload();
 		Router::fullBaseUrl('');

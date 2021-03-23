@@ -39,7 +39,7 @@ class PluginTaskTest extends CakeTestCase {
  *
  * @return void
  */
-	public function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 		$this->out = $this->getMock('ConsoleOutput', array(), array(), '', false);
 		$this->in = $this->getMock('ConsoleInput', array(), array(), '', false);
@@ -67,7 +67,7 @@ class PluginTaskTest extends CakeTestCase {
  *
  * @return void
  */
-	public function tearDown() {
+	protected function tearDown(): void {
 		if (file_exists($this->Task->bootstrap)) {
 			unlink($this->Task->bootstrap);
 		}

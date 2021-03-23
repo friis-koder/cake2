@@ -144,7 +144,7 @@ class ExceptionRendererTest extends CakeTestCase {
  *
  * @return void
  */
-	public function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 		Configure::write('Config.language', 'eng');
 		App::build(array(
@@ -165,7 +165,7 @@ class ExceptionRendererTest extends CakeTestCase {
  *
  * @return void
  */
-	public function tearDown() {
+	protected function tearDown(): void {
 		parent::tearDown();
 		if ($this->_restoreError) {
 			restore_error_handler();

@@ -137,7 +137,7 @@ class ShellTest extends CakeTestCase {
  *
  * @return void
  */
-	public function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 
 		$output = $this->getMock('ConsoleOutput', array(), array(), '', false);

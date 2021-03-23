@@ -48,7 +48,7 @@ class <?php echo $fullClassName; ?>Test extends CakeTestCase {
  *
  * @return void
  */
-	public function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 <?php echo $preConstruct ? "\t\t" . $preConstruct : ''; ?>
 		$this-><?php echo $className . ' = ' . $construction; ?>
@@ -60,7 +60,7 @@ class <?php echo $fullClassName; ?>Test extends CakeTestCase {
  *
  * @return void
  */
-	public function tearDown() {
+	protected function tearDown(): void {
 		unset($this-><?php echo $className; ?>);
 
 		parent::tearDown();

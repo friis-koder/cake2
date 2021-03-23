@@ -30,7 +30,7 @@ class CakeSocketTest extends CakeTestCase {
  *
  * @return void
  */
-	public function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 		$this->Socket = new CakeSocket(array('timeout' => 1));
 	}
@@ -40,7 +40,7 @@ class CakeSocketTest extends CakeTestCase {
  *
  * @return void
  */
-	public function tearDown() {
+	protected function tearDown(): void {
 		parent::tearDown();
 		unset($this->Socket);
 	}

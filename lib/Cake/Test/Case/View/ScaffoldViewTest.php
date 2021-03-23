@@ -83,7 +83,7 @@ class ScaffoldViewTest extends CakeTestCase {
  *
  * @return void
  */
-	public function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 		$this->request = new CakeRequest(null, false);
 		$this->Controller = new ScaffoldViewMockController($this->request);
@@ -101,7 +101,7 @@ class ScaffoldViewTest extends CakeTestCase {
  *
  * @return void
  */
-	public function tearDown() {
+	protected function tearDown(): void {
 		unset($this->Controller, $this->request);
 		parent::tearDown();
 	}

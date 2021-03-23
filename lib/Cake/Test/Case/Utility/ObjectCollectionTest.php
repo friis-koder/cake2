@@ -134,7 +134,7 @@ class ObjectCollectionTest extends CakeTestCase {
  *
  * @return void
  */
-	public function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 		$this->Objects = new GenericObjectCollection();
 	}
@@ -144,7 +144,7 @@ class ObjectCollectionTest extends CakeTestCase {
  *
  * @return void
  */
-	public function tearDown() {
+	protected function tearDown(): void {
 		parent::tearDown();
 		unset($this->Objects);
 	}

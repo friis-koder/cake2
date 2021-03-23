@@ -31,7 +31,7 @@ class CakeTextTest extends CakeTestCase {
  *
  * @return void
  */
-	public function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 		$this->Text = new CakeText();
 	}
@@ -41,7 +41,7 @@ class CakeTextTest extends CakeTestCase {
  *
  * @return void
  */
-	public function tearDown() {
+	protected function tearDown(): void {
 		parent::tearDown();
 		unset($this->Text);
 	}

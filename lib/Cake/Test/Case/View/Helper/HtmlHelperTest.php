@@ -143,7 +143,7 @@ class HtmlHelperTest extends CakeTestCase {
  *
  * @return void
  */
-	public function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 		$this->View = $this->getMock('View', array('append'), array(new TheHtmlTestController()));
 		$this->Html = new TestHtmlHelper($this->View);
@@ -162,7 +162,7 @@ class HtmlHelperTest extends CakeTestCase {
  *
  * @return void
  */
-	public function tearDown() {
+	protected function tearDown(): void {
 		parent::tearDown();
 		unset($this->Html, $this->View);
 	}

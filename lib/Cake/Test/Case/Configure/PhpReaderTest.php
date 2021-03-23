@@ -50,7 +50,7 @@ class PhpReaderTest extends CakeTestCase {
  *
  * @return void
  */
-	public function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 		$this->path = CAKE . 'Test' . DS . 'test_app' . DS . 'Config' . DS;
 	}

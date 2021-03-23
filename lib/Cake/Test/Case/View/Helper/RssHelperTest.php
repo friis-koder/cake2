@@ -33,7 +33,7 @@ class RssHelperTest extends CakeTestCase {
  *
  * @return void
  */
-	public function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 		$controller = null;
 		$this->View = new View($controller);
@@ -45,7 +45,7 @@ class RssHelperTest extends CakeTestCase {
  *
  * @return void
  */
-	public function tearDown() {
+	protected function tearDown(): void {
 		parent::tearDown();
 		unset($this->Rss);
 	}

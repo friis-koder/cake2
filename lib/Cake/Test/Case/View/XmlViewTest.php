@@ -28,7 +28,7 @@ App::uses('XmlView', 'View');
  */
 class XmlViewTest extends CakeTestCase {
 
-	public function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 		Configure::write('debug', 0);
 	}

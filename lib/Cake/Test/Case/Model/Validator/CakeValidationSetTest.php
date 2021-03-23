@@ -30,7 +30,7 @@ class CakeValidationSetTest extends CakeTestCase {
  *
  * @return void
  */
-	public function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 		Configure::write('Config.language', 'eng');
 	}

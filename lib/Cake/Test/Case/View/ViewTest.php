@@ -314,7 +314,7 @@ class ViewTest extends CakeTestCase {
  *
  * @return void
  */
-	public function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 
 		$request = $this->getMock('CakeRequest');
@@ -346,7 +346,7 @@ class ViewTest extends CakeTestCase {
  *
  * @return void
  */
-	public function tearDown() {
+	protected function tearDown(): void {
 		parent::tearDown();
 		CakePlugin::unload();
 		unset($this->View);

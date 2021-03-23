@@ -69,7 +69,7 @@ class CookieComponentTest extends CakeTestCase {
  *
  * @return void
  */
-	public function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 		$_COOKIE = array();
 		$this->Controller = new CookieComponentTestController(new CakeRequest(), new CakeResponse());
@@ -91,7 +91,7 @@ class CookieComponentTest extends CakeTestCase {
  *
  * @return void
  */
-	public function tearDown() {
+	protected function tearDown(): void {
 		parent::tearDown();
 		$this->Cookie->destroy();
 	}

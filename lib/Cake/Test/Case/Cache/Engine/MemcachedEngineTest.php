@@ -60,7 +60,7 @@ class MemcachedEngineTest extends CakeTestCase {
  *
  * @return void
  */
-	public function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 		$this->skipIf(!class_exists('Memcached'), 'Memcached is not installed or configured properly.');
 
@@ -82,7 +82,7 @@ class MemcachedEngineTest extends CakeTestCase {
  *
  * @return void
  */
-	public function tearDown() {
+	protected function tearDown(): void {
 		parent::tearDown();
 		Cache::drop('memcached');
 		Cache::drop('memcached_groups');

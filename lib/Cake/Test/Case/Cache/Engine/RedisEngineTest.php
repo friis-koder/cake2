@@ -31,7 +31,7 @@ class RedisEngineTest extends CakeTestCase {
  *
  * @return void
  */
-	public function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 		$this->skipIf(!class_exists('Redis'), 'Redis is not installed or configured properly.');
 
@@ -56,7 +56,7 @@ class RedisEngineTest extends CakeTestCase {
  *
  * @return void
  */
-	public function tearDown() {
+	protected function tearDown(): void {
 		parent::tearDown();
 		Configure::write('Cache.disable', $this->_cacheDisable);
 		Cache::drop('');

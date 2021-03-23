@@ -56,7 +56,7 @@ class ApplicationControllerTest extends ControllerTestCase {
  *
  * @return void
  */
-	public function setUp() {
+	protected function setUp(): void {
 		CakeSession::destroy();
 		parent::setUp();
 	}
@@ -66,7 +66,7 @@ class ApplicationControllerTest extends ControllerTestCase {
  *
  * @return void
  */
-	public function tearDown() {
+	protected function tearDown(): void {
 		CakeSession::destroy();
 		parent::tearDown();
 	}

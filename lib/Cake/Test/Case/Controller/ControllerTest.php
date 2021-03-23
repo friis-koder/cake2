@@ -390,7 +390,7 @@ class ControllerTest extends CakeTestCase {
  *
  * @return void
  */
-	public function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 		App::objects('plugin', null, false);
 		App::build();
@@ -402,7 +402,7 @@ class ControllerTest extends CakeTestCase {
  *
  * @return void
  */
-	public function tearDown() {
+	protected function tearDown(): void {
 		parent::tearDown();
 		CakePlugin::unload();
 	}

@@ -452,7 +452,7 @@ class CakeSchemaTest extends CakeTestCase {
  *
  * @return void
  */
-	public function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 		ConnectionManager::getDataSource('test')->cacheSources = false;
 		$this->Schema = new TestAppSchema();
@@ -463,7 +463,7 @@ class CakeSchemaTest extends CakeTestCase {
  *
  * @return void
  */
-	public function tearDown() {
+	protected function tearDown(): void {
 		parent::tearDown();
 		if (file_exists(TMP . 'tests' . DS . 'schema.php')) {
 			unlink(TMP . 'tests' . DS . 'schema.php');

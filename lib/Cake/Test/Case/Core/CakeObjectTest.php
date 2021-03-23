@@ -293,7 +293,7 @@ class ObjectTest extends CakeTestCase {
  *
  * @return void
  */
-	public function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 		$this->object = new TestCakeObject();
 	}
@@ -303,7 +303,7 @@ class ObjectTest extends CakeTestCase {
  *
  * @return void
  */
-	public function tearDown() {
+	protected function tearDown(): void {
 		parent::tearDown();
 		CakePlugin::unload();
 		unset($this->object);

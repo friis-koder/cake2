@@ -51,7 +51,7 @@ class FolderTest extends CakeTestCase {
  *
  * @return void
  */
-	public function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 		clearstatcache();
 	}
@@ -61,7 +61,7 @@ class FolderTest extends CakeTestCase {
  *
  * @return void
  */
-	public function tearDown() {
+	protected function tearDown(): void {
 		$exclude = array_merge(static::$_tmp, array('.', '..'));
 		foreach (scandir(TMP) as $dir) {
 			if (is_dir(TMP . $dir) && !in_array($dir, $exclude)) {

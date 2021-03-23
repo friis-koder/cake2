@@ -113,7 +113,7 @@ class SessionComponentTest extends CakeTestCase {
  *
  * @return void
  */
-	public function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 		$_SESSION = null;
 		$this->ComponentCollection = new ComponentCollection();
@@ -124,7 +124,7 @@ class SessionComponentTest extends CakeTestCase {
  *
  * @return void
  */
-	public function tearDown() {
+	protected function tearDown(): void {
 		parent::tearDown();
 		CakeSession::destroy();
 	}

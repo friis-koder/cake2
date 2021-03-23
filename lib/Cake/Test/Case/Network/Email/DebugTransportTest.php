@@ -30,7 +30,7 @@ class DebugTransportTest extends CakeTestCase {
  *
  * @return void
  */
-	public function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 		$this->DebugTransport = new DebugTransport();
 	}

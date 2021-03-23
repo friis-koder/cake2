@@ -29,7 +29,7 @@ class ConnectionManagerTest extends CakeTestCase {
  *
  * @return void
  */
-	public function tearDown() {
+	protected function tearDown(): void {
 		parent::tearDown();
 		CakePlugin::unload();
 	}

@@ -49,7 +49,7 @@ class CommandListShellTest extends CakeTestCase {
  *
  * @return void
  */
-	public function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 		App::build(array(
 			'Plugin' => array(
@@ -82,7 +82,7 @@ class CommandListShellTest extends CakeTestCase {
  *
  * @return void
  */
-	public function tearDown() {
+	protected function tearDown(): void {
 		parent::tearDown();
 		unset($this->Shell);
 		CakePlugin::unload();

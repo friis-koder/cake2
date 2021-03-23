@@ -228,7 +228,7 @@ class CakeTestFixtureTest extends CakeTestCase {
  *
  * @return void
  */
-	public function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 		$methods = array_diff(get_class_methods('DboSource'), array('enabled'));
 
@@ -243,7 +243,7 @@ class CakeTestFixtureTest extends CakeTestCase {
  *
  * @return void
  */
-	public function tearDown() {
+	protected function tearDown(): void {
 		parent::tearDown();
 		unset($this->criticDb);
 		$this->db->config = $this->_backupConfig;

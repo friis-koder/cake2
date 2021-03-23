@@ -47,7 +47,7 @@ class TestCakeLog extends CakeLog {
  */
 class ConsoleLogTest extends CakeTestCase {
 
-	public function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 		CakeLog::config('debug', array(
 			'engine' => 'File',
@@ -61,7 +61,7 @@ class ConsoleLogTest extends CakeTestCase {
 		));
 	}
 
-	public function tearDown() {
+	protected function tearDown(): void {
 		parent::tearDown();
 		if (file_exists(LOGS . 'error.log')) {
 			unlink(LOGS . 'error.log');

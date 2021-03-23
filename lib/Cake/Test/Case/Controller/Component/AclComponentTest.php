@@ -31,7 +31,7 @@ class AclComponentTest extends CakeTestCase {
  *
  * @return void
  */
-	public function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 		if (!class_exists('MockAclImplementation', false)) {
 			$this->getMock('AclInterface', array(), array(), 'MockAclImplementation');
@@ -46,7 +46,7 @@ class AclComponentTest extends CakeTestCase {
  *
  * @return void
  */
-	public function tearDown() {
+	protected function tearDown(): void {
 		parent::tearDown();
 		unset($this->Acl);
 	}

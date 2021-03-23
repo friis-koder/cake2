@@ -56,7 +56,7 @@ class ModelCrossSchemaHabtmTest extends BaseModelTest {
  *
  * @return void
  */
-	public function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 		$this->_checkConfigs();
 	}

@@ -119,7 +119,7 @@ class ValidationTest extends CakeTestCase {
  *
  * @return void
  */
-	public function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 		$this->_appEncoding = Configure::read('App.encoding');
 		$this->_appLocale = array();
@@ -134,7 +134,7 @@ class ValidationTest extends CakeTestCase {
  *
  * @return void
  */
-	public function tearDown() {
+	protected function tearDown(): void {
 		parent::tearDown();
 		Configure::write('App.encoding', $this->_appEncoding);
 		foreach ($this->_appLocale as $category => $locale) {

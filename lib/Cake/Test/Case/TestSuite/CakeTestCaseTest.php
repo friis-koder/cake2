@@ -85,7 +85,7 @@ class CakeTestCaseTest extends CakeTestCase {
  *
  * @return void
  */
-	public function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 		$this->Reporter = $this->getMock('CakeHtmlReporter');
 	}
@@ -95,7 +95,7 @@ class CakeTestCaseTest extends CakeTestCase {
  *
  * @return void
  */
-	public function tearDown() {
+	protected function tearDown(): void {
 		parent::tearDown();
 		unset($this->Result);
 		unset($this->Reporter);

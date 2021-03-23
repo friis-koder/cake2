@@ -45,6 +45,12 @@ App::uses('CakeTestSuiteCommand', 'TestSuite');
 class CakeTestSuiteDispatcher
 {
     /**
+     * reporter instance used for the request
+     *
+     * @var CakeBaseReporter
+     */
+    protected static $_Reporter = null;
+    /**
      * 'Request' parameters
      *
      * @var array
@@ -61,34 +67,24 @@ class CakeTestSuiteDispatcher
         'filter'       => false,
         'fixture'      => null
     );
-
     /**
      * Baseurl for the request
      *
      * @var string
      */
     protected $_baseUrl;
-
     /**
      * Base dir of the request. Used for accessing assets.
      *
      * @var string
      */
     protected $_baseDir;
-
     /**
      * boolean to set auto parsing of params.
      *
      * @var bool
      */
     protected $_paramsParsed = false;
-
-    /**
-     * reporter instance used for the request
-     *
-     * @var CakeBaseReporter
-     */
-    protected static $_Reporter = null;
 
     /**
      * Constructor
@@ -98,6 +94,19 @@ class CakeTestSuiteDispatcher
         $this->_baseUrl = $_SERVER['PHP_SELF'];
         $dir = rtrim(dirname($this->_baseUrl), '\\');
         $this->_baseDir = ($dir === '/') ? $dir : $dir . '/';
+    }
+
+    /**
+     * Static method to initialize the test runner, keeps global space clean
+     *
+     * @throws \PHPUnit\TextUI\Exception
+     *
+     * @return void
+     */
+    public static function run()
+    {
+        $dispatcher = new CakeTestSuiteDispatcher();
+        $dispatcher->dispatch();
     }
 
     /**
@@ -121,19 +130,6 @@ class CakeTestSuiteDispatcher
         $output = ob_get_clean();
         echo $output;
         return $value;
-    }
-
-    /**
-     * Static method to initialize the test runner, keeps global space clean
-     *
-     * @throws \PHPUnit\TextUI\Exception
-     *
-     * @return void
-     */
-    public static function run()
-    {
-        $dispatcher = new CakeTestSuiteDispatcher();
-        $dispatcher->dispatch();
     }
 
     /**
@@ -164,48 +160,6 @@ class CakeTestSuiteDispatcher
         require_once VENDORS . 'autoload.php';
 
         return class_exists(PHPUnit\Framework\TestCase::class);
-    }
-
-    /**
-     * Checks for the xdebug extension required to do code coverage. Displays an error
-     * if xdebug isn't installed.
-     *
-     * @return void
-     */
-    protected function _checkXdebug()
-    {
-        if (!extension_loaded('xdebug')) {
-            include CAKE . 'TestSuite' . DS . 'templates' . DS . 'xdebug.php';
-            exit();
-        }
-    }
-
-    /**
-     * Generates a page containing the a list of test cases that could be run.
-     *
-     * @return void
-     */
-    protected function _testCaseList()
-    {
-        $command = new CakeTestSuiteCommand('', $this->params);
-        $Reporter = $command->handleReporter($this->params['output']);
-        $Reporter->paintDocumentStart();
-        $Reporter->paintTestMenu();
-        $Reporter->testCaseList();
-        $Reporter->paintDocumentEnd();
-    }
-
-    /**
-     * Sets the params, calling this will bypass the auto parameter parsing.
-     *
-     * @param array $params Array of parameters for the dispatcher
-     *
-     * @return void
-     */
-    public function setParams($params)
-    {
-        $this->params = $params;
-        $this->_paramsParsed = true;
     }
 
     /**
@@ -241,6 +195,20 @@ class CakeTestSuiteDispatcher
     }
 
     /**
+     * Checks for the xdebug extension required to do code coverage. Displays an error
+     * if xdebug isn't installed.
+     *
+     * @return void
+     */
+    protected function _checkXdebug()
+    {
+        if (!extension_loaded('xdebug')) {
+            include CAKE . 'TestSuite' . DS . 'templates' . DS . 'xdebug.php';
+            exit();
+        }
+    }
+
+    /**
      * Runs a test case file.
      *
      * @throws \PHPUnit\TextUI\Exception
@@ -261,9 +229,12 @@ class CakeTestSuiteDispatcher
         );
 
         $options = array(
-            '--filter', $this->params['filter'],
-            '--output', $this->params['output'],
-            '--fixture', $this->params['fixture']
+            '--filter',
+            $this->params['filter'],
+            '--output',
+            $this->params['output'],
+            '--fixture',
+            $this->params['fixture']
         );
 
         restore_error_handler();
@@ -298,6 +269,21 @@ class CakeTestSuiteDispatcher
     }
 
     /**
+     * Generates a page containing the a list of test cases that could be run.
+     *
+     * @return void
+     */
+    protected function _testCaseList()
+    {
+        $command = new CakeTestSuiteCommand('', $this->params);
+        $Reporter = $command->handleReporter($this->params['output']);
+        $Reporter->paintDocumentStart();
+        $Reporter->paintTestMenu();
+        $Reporter->testCaseList();
+        $Reporter->paintDocumentEnd();
+    }
+
+    /**
      * Returns formatted date string using static time
      * This method is being used as formatter for created, modified and updated fields in Model::save()
      *
@@ -308,5 +294,18 @@ class CakeTestSuiteDispatcher
     public static function date(string $format): string
     {
         return date($format, static::time());
+    }
+
+    /**
+     * Sets the params, calling this will bypass the auto parameter parsing.
+     *
+     * @param array $params Array of parameters for the dispatcher
+     *
+     * @return void
+     */
+    public function setParams($params)
+    {
+        $this->params = $params;
+        $this->_paramsParsed = true;
     }
 }
