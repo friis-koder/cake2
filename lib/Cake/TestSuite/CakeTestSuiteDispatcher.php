@@ -300,5 +300,4 @@ class CakeTestSuiteDispatcher
     {
         return date($format, static::time());
     }
-
 }
