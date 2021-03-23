@@ -16,9 +16,7 @@
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
-if (!class_exists('PHPUnit_TextUI_Command')) {
-	require_once 'PHPUnit/TextUI/Command.php';
-}
+use PHPUnit\TextUI\Command;
 
 App::uses('CakeTestRunner', 'TestSuite');
 App::uses('CakeTestLoader', 'TestSuite');
@@ -32,129 +30,60 @@ App::uses('CakeTestModel', 'TestSuite/Fixture');
  *
  * @package       Cake.TestSuite
  */
-class CakeTestSuiteCommand extends PHPUnit_TextUI_Command {
+class CakeTestSuiteCommand extends Command
+{
+    /**
+     * @var array
+     */
+    private $_params;
 
-/**
- * Construct method
- *
- * @param mixed $loader The loader instance to use.
- * @param array $params list of options to be used for this run
- * @throws MissingTestLoaderException When a loader class could not be found.
- */
-	public function __construct($loader, $params = array()) {
-		if ($loader && !class_exists($loader)) {
-			throw new MissingTestLoaderException(array('class' => $loader));
-		}
-		$this->arguments['loader'] = $loader;
-		$this->arguments['test'] = $params['case'];
-		$this->arguments['testFile'] = $params;
-		$this->_params = $params;
+    /**
+     * Construct method
+     *
+     * @param mixed $loader The loader instance to use.
+     * @param array $params list of options to be used for this run
+     *
+     * @throws MissingTestLoaderException When a loader class could not be found.
+     */
+    public function __construct($loader, $params = array())
+    {
+        if ($loader && !class_exists($loader)) {
+            throw new MissingTestLoaderException(array('class' => $loader));
+        }
 
-		$this->longOptions['fixture='] = 'handleFixture';
-		$this->longOptions['output='] = 'handleReporter';
-	}
+        $this->arguments['loader'] = $loader;
+        $this->arguments['test'] = $params['case'];
+        $this->arguments['testFile'] = $params;
+        $this->_params = $params;
 
-/**
- * Ugly hack to get around PHPUnit having a hard coded class name for the Runner. :(
- *
- * @param array $argv The command arguments
- * @param bool $exit The exit mode.
- * @return void
- */
-	public function run(array $argv, $exit = true) {
-		$this->handleArguments($argv);
+        $this->longOptions['fixture='] = 'handleFixture';
+        $this->longOptions['output='] = 'handleReporter';
+    }
 
-		$runner = $this->getRunner($this->arguments['loader']);
+    /**
+     * Handles output flag used to change printing on webrunner.
+     *
+     * @param string $reporter The reporter class to use.
+     *
+     * @return void
+     */
+    public function handleReporter($reporter)
+    {
+        $object = null;
 
-		if (is_object($this->arguments['test']) &&
-			$this->arguments['test'] instanceof PHPUnit_Framework_Test) {
-			$suite = $this->arguments['test'];
-		} else {
-			$suite = $runner->getTest(
-				$this->arguments['test'],
-				$this->arguments['testFile']
-			);
-		}
+        $reporter = ucwords($reporter);
+        $coreClass = 'Cake' . $reporter . 'Reporter';
+        App::uses($coreClass, 'TestSuite/Reporter');
 
-		if ($this->arguments['listGroups']) {
-			PHPUnit_TextUI_TestRunner::printVersionString();
+        $appClass = $reporter . 'Reporter';
+        App::uses($appClass, 'TestSuite/Reporter');
 
-			print "Available test group(s):\n";
+        if (!class_exists($appClass)) {
+            $object = new $coreClass(null, $this->_params);
+        } else {
+            $object = new $appClass(null, $this->_params);
+        }
 
-			$groups = $suite->getGroups();
-			sort($groups);
-
-			foreach ($groups as $group) {
-				print " - $group\n";
-			}
-
-			exit(PHPUnit_TextUI_TestRunner::SUCCESS_EXIT);
-		}
-
-		unset($this->arguments['test']);
-		unset($this->arguments['testFile']);
-
-		try {
-			$result = $runner->doRun($suite, $this->arguments, false);
-		} catch (PHPUnit_Framework_Exception $e) {
-			print $e->getMessage() . "\n";
-		}
-
-		if ($exit) {
-			if (!isset($result) || $result->errorCount() > 0) {
-				exit(PHPUnit_TextUI_TestRunner::EXCEPTION_EXIT);
-			}
-			if ($result->failureCount() > 0) {
-				exit(PHPUnit_TextUI_TestRunner::FAILURE_EXIT);
-			}
-
-			// Default to success even if there are warnings to match phpunit's behavior
-			exit(PHPUnit_TextUI_TestRunner::SUCCESS_EXIT);
-		}
-	}
-
-/**
- * Create a runner for the command.
- *
- * @param mixed $loader The loader to be used for the test run.
- * @return CakeTestRunner
- */
-	public function getRunner($loader) {
-		return new CakeTestRunner($loader, $this->_params);
-	}
-
-/**
- * Handler for customizing the FixtureManager class/
- *
- * @param string $class Name of the class that will be the fixture manager
- * @return void
- */
-	public function handleFixture($class) {
-		$this->arguments['fixtureManager'] = $class;
-	}
-
-/**
- * Handles output flag used to change printing on webrunner.
- *
- * @param string $reporter The reporter class to use.
- * @return void
- */
-	public function handleReporter($reporter) {
-		$object = null;
-
-		$reporter = ucwords($reporter);
-		$coreClass = 'Cake' . $reporter . 'Reporter';
-		App::uses($coreClass, 'TestSuite/Reporter');
-
-		$appClass = $reporter . 'Reporter';
-		App::uses($appClass, 'TestSuite/Reporter');
-
-		if (!class_exists($appClass)) {
-			$object = new $coreClass(null, $this->_params);
-		} else {
-			$object = new $appClass(null, $this->_params);
-		}
-		return $this->arguments['printer'] = $object;
-	}
-
+        return $this->arguments['printer'] = $object;
+    }
 }
