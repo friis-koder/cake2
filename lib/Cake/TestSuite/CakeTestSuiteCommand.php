@@ -65,7 +65,7 @@ class CakeTestSuiteCommand extends Command
      *
      * @param string $reporter The reporter class to use.
      *
-     * @return void
+     * @return mixed
      */
     public function handleReporter($reporter)
     {

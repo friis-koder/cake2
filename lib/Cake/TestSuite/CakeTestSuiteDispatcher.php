@@ -44,7 +44,6 @@ App::uses('CakeTestSuiteCommand', 'TestSuite');
  */
 class CakeTestSuiteDispatcher
 {
-
     /**
      * 'Request' parameters
      *
@@ -104,6 +103,8 @@ class CakeTestSuiteDispatcher
     /**
      * Runs the actions required by the URL parameters.
      *
+     * @throws \PHPUnit\TextUI\Exception
+     *
      * @return void
      */
     public function dispatch()
@@ -125,6 +126,8 @@ class CakeTestSuiteDispatcher
     /**
      * Static method to initialize the test runner, keeps global space clean
      *
+     * @throws \PHPUnit\TextUI\Exception
+     *
      * @return void
      */
     public static function run()
@@ -142,7 +145,6 @@ class CakeTestSuiteDispatcher
     {
         $found = $this->loadTestFramework();
         if (!$found) {
-            $baseDir = $this->_baseDir;
             include CAKE . 'TestSuite' . DS . 'templates' . DS . 'phpunit.php';
             exit();
         }
@@ -173,7 +175,6 @@ class CakeTestSuiteDispatcher
     protected function _checkXdebug()
     {
         if (!extension_loaded('xdebug')) {
-            $baseDir = $this->_baseDir;
             include CAKE . 'TestSuite' . DS . 'templates' . DS . 'xdebug.php';
             exit();
         }
@@ -218,25 +219,31 @@ class CakeTestSuiteDispatcher
             if (!isset($_SERVER['SERVER_NAME'])) {
                 $_SERVER['SERVER_NAME'] = '';
             }
+
             foreach ($this->params as $key => $value) {
                 if (isset($_GET[$key])) {
                     $this->params[$key] = $_GET[$key];
                 }
             }
+
             if (isset($_GET['code_coverage'])) {
                 $this->params['codeCoverage'] = true;
                 $this->_checkXdebug();
             }
         }
+
         if (empty($this->params['plugin']) && empty($this->params['core'])) {
             $this->params['app'] = true;
         }
+
         $this->params['baseUrl'] = $this->_baseUrl;
         $this->params['baseDir'] = $this->_baseDir;
     }
 
     /**
      * Runs a test case file.
+     *
+     * @throws \PHPUnit\TextUI\Exception
      *
      * @return void
      */
@@ -258,6 +265,7 @@ class CakeTestSuiteDispatcher
             '--output', $this->params['output'],
             '--fixture', $this->params['fixture']
         );
+
         restore_error_handler();
 
         try {
@@ -266,7 +274,6 @@ class CakeTestSuiteDispatcher
             $command->run($options);
         } catch (MissingConnectionException $exception) {
             ob_end_clean();
-            $baseDir = $this->_baseDir;
             include CAKE . 'TestSuite' . DS . 'templates' . DS . 'missing_connection.php';
             exit();
         }
@@ -279,12 +286,14 @@ class CakeTestSuiteDispatcher
      *
      * @return int timestamp
      */
-    public static function time($reset = false)
+    public static function time($reset = false): int
     {
         static $now;
+
         if ($reset || !$now) {
             $now = time();
         }
+
         return $now;
     }
 
@@ -296,7 +305,7 @@ class CakeTestSuiteDispatcher
      *
      * @return string formatted date
      */
-    public static function date($format)
+    public static function date(string $format): string
     {
         return date($format, static::time());
     }
