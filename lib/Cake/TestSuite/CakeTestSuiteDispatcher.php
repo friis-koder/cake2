@@ -245,9 +245,9 @@ class CakeTestSuiteDispatcher
      *
      * @throws \PHPUnit\TextUI\Exception
      *
-     * @return void
+     * @return int
      */
-    protected function _runTestCase()
+    protected function _runTestCase(): int
     {
         $commandArgs = array(
             'case'         => $this->params['case'],
@@ -271,7 +271,7 @@ class CakeTestSuiteDispatcher
         try {
             static::time();
             $command = new CakeTestSuiteCommand('CakeTestLoader', $commandArgs);
-            $command->run($options);
+            return $command->run($options);
         } catch (MissingConnectionException $exception) {
             ob_end_clean();
             include CAKE . 'TestSuite' . DS . 'templates' . DS . 'missing_connection.php';
