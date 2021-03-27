@@ -18,7 +18,6 @@
 
 use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\TestResult;
-use PHPUnit\Runner\Version;
 
 App::uses('CakeFixtureManager', 'TestSuite/Fixture');
 App::uses('CakeTestFixture', 'TestSuite/Fixture');
@@ -77,7 +76,7 @@ abstract class CakeTestCase extends TestCase
      *
      * @return string
      */
-    public static function date($format = 'Y-m-d H:i:s')
+    public static function date(string $format = 'Y-m-d H:i:s'): string
     {
         return CakeTestSuiteDispatcher::date($format);
     }
@@ -119,11 +118,12 @@ abstract class CakeTestCase extends TestCase
      *
      * @return bool
      */
-    public function skipIf($shouldSkip, $message = '')
+    public function skipIf(bool $shouldSkip, string $message = ''): bool
     {
         if ($shouldSkip) {
             $this->markTestSkipped($message);
         }
+
         return $shouldSkip;
     }
 
@@ -133,7 +133,6 @@ abstract class CakeTestCase extends TestCase
      * Each parameter is a model name that corresponds to a fixture, i.e. 'Post', 'Author', etc.
      *
      * @throws Exception when no fixture manager is available.
-     * @return void
      * @see CakeTestCase::$autoFixtures
      */
     public function loadFixtures()
@@ -141,7 +140,9 @@ abstract class CakeTestCase extends TestCase
         if (empty($this->fixtureManager)) {
             throw new Exception(__d('cake_dev', 'No fixture manager to load the test fixture'));
         }
+
         $args = func_get_args();
+
         foreach ($args as $class) {
             $this->fixtureManager->loadSingle($class, null, $this->dropTables);
         }
@@ -154,14 +155,12 @@ abstract class CakeTestCase extends TestCase
      * @param string $expected The expected value.
      * @param string $result The actual value.
      * @param string $message The message to use for failure.
-     *
-     * @return bool
      */
-    public function assertTextNotEquals($expected, $result, $message = ''): bool
+    public function assertTextNotEquals(string $expected, string $result, string $message = ''): void
     {
         $expected = str_replace(array("\r\n", "\r"), "\n", $expected);
         $result = str_replace(array("\r\n", "\r"), "\n", $result);
-        return $this->assertNotEquals($expected, $result, $message);
+        $this->assertNotEquals($expected, $result, $message);
     }
 
     /**
@@ -171,14 +170,12 @@ abstract class CakeTestCase extends TestCase
      * @param string $expected The expected value.
      * @param string $result The actual value.
      * @param string $message message The message to use for failure.
-     *
-     * @return bool
      */
-    public function assertTextEquals($expected, $result, $message = '')
+    public function assertTextEquals(string $expected, string $result, string $message = ''): void
     {
         $expected = str_replace(array("\r\n", "\r"), "\n", $expected);
         $result = str_replace(array("\r\n", "\r"), "\n", $result);
-        return $this->assertEquals($expected, $result, $message);
+        $this->assertEquals($expected, $result, $message);
     }
 
     /**
@@ -188,14 +185,12 @@ abstract class CakeTestCase extends TestCase
      * @param string $prefix The prefix to check for.
      * @param string $string The string to search in.
      * @param string $message The message to use for failure.
-     *
-     * @return bool
      */
-    public function assertTextStartsWith($prefix, $string, $message = '')
+    public function assertTextStartsWith(string $prefix, string $string, string $message = ''): void
     {
         $prefix = str_replace(array("\r\n", "\r"), "\n", $prefix);
         $string = str_replace(array("\r\n", "\r"), "\n", $string);
-        return $this->assertStringStartsWith($prefix, $string, $message);
+        $this->assertStringStartsWith($prefix, $string, $message);
     }
 
     /**
@@ -205,14 +200,12 @@ abstract class CakeTestCase extends TestCase
      * @param string $prefix The prefix to not find.
      * @param string $string The string to search.
      * @param string $message The message to use for failure.
-     *
-     * @return bool
      */
-    public function assertTextStartsNotWith($prefix, $string, $message = '')
+    public function assertTextStartsNotWith(string $prefix, string $string, string $message = ''): void
     {
         $prefix = str_replace(array("\r\n", "\r"), "\n", $prefix);
         $string = str_replace(array("\r\n", "\r"), "\n", $string);
-        return $this->assertStringStartsNotWith($prefix, $string, $message);
+        $this->assertStringStartsNotWith($prefix, $string, $message);
     }
 
     /**
@@ -222,14 +215,12 @@ abstract class CakeTestCase extends TestCase
      * @param string $suffix The suffix to find.
      * @param string $string The string to search.
      * @param string $message The message to use for failure.
-     *
-     * @return bool
      */
-    public function assertTextEndsWith($suffix, $string, $message = '')
+    public function assertTextEndsWith(string $suffix, string $string, string $message = ''): void
     {
         $suffix = str_replace(array("\r\n", "\r"), "\n", $suffix);
         $string = str_replace(array("\r\n", "\r"), "\n", $string);
-        return $this->assertStringEndsWith($suffix, $string, $message);
+        $this->assertStringEndsWith($suffix, $string, $message);
     }
 
     /**
@@ -239,14 +230,12 @@ abstract class CakeTestCase extends TestCase
      * @param string $suffix The suffix to not find.
      * @param string $string The string to search.
      * @param string $message The message to use for failure.
-     *
-     * @return bool
      */
-    public function assertTextEndsNotWith($suffix, $string, $message = '')
+    public function assertTextEndsNotWith(string $suffix, string $string, string $message = ''): void
     {
         $suffix = str_replace(array("\r\n", "\r"), "\n", $suffix);
         $string = str_replace(array("\r\n", "\r"), "\n", $string);
-        return $this->assertStringEndsNotWith($suffix, $string, $message);
+        $this->assertStringEndsNotWith($suffix, $string, $message);
     }
 
     /**
@@ -257,14 +246,22 @@ abstract class CakeTestCase extends TestCase
      * @param string $haystack The string to search through.
      * @param string $message The message to display on failure.
      * @param bool $ignoreCase Whether or not the search should be case-sensitive.
-     *
-     * @return bool
      */
-    public function assertTextContains($needle, $haystack, $message = '', $ignoreCase = false)
-    {
+    public function assertTextContains(
+        string $needle,
+        string $haystack,
+        string $message = '',
+        bool $ignoreCase = false
+    ): void {
         $needle = str_replace(array("\r\n", "\r"), "\n", $needle);
         $haystack = str_replace(array("\r\n", "\r"), "\n", $haystack);
-        return $this->assertContains($needle, $haystack, $message, $ignoreCase);
+
+        if ($ignoreCase) {
+            $needle = strtolower($needle);
+            $haystack = strtolower($haystack);
+        }
+
+        $this->assertContains($needle, $haystack, $message);
     }
 
     /**
@@ -275,14 +272,22 @@ abstract class CakeTestCase extends TestCase
      * @param string $haystack The string to search through.
      * @param string $message The message to display on failure.
      * @param bool $ignoreCase Whether or not the search should be case-sensitive.
-     *
-     * @return bool
      */
-    public function assertTextNotContains($needle, $haystack, $message = '', $ignoreCase = false)
-    {
+    public function assertTextNotContains(
+        string $needle,
+        string $haystack,
+        string $message = '',
+        bool $ignoreCase = false
+    ): void {
         $needle = str_replace(array("\r\n", "\r"), "\n", $needle);
         $haystack = str_replace(array("\r\n", "\r"), "\n", $haystack);
-        return $this->assertNotContains($needle, $haystack, $message, $ignoreCase);
+
+        if ($ignoreCase) {
+            $needle = strtolower($needle);
+            $haystack = strtolower($haystack);
+        }
+
+        $this->assertNotContains($needle, $haystack, $message);
     }
 
     /**
@@ -324,14 +329,13 @@ abstract class CakeTestCase extends TestCase
      *
      * @param string $string An HTML/XHTML/XML string
      * @param array $expected An array, see above
-     * @param string $fullDebug Whether or not more verbose output should be used.
-     *
-     * @return bool
+     * @param bool $fullDebug Whether or not more verbose output should be used.
      */
-    public function assertTags($string, $expected, $fullDebug = false)
+    public function assertTags(string $string, array $expected, bool $fullDebug = false): void
     {
         $regex = array();
         $normalized = array();
+
         foreach ((array)$expected as $key => $val) {
             if (!is_numeric($key)) {
                 $normalized[] = array($key => $val);
@@ -339,11 +343,13 @@ abstract class CakeTestCase extends TestCase
                 $normalized[] = $val;
             }
         }
+
         $i = 0;
         foreach ($normalized as $tags) {
             if (!is_array($tags)) {
                 $tags = (string)$tags;
             }
+
             $i++;
             if (is_string($tags) && $tags[0] === '<') {
                 $tags = array(substr($tags, 1) => array());
@@ -363,6 +369,7 @@ abstract class CakeTestCase extends TestCase
                     );
                     continue;
                 }
+
                 if (!empty($tags) && preg_match('/^preg\:\/(.+)\/$/i', $tags, $matches)) {
                     $tags = $matches[1];
                     $type = 'Regex matches';
@@ -370,25 +377,31 @@ abstract class CakeTestCase extends TestCase
                     $tags = preg_quote($tags, '/');
                     $type = 'Text equals';
                 }
+
                 $regex[] = array(
                     sprintf('%s "%s"', $type, $tags),
                     $tags,
                     $i,
                 );
+
                 continue;
             }
+
             foreach ($tags as $tag => $attributes) {
                 $regex[] = array(
                     sprintf('Open %s tag', $tag),
                     sprintf('[\s]*<%s', preg_quote($tag, '/')),
                     $i,
                 );
+
                 if ($attributes === true) {
                     $attributes = array();
                 }
+
                 $attrs = array();
                 $explanations = array();
                 $i = 1;
+
                 foreach ($attributes as $attr => $val) {
                     if (is_numeric($attr) && preg_match('/^preg\:\/(.+)\/$/i', $val, $matches)) {
                         $attrs[] = $matches[1];
@@ -413,16 +426,19 @@ abstract class CakeTestCase extends TestCase
                             $explanations[] = sprintf('Attribute "%s" == "%s"', $attr, $val);
                             $val = preg_quote($val, '/');
                         }
+
                         $attrs[] = '[\s]+' . preg_quote($attr, '/') . '=' . $quotes . $val . $quotes;
                     }
                     $i++;
                 }
+
                 if ($attrs) {
                     $regex[] = array(
                         'explains' => $explanations,
                         'attrs'    => $attrs,
                     );
                 }
+
                 $regex[] = array(
                     sprintf('End %s tag', $tag),
                     '[\s]*\/?[\s]*>[\n\r]*',
@@ -445,18 +461,19 @@ abstract class CakeTestCase extends TestCase
                     break;
                 }
             }
+
             if (!$matches) {
                 $this->assertTrue(false, sprintf('Item #%d / regex #%d failed: %s', $itemNum, $i, $description));
                 if ($fullDebug) {
                     debug($string, true);
                     debug($regex, true);
                 }
-                return false;
+
+                return;
             }
         }
 
         $this->assertTrue(true, '%s');
-        return true;
     }
 
     /**
@@ -465,14 +482,15 @@ abstract class CakeTestCase extends TestCase
      * @param array $assertions Assertions to run.
      * @param string $string The HTML string to check.
      *
-     * @return void
+     * @return string
      */
-    protected function _assertAttributes($assertions, $string)
+    protected function _assertAttributes(array $assertions, string $string): string
     {
         $asserts = $assertions['attrs'];
         $explains = $assertions['explains'];
-        $len = count($asserts);
+
         do {
+            $j = 0;
             $matches = false;
             foreach ($asserts as $j => $assert) {
                 if (preg_match(sprintf('/^%s/s', $assert), $string, $match)) {
@@ -483,11 +501,12 @@ abstract class CakeTestCase extends TestCase
                     break;
                 }
             }
+
             if ($matches === false) {
                 $this->assertTrue(false, 'Attribute did not match. Was expecting ' . $explains[$j]);
             }
-            $len = count($asserts);
-        } while ($len > 0);
+        } while (count($asserts) > 0);
+
         return $string;
     }
 
@@ -495,13 +514,14 @@ abstract class CakeTestCase extends TestCase
      * Mock a model, maintain fixtures and table association
      *
      * @param string $model The model to get a mock for.
-     * @param mixed $methods The list of methods to mock
-     * @param array $config The config data for the mock's constructor.
+     * @param array $methods The list of methods to mock
+     * @param array $config The config data for the mock constructor.
      *
      * @throws MissingModelException
-     * @return Model
+     *
+     * @return object
      */
-    public function getMockForModel($model, $methods = array(), $config = array())
+    public function getMockForModel(string $model, array $methods = array(), array $config = array()): object
     {
         $defaults = ClassRegistry::config('Model');
         unset($defaults['ds']);
@@ -514,6 +534,7 @@ abstract class CakeTestCase extends TestCase
         if (!class_exists($name)) {
             throw new MissingModelException(array($model));
         }
+
         $mock = $this->getMock($name, $methods, array($config));
 
         $availableDs = array_keys(ConnectionManager::enumConnectionObjects());
@@ -528,6 +549,7 @@ abstract class CakeTestCase extends TestCase
 
         ClassRegistry::removeObject($name);
         ClassRegistry::addObject($name, $mock);
+
         return $mock;
     }
 
@@ -562,42 +584,19 @@ abstract class CakeTestCase extends TestCase
      * @deprecated Use `getMockBuilder()` or `createMock()` in new unit tests.
      * @see https://phpunit.de/manual/current/en/test-doubles.html
      */
-    public function getMock(
-        $originalClassName,
-        $methods = array(),
-        array $arguments = array(),
-        $mockClassName = '',
-        $callOriginalConstructor = true,
-        $callOriginalClone = true,
-        $callAutoload = true,
-        $cloneArguments = false,
-        $callOriginalMethods = false,
-        $proxyTarget = null
-    ) {
-        $phpUnitVersion = Version::id();
-        if (version_compare($phpUnitVersion, '5.7.0', '<')) {
-            return parent::getMock(
-                $originalClassName,
-                $methods,
-                $arguments,
-                $mockClassName,
-                $callOriginalConstructor,
-                $callOriginalClone,
-                $callAutoload,
-                $cloneArguments,
-                $callOriginalMethods,
-                $proxyTarget
-            );
-        }
+    public function getMock($originalClassName, $methods = array(), array $arguments = array(), $mockClassName = '', $callOriginalConstructor = true, $callOriginalClone = true, $callAutoload = true, $cloneArguments = false, $callOriginalMethods = false, $proxyTarget = null): object {
         if ($cloneArguments) {
             throw new InvalidArgumentException('$cloneArguments parameter is not supported');
         }
+
         if ($callOriginalMethods) {
             throw new InvalidArgumentException('$callOriginalMethods parameter is not supported');
         }
+
         if ($proxyTarget !== null) {
             throw new InvalidArgumentException('$proxyTarget parameter is not supported');
         }
+
         return $this->_buildMock(
             $originalClassName,
             $methods,
@@ -636,34 +635,33 @@ abstract class CakeTestCase extends TestCase
      * @deprecated Use `getMockBuilder()` or `createMock()` in new unit tests.
      * @see https://phpunit.de/manual/current/en/test-doubles.html
      */
-    protected function _buildMock(
-        $originalClassName,
-        $methods = array(),
-        array $arguments = array(),
-        $mockClassName = '',
-        $callOriginalConstructor = true,
-        $callOriginalClone = true,
-        $callAutoload = true
-    ) {
+    protected function _buildMock(string $originalClassName, array $methods = array(), array $arguments = array(), string $mockClassName = '', bool $callOriginalConstructor = true, bool $callOriginalClone = true, bool $callAutoload = true): object {
         $MockBuilder = $this->getMockBuilder($originalClassName);
+
         if (!empty($methods)) {
             $MockBuilder = $MockBuilder->setMethods($methods);
         }
+
         if (!empty($arguments)) {
             $MockBuilder = $MockBuilder->setConstructorArgs($arguments);
         }
+
         if ($mockClassName != '') {
             $MockBuilder = $MockBuilder->setMockClassName($mockClassName);
         }
+
         if ($callOriginalConstructor !== true) {
             $MockBuilder = $MockBuilder->disableOriginalConstructor();
         }
+
         if ($callOriginalClone !== true) {
             $MockBuilder = $MockBuilder->disableOriginalClone();
         }
+
         if ($callAutoload !== true) {
             $MockBuilder = $MockBuilder->disableAutoload();
         }
+
         return $MockBuilder->getMock();
     }
 
@@ -671,8 +669,6 @@ abstract class CakeTestCase extends TestCase
      * Setup the test case, backup the static object values so they can be restored.
      * Specifically backs up the contents of Configure and paths in App if they have
      * not already been backed up.
-     *
-     * @return void
      */
     protected function setUp(): void
     {
@@ -681,9 +677,11 @@ abstract class CakeTestCase extends TestCase
         if (empty($this->_configure)) {
             $this->_configure = Configure::read();
         }
+
         if (empty($this->_pathRestore)) {
             $this->_pathRestore = App::paths();
         }
+
         if (class_exists('Router', false)) {
             Router::reload();
         }
@@ -691,30 +689,31 @@ abstract class CakeTestCase extends TestCase
 
     /**
      * teardown any static object changes and restore them.
-     *
-     * @return void
      */
     protected function tearDown(): void
     {
         parent::tearDown();
+
         App::build($this->_pathRestore, App::RESET);
+
         if (class_exists('ClassRegistry', false)) {
             ClassRegistry::flush();
         }
+
         if (!empty($this->_configure)) {
             Configure::clear();
             Configure::write($this->_configure);
         }
+
         if (isset($_GET['debug']) && $_GET['debug']) {
             ob_flush();
         }
+
         unset($this->_configure, $this->_pathRestore);
     }
 
     /**
      * Announces the start of a test.
-     *
-     * @return void
      */
     protected function assertPreConditions(): void
     {
@@ -726,17 +725,13 @@ abstract class CakeTestCase extends TestCase
      * Called when a test case method is about to start (to be overridden when needed.)
      *
      * @param string $method Test method about to get executed.
-     *
-     * @return void
      */
-    public function startTest($method)
+    public function startTest(string $method)
     {
     }
 
     /**
      * Announces the end of a test.
-     *
-     * @return void
      */
     protected function assertPostConditions(): void
     {
@@ -748,10 +743,8 @@ abstract class CakeTestCase extends TestCase
      * Called when a test case method has been executed (to be overridden when needed.)
      *
      * @param string $method Test method about that was executed.
-     *
-     * @return void
      */
-    public function endTest($method)
+    public function endTest(string $method)
     {
     }
 }
