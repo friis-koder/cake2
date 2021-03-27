@@ -306,7 +306,7 @@ class TestShell extends Shell
      *
      * @return array|null Array of params for CakeTestDispatcher or null.
      */
-    protected function _parseArgs()
+    protected function _parseArgs(): ?array
     {
         if (empty($this->args)) {
             return null;
@@ -377,9 +377,10 @@ class TestShell extends Shell
     /**
      * Main entry point to this shell
      *
-
+     * @throws \PHPUnit\TextUI\Exception
+     * @throws Exception
      */
-    public function main()
+    public function main(): void
     {
         $this->out(__d('cake_console', 'CakePHP Test Shell'));
         $this->hr();
@@ -387,7 +388,9 @@ class TestShell extends Shell
         $args = $this->_parseArgs();
 
         if (empty($args['case'])) {
-            return $this->available();
+            $this->available();
+
+            return;
         }
 
         $this->_run($args, $this->_runnerOptions());
@@ -412,6 +415,9 @@ class TestShell extends Shell
 
     /**
      * Shows a list of available test cases and gives the option to run one of them
+     *
+     * @throws \PHPUnit\TextUI\Exception
+     * @throws Exception
      */
     public function available(): void
     {
@@ -515,8 +521,8 @@ class TestShell extends Shell
         }
 
         $file = substr($file, 0, -4);
+
         if ($category === 'core') {
-            $testCase = str_replace(DS, '/', $file);
             $testCase = preg_replace('@.*lib/Cake/@', '', $file);
             $testCase[0] = strtoupper($testCase[0]);
             $testFile = CAKE . 'Test/Case/' . $testCase . 'Test.php';
@@ -556,7 +562,7 @@ class TestShell extends Shell
      *
      * @return string
      */
-    protected function _mapFileToCategory($file): string
+    protected function _mapFileToCategory(string $file): string
     {
         $_file = realpath($file);
 
