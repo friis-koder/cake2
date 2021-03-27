@@ -31,8 +31,6 @@ class CakeTestSuite extends TestSuite
      * Adds all the files in a directory to the test suite. Does not recurse through directories.
      *
      * @param string $directory The directory to add tests from.
-     *
-     * @return void
      */
     public function addTestDirectory($directory = '.')
     {
@@ -50,8 +48,6 @@ class CakeTestSuite extends TestSuite
      * Recursively adds all the files in a directory to the test suite.
      *
      * @param string $directory The directory subtree to add tests from.
-     *
-     * @return void
      */
     public function addTestDirectoryRecursive($directory = '.')
     {
@@ -64,5 +60,4 @@ class CakeTestSuite extends TestSuite
             }
         }
     }
-
 }
