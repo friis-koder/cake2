@@ -681,7 +681,7 @@ class CakeLogTest extends CakeTestCase {
 		));
 
 		$throwable = new InvalidArgumentException('Throwable Message!');
-		$throwableMessage = 'InvalidArgumentException: Throwable Message! (CakeLogTest.php:\d+)';
+		$throwableMessage = 'InvalidArgumentException: Throwable Message! \(CakeLogTest\.php:\d+\)(.|\n)*';
 
 		CakeLog::emergency($throwable);
 		$contents = file_get_contents(LOGS . 'error.log');
