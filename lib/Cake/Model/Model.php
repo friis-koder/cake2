@@ -1462,7 +1462,7 @@ class Model extends CakeObject implements CakeEventListener
      * Returns an array of table metadata (column names and types) from the database.
      * $field => keys(type, null, default, key, length, extra)
      *
-     * @param bool|string $field Set to true to reload schema, or a string to return a specific field
+     * @param string|bool $field Set to true to reload schema, or a string to return a specific field
      *
      * @return array|null Array of table metadata
      */
