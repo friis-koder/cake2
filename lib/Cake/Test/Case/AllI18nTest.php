@@ -16,6 +16,8 @@
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
+use PHPUnit\Framework\TestSuite;
+
 /**
  * AllLocalizationTest class
  *
@@ -23,17 +25,19 @@
  *
  * @package       Cake.Test.Case
  */
-class AllLocalizationTest extends PHPUnit_Framework_TestSuite {
+class AllLocalizationTest extends TestSuite
+{
+    /**
+     * suite method, defines tests for this suite.
+     *
+     * @return CakeTestSuite
+     */
+    public static function suite(): CakeTestSuite
+    {
+        $suite = new CakeTestSuite('All localization class tests');
 
-/**
- * suite method, defines tests for this suite.
- *
- * @return void
- */
-	public static function suite() {
-		$suite = new CakeTestSuite('All localization class tests');
+        $suite->addTestDirectory(CORE_TEST_CASES . DS . 'I18n');
 
-		$suite->addTestDirectory(CORE_TEST_CASES . DS . 'I18n');
-		return $suite;
-	}
+        return $suite;
+    }
 }

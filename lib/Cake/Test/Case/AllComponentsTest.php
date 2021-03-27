@@ -16,6 +16,8 @@
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
+use PHPUnit\Framework\TestSuite;
+
 /**
  * AllComponentsTest class
  *
@@ -23,19 +25,21 @@
  *
  * @package       Cake.Test.Case
  */
-class AllComponentsTest extends PHPUnit_Framework_TestSuite {
+class AllComponentsTest extends TestSuite
+{
+    /**
+     * suite method, defines tests for this suite.
+     *
+     * @return CakeTestSuite
+     */
+    public static function suite(): CakeTestSuite
+    {
+        $suite = new CakeTestSuite('All component class tests');
 
-/**
- * suite method, defines tests for this suite.
- *
- * @return void
- */
-	public static function suite() {
-		$suite = new CakeTestSuite('All component class tests');
+        $suite->addTestFile(CORE_TEST_CASES . DS . 'Controller' . DS . 'ComponentTest.php');
+        $suite->addTestFile(CORE_TEST_CASES . DS . 'Controller' . DS . 'ComponentCollectionTest.php');
+        $suite->addTestDirectoryRecursive(CORE_TEST_CASES . DS . 'Controller' . DS . 'Component');
 
-		$suite->addTestFile(CORE_TEST_CASES . DS . 'Controller' . DS . 'ComponentTest.php');
-		$suite->addTestFile(CORE_TEST_CASES . DS . 'Controller' . DS . 'ComponentCollectionTest.php');
-		$suite->addTestDirectoryRecursive(CORE_TEST_CASES . DS . 'Controller' . DS . 'Component');
-		return $suite;
-	}
+        return $suite;
+    }
 }

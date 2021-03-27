@@ -16,6 +16,8 @@
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
+use PHPUnit\Framework\TestSuite;
+
 /**
  * AllCoreTest class
  *
@@ -23,17 +25,19 @@
  *
  * @package       Cake.Test.Case
  */
-class AllCoreTest extends PHPUnit_Framework_TestSuite {
+class AllCoreTest extends TestSuite
+{
+    /**
+     * suite method, defines tests for this suite.
+     *
+     * @return CakeTestSuite
+     */
+    public static function suite(): CakeTestSuite
+    {
+        $suite = new CakeTestSuite('All Core class tests');
 
-/**
- * suite method, defines tests for this suite.
- *
- * @return void
- */
-	public static function suite() {
-		$suite = new CakeTestSuite('All Core class tests');
+        $suite->addTestDirectory(CORE_TEST_CASES . DS . 'Core');
 
-		$suite->addTestDirectory(CORE_TEST_CASES . DS . 'Core');
-		return $suite;
-	}
+        return $suite;
+    }
 }

@@ -16,6 +16,8 @@
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
+use PHPUnit\Framework\TestSuite;
+
 /**
  * AllBehaviorsTest class
  *
@@ -23,20 +25,22 @@
  *
  * @package       Cake.Test.Case
  */
-class AllBehaviorsTest extends PHPUnit_Framework_TestSuite {
+class AllBehaviorsTest extends TestSuite
+{
+    /**
+     * Suite define the tests for this suite
+     *
+     * @return CakeTestSuite
+     */
+    public static function suite(): CakeTestSuite
+    {
+        $suite = new CakeTestSuite('Model Behavior and all behaviors');
 
-/**
- * Suite define the tests for this suite
- *
- * @return void
- */
-	public static function suite() {
-		$suite = new CakeTestSuite('Model Behavior and all behaviors');
+        $path = CORE_TEST_CASES . DS . 'Model' . DS . 'Behavior' . DS;
+        $suite->addTestFile(CORE_TEST_CASES . DS . 'Model' . DS . 'BehaviorCollectionTest.php');
 
-		$path = CORE_TEST_CASES . DS . 'Model' . DS . 'Behavior' . DS;
-		$suite->addTestFile(CORE_TEST_CASES . DS . 'Model' . DS . 'BehaviorCollectionTest.php');
+        $suite->addTestDirectory($path);
 
-		$suite->addTestDirectory($path);
-		return $suite;
-	}
+        return $suite;
+    }
 }

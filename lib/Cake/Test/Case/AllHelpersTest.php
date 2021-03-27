@@ -16,6 +16,8 @@
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
+use PHPUnit\Framework\TestSuite;
+
 /**
  * HelpersGroupTest class
  *
@@ -23,19 +25,21 @@
  *
  * @package       Cake.Test.Case
  */
-class AllHelpersTest extends PHPUnit_Framework_TestSuite {
+class AllHelpersTest extends TestSuite
+{
+    /**
+     * suite declares tests to run
+     *
+     * @return CakeTestSuite
+     */
+    public static function suite(): CakeTestSuite
+    {
+        $suite = new CakeTestSuite('All Helper tests');
 
-/**
- * suite declares tests to run
- *
- * @return void
- */
-	public static function suite() {
-		$suite = new CakeTestSuite('All Helper tests');
+        $suite->addTestFile(CORE_TEST_CASES . DS . 'View' . DS . 'HelperTest.php');
+        $suite->addTestFile(CORE_TEST_CASES . DS . 'View' . DS . 'HelperCollectionTest.php');
+        $suite->addTestDirectory(CORE_TEST_CASES . DS . 'View' . DS . 'Helper' . DS);
 
-		$suite->addTestFile(CORE_TEST_CASES . DS . 'View' . DS . 'HelperTest.php');
-		$suite->addTestFile(CORE_TEST_CASES . DS . 'View' . DS . 'HelperCollectionTest.php');
-		$suite->addTestDirectory(CORE_TEST_CASES . DS . 'View' . DS . 'Helper' . DS);
-		return $suite;
-	}
+        return $suite;
+    }
 }
