@@ -67,7 +67,7 @@ class CakeTestSuiteCommand extends Command
      *
      * @return mixed
      */
-    public function handleReporter($reporter)
+    public function handleReporter(string $reporter)
     {
         $object = null;
 
