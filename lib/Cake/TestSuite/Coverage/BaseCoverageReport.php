@@ -19,6 +19,8 @@
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
+use SebastianBergmann\CodeCoverage\ProcessedCodeCoverageData;
+
 App::uses('Inflector', 'Utility');
 App::uses('CakePlugin', 'Core');
 
@@ -33,7 +35,7 @@ abstract class BaseCoverageReport
     /**
      * coverage data
      *
-     * @var string
+     * @var ProcessedCodeCoverageData
      */
     protected $_rawCoverage;
 
@@ -62,10 +64,10 @@ abstract class BaseCoverageReport
     /**
      * Constructor
      *
-     * @param array $coverage Array of coverage data from PHPUnit_Test_Result
+     * @param ProcessedCodeCoverageData $coverage Array of coverage data from PHPUnit_Test_Result
      * @param CakeBaseReporter $reporter A reporter to use for the coverage report.
      */
-    public function __construct(array $coverage, CakeBaseReporter $reporter)
+    public function __construct(ProcessedCodeCoverageData $coverage, CakeBaseReporter $reporter)
     {
         $this->_rawCoverage = $coverage;
         $this->_setParams($reporter);
