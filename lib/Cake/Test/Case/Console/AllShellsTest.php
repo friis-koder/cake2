@@ -16,6 +16,8 @@
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
+use PHPUnit\Framework\TestSuite;
+
 /**
  * AllShellsTest class
  *
@@ -23,19 +25,21 @@
  *
  * @package       Cake.Test.Case.Console
  */
-class AllShellsTest extends PHPUnit_Framework_TestSuite {
+class AllShellsTest extends TestSuite
+{
+    /**
+     * suite method, defines tests for this suite.
+     *
+     * @return CakeTestSuite
+     */
+    public static function suite(): CakeTestSuite
+    {
+        $suite = new CakeTestSuite('All shell classes');
 
-/**
- * suite method, defines tests for this suite.
- *
- * @return void
- */
-	public static function suite() {
-		$suite = new CakeTestSuite('All shell classes');
+        $path = CORE_TEST_CASES . DS . 'Console' . DS . 'Command' . DS;
 
-		$path = CORE_TEST_CASES . DS . 'Console' . DS . 'Command' . DS;
+        $suite->addTestDirectory($path);
 
-		$suite->addTestDirectory($path);
-		return $suite;
-	}
+        return $suite;
+    }
 }

@@ -45,12 +45,6 @@ App::uses('CakeTestSuiteCommand', 'TestSuite');
 class CakeTestSuiteDispatcher
 {
     /**
-     * reporter instance used for the request
-     *
-     * @var CakeBaseReporter
-     */
-    protected static $_Reporter = null;
-    /**
      * 'Request' parameters
      *
      * @var array
@@ -79,6 +73,7 @@ class CakeTestSuiteDispatcher
      * @var string
      */
     protected $_baseDir;
+
     /**
      * boolean to set auto parsing of params.
      *
@@ -100,10 +95,8 @@ class CakeTestSuiteDispatcher
      * Static method to initialize the test runner, keeps global space clean
      *
      * @throws \PHPUnit\TextUI\Exception
-     *
-     * @return void
      */
-    public static function run()
+    public static function run(): void
     {
         $dispatcher = new CakeTestSuiteDispatcher();
         $dispatcher->dispatch();
@@ -113,33 +106,30 @@ class CakeTestSuiteDispatcher
      * Runs the actions required by the URL parameters.
      *
      * @throws \PHPUnit\TextUI\Exception
-     *
-     * @return void
      */
-    public function dispatch()
+    public function dispatch(): void
     {
         $this->_checkPHPUnit();
         $this->_parseParams();
 
         if ($this->params['case']) {
-            $value = $this->_runTestCase();
+            $this->_runTestCase();
         } else {
-            $value = $this->_testCaseList();
+            $this->_testCaseList();
         }
 
         $output = ob_get_clean();
+
         echo $output;
-        return $value;
     }
 
     /**
      * Checks that PHPUnit is installed. Will exit if it doesn't
-     *
-     * @return void
      */
-    protected function _checkPHPUnit()
+    protected function _checkPHPUnit(): void
     {
         $found = $this->loadTestFramework();
+
         if (!$found) {
             include CAKE . 'TestSuite' . DS . 'templates' . DS . 'phpunit.php';
             exit();
@@ -164,10 +154,8 @@ class CakeTestSuiteDispatcher
 
     /**
      * Parse URL params into a 'request'
-     *
-     * @return void
      */
-    protected function _parseParams()
+    protected function _parseParams(): void
     {
         if (!$this->_paramsParsed) {
             if (!isset($_SERVER['SERVER_NAME'])) {
@@ -197,10 +185,8 @@ class CakeTestSuiteDispatcher
     /**
      * Checks for the xdebug extension required to do code coverage. Displays an error
      * if xdebug isn't installed.
-     *
-     * @return void
      */
-    protected function _checkXdebug()
+    protected function _checkXdebug(): void
     {
         if (!extension_loaded('xdebug')) {
             include CAKE . 'TestSuite' . DS . 'templates' . DS . 'xdebug.php';
@@ -270,10 +256,8 @@ class CakeTestSuiteDispatcher
 
     /**
      * Generates a page containing the a list of test cases that could be run.
-     *
-     * @return void
      */
-    protected function _testCaseList()
+    protected function _testCaseList(): void
     {
         $command = new CakeTestSuiteCommand('', $this->params);
         $Reporter = $command->handleReporter($this->params['output']);
@@ -300,10 +284,8 @@ class CakeTestSuiteDispatcher
      * Sets the params, calling this will bypass the auto parameter parsing.
      *
      * @param array $params Array of parameters for the dispatcher
-     *
-     * @return void
      */
-    public function setParams($params)
+    public function setParams(array $params): void
     {
         $this->params = $params;
         $this->_paramsParsed = true;

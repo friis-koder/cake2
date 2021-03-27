@@ -61,7 +61,7 @@ class CakeTestLoader
      *
      * @return array
      */
-    protected static function _getRecursiveFileList($directory = '.')
+    protected static function _getRecursiveFileList($directory = '.'): array
     {
         $fileList = array();
 
@@ -85,11 +85,11 @@ class CakeTestLoader
      * Load a file and find the first test case / suite in that file.
      *
      * @param string $filePath The file path to load
-     * @param string $params Additional parameters
+     * @param array|null $params Additional parameters
      *
      * @return ReflectionClass
      */
-    public function load(string $filePath, string $params = ''): ReflectionClass
+    public function load(string $filePath, ?array $params): ReflectionClass
     {
         $file = $this->_resolveTestFile($filePath, $params);
 
@@ -102,11 +102,11 @@ class CakeTestLoader
      * Convert path fragments used by CakePHP's test runner to absolute paths that can be fed to PHPUnit.
      *
      * @param string $filePath The file path to load.
-     * @param string $params Additional parameters.
+     * @param array $params Additional parameters.
      *
      * @return string Converted path fragments.
      */
-    protected function _resolveTestFile($filePath, $params): string
+    protected function _resolveTestFile(string $filePath, array $params): string
     {
         $basePath = $this->_basePath($params) . DS . $filePath;
         $ending = 'Test.php';
