@@ -399,7 +399,7 @@ class CakeLog {
  * @param int|string $type Type of message being written. When value is an integer
  *    or a string matching the recognized levels, then it will
  *    be treated as a log level. Otherwise it's treated as a scope.
- * @param string $message Message content to log
+ * @param string|throwable $message Message content to log, or throwable to log
  * @param string|array $scope The scope(s) a log message is being created in.
  *    See CakeLog::config() for more information on logging scopes.
  * @return bool Success
@@ -442,6 +442,11 @@ class CakeLog {
 				// exact scope + level
 				($correctLevel && $inScope)
 			) {
+				// If we are logging a throwable, convert it into a representable string.
+				if ($message instanceof throwable) {
+					$message = static::convertThrowableToLogMessage($message);
+				}
+
 				$logger->write($type, $message);
 				$logged = true;
 			}
@@ -449,10 +454,22 @@ class CakeLog {
 		return $logged;
 	}
 
+	/**
+	 * Converts a throwable to a loggable message
+	 *
+	 * @param throwable $throwable
+	 *
+	 * @return string
+	 */
+	protected static function convertThrowableToLogMessage(throwable $throwable): string
+	{
+		return sprintf("%s: %s (%s:%s)\n%s", get_class($throwable), $throwable->getMessage(), $throwable->getFile(), $throwable->getLine(), $throwable->getTraceAsString());
+	}
+
 /**
  * Convenience method to log emergency messages
  *
- * @param string $message log message
+ * @param string|throwable $message log message, or throwable to log
  * @param string|array $scope The scope(s) a log message is being created in.
  *    See CakeLog::config() for more information on logging scopes.
  * @return bool Success
@@ -464,7 +481,7 @@ class CakeLog {
 /**
  * Convenience method to log alert messages
  *
- * @param string $message log message
+ * @param string|throwable $message log message, or throwable to log
  * @param string|array $scope The scope(s) a log message is being created in.
  *    See CakeLog::config() for more information on logging scopes.
  * @return bool Success
@@ -476,7 +493,7 @@ class CakeLog {
 /**
  * Convenience method to log critical messages
  *
- * @param string $message log message
+ * @param string|throwable $message log message, or throwable to log
  * @param string|array $scope The scope(s) a log message is being created in.
  *    See CakeLog::config() for more information on logging scopes.
  * @return bool Success
@@ -488,7 +505,7 @@ class CakeLog {
 /**
  * Convenience method to log error messages
  *
- * @param string $message log message
+ * @param string|throwable $message log message, or throwable to log
  * @param string|array $scope The scope(s) a log message is being created in.
  *    See CakeLog::config() for more information on logging scopes.
  * @return bool Success
@@ -500,7 +517,7 @@ class CakeLog {
 /**
  * Convenience method to log warning messages
  *
- * @param string $message log message
+ * @param string|throwable $message log message, or throwable to log
  * @param string|array $scope The scope(s) a log message is being created in.
  *    See CakeLog::config() for more information on logging scopes.
  * @return bool Success
@@ -512,7 +529,7 @@ class CakeLog {
 /**
  * Convenience method to log notice messages
  *
- * @param string $message log message
+ * @param string|throwable $message log message, or throwable to log
  * @param string|array $scope The scope(s) a log message is being created in.
  *    See CakeLog::config() for more information on logging scopes.
  * @return bool Success
@@ -524,7 +541,7 @@ class CakeLog {
 /**
  * Convenience method to log debug messages
  *
- * @param string $message log message
+ * @param string|throwable $message log message, or throwable to log
  * @param string|array $scope The scope(s) a log message is being created in.
  *    See CakeLog::config() for more information on logging scopes.
  * @return bool Success
@@ -536,7 +553,7 @@ class CakeLog {
 /**
  * Convenience method to log info messages
  *
- * @param string $message log message
+ * @param string|throwable $message log message, or throwable to log
  * @param string|array $scope The scope(s) a log message is being created in.
  *    See CakeLog::config() for more information on logging scopes.
  * @return bool Success

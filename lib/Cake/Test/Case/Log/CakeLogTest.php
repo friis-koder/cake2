@@ -661,6 +661,77 @@ class CakeLogTest extends CakeTestCase {
 		$this->_deleteLogs();
 	}
 
+	/**
+	 * test convenience methods
+	 *
+	 * @return void
+	 */
+	public function testConvenienceMethodsForThrowables() {
+		$this->_deleteLogs();
+
+		CakeLog::config('debug', array(
+			'engine' => 'File',
+			'types' => array('notice', 'info', 'debug'),
+			'file' => 'debug',
+		));
+		CakeLog::config('error', array(
+			'engine' => 'File',
+			'types' => array('emergency', 'alert', 'critical', 'error', 'warning'),
+			'file' => 'error',
+		));
+
+		$throwable = new InvalidArgumentException('Throwable Message!');
+		$throwableMessage = 'InvalidArgumentException: Throwable Message! (CakeLogTest.php:\d+)';
+
+		CakeLog::emergency($throwable);
+		$contents = file_get_contents(LOGS . 'error.log');
+		$this->assertRegExp('/(Emergency|Critical): ' . $throwableMessage . '/', $contents);
+		$this->assertFalse(file_exists(LOGS . 'debug.log'));
+		$this->_deleteLogs();
+
+		CakeLog::alert($throwable);
+		$contents = file_get_contents(LOGS . 'error.log');
+		$this->assertRegExp('/(Alert|Critical): ' . $throwableMessage . '/', $contents);
+		$this->assertFalse(file_exists(LOGS . 'debug.log'));
+		$this->_deleteLogs();
+
+		CakeLog::critical($throwable);
+		$contents = file_get_contents(LOGS . 'error.log');
+		$this->assertContains('Critical: ' . $throwableMessage, $contents);
+		$this->assertFalse(file_exists(LOGS . 'debug.log'));
+		$this->_deleteLogs();
+
+		CakeLog::error($throwable);
+		$contents = file_get_contents(LOGS . 'error.log');
+		$this->assertContains('Error: ' . $throwableMessage, $contents);
+		$this->assertFalse(file_exists(LOGS . 'debug.log'));
+		$this->_deleteLogs();
+
+		CakeLog::warning($throwable);
+		$contents = file_get_contents(LOGS . 'error.log');
+		$this->assertContains('Warning: ' . $throwableMessage, $contents);
+		$this->assertFalse(file_exists(LOGS . 'debug.log'));
+		$this->_deleteLogs();
+
+		CakeLog::notice($throwable);
+		$contents = file_get_contents(LOGS . 'debug.log');
+		$this->assertRegExp('/(Notice|Debug): ' . $throwableMessage . '/', $contents);
+		$this->assertFalse(file_exists(LOGS . 'error.log'));
+		$this->_deleteLogs();
+
+		CakeLog::info($throwable);
+		$contents = file_get_contents(LOGS . 'debug.log');
+		$this->assertRegExp('/(Info|Debug): ' . $throwableMessage . '/', $contents);
+		$this->assertFalse(file_exists(LOGS . 'error.log'));
+		$this->_deleteLogs();
+
+		CakeLog::debug($throwable);
+		$contents = file_get_contents(LOGS . 'debug.log');
+		$this->assertContains('Debug: ' . $throwableMessage, $contents);
+		$this->assertFalse(file_exists(LOGS . 'error.log'));
+		$this->_deleteLogs();
+	}
+
 /**
  * test levels customization
  *
