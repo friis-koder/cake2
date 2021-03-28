@@ -1083,3 +1083,12 @@ if (!function_exists('json_last_error_msg')) {
 	}
 
 }
+
+if (!function_exists('each')) {
+    function each(&$arr) {
+        $key = key($arr);
+        $result = ($key === null) ? false : array($key, current($arr), 'key' => $key, 'value' => current($arr));
+        next($arr);
+        return $result;
+    }
+}
