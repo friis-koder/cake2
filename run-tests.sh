@@ -14,8 +14,10 @@ function ensure_test_db() {
     echo '---------------------------------------------------------------'
 }
 
-ensure_test_db
+cd "${BASH_SOURCE%/*}"
 
 export DB='sqlite'
+
+ensure_test_db
 
 lib/Cake/Console/cake test core AllTests --stderr --verbose
