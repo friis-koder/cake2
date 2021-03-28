@@ -16,10 +16,6 @@
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
-if (!class_exists('PHPUnit_TextUI_Command')) {
-	require_once 'PHPUnit/TextUI/Command.php';
-}
-
 App::uses('CakeTestRunner', 'TestSuite');
 App::uses('CakeTestLoader', 'TestSuite');
 App::uses('CakeTestSuite', 'TestSuite');
