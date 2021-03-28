@@ -226,11 +226,11 @@ class Folder {
 		}
 
 		if ($dirs) {
-			$dirs = call_user_func_array('array_merge', array($dirs));
+			$dirs = call_user_func_array('array_merge', array_values($dirs));
 		}
 
 		if ($files) {
-			$files = call_user_func_array('array_merge', array($files));
+			$files = call_user_func_array('array_merge', array_values($files));
 		}
 		return array($dirs, $files);
 	}
