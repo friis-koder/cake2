@@ -363,7 +363,7 @@ class Shell extends CakeObject {
 				return false;
 			}
 			return true;
-		} catch (ReflectionException $e) {
+		} catch (ReflectionException|ValueError $e) {
 			return false;
 		}
 	}
@@ -983,7 +983,7 @@ class Shell extends CakeObject {
 
 /**
  * Configure the stdout logger
- * 
+ *
  * @return void
  */
 	protected function _configureStdOutLogger() {
@@ -996,7 +996,7 @@ class Shell extends CakeObject {
 
 /**
  * Configure the stderr logger
- * 
+ *
  * @return void
  */
 	protected function _configureStdErrLogger() {
@@ -1009,8 +1009,8 @@ class Shell extends CakeObject {
 
 /**
  * Checks if the given logger is configured
- * 
- * @param string $logger The name of the logger to check 
+ *
+ * @param string $logger The name of the logger to check
  * @return bool
  */
 	protected function _loggerIsConfigured($logger) {
