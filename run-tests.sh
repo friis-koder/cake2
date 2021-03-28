@@ -20,4 +20,11 @@ export DB='sqlite'
 
 ensure_test_db
 
-lib/Cake/Console/cake test core AllTests --stderr --verbose
+if [ $# -eq 0 ]; then
+    echo "Running: AllTests"
+    lib/Cake/Console/cake test core AllTests --stderr --verbose --stop-on-error --stop-on-failure
+	else
+		echo "Running: $1"
+    lib/Cake/Console/cake test core $1 --stderr --verbose --stop-on-error --stop-on-failure
+fi
+

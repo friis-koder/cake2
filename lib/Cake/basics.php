@@ -465,10 +465,19 @@ if (!function_exists('cache')) {
 					//@codingStandardsIgnoreEnd
 				}
 			}
-		} elseif (is_writable(dirname($filename))) {
-			//@codingStandardsIgnoreStart
-			@file_put_contents($filename, $data, LOCK_EX);
-			//@codingStandardsIgnoreEnd
+		} else {
+			$cacheDir = dirname($filename);
+
+			if ( ! is_dir($cacheDir)) {
+				/** @noinspection MkdirRaceConditionInspection */
+				@mkdir($cacheDir, 0777, true);
+			}
+
+			if (is_writable($cacheDir)) {
+				//@codingStandardsIgnoreStart
+				@file_put_contents($filename, $data, LOCK_EX);
+				//@codingStandardsIgnoreEnd
+			}
 		}
 		return $data;
 	}
