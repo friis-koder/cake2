@@ -685,49 +685,49 @@ class CakeLogTest extends CakeTestCase {
 
 		CakeLog::emergency($throwable);
 		$contents = file_get_contents(LOGS . 'error.log');
-		$this->assertRegExp('/(Emergency|Critical): ' . $throwableMessage . '/', $contents);
+		$this->assertRegExp(sprintf('/Emergency: %s/', $throwableMessage), $contents);
 		$this->assertFalse(file_exists(LOGS . 'debug.log'));
 		$this->_deleteLogs();
 
 		CakeLog::alert($throwable);
 		$contents = file_get_contents(LOGS . 'error.log');
-		$this->assertRegExp('/(Alert|Critical): ' . $throwableMessage . '/', $contents);
+        $this->assertRegExp(sprintf('/Alert: %s/', $throwableMessage), $contents);
 		$this->assertFalse(file_exists(LOGS . 'debug.log'));
 		$this->_deleteLogs();
 
 		CakeLog::critical($throwable);
 		$contents = file_get_contents(LOGS . 'error.log');
-		$this->assertContains('Critical: ' . $throwableMessage, $contents);
+        $this->assertRegExp(sprintf('/Critical: %s/', $throwableMessage), $contents);
 		$this->assertFalse(file_exists(LOGS . 'debug.log'));
 		$this->_deleteLogs();
 
 		CakeLog::error($throwable);
 		$contents = file_get_contents(LOGS . 'error.log');
-		$this->assertContains('Error: ' . $throwableMessage, $contents);
+        $this->assertRegExp(sprintf('/Error: %s/', $throwableMessage), $contents);
 		$this->assertFalse(file_exists(LOGS . 'debug.log'));
 		$this->_deleteLogs();
 
 		CakeLog::warning($throwable);
 		$contents = file_get_contents(LOGS . 'error.log');
-		$this->assertContains('Warning: ' . $throwableMessage, $contents);
+        $this->assertRegExp(sprintf('/Warning: %s/', $throwableMessage), $contents);
 		$this->assertFalse(file_exists(LOGS . 'debug.log'));
 		$this->_deleteLogs();
 
 		CakeLog::notice($throwable);
 		$contents = file_get_contents(LOGS . 'debug.log');
-		$this->assertRegExp('/(Notice|Debug): ' . $throwableMessage . '/', $contents);
+        $this->assertRegExp(sprintf('/Notice: %s/', $throwableMessage), $contents);
 		$this->assertFalse(file_exists(LOGS . 'error.log'));
 		$this->_deleteLogs();
 
 		CakeLog::info($throwable);
 		$contents = file_get_contents(LOGS . 'debug.log');
-		$this->assertRegExp('/(Info|Debug): ' . $throwableMessage . '/', $contents);
+        $this->assertRegExp(sprintf('/Info: %s/', $throwableMessage), $contents);
 		$this->assertFalse(file_exists(LOGS . 'error.log'));
 		$this->_deleteLogs();
 
 		CakeLog::debug($throwable);
 		$contents = file_get_contents(LOGS . 'debug.log');
-		$this->assertContains('Debug: ' . $throwableMessage, $contents);
+        $this->assertRegExp(sprintf('/Debug: %s/', $throwableMessage), $contents);
 		$this->assertFalse(file_exists(LOGS . 'error.log'));
 		$this->_deleteLogs();
 	}
