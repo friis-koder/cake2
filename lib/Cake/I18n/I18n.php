@@ -685,8 +685,10 @@ class I18n {
  */
 	public static function insertArgs($translated, array $args) {
 		$len = count($args);
+
+		// If there are no args to insert, bail out and returned the translated string.
 		if ($len === 0 || ($len === 1 && $args[0] === null)) {
-			$args = [];
+			return $translated;
 		}
 
 		if (isset($args[0]) && is_array($args[0])) {
