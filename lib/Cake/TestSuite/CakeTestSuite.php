@@ -36,8 +36,8 @@ class CakeTestSuite extends PHPUnit_Framework_TestSuite {
 		list(, $files) = $Folder->read(true, true, true);
 
 		foreach ($files as $file) {
-			if (substr($file, -4) === '.php') {
-				$this->addTestFile($file);
+			if (substr($file[0], -4) === '.php') {
+				$this->addTestFile($file[0]);
 			}
 		}
 	}
