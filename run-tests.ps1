@@ -15,8 +15,15 @@ function WRITE-DatabaseConfig() {
 
 function INVOKE-Tests() {
     $env:DB='sqlite'
-    lib/Cake/Console/cake test core AllTests --stderr --verbose
+
+    if ($args[0]) {
+        "Running: {0}" -f $args[0]
+        lib/Cake/Console/cake test core $args[0] --stderr --verbose --stop-on-error --stop-on-failure
+    } else {
+        Write-Host "Running: AllTests"
+        lib/Cake/Console/cake test core AllTests --stderr --verbose --stop-on-error --stop-on-failure
+    }
 }
 
 WRITE-DatabaseConfig;
-INVOKE-Tests;
+INVOKE-Tests $args[0];
