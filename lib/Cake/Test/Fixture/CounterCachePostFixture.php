@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Fixture
+ *
  * @since         CakePHP(tm) v 1.2.0.4667
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -21,18 +25,18 @@
  *
  * @package       Cake.Test.Fixture
  */
-class CounterCachePostFixture extends CakeTestFixture {
+class CounterCachePostFixture extends CakeTestFixture
+{
+    public $fields = [
+        'id'        => ['type' => 'integer', 'key' => 'primary'],
+        'title'     => ['type' => 'string', 'length' => 255],
+        'user_id'   => ['type' => 'integer', 'null' => true],
+        'published' => ['type' => 'boolean', 'null' => false, 'default' => 0]
+    ];
 
-	public $fields = array(
-		'id' => array('type' => 'integer', 'key' => 'primary'),
-		'title' => array('type' => 'string', 'length' => 255),
-		'user_id' => array('type' => 'integer', 'null' => true),
-		'published' => array('type' => 'boolean', 'null' => false, 'default' => 0)
-	);
-
-	public $records = array(
-		array('id' => 1, 'title' => 'Rock and Roll', 'user_id' => 66, 'published' => false),
-		array('id' => 2, 'title' => 'Music', 'user_id' => 66, 'published' => true),
-		array('id' => 3, 'title' => 'Food', 'user_id' => 301, 'published' => true),
-	);
+    public $records = [
+        ['id' => 1, 'title' => 'Rock and Roll', 'user_id' => 66, 'published' => false],
+        ['id' => 2, 'title' => 'Music', 'user_id' => 66, 'published' => true],
+        ['id' => 3, 'title' => 'Food', 'user_id' => 301, 'published' => true],
+    ];
 }

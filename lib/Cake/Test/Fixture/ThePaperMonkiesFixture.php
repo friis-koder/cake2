@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Fixture
+ *
  * @since         CakePHP(tm) v 1.2.0.4667
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -21,22 +25,22 @@
  *
  * @package       Cake.Test.Fixture
  */
-class ThePaperMonkiesFixture extends CakeTestFixture {
+class ThePaperMonkiesFixture extends CakeTestFixture
+{
+    /**
+     * fields property
+     *
+     * @var array
+     */
+    public $fields = [
+        'apple_id'  => ['type' => 'integer', 'length' => 10, 'null' => true],
+        'device_id' => ['type' => 'integer', 'length' => 10, 'null' => true]
+    ];
 
-/**
- * fields property
- *
- * @var array
- */
-	public $fields = array(
-		'apple_id' => array('type' => 'integer', 'length' => 10, 'null' => true),
-		'device_id' => array('type' => 'integer', 'length' => 10, 'null' => true)
-	);
-
-/**
- * records property
- *
- * @var array
- */
-	public $records = array();
+    /**
+     * records property
+     *
+     * @var array
+     */
+    public $records = [];
 }

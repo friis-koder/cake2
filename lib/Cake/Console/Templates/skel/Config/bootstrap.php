@@ -9,12 +9,14 @@
  * that your application uses.
  *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       app.Config
+ *
  * @since         CakePHP(tm) v 0.10.8.2117
  */
 
 // Setup a 'default' cache configuration for use in the application.
-Cache::config('default', array('engine' => 'File'));
+Cache::config('default', ['engine' => 'File']);
 
 /**
  * The settings below can be used to set additional paths to models, views and controllers.
@@ -74,22 +76,22 @@ Cache::config('default', array('engine' => 'File'));
  *
  * ));
  */
-Configure::write('Dispatcher.filters', array(
-	'AssetDispatcher',
-	'CacheDispatcher'
-));
+Configure::write('Dispatcher.filters', [
+    'AssetDispatcher',
+    'CacheDispatcher'
+]);
 
 /**
  * Configures default file logging options
  */
 App::uses('CakeLog', 'Log');
-CakeLog::config('debug', array(
-	'engine' => 'File',
-	'types' => array('notice', 'info', 'debug'),
-	'file' => 'debug',
-));
-CakeLog::config('error', array(
-	'engine' => 'File',
-	'types' => array('warning', 'error', 'critical', 'alert', 'emergency'),
-	'file' => 'error',
-));
+CakeLog::config('debug', [
+    'engine' => 'File',
+    'types'  => ['notice', 'info', 'debug'],
+    'file'   => 'debug',
+]);
+CakeLog::config('error', [
+    'engine' => 'File',
+    'types'  => ['warning', 'error', 'critical', 'alert', 'emergency'],
+    'file'   => 'error',
+]);

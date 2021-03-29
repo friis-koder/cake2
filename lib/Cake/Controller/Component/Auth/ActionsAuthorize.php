@@ -8,10 +8,11 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('BaseAuthorize', 'Controller/Component/Auth');
 
 /**
@@ -19,23 +20,26 @@ App::uses('BaseAuthorize', 'Controller/Component/Auth');
  * If AclComponent is not already loaded it will be loaded using the Controller's ComponentCollection.
  *
  * @package       Cake.Controller.Component.Auth
+ *
  * @since 2.0
  * @see AuthComponent::$authenticate
  * @see AclComponent::check()
  */
-class ActionsAuthorize extends BaseAuthorize {
+class ActionsAuthorize extends BaseAuthorize
+{
+    /**
+     * Authorize a user using the AclComponent.
+     *
+     * @param array $user The user to authorize
+     * @param CakeRequest $request The request needing authorization.
+     *
+     * @return bool
+     */
+    public function authorize($user, CakeRequest $request)
+    {
+        $Acl = $this->_Collection->load('Acl');
+        $user = [$this->settings['userModel'] => $user];
 
-/**
- * Authorize a user using the AclComponent.
- *
- * @param array $user The user to authorize
- * @param CakeRequest $request The request needing authorization.
- * @return bool
- */
-	public function authorize($user, CakeRequest $request) {
-		$Acl = $this->_Collection->load('Acl');
-		$user = array($this->settings['userModel'] => $user);
-		return $Acl->check($user, $this->action($request));
-	}
-
+        return $Acl->check($user, $this->action($request));
+    }
 }

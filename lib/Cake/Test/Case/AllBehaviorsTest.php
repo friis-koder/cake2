@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Test.Case
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -23,20 +27,20 @@
  *
  * @package       Cake.Test.Case
  */
-class AllBehaviorsTest extends PHPUnit_Framework_TestSuite {
+class AllBehaviorsTest extends PHPUnit_Framework_TestSuite
+{
+    /**
+     * Suite define the tests for this suite
+     */
+    public static function suite()
+    {
+        $suite = new CakeTestSuite('Model Behavior and all behaviors');
 
-/**
- * Suite define the tests for this suite
- *
- * @return void
- */
-	public static function suite() {
-		$suite = new CakeTestSuite('Model Behavior and all behaviors');
+        $path = CORE_TEST_CASES . DS . 'Model' . DS . 'Behavior' . DS;
+        $suite->addTestFile(CORE_TEST_CASES . DS . 'Model' . DS . 'BehaviorCollectionTest.php');
 
-		$path = CORE_TEST_CASES . DS . 'Model' . DS . 'Behavior' . DS;
-		$suite->addTestFile(CORE_TEST_CASES . DS . 'Model' . DS . 'BehaviorCollectionTest.php');
+        $suite->addTestDirectory($path);
 
-		$suite->addTestDirectory($path);
-		return $suite;
-	}
+        return $suite;
+    }
 }

@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Test.Case.Console
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -23,19 +27,19 @@
  *
  * @package       Cake.Test.Case.Console
  */
-class AllShellsTest extends PHPUnit_Framework_TestSuite {
+class AllShellsTest extends PHPUnit_Framework_TestSuite
+{
+    /**
+     * suite method, defines tests for this suite.
+     */
+    public static function suite()
+    {
+        $suite = new CakeTestSuite('All shell classes');
 
-/**
- * suite method, defines tests for this suite.
- *
- * @return void
- */
-	public static function suite() {
-		$suite = new CakeTestSuite('All shell classes');
+        $path = CORE_TEST_CASES . DS . 'Console' . DS . 'Command' . DS;
 
-		$path = CORE_TEST_CASES . DS . 'Console' . DS . 'Command' . DS;
+        $suite->addTestDirectory($path);
 
-		$suite->addTestDirectory($path);
-		return $suite;
-	}
+        return $suite;
+    }
 }

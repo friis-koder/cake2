@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Test.Case
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -23,17 +27,17 @@
  *
  * @package       Cake.Test.Case
  */
-class AllCacheTest extends PHPUnit_Framework_TestSuite {
+class AllCacheTest extends PHPUnit_Framework_TestSuite
+{
+    /**
+     * suite method, defines tests for this suite.
+     */
+    public static function suite()
+    {
+        $suite = new CakeTestSuite('All Cache related class tests');
+        $suite->addTestDirectory(CORE_TEST_CASES . DS . 'Cache');
+        $suite->addTestDirectory(CORE_TEST_CASES . DS . 'Cache' . DS . 'Engine');
 
-/**
- * suite method, defines tests for this suite.
- *
- * @return void
- */
-	public static function suite() {
-		$suite = new CakeTestSuite('All Cache related class tests');
-		$suite->addTestDirectory(CORE_TEST_CASES . DS . 'Cache');
-		$suite->addTestDirectory(CORE_TEST_CASES . DS . 'Cache' . DS . 'Engine');
-		return $suite;
-	}
+        return $suite;
+    }
 }

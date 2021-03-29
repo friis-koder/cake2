@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Fixture
+ *
  * @since         CakePHP(tm) v 1.2.0.4667
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -21,25 +25,25 @@
  *
  * @package       Cake.Test.Fixture
  */
-class FilmFileFixture extends CakeTestFixture {
+class FilmFileFixture extends CakeTestFixture
+{
+    /**
+     * fields property
+     *
+     * @var array
+     */
+    public $fields = [
+        'id'   => ['type' => 'integer', 'key' => 'primary'],
+        'name' => ['type' => 'string', 'length' => 255]
+    ];
 
-/**
- * fields property
- *
- * @var array
- */
-	public $fields = array(
-		'id' => array('type' => 'integer', 'key' => 'primary'),
-		'name' => array('type' => 'string', 'length' => 255)
-	);
-
-/**
- * records property
- *
- * @var array
- */
-	public $records = array(
-		array('id' => 1, 'name' => 'one'),
-		array('id' => 2, 'name' => 'two')
-	);
+    /**
+     * records property
+     *
+     * @var array
+     */
+    public $records = [
+        ['id' => 1, 'name' => 'one'],
+        ['id' => 2, 'name' => 'two']
+    ];
 }

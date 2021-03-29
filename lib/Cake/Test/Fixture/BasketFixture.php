@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Fixture
+ *
  * @since         CakePHP(tm) v 1.2.0.4667
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -21,28 +25,28 @@
  *
  * @package       Cake.Test.Fixture
  */
-class BasketFixture extends CakeTestFixture {
+class BasketFixture extends CakeTestFixture
+{
+    /**
+     * fields property
+     *
+     * @var array
+     */
+    public $fields = [
+        'id'        => ['type' => 'integer', 'key' => 'primary'],
+        'type'      => ['type' => 'string', 'length' => 255],
+        'name'      => ['type' => 'string', 'length' => 255],
+        'object_id' => ['type' => 'integer'],
+        'user_id'   => ['type' => 'integer'],
+    ];
 
-/**
- * fields property
- *
- * @var array
- */
-	public $fields = array(
-		'id' => array('type' => 'integer', 'key' => 'primary'),
-		'type' => array('type' => 'string', 'length' => 255),
-		'name' => array('type' => 'string', 'length' => 255),
-		'object_id' => array('type' => 'integer'),
-		'user_id' => array('type' => 'integer'),
-	);
-
-/**
- * records property
- *
- * @var array
- */
-	public $records = array(
-		array('id' => 1, 'type' => 'nonfile', 'name' => 'basket1', 'object_id' => 1, 'user_id' => 1),
-		array('id' => 2, 'type' => 'file', 'name' => 'basket2', 'object_id' => 2, 'user_id' => 1),
-	);
+    /**
+     * records property
+     *
+     * @var array
+     */
+    public $records = [
+        ['id' => 1, 'type' => 'nonfile', 'name' => 'basket1', 'object_id' => 1, 'user_id' => 1],
+        ['id' => 2, 'type' => 'file', 'name' => 'basket2', 'object_id' => 2, 'user_id' => 1],
+    ];
 }

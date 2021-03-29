@@ -16,9 +16,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Config.unicode.casefolding
+ *
  * @since         CakePHP(tm) v 1.2.0.5691
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -37,7 +41,7 @@
  *     Note that the Turkic mappings do not maintain canonical equivalence without additional processing.
  *     See the discussions of case mapping in the Unicode Standard for more information.
  */
-$config['2100_214f'][] = array('upper' => 8486, 'status' => 'C', 'lower' => array(969)); /* OHM SIGN */
-$config['2100_214f'][] = array('upper' => 8490, 'status' => 'C', 'lower' => array(107)); /* KELVIN SIGN */
-$config['2100_214f'][] = array('upper' => 8491, 'status' => 'C', 'lower' => array(229)); /* ANGSTROM SIGN */
-$config['2100_214f'][] = array('upper' => 8498, 'status' => 'C', 'lower' => array(8526)); /* TURNED CAPITAL F */
+$config['2100_214f'][] = ['upper' => 8486, 'status' => 'C', 'lower' => [969]]; /* OHM SIGN */
+$config['2100_214f'][] = ['upper' => 8490, 'status' => 'C', 'lower' => [107]]; /* KELVIN SIGN */
+$config['2100_214f'][] = ['upper' => 8491, 'status' => 'C', 'lower' => [229]]; /* ANGSTROM SIGN */
+$config['2100_214f'][] = ['upper' => 8498, 'status' => 'C', 'lower' => [8526]]; /* TURNED CAPITAL F */

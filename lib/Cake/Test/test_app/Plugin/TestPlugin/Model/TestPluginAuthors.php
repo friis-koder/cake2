@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakefoundation.org/projects/info/cakephp CakePHP Project
+ *
  * @package       Cake.Test.TestApp.Plugin.TestPlugin.Model
+ *
  * @since         CakePHP v 1.2.0.7726
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -21,19 +25,18 @@
  *
  * @package       Cake.Test.TestApp.Plugin.TestPlugin.Model
  */
-class TestPluginAuthors extends TestPluginAppModel {
+class TestPluginAuthors extends TestPluginAppModel
+{
+    public $useTable = 'authors';
 
-	public $useTable = 'authors';
+    public $name = 'TestPluginAuthors';
 
-	public $name = 'TestPluginAuthors';
-
-	public $validate = array(
-		'field' => array(
-			'notBlank' => array(
-				'rule' => 'notBlank',
-				'message' => 'I can haz plugin model validation message',
-			),
-		),
-	);
-
+    public $validate = [
+        'field' => [
+            'notBlank' => [
+                'rule'    => 'notBlank',
+                'message' => 'I can haz plugin model validation message',
+            ],
+        ],
+    ];
 }

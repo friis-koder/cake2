@@ -10,12 +10,15 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Configure
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('PhpReader', 'Configure');
 
 /**
@@ -23,126 +26,122 @@ App::uses('PhpReader', 'Configure');
  *
  * @package       Cake.Test.Case.Configure
  */
-class PhpReaderTest extends CakeTestCase {
+class PhpReaderTest extends CakeTestCase
+{
+    /**
+     * Test data to serialize and unserialize.
+     *
+     * @var array
+     */
+    public $testData = [
+        'One' => [
+            'two'   => 'value',
+            'three' => [
+                'four' => 'value four'
+            ],
+            'is_null'    => null,
+            'bool_false' => false,
+            'bool_true'  => true,
+        ],
+        'Asset' => [
+            'timestamp' => 'force'
+        ],
+    ];
 
-/**
- * Test data to serialize and unserialize.
- *
- * @var array
- */
-	public $testData = array(
-		'One' => array(
-			'two' => 'value',
-			'three' => array(
-				'four' => 'value four'
-			),
-			'is_null' => null,
-			'bool_false' => false,
-			'bool_true' => true,
-		),
-		'Asset' => array(
-			'timestamp' => 'force'
-		),
-	);
+    /**
+     * Setup.
+     */
+    public function setUp()
+    {
+        parent::setUp();
+        $this->path = CAKE . 'Test' . DS . 'test_app' . DS . 'Config' . DS;
+    }
 
-/**
- * Setup.
- *
- * @return void
- */
-	public function setUp() {
-		parent::setUp();
-		$this->path = CAKE . 'Test' . DS . 'test_app' . DS . 'Config' . DS;
-	}
+    /**
+     * Test reading files.
+     */
+    public function testRead()
+    {
+        $reader = new PhpReader($this->path);
+        $values = $reader->read('var_test');
+        $this->assertEquals('value', $values['Read']);
+        $this->assertEquals('buried', $values['Deep']['Deeper']['Deepest']);
 
-/**
- * Test reading files.
- *
- * @return void
- */
-	public function testRead() {
-		$reader = new PhpReader($this->path);
-		$values = $reader->read('var_test');
-		$this->assertEquals('value', $values['Read']);
-		$this->assertEquals('buried', $values['Deep']['Deeper']['Deepest']);
+        $values = $reader->read('var_test.php');
+        $this->assertEquals('value', $values['Read']);
+    }
 
-		$values = $reader->read('var_test.php');
-		$this->assertEquals('value', $values['Read']);
-	}
+    /**
+     * Test an exception is thrown by reading files that exist without .php extension.
+     *
+     * @expectedException ConfigureException
+     */
+    public function testReadWithExistentFileWithoutExtension()
+    {
+        $reader = new PhpReader($this->path);
+        $reader->read('no_php_extension');
+    }
 
-/**
- * Test an exception is thrown by reading files that exist without .php extension.
- *
- * @expectedException ConfigureException
- * @return void
- */
-	public function testReadWithExistentFileWithoutExtension() {
-		$reader = new PhpReader($this->path);
-		$reader->read('no_php_extension');
-	}
+    /**
+     * Test an exception is thrown by reading files that don't exist.
+     *
+     * @expectedException ConfigureException
+     */
+    public function testReadWithNonExistentFile()
+    {
+        $reader = new PhpReader($this->path);
+        $reader->read('fake_values');
+    }
 
-/**
- * Test an exception is thrown by reading files that don't exist.
- *
- * @expectedException ConfigureException
- * @return void
- */
-	public function testReadWithNonExistentFile() {
-		$reader = new PhpReader($this->path);
-		$reader->read('fake_values');
-	}
+    /**
+     * Test reading an empty file.
+     *
+     * @expectedException ConfigureException
+     */
+    public function testReadEmptyFile()
+    {
+        $reader = new PhpReader($this->path);
+        $reader->read('empty');
+    }
 
-/**
- * Test reading an empty file.
- *
- * @expectedException ConfigureException
- * @return void
- */
-	public function testReadEmptyFile() {
-		$reader = new PhpReader($this->path);
-		$reader->read('empty');
-	}
+    /**
+     * Test reading keys with ../ doesn't work.
+     *
+     * @expectedException ConfigureException
+     */
+    public function testReadWithDots()
+    {
+        $reader = new PhpReader($this->path);
+        $reader->read('../empty');
+    }
 
-/**
- * Test reading keys with ../ doesn't work.
- *
- * @expectedException ConfigureException
- * @return void
- */
-	public function testReadWithDots() {
-		$reader = new PhpReader($this->path);
-		$reader->read('../empty');
-	}
+    /**
+     * Test reading from plugins.
+     */
+    public function testReadPluginValue()
+    {
+        App::build([
+            'Plugin' => [CAKE . 'Test' . DS . 'test_app' . DS . 'Plugin' . DS]
+        ], App::RESET);
+        CakePlugin::load('TestPlugin');
+        $reader = new PhpReader($this->path);
+        $result = $reader->read('TestPlugin.load');
+        $this->assertTrue(isset($result['plugin_load']));
 
-/**
- * Test reading from plugins.
- *
- * @return void
- */
-	public function testReadPluginValue() {
-		App::build(array(
-			'Plugin' => array(CAKE . 'Test' . DS . 'test_app' . DS . 'Plugin' . DS)
-		), App::RESET);
-		CakePlugin::load('TestPlugin');
-		$reader = new PhpReader($this->path);
-		$result = $reader->read('TestPlugin.load');
-		$this->assertTrue(isset($result['plugin_load']));
+        $result = $reader->read('TestPlugin.load.php');
+        $this->assertTrue(isset($result['plugin_load']));
+        CakePlugin::unload();
+    }
 
-		$result = $reader->read('TestPlugin.load.php');
-		$this->assertTrue(isset($result['plugin_load']));
-		CakePlugin::unload();
-	}
-
-/**
- * Test dumping data to PHP format.
- *
- * @return void
- */
-	public function testDump() {
-		$reader = new PhpReader(TMP);
-		$result = $reader->dump('test.php', $this->testData);
-		$this->assertTrue($result > 0);
-		$expected = <<<PHP
+    /**
+     * Test dumping data to PHP format.
+     */
+    public function testDump()
+    {
+        $reader = new PhpReader(TMP);
+        $result = $reader->dump('test.php', $this->testData);
+        $this->assertTrue($result > 0);
+        $expected = <<<PHP
 <?php
 \$config = array (
   'One' => 
@@ -162,32 +161,30 @@ class PhpReaderTest extends CakeTestCase {
   ),
 );
 PHP;
-		$file = TMP . 'test.php';
-		$contents = file_get_contents($file);
+        $file = TMP . 'test.php';
+        $contents = file_get_contents($file);
 
-		unlink($file);
-		$this->assertTextEquals($expected, $contents);
+        unlink($file);
+        $this->assertTextEquals($expected, $contents);
 
-		$result = $reader->dump('test', $this->testData);
-		$this->assertTrue($result > 0);
+        $result = $reader->dump('test', $this->testData);
+        $this->assertTrue($result > 0);
 
-		$contents = file_get_contents($file);
-		$this->assertTextEquals($expected, $contents);
-		unlink($file);
-	}
+        $contents = file_get_contents($file);
+        $this->assertTextEquals($expected, $contents);
+        unlink($file);
+    }
 
-/**
- * Test that dump() makes files read() can read.
- *
- * @return void
- */
-	public function testDumpRead() {
-		$reader = new PhpReader(TMP);
-		$reader->dump('test.php', $this->testData);
-		$result = $reader->read('test.php');
-		unlink(TMP . 'test.php');
+    /**
+     * Test that dump() makes files read() can read.
+     */
+    public function testDumpRead()
+    {
+        $reader = new PhpReader(TMP);
+        $reader->dump('test.php', $this->testData);
+        $result = $reader->read('test.php');
+        unlink(TMP . 'test.php');
 
-		$this->assertEquals($this->testData, $result);
-	}
-
+        $this->assertEquals($this->testData, $result);
+    }
 }

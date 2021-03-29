@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Test.Case
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -23,33 +27,33 @@
  *
  * @package       Cake.Test.Case
  */
-class AllDatabaseTest extends PHPUnit_Framework_TestSuite {
+class AllDatabaseTest extends PHPUnit_Framework_TestSuite
+{
+    /**
+     * suite method, defines tests for this suite.
+     */
+    public static function suite()
+    {
+        $suite = new PHPUnit_Framework_TestSuite('Datasources, Schema and DbAcl tests');
 
-/**
- * suite method, defines tests for this suite.
- *
- * @return void
- */
-	public static function suite() {
-		$suite = new PHPUnit_Framework_TestSuite('Datasources, Schema and DbAcl tests');
+        $path = CORE_TEST_CASES . DS . 'Model' . DS;
+        $tasks = [
+            'AclNode',
+            'CakeSchema',
+            'ConnectionManager',
+            'Datasource' . DS . 'DboSource',
+            'Datasource' . DS . 'Database' . DS . 'Mysql',
+            'Datasource' . DS . 'Database' . DS . 'Postgres',
+            'Datasource' . DS . 'Database' . DS . 'Sqlite',
+            'Datasource' . DS . 'Database' . DS . 'Sqlserver',
+            'Datasource' . DS . 'CakeSession',
+            'Datasource' . DS . 'Session' . DS . 'CacheSession',
+            'Datasource' . DS . 'Session' . DS . 'DatabaseSession',
+        ];
+        foreach ($tasks as $task) {
+            $suite->addTestFile($path . $task . 'Test.php');
+        }
 
-		$path = CORE_TEST_CASES . DS . 'Model' . DS;
-		$tasks = array(
-			'AclNode',
-			'CakeSchema',
-			'ConnectionManager',
-			'Datasource' . DS . 'DboSource',
-			'Datasource' . DS . 'Database' . DS . 'Mysql',
-			'Datasource' . DS . 'Database' . DS . 'Postgres',
-			'Datasource' . DS . 'Database' . DS . 'Sqlite',
-			'Datasource' . DS . 'Database' . DS . 'Sqlserver',
-			'Datasource' . DS . 'CakeSession',
-			'Datasource' . DS . 'Session' . DS . 'CacheSession',
-			'Datasource' . DS . 'Session' . DS . 'DatabaseSession',
-		);
-		foreach ($tasks as $task) {
-			$suite->addTestFile($path . $task . 'Test.php');
-		}
-		return $suite;
-	}
+        return $suite;
+    }
 }

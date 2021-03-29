@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP Project
+ *
  * @package       Cake.Test.TestApp.Model
+ *
  * @since         CakePHP v 2.4
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -23,23 +27,22 @@
  *
  * @package       Cake.Test.TestApp.Model
  */
-class Extract extends AppModel {
+class Extract extends AppModel
+{
+    public $useTable = false;
 
-	public $useTable = false;
-
-	public $validate = array(
-		'title' => array(
-			'custom' => array(
-				'rule' => array('custom', '.*'),
-				'allowEmpty' => true,
-				'required' => false,
-				'message' => 'double "quoted" validation'
-			),
-			'between' => array(
-				'rule' => array('lengthBetween', 5, 15),
-				'message' => "single 'quoted' validation"
-			)
-		),
-	);
-
+    public $validate = [
+        'title' => [
+            'custom' => [
+                'rule'       => ['custom', '.*'],
+                'allowEmpty' => true,
+                'required'   => false,
+                'message'    => 'double "quoted" validation'
+            ],
+            'between' => [
+                'rule'    => ['lengthBetween', 5, 15],
+                'message' => 'single \'quoted\' validation'
+            ]
+        ],
+    ];
 }

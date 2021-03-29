@@ -11,9 +11,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          http://www.cakephp.org
+ *
  * @package       Cake.Test.Fixture
+ *
  * @since         1.2
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -22,26 +26,26 @@
  *
  * @package       Cake.Test.Fixture
  */
-class CampaignFixture extends CakeTestFixture {
+class CampaignFixture extends CakeTestFixture
+{
+    /**
+     * fields property
+     *
+     * @var array
+     */
+    public $fields = [
+        'id'   => ['type' => 'integer', 'key' => 'primary'],
+        'name' => ['type' => 'string', 'length' => 255, 'null' => false],
+    ];
 
-/**
- * fields property
- *
- * @var array
- */
-	public $fields = array(
-		'id' => array('type' => 'integer', 'key' => 'primary'),
-		'name' => array('type' => 'string', 'length' => 255, 'null' => false),
-	);
-
-/**
- * records property
- *
- * @var array
- */
-	public $records = array(
-		array('name' => 'Hurtigruten'),
-		array('name' => 'Colorline'),
-		array('name' => 'Queen of Scandinavia')
-	);
+    /**
+     * records property
+     *
+     * @var array
+     */
+    public $records = [
+        ['name' => 'Hurtigruten'],
+        ['name' => 'Colorline'],
+        ['name' => 'Queen of Scandinavia']
+    ];
 }

@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Fixture
+ *
  * @since         CakePHP(tm) v 2.1
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -21,28 +25,28 @@
  *
  * @package       Cake.Test.Fixture
  */
-class SiteFixture extends CakeTestFixture {
+class SiteFixture extends CakeTestFixture
+{
+    /**
+     * fields property
+     *
+     * @var array
+     */
+    public $fields = [
+        'id'      => ['type' => 'integer', 'key' => 'primary'],
+        'name'    => ['type' => 'string', 'null' => false],
+        'created' => 'datetime',
+        'updated' => 'datetime'
+    ];
 
-/**
- * fields property
- *
- * @var array
- */
-	public $fields = array(
-		'id' => array('type' => 'integer', 'key' => 'primary'),
-		'name' => array('type' => 'string', 'null' => false),
-		'created' => 'datetime',
-		'updated' => 'datetime'
-	);
-
-/**
- * records property
- *
- * @var array
- */
-	public $records = array(
-		array('name' => 'cakephp', 'created' => '2007-03-17 01:16:23', 'updated' => '2007-03-17 01:18:31'),
-		array('name' => 'Mark Story\'s sites', 'created' => '2007-03-17 01:18:23', 'updated' => '2007-03-17 01:20:31'),
-		array('name' => 'rchavik sites', 'created' => '2001-02-03 00:01:02', 'updated' => '2007-03-17 01:22:31'),
-	);
+    /**
+     * records property
+     *
+     * @var array
+     */
+    public $records = [
+        ['name' => 'cakephp', 'created' => '2007-03-17 01:16:23', 'updated' => '2007-03-17 01:18:31'],
+        ['name' => 'Mark Story\'s sites', 'created' => '2007-03-17 01:18:23', 'updated' => '2007-03-17 01:20:31'],
+        ['name' => 'rchavik sites', 'created' => '2001-02-03 00:01:02', 'updated' => '2007-03-17 01:22:31'],
+    ];
 }

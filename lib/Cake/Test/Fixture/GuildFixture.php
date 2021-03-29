@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Fixture
+ *
  * @since         CakePHP(tm) v 2.1
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -21,26 +25,26 @@
  *
  * @package       Cake.Test.Fixture
  */
-class GuildFixture extends CakeTestFixture {
+class GuildFixture extends CakeTestFixture
+{
+    /**
+     * fields property
+     *
+     * @var array
+     */
+    public $fields = [
+        'id'   => ['type' => 'integer', 'key' => 'primary'],
+        'name' => ['type' => 'string', 'null' => false],
+    ];
 
-/**
- * fields property
- *
- * @var array
- */
-	public $fields = array(
-		'id' => array('type' => 'integer', 'key' => 'primary'),
-		'name' => array('type' => 'string', 'null' => false),
-	);
-
-/**
- * records property
- *
- * @var array
- */
-	public $records = array(
-		array('name' => 'Warriors'),
-		array('name' => 'Rangers'),
-		array('name' => 'Wizards'),
-	);
+    /**
+     * records property
+     *
+     * @var array
+     */
+    public $records = [
+        ['name' => 'Warriors'],
+        ['name' => 'Rangers'],
+        ['name' => 'Wizards'],
+    ];
 }

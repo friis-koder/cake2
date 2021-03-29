@@ -8,12 +8,15 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Model
+ *
  * @since         CakePHP(tm) v 0.2.9
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('AppModel', 'Model');
 
 /**
@@ -21,19 +24,19 @@ App::uses('AppModel', 'Model');
  *
  * @package       Cake.Model
  */
-class AcoAction extends AppModel {
+class AcoAction extends AppModel
+{
+    /**
+     * Model name
+     *
+     * @var string
+     */
+    public $name = 'AcoAction';
 
-/**
- * Model name
- *
- * @var string
- */
-	public $name = 'AcoAction';
-
-/**
- * ACO Actions belong to ACOs
- *
- * @var array
- */
-	public $belongsTo = array('Aco');
+    /**
+     * ACO Actions belong to ACOs
+     *
+     * @var array
+     */
+    public $belongsTo = ['Aco'];
 }

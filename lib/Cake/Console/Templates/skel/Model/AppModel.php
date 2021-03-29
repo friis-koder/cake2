@@ -6,10 +6,11 @@
  * application-wide model-related methods here.
  *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       app.Model
+ *
  * @since         CakePHP(tm) v 0.2.9
  */
-
 App::uses('Model', 'Model');
 
 /**
@@ -20,5 +21,6 @@ App::uses('Model', 'Model');
  *
  * @package       app.Model
  */
-class AppModel extends Model {
+class AppModel extends Model
+{
 }

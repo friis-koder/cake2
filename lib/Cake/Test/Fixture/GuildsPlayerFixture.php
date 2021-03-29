@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Fixture
+ *
  * @since         CakePHP(tm) v 2.1
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -21,29 +25,29 @@
  *
  * @package       Cake.Test.Fixture
  */
-class GuildsPlayerFixture extends CakeTestFixture {
+class GuildsPlayerFixture extends CakeTestFixture
+{
+    public $useDbConfig = 'test2';
 
-	public $useDbConfig = 'test2';
+    /**
+     * fields property
+     *
+     * @var array
+     */
+    public $fields = [
+        'id'        => ['type' => 'integer', 'key' => 'primary'],
+        'player_id' => ['type' => 'integer', 'null' => false],
+        'guild_id'  => ['type' => 'integer', 'null' => false],
+    ];
 
-/**
- * fields property
- *
- * @var array
- */
-	public $fields = array(
-		'id' => array('type' => 'integer', 'key' => 'primary'),
-		'player_id' => array('type' => 'integer', 'null' => false),
-		'guild_id' => array('type' => 'integer', 'null' => false),
-	);
-
-/**
- * records property
- *
- * @var array
- */
-	public $records = array(
-		array('player_id' => 1, 'guild_id' => 1),
-		array('player_id' => 1, 'guild_id' => 2),
-		array('player_id' => 4, 'guild_id' => 3),
-	);
+    /**
+     * records property
+     *
+     * @var array
+     */
+    public $records = [
+        ['player_id' => 1, 'guild_id' => 1],
+        ['player_id' => 1, 'guild_id' => 2],
+        ['player_id' => 4, 'guild_id' => 3],
+    ];
 }

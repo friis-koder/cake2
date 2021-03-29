@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.TestApp.Lib.Cache.Engine
+ *
  * @since         CakePHP(tm) v 1.3
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -21,32 +25,40 @@
  *
  * @package       Cake.Test.TestApp.Lib.Cache.Engine
  */
-class TestAppCacheEngine extends CacheEngine {
+class TestAppCacheEngine extends CacheEngine
+{
+    public function write($key, $value, $duration)
+    {
+        if ($key === 'fail') {
+            return false;
+        }
+    }
 
-	public function write($key, $value, $duration) {
-		if ($key === 'fail') {
-			return false;
-		}
-	}
+    public function read($key)
+    {
+    }
 
-	public function read($key) {
-	}
+    public function increment($key, $offset = 1)
+    {
+    }
 
-	public function increment($key, $offset = 1) {
-	}
+    public function decrement($key, $offset = 1)
+    {
+    }
 
-	public function decrement($key, $offset = 1) {
-	}
+    public function delete($key)
+    {
+    }
 
-	public function delete($key) {
-	}
+    public function clear($check)
+    {
+    }
 
-	public function clear($check) {
-	}
+    public function clearGroup($group)
+    {
+    }
 
-	public function clearGroup($group) {
-	}
-
-	public function add($key, $value, $duration) {
-	}
+    public function add($key, $value, $duration)
+    {
+    }
 }

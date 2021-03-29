@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Test.Case
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -23,21 +27,21 @@
  *
  * @package       Cake.Test.Case
  */
-class AllRoutingTest extends PHPUnit_Framework_TestSuite {
+class AllRoutingTest extends PHPUnit_Framework_TestSuite
+{
+    /**
+     * suite method, defines tests for this suite.
+     */
+    public static function suite()
+    {
+        $suite = new CakeTestSuite('All Routing class tests');
 
-/**
- * suite method, defines tests for this suite.
- *
- * @return void
- */
-	public static function suite() {
-		$suite = new CakeTestSuite('All Routing class tests');
+        $libs = CORE_TEST_CASES . DS;
 
-		$libs = CORE_TEST_CASES . DS;
+        $suite->addTestDirectory($libs . 'Routing');
+        $suite->addTestDirectory($libs . 'Routing' . DS . 'Route');
+        $suite->addTestDirectory($libs . 'Routing' . DS . 'Filter');
 
-		$suite->addTestDirectory($libs . 'Routing');
-		$suite->addTestDirectory($libs . 'Routing' . DS . 'Route');
-		$suite->addTestDirectory($libs . 'Routing' . DS . 'Filter');
-		return $suite;
-	}
+        return $suite;
+    }
 }

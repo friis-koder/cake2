@@ -16,9 +16,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Config.unicode.casefolding
+ *
  * @since         CakePHP(tm) v 1.2.0.6833
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -37,4 +41,4 @@
  *     Note that the Turkic mappings do not maintain canonical equivalence without additional processing.
  *     See the discussions of case mapping in the Unicode Standard for more information.
  */
-$config['0250_02af'][] = array('upper' => 422, 'status' => 'C', 'lower' => array(640));
+$config['0250_02af'][] = ['upper' => 422, 'status' => 'C', 'lower' => [640]];

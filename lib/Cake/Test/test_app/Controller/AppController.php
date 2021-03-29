@@ -13,12 +13,15 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Controller
+ *
  * @since         CakePHP(tm) v 0.2.9
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('Controller', 'Controller');
 
 /**
@@ -29,7 +32,9 @@ App::uses('Controller', 'Controller');
  * will inherit them.
  *
  * @package       Cake.Controller
+ *
  * @link https://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
-class AppController extends Controller {
+class AppController extends Controller
+{
 }

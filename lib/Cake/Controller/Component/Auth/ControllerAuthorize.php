@@ -8,10 +8,11 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('BaseAuthorize', 'Controller/Component/Auth');
 
 /**
@@ -31,36 +32,42 @@ App::uses('BaseAuthorize', 'Controller/Component/Auth');
  * admin routing.
  *
  * @package       Cake.Controller.Component.Auth
+ *
  * @since 2.0
  * @see AuthComponent::$authenticate
  */
-class ControllerAuthorize extends BaseAuthorize {
+class ControllerAuthorize extends BaseAuthorize
+{
+    /**
+     * Get/set the controller this authorize object will be working with. Also checks that isAuthorized is implemented.
+     *
+     * @param Controller $controller null to get, a controller to set.
+     *
+     * @throws CakeException
+     *
+     * @return mixed
+     */
+    public function controller(Controller $controller = null)
+    {
+        if ($controller) {
+            if (!method_exists($controller, 'isAuthorized')) {
+                throw new CakeException(__d('cake_dev', '$controller does not implement an %s method.', 'isAuthorized()'));
+            }
+        }
 
-/**
- * Get/set the controller this authorize object will be working with. Also checks that isAuthorized is implemented.
- *
- * @param Controller $controller null to get, a controller to set.
- * @return mixed
- * @throws CakeException
- */
-	public function controller(Controller $controller = null) {
-		if ($controller) {
-			if (!method_exists($controller, 'isAuthorized')) {
-				throw new CakeException(__d('cake_dev', '$controller does not implement an %s method.', 'isAuthorized()'));
-			}
-		}
-		return parent::controller($controller);
-	}
+        return parent::controller($controller);
+    }
 
-/**
- * Checks user authorization using a controller callback.
- *
- * @param array $user Active user data
- * @param CakeRequest $request Request instance.
- * @return bool
- */
-	public function authorize($user, CakeRequest $request) {
-		return (bool)$this->_Controller->isAuthorized($user);
-	}
-
+    /**
+     * Checks user authorization using a controller callback.
+     *
+     * @param array $user Active user data
+     * @param CakeRequest $request Request instance.
+     *
+     * @return bool
+     */
+    public function authorize($user, CakeRequest $request)
+    {
+        return (bool)$this->_Controller->isAuthorized($user);
+    }
 }

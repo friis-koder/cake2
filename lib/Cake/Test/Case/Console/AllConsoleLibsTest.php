@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Test.Case.Console
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -23,25 +27,25 @@
  *
  * @package       Cake.Test.Case.Console
  */
-class AllConsoleLibsTest extends PHPUnit_Framework_TestSuite {
+class AllConsoleLibsTest extends PHPUnit_Framework_TestSuite
+{
+    /**
+     * suite method, defines tests for this suite.
+     */
+    public static function suite()
+    {
+        $suite = new CakeTestSuite('All console lib classes');
 
-/**
- * suite method, defines tests for this suite.
- *
- * @return void
- */
-	public static function suite() {
-		$suite = new CakeTestSuite('All console lib classes');
+        foreach (new DirectoryIterator(dirname(__FILE__)) as $file) {
+            if (!$file->isFile() || strpos($file, 'All') === 0) {
+                continue;
+            }
+            $fileName = $file->getRealPath();
+            if (substr($fileName, -4) === '.php') {
+                $suite->addTestFile($file->getRealPath());
+            }
+        }
 
-		foreach (new DirectoryIterator(dirname(__FILE__)) as $file) {
-			if (!$file->isFile() || strpos($file, 'All') === 0) {
-				continue;
-			}
-			$fileName = $file->getRealPath();
-			if (substr($fileName, -4) === '.php') {
-				$suite->addTestFile($file->getRealPath());
-			}
-		}
-		return $suite;
-	}
+        return $suite;
+    }
 }

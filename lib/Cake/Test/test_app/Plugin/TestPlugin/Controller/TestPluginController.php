@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.TestApp.Plugin.TestPlugin.Controller
+ *
  * @since         CakePHP(tm) v 1.3
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -21,16 +25,17 @@
  *
  * @package       Cake.Test.TestApp.Plugin.TestPlugin.Controller
  */
-class TestPluginController extends TestPluginAppController {
+class TestPluginController extends TestPluginAppController
+{
+    public $uses = [];
 
-	public $uses = array();
+    public function index()
+    {
+        $this->autoRender = false;
+    }
 
-	public function index() {
-		$this->autoRender = false;
-	}
-
-	public function add() {
-		$this->autoRender = false;
-	}
-
+    public function add()
+    {
+        $this->autoRender = false;
+    }
 }

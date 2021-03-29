@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Test.Case
+ *
  * @since         CakePHP(tm) v 2.3
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -23,27 +27,27 @@
  *
  * @package       Cake.Test.Case
  */
-class AllDbRelatedTest extends PHPUnit_Framework_TestSuite {
+class AllDbRelatedTest extends PHPUnit_Framework_TestSuite
+{
+    /**
+     * Suite define the tests for this suite
+     */
+    public static function suite()
+    {
+        $suite = new PHPUnit_Framework_TestSuite('All Db Related Tests');
 
-/**
- * Suite define the tests for this suite
- *
- * @return void
- */
-	public static function suite() {
-		$suite = new PHPUnit_Framework_TestSuite('All Db Related Tests');
+        $path = CORE_TEST_CASES . DS;
 
-		$path = CORE_TEST_CASES . DS;
+        $suite->addTestFile($path . 'AllBehaviorsTest.php');
+        $suite->addTestFile($path . 'Controller' . DS . 'Component' . DS . 'PaginatorComponentTest.php');
+        $suite->addTestFile($path . 'AllDatabaseTest.php');
+        $suite->addTestFile($path . 'Model' . DS . 'ModelTest.php');
+        $suite->addTestFile($path . 'View' . DS . 'ViewTest.php');
+        $suite->addTestFile($path . 'View' . DS . 'ScaffoldViewTest.php');
+        $suite->addTestFile($path . 'View' . DS . 'HelperTest.php');
+        $suite->addTestFile($path . 'View' . DS . 'Helper' . DS . 'FormHelperTest.php');
+        $suite->addTestFile($path . 'View' . DS . 'Helper' . DS . 'PaginatorHelperTest.php');
 
-		$suite->addTestFile($path . 'AllBehaviorsTest.php');
-		$suite->addTestFile($path . 'Controller' . DS . 'Component' . DS . 'PaginatorComponentTest.php');
-		$suite->addTestFile($path . 'AllDatabaseTest.php');
-		$suite->addTestFile($path . 'Model' . DS . 'ModelTest.php');
-		$suite->addTestFile($path . 'View' . DS . 'ViewTest.php');
-		$suite->addTestFile($path . 'View' . DS . 'ScaffoldViewTest.php');
-		$suite->addTestFile($path . 'View' . DS . 'HelperTest.php');
-		$suite->addTestFile($path . 'View' . DS . 'Helper' . DS . 'FormHelperTest.php');
-		$suite->addTestFile($path . 'View' . DS . 'Helper' . DS . 'PaginatorHelperTest.php');
-		return $suite;
-	}
+        return $suite;
+    }
 }

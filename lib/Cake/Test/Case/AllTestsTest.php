@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Test.Case
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -23,38 +27,38 @@
  *
  * @package       Cake.Test.Case
  */
-class AllTests extends PHPUnit_Framework_TestSuite {
+class AllTests extends PHPUnit_Framework_TestSuite
+{
+    /**
+     * Suite define the tests for this suite
+     */
+    public static function suite()
+    {
+        $suite = new PHPUnit_Framework_TestSuite('All Tests');
 
-/**
- * Suite define the tests for this suite
- *
- * @return void
- */
-	public static function suite() {
-		$suite = new PHPUnit_Framework_TestSuite('All Tests');
+        $path = CORE_TEST_CASES . DS;
 
-		$path = CORE_TEST_CASES . DS;
+        $suite->addTestFile($path . 'BasicsTest.php');
+        $suite->addTestFile($path . 'AllConsoleTest.php');
+        $suite->addTestFile($path . 'AllBehaviorsTest.php');
+        $suite->addTestFile($path . 'AllCacheTest.php');
+        $suite->addTestFile($path . 'AllComponentsTest.php');
+        $suite->addTestFile($path . 'AllConfigureTest.php');
+        $suite->addTestFile($path . 'AllCoreTest.php');
+        $suite->addTestFile($path . 'AllControllerTest.php');
+        $suite->addTestFile($path . 'AllDatabaseTest.php');
+        $suite->addTestFile($path . 'AllErrorTest.php');
+        $suite->addTestFile($path . 'AllEventTest.php');
+        $suite->addTestFile($path . 'AllHelpersTest.php');
+        $suite->addTestFile($path . 'AllLogTest.php');
+        $suite->addTestFile($path . 'Model' . DS . 'ModelTest.php');
+        $suite->addTestFile($path . 'AllRoutingTest.php');
+        $suite->addTestFile($path . 'AllNetworkTest.php');
+        $suite->addTestFile($path . 'AllTestSuiteTest.php');
+        $suite->addTestFile($path . 'AllUtilityTest.php');
+        $suite->addTestFile($path . 'AllViewTest.php');
+        $suite->addTestFile($path . 'AllI18nTest.php');
 
-		$suite->addTestFile($path . 'BasicsTest.php');
-		$suite->addTestFile($path . 'AllConsoleTest.php');
-		$suite->addTestFile($path . 'AllBehaviorsTest.php');
-		$suite->addTestFile($path . 'AllCacheTest.php');
-		$suite->addTestFile($path . 'AllComponentsTest.php');
-		$suite->addTestFile($path . 'AllConfigureTest.php');
-		$suite->addTestFile($path . 'AllCoreTest.php');
-		$suite->addTestFile($path . 'AllControllerTest.php');
-		$suite->addTestFile($path . 'AllDatabaseTest.php');
-		$suite->addTestFile($path . 'AllErrorTest.php');
-		$suite->addTestFile($path . 'AllEventTest.php');
-		$suite->addTestFile($path . 'AllHelpersTest.php');
-		$suite->addTestFile($path . 'AllLogTest.php');
-		$suite->addTestFile($path . 'Model' . DS . 'ModelTest.php');
-		$suite->addTestFile($path . 'AllRoutingTest.php');
-		$suite->addTestFile($path . 'AllNetworkTest.php');
-		$suite->addTestFile($path . 'AllTestSuiteTest.php');
-		$suite->addTestFile($path . 'AllUtilityTest.php');
-		$suite->addTestFile($path . 'AllViewTest.php');
-		$suite->addTestFile($path . 'AllI18nTest.php');
-		return $suite;
-	}
+        return $suite;
+    }
 }
