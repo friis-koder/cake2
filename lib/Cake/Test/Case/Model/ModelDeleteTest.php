@@ -906,25 +906,25 @@ class ModelDeleteTest extends BaseModelTest
         ]], true);
 
         // Article 1 should have Tag.1 and Tag.2
-        $before = $Article->find("all", [
-            "conditions" => ["Article.id" => 1],
+        $before = $Article->find('all', [
+            'conditions' => ['Article.id' => 1],
         ]);
         $this->assertEquals(2, count($before[0]['Tag']), 'Tag count for Article.id = 1 is incorrect, should be 2 %s');
 
         // From now on, Tag #1 is only associated with Post #1
         $submittedData = [
-            "Tag"     => ["id" => 1, 'tag' => 'tag1'],
-            "Article" => [
-                "Article" => [1]
+            'Tag'     => ['id' => 1, 'tag' => 'tag1'],
+            'Article' => [
+                'Article' => [1]
             ]
         ];
         $Tag->save($submittedData);
 
         // One more submission (The other way around) to make sure the reverse save looks good.
         $submittedData = [
-            "Article" => ["id" => 2, 'title' => 'second article'],
-            "Tag"     => [
-                "Tag" => [2, 3]
+            'Article' => ['id' => 2, 'title' => 'second article'],
+            'Tag'     => [
+                'Tag' => [2, 3]
             ]
         ];
 
@@ -934,12 +934,12 @@ class ModelDeleteTest extends BaseModelTest
         $Article->save($submittedData);
 
         // Want to make sure Article #1 has Tag #1 and Tag #2 still.
-        $after = $Article->find("all", [
-            "conditions" => ["Article.id" => 1],
+        $after = $Article->find('all', [
+            'conditions' => ['Article.id' => 1],
         ]);
 
         // Removing Article #2 from Tag #1 is all that should have happened.
-        $this->assertEquals(count($before[0]["Tag"]), count($after[0]["Tag"]));
+        $this->assertEquals(count($before[0]['Tag']), count($after[0]['Tag']));
     }
 
     /**

@@ -33,7 +33,7 @@ class DboSource extends DataSource
      *
      * @var string
      */
-    public $description = "Database Data Source";
+    public $description = 'Database Data Source';
 
     /**
      * index definition, standard cake, primary, index, unique
@@ -376,10 +376,10 @@ class DboSource extends DataSource
         }
 
         $isStringEnum = false;
-        if (strpos($column, "enum") === 0) {
+        if (strpos($column, 'enum') === 0) {
             $firstValue = null;
             if (preg_match("/(enum\()(.*)(\))/i", $column, $acceptingValues)) {
-                $values = explode(",", $acceptingValues[2]);
+                $values = explode(',', $acceptingValues[2]);
                 $firstValue = $values[0];
             }
             if (is_string($firstValue)) {
@@ -3677,7 +3677,7 @@ class DboSource extends DataSource
      */
     protected function _dropTable($table)
     {
-        return 'DROP TABLE ' . $this->fullTableName($table) . ";";
+        return 'DROP TABLE ' . $this->fullTableName($table) . ';';
     }
 
     /**
@@ -3744,7 +3744,7 @@ class DboSource extends DataSource
             $out .= ' NOT NULL';
         }
         if (in_array($type, ['timestamp', 'datetime']) && isset($column['default']) && strtolower($column['default']) === 'current_timestamp') {
-            $out = str_replace(["'CURRENT_TIMESTAMP'", "'current_timestamp'"], 'CURRENT_TIMESTAMP', $out);
+            $out = str_replace(['\'CURRENT_TIMESTAMP\'', '\'current_timestamp\''], 'CURRENT_TIMESTAMP', $out);
         }
 
         return $this->_buildFieldParameters($out, $column, 'afterDefault');

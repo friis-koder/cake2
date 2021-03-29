@@ -201,9 +201,9 @@ class CakeRouteTest extends CakeTestCase
         $this->assertEquals('title-of-post', $result['pass'][0]);
 
         $route = new CakeRoute(
-            "/:extra/page/:slug/*",
+            '/:extra/page/:slug/*',
             ['controller' => 'pages', 'action' => 'view', 'extra' => null],
-            ["extra"      => '[a-z1-9_]*', "slug" => '[a-z1-9_]+', "action" => 'view']
+            ['extra'      => '[a-z1-9_]*', 'slug' => '[a-z1-9_]+', 'action' => 'view']
         );
         $result = $route->compile();
 

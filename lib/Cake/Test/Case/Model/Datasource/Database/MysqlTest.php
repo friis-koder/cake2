@@ -119,11 +119,11 @@ class MysqlTest extends CakeTestCase
         $result = $this->Dbo->value(1.2, 'float');
         $this->assertEquals($expected, $result);
 
-        $expected = "'1,2'";
+        $expected = '\'1,2\'';
         $result = $this->Dbo->value('1,2', 'float');
         $this->assertEquals($expected, $result);
 
-        $expected = "'4713e29446'";
+        $expected = '\'4713e29446\'';
         $result = $this->Dbo->value('4713e29446');
 
         $this->assertEquals($expected, $result);
@@ -132,7 +132,7 @@ class MysqlTest extends CakeTestCase
         $result = $this->Dbo->value('', 'integer');
         $this->assertEquals($expected, $result);
 
-        $expected = "'0'";
+        $expected = '\'0\'';
         $result = $this->Dbo->value('', 'boolean');
         $this->assertEquals($expected, $result);
 
@@ -140,7 +140,7 @@ class MysqlTest extends CakeTestCase
         $result = $this->Dbo->value(10010001);
         $this->assertEquals($expected, $result);
 
-        $expected = "'00010010001'";
+        $expected = '\'00010010001\'';
         $result = $this->Dbo->value('00010010001');
         $this->assertEquals($expected, $result);
     }
@@ -157,7 +157,7 @@ class MysqlTest extends CakeTestCase
 
         $restore = setlocale(LC_NUMERIC, 0);
 
-        $this->skipIf(setlocale(LC_NUMERIC, 'de_DE') === false, "The German locale isn't available.");
+        $this->skipIf(setlocale(LC_NUMERIC, 'de_DE') === false, 'The German locale isn\'t available.');
 
         $result = $this->Dbo->value(3.141593);
         $this->assertEquals('3.141593', $result);
@@ -536,8 +536,8 @@ class MysqlTest extends CakeTestCase
         $expected = 'decimal';
         $this->assertEquals($expected, $result);
 
-        $result = $this->Dbo->column("set('a','b','c')");
-        $expected = "set('a','b','c')";
+        $result = $this->Dbo->column('set(\'a\',\'b\',\'c\')');
+        $expected = 'set(\'a\',\'b\',\'c\')';
         $this->assertEquals($expected, $result);
     }
 
@@ -1387,7 +1387,7 @@ SQL;
         $usersTable = $test->fullTableName('users');
 
         $search = "LEFT JOIN $model8Table AS `TestModel8` ON " .
-            "(`TestModel8`.`name` != 'larry' AND `TestModel9`.`test_model8_id` = `TestModel8`.`id`) " .
+            '(`TestModel8`.`name` != \'larry\' AND `TestModel9`.`test_model8_id` = `TestModel8`.`id`) ' .
             "LEFT JOIN $usersTable AS `User` ON (`TestModel9`.`id` = `User`.`test_id`)";
 
         $test->expects($this->at(0))->method('execute')
@@ -2104,7 +2104,7 @@ SQL;
     public function testSelectDistict()
     {
         $this->Model = new TestModel4();
-        $result = $this->Dbo->fields($this->Model, 'Vendor', "DISTINCT Vendor.id, Vendor.name");
+        $result = $this->Dbo->fields($this->Model, 'Vendor', 'DISTINCT Vendor.id, Vendor.name');
         $expected = ['DISTINCT `Vendor`.`id`', '`Vendor`.`name`'];
         $this->assertEquals($expected, $result);
     }
@@ -2116,50 +2116,50 @@ SQL;
      */
     public function testStringConditionsParsing()
     {
-        $result = $this->Dbo->conditions("ProjectBid.project_id = Project.id");
-        $expected = " WHERE `ProjectBid`.`project_id` = `Project`.`id`";
+        $result = $this->Dbo->conditions('ProjectBid.project_id = Project.id');
+        $expected = ' WHERE `ProjectBid`.`project_id` = `Project`.`id`';
         $this->assertEquals($expected, $result);
 
-        $result = $this->Dbo->conditions("Candy.name LIKE 'a' AND HardCandy.name LIKE 'c'");
-        $expected = " WHERE `Candy`.`name` LIKE 'a' AND `HardCandy`.`name` LIKE 'c'";
+        $result = $this->Dbo->conditions('Candy.name LIKE \'a\' AND HardCandy.name LIKE \'c\'');
+        $expected = ' WHERE `Candy`.`name` LIKE \'a\' AND `HardCandy`.`name` LIKE \'c\'';
         $this->assertEquals($expected, $result);
 
-        $result = $this->Dbo->conditions("HardCandy.name LIKE 'a' AND Candy.name LIKE 'c'");
-        $expected = " WHERE `HardCandy`.`name` LIKE 'a' AND `Candy`.`name` LIKE 'c'";
+        $result = $this->Dbo->conditions('HardCandy.name LIKE \'a\' AND Candy.name LIKE \'c\'');
+        $expected = ' WHERE `HardCandy`.`name` LIKE \'a\' AND `Candy`.`name` LIKE \'c\'';
         $this->assertEquals($expected, $result);
 
-        $result = $this->Dbo->conditions("Post.title = '1.1'");
-        $expected = " WHERE `Post`.`title` = '1.1'";
+        $result = $this->Dbo->conditions('Post.title = \'1.1\'');
+        $expected = ' WHERE `Post`.`title` = \'1.1\'';
         $this->assertEquals($expected, $result);
 
-        $result = $this->Dbo->conditions("User.id != 0 AND User.user LIKE '%arr%'");
-        $expected = " WHERE `User`.`id` != 0 AND `User`.`user` LIKE '%arr%'";
+        $result = $this->Dbo->conditions('User.id != 0 AND User.user LIKE \'%arr%\'');
+        $expected = ' WHERE `User`.`id` != 0 AND `User`.`user` LIKE \'%arr%\'';
         $this->assertEquals($expected, $result);
 
-        $result = $this->Dbo->conditions("SUM(Post.comments_count) > 500");
-        $expected = " WHERE SUM(`Post`.`comments_count`) > 500";
+        $result = $this->Dbo->conditions('SUM(Post.comments_count) > 500');
+        $expected = ' WHERE SUM(`Post`.`comments_count`) > 500';
         $this->assertEquals($expected, $result);
 
         $date = date('Y-m-d H:i');
-        $result = $this->Dbo->conditions("(Post.created < '" . $date . "') GROUP BY YEAR(Post.created), MONTH(Post.created)");
-        $expected = " WHERE (`Post`.`created` < '" . $date . "') GROUP BY YEAR(`Post`.`created`), MONTH(`Post`.`created`)";
+        $result = $this->Dbo->conditions('(Post.created < \'' . $date . '\') GROUP BY YEAR(Post.created), MONTH(Post.created)');
+        $expected = ' WHERE (`Post`.`created` < \'' . $date . '\') GROUP BY YEAR(`Post`.`created`), MONTH(`Post`.`created`)';
         $this->assertEquals($expected, $result);
 
-        $result = $this->Dbo->conditions("score BETWEEN 90.1 AND 95.7");
-        $expected = " WHERE score BETWEEN 90.1 AND 95.7";
+        $result = $this->Dbo->conditions('score BETWEEN 90.1 AND 95.7');
+        $expected = ' WHERE score BETWEEN 90.1 AND 95.7';
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->conditions(['score' => [2 => 1, 2, 10]]);
-        $expected = " WHERE `score` IN (1, 2, 10)";
+        $expected = ' WHERE `score` IN (1, 2, 10)';
         $this->assertEquals($expected, $result);
 
-        $result = $this->Dbo->conditions("Aro.rght = Aro.lft + 1.1");
-        $expected = " WHERE `Aro`.`rght` = `Aro`.`lft` + 1.1";
+        $result = $this->Dbo->conditions('Aro.rght = Aro.lft + 1.1');
+        $expected = ' WHERE `Aro`.`rght` = `Aro`.`lft` + 1.1';
         $this->assertEquals($expected, $result);
 
         $date = date('Y-m-d H:i:s');
-        $result = $this->Dbo->conditions("(Post.created < '" . $date . "') GROUP BY YEAR(Post.created), MONTH(Post.created)");
-        $expected = " WHERE (`Post`.`created` < '" . $date . "') GROUP BY YEAR(`Post`.`created`), MONTH(`Post`.`created`)";
+        $result = $this->Dbo->conditions('(Post.created < \'' . $date . '\') GROUP BY YEAR(Post.created), MONTH(Post.created)');
+        $expected = ' WHERE (`Post`.`created` < \'' . $date . '\') GROUP BY YEAR(`Post`.`created`), MONTH(`Post`.`created`)';
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->conditions('Sportstaette.sportstaette LIKE "%ru%" AND Sportstaette.sportstaettenart_id = 2');
@@ -2187,12 +2187,12 @@ SQL;
         $expected = ' WHERE NOT `Post`.`title_extended` IS NULL AND NOT `Post`.`title` IS NULL AND `Post`.`title_extended` != `Post`.`title`';
         $this->assertEquals($expected, $result);
 
-        $result = $this->Dbo->conditions("Comment.id = 'a'");
-        $expected = " WHERE `Comment`.`id` = 'a'";
+        $result = $this->Dbo->conditions('Comment.id = \'a\'');
+        $expected = ' WHERE `Comment`.`id` = \'a\'';
         $this->assertEquals($expected, $result);
 
-        $result = $this->Dbo->conditions("lower(Article.title) LIKE 'a%'");
-        $expected = " WHERE lower(`Article`.`title`) LIKE 'a%'";
+        $result = $this->Dbo->conditions('lower(Article.title) LIKE \'a%\'');
+        $expected = ' WHERE lower(`Article`.`title`) LIKE \'a%\'';
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->conditions('((MATCH(Video.title) AGAINST(\'My Search*\' IN BOOLEAN MODE) * 2) + (MATCH(Video.description) AGAINST(\'My Search*\' IN BOOLEAN MODE) * 0.4) + (MATCH(Video.tags) AGAINST(\'My Search*\' IN BOOLEAN MODE) * 1.5))');
@@ -2200,36 +2200,36 @@ SQL;
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->conditions('DATEDIFF(NOW(),Article.published) < 1 && Article.live=1');
-        $expected = " WHERE DATEDIFF(NOW(),`Article`.`published`) < 1 && `Article`.`live`=1";
+        $expected = ' WHERE DATEDIFF(NOW(),`Article`.`published`) < 1 && `Article`.`live`=1';
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->conditions('file = "index.html"');
         $expected = ' WHERE file = "index.html"';
         $this->assertEquals($expected, $result);
 
-        $result = $this->Dbo->conditions("file = 'index.html'");
-        $expected = " WHERE file = 'index.html'";
+        $result = $this->Dbo->conditions('file = \'index.html\'');
+        $expected = ' WHERE file = \'index.html\'';
         $this->assertEquals($expected, $result);
 
         $letter = $letter = 'd.a';
         $conditions = ['Company.name like ' => $letter . '%'];
         $result = $this->Dbo->conditions($conditions);
-        $expected = " WHERE `Company`.`name` like 'd.a%'";
+        $expected = ' WHERE `Company`.`name` like \'d.a%\'';
         $this->assertEquals($expected, $result);
 
         $conditions = ['Artist.name' => 'JUDY and MARY'];
         $result = $this->Dbo->conditions($conditions);
-        $expected = " WHERE `Artist`.`name` = 'JUDY and MARY'";
+        $expected = ' WHERE `Artist`.`name` = \'JUDY and MARY\'';
         $this->assertEquals($expected, $result);
 
         $conditions = ['Artist.name' => 'JUDY AND MARY'];
         $result = $this->Dbo->conditions($conditions);
-        $expected = " WHERE `Artist`.`name` = 'JUDY AND MARY'";
+        $expected = ' WHERE `Artist`.`name` = \'JUDY AND MARY\'';
         $this->assertEquals($expected, $result);
 
         $conditions = ['Company.name similar to ' => 'a word'];
         $result = $this->Dbo->conditions($conditions);
-        $expected = " WHERE `Company`.`name` similar to 'a word'";
+        $expected = ' WHERE `Company`.`name` similar to \'a word\'';
         $this->assertEquals($expected, $result);
     }
 
@@ -2392,77 +2392,77 @@ SQL;
         $this->assertRegExp("/^\s+WHERE\s+`Candy`.`name` LIKE\s+'a'\s+AND\s+`HardCandy`.`name`\s+LIKE\s+'c'/", $result);
 
         $result = $this->Dbo->conditions(['HardCandy.name LIKE' => 'a', 'Candy.name LIKE' => 'c']);
-        $expected = " WHERE `HardCandy`.`name` LIKE 'a' AND `Candy`.`name` LIKE 'c'";
+        $expected = ' WHERE `HardCandy`.`name` LIKE \'a\' AND `Candy`.`name` LIKE \'c\'';
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->conditions(['HardCandy.name LIKE' => 'a%', 'Candy.name LIKE' => '%c%']);
-        $expected = " WHERE `HardCandy`.`name` LIKE 'a%' AND `Candy`.`name` LIKE '%c%'";
+        $expected = ' WHERE `HardCandy`.`name` LIKE \'a%\' AND `Candy`.`name` LIKE \'%c%\'';
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->conditions(['HardCandy.name LIKE' => 'to be or%', 'Candy.name LIKE' => '%not to be%']);
-        $expected = " WHERE `HardCandy`.`name` LIKE 'to be or%' AND `Candy`.`name` LIKE '%not to be%'";
+        $expected = ' WHERE `HardCandy`.`name` LIKE \'to be or%\' AND `Candy`.`name` LIKE \'%not to be%\'';
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->conditions([
-            "Person.name || ' ' || Person.surname ILIKE" => '%mark%'
+            'Person.name || \' \' || Person.surname ILIKE' => '%mark%'
         ]);
-        $expected = " WHERE `Person`.`name` || ' ' || `Person`.`surname` ILIKE '%mark%'";
+        $expected = ' WHERE `Person`.`name` || \' \' || `Person`.`surname` ILIKE \'%mark%\'';
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->conditions(['score BETWEEN ? AND ?' => [90.1, 95.7]]);
-        $expected = " WHERE `score` BETWEEN 90.1 AND 95.7";
+        $expected = ' WHERE `score` BETWEEN 90.1 AND 95.7';
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->conditions(['Post.title' => 1.1]);
-        $expected = " WHERE `Post`.`title` = 1.1";
+        $expected = ' WHERE `Post`.`title` = 1.1';
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->conditions(['Post.title' => 1.1], true, true, new Post());
-        $expected = " WHERE `Post`.`title` = '1.1'";
+        $expected = ' WHERE `Post`.`title` = \'1.1\'';
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->conditions(['SUM(Post.comments_count) >' => '500']);
-        $expected = " WHERE SUM(`Post`.`comments_count`) > '500'";
+        $expected = ' WHERE SUM(`Post`.`comments_count`) > \'500\'';
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->conditions(['MAX(Post.rating) >' => '50']);
-        $expected = " WHERE MAX(`Post`.`rating`) > '50'";
+        $expected = ' WHERE MAX(`Post`.`rating`) > \'50\'';
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->conditions(['lower(Article.title)' => 'secrets']);
-        $expected = " WHERE lower(`Article`.`title`) = 'secrets'";
+        $expected = ' WHERE lower(`Article`.`title`) = \'secrets\'';
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->conditions(['title LIKE' => '%hello']);
-        $expected = " WHERE `title` LIKE '%hello'";
+        $expected = ' WHERE `title` LIKE \'%hello\'';
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->conditions(['Post.name' => 'mad(g)ik']);
-        $expected = " WHERE `Post`.`name` = 'mad(g)ik'";
+        $expected = ' WHERE `Post`.`name` = \'mad(g)ik\'';
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->conditions(['score' => [1, 2, 10]]);
-        $expected = " WHERE `score` IN (1, 2, 10)";
+        $expected = ' WHERE `score` IN (1, 2, 10)';
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->conditions(['score' => []]);
-        $expected = " WHERE `score` IS NULL";
+        $expected = ' WHERE `score` IS NULL';
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->conditions(['score !=' => []]);
-        $expected = " WHERE `score` IS NOT NULL";
+        $expected = ' WHERE `score` IS NOT NULL';
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->conditions(['score !=' => '20']);
-        $expected = " WHERE `score` != '20'";
+        $expected = ' WHERE `score` != \'20\'';
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->conditions(['score >' => '20']);
-        $expected = " WHERE `score` > '20'";
+        $expected = ' WHERE `score` > \'20\'';
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->conditions(['client_id >' => '20'], true, true, new TestModel());
-        $expected = " WHERE `client_id` > 20";
+        $expected = ' WHERE `client_id` > 20';
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->conditions(['OR' => [
@@ -2470,67 +2470,67 @@ SQL;
             ['User.user' => 'nate']
         ]]);
 
-        $expected = " WHERE ((`User`.`user` = 'mariano') OR (`User`.`user` = 'nate'))";
+        $expected = ' WHERE ((`User`.`user` = \'mariano\') OR (`User`.`user` = \'nate\'))';
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->conditions(['User.user RLIKE' => 'mariano|nate']);
-        $expected = " WHERE `User`.`user` RLIKE 'mariano|nate'";
+        $expected = ' WHERE `User`.`user` RLIKE \'mariano|nate\'';
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->conditions(['or' => [
             'score BETWEEN ? AND ?' => ['4', '5'], 'rating >' => '20'
         ]]);
-        $expected = " WHERE ((`score` BETWEEN '4' AND '5') OR (`rating` > '20'))";
+        $expected = ' WHERE ((`score` BETWEEN \'4\' AND \'5\') OR (`rating` > \'20\'))';
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->conditions(['or' => [
             'score BETWEEN ? AND ?' => ['4', '5'], ['score >' => '20']
         ]]);
-        $expected = " WHERE ((`score` BETWEEN '4' AND '5') OR (`score` > '20'))";
+        $expected = ' WHERE ((`score` BETWEEN \'4\' AND \'5\') OR (`score` > \'20\'))';
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->conditions(['and' => [
             'score BETWEEN ? AND ?' => ['4', '5'], ['score >' => '20']
         ]]);
-        $expected = " WHERE ((`score` BETWEEN '4' AND '5') AND (`score` > '20'))";
+        $expected = ' WHERE ((`score` BETWEEN \'4\' AND \'5\') AND (`score` > \'20\'))';
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->conditions([
             'published' => 1, 'or' => ['score >' => '2', ['score >' => '20']]
         ]);
-        $expected = " WHERE `published` = 1 AND ((`score` > '2') OR (`score` > '20'))";
+        $expected = ' WHERE `published` = 1 AND ((`score` > \'2\') OR (`score` > \'20\'))';
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->conditions([['Project.removed' => false]]);
-        $expected = " WHERE `Project`.`removed` = '0'";
+        $expected = ' WHERE `Project`.`removed` = \'0\'';
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->conditions([['Project.removed' => true]]);
-        $expected = " WHERE `Project`.`removed` = '1'";
+        $expected = ' WHERE `Project`.`removed` = \'1\'';
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->conditions([['Project.removed' => null]]);
-        $expected = " WHERE `Project`.`removed` IS NULL";
+        $expected = ' WHERE `Project`.`removed` IS NULL';
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->conditions([['Project.removed !=' => null]]);
-        $expected = " WHERE `Project`.`removed` IS NOT NULL";
+        $expected = ' WHERE `Project`.`removed` IS NOT NULL';
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->conditions(['(Usergroup.permissions) & 4' => 4]);
-        $expected = " WHERE (`Usergroup`.`permissions`) & 4 = 4";
+        $expected = ' WHERE (`Usergroup`.`permissions`) & 4 = 4';
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->conditions(['((Usergroup.permissions) & 4)' => 4]);
-        $expected = " WHERE ((`Usergroup`.`permissions`) & 4) = 4";
+        $expected = ' WHERE ((`Usergroup`.`permissions`) & 4) = 4';
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->conditions(['Post.modified >=' => 'DATE_SUB(NOW(), INTERVAL 7 DAY)']);
-        $expected = " WHERE `Post`.`modified` >= 'DATE_SUB(NOW(), INTERVAL 7 DAY)'";
+        $expected = ' WHERE `Post`.`modified` >= \'DATE_SUB(NOW(), INTERVAL 7 DAY)\'';
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->conditions(['Post.modified >= DATE_SUB(NOW(), INTERVAL 7 DAY)']);
-        $expected = " WHERE `Post`.`modified` >= DATE_SUB(NOW(), INTERVAL 7 DAY)";
+        $expected = ' WHERE `Post`.`modified` >= DATE_SUB(NOW(), INTERVAL 7 DAY)';
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->conditions(
@@ -2544,82 +2544,82 @@ SQL;
         $this->assertRegExp('/^\s*WHERE\s+`id`\s+<>\s+\'8\'\s*$/', $result);
 
         $result = $this->Dbo->conditions(['TestModel.field =' => 'gribe$@()lu']);
-        $expected = " WHERE `TestModel`.`field` = 'gribe$@()lu'";
+        $expected = ' WHERE `TestModel`.`field` = \'gribe$@()lu\'';
         $this->assertEquals($expected, $result);
 
-        $conditions['NOT'] = ['Listing.expiration BETWEEN ? AND ?' => ["1", "100"]];
+        $conditions['NOT'] = ['Listing.expiration BETWEEN ? AND ?' => ['1', '100']];
         $conditions[0]['OR'] = [
-            "Listing.title LIKE"       => "%term%",
-            "Listing.description LIKE" => "%term%"
+            'Listing.title LIKE'       => '%term%',
+            'Listing.description LIKE' => '%term%'
         ];
         $conditions[1]['OR'] = [
-            "Listing.title LIKE"       => "%term_2%",
-            "Listing.description LIKE" => "%term_2%"
+            'Listing.title LIKE'       => '%term_2%',
+            'Listing.description LIKE' => '%term_2%'
         ];
         $result = $this->Dbo->conditions($conditions);
-        $expected = " WHERE NOT (`Listing`.`expiration` BETWEEN '1' AND '100') AND" .
-        " ((`Listing`.`title` LIKE '%term%') OR (`Listing`.`description` LIKE '%term%')) AND" .
-        " ((`Listing`.`title` LIKE '%term_2%') OR (`Listing`.`description` LIKE '%term_2%'))";
+        $expected = ' WHERE NOT (`Listing`.`expiration` BETWEEN \'1\' AND \'100\') AND' .
+        ' ((`Listing`.`title` LIKE \'%term%\') OR (`Listing`.`description` LIKE \'%term%\')) AND' .
+        ' ((`Listing`.`title` LIKE \'%term_2%\') OR (`Listing`.`description` LIKE \'%term_2%\'))';
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->conditions(['MD5(CONCAT(Reg.email,Reg.id))' => 'blah']);
-        $expected = " WHERE MD5(CONCAT(`Reg`.`email`,`Reg`.`id`)) = 'blah'";
+        $expected = ' WHERE MD5(CONCAT(`Reg`.`email`,`Reg`.`id`)) = \'blah\'';
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->conditions([
             'MD5(CONCAT(Reg.email,Reg.id))' => ['blah', 'blahblah']
         ]);
-        $expected = " WHERE MD5(CONCAT(`Reg`.`email`,`Reg`.`id`)) IN ('blah', 'blahblah')";
+        $expected = ' WHERE MD5(CONCAT(`Reg`.`email`,`Reg`.`id`)) IN (\'blah\', \'blahblah\')';
         $this->assertEquals($expected, $result);
 
         $conditions = ['id' => [2, 5, 6, 9, 12, 45, 78, 43, 76]];
         $result = $this->Dbo->conditions($conditions);
-        $expected = " WHERE `id` IN (2, 5, 6, 9, 12, 45, 78, 43, 76)";
+        $expected = ' WHERE `id` IN (2, 5, 6, 9, 12, 45, 78, 43, 76)';
         $this->assertEquals($expected, $result);
 
         $conditions = ['`Correction`.`source` collate utf8_bin' => ['kiwi', 'pear']];
         $result = $this->Dbo->conditions($conditions);
-        $expected = " WHERE `Correction`.`source` collate utf8_bin IN ('kiwi', 'pear')";
+        $expected = ' WHERE `Correction`.`source` collate utf8_bin IN (\'kiwi\', \'pear\')';
         $this->assertEquals($expected, $result);
 
         $conditions = ['title' => 'user(s)'];
         $result = $this->Dbo->conditions($conditions);
-        $expected = " WHERE `title` = 'user(s)'";
+        $expected = ' WHERE `title` = \'user(s)\'';
         $this->assertEquals($expected, $result);
 
         $conditions = ['title' => 'user(s) data'];
         $result = $this->Dbo->conditions($conditions);
-        $expected = " WHERE `title` = 'user(s) data'";
+        $expected = ' WHERE `title` = \'user(s) data\'';
         $this->assertEquals($expected, $result);
 
         $conditions = ['title' => 'user(s,arg) data'];
         $result = $this->Dbo->conditions($conditions);
-        $expected = " WHERE `title` = 'user(s,arg) data'";
+        $expected = ' WHERE `title` = \'user(s,arg) data\'';
         $this->assertEquals($expected, $result);
 
-        $result = $this->Dbo->conditions(["Book.book_name" => 'Java(TM)']);
-        $expected = " WHERE `Book`.`book_name` = 'Java(TM)'";
+        $result = $this->Dbo->conditions(['Book.book_name' => 'Java(TM)']);
+        $expected = ' WHERE `Book`.`book_name` = \'Java(TM)\'';
         $this->assertEquals($expected, $result);
 
-        $result = $this->Dbo->conditions(["Book.book_name" => 'Java(TM) ']);
-        $expected = " WHERE `Book`.`book_name` = 'Java(TM) '";
+        $result = $this->Dbo->conditions(['Book.book_name' => 'Java(TM) ']);
+        $expected = ' WHERE `Book`.`book_name` = \'Java(TM) \'';
         $this->assertEquals($expected, $result);
 
-        $result = $this->Dbo->conditions(["Book.id" => 0]);
-        $expected = " WHERE `Book`.`id` = 0";
+        $result = $this->Dbo->conditions(['Book.id' => 0]);
+        $expected = ' WHERE `Book`.`id` = 0';
         $this->assertEquals($expected, $result);
 
-        $result = $this->Dbo->conditions(["Book.id" => null]);
-        $expected = " WHERE `Book`.`id` IS NULL";
+        $result = $this->Dbo->conditions(['Book.id' => null]);
+        $expected = ' WHERE `Book`.`id` IS NULL';
         $this->assertEquals($expected, $result);
 
         $conditions = ['MysqlModel.id' => ''];
         $result = $this->Dbo->conditions($conditions, true, true, $this->model);
-        $expected = " WHERE `MysqlModel`.`id` IS NULL";
+        $expected = ' WHERE `MysqlModel`.`id` IS NULL';
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->conditions(['Listing.beds >=' => 0]);
-        $expected = " WHERE `Listing`.`beds` >= 0";
+        $expected = ' WHERE `Listing`.`beds` >= 0';
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->conditions([
@@ -2631,7 +2631,7 @@ SQL;
         $result = $this->Dbo->conditions(['or' => [
             '? BETWEEN Model.field1 AND Model.field2' => '2009-03-04'
         ]]);
-        $expected = " WHERE '2009-03-04' BETWEEN Model.field1 AND Model.field2";
+        $expected = ' WHERE \'2009-03-04\' BETWEEN Model.field1 AND Model.field2';
         $this->assertEquals($expected, $result);
     }
 
@@ -2645,13 +2645,13 @@ SQL;
         $result = $this->Dbo->conditions([
             'score BETWEEN :0 AND :1' => [90.1, 95.7]
         ]);
-        $expected = " WHERE `score` BETWEEN 90.1 AND 95.7";
+        $expected = ' WHERE `score` BETWEEN 90.1 AND 95.7';
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->conditions([
             'score BETWEEN ? AND ?' => [90.1, 95.7]
         ]);
-        $expected = " WHERE `score` BETWEEN 90.1 AND 95.7";
+        $expected = ' WHERE `score` BETWEEN 90.1 AND 95.7';
         $this->assertEquals($expected, $result);
     }
 
@@ -2664,12 +2664,12 @@ SQL;
     {
         $conditions = ['id' => [1]];
         $result = $this->Dbo->conditions($conditions);
-        $expected = " WHERE id = (1)";
+        $expected = ' WHERE id = (1)';
         $this->assertEquals($expected, $result);
 
         $conditions = ['id NOT' => [1]];
         $result = $this->Dbo->conditions($conditions);
-        $expected = " WHERE NOT (id = (1))";
+        $expected = ' WHERE NOT (id = (1))';
         $this->assertEquals($expected, $result);
     }
 
@@ -2683,19 +2683,19 @@ SQL;
         $result = $this->Dbo->conditions([
             'CAST(Book.created AS DATE)' => '2008-08-02'
         ]);
-        $expected = " WHERE CAST(`Book`.`created` AS DATE) = '2008-08-02'";
+        $expected = ' WHERE CAST(`Book`.`created` AS DATE) = \'2008-08-02\'';
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->conditions([
             'CAST(Book.created AS DATE) <=' => '2008-08-02'
         ]);
-        $expected = " WHERE CAST(`Book`.`created` AS DATE) <= '2008-08-02'";
+        $expected = ' WHERE CAST(`Book`.`created` AS DATE) <= \'2008-08-02\'';
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->conditions([
             '(Stats.clicks * 100) / Stats.views >' => 50
         ]);
-        $expected = " WHERE (`Stats`.`clicks` * 100) / `Stats`.`views` > 50";
+        $expected = ' WHERE (`Stats`.`clicks` * 100) / `Stats`.`views` > 50';
         $this->assertEquals($expected, $result);
     }
 
@@ -2709,7 +2709,7 @@ SQL;
         $conditions[] = 'User.first_name = \'Firstname\'';
         $conditions[] = ['User.last_name' => 'Lastname'];
         $result = $this->Dbo->conditions($conditions);
-        $expected = " WHERE `User`.`first_name` = 'Firstname' AND `User`.`last_name` = 'Lastname'";
+        $expected = ' WHERE `User`.`first_name` = \'Firstname\' AND `User`.`last_name` = \'Lastname\'';
         $this->assertEquals($expected, $result);
 
         $conditions = [
@@ -2745,27 +2745,27 @@ SQL;
         $this->Model = new Article2();
 
         $result = $this->Dbo->conditions(['Article2.viewed >=' => 0], true, true, $this->Model);
-        $expected = " WHERE `Article2`.`viewed` >= 0";
+        $expected = ' WHERE `Article2`.`viewed` >= 0';
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->conditions(['Article2.viewed >=' => '0'], true, true, $this->Model);
-        $expected = " WHERE `Article2`.`viewed` >= 0";
+        $expected = ' WHERE `Article2`.`viewed` >= 0';
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->conditions(['Article2.viewed >=' => '1'], true, true, $this->Model);
-        $expected = " WHERE `Article2`.`viewed` >= 1";
+        $expected = ' WHERE `Article2`.`viewed` >= 1';
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->conditions(['Article2.rate_sum BETWEEN ? AND ?' => [0, 10]], true, true, $this->Model);
-        $expected = " WHERE `Article2`.`rate_sum` BETWEEN 0 AND 10";
+        $expected = ' WHERE `Article2`.`rate_sum` BETWEEN 0 AND 10';
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->conditions(['Article2.rate_sum BETWEEN ? AND ?' => ['0', '10']], true, true, $this->Model);
-        $expected = " WHERE `Article2`.`rate_sum` BETWEEN 0 AND 10";
+        $expected = ' WHERE `Article2`.`rate_sum` BETWEEN 0 AND 10';
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->conditions(['Article2.rate_sum BETWEEN ? AND ?' => ['1', '10']], true, true, $this->Model);
-        $expected = " WHERE `Article2`.`rate_sum` BETWEEN 1 AND 10";
+        $expected = ' WHERE `Article2`.`rate_sum` BETWEEN 1 AND 10';
         $this->assertEquals($expected, $result);
     }
 
@@ -2777,16 +2777,16 @@ SQL;
     public function testFieldParsing()
     {
         $this->Model = new TestModel();
-        $result = $this->Dbo->fields($this->Model, 'Vendor', "Vendor.id, COUNT(Model.vendor_id) AS `Vendor`.`count`");
+        $result = $this->Dbo->fields($this->Model, 'Vendor', 'Vendor.id, COUNT(Model.vendor_id) AS `Vendor`.`count`');
         $expected = ['`Vendor`.`id`', 'COUNT(`Model`.`vendor_id`) AS `Vendor`.`count`'];
         $this->assertEquals($expected, $result);
 
-        $result = $this->Dbo->fields($this->Model, 'Vendor', "`Vendor`.`id`, COUNT(`Model`.`vendor_id`) AS `Vendor`.`count`");
+        $result = $this->Dbo->fields($this->Model, 'Vendor', '`Vendor`.`id`, COUNT(`Model`.`vendor_id`) AS `Vendor`.`count`');
         $expected = ['`Vendor`.`id`', 'COUNT(`Model`.`vendor_id`) AS `Vendor`.`count`'];
         $this->assertEquals($expected, $result);
 
-        $result = $this->Dbo->fields($this->Model, 'Post', "CONCAT(REPEAT(' ', COUNT(Parent.name) - 1), Node.name) AS name, Node.created");
-        $expected = ["CONCAT(REPEAT(' ', COUNT(`Parent`.`name`) - 1), Node.name) AS name", "`Node`.`created`"];
+        $result = $this->Dbo->fields($this->Model, 'Post', 'CONCAT(REPEAT(\' \', COUNT(Parent.name) - 1), Node.name) AS name, Node.created');
+        $expected = ['CONCAT(REPEAT(\' \', COUNT(`Parent`.`name`) - 1), Node.name) AS name', '`Node`.`created`'];
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->fields($this->Model, null, 'round( (3.55441 * fooField), 3 ) AS test');
@@ -2798,19 +2798,19 @@ SQL;
         $result = $this->Dbo->fields($this->Model, null, 'ROUND(Rating.rate_total / Rating.rate_count,2) AS rating');
         $this->assertEquals(['ROUND(Rating.rate_total / Rating.rate_count,2) AS rating'], $result);
 
-        $result = $this->Dbo->fields($this->Model, 'Post', "Node.created, CONCAT(REPEAT(' ', COUNT(Parent.name) - 1), Node.name) AS name");
-        $expected = ["`Node`.`created`", "CONCAT(REPEAT(' ', COUNT(`Parent`.`name`) - 1), Node.name) AS name"];
+        $result = $this->Dbo->fields($this->Model, 'Post', 'Node.created, CONCAT(REPEAT(\' \', COUNT(Parent.name) - 1), Node.name) AS name');
+        $expected = ['`Node`.`created`', 'CONCAT(REPEAT(\' \', COUNT(`Parent`.`name`) - 1), Node.name) AS name'];
         $this->assertEquals($expected, $result);
 
-        $result = $this->Dbo->fields($this->Model, 'Post', "2.2,COUNT(*), SUM(Something.else) as sum, Node.created, CONCAT(REPEAT(' ', COUNT(Parent.name) - 1), Node.name) AS name,Post.title,Post.1,1.1");
+        $result = $this->Dbo->fields($this->Model, 'Post', '2.2,COUNT(*), SUM(Something.else) as sum, Node.created, CONCAT(REPEAT(\' \', COUNT(Parent.name) - 1), Node.name) AS name,Post.title,Post.1,1.1');
         $expected = [
             '2.2', 'COUNT(*)', 'SUM(`Something`.`else`) as sum', '`Node`.`created`',
-            "CONCAT(REPEAT(' ', COUNT(`Parent`.`name`) - 1), Node.name) AS name", '`Post`.`title`', '`Post`.`1`', '1.1'
+            'CONCAT(REPEAT(\' \', COUNT(`Parent`.`name`) - 1), Node.name) AS name', '`Post`.`title`', '`Post`.`1`', '1.1'
         ];
         $this->assertEquals($expected, $result);
 
-        $result = $this->Dbo->fields($this->Model, null, "(`Provider`.`star_total` / `Provider`.`total_ratings`) as `rating`");
-        $expected = ["(`Provider`.`star_total` / `Provider`.`total_ratings`) as `rating`"];
+        $result = $this->Dbo->fields($this->Model, null, '(`Provider`.`star_total` / `Provider`.`total_ratings`) as `rating`');
+        $expected = ['(`Provider`.`star_total` / `Provider`.`total_ratings`) as `rating`'];
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->fields($this->Model, 'Post');
@@ -2905,11 +2905,11 @@ SQL;
     public function testFieldsWithExpression()
     {
         $this->Model = new TestModel();
-        $expression = $this->Dbo->expression("CASE Sample.id WHEN 1 THEN 'Id One' ELSE 'Other Id' END AS case_col");
-        $result = $this->Dbo->fields($this->Model, null, ["id", $expression]);
+        $expression = $this->Dbo->expression('CASE Sample.id WHEN 1 THEN \'Id One\' ELSE \'Other Id\' END AS case_col');
+        $result = $this->Dbo->fields($this->Model, null, ['id', $expression]);
         $expected = [
             '`TestModel`.`id`',
-            "CASE Sample.id WHEN 1 THEN 'Id One' ELSE 'Other Id' END AS case_col"
+            'CASE Sample.id WHEN 1 THEN \'Id One\' ELSE \'Other Id\' END AS case_col'
         ];
         $this->assertEquals($expected, $result);
     }
@@ -2981,67 +2981,67 @@ SQL;
      */
     public function testOrderParsing()
     {
-        $result = $this->Dbo->order("ADDTIME(Event.time_begin, '-06:00:00') ASC");
-        $expected = " ORDER BY ADDTIME(`Event`.`time_begin`, '-06:00:00') ASC";
+        $result = $this->Dbo->order('ADDTIME(Event.time_begin, \'-06:00:00\') ASC');
+        $expected = ' ORDER BY ADDTIME(`Event`.`time_begin`, \'-06:00:00\') ASC';
         $this->assertEquals($expected, $result);
 
-        $result = $this->Dbo->order("title, id");
+        $result = $this->Dbo->order('title, id');
         $this->assertRegExp('/^\s*ORDER BY\s+`title`\s+ASC,\s+`id`\s+ASC\s*$/', $result);
 
-        $result = $this->Dbo->order("title desc, id desc");
+        $result = $this->Dbo->order('title desc, id desc');
         $this->assertRegExp('/^\s*ORDER BY\s+`title`\s+desc,\s+`id`\s+desc\s*$/', $result);
 
-        $result = $this->Dbo->order(["title desc, id desc"]);
+        $result = $this->Dbo->order(['title desc, id desc']);
         $this->assertRegExp('/^\s*ORDER BY\s+`title`\s+desc,\s+`id`\s+desc\s*$/', $result);
 
-        $result = $this->Dbo->order(["title", "id"]);
+        $result = $this->Dbo->order(['title', 'id']);
         $this->assertRegExp('/^\s*ORDER BY\s+`title`\s+ASC,\s+`id`\s+ASC\s*$/', $result);
 
         $result = $this->Dbo->order([['title'], ['id']]);
         $this->assertRegExp('/^\s*ORDER BY\s+`title`\s+ASC,\s+`id`\s+ASC\s*$/', $result);
 
-        $result = $this->Dbo->order(["Post.title" => 'asc', "Post.id" => 'desc']);
+        $result = $this->Dbo->order(['Post.title' => 'asc', 'Post.id' => 'desc']);
         $this->assertRegExp('/^\s*ORDER BY\s+`Post`.`title`\s+asc,\s+`Post`.`id`\s+desc\s*$/', $result);
 
-        $result = $this->Dbo->order([["Post.title" => 'asc', "Post.id" => 'desc']]);
+        $result = $this->Dbo->order([['Post.title' => 'asc', 'Post.id' => 'desc']]);
         $this->assertRegExp('/^\s*ORDER BY\s+`Post`.`title`\s+asc,\s+`Post`.`id`\s+desc\s*$/', $result);
 
-        $result = $this->Dbo->order(["title"]);
+        $result = $this->Dbo->order(['title']);
         $this->assertRegExp('/^\s*ORDER BY\s+`title`\s+ASC\s*$/', $result);
 
-        $result = $this->Dbo->order([["title"]]);
+        $result = $this->Dbo->order([['title']]);
         $this->assertRegExp('/^\s*ORDER BY\s+`title`\s+ASC\s*$/', $result);
 
-        $result = $this->Dbo->order("Dealer.id = 7 desc, Dealer.id = 3 desc, Dealer.title asc");
-        $expected = " ORDER BY `Dealer`.`id` = 7 desc, `Dealer`.`id` = 3 desc, `Dealer`.`title` asc";
+        $result = $this->Dbo->order('Dealer.id = 7 desc, Dealer.id = 3 desc, Dealer.title asc');
+        $expected = ' ORDER BY `Dealer`.`id` = 7 desc, `Dealer`.`id` = 3 desc, `Dealer`.`title` asc';
         $this->assertEquals($expected, $result);
 
-        $result = $this->Dbo->order(["Page.name" => "='test' DESC"]);
+        $result = $this->Dbo->order(['Page.name' => '=\'test\' DESC']);
         $this->assertRegExp("/^\s*ORDER BY\s+`Page`\.`name`\s*='test'\s+DESC\s*$/", $result);
 
-        $result = $this->Dbo->order("Page.name = 'view' DESC");
+        $result = $this->Dbo->order('Page.name = \'view\' DESC');
         $this->assertRegExp("/^\s*ORDER BY\s+`Page`\.`name`\s*=\s*'view'\s+DESC\s*$/", $result);
 
-        $result = $this->Dbo->order("(Post.views)");
+        $result = $this->Dbo->order('(Post.views)');
         $this->assertRegExp("/^\s*ORDER BY\s+\(`Post`\.`views`\)\s+ASC\s*$/", $result);
 
-        $result = $this->Dbo->order("(Post.views)*Post.views");
+        $result = $this->Dbo->order('(Post.views)*Post.views');
         $this->assertRegExp("/^\s*ORDER BY\s+\(`Post`\.`views`\)\*`Post`\.`views`\s+ASC\s*$/", $result);
 
-        $result = $this->Dbo->order("(Post.views) * Post.views");
+        $result = $this->Dbo->order('(Post.views) * Post.views');
         $this->assertRegExp("/^\s*ORDER BY\s+\(`Post`\.`views`\) \* `Post`\.`views`\s+ASC\s*$/", $result);
 
-        $result = $this->Dbo->order("(Model.field1 + Model.field2) * Model.field3");
+        $result = $this->Dbo->order('(Model.field1 + Model.field2) * Model.field3');
         $this->assertRegExp("/^\s*ORDER BY\s+\(`Model`\.`field1` \+ `Model`\.`field2`\) \* `Model`\.`field3`\s+ASC\s*$/", $result);
 
-        $result = $this->Dbo->order("Model.name+0 ASC");
+        $result = $this->Dbo->order('Model.name+0 ASC');
         $this->assertRegExp("/^\s*ORDER BY\s+`Model`\.`name`\+0\s+ASC\s*$/", $result);
 
-        $result = $this->Dbo->order("Anuncio.destaque & 2 DESC");
+        $result = $this->Dbo->order('Anuncio.destaque & 2 DESC');
         $expected = ' ORDER BY `Anuncio`.`destaque` & 2 DESC';
         $this->assertEquals($expected, $result);
 
-        $result = $this->Dbo->order("3963.191 * id");
+        $result = $this->Dbo->order('3963.191 * id');
         $expected = ' ORDER BY 3963.191 * id ASC';
         $this->assertEquals($expected, $result);
 
@@ -3146,7 +3146,7 @@ SQL;
      */
     public function testLengthEnum()
     {
-        $result = $this->Dbo->length("enum('test','me','now')");
+        $result = $this->Dbo->length('enum(\'test\',\'me\',\'now\')');
         $this->assertNull($result);
     }
 
@@ -3157,7 +3157,7 @@ SQL;
      */
     public function testLengthSet()
     {
-        $result = $this->Dbo->length("set('a','b','cd')");
+        $result = $this->Dbo->length('set(\'a\',\'b\',\'cd\')');
         $this->assertNull($result);
     }
 
@@ -3505,7 +3505,7 @@ SQL;
 
         $this->Dbo->expects($this->at(0))->method('value')
             ->with('harry')
-            ->will($this->returnValue("'harry'"));
+            ->will($this->returnValue('\'harry\''));
 
         $modelTable = $this->Dbo->fullTableName($this->Model);
         $this->Dbo->expects($this->at(1))->method('execute')
@@ -3739,7 +3739,7 @@ SQL;
 
         $result = $this->Dbo->group('this_year', $Article);
 
-        $expected = " GROUP BY (YEAR(`Article`.`created`))";
+        $expected = ' GROUP BY (YEAR(`Article`.`created`))';
         $this->assertEquals($expected, $result);
     }
 
@@ -3920,35 +3920,35 @@ SQL;
 
         // EMPTY STRING
         $result = $this->Dbo->value('', 'boolean');
-        $this->assertEquals("'0'", $result);
+        $this->assertEquals('\'0\'', $result);
 
         // BOOLEAN
         $result = $this->Dbo->value('true', 'boolean');
-        $this->assertEquals("'1'", $result);
+        $this->assertEquals('\'1\'', $result);
 
         $result = $this->Dbo->value('false', 'boolean');
-        $this->assertEquals("'1'", $result);
+        $this->assertEquals('\'1\'', $result);
 
         $result = $this->Dbo->value(true, 'boolean');
-        $this->assertEquals("'1'", $result);
+        $this->assertEquals('\'1\'', $result);
 
         $result = $this->Dbo->value(false, 'boolean');
-        $this->assertEquals("'0'", $result);
+        $this->assertEquals('\'0\'', $result);
 
         $result = $this->Dbo->value(1, 'boolean');
-        $this->assertEquals("'1'", $result);
+        $this->assertEquals('\'1\'', $result);
 
         $result = $this->Dbo->value(0, 'boolean');
-        $this->assertEquals("'0'", $result);
+        $this->assertEquals('\'0\'', $result);
 
         $result = $this->Dbo->value('abc', 'boolean');
-        $this->assertEquals("'1'", $result);
+        $this->assertEquals('\'1\'', $result);
 
         $result = $this->Dbo->value(1.234, 'boolean');
-        $this->assertEquals("'1'", $result);
+        $this->assertEquals('\'1\'', $result);
 
         $result = $this->Dbo->value('1.234e05', 'boolean');
-        $this->assertEquals("'1'", $result);
+        $this->assertEquals('\'1\'', $result);
 
         // NUMBERS
         $result = $this->Dbo->value(123, 'integer');
@@ -3958,13 +3958,13 @@ SQL;
         $this->assertEquals('123', $result);
 
         $result = $this->Dbo->value('0123', 'integer');
-        $this->assertEquals("'0123'", $result);
+        $this->assertEquals('\'0123\'', $result);
 
         $result = $this->Dbo->value('0x123ABC', 'integer');
-        $this->assertEquals("'0x123ABC'", $result);
+        $this->assertEquals('\'0x123ABC\'', $result);
 
         $result = $this->Dbo->value('0x123', 'integer');
-        $this->assertEquals("'0x123'", $result);
+        $this->assertEquals('\'0x123\'', $result);
 
         $result = $this->Dbo->value(1.234, 'float');
         $this->assertEquals(1.234, $result);
@@ -3973,41 +3973,41 @@ SQL;
         $this->assertEquals('1.234', $result);
 
         $result = $this->Dbo->value(' 1.234 ', 'float');
-        $this->assertEquals("' 1.234 '", $result);
+        $this->assertEquals('\' 1.234 \'', $result);
 
         $result = $this->Dbo->value('1.234e05', 'float');
-        $this->assertEquals("'1.234e05'", $result);
+        $this->assertEquals('\'1.234e05\'', $result);
 
         $result = $this->Dbo->value('1.234e+5', 'float');
-        $this->assertEquals("'1.234e+5'", $result);
+        $this->assertEquals('\'1.234e+5\'', $result);
 
         $result = $this->Dbo->value('1,234', 'float');
-        $this->assertEquals("'1,234'", $result);
+        $this->assertEquals('\'1,234\'', $result);
 
         $result = $this->Dbo->value('FFF', 'integer');
-        $this->assertEquals("'FFF'", $result);
+        $this->assertEquals('\'FFF\'', $result);
 
         $result = $this->Dbo->value('abc', 'integer');
-        $this->assertEquals("'abc'", $result);
+        $this->assertEquals('\'abc\'', $result);
 
         // STRINGS
         $result = $this->Dbo->value('123', 'string');
-        $this->assertEquals("'123'", $result);
+        $this->assertEquals('\'123\'', $result);
 
         $result = $this->Dbo->value(123, 'string');
-        $this->assertEquals("'123'", $result);
+        $this->assertEquals('\'123\'', $result);
 
         $result = $this->Dbo->value(1.234, 'string');
-        $this->assertEquals("'1.234'", $result);
+        $this->assertEquals('\'1.234\'', $result);
 
         $result = $this->Dbo->value('abc', 'string');
-        $this->assertEquals("'abc'", $result);
+        $this->assertEquals('\'abc\'', $result);
 
         $result = $this->Dbo->value(' abc ', 'string');
-        $this->assertEquals("' abc '", $result);
+        $this->assertEquals('\' abc \'', $result);
 
         $result = $this->Dbo->value('a bc', 'string');
-        $this->assertEquals("'a bc'", $result);
+        $this->assertEquals('\'a bc\'', $result);
     }
 
     /**
@@ -4113,19 +4113,19 @@ SQL;
 
         $this->Dbo->expects($this->at(1))->method('execute')
             ->with("UPDATE `$db`.`articles` AS `Article` LEFT JOIN `$db`.`users` AS `User` ON " .
-                "(`Article`.`user_id` = `User`.`id`)" .
-                " SET `Article`.`field1` = 2  WHERE 2=2");
+                '(`Article`.`user_id` = `User`.`id`)' .
+                ' SET `Article`.`field1` = 2  WHERE 2=2');
 
         $this->Dbo->expects($this->at(2))->method('execute')
             ->with("UPDATE `$db`.`articles` AS `Article` LEFT JOIN `$db`.`users` AS `User` ON " .
-                "(`Article`.`user_id` = `User`.`id`)" .
-                " SET `Article`.`field1` = 'value'  WHERE `index` = 'val'");
+                '(`Article`.`user_id` = `User`.`id`)' .
+                ' SET `Article`.`field1` = \'value\'  WHERE `index` = \'val\'');
 
         $Article = new Article();
 
         $this->Dbo->update($Article, ['field1'], ['value1']);
         $this->Dbo->update($Article, ['field1'], ['2'], '2=2');
-        $this->Dbo->update($Article, ['field1'], ["'value'"], ['index' => 'val']);
+        $this->Dbo->update($Article, ['field1'], ['\'value\''], ['index' => 'val']);
     }
 
     /**
@@ -4146,13 +4146,13 @@ SQL;
 
         $this->Dbo->expects($this->at(1))->method('execute')
             ->with("DELETE `Article` FROM `$db`.`articles` AS `Article` LEFT JOIN `$db`.`users` AS `User` " .
-                "ON (`Article`.`user_id` = `User`.`id`)" .
-                "  WHERE 1 = 1");
+                'ON (`Article`.`user_id` = `User`.`id`)' .
+                '  WHERE 1 = 1');
 
         $this->Dbo->expects($this->at(2))->method('execute')
             ->with("DELETE `Article` FROM `$db`.`articles` AS `Article` LEFT JOIN `$db`.`users` AS `User` " .
-                "ON (`Article`.`user_id` = `User`.`id`)" .
-                "  WHERE 2=2");
+                'ON (`Article`.`user_id` = `User`.`id`)' .
+                '  WHERE 2=2');
         $Article = new Article();
 
         $this->Dbo->delete($Article);
@@ -4269,15 +4269,15 @@ SQL;
      */
     public function testSetValue()
     {
-        $column = "set('a','b','c')";
+        $column = 'set(\'a\',\'b\',\'c\')';
         $result = $this->Dbo->value('1', $column);
-        $this->assertEquals("'1'", $result);
+        $this->assertEquals('\'1\'', $result);
 
         $result = $this->Dbo->value(1, $column);
-        $this->assertEquals("'1'", $result);
+        $this->assertEquals('\'1\'', $result);
 
         $result = $this->Dbo->value('a', $column);
-        $this->assertEquals("'a'", $result);
+        $this->assertEquals('\'a\'', $result);
     }
 
     /**

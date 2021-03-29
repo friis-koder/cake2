@@ -115,7 +115,7 @@ class CompletionShellTest extends CakeTestCase
         $this->Shell->runCommand('main', []);
         $output = $this->Shell->stdout->output;
 
-        $expected = "/This command is not intended to be called manually/";
+        $expected = '/This command is not intended to be called manually/';
         $this->assertRegExp($expected, $output);
     }
 

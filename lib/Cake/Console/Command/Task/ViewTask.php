@@ -222,7 +222,7 @@ class ViewTask extends BakeTask
         $prompt = __d('cake_console', "Would you like to create some CRUD views\n(index, add, view, edit) for this controller?\nNOTE: Before doing so, you'll need to create your controller\nand model classes (including associated models).");
         $wannaDoScaffold = $this->in($prompt, ['y', 'n'], 'y');
 
-        $wannaDoAdmin = $this->in(__d('cake_console', "Would you like to create the views for admin routing?"), ['y', 'n'], 'n');
+        $wannaDoAdmin = $this->in(__d('cake_console', 'Would you like to create the views for admin routing?'), ['y', 'n'], 'n');
 
         if (strtolower($wannaDoScaffold) === 'y' || strtolower($wannaDoAdmin) === 'y') {
             $vars = $this->_loadController();
@@ -347,7 +347,7 @@ class ViewTask extends BakeTask
         $this->hr();
         $this->out(__d('cake_console', 'Controller Name: %s', $this->controllerName));
         $this->out(__d('cake_console', 'Action Name:     %s', $action));
-        $this->out(__d('cake_console', 'Path:            %s', $this->getPath() . $this->controllerName . DS . Inflector::underscore($action) . ".ctp"));
+        $this->out(__d('cake_console', 'Path:            %s', $this->getPath() . $this->controllerName . DS . Inflector::underscore($action) . '.ctp'));
         $this->hr();
         $looksGood = $this->in(__d('cake_console', 'Look okay?'), ['y', 'n'], 'y');
         if (strtolower($looksGood) === 'y') {
@@ -452,7 +452,7 @@ class ViewTask extends BakeTask
         )->addArgument('controller', [
             'help' => __d('cake_console', 'Name of the controller views to bake. Can be Plugin.name as a shortcut for plugin baking.')
         ])->addArgument('action', [
-            'help' => __d('cake_console', "Will bake a single action's file. core templates are (index, add, edit, view)")
+            'help' => __d('cake_console', 'Will bake a single action\'s file. core templates are (index, add, edit, view)')
         ])->addArgument('alias', [
             'help' => __d('cake_console', 'Will bake the template in <action> but create the filename after <alias>.')
         ])->addOption('plugin', [

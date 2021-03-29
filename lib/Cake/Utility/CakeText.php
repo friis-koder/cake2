@@ -410,7 +410,7 @@ class CakeText
         $defaults = [
             'format' => '<span class="highlight">\1</span>',
             'html'   => false,
-            'regex'  => "|%s|iu"
+            'regex'  => '|%s|iu'
         ];
         $options += $defaults;
         extract($options);

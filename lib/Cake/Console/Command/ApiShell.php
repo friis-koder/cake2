@@ -110,7 +110,7 @@ class ApiShell extends AppShell
                 $this->hr();
                 $i = 0;
                 foreach ($parsed as $method) {
-                    $list[] = ++$i . ". " . $method['method'] . $method['parameters'];
+                    $list[] = ++$i . '. ' . $method['method'] . $method['parameters'];
                 }
                 $this->out($list);
 

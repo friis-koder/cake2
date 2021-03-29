@@ -234,7 +234,7 @@ class TestObjectWithToString
 {
     public function __toString()
     {
-        return "I'm ObjectWithToString";
+        return 'I\'m ObjectWithToString';
     }
 }
 
@@ -1448,11 +1448,11 @@ class ViewTest extends CakeTestCase
     public function testBlockCaptureStartIfEmpty()
     {
         $this->View->startIfEmpty('test');
-        echo "Block content 1";
+        echo 'Block content 1';
         $this->View->end();
 
         $this->View->startIfEmpty('test');
-        echo "Block content 2";
+        echo 'Block content 2';
         $this->View->end();
 
         $result = $this->View->fetch('test');
@@ -1467,11 +1467,11 @@ class ViewTest extends CakeTestCase
     public function testBlockCaptureStartStartIfEmpty()
     {
         $this->View->start('test');
-        echo "Block content 1";
+        echo 'Block content 1';
         $this->View->end();
 
         $this->View->startIfEmpty('test');
-        echo "Block content 2";
+        echo 'Block content 2';
         $this->View->end();
 
         $result = $this->View->fetch('test');
@@ -1555,7 +1555,7 @@ class ViewTest extends CakeTestCase
         $objectWithToString = new TestObjectWithToString();
         $this->View->assign('testWithObjectWithToString', $objectWithToString);
         $result = $this->View->fetch('testWithObjectWithToString');
-        $this->assertSame("I'm ObjectWithToString", $result);
+        $this->assertSame('I\'m ObjectWithToString', $result);
     }
 
     /**

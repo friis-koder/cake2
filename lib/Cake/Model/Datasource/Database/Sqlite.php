@@ -32,7 +32,7 @@ class Sqlite extends DboSource
      *
      * @var string
      */
-    public $description = "SQLite DBO Driver";
+    public $description = 'SQLite DBO Driver';
 
     /**
      * Quote Start
@@ -151,7 +151,7 @@ class Sqlite extends DboSource
             return $cache;
         }
 
-        $result = $this->fetchAll("SELECT name FROM sqlite_master WHERE type='table' ORDER BY name;", false);
+        $result = $this->fetchAll('SELECT name FROM sqlite_master WHERE type=\'table\' ORDER BY name;', false);
 
         if (!$result || empty($result)) {
             return [];
@@ -185,7 +185,7 @@ class Sqlite extends DboSource
         );
 
         foreach ($result as $column) {
-            $default = ($column['dflt_value'] === 'NULL') ? null : trim($column['dflt_value'], "'");
+            $default = ($column['dflt_value'] === 'NULL') ? null : trim($column['dflt_value'], '\'');
 
             $fields[$column['name']] = [
                 'type'    => $this->column($column['type']),
@@ -226,8 +226,8 @@ class Sqlite extends DboSource
             foreach ($fields as $field => $value) {
                 if (strpos($field, $model->alias . '.') !== false) {
                     unset($fields[$field]);
-                    $field = str_replace($model->alias . '.', "", $field);
-                    $field = str_replace($model->alias . '.', "", $field);
+                    $field = str_replace($model->alias . '.', '', $field);
+                    $field = str_replace($model->alias . '.', '', $field);
                     $fields[$field] = $value;
                 }
             }
@@ -476,7 +476,7 @@ class Sqlite extends DboSource
      */
     public function setEncoding($enc)
     {
-        if (!in_array($enc, ["UTF-8", "UTF-16", "UTF-16le", "UTF-16be"])) {
+        if (!in_array($enc, ['UTF-8', 'UTF-16', 'UTF-16le', 'UTF-16be'])) {
             return false;
         }
 
@@ -617,7 +617,7 @@ class Sqlite extends DboSource
      */
     protected function _dropTable($table)
     {
-        return 'DROP TABLE IF EXISTS ' . $this->fullTableName($table) . ";";
+        return 'DROP TABLE IF EXISTS ' . $this->fullTableName($table) . ';';
     }
 
     /**
@@ -627,7 +627,7 @@ class Sqlite extends DboSource
      */
     public function getSchemaName()
     {
-        return "main"; // Sqlite Datasource does not support multidb
+        return 'main'; // Sqlite Datasource does not support multidb
     }
 
     /**

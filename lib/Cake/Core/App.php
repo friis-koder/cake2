@@ -929,24 +929,24 @@ class App
      */
     public static function increaseMemoryLimit($additionalKb)
     {
-        $limit = ini_get("memory_limit");
+        $limit = ini_get('memory_limit');
         if (!is_string($limit) || !strlen($limit)) {
             return;
         }
         $limit = trim($limit);
         $units = strtoupper(substr($limit, -1));
         $current = substr($limit, 0, strlen($limit) - 1);
-        if ($units === "M") {
+        if ($units === 'M') {
             $current = $current * 1024;
-            $units = "K";
+            $units = 'K';
         }
-        if ($units === "G") {
+        if ($units === 'G') {
             $current = $current * 1024 * 1024;
-            $units = "K";
+            $units = 'K';
         }
 
-        if ($units === "K") {
-            ini_set("memory_limit", ceil($current + $additionalKb) . "K");
+        if ($units === 'K') {
+            ini_set('memory_limit', ceil($current + $additionalKb) . 'K');
         }
     }
 

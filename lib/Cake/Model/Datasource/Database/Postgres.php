@@ -27,7 +27,7 @@ class Postgres extends DboSource
      *
      * @var string
      */
-    public $description = "PostgreSQL DBO Driver";
+    public $description = 'PostgreSQL DBO Driver';
 
     /**
      * Base driver configuration settings. Merged with user settings.
@@ -174,7 +174,7 @@ class Postgres extends DboSource
         }
 
         $schema = $this->config['schema'];
-        $sql = "SELECT table_name as name FROM INFORMATION_SCHEMA.tables WHERE table_schema = ?";
+        $sql = 'SELECT table_name as name FROM INFORMATION_SCHEMA.tables WHERE table_schema = ?';
         $result = $this->_execute($sql, [$schema]);
 
         if (!$result) {
@@ -253,8 +253,8 @@ class Postgres extends DboSource
                     'type'    => $this->column($type),
                     'null'    => ($c->null === 'NO' ? false : true),
                     'default' => preg_replace(
-                        "/^'(.*)'$/",
-                        "$1",
+                        '/^\'(.*)\'$/',
+                        '$1',
                         preg_replace('/::[\w\s]+/', '', $c->default)
                     ),
                     'length' => $length,
@@ -520,17 +520,17 @@ class Postgres extends DboSource
         $index = [];
         $table = $this->fullTableName($model, false, false);
         if ($table) {
-            $indexes = $this->query("SELECT c2.relname, i.indisprimary, i.indisunique, i.indisclustered, i.indisvalid, pg_catalog.pg_get_indexdef(i.indexrelid, 0, true) as statement, c2.reltablespace
+            $indexes = $this->query('SELECT c2.relname, i.indisprimary, i.indisunique, i.indisclustered, i.indisvalid, pg_catalog.pg_get_indexdef(i.indexrelid, 0, true) as statement, c2.reltablespace
 			FROM pg_catalog.pg_class c, pg_catalog.pg_class c2, pg_catalog.pg_index i
 			WHERE c.oid  = (
 				SELECT c.oid
 				FROM pg_catalog.pg_class c LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
-				WHERE c.relname ~ '^(" . $table . ")$'
+				WHERE c.relname ~ \'^(' . $table . ')$\'
 					AND pg_catalog.pg_table_is_visible(c.oid)
-					AND n.nspname ~ '^(" . $this->config['schema'] . ")$'
+					AND n.nspname ~ \'^(' . $this->config['schema'] . ')$\'
 			)
 			AND c.oid = i.indrelid AND i.indexrelid = c2.oid
-			ORDER BY i.indisprimary DESC, i.indisunique DESC, c2.relname", false);
+			ORDER BY i.indisprimary DESC, i.indisunique DESC, c2.relname', false);
             foreach ($indexes as $info) {
                 $key = array_pop($info);
                 if ($key['indisprimary']) {

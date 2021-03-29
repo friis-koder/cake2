@@ -502,7 +502,7 @@ class Controller extends CakeObject implements CakeEventListener
 
             if ($this->_isPrivateAction($method, $request)) {
                 throw new PrivateActionException([
-                    'controller' => $this->name . "Controller",
+                    'controller' => $this->name . 'Controller',
                     'action'     => $request->params['action']
                 ]);
             }
@@ -514,7 +514,7 @@ class Controller extends CakeObject implements CakeEventListener
             }
 
             throw new MissingActionException([
-                'controller' => $this->name . "Controller",
+                'controller' => $this->name . 'Controller',
                 'action'     => $request->params['action']
             ]);
         }

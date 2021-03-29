@@ -12,7 +12,7 @@
  * @since         2.8
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-App::uses("BaseShellHelper", "Console/Helper");
+App::uses('BaseShellHelper', 'Console/Helper');
 
 /**
  * Create a visually pleasing ASCII art table

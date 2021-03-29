@@ -355,11 +355,11 @@ class InflectorTest extends CakeTestCase
         $expected = 'this_is_a_path';
         $this->assertEquals($expected, $result);
 
-        $result = Inflector::slug('Foo Bar: Not just for breakfast any-more', "-");
+        $result = Inflector::slug('Foo Bar: Not just for breakfast any-more', '-');
         $expected = 'Foo-Bar-Not-just-for-breakfast-any-more';
         $this->assertEquals($expected, $result);
 
-        $result = Inflector::slug('Foo Bar: Not just for breakfast any-more', "+");
+        $result = Inflector::slug('Foo Bar: Not just for breakfast any-more', '+');
         $expected = 'Foo+Bar+Not+just+for+breakfast+any+more';
         $this->assertEquals($expected, $result);
 

@@ -261,19 +261,19 @@ class Sanitize
             $data = Sanitize::html($data, ['remove' => $options['remove_html']]);
         }
         if ($options['dollar']) {
-            $data = str_replace("\\\$", "$", $data);
+            $data = str_replace('\\$', '$', $data);
         }
         if ($options['carriage']) {
-            $data = str_replace("\r", "", $data);
+            $data = str_replace("\r", '', $data);
         }
         if ($options['unicode']) {
-            $data = preg_replace("/&amp;#([0-9]+);/s", "&#\\1;", $data);
+            $data = preg_replace('/&amp;#([0-9]+);/s', '&#\\1;', $data);
         }
         if ($options['escape']) {
             $data = Sanitize::escape($data, $options['connection']);
         }
         if ($options['backslash']) {
-            $data = preg_replace("/\\\(?!&amp;#|\?#)/", "\\", $data);
+            $data = preg_replace("/\\\(?!&amp;#|\?#)/", '\\', $data);
         }
 
         return $data;

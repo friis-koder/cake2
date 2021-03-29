@@ -196,10 +196,10 @@ class CakeValidationRuleTest extends CakeTestCase
             $fieldname => null
         ];
 
-        $this->assertFalse($Rule->checkRequired($fieldname, $data), "A null but present field should not fail requirement check if allowEmpty is true");
+        $this->assertFalse($Rule->checkRequired($fieldname, $data), 'A null but present field should not fail requirement check if allowEmpty is true');
 
         $Rule->allowEmpty = false;
 
-        $this->assertTrue($Rule->checkRequired($fieldname, $data), "A null but present field should fail requirement check if allowEmpty is false");
+        $this->assertTrue($Rule->checkRequired($fieldname, $data), 'A null but present field should fail requirement check if allowEmpty is false');
     }
 }

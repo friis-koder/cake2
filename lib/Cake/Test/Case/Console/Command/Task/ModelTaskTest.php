@@ -982,7 +982,7 @@ STRINGEND;
             ->with($path, $this->stringContains('BakeArticle extends ControllerTestAppModel'));
 
         $result = $this->Task->bake('BakeArticle', [], []);
-        $this->assertContains("App::uses('ControllerTestAppModel', 'ControllerTest.Model');", $result);
+        $this->assertContains('App::uses(\'ControllerTestAppModel\', \'ControllerTest.Model\');', $result);
 
         $this->assertEquals(count(ClassRegistry::keys()), 0);
         $this->assertEquals(count(ClassRegistry::mapKeys()), 0);
@@ -1078,7 +1078,7 @@ TEXT;
 
         $this->Task->expects($this->once())->method('_checkUnitTest')->will($this->returnValue(1));
         $this->Task->expects($this->at(0))->method('createFile')
-            ->with($filename, $this->stringContains("'BakeComment' => array("));
+            ->with($filename, $this->stringContains('\'BakeComment\' => array('));
 
         $this->Task->execute();
     }

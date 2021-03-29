@@ -447,7 +447,7 @@ class ObjectTest extends CakeTestCase
         $this->assertSame($expected, $this->object->methodCalls);
 
         $this->object->dispatchMethod('methodWithOptionalParam', ['Hello']);
-        $expected[] = ['methodWithOptionalParam' => ["Hello"]];
+        $expected[] = ['methodWithOptionalParam' => ['Hello']];
         $this->assertSame($expected, $this->object->methodCalls);
 
         $this->object->dispatchMethod('methodWithOptionalParam');

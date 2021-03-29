@@ -183,7 +183,7 @@ class SqliteTest extends CakeTestCase
         }
         $this->assertTrue(file_exists(TMP . $dbName));
 
-        $db->execute("CREATE TABLE test_list (id VARCHAR(255));");
+        $db->execute('CREATE TABLE test_list (id VARCHAR(255));');
 
         $db->cacheSources = true;
         $this->assertEquals(['test_list'], $db->listSources());

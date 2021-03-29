@@ -585,8 +585,8 @@ class ControllerTest extends CakeTestCase
 		<p><a href="/flash">this should work</a></p>
 		</body>
 		</html>';
-        $result = str_replace(["\t", "\r\n", "\n"], "", $result);
-        $expected = str_replace(["\t", "\r\n", "\n"], "", $expected);
+        $result = str_replace(["\t", "\r\n", "\n"], '', $result);
+        $expected = str_replace(["\t", "\r\n", "\n"], '', $expected);
         $this->assertEquals($expected, $result);
 
         App::build([
@@ -757,14 +757,14 @@ class ControllerTest extends CakeTestCase
     public static function statusCodeProvider()
     {
         return [
-            [300, "Multiple Choices"],
-            [301, "Moved Permanently"],
-            [302, "Found"],
-            [303, "See Other"],
-            [304, "Not Modified"],
-            [305, "Use Proxy"],
-            [307, "Temporary Redirect"],
-            [403, "Forbidden"],
+            [300, 'Multiple Choices'],
+            [301, 'Moved Permanently'],
+            [302, 'Found'],
+            [303, 'See Other'],
+            [304, 'Not Modified'],
+            [305, 'Use Proxy'],
+            [307, 'Temporary Redirect'],
+            [403, 'Forbidden'],
         ];
     }
 
@@ -1215,7 +1215,7 @@ class ControllerTest extends CakeTestCase
         ];
         $expected = [
             'Model1.field1 >'    => '23',
-            'Model2.field2 LIKE' => "%string%",
+            'Model2.field2 LIKE' => '%string%',
             'Model3.field3 <='   => '23',
         ];
         $result = $Controller->postConditions($data, $ops);

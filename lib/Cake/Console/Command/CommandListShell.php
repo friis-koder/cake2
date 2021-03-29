@@ -50,18 +50,18 @@ class CommandListShell extends AppShell
     public function main()
     {
         if (empty($this->params['xml'])) {
-            $this->out(__d('cake_console', "<info>Current Paths:</info>"), 2);
-            $this->out(" -app: " . APP_DIR);
-            $this->out(" -working: " . rtrim(APP, DS));
-            $this->out(" -root: " . rtrim(ROOT, DS));
-            $this->out(" -core: " . rtrim(CORE_PATH, DS));
-            $this->out(" -webroot: " . rtrim(WWW_ROOT, DS));
-            $this->out("");
-            $this->out(__d('cake_console', "<info>Changing Paths:</info>"), 2);
-            $this->out(__d('cake_console', "Your working path should be the same as your application path. To change your path use the '-app' param."));
-            $this->out(__d('cake_console', "Example: %s or %s", '-app relative/path/to/myapp', '-app /absolute/path/to/myapp'), 2);
+            $this->out(__d('cake_console', '<info>Current Paths:</info>'), 2);
+            $this->out(' -app: ' . APP_DIR);
+            $this->out(' -working: ' . rtrim(APP, DS));
+            $this->out(' -root: ' . rtrim(ROOT, DS));
+            $this->out(' -core: ' . rtrim(CORE_PATH, DS));
+            $this->out(' -webroot: ' . rtrim(WWW_ROOT, DS));
+            $this->out('');
+            $this->out(__d('cake_console', '<info>Changing Paths:</info>'), 2);
+            $this->out(__d('cake_console', 'Your working path should be the same as your application path. To change your path use the \'-app\' param.'));
+            $this->out(__d('cake_console', 'Example: %s or %s', '-app relative/path/to/myapp', '-app /absolute/path/to/myapp'), 2);
 
-            $this->out(__d('cake_console', "<info>Available Shells:</info>"), 2);
+            $this->out(__d('cake_console', '<info>Available Shells:</info>'), 2);
         }
 
         $shellList = $this->Command->getShellList();
@@ -90,9 +90,9 @@ class CommandListShell extends AppShell
             $this->out();
         }
 
-        $this->out(__d('cake_console', "To run an app or core command, type <info>cake shell_name [args]</info>"));
-        $this->out(__d('cake_console', "To run a plugin command, type <info>cake Plugin.shell_name [args]</info>"));
-        $this->out(__d('cake_console', "To get help on a specific command, type <info>cake shell_name --help</info>"), 2);
+        $this->out(__d('cake_console', 'To run an app or core command, type <info>cake shell_name [args]</info>'));
+        $this->out(__d('cake_console', 'To run a plugin command, type <info>cake Plugin.shell_name [args]</info>'));
+        $this->out(__d('cake_console', 'To get help on a specific command, type <info>cake shell_name --help</info>'), 2);
     }
 
     /**

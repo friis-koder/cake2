@@ -2123,11 +2123,11 @@ class CakeRequestTest extends CakeTestCase
         $this->_loadEnvironment($env);
 
         $request = new CakeRequest();
-        $this->assertEquals($expected['url'], $request->url, "url error");
-        $this->assertEquals($expected['base'], $request->base, "base error");
-        $this->assertEquals($expected['webroot'], $request->webroot, "webroot error");
+        $this->assertEquals($expected['url'], $request->url, 'url error');
+        $this->assertEquals($expected['base'], $request->base, 'base error');
+        $this->assertEquals($expected['webroot'], $request->webroot, 'webroot error');
         if (isset($expected['urlParams'])) {
-            $this->assertEquals($expected['urlParams'], $request->query, "GET param mismatch");
+            $this->assertEquals($expected['urlParams'], $request->query, 'GET param mismatch');
         }
     }
 

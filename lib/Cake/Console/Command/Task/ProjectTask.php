@@ -55,7 +55,7 @@ class ProjectTask extends AppShell
         }
 
         while (!$project) {
-            $prompt = __d('cake_console', "What is the path to the project you want to bake?");
+            $prompt = __d('cake_console', 'What is the path to the project you want to bake?');
             $project = $this->in($prompt, null, $suggestedPath);
         }
 
@@ -174,7 +174,7 @@ class ProjectTask extends AppShell
         }
         while (!$skel) {
             $skel = $this->in(
-                __d('cake_console', "What is the path to the directory layout you wish to copy?"),
+                __d('cake_console', 'What is the path to the directory layout you wish to copy?'),
                 null,
                 CAKE . 'Console' . DS . 'Templates' . DS . 'skel'
             );
@@ -211,7 +211,7 @@ class ProjectTask extends AppShell
                     $this->out(__d('cake_console', '<success>Created:</success> %s in %s', $app, $path));
                     $this->hr();
                 } else {
-                    $this->err(__d('cake_console', "<error>Could not create</error> '%s' properly.", $app));
+                    $this->err(__d('cake_console', '<error>Could not create</error> \'%s\' properly.', $app));
 
                     return false;
                 }
@@ -245,8 +245,8 @@ class ProjectTask extends AppShell
         $File = new File($path . 'Console' . DS . 'cake.php');
         $contents = $File->read();
         if (preg_match('/(__CAKE_PATH__)/', $contents, $match)) {
-            $root = strpos(CAKE_CORE_INCLUDE_PATH, '/') === 0 ? " DS . '" : "'";
-            $replacement = $root . str_replace(DS, "' . DS . '", trim(CAKE_CORE_INCLUDE_PATH, DS)) . "'";
+            $root = strpos(CAKE_CORE_INCLUDE_PATH, '/') === 0 ? ' DS . \'' : '\'';
+            $replacement = $root . str_replace(DS, '\' . DS . \'', trim(CAKE_CORE_INCLUDE_PATH, DS)) . '\'';
             $result = str_replace($match[0], $replacement, $contents);
             if ($File->write($result)) {
                 return true;
@@ -359,12 +359,12 @@ class ProjectTask extends AppShell
     {
         $contents = file_get_contents($filename);
 
-        $root = strpos(CAKE_CORE_INCLUDE_PATH, '/') === 0 ? " DS . '" : "'";
-        $corePath = $root . str_replace(DS, "' . DS . '", trim(CAKE_CORE_INCLUDE_PATH, DS)) . "'";
+        $root = strpos(CAKE_CORE_INCLUDE_PATH, '/') === 0 ? ' DS . \'' : '\'';
+        $corePath = $root . str_replace(DS, '\' . DS . \'', trim(CAKE_CORE_INCLUDE_PATH, DS)) . '\'';
 
         $composer = ROOT . DS . APP_DIR . DS . 'Vendor' . DS . 'cakephp' . DS . 'cakephp' . DS . 'lib';
         if (file_exists($composer)) {
-            $corePath = " ROOT . DS . APP_DIR . DS . 'Vendor' . DS . 'cakephp' . DS . 'cakephp' . DS . 'lib'";
+            $corePath = ' ROOT . DS . APP_DIR . DS . \'Vendor\' . DS . \'cakephp\' . DS . \'cakephp\' . DS . \'lib\'';
         }
 
         $result = str_replace('__CAKE_PATH__', $corePath, $contents, $count);

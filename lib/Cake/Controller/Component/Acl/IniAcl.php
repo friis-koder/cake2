@@ -57,7 +57,7 @@ class IniAcl extends CakeObject implements AclInterface
      * @param string $action Action (defaults to *)
      * @return bool Success
      */
-    public function allow($aro, $aco, $action = "*")
+    public function allow($aro, $aco, $action = '*')
     {
     }
 
@@ -69,7 +69,7 @@ class IniAcl extends CakeObject implements AclInterface
      * @param string $action Action (defaults to *)
      * @return bool Success
      */
-    public function deny($aro, $aco, $action = "*")
+    public function deny($aro, $aco, $action = '*')
     {
     }
 
@@ -81,7 +81,7 @@ class IniAcl extends CakeObject implements AclInterface
      * @param string $action Action (defaults to *)
      * @return bool Success
      */
-    public function inherit($aro, $aco, $action = "*")
+    public function inherit($aro, $aco, $action = '*')
     {
     }
 
@@ -107,7 +107,7 @@ class IniAcl extends CakeObject implements AclInterface
         }
 
         if (isset($aclConfig[$aro]['deny'])) {
-            $userDenies = $this->arrayTrim(explode(",", $aclConfig[$aro]['deny']));
+            $userDenies = $this->arrayTrim(explode(',', $aclConfig[$aro]['deny']));
 
             if (array_search($aco, $userDenies)) {
                 return false;
@@ -115,7 +115,7 @@ class IniAcl extends CakeObject implements AclInterface
         }
 
         if (isset($aclConfig[$aro]['allow'])) {
-            $userAllows = $this->arrayTrim(explode(",", $aclConfig[$aro]['allow']));
+            $userAllows = $this->arrayTrim(explode(',', $aclConfig[$aro]['allow']));
 
             if (array_search($aco, $userAllows)) {
                 return true;
@@ -123,12 +123,12 @@ class IniAcl extends CakeObject implements AclInterface
         }
 
         if (isset($aclConfig[$aro]['groups'])) {
-            $userGroups = $this->arrayTrim(explode(",", $aclConfig[$aro]['groups']));
+            $userGroups = $this->arrayTrim(explode(',', $aclConfig[$aro]['groups']));
 
             foreach ($userGroups as $group) {
                 if (array_key_exists($group, $aclConfig)) {
                     if (isset($aclConfig[$group]['deny'])) {
-                        $groupDenies = $this->arrayTrim(explode(",", $aclConfig[$group]['deny']));
+                        $groupDenies = $this->arrayTrim(explode(',', $aclConfig[$group]['deny']));
 
                         if (array_search($aco, $groupDenies)) {
                             return false;
@@ -136,7 +136,7 @@ class IniAcl extends CakeObject implements AclInterface
                     }
 
                     if (isset($aclConfig[$group]['allow'])) {
-                        $groupAllows = $this->arrayTrim(explode(",", $aclConfig[$group]['allow']));
+                        $groupAllows = $this->arrayTrim(explode(',', $aclConfig[$group]['allow']));
 
                         if (array_search($aco, $groupAllows)) {
                             return true;
@@ -175,7 +175,7 @@ class IniAcl extends CakeObject implements AclInterface
         foreach ($array as $key => $value) {
             $array[$key] = trim($value);
         }
-        array_unshift($array, "");
+        array_unshift($array, '');
 
         return $array;
     }

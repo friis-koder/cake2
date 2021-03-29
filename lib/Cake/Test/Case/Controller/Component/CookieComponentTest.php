@@ -809,11 +809,11 @@ class CookieComponentTest extends CakeTestCase
      */
     public function testCheckKeyWithSpaces()
     {
-        $this->Cookie->write('CookieComponent Test', "test");
+        $this->Cookie->write('CookieComponent Test', 'test');
         $this->assertTrue($this->Cookie->check('CookieComponent Test'));
         $this->Cookie->delete('CookieComponent Test');
 
-        $this->Cookie->write('CookieComponent Test.Test Case', "test");
+        $this->Cookie->write('CookieComponent Test.Test Case', 'test');
         $this->assertTrue($this->Cookie->check('CookieComponent Test.Test Case'));
     }
 
@@ -979,6 +979,6 @@ class CookieComponentTest extends CakeTestCase
             $value = $this->_implode($value);
         }
 
-        return "Q2FrZQ==." . base64_encode(Security::cipher($value, $this->Cookie->key));
+        return 'Q2FrZQ==.' . base64_encode(Security::cipher($value, $this->Cookie->key));
     }
 }

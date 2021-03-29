@@ -221,7 +221,7 @@ class ConsoleOutput
             $this->write(str_repeat(' ', $fill), 0);
         }
         if ($newlines) {
-            $this->write("", $newlines);
+            $this->write('', $newlines);
         }
     }
 

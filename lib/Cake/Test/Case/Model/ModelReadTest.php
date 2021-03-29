@@ -100,7 +100,7 @@ class ModelReadTest extends BaseModelTest
             [
                 'Product' => [
                     'id'    => 1,
-                    'name'  => "Park's Great Hits",
+                    'name'  => 'Park\'s Great Hits',
                     'type'  => 'Music',
                     'price' => 19
                 ]
@@ -114,7 +114,7 @@ class ModelReadTest extends BaseModelTest
             [
                 'Product' => [
                     'id'    => 2,
-                    'name'  => "Silly Puddy",
+                    'name'  => 'Silly Puddy',
                     'type'  => 'Toy',
                     'price' => 3
                 ]
@@ -122,7 +122,7 @@ class ModelReadTest extends BaseModelTest
             [
                 'Product' => [
                     'id'    => 3,
-                    'name'  => "Playstation",
+                    'name'  => 'Playstation',
                     'type'  => 'Toy',
                     'price' => 89
                 ]
@@ -130,7 +130,7 @@ class ModelReadTest extends BaseModelTest
             [
                 'Product' => [
                     'id'    => 4,
-                    'name'  => "Men's T-Shirt",
+                    'name'  => 'Men\'s T-Shirt',
                     'type'  => 'Clothing',
                     'price' => 32
                 ]
@@ -138,7 +138,7 @@ class ModelReadTest extends BaseModelTest
             [
                 'Product' => [
                     'id'    => 5,
-                    'name'  => "Blouse",
+                    'name'  => 'Blouse',
                     'type'  => 'Clothing',
                     'price' => 34
                 ]
@@ -146,7 +146,7 @@ class ModelReadTest extends BaseModelTest
             [
                 'Product' => [
                     'id'    => 6,
-                    'name'  => "Electronica 2002",
+                    'name'  => 'Electronica 2002',
                     'type'  => 'Music',
                     'price' => 4
                 ]
@@ -154,7 +154,7 @@ class ModelReadTest extends BaseModelTest
             [
                 'Product' => [
                     'id'    => 7,
-                    'name'  => "Country Tunes",
+                    'name'  => 'Country Tunes',
                     'type'  => 'Music',
                     'price' => 21
                 ]
@@ -162,7 +162,7 @@ class ModelReadTest extends BaseModelTest
             [
                 'Product' => [
                     'id'    => 8,
-                    'name'  => "Watermelon",
+                    'name'  => 'Watermelon',
                     'type'  => 'Food',
                     'price' => 9
                 ]
@@ -175,7 +175,7 @@ class ModelReadTest extends BaseModelTest
             [
                 'Product' => [
                     'id'    => 1,
-                    'name'  => "Park's Great Hits",
+                    'name'  => 'Park\'s Great Hits',
                     'type'  => 'Music',
                     'price' => 19
                 ]
@@ -183,7 +183,7 @@ class ModelReadTest extends BaseModelTest
             [
                 'Product' => [
                     'id'    => 2,
-                    'name'  => "Silly Puddy",
+                    'name'  => 'Silly Puddy',
                     'type'  => 'Toy',
                     'price' => 3
                 ]
@@ -5741,8 +5741,8 @@ class ModelReadTest extends BaseModelTest
                     'alias'      => 'ArticlesTag',
                     'table'      => 'articles_tags',
                     'conditions' => [
-                        ["ArticlesTag.article_id" => '{$__cakeID__$}'],
-                        ["ArticlesTag.tag_id" => $this->db->identifier('Tag.id')]
+                        ['ArticlesTag.article_id' => '{$__cakeID__$}'],
+                        ['ArticlesTag.tag_id' => $this->db->identifier('Tag.id')]
                     ]
                 ]],
                 'conditions' => [],
@@ -8103,7 +8103,7 @@ class ModelReadTest extends BaseModelTest
         $Featured->bindModel([
             'belongsTo' => [
                 'ArticleFeatured' => [
-                    'conditions' => "ArticleFeatured.published = 'Y'",
+                    'conditions' => 'ArticleFeatured.published = \'Y\'',
                     'fields'     => 'id, title, user_id, published'
                 ]
             ]
@@ -8396,7 +8396,7 @@ class ModelReadTest extends BaseModelTest
     {
         $this->loadFixtures('Post', 'Author');
         $Post = ClassRegistry::init('Post');
-        $Post->virtualFields = ['two' => "1 + 1"];
+        $Post->virtualFields = ['two' => '1 + 1'];
         $result = $Post->find('first');
         $this->assertEquals(2, $result['Post']['two']);
 
@@ -8458,7 +8458,7 @@ class ModelReadTest extends BaseModelTest
 
         ClassRegistry::flush();
         $Writing = ClassRegistry::init(['class' => 'Post', 'alias' => 'Writing']);
-        $Writing->virtualFields = ['two' => "1 + 1"];
+        $Writing->virtualFields = ['two' => '1 + 1'];
         $result = $Writing->find('first');
         $this->assertEquals(2, $result['Writing']['two']);
 
@@ -8488,7 +8488,7 @@ class ModelReadTest extends BaseModelTest
                 'alias'      => 'Table',
                 'limit'      => 1,
                 'conditions' => [
-                    "Table.id > 1"
+                    'Table.id > 1'
                 ]
             ],
             $user
@@ -8995,7 +8995,7 @@ class ModelReadTest extends BaseModelTest
         $this->assertSame('Chuck', $getUserNameFromDb(true));
         $this->assertSame('Chuck', $getUserNameFromDb(false));
 
-        $model->updateAll(['User.user' => "'Sylvester'"], ['User.id' => $model->id]);
+        $model->updateAll(['User.user' => '\'Sylvester\''], ['User.id' => $model->id]);
         $model->cacheQueries = false;
         $this->assertSame('Chuck', $getUserNameFromDb(true));
         $this->assertSame('Sylvester', $getUserNameFromDb(false));
@@ -9024,7 +9024,7 @@ class ModelReadTest extends BaseModelTest
         $this->assertSame('Chuck', $getUserNameFromDb(true));
         $this->assertSame('Chuck', $getUserNameFromDb(false));
 
-        $model->updateAll(['User.user' => "'Sylvester'"], ['User.id' => $model->id]);
+        $model->updateAll(['User.user' => '\'Sylvester\''], ['User.id' => $model->id]);
         $model->cacheQueries = false;
         $this->assertSame('Chuck', $getUserNameFromDb(true));
         $this->assertSame('Sylvester', $getUserNameFromDb(false));
@@ -9050,7 +9050,7 @@ class ModelReadTest extends BaseModelTest
 
         $model->cacheQueries = true;
         $this->assertSame('Chuck', $getUserNameFromDb());
-        $model->updateAll(['User.user' => "'Sylvester'"], ['User.id' => $model->id]);
+        $model->updateAll(['User.user' => '\'Sylvester\''], ['User.id' => $model->id]);
 
         $this->assertSame('Chuck', $getUserNameFromDb());
         $model->cacheQueries = false;
@@ -9078,7 +9078,7 @@ class ModelReadTest extends BaseModelTest
         $model->cacheQueries = true;
         $this->assertSame('Chuck', $getUserNameFromDb());
 
-        $model->updateAll(['User.user' => "'Sylvester'"], ['User.id' => $model->id]);
+        $model->updateAll(['User.user' => '\'Sylvester\''], ['User.id' => $model->id]);
         $this->assertSame('Chuck', $getUserNameFromDb());
 
         $model->cacheQueries = false;

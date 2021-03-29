@@ -333,7 +333,7 @@ class CakeResponseTest extends CakeTestCase
         $response = new CakeResponse();
         $expected = [
             'Expires'       => 'Mon, 26 Jul 1997 05:00:00 GMT',
-            'Last-Modified' => gmdate("D, d M Y H:i:s") . " GMT",
+            'Last-Modified' => gmdate('D, d M Y H:i:s') . ' GMT',
             'Cache-Control' => 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0'
         ];
         $response->disableCache();
@@ -352,8 +352,8 @@ class CakeResponseTest extends CakeTestCase
         $time = new DateTime('+1 day', new DateTimeZone('UTC'));
         $response->expires('+1 day');
         $expected = [
-            'Date'          => gmdate("D, j M Y G:i:s ", $since) . 'GMT',
-            'Last-Modified' => gmdate("D, j M Y H:i:s ", $since) . 'GMT',
+            'Date'          => gmdate('D, j M Y G:i:s ', $since) . 'GMT',
+            'Last-Modified' => gmdate('D, j M Y H:i:s ', $since) . 'GMT',
             'Expires'       => $time->format('D, j M Y H:i:s') . ' GMT',
             'Cache-Control' => 'public, max-age=' . ($time->format('U') - time())
         ];
@@ -364,9 +364,9 @@ class CakeResponseTest extends CakeTestCase
         $since = time();
         $time = '+5 day';
         $expected = [
-            'Date'          => gmdate("D, j M Y G:i:s ", $since) . 'GMT',
-            'Last-Modified' => gmdate("D, j M Y H:i:s ", $since) . 'GMT',
-            'Expires'       => gmdate("D, j M Y H:i:s", strtotime($time)) . " GMT",
+            'Date'          => gmdate('D, j M Y G:i:s ', $since) . 'GMT',
+            'Last-Modified' => gmdate('D, j M Y H:i:s ', $since) . 'GMT',
+            'Expires'       => gmdate('D, j M Y H:i:s', strtotime($time)) . ' GMT',
             'Cache-Control' => 'public, max-age=' . (strtotime($time) - time())
         ];
         $response->cache($since, $time);
@@ -376,9 +376,9 @@ class CakeResponseTest extends CakeTestCase
         $since = time();
         $time = time();
         $expected = [
-            'Date'          => gmdate("D, j M Y G:i:s ", $since) . 'GMT',
-            'Last-Modified' => gmdate("D, j M Y H:i:s ", $since) . 'GMT',
-            'Expires'       => gmdate("D, j M Y H:i:s", $time) . " GMT",
+            'Date'          => gmdate('D, j M Y G:i:s ', $since) . 'GMT',
+            'Last-Modified' => gmdate('D, j M Y H:i:s ', $since) . 'GMT',
+            'Expires'       => gmdate('D, j M Y H:i:s', $time) . ' GMT',
             'Cache-Control' => 'public, max-age=0'
         ];
         $response->cache($since, $time);
@@ -397,7 +397,7 @@ class CakeResponseTest extends CakeTestCase
         }
 
         $response = new CakeResponse();
-        if (ini_get("zlib.output_compression") === '1' || !extension_loaded("zlib")) {
+        if (ini_get('zlib.output_compression') === '1' || !extension_loaded('zlib')) {
             $this->assertFalse($response->compress());
             $this->markTestSkipped('Is not possible to test output compression');
         }
@@ -511,14 +511,14 @@ class CakeResponseTest extends CakeTestCase
         $result = $response->outputCompressed();
         $this->assertFalse($result);
 
-        if (!extension_loaded("zlib")) {
+        if (!extension_loaded('zlib')) {
             $this->markTestSkipped('Skipping further tests for outputCompressed as zlib extension is not loaded');
         }
         if (PHP_SAPI !== 'cli') {
             $this->markTestSkipped('Testing outputCompressed method with compression enabled done only in cli');
         }
 
-        if (ini_get("zlib.output_compression") !== '1') {
+        if (ini_get('zlib.output_compression') !== '1') {
             ob_start('ob_gzhandler');
         }
         $_SERVER['HTTP_ACCEPT_ENCODING'] = 'gzip';
@@ -528,7 +528,7 @@ class CakeResponseTest extends CakeTestCase
         $_SERVER['HTTP_ACCEPT_ENCODING'] = '';
         $result = $response->outputCompressed();
         $this->assertFalse($result);
-        if (ini_get("zlib.output_compression") !== '1') {
+        if (ini_get('zlib.output_compression') !== '1') {
             ob_get_clean();
         }
     }
@@ -1763,7 +1763,7 @@ class CakeResponseTest extends CakeTestCase
         $result = $response->send();
         $output = ob_get_clean();
         $this->assertEquals(206, $response->statusCode());
-        $this->assertEquals("is the test asset ", $output);
+        $this->assertEquals('is the test asset ', $output);
         $this->assertNotSame(false, $result);
     }
 
@@ -1939,7 +1939,7 @@ class CakeResponseTest extends CakeTestCase
         $result = $response->send();
         $output = ob_get_clean();
         $this->assertEquals(206, $response->statusCode());
-        $this->assertEquals("is the test asset ", $output);
+        $this->assertEquals('is the test asset ', $output);
         $this->assertNotSame(false, $result);
     }
 

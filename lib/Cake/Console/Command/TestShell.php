@@ -301,13 +301,13 @@ class TestShell extends Shell
         $app = isset($params['app']) ? $params['app'] : null;
         $plugin = isset($params['plugin']) ? $params['plugin'] : null;
 
-        $title = "Core Test Cases:";
+        $title = 'Core Test Cases:';
         $category = 'core';
         if ($app) {
-            $title = "App Test Cases:";
+            $title = 'App Test Cases:';
             $category = 'app';
         } elseif ($plugin) {
-            $title = Inflector::humanize($plugin) . " Test Cases:";
+            $title = Inflector::humanize($plugin) . ' Test Cases:';
             $category = $plugin;
         }
 

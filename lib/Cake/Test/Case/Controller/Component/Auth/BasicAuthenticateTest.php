@@ -127,7 +127,7 @@ class BasicAuthenticateTest extends CakeTestCase
         $request->addParams(['pass' => [], 'named' => []]);
 
         $_SERVER['PHP_AUTH_USER'] = '> 1';
-        $_SERVER['PHP_AUTH_PW'] = "' OR 1 = 1";
+        $_SERVER['PHP_AUTH_PW'] = '\' OR 1 = 1';
 
         $this->assertFalse($this->auth->getUser($request));
         $this->assertFalse($this->auth->authenticate($request, $this->response));

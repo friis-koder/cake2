@@ -331,7 +331,7 @@ class Cache
             trigger_error(
                 __d(
                     'cake_dev',
-                    "%s cache was unable to write '%s' to %s cache",
+                    '%s cache was unable to write \'%s\' to %s cache',
                     $config,
                     $key,
                     static::$_engines[$config]->settings['engine']

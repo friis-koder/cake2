@@ -255,8 +255,8 @@ class I18n
 
         if (!isset($count)) {
             $plurals = 0;
-        } elseif (!empty($_this->_domains[$domain][$_this->_lang][$_this->category]["%plural-c"]) && $_this->_noLocale === false) {
-            $header = $_this->_domains[$domain][$_this->_lang][$_this->category]["%plural-c"];
+        } elseif (!empty($_this->_domains[$domain][$_this->_lang][$_this->category]['%plural-c']) && $_this->_noLocale === false) {
+            $header = $_this->_domains[$domain][$_this->_lang][$_this->category]['%plural-c'];
             $plurals = $_this->_pluralGuess($header, $count);
         } else {
             if ($count != 1) {
@@ -335,47 +335,47 @@ class I18n
      */
     protected function _pluralGuess($header, $n)
     {
-        if (!is_string($header) || $header === "nplurals=1;plural=0;" || !isset($header[0])) {
+        if (!is_string($header) || $header === 'nplurals=1;plural=0;' || !isset($header[0])) {
             return 0;
         }
 
-        if ($header === "nplurals=2;plural=n!=1;") {
+        if ($header === 'nplurals=2;plural=n!=1;') {
             return $n != 1 ? 1 : 0;
-        } elseif ($header === "nplurals=2;plural=n>1;") {
+        } elseif ($header === 'nplurals=2;plural=n>1;') {
             return $n > 1 ? 1 : 0;
         }
 
-        if (strpos($header, "plurals=3")) {
-            if (strpos($header, "100!=11")) {
-                if (strpos($header, "10<=4")) {
+        if (strpos($header, 'plurals=3')) {
+            if (strpos($header, '100!=11')) {
+                if (strpos($header, '10<=4')) {
                     return $n % 10 == 1 && $n % 100 != 11 ? 0 : ($n % 10 >= 2 && $n % 10 <= 4 && ($n % 100 < 10 || $n % 100 >= 20) ? 1 : 2);
-                } elseif (strpos($header, "100<10")) {
+                } elseif (strpos($header, '100<10')) {
                     return $n % 10 == 1 && $n % 100 != 11 ? 0 : ($n % 10 >= 2 && ($n % 100 < 10 || $n % 100 >= 20) ? 1 : 2);
                 }
 
                 return $n % 10 == 1 && $n % 100 != 11 ? 0 : ($n != 0 ? 1 : 2);
-            } elseif (strpos($header, "n==2")) {
+            } elseif (strpos($header, 'n==2')) {
                 return $n == 1 ? 0 : ($n == 2 ? 1 : 2);
-            } elseif (strpos($header, "n==0")) {
+            } elseif (strpos($header, 'n==0')) {
                 return $n == 1 ? 0 : ($n == 0 || ($n % 100 > 0 && $n % 100 < 20) ? 1 : 2);
-            } elseif (strpos($header, "n>=2")) {
+            } elseif (strpos($header, 'n>=2')) {
                 return $n == 1 ? 0 : ($n >= 2 && $n <= 4 ? 1 : 2);
-            } elseif (strpos($header, "10>=2")) {
+            } elseif (strpos($header, '10>=2')) {
                 return $n == 1 ? 0 : ($n % 10 >= 2 && $n % 10 <= 4 && ($n % 100 < 10 || $n % 100 >= 20) ? 1 : 2);
             }
 
             return $n % 10 == 1 ? 0 : ($n % 10 == 2 ? 1 : 2);
-        } elseif (strpos($header, "plurals=4")) {
-            if (strpos($header, "100==2")) {
+        } elseif (strpos($header, 'plurals=4')) {
+            if (strpos($header, '100==2')) {
                 return $n % 100 == 1 ? 0 : ($n % 100 == 2 ? 1 : ($n % 100 == 3 || $n % 100 == 4 ? 2 : 3));
-            } elseif (strpos($header, "n>=3")) {
+            } elseif (strpos($header, 'n>=3')) {
                 return $n == 1 ? 0 : ($n == 2 ? 1 : ($n == 0 || ($n >= 3 && $n <= 10) ? 2 : 3));
-            } elseif (strpos($header, "100>=1")) {
+            } elseif (strpos($header, '100>=1')) {
                 return $n == 1 ? 0 : ($n == 0 || ($n % 100 >= 1 && $n % 100 <= 10) ? 1 : ($n % 100 >= 11 && $n % 100 <= 20 ? 2 : 3));
             }
-        } elseif (strpos($header, "plurals=5")) {
+        } elseif (strpos($header, 'plurals=5')) {
             return $n == 1 ? 0 : ($n == 2 ? 1 : ($n >= 3 && $n <= 6 ? 2 : ($n >= 7 && $n <= 10 ? 3 : 4)));
-        } elseif (strpos($header, "plurals=6")) {
+        } elseif (strpos($header, 'plurals=6')) {
             return $n == 0 ? 0 :
                 ($n == 1 ? 1 :
                 ($n == 2 ? 2 :
@@ -471,19 +471,19 @@ class I18n
             return $domain;
         }
 
-        if (isset($this->_domains[$domain][$this->_lang][$this->category][""])) {
-            $head = $this->_domains[$domain][$this->_lang][$this->category][""];
+        if (isset($this->_domains[$domain][$this->_lang][$this->category][''])) {
+            $head = $this->_domains[$domain][$this->_lang][$this->category][''];
 
             foreach (explode("\n", $head) as $line) {
                 $header = strtok($line, ':');
                 $line = trim(strtok("\n"));
-                $this->_domains[$domain][$this->_lang][$this->category]["%po-header"][strtolower($header)] = $line;
+                $this->_domains[$domain][$this->_lang][$this->category]['%po-header'][strtolower($header)] = $line;
             }
 
-            if (isset($this->_domains[$domain][$this->_lang][$this->category]["%po-header"]["plural-forms"])) {
-                $switch = preg_replace("/(?:[() {}\\[\\]^\\s*\\]]+)/", "", $this->_domains[$domain][$this->_lang][$this->category]["%po-header"]["plural-forms"]);
-                $this->_domains[$domain][$this->_lang][$this->category]["%plural-c"] = $switch;
-                unset($this->_domains[$domain][$this->_lang][$this->category]["%po-header"]);
+            if (isset($this->_domains[$domain][$this->_lang][$this->category]['%po-header']['plural-forms'])) {
+                $switch = preg_replace('/(?:[() {}\\[\\]^\\s*\\]]+)/', '', $this->_domains[$domain][$this->_lang][$this->category]['%po-header']['plural-forms']);
+                $this->_domains[$domain][$this->_lang][$this->category]['%plural-c'] = $switch;
+                unset($this->_domains[$domain][$this->_lang][$this->category]['%po-header']);
             }
             $this->_domains = Hash::mergeDiff($this->_domains, $merge);
 
@@ -516,8 +516,8 @@ class I18n
 
             if ((dechex($magic) === '950412de' || dechex($magic) === 'ffffffff950412de') && !$version) {
                 for ($n = 0; $n < $count; $n++) {
-                    $r = unpack("L1len/L1offs", substr($data, $o_msg + $n * 8, 8));
-                    $msgid = substr($data, $r["offs"], $r["len"]);
+                    $r = unpack('L1len/L1offs', substr($data, $o_msg + $n * 8, 8));
+                    $msgid = substr($data, $r['offs'], $r['len']);
                     unset($msgid_plural);
                     $context = null;
 
@@ -527,8 +527,8 @@ class I18n
                     if (strpos($msgid, "\000")) {
                         list($msgid, $msgid_plural) = explode("\000", $msgid);
                     }
-                    $r = unpack("L1len/L1offs", substr($data, $o_trn + $n * 8, 8));
-                    $msgstr = substr($data, $r["offs"], $r["len"]);
+                    $r = unpack('L1len/L1offs', substr($data, $o_trn + $n * 8, 8));
+                    $msgstr = substr($data, $r['offs'], $r['len']);
 
                     if (strpos($msgstr, "\000")) {
                         $msgstr = explode("\000", $msgstr);
@@ -577,28 +577,28 @@ class I18n
 
                 continue;
             }
-            if (preg_match("/msgid[[:space:]]+\"(.+)\"$/i", $line, $regs)) {
+            if (preg_match('/msgid[[:space:]]+"(.+)"$/i', $line, $regs)) {
                 $type = 1;
                 $translationKey = stripcslashes($regs[1]);
-            } elseif (preg_match("/msgid[[:space:]]+\"\"$/i", $line, $regs)) {
+            } elseif (preg_match('/msgid[[:space:]]+""$/i', $line, $regs)) {
                 $type = 2;
                 $translationKey = '';
-            } elseif (preg_match("/msgctxt[[:space:]]+\"(.+)\"$/i", $line, $regs)) {
+            } elseif (preg_match('/msgctxt[[:space:]]+"(.+)"$/i', $line, $regs)) {
                 $translationContext = $regs[1];
-            } elseif (preg_match("/^\"(.*)\"$/i", $line, $regs) && ($type == 1 || $type == 2 || $type == 3)) {
+            } elseif (preg_match('/^"(.*)"$/i', $line, $regs) && ($type == 1 || $type == 2 || $type == 3)) {
                 $type = 3;
                 $translationKey .= stripcslashes($regs[1]);
-            } elseif (preg_match("/msgstr[[:space:]]+\"(.+)\"$/i", $line, $regs) && ($type == 1 || $type == 3) && $translationKey) {
+            } elseif (preg_match('/msgstr[[:space:]]+"(.+)"$/i', $line, $regs) && ($type == 1 || $type == 3) && $translationKey) {
                 $translations[$translationKey][$translationContext] = stripcslashes($regs[1]);
                 $type = 4;
-            } elseif (preg_match("/msgstr[[:space:]]+\"\"$/i", $line, $regs) && ($type == 1 || $type == 3) && $translationKey) {
+            } elseif (preg_match('/msgstr[[:space:]]+""$/i', $line, $regs) && ($type == 1 || $type == 3) && $translationKey) {
                 $type = 4;
                 $translations[$translationKey][$translationContext] = '';
-            } elseif (preg_match("/^\"(.*)\"$/i", $line, $regs) && $type == 4 && $translationKey) {
+            } elseif (preg_match('/^"(.*)"$/i', $line, $regs) && $type == 4 && $translationKey) {
                 $translations[$translationKey][$translationContext] .= stripcslashes($regs[1]);
-            } elseif (preg_match("/msgid_plural[[:space:]]+\".*\"$/i", $line, $regs)) {
+            } elseif (preg_match('/msgid_plural[[:space:]]+".*"$/i', $line, $regs)) {
                 $type = 6;
-            } elseif (preg_match("/^\"(.*)\"$/i", $line, $regs) && $type == 6 && $translationKey) {
+            } elseif (preg_match('/^"(.*)"$/i', $line, $regs) && $type == 6 && $translationKey) {
                 $type = 6;
             } elseif (preg_match("/msgstr\[(\d+)\][[:space:]]+\"(.+)\"$/i", $line, $regs) && ($type == 6 || $type == 7) && $translationKey) {
                 $plural = $regs[1];
@@ -608,15 +608,15 @@ class I18n
                 $plural = $regs[1];
                 $translations[$translationKey][$translationContext][$plural] = '';
                 $type = 7;
-            } elseif (preg_match("/^\"(.*)\"$/i", $line, $regs) && $type == 7 && $translationKey) {
+            } elseif (preg_match('/^"(.*)"$/i', $line, $regs) && $type == 7 && $translationKey) {
                 $translations[$translationKey][$translationContext][$plural] .= stripcslashes($regs[1]);
-            } elseif (preg_match("/msgstr[[:space:]]+\"(.+)\"$/i", $line, $regs) && $type == 2 && !$translationKey) {
+            } elseif (preg_match('/msgstr[[:space:]]+"(.+)"$/i', $line, $regs) && $type == 2 && !$translationKey) {
                 $header .= stripcslashes($regs[1]);
                 $type = 5;
-            } elseif (preg_match("/msgstr[[:space:]]+\"\"$/i", $line, $regs) && !$translationKey) {
+            } elseif (preg_match('/msgstr[[:space:]]+""$/i', $line, $regs) && !$translationKey) {
                 $header = '';
                 $type = 5;
-            } elseif (preg_match("/^\"(.*)\"$/i", $line, $regs) && $type == 5) {
+            } elseif (preg_match('/^"(.*)"$/i', $line, $regs) && $type == 5) {
                 $header .= stripcslashes($regs[1]);
             } else {
                 unset($translations[$translationKey][$translationContext]);
@@ -656,7 +656,7 @@ class I18n
             if (empty($line) || $line[0] === $comment) {
                 continue;
             }
-            $parts = preg_split("/[[:space:]]+/", $line);
+            $parts = preg_split('/[[:space:]]+/', $line);
             if ($parts[0] === 'comment_char') {
                 $comment = $parts[1];
 

@@ -594,7 +594,7 @@ class JsHelperTest extends CakeTestCase
 
         $this->Js->TestJsEngine->expects($this->at(3))
             ->method('event')
-            ->with('click', "ajax-code", $params);
+            ->with('click', 'ajax-code', $params);
 
         $result = $this->Js->submit('Save', $options);
         $expected = [
@@ -640,7 +640,7 @@ class JsHelperTest extends CakeTestCase
 
         $this->Js->TestJsEngine->expects($this->at(3))
             ->method('event')
-            ->with('click', "ajax-code", $params);
+            ->with('click', 'ajax-code', $params);
 
         $options = ['update' => '#content', 'id' => 'test-submit', 'url' => '/custom/url'];
         $result = $this->Js->submit('Save', $options);
@@ -684,7 +684,7 @@ class JsHelperTest extends CakeTestCase
 
         $this->Js->TestJsEngine->expects($this->at(3))
             ->method('event')
-            ->with('click', "ajax-code", $params);
+            ->with('click', 'ajax-code', $params);
 
         $result = $this->Js->submit('Save', $options);
         $expected = [
@@ -824,8 +824,8 @@ class JsBaseEngineTest extends CakeTestCase
         $expected = 'CakePHP: \\"Rapid Development Framework\\"';
         $this->assertEquals($expected, $result);
 
-        $result = $this->JsEngine->escape("CakePHP: 'Rapid Development Framework'");
-        $expected = "CakePHP: 'Rapid Development Framework'";
+        $result = $this->JsEngine->escape('CakePHP: \'Rapid Development Framework\'');
+        $expected = 'CakePHP: \'Rapid Development Framework\'';
         $this->assertEquals($expected, $result);
 
         $result = $this->JsEngine->escape('my \\"string\\"');

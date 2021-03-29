@@ -213,7 +213,7 @@ class RedisEngineTest extends CakeTestCase
         $result = Cache::read('other_test', 'redis');
         $this->assertFalse($result);
 
-        Cache::set(['duration' => "+1 second"], 'redis');
+        Cache::set(['duration' => '+1 second'], 'redis');
 
         $data = 'this is a test of the emergency broadcasting system';
         $result = Cache::write('other_test', $data, 'redis');

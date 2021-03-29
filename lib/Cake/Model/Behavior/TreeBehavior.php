@@ -205,7 +205,7 @@ class TreeBehavior extends ModelBehavior
             if (is_string($scope)) {
                 $scope = [$scope];
             }
-            $scope[][$Model->escapeField($left) . " BETWEEN ? AND ?"] = [$data[$left] + 1, $data[$right] - 1];
+            $scope[][$Model->escapeField($left) . ' BETWEEN ? AND ?'] = [$data[$left] + 1, $data[$right] - 1];
             $Model->deleteAll($scope);
         }
         $this->_sync($Model, $diff, '-', '> ' . $data[$right]);
@@ -405,7 +405,7 @@ class TreeBehavior extends ModelBehavior
             $recursive = $overrideRecursive;
         }
         if (!$order) {
-            $order = $Model->escapeField($left) . " asc";
+            $order = $Model->escapeField($left) . ' asc';
         }
         if ($direct) {
             $conditions = [$scope, $Model->escapeField($parent) => $id];
@@ -1227,7 +1227,7 @@ class TreeBehavior extends ModelBehavior
         $db = ConnectionManager::getDataSource($Model->useDbConfig);
         if ($created) {
             if (is_string($scope)) {
-                $scope .= " AND " . $Model->escapeField() . " <> ";
+                $scope .= ' AND ' . $Model->escapeField() . ' <> ';
                 $scope .= $db->value($Model->id, $Model->getColumnType($Model->primaryKey));
             } else {
                 $scope['NOT'][$Model->alias . '.' . $Model->primaryKey] = $Model->id;

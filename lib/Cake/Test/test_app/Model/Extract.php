@@ -37,7 +37,7 @@ class Extract extends AppModel
             ],
             'between' => [
                 'rule'    => ['lengthBetween', 5, 15],
-                'message' => "single 'quoted' validation"
+                'message' => 'single \'quoted\' validation'
             ]
         ],
     ];

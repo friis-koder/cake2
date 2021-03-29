@@ -1960,8 +1960,8 @@ class HtmlHelperTest extends CakeTestCase
     {
         $tr = [
             'td content 1',
-            ['td content 2', ["width" => "100px"]],
-            ['td content 3', "width=100px"]
+            ['td content 2', ['width' => '100px']],
+            ['td content 3', 'width=100px']
         ];
         $result = $this->Html->tableCells($tr);
         $expected = [
@@ -2149,7 +2149,7 @@ class HtmlHelperTest extends CakeTestCase
         $this->assertTags($result, $expected);
 
         $result = $this->Html->media(
-            ['video.webm', ['src' => 'video.ogv', 'type' => "video/ogg; codecs='theora, vorbis'"]],
+            ['video.webm', ['src' => 'video.ogv', 'type' => 'video/ogg; codecs=\'theora, vorbis\'']],
             ['pathPrefix' => 'videos/', 'poster' => 'poster.jpg', 'text' => 'Your browser does not support the HTML5 Video element.']
         );
         $expected = [

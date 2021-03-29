@@ -335,7 +335,7 @@ class ControllerTaskTest extends CakeTestCase
         $path = APP . 'Plugin' . DS . 'ControllerTest' . DS . 'Controller' . DS . 'ArticlesController.php';
         $result = $this->Task->bake('Articles', '--actions--', [], [], []);
 
-        $this->assertContains("App::uses('ControllerTestAppController', 'ControllerTest.Controller');", $result);
+        $this->assertContains('App::uses(\'ControllerTestAppController\', \'ControllerTest.Controller\');', $result);
         $this->assertEquals('ControllerTest', $this->Task->Template->templateVars['plugin']);
         $this->assertEquals('ControllerTest.', $this->Task->Template->templateVars['pluginPath']);
 

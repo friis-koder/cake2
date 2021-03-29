@@ -1750,14 +1750,14 @@ class SetTest extends CakeTestCase
      */
     public function testWritingWithFunkyKeys()
     {
-        $set = Set::insert([], 'Session Test', "test");
+        $set = Set::insert([], 'Session Test', 'test');
         $this->assertEquals('test', Set::extract($set, 'Session Test'));
 
         $set = Set::remove($set, 'Session Test');
         $this->assertFalse(Set::check($set, 'Session Test'));
 
         $expected = ['Session Test' => ['Test Case' => 'test']];
-        $this->assertEquals($expected, Set::insert([], 'Session Test.Test Case', "test"));
+        $this->assertEquals($expected, Set::insert([], 'Session Test.Test Case', 'test'));
         $this->assertTrue(Set::check($expected, 'Session Test.Test Case'));
     }
 
@@ -2372,19 +2372,19 @@ class SetTest extends CakeTestCase
     {
         $expected = [
             [
-                "IndexedPage" => [
-                    "id"      => 1,
-                    "url"     => 'http://blah.com/',
+                'IndexedPage' => [
+                    'id'      => 1,
+                    'url'     => 'http://blah.com/',
                     'hash'    => '68a9f053b19526d08e36c6a9ad150737933816a5',
                     'headers' => [
-                        'Date'                         => "Wed, 14 Nov 2007 15:51:42 GMT",
-                        'Server'                       => "Apache",
-                        'Expires'                      => "Thu, 19 Nov 1981 08:52:00 GMT",
-                        'Cache-Control'                => "private",
-                        'Pragma'                       => "no-cache",
-                        'Content-Type'                 => "text/html; charset=UTF-8",
-                        'X-Original-Transfer-Encoding' => "chunked",
-                        'Content-Length'               => "50210",
+                        'Date'                         => 'Wed, 14 Nov 2007 15:51:42 GMT',
+                        'Server'                       => 'Apache',
+                        'Expires'                      => 'Thu, 19 Nov 1981 08:52:00 GMT',
+                        'Cache-Control'                => 'private',
+                        'Pragma'                       => 'no-cache',
+                        'Content-Type'                 => 'text/html; charset=UTF-8',
+                        'X-Original-Transfer-Encoding' => 'chunked',
+                        'Content-Length'               => '50210',
                     ],
                     'meta' => [
                         'keywords'    => ['testing', 'tests'],
@@ -2392,26 +2392,26 @@ class SetTest extends CakeTestCase
                     ],
                     'get_vars'  => '',
                     'post_vars' => [],
-                    'cookies'   => ['PHPSESSID' => "dde9896ad24595998161ffaf9e0dbe2d"],
+                    'cookies'   => ['PHPSESSID' => 'dde9896ad24595998161ffaf9e0dbe2d'],
                     'redirect'  => '',
-                    'created'   => "1195055503",
-                    'updated'   => "1195055503",
+                    'created'   => '1195055503',
+                    'updated'   => '1195055503',
                 ]
             ],
             [
-                "IndexedPage" => [
-                    "id"      => 2,
-                    "url"     => 'http://blah.com/',
+                'IndexedPage' => [
+                    'id'      => 2,
+                    'url'     => 'http://blah.com/',
                     'hash'    => '68a9f053b19526d08e36c6a9ad150737933816a5',
                     'headers' => [
-                        'Date'                         => "Wed, 14 Nov 2007 15:51:42 GMT",
-                        'Server'                       => "Apache",
-                        'Expires'                      => "Thu, 19 Nov 1981 08:52:00 GMT",
-                        'Cache-Control'                => "private",
-                        'Pragma'                       => "no-cache",
-                        'Content-Type'                 => "text/html; charset=UTF-8",
-                        'X-Original-Transfer-Encoding' => "chunked",
-                        'Content-Length'               => "50210",
+                        'Date'                         => 'Wed, 14 Nov 2007 15:51:42 GMT',
+                        'Server'                       => 'Apache',
+                        'Expires'                      => 'Thu, 19 Nov 1981 08:52:00 GMT',
+                        'Cache-Control'                => 'private',
+                        'Pragma'                       => 'no-cache',
+                        'Content-Type'                 => 'text/html; charset=UTF-8',
+                        'X-Original-Transfer-Encoding' => 'chunked',
+                        'Content-Length'               => '50210',
                     ],
                     'meta' => [
                         'keywords'    => ['testing', 'tests'],
@@ -2419,10 +2419,10 @@ class SetTest extends CakeTestCase
                     ],
                     'get_vars'  => '',
                     'post_vars' => [],
-                    'cookies'   => ['PHPSESSID' => "dde9896ad24595998161ffaf9e0dbe2d"],
+                    'cookies'   => ['PHPSESSID' => 'dde9896ad24595998161ffaf9e0dbe2d'],
                     'redirect'  => '',
-                    'created'   => "1195055503",
-                    'updated'   => "1195055503",
+                    'created'   => '1195055503',
+                    'updated'   => '1195055503',
                 ],
             ]
         ];
@@ -2441,25 +2441,25 @@ class SetTest extends CakeTestCase
 
         $data = [
             [
-                "IndexedPage" => [
-                    "id"       => 1,
-                    "url"      => 'http://blah.com/',
+                'IndexedPage' => [
+                    'id'       => 1,
+                    'url'      => 'http://blah.com/',
                     'hash'     => '68a9f053b19526d08e36c6a9ad150737933816a5',
                     'get_vars' => '',
                     'redirect' => '',
-                    'created'  => "1195055503",
-                    'updated'  => "1195055503",
+                    'created'  => '1195055503',
+                    'updated'  => '1195055503',
                 ]
             ],
             [
-                "IndexedPage" => [
-                    "id"       => 2,
-                    "url"      => 'http://blah.com/',
+                'IndexedPage' => [
+                    'id'       => 2,
+                    'url'      => 'http://blah.com/',
                     'hash'     => '68a9f053b19526d08e36c6a9ad150737933816a5',
                     'get_vars' => '',
                     'redirect' => '',
-                    'created'  => "1195055503",
-                    'updated'  => "1195055503",
+                    'created'  => '1195055503',
+                    'updated'  => '1195055503',
                 ],
             ]
         ];
@@ -2516,8 +2516,8 @@ class SetTest extends CakeTestCase
         $expected->title = 'First Post';
         $expected->body = 'First Post Body';
         $expected->published = 'Y';
-        $expected->created = "2007-03-18 10:39:23";
-        $expected->updated = "2007-03-18 10:41:31";
+        $expected->created = '2007-03-18 10:39:23';
+        $expected->updated = '2007-03-18 10:41:31';
 
         $expected->Author = new stdClass();
         $expected->Author->id = '1';
@@ -2535,8 +2535,8 @@ class SetTest extends CakeTestCase
         $expected2->title = 'Second Post';
         $expected2->body = 'Second Post Body';
         $expected2->published = 'Y';
-        $expected2->created = "2007-03-18 10:41:23";
-        $expected2->updated = "2007-03-18 10:43:31";
+        $expected2->created = '2007-03-18 10:41:23';
+        $expected2->updated = '2007-03-18 10:43:31';
 
         $expected2->Author = new stdClass();
         $expected2->Author->id = '3';
@@ -2568,15 +2568,15 @@ class SetTest extends CakeTestCase
         $expected->title = 'First Post';
         $expected->body = 'First Post Body';
         $expected->published = 'Y';
-        $expected->created = "2007-03-18 10:39:23";
-        $expected->updated = "2007-03-18 10:41:31";
+        $expected->created = '2007-03-18 10:39:23';
+        $expected->updated = '2007-03-18 10:41:31';
 
         $expected->Author = new stdClass();
         $expected->Author->id = '1';
         $expected->Author->user = 'mariano';
         $expected->Author->password = '5f4dcc3b5aa765d61d8327deb882cf99';
-        $expected->Author->created = "2007-03-17 01:16:23";
-        $expected->Author->updated = "2007-03-17 01:18:31";
+        $expected->Author->created = '2007-03-17 01:16:23';
+        $expected->Author->updated = '2007-03-17 01:18:31';
         $expected->Author->test = 'working';
         $expected->Author->_name_ = 'Author';
         // @codingStandardsIgnoreEnd
@@ -2888,7 +2888,7 @@ class SetTest extends CakeTestCase
                     [
                         'title'       => 'constructng result array when using findall',
                         'link'        => 'http://groups.google.com/group/cake-php/msg/49bc00f3bc651b4f',
-                        'description' => "i'm using cakephp to construct a logical data model array that will be <br> passed to a flex app. I have the following model association: <br> ServiceDay-&gt;(hasMany)ServiceTi me-&gt;(hasMany)ServiceTimePrice. So what <br> the current output from my findall is something like this example: <br> <p>Array( <br> [0] =&gt; Array(",
+                        'description' => 'i\'m using cakephp to construct a logical data model array that will be <br> passed to a flex app. I have the following model association: <br> ServiceDay-&gt;(hasMany)ServiceTi me-&gt;(hasMany)ServiceTimePrice. So what <br> the current output from my findall is something like this example: <br> <p>Array( <br> [0] =&gt; Array(',
                         'guid'        => ['@isPermaLink' => 'true', '@' => 'http://groups.google.com/group/cake-php/msg/49bc00f3bc651b4f'],
                         'author'      => 'bmil...@gmail.com(bpscrugs)',
                         'pubDate'     => 'Fri, 28 Dec 2007 00:44:14 UT',
@@ -2998,7 +2998,7 @@ class SetTest extends CakeTestCase
                     [
                         'title'       => 'constructng result array when using findall',
                         'link'        => 'http://groups.google.com/group/cake-php/msg/49bc00f3bc651b4f',
-                        'description' => "i'm using cakephp to construct a logical data model array that will be <br> passed to a flex app. I have the following model association: <br> ServiceDay-&gt;(hasMany)ServiceTi me-&gt;(hasMany)ServiceTimePrice. So what <br> the current output from my findall is something like this example: <br> <p>Array( <br> [0] =&gt; Array(",
+                        'description' => 'i\'m using cakephp to construct a logical data model array that will be <br> passed to a flex app. I have the following model association: <br> ServiceDay-&gt;(hasMany)ServiceTi me-&gt;(hasMany)ServiceTimePrice. So what <br> the current output from my findall is something like this example: <br> <p>Array( <br> [0] =&gt; Array(',
                         'dc:creator'  => 'cakephp',
                         'category'    => ['cakephp', 'model'],
                         'guid'        => ['@isPermaLink' => 'true', '@' => 'http://groups.google.com/group/cake-php/msg/49bc00f3bc651b4f'],

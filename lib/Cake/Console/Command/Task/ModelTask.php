@@ -257,10 +257,10 @@ class ModelTask extends BakeTask
         $this->hr();
         $this->out(__d('cake_console', 'The following Model will be created:'));
         $this->hr();
-        $this->out(__d('cake_console', "Name:       %s", $currentModelName));
+        $this->out(__d('cake_console', 'Name:       %s', $currentModelName));
 
         if ($this->connection !== 'default') {
-            $this->out(__d('cake_console', "DB Config:  %s", $this->connection));
+            $this->out(__d('cake_console', 'DB Config:  %s', $this->connection));
         }
         if ($fullTableName !== Inflector::tableize($currentModelName)) {
             $this->out(__d('cake_console', 'DB Table:   %s', $fullTableName));
@@ -447,14 +447,14 @@ class ModelTask extends BakeTask
 
                 $optionText = '';
                 for ($i = 1, $m = $defaultChoice / 2; $i <= $m; $i++) {
-                    $line = sprintf("%2d. %s", $i, $this->_validations[$i]);
-                    $optionText .= $line . str_repeat(" ", 31 - strlen($line));
+                    $line = sprintf('%2d. %s', $i, $this->_validations[$i]);
+                    $optionText .= $line . str_repeat(' ', 31 - strlen($line));
                     if ($m + $i !== $defaultChoice) {
                         $optionText .= sprintf("%2d. %s\n", $m + $i, $this->_validations[$m + $i]);
                     }
                 }
                 $this->out($optionText);
-                $this->out(__d('cake_console', "%s - Do not do any validation on this field.", $defaultChoice));
+                $this->out(__d('cake_console', '%s - Do not do any validation on this field.', $defaultChoice));
                 $this->hr();
             }
 
@@ -528,7 +528,7 @@ class ModelTask extends BakeTask
             $anotherValidator = 'n';
             if ($this->interactive && $choice != $defaultChoice) {
                 $anotherValidator = $this->in(__d('cake_console', "Would you like to add another validation rule\n" .
-                    "or skip the rest of the fields?"), ['y', 'n', 's'], 'n');
+                    'or skip the rest of the fields?'), ['y', 'n', 's'], 'n');
                 if ($anotherValidator === 's') {
                     $validate['_skipFields'] = true;
 
@@ -776,7 +776,7 @@ class ModelTask extends BakeTask
             $assocType = (int)$this->inOptions($assocs, __d('cake_console', 'Enter a number'));
 
             $this->out(__d('cake_console', "For the following options be very careful to match your setup exactly.\n" .
-                "Any spelling mistakes will cause errors."));
+                'Any spelling mistakes will cause errors.'));
             $this->hr();
 
             $alias = $this->in(__d('cake_console', 'What is the alias for this association?'));
@@ -1038,7 +1038,7 @@ class ModelTask extends BakeTask
 
         while (!$enteredModel) {
             $enteredModel = $this->in(__d('cake_console', "Enter a number from the list above,\n" .
-                "type in the name of another model, or 'q' to exit"), null, 'q');
+                'type in the name of another model, or \'q\' to exit'), null, 'q');
 
             if ($enteredModel === 'q') {
                 $this->out(__d('cake_console', 'Exit'));
@@ -1048,7 +1048,7 @@ class ModelTask extends BakeTask
 
             if (!$enteredModel || (int)$enteredModel > count($this->_modelNames)) {
                 $this->err(__d('cake_console', "The model name you supplied was empty,\n" .
-                    "or the number you selected was not an option. Please try again."));
+                    'or the number you selected was not an option. Please try again.'));
                 $enteredModel = '';
             }
         }

@@ -571,7 +571,7 @@ class ExtractTask extends AppShell
                 $msgid = $rule;
             }
             if ($msgid) {
-                $msgid = $this->_formatString(sprintf("'%s'", $msgid));
+                $msgid = $this->_formatString(sprintf('\'%s\'', $msgid));
                 $details = [
                     'file' => $file,
                     'line' => 'validation for field ' . $field
@@ -696,7 +696,7 @@ class ExtractTask extends AppShell
                     if (strtoupper($response) === 'N') {
                         $response = '';
                         while (!$response) {
-                            $response = $this->in(__d('cake_console', "What would you like to name this file?"), null, 'new_' . $filename);
+                            $response = $this->in(__d('cake_console', 'What would you like to name this file?'), null, 'new_' . $filename);
                             $File = new File($this->_output . $response);
                             $filename = $response;
                         }
@@ -781,7 +781,7 @@ class ExtractTask extends AppShell
         if ($quote === '"') {
             $string = stripcslashes($string);
         } else {
-            $string = strtr($string, ["\\'" => "'", "\\\\" => "\\"]);
+            $string = strtr($string, ['\\\'' => '\'', '\\\\' => '\\']);
         }
         $string = str_replace("\r\n", "\n", $string);
 

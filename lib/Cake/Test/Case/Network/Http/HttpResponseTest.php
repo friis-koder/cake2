@@ -290,7 +290,7 @@ class HttpResponseTest extends CakeTestCase
         $header = "Multi-Line: I am a\r\n multi line \r\n\tfield value.\r\nSingle-Line: I am not\r\n";
         $r = $this->HttpResponse->parseHeader($header);
         $expected = [
-            'Multi-Line'  => "I am a multi line field value.",
+            'Multi-Line'  => 'I am a multi line field value.',
             'Single-Line' => 'I am not'
         ];
         $this->assertEquals($expected, $r);
@@ -399,7 +399,7 @@ class HttpResponseTest extends CakeTestCase
         $encoding = 'chunked';
         $sample = [
             'encoded' => "19\r\nThis is a chunked message\r\n0\r\n",
-            'decoded' => ['body' => "This is a chunked message", 'header' => false]
+            'decoded' => ['body' => 'This is a chunked message', 'header' => false]
         ];
 
         $r = $this->HttpResponse->decodeBody($sample['encoded'], $encoding);
@@ -408,7 +408,7 @@ class HttpResponseTest extends CakeTestCase
         $encoding = 'chunked';
         $sample = [
             'encoded' => "19\nThis is a chunked message\r\n0\n",
-            'decoded' => ['body' => "This is a chunked message", 'header' => false]
+            'decoded' => ['body' => 'This is a chunked message', 'header' => false]
         ];
 
         $r = $this->HttpResponse->decodeBody($sample['encoded'], $encoding);
@@ -449,7 +449,7 @@ class HttpResponseTest extends CakeTestCase
         $this->assertEquals(false, $r);
 
         $encoded = "19\r\nThis is a chunked message\r\n0\r\n";
-        $decoded = "This is a chunked message";
+        $decoded = 'This is a chunked message';
         $r = $this->HttpResponse->decodeChunkedBody($encoded);
         $this->assertEquals($r['body'], $decoded);
         $this->assertEquals(false, $r['header']);

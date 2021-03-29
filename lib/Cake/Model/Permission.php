@@ -112,7 +112,7 @@ class Permission extends AppModel
         }
 
         if ($action !== '*' && !in_array('_' . $action, $permKeys)) {
-            $this->log(__d('cake_dev', "ACO permissions key %s does not exist in %s", $action, 'DbAcl::check()'), E_USER_NOTICE);
+            $this->log(__d('cake_dev', 'ACO permissions key %s does not exist in %s', $action, 'DbAcl::check()'), E_USER_NOTICE);
 
             return false;
         }

@@ -323,32 +323,32 @@ class PostgresTest extends CakeTestCase
      */
     public function testValueQuoting()
     {
-        $this->assertEquals("1.200000", $this->Dbo->value(1.2, 'float'));
-        $this->assertEquals("'1,2'", $this->Dbo->value('1,2', 'float'));
+        $this->assertEquals('1.200000', $this->Dbo->value(1.2, 'float'));
+        $this->assertEquals('\'1,2\'', $this->Dbo->value('1,2', 'float'));
 
-        $this->assertEquals("0", $this->Dbo->value('0', 'integer'));
+        $this->assertEquals('0', $this->Dbo->value('0', 'integer'));
         $this->assertEquals('NULL', $this->Dbo->value('', 'integer'));
         $this->assertEquals('NULL', $this->Dbo->value('', 'float'));
         $this->assertEquals('""', $this->Dbo->value('', 'integer', false));
         $this->assertEquals('""', $this->Dbo->value('', 'float', false));
-        $this->assertEquals("'0.0'", $this->Dbo->value('0.0', 'float'));
+        $this->assertEquals('\'0.0\'', $this->Dbo->value('0.0', 'float'));
 
-        $this->assertEquals("'TRUE'", $this->Dbo->value('t', 'boolean'));
-        $this->assertEquals("'FALSE'", $this->Dbo->value('f', 'boolean'));
-        $this->assertEquals("'TRUE'", $this->Dbo->value(true));
-        $this->assertEquals("'FALSE'", $this->Dbo->value(false));
-        $this->assertEquals("'t'", $this->Dbo->value('t'));
-        $this->assertEquals("'f'", $this->Dbo->value('f'));
-        $this->assertEquals("'TRUE'", $this->Dbo->value('true', 'boolean'));
-        $this->assertEquals("'FALSE'", $this->Dbo->value('false', 'boolean'));
-        $this->assertEquals("'FALSE'", $this->Dbo->value('', 'boolean'));
-        $this->assertEquals("'FALSE'", $this->Dbo->value(0, 'boolean'));
-        $this->assertEquals("'TRUE'", $this->Dbo->value(1, 'boolean'));
-        $this->assertEquals("'TRUE'", $this->Dbo->value('1', 'boolean'));
-        $this->assertEquals("NULL", $this->Dbo->value(null, 'boolean'));
-        $this->assertEquals("NULL", $this->Dbo->value([]));
-        $this->assertEquals("'550e8400-e29b-41d4-a716-446655440000'", $this->Dbo->value('550e8400-e29b-41d4-a716-446655440000', 'uuid'));
-        $this->assertEquals("NULL", $this->Dbo->value(null, 'uuid'));
+        $this->assertEquals('\'TRUE\'', $this->Dbo->value('t', 'boolean'));
+        $this->assertEquals('\'FALSE\'', $this->Dbo->value('f', 'boolean'));
+        $this->assertEquals('\'TRUE\'', $this->Dbo->value(true));
+        $this->assertEquals('\'FALSE\'', $this->Dbo->value(false));
+        $this->assertEquals('\'t\'', $this->Dbo->value('t'));
+        $this->assertEquals('\'f\'', $this->Dbo->value('f'));
+        $this->assertEquals('\'TRUE\'', $this->Dbo->value('true', 'boolean'));
+        $this->assertEquals('\'FALSE\'', $this->Dbo->value('false', 'boolean'));
+        $this->assertEquals('\'FALSE\'', $this->Dbo->value('', 'boolean'));
+        $this->assertEquals('\'FALSE\'', $this->Dbo->value(0, 'boolean'));
+        $this->assertEquals('\'TRUE\'', $this->Dbo->value(1, 'boolean'));
+        $this->assertEquals('\'TRUE\'', $this->Dbo->value('1', 'boolean'));
+        $this->assertEquals('NULL', $this->Dbo->value(null, 'boolean'));
+        $this->assertEquals('NULL', $this->Dbo->value([]));
+        $this->assertEquals('\'550e8400-e29b-41d4-a716-446655440000\'', $this->Dbo->value('550e8400-e29b-41d4-a716-446655440000', 'uuid'));
+        $this->assertEquals('NULL', $this->Dbo->value(null, 'uuid'));
     }
 
     /**
@@ -360,13 +360,13 @@ class PostgresTest extends CakeTestCase
     {
         $restore = setlocale(LC_NUMERIC, 0);
 
-        $this->skipIf(setlocale(LC_NUMERIC, 'de_DE') === false, "The German locale isn't available.");
+        $this->skipIf(setlocale(LC_NUMERIC, 'de_DE') === false, 'The German locale isn\'t available.');
 
         $result = $this->db->value(3.141593, 'float');
-        $this->assertEquals("3.141593", $result);
+        $this->assertEquals('3.141593', $result);
 
         $result = $this->db->value(3.14);
-        $this->assertEquals("3.140000", $result);
+        $this->assertEquals('3.140000', $result);
 
         setlocale(LC_NUMERIC, $restore);
     }
@@ -403,7 +403,7 @@ class PostgresTest extends CakeTestCase
         $this->assertEquals(true, $this->Dbo2->boolean('TRUE', false));
         $this->assertEquals(true, $this->Dbo2->boolean(true, false));
         $this->assertEquals(true, $this->Dbo2->boolean(1, false));
-        $this->assertEquals(true, $this->Dbo2->boolean(" ", false));
+        $this->assertEquals(true, $this->Dbo2->boolean(' ', false));
 
         $this->assertEquals(false, $this->Dbo2->boolean('f', false));
         $this->assertEquals(false, $this->Dbo2->boolean('false', false));
@@ -927,7 +927,7 @@ class PostgresTest extends CakeTestCase
         $this->loadFixtures('Article', 'Comment');
         $Article = ClassRegistry::init('Article');
         $Article->virtualFields = [
-            'empty'  => "NULL",
+            'empty'  => 'NULL',
             'number' => 43,
             'truth'  => 'TRUE'
         ];
@@ -981,7 +981,7 @@ class PostgresTest extends CakeTestCase
     {
         $this->loadFixtures('Article');
         $Article = new Article();
-        $result = $Article->updateAll(['title' => "'Awesome'"], ['title' => 'Third Article']);
+        $result = $Article->updateAll(['title' => '\'Awesome\''], ['title' => 'Third Article']);
         $this->assertTrue($result);
 
         $result = $Article->find('count', [

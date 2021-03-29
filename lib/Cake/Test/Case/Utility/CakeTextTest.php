@@ -56,7 +56,7 @@ class CakeTextTest extends CakeTestCase
     public function testUuidGeneration()
     {
         $result = CakeText::uuid();
-        $pattern = "/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/";
+        $pattern = '/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/';
         $match = (bool)preg_match($pattern, $result);
         $this->assertTrue($match);
     }
@@ -71,7 +71,7 @@ class CakeTextTest extends CakeTestCase
     {
         $check = [];
         $count = mt_rand(10, 1000);
-        $pattern = "/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/";
+        $pattern = '/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/';
 
         for ($i = 0; $i < $count; $i++) {
             $result = CakeText::uuid();
@@ -188,28 +188,28 @@ class CakeTextTest extends CakeTestCase
         $result = CakeText::insert($string, ['src' => 'foo', 'extra' => 'bar'], ['clean' => 'html']);
         $this->assertEquals($expected, $result);
 
-        $result = CakeText::insert("this is a ? string", "test");
-        $expected = "this is a test string";
+        $result = CakeText::insert('this is a ? string', 'test');
+        $expected = 'this is a test string';
         $this->assertEquals($expected, $result);
 
-        $result = CakeText::insert("this is a ? string with a ? ? ?", ['long', 'few?', 'params', 'you know']);
-        $expected = "this is a long string with a few? params you know";
+        $result = CakeText::insert('this is a ? string with a ? ? ?', ['long', 'few?', 'params', 'you know']);
+        $expected = 'this is a long string with a few? params you know';
         $this->assertEquals($expected, $result);
 
         $result = CakeText::insert('update saved_urls set url = :url where id = :id', ['url' => 'http://www.testurl.com/param1:url/param2:id', 'id' => 1]);
-        $expected = "update saved_urls set url = http://www.testurl.com/param1:url/param2:id where id = 1";
+        $expected = 'update saved_urls set url = http://www.testurl.com/param1:url/param2:id where id = 1';
         $this->assertEquals($expected, $result);
 
         $result = CakeText::insert('update saved_urls set url = :url where id = :id', ['id' => 1, 'url' => 'http://www.testurl.com/param1:url/param2:id']);
-        $expected = "update saved_urls set url = http://www.testurl.com/param1:url/param2:id where id = 1";
+        $expected = 'update saved_urls set url = http://www.testurl.com/param1:url/param2:id where id = 1';
         $this->assertEquals($expected, $result);
 
         $result = CakeText::insert(':me cake. :subject :verb fantastic.', ['me' => 'I :verb', 'subject' => 'cake', 'verb' => 'is']);
-        $expected = "I :verb cake. cake is fantastic.";
+        $expected = 'I :verb cake. cake is fantastic.';
         $this->assertEquals($expected, $result);
 
         $result = CakeText::insert(':I.am: :not.yet: passing.', ['I.am' => 'We are'], ['before' => ':', 'after' => ':', 'clean' => ['replacement' => ' of course', 'method' => 'text']]);
-        $expected = "We are of course passing.";
+        $expected = 'We are of course passing.';
         $this->assertEquals($expected, $result);
 
         $result = CakeText::insert(
@@ -217,11 +217,11 @@ class CakeTextTest extends CakeTestCase
             ['I.am'   => 'We are'],
             ['before' => ':', 'after' => ':', 'clean' => true]
         );
-        $expected = "We are passing.";
+        $expected = 'We are passing.';
         $this->assertEquals($expected, $result);
 
         $result = CakeText::insert('?-pended result', ['Pre']);
-        $expected = "Pre-pended result";
+        $expected = 'Pre-pended result';
         $this->assertEquals($expected, $result);
 
         $string = 'switching :timeout / :timeout_count';
@@ -541,7 +541,7 @@ TEXT;
         $this->assertSame($this->Text->truncate($text4, 90, ['html' => true]), '<img src="mypic.jpg"> This image tag is not XHTML conform!<br><hr/><b>But the following image tag should be conform <img src="mypic.jpg" alt="Me, myself and I" /></b><br />Great,' . $elipsis);
         $this->assertSame($this->Text->truncate($text5, 6, ['ellipsis' => '', 'html' => true]), '0<b>1<i>2<span class="myclass">3</span>4<u>5</u></i></b>');
         $this->assertSame($this->Text->truncate($text5, 20, ['ellipsis' => '', 'html' => true]), $text5);
-        $this->assertSame($this->Text->truncate($text6, 57, ['exact' => false, 'html' => true]), "<p><strong>Extra dates have been announced for this year's" . $elipsis . "</strong></p>");
+        $this->assertSame($this->Text->truncate($text6, 57, ['exact' => false, 'html' => true]), '<p><strong>Extra dates have been announced for this year\'s' . $elipsis . '</strong></p>');
         $this->assertSame($this->Text->truncate($text7, 255), $text7);
         $this->assertSame($this->Text->truncate($text7, 15), 'El moño está...');
         $this->assertSame($this->Text->truncate($text8, 15), 'Vive la R' . chr(195) . chr(169) . 'pu...');

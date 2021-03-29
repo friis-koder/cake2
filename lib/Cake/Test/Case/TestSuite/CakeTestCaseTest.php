@@ -132,7 +132,7 @@ class CakeTestCaseTest extends CakeTestCase
         ];
         $this->assertTags($input, $pattern);
 
-        $input = "<a href='/test.html' class='active'>My link</a>";
+        $input = '<a href=\'/test.html\' class=\'active\'>My link</a>';
         $pattern = [
             'a' => ['href' => '/test.html', 'class' => 'active'],
             'My link',
@@ -140,7 +140,7 @@ class CakeTestCaseTest extends CakeTestCase
         ];
         $this->assertTags($input, $pattern);
 
-        $input = "<a href='/test.html' class='active'>My link</a>";
+        $input = '<a href=\'/test.html\' class=\'active\'>My link</a>';
         $pattern = [
             'a' => ['href' => 'preg:/.*\.html/', 'class' => 'active'],
             'My link',
@@ -148,7 +148,7 @@ class CakeTestCaseTest extends CakeTestCase
         ];
         $this->assertTags($input, $pattern);
 
-        $input = "<span><strong>Text</strong></span>";
+        $input = '<span><strong>Text</strong></span>';
         $pattern = [
             '<span',
             '<strong',
@@ -158,7 +158,7 @@ class CakeTestCaseTest extends CakeTestCase
         ];
         $this->assertTags($input, $pattern);
 
-        $input = "<span class='active'><strong>Text</strong></span>";
+        $input = '<span class=\'active\'><strong>Text</strong></span>';
         $pattern = [
             'span' => ['class'],
             '<strong',
@@ -412,7 +412,7 @@ class CakeTestCaseTest extends CakeTestCase
     public function testAssertTextContains()
     {
         $stringDirty = "some\nstring\r\nwith\rdifferent\nline endings!";
-        $this->assertContains("different", $stringDirty);
+        $this->assertContains('different', $stringDirty);
         $this->assertNotContains("different\rline", $stringDirty);
         $this->assertTextContains("different\rline", $stringDirty);
     }

@@ -500,11 +500,11 @@ class CakeSessionTest extends CakeTestCase
      */
     public function testCheckKeyWithSpaces()
     {
-        $this->assertTrue(TestCakeSession::write('Session Test', "test"));
+        $this->assertTrue(TestCakeSession::write('Session Test', 'test'));
         $this->assertTrue(TestCakeSession::check('Session Test'));
         TestCakeSession::delete('Session Test');
 
-        $this->assertTrue(TestCakeSession::write('Session Test.Test Case', "test"));
+        $this->assertTrue(TestCakeSession::write('Session Test.Test Case', 'test'));
         $this->assertTrue(TestCakeSession::check('Session Test.Test Case'));
     }
 
@@ -526,7 +526,7 @@ class CakeSessionTest extends CakeTestCase
      */
     public function testKeyExploit()
     {
-        $key = "a'] = 1; phpinfo(); \$_SESSION['a";
+        $key = 'a\'] = 1; phpinfo(); $_SESSION[\'a';
         $result = TestCakeSession::write($key, 'haxored');
         $this->assertFalse($result);
 

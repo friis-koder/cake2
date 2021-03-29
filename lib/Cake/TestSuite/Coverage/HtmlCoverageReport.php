@@ -121,7 +121,7 @@ HTML;
             $percentCovered = round(100 * $covered / $total, 2);
         }
         $output .= $this->coverageHeader($filename, $percentCovered);
-        $output .= implode("", $diff);
+        $output .= implode('', $diff);
         $output .= $this->coverageFooter();
 
         return $output;
@@ -234,6 +234,6 @@ HTML;
      */
     public function coverageFooter()
     {
-        return "</pre></div></div>";
+        return '</pre></div></div>';
     }
 }

@@ -856,7 +856,7 @@ class CakeResponse
     {
         $this->header([
             'Expires'       => 'Mon, 26 Jul 1997 05:00:00 GMT',
-            'Last-Modified' => gmdate("D, d M Y H:i:s") . " GMT",
+            'Last-Modified' => gmdate('D, d M Y H:i:s') . ' GMT',
             'Cache-Control' => 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0'
         ]);
     }
@@ -874,7 +874,7 @@ class CakeResponse
             $time = strtotime($time);
         }
         $this->header([
-            'Date' => gmdate("D, j M Y G:i:s ", time()) . 'GMT'
+            'Date' => gmdate('D, j M Y G:i:s ', time()) . 'GMT'
         ]);
         $this->modified($since);
         $this->expires($time);
@@ -1170,8 +1170,8 @@ class CakeResponse
      */
     public function compress()
     {
-        $compressionEnabled = ini_get("zlib.output_compression") !== '1' &&
-            extension_loaded("zlib") &&
+        $compressionEnabled = ini_get('zlib.output_compression') !== '1' &&
+            extension_loaded('zlib') &&
             (strpos(env('HTTP_ACCEPT_ENCODING'), 'gzip') !== false);
 
         return $compressionEnabled && ob_start('ob_gzhandler');
@@ -1185,7 +1185,7 @@ class CakeResponse
     public function outputCompressed()
     {
         return strpos(env('HTTP_ACCEPT_ENCODING'), 'gzip') !== false
-            && (ini_get("zlib.output_compression") === '1' || in_array('ob_gzhandler', ob_list_handlers()));
+            && (ini_get('zlib.output_compression') === '1' || in_array('ob_gzhandler', ob_list_handlers()));
     }
 
     /**

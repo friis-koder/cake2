@@ -3408,25 +3408,25 @@ class FormHelperTest extends CakeTestCase
 
         $expected = [
             ['div' => ['class' => 'input select']],
-            ['label' => ['for' => "ContactMultiple"]],
+            ['label' => ['for' => 'ContactMultiple']],
             'Multiple',
             '/label',
-            ['input' => ['type' => 'hidden', 'name' => "data[Contact][multiple]", 'value' => '', 'id' => "ContactMultiple", 'disabled' => 'disabled']],
+            ['input' => ['type' => 'hidden', 'name' => 'data[Contact][multiple]', 'value' => '', 'id' => 'ContactMultiple', 'disabled' => 'disabled']],
             ['div'   => ['class' => 'checkbox']],
-            ['input' => ['type' => 'checkbox', 'name' => "data[Contact][multiple][]", 'value' => 1, 'disabled' => 'disabled', 'id' => "ContactMultiple1"]],
-            ['label' => ['for' => "ContactMultiple1"]],
+            ['input' => ['type' => 'checkbox', 'name' => 'data[Contact][multiple][]', 'value' => 1, 'disabled' => 'disabled', 'id' => 'ContactMultiple1']],
+            ['label' => ['for' => 'ContactMultiple1']],
             'One',
             '/label',
             '/div',
             ['div'   => ['class' => 'checkbox']],
-            ['input' => ['type' => 'checkbox', 'name' => "data[Contact][multiple][]", 'value' => 2, 'disabled' => 'disabled', 'id' => "ContactMultiple2"]],
-            ['label' => ['for' => "ContactMultiple2"]],
+            ['input' => ['type' => 'checkbox', 'name' => 'data[Contact][multiple][]', 'value' => 2, 'disabled' => 'disabled', 'id' => 'ContactMultiple2']],
+            ['label' => ['for' => 'ContactMultiple2']],
             'Two',
             '/label',
             '/div',
             ['div'   => ['class' => 'checkbox']],
-            ['input' => ['type' => 'checkbox', 'name' => "data[Contact][multiple][]", 'value' => 3, 'disabled' => 'disabled', 'id' => "ContactMultiple3"]],
-            ['label' => ['for' => "ContactMultiple3"]],
+            ['input' => ['type' => 'checkbox', 'name' => 'data[Contact][multiple][]', 'value' => 3, 'disabled' => 'disabled', 'id' => 'ContactMultiple3']],
+            ['label' => ['for' => 'ContactMultiple3']],
             'Three',
             '/label',
             '/div',
@@ -3441,25 +3441,25 @@ class FormHelperTest extends CakeTestCase
 
         $expected = [
             ['div' => ['class' => 'input select']],
-            ['label' => ['for' => "ContactMultiple"]],
+            ['label' => ['for' => 'ContactMultiple']],
             'Multiple',
             '/label',
-            ['input' => ['type' => 'hidden', 'name' => "data[Contact][multiple]", 'value' => '', 'id' => "ContactMultiple"]],
+            ['input' => ['type' => 'hidden', 'name' => 'data[Contact][multiple]', 'value' => '', 'id' => 'ContactMultiple']],
             ['div'   => ['class' => 'checkbox']],
-            ['input' => ['type' => 'checkbox', 'name' => "data[Contact][multiple][]", 'value' => 1, 'id' => "ContactMultiple1"]],
-            ['label' => ['for' => "ContactMultiple1"]],
+            ['input' => ['type' => 'checkbox', 'name' => 'data[Contact][multiple][]', 'value' => 1, 'id' => 'ContactMultiple1']],
+            ['label' => ['for' => 'ContactMultiple1']],
             'One',
             '/label',
             '/div',
             ['div'   => ['class' => 'checkbox']],
-            ['input' => ['type' => 'checkbox', 'name' => "data[Contact][multiple][]", 'value' => 2, 'disabled' => 'disabled', 'id' => "ContactMultiple2"]],
-            ['label' => ['for' => "ContactMultiple2"]],
+            ['input' => ['type' => 'checkbox', 'name' => 'data[Contact][multiple][]', 'value' => 2, 'disabled' => 'disabled', 'id' => 'ContactMultiple2']],
+            ['label' => ['for' => 'ContactMultiple2']],
             'Two',
             '/label',
             '/div',
             ['div'   => ['class' => 'checkbox']],
-            ['input' => ['type' => 'checkbox', 'name' => "data[Contact][multiple][]", 'value' => 3, 'disabled' => 'disabled', 'id' => "ContactMultiple3"]],
-            ['label' => ['for' => "ContactMultiple3"]],
+            ['input' => ['type' => 'checkbox', 'name' => 'data[Contact][multiple][]', 'value' => 3, 'disabled' => 'disabled', 'id' => 'ContactMultiple3']],
+            ['label' => ['for' => 'ContactMultiple3']],
             'Three',
             '/label',
             '/div',
@@ -3474,19 +3474,19 @@ class FormHelperTest extends CakeTestCase
 
         $expected = [
             ['div' => ['class' => 'input select']],
-            ['label' => ['for' => "ContactMultiple"]],
+            ['label' => ['for' => 'ContactMultiple']],
             'Multiple',
             '/label',
-            ['input' => ['type' => 'hidden', 'name' => "data[Contact][multiple]", 'value' => '', 'id' => "ContactMultiple"]],
+            ['input' => ['type' => 'hidden', 'name' => 'data[Contact][multiple]', 'value' => '', 'id' => 'ContactMultiple']],
             ['div'   => ['class' => 'checkbox']],
-            ['input' => ['type' => 'checkbox', 'name' => "data[Contact][multiple][]", 'value' => 50, 'disabled' => 'disabled', 'id' => "ContactMultiple50"]],
-            ['label' => ['for' => "ContactMultiple50"]],
+            ['input' => ['type' => 'checkbox', 'name' => 'data[Contact][multiple][]', 'value' => 50, 'disabled' => 'disabled', 'id' => 'ContactMultiple50']],
+            ['label' => ['for' => 'ContactMultiple50']],
             'Fifty',
             '/label',
             '/div',
             ['div'   => ['class' => 'checkbox']],
-            ['input' => ['type' => 'checkbox', 'name' => "data[Contact][multiple][]", 'value' => '50f5c0cf', 'id' => "ContactMultiple50f5c0cf"]],
-            ['label' => ['for' => "ContactMultiple50f5c0cf"]],
+            ['input' => ['type' => 'checkbox', 'name' => 'data[Contact][multiple][]', 'value' => '50f5c0cf', 'id' => 'ContactMultiple50f5c0cf']],
+            ['label' => ['for' => 'ContactMultiple50f5c0cf']],
             'Stringy',
             '/label',
             '/div',
@@ -4315,27 +4315,27 @@ class FormHelperTest extends CakeTestCase
         $result = $this->Form->error('Contact.field', null, ['wrap' => false]);
         $this->assertEquals('Error in field Field', $result);
 
-        $Contact->validationErrors['field'] = ["This field contains invalid input"];
+        $Contact->validationErrors['field'] = ['This field contains invalid input'];
         $result = $this->Form->error('Contact.field', null, ['wrap' => false]);
         $this->assertEquals('This field contains invalid input', $result);
 
-        $Contact->validationErrors['field'] = ["This field contains invalid input"];
+        $Contact->validationErrors['field'] = ['This field contains invalid input'];
         $result = $this->Form->error('Contact.field', null, ['wrap' => 'span']);
         $this->assertTags($result, ['span' => ['class' => 'error-message'], 'This field contains invalid input', '/span']);
 
         $result = $this->Form->error('Contact.field', 'There is an error fool!', ['wrap' => 'span']);
         $this->assertTags($result, ['span' => ['class' => 'error-message'], 'There is an error fool!', '/span']);
 
-        $result = $this->Form->error('Contact.field', "<strong>Badness!</strong>", ['wrap' => false]);
+        $result = $this->Form->error('Contact.field', '<strong>Badness!</strong>', ['wrap' => false]);
         $this->assertEquals('&lt;strong&gt;Badness!&lt;/strong&gt;', $result);
 
-        $result = $this->Form->error('Contact.field', "<strong>Badness!</strong>", ['wrap' => false, 'escape' => true]);
+        $result = $this->Form->error('Contact.field', '<strong>Badness!</strong>', ['wrap' => false, 'escape' => true]);
         $this->assertEquals('&lt;strong&gt;Badness!&lt;/strong&gt;', $result);
 
-        $result = $this->Form->error('Contact.field', "<strong>Badness!</strong>", ['wrap' => false, 'escape' => false]);
+        $result = $this->Form->error('Contact.field', '<strong>Badness!</strong>', ['wrap' => false, 'escape' => false]);
         $this->assertEquals('<strong>Badness!</strong>', $result);
 
-        $Contact->validationErrors['field'] = ["email"];
+        $Contact->validationErrors['field'] = ['email'];
         $result = $this->Form->error('Contact.field', ['attributes' => ['class' => 'field-error'], 'email' => 'No good!']);
         $expected = [
             'div' => ['class' => 'field-error'],
@@ -8619,7 +8619,7 @@ class FormHelperTest extends CakeTestCase
     {
         $this->loadFixtures('Post');
         $result = $this->Form->input('Post.content', [
-            'label' => 'Current Text', 'value' => "GREAT®", 'rows' => '15', 'cols' => '75'
+            'label' => 'Current Text', 'value' => 'GREAT®', 'rows' => '15', 'cols' => '75'
         ]);
         $expected = [
             'div'   => ['class' => 'input textarea'],
@@ -8662,7 +8662,7 @@ class FormHelperTest extends CakeTestCase
         $result = $this->Form->file('Model.upload');
         $this->assertTags($result, ['input' => ['type' => 'file', 'name' => 'data[Model][upload]', 'id' => 'ModelUpload']]);
 
-        $this->Form->request->data['Model.upload'] = ["name" => "", "type" => "", "tmp_name" => "", "error" => 4, "size" => 0];
+        $this->Form->request->data['Model.upload'] = ['name' => '', 'type' => '', 'tmp_name' => '', 'error' => 4, 'size' => 0];
         $result = $this->Form->input('Model.upload', ['type' => 'file']);
         $expected = [
             'div'   => ['class' => 'input file'],
@@ -8716,7 +8716,7 @@ class FormHelperTest extends CakeTestCase
         $result = $this->Form->button('No type', ['type' => false]);
         $this->assertTags($result, ['button' => [], 'No type', '/button']);
 
-        $result = $this->Form->button('Upload Text', ['onClick' => "$('#postAddForm').ajaxSubmit({target: '#postTextUpload', url: '/posts/text'});return false;'", 'escape' => false]);
+        $result = $this->Form->button('Upload Text', ['onClick' => '$(\'#postAddForm\').ajaxSubmit({target: \'#postTextUpload\', url: \'/posts/text\'});return false;\'', 'escape' => false]);
         $this->assertNotRegExp('/\&039/', $result);
     }
 
@@ -10632,7 +10632,7 @@ class FormHelperTest extends CakeTestCase
             'id'   => 'Contact1Id'
         ]]);
 
-        $result = $this->Form->input("1.name");
+        $result = $this->Form->input('1.name');
         $expected = [
             'div'   => ['class' => 'input text'],
             'label' => ['for' => 'Contact1Name'],
@@ -10654,7 +10654,7 @@ class FormHelperTest extends CakeTestCase
             ]
         ]);
 
-        $result = $this->Form->input("Model.1.name");
+        $result = $this->Form->input('Model.1.name');
         $expected = [
             'div'   => ['class' => 'input text'],
             'label' => ['for' => 'Model1Name'],
@@ -11460,7 +11460,7 @@ class FormHelperTest extends CakeTestCase
         $this->Form->request->here = $here;
         $this->Form->create('User');
 
-        $this->assertAttributeEquals($here, '_lastAction', $this->Form, "_lastAction shouldn't be empty.");
+        $this->assertAttributeEquals($here, '_lastAction', $this->Form, '_lastAction shouldn\'t be empty.');
     }
 
     /**
@@ -11477,7 +11477,7 @@ class FormHelperTest extends CakeTestCase
         $this->Form->request->here = $here;
         $this->Form->create('User');
 
-        $this->assertAttributeEquals($here, '_lastAction', $this->Form, "_lastAction shouldn't be empty.");
+        $this->assertAttributeEquals($here, '_lastAction', $this->Form, '_lastAction shouldn\'t be empty.');
     }
 
     /**

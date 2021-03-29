@@ -1850,20 +1850,20 @@ class I18nTest extends CakeTestCase
         $string = "This is a multiline translation\n";
         $string .= "broken up over multiple lines.\n";
         $string .= "This is the third line.\n";
-        $string .= "This is the forth line.";
+        $string .= 'This is the forth line.';
         $result = __($string);
 
         $expected = "This is a multiline translation\n";
         $expected .= "broken up over multiple lines.\n";
         $expected .= "This is the third line.\n";
-        $expected .= "This is the forth line. (translated)";
+        $expected .= 'This is the forth line. (translated)';
         $this->assertEquals($expected, $result);
 
         // Windows Newline is \r\n
         $string = "This is a multiline translation\r\n";
         $string .= "broken up over multiple lines.\r\n";
         $string .= "This is the third line.\r\n";
-        $string .= "This is the forth line.";
+        $string .= 'This is the forth line.';
         $result = __($string);
         $this->assertEquals($expected, $result);
 
@@ -1881,7 +1881,7 @@ class I18nTest extends CakeTestCase
         $string = "This is a multiline translation\n";
         $string .= "broken up over multiple lines.\n";
         $string .= "This is the third line.\n";
-        $string .= "This is the forth line.";
+        $string .= 'This is the forth line.';
 
         $singular = "%d = 1\n" . $string;
         $plural = "%d = 0 or > 1\n" . $string;
@@ -1898,7 +1898,7 @@ class I18nTest extends CakeTestCase
         $string = "This is a multiline translation\r\n";
         $string .= "broken up over multiple lines.\r\n";
         $string .= "This is the third line.\r\n";
-        $string .= "This is the forth line.";
+        $string .= 'This is the forth line.';
 
         $singular = "%d = 1\r\n" . $string;
         $plural = "%d = 0 or > 1\r\n" . $string;
@@ -1950,11 +1950,11 @@ class I18nTest extends CakeTestCase
         $this->assertEquals($expected, $result);
 
         $result = __n('%d = 1', '%d = 0 or > 1', (float)2);
-        $expected = "%d ends in 2-4, not 12-14 (translated)";
+        $expected = '%d ends in 2-4, not 12-14 (translated)';
         $this->assertEquals($expected, $result);
 
         $result = __n('%d = 1', '%d = 0 or > 1', (float)5);
-        $expected = "%d everything else (translated)";
+        $expected = '%d everything else (translated)';
         $this->assertEquals($expected, $result);
     }
 
@@ -2037,16 +2037,16 @@ class I18nTest extends CakeTestCase
         Configure::write('Config.language', 'ja_jp');
         $result = __c('d_fmt', 5);
 
-        $expected = "%Y年%m月%d日";
+        $expected = '%Y年%m月%d日';
 
         $this->assertEquals($expected, $result);
 
         $result = __c('am_pm', 5);
-        $expected = ["午前", "午後"];
+        $expected = ['午前', '午後'];
         $this->assertEquals($expected, $result);
 
         $result = __c('abmon', 5);
-        $expected = [" 1月", " 2月", " 3月", " 4月", " 5月", " 6月", " 7月", " 8月", " 9月", "10月", "11月", "12月"];
+        $expected = [' 1月', ' 2月', ' 3月', ' 4月', ' 5月', ' 6月', ' 7月', ' 8月', ' 9月', '10月', '11月', '12月'];
         $this->assertEquals($expected, $result);
     }
 
@@ -2101,12 +2101,12 @@ class I18nTest extends CakeTestCase
     {
         Configure::write('Config.language', 'nld');
 
-        $this->assertSame("brief", __x('mail', 'letter'));
-        $this->assertSame("letter", __x('character', 'letter'));
-        $this->assertSame("bal", __x('spherical object', 'ball'));
-        $this->assertSame("danspartij", __x('social gathering', 'ball'));
-        $this->assertSame("balans", __('balance'));
-        $this->assertSame("saldo", __x('money', 'balance'));
+        $this->assertSame('brief', __x('mail', 'letter'));
+        $this->assertSame('letter', __x('character', 'letter'));
+        $this->assertSame('bal', __x('spherical object', 'ball'));
+        $this->assertSame('danspartij', __x('social gathering', 'ball'));
+        $this->assertSame('balans', __('balance'));
+        $this->assertSame('saldo', __x('money', 'balance'));
     }
 
     /**
@@ -2118,15 +2118,15 @@ class I18nTest extends CakeTestCase
     {
         Configure::write('Config.language', 'nld_mo');
 
-        $this->assertSame("brief", __x('mail', 'letter'));
-        $this->assertSame("letter", __x('character', 'letter'));
-        $this->assertSame("bal", __x('spherical object', 'ball'));
-        $this->assertSame("danspartij", __x('social gathering', 'ball'));
-        $this->assertSame("balans", __('balance'));
-        $this->assertSame("saldo", __x('money', 'balance'));
+        $this->assertSame('brief', __x('mail', 'letter'));
+        $this->assertSame('letter', __x('character', 'letter'));
+        $this->assertSame('bal', __x('spherical object', 'ball'));
+        $this->assertSame('danspartij', __x('social gathering', 'ball'));
+        $this->assertSame('balans', __('balance'));
+        $this->assertSame('saldo', __x('money', 'balance'));
 
         // MO file is sorted by msgid, 'zoo' should be last
-        $this->assertSame("dierentuin", __('zoo'));
+        $this->assertSame('dierentuin', __('zoo'));
     }
 
     /**

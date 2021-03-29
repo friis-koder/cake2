@@ -231,7 +231,7 @@ class SanitizeTest extends CakeTestCase
     public function testStripWhitespace()
     {
         $string = "This     sentence \t\t\t has lots of \n\n white\nspace \rthat \r\n needs to be    \t    \n trimmed.";
-        $expected = "This sentence has lots of whitespace that needs to be trimmed.";
+        $expected = 'This sentence has lots of whitespace that needs to be trimmed.';
         $result = Sanitize::stripWhitespace($string);
         $this->assertEquals($expected, $result);
 
@@ -262,22 +262,22 @@ class SanitizeTest extends CakeTestCase
         $result = Sanitize::paranoid($string, ['%', '*', '.', ' ']);
         $this->assertEquals($expected, $result);
 
-        $string = "anything' OR 1 = 1";
+        $string = 'anything\' OR 1 = 1';
         $expected = 'anythingOR11';
         $result = Sanitize::paranoid($string);
         $this->assertEquals($expected, $result);
 
-        $string = "x' AND email IS NULL; --";
+        $string = 'x\' AND email IS NULL; --';
         $expected = 'xANDemailISNULL';
         $result = Sanitize::paranoid($string);
         $this->assertEquals($expected, $result);
 
-        $string = "x' AND 1=(SELECT COUNT(*) FROM users); --";
+        $string = 'x\' AND 1=(SELECT COUNT(*) FROM users); --';
         $expected = 'xAND1SELECTCOUNTFROMusers';
         $result = Sanitize::paranoid($string);
         $this->assertEquals($expected, $result);
 
-        $string = "x'; DROP TABLE members; --";
+        $string = 'x\'; DROP TABLE members; --';
         $expected = 'xDROPTABLEmembers';
         $result = Sanitize::paranoid($string);
         $this->assertEquals($expected, $result);

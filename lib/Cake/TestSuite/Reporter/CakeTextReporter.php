@@ -83,8 +83,8 @@ class CakeTextReporter extends CakeBaseReporter
             echo "\nOK\n";
         }
 
-        echo "Test cases run: " . $result->count() .
-            "/" . ($result->count() - $result->skippedCount()) .
+        echo 'Test cases run: ' . $result->count() .
+            '/' . ($result->count() - $result->skippedCount()) .
             ', Passes: ' . $this->numAssertions .
             ', Failures: ' . $result->failureCount() .
             ', Exceptions: ' . $result->errorCount() . "\n";
@@ -173,7 +173,7 @@ class CakeTextReporter extends CakeBaseReporter
         }
 
         foreach ($testCases as $testCase) {
-            $buffer .= $_SERVER['SERVER_NAME'] . $this->baseUrl() . "?case=" . $testCase . "&output=text\n";
+            $buffer .= $_SERVER['SERVER_NAME'] . $this->baseUrl() . '?case=' . $testCase . "&output=text\n";
         }
 
         $buffer .= "\n";

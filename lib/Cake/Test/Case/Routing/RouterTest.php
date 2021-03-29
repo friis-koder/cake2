@@ -1253,9 +1253,9 @@ class RouterTest extends CakeTestCase
     public function testRouteSymmetry()
     {
         Router::connect(
-            "/:extra/page/:slug/*",
+            '/:extra/page/:slug/*',
             ['controller' => 'pages', 'action' => 'view', 'extra' => null],
-            ["extra"      => '[a-z1-9_]*', "slug" => '[a-z1-9_]+', "action" => 'view']
+            ['extra'      => '[a-z1-9_]*', 'slug' => '[a-z1-9_]+', 'action' => 'view']
         );
 
         $result = Router::parse('/some_extra/page/this_is_the_slug');
@@ -1268,9 +1268,9 @@ class RouterTest extends CakeTestCase
 
         Router::reload();
         Router::connect(
-            "/:extra/page/:slug/*",
+            '/:extra/page/:slug/*',
             ['controller' => 'pages', 'action' => 'view', 'extra' => null],
-            ["extra"      => '[a-z1-9_]*', "slug" => '[a-z1-9_]+']
+            ['extra'      => '[a-z1-9_]*', 'slug' => '[a-z1-9_]+']
         );
         Router::parse('/');
 
@@ -1609,7 +1609,7 @@ class RouterTest extends CakeTestCase
         Router::parse('/');
 
         $result = Router::url(['page' => 1, 0 => null, 'sort' => 'controller', 'direction' => 'asc', 'order' => null]);
-        $expected = "/admin/controller/index/page:1/sort:controller/direction:asc";
+        $expected = '/admin/controller/index/page:1/sort:controller/direction:asc';
         $this->assertEquals($expected, $result);
 
         Router::reload();
@@ -1622,7 +1622,7 @@ class RouterTest extends CakeTestCase
 
         Router::parse('/admin/controller/index/type:whatever');
         $result = Router::url(['type' => 'new']);
-        $expected = "/admin/controller/index/type:new";
+        $expected = '/admin/controller/index/type:new';
         $this->assertEquals($expected, $result);
     }
 

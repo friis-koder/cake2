@@ -417,11 +417,11 @@ class TestTaskTest extends CakeTestCase
 
         $result = $this->Task->bake('Model', 'TestTaskArticle');
 
-        $this->assertContains("App::uses('TestTaskArticle', 'Model')", $result);
+        $this->assertContains('App::uses(\'TestTaskArticle\', \'Model\')', $result);
         $this->assertContains('class TestTaskArticleTest extends CakeTestCase', $result);
 
         $this->assertContains('function setUp()', $result);
-        $this->assertContains("\$this->TestTaskArticle = ClassRegistry::init('TestTaskArticle')", $result);
+        $this->assertContains('$this->TestTaskArticle = ClassRegistry::init(\'TestTaskArticle\')', $result);
 
         $this->assertContains('function tearDown()', $result);
         $this->assertContains('unset($this->TestTaskArticle)', $result);
@@ -431,10 +431,10 @@ class TestTaskTest extends CakeTestCase
         $this->assertContains('$this->markTestIncomplete(\'testDoSomething not implemented.\')', $result);
         $this->assertContains('$this->markTestIncomplete(\'testDoSomethingElse not implemented.\')', $result);
 
-        $this->assertContains("'app.test_task_article'", $result);
-        $this->assertContains("'app.test_task_comment'", $result);
-        $this->assertContains("'app.test_task_tag'", $result);
-        $this->assertContains("'app.articles_tag'", $result);
+        $this->assertContains('\'app.test_task_article\'', $result);
+        $this->assertContains('\'app.test_task_comment\'', $result);
+        $this->assertContains('\'app.test_task_tag\'', $result);
+        $this->assertContains('\'app.articles_tag\'', $result);
     }
 
     /**
@@ -449,20 +449,20 @@ class TestTaskTest extends CakeTestCase
 
         $result = $this->Task->bake('Controller', 'TestTaskComments');
 
-        $this->assertContains("App::uses('TestTaskCommentsController', 'Controller')", $result);
+        $this->assertContains('App::uses(\'TestTaskCommentsController\', \'Controller\')', $result);
         $this->assertContains('class TestTaskCommentsControllerTest extends ControllerTestCase', $result);
 
         $this->assertNotContains('function setUp()', $result);
-        $this->assertNotContains("\$this->TestTaskComments = new TestTaskCommentsController()", $result);
-        $this->assertNotContains("\$this->TestTaskComments->constructClasses()", $result);
+        $this->assertNotContains('$this->TestTaskComments = new TestTaskCommentsController()', $result);
+        $this->assertNotContains('$this->TestTaskComments->constructClasses()', $result);
 
         $this->assertNotContains('function tearDown()', $result);
         $this->assertNotContains('unset($this->TestTaskComments)', $result);
 
-        $this->assertContains("'app.test_task_article'", $result);
-        $this->assertContains("'app.test_task_comment'", $result);
-        $this->assertContains("'app.test_task_tag'", $result);
-        $this->assertContains("'app.articles_tag'", $result);
+        $this->assertContains('\'app.test_task_article\'', $result);
+        $this->assertContains('\'app.test_task_comment\'', $result);
+        $this->assertContains('\'app.test_task_tag\'', $result);
+        $this->assertContains('\'app.articles_tag\'', $result);
     }
 
     /**
@@ -476,14 +476,14 @@ class TestTaskTest extends CakeTestCase
 
         $result = $this->Task->bake('Component', 'Example');
 
-        $this->assertContains("App::uses('Component', 'Controller')", $result);
-        $this->assertContains("App::uses('ComponentCollection', 'Controller')", $result);
-        $this->assertContains("App::uses('ExampleComponent', 'Controller/Component')", $result);
+        $this->assertContains('App::uses(\'Component\', \'Controller\')', $result);
+        $this->assertContains('App::uses(\'ComponentCollection\', \'Controller\')', $result);
+        $this->assertContains('App::uses(\'ExampleComponent\', \'Controller/Component\')', $result);
         $this->assertContains('class ExampleComponentTest extends CakeTestCase', $result);
 
         $this->assertContains('function setUp()', $result);
-        $this->assertContains("\$Collection = new ComponentCollection()", $result);
-        $this->assertContains("\$this->Example = new ExampleComponent(\$Collection)", $result);
+        $this->assertContains('$Collection = new ComponentCollection()', $result);
+        $this->assertContains('$this->Example = new ExampleComponent($Collection)', $result);
 
         $this->assertContains('function tearDown()', $result);
         $this->assertContains('unset($this->Example)', $result);
@@ -500,11 +500,11 @@ class TestTaskTest extends CakeTestCase
 
         $result = $this->Task->bake('Behavior', 'Example');
 
-        $this->assertContains("App::uses('ExampleBehavior', 'Model/Behavior')", $result);
+        $this->assertContains('App::uses(\'ExampleBehavior\', \'Model/Behavior\')', $result);
         $this->assertContains('class ExampleBehaviorTest extends CakeTestCase', $result);
 
         $this->assertContains('function setUp()', $result);
-        $this->assertContains("\$this->Example = new ExampleBehavior()", $result);
+        $this->assertContains('$this->Example = new ExampleBehavior()', $result);
 
         $this->assertContains('function tearDown()', $result);
         $this->assertContains('unset($this->Example)', $result);
@@ -521,12 +521,12 @@ class TestTaskTest extends CakeTestCase
 
         $result = $this->Task->bake('Helper', 'Example');
 
-        $this->assertContains("App::uses('ExampleHelper', 'View/Helper')", $result);
+        $this->assertContains('App::uses(\'ExampleHelper\', \'View/Helper\')', $result);
         $this->assertContains('class ExampleHelperTest extends CakeTestCase', $result);
 
         $this->assertContains('function setUp()', $result);
-        $this->assertContains("\$View = new View()", $result);
-        $this->assertContains("\$this->Example = new ExampleHelper(\$View)", $result);
+        $this->assertContains('$View = new View()', $result);
+        $this->assertContains('$this->Example = new ExampleHelper($View)', $result);
 
         $this->assertContains('function tearDown()', $result);
         $this->assertContains('unset($this->Example)', $result);

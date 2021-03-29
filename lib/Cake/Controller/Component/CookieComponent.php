@@ -452,7 +452,7 @@ class CookieComponent extends Component
         if (!$this->_encrypted) {
             return $value;
         }
-        $prefix = "Q2FrZQ==.";
+        $prefix = 'Q2FrZQ==.';
         if ($this->_type === 'rijndael') {
             $cipher = Security::rijndael($value, $this->key, 'encrypt');
         }

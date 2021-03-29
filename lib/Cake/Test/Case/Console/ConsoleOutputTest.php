@@ -106,19 +106,19 @@ class ConsoleOutputTest extends CakeTestCase
      */
     public function testOverwrite()
     {
-        $testString = "Text";
+        $testString = 'Text';
 
         $this->output->expects($this->at(0))->method('_write')
             ->with($testString);
 
         $this->output->expects($this->at(1))->method('_write')
-            ->with("");
+            ->with('');
 
         $this->output->expects($this->at(2))->method('_write')
-            ->with("Overwriting text");
+            ->with('Overwriting text');
 
         $this->output->write($testString, 0);
-        $this->output->overwrite("Overwriting text");
+        $this->output->overwrite('Overwriting text');
     }
 
     /**
@@ -176,7 +176,7 @@ class ConsoleOutputTest extends CakeTestCase
     public function testFormattingNotEatingTags()
     {
         $this->output->expects($this->once())->method('_write')
-            ->with("<red> Something bad");
+            ->with('<red> Something bad');
 
         $this->output->write('<red> Something bad', false);
     }
@@ -209,7 +209,7 @@ class ConsoleOutputTest extends CakeTestCase
     public function testFormattingMissingStyleName()
     {
         $this->output->expects($this->once())->method('_write')
-            ->with("<not_there>Error:</not_there> Something bad");
+            ->with('<not_there>Error:</not_there> Something bad');
 
         $this->output->write('<not_there>Error:</not_there> Something bad', false);
     }

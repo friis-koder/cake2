@@ -206,7 +206,7 @@ class FixtureTask extends BakeTask
             }
         }
         if (!isset($options['records']) && $this->interactive) {
-            $prompt = __d('cake_console', "Would you like to build this fixture with data from %s's table?", $modelName);
+            $prompt = __d('cake_console', 'Would you like to build this fixture with data from %s\'s table?', $modelName);
             $fromTable = $this->in($prompt, ['y', 'n'], 'n');
             if (strtolower($fromTable) === 'y') {
                 $options['fromTable'] = true;
@@ -242,13 +242,13 @@ class FixtureTask extends BakeTask
                 $importBits[] = "'model' => '{$importOptions['schema']}'";
             }
             if (isset($importOptions['records'])) {
-                $importBits[] = "'records' => true";
+                $importBits[] = '\'records\' => true';
             }
             if ($this->connection !== 'default') {
                 $importBits[] .= "'connection' => '{$this->connection}'";
             }
             if (!empty($importBits)) {
-                $import = sprintf("array(%s)", implode(', ', $importBits));
+                $import = sprintf('array(%s)', implode(', ', $importBits));
             }
         }
 
@@ -368,7 +368,7 @@ class FixtureTask extends BakeTask
                         if ($isPrimaryUuid) {
                             $insert = CakeText::uuid();
                         } else {
-                            $insert = "Lorem ipsum dolor sit amet";
+                            $insert = 'Lorem ipsum dolor sit amet';
                             if (!empty($fieldInfo['length'])) {
                                 $insert = substr($insert, 0, (int)$fieldInfo['length'] - 2);
                             }
@@ -396,13 +396,13 @@ class FixtureTask extends BakeTask
 
                         break;
                     case 'text':
-                        $insert = "Lorem ipsum dolor sit amet, aliquet feugiat.";
-                        $insert .= " Convallis morbi fringilla gravida,";
-                        $insert .= " phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin";
-                        $insert .= " venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla";
-                        $insert .= " vestibulum massa neque ut et, id hendrerit sit,";
-                        $insert .= " feugiat in taciti enim proin nibh, tempor dignissim, rhoncus";
-                        $insert .= " duis vestibulum nunc mattis convallis.";
+                        $insert = 'Lorem ipsum dolor sit amet, aliquet feugiat.';
+                        $insert .= ' Convallis morbi fringilla gravida,';
+                        $insert .= ' phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin';
+                        $insert .= ' venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla';
+                        $insert .= ' vestibulum massa neque ut et, id hendrerit sit,';
+                        $insert .= ' feugiat in taciti enim proin nibh, tempor dignissim, rhoncus';
+                        $insert .= ' duis vestibulum nunc mattis convallis.';
 
                         break;
                 }
@@ -464,7 +464,7 @@ class FixtureTask extends BakeTask
                 'recursive'  => -1,
             ]);
 
-            $prompt = __d('cake_console', "How many records do you want to import?");
+            $prompt = __d('cake_console', 'How many records do you want to import?');
             $recordCount = $this->in($prompt, null, ($recordsFound < 10) ? $recordsFound : 10);
         } else {
             $condition = 'WHERE 1=1';

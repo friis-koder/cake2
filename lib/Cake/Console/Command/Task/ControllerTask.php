@@ -163,16 +163,16 @@ class ControllerTask extends BakeTask
         $useDynamicScaffold = 'n';
         $wannaBakeCrud = 'y';
 
-        $question[] = __d('cake_console', "Would you like to build your controller interactively?");
+        $question[] = __d('cake_console', 'Would you like to build your controller interactively?');
         if (file_exists($this->path . $controllerName . 'Controller.php')) {
-            $question[] = __d('cake_console', "Warning: Choosing no will overwrite the %sController.", $controllerName);
+            $question[] = __d('cake_console', 'Warning: Choosing no will overwrite the %sController.', $controllerName);
         }
         $doItInteractive = $this->in(implode("\n", $question), ['y', 'n'], 'y');
 
         if (strtolower($doItInteractive) === 'y') {
             $this->interactive = true;
             $useDynamicScaffold = $this->in(
-                __d('cake_console', "Would you like to use dynamic scaffolding?"),
+                __d('cake_console', 'Would you like to use dynamic scaffolding?'),
                 ['y', 'n'],
                 'n'
             );
@@ -187,7 +187,7 @@ class ControllerTask extends BakeTask
                 $components = $this->doComponents();
 
                 $wannaUseSession = $this->in(
-                    __d('cake_console', "Would you like to use the FlashComponent to display flash messages?"),
+                    __d('cake_console', 'Would you like to use the FlashComponent to display flash messages?'),
                     ['y', 'n'],
                     'y'
                 );
@@ -248,7 +248,7 @@ class ControllerTask extends BakeTask
         $this->out(__d('cake_console', "Controller Name:\n\t%s", $controllerName));
 
         if (strtolower($useDynamicScaffold) === 'y') {
-            $this->out("public \$scaffold;");
+            $this->out('public $scaffold;');
         }
 
         $properties = [
@@ -286,7 +286,7 @@ class ControllerTask extends BakeTask
             'n'
         );
         $wannaBakeAdminCrud = $this->in(
-            __d('cake_console', "Would you like to create the basic class methods for admin routing?"),
+            __d('cake_console', 'Would you like to create the basic class methods for admin routing?'),
             ['y', 'n'],
             'n'
         );
@@ -469,7 +469,7 @@ class ControllerTask extends BakeTask
             $count = count($this->__tables);
             for ($i = 0; $i < $count; $i++) {
                 $this->_controllerNames[] = $this->_controllerName($this->_modelName($this->__tables[$i]));
-                $this->out(sprintf("%2d. %s", $i + 1, $this->_controllerNames[$i]));
+                $this->out(sprintf('%2d. %s', $i + 1, $this->_controllerNames[$i]));
             }
 
             return $this->_controllerNames;

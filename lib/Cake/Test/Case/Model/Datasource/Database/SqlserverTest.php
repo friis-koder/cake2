@@ -301,11 +301,11 @@ class SqlserverTest extends CakeTestCase
      */
     public function testQuoting()
     {
-        $expected = "1.2";
+        $expected = '1.2';
         $result = $this->db->value(1.2, 'float');
         $this->assertSame($expected, $result);
 
-        $expected = "'1,2'";
+        $expected = '\'1,2\'';
         $result = $this->db->value('1,2', 'float');
         $this->assertSame($expected, $result);
 
@@ -317,7 +317,7 @@ class SqlserverTest extends CakeTestCase
         $result = $this->db->value('', 'float');
         $this->assertSame($expected, $result);
 
-        $expected = "''";
+        $expected = '\'\'';
         $result = $this->db->value('', 'binary');
         $this->assertSame($expected, $result);
 
@@ -610,7 +610,7 @@ class SqlserverTest extends CakeTestCase
             'default' => '1'
         ];
         $result = $this->db->buildColumn($column);
-        $expected = "[checked] bit DEFAULT '1'";
+        $expected = '[checked] bit DEFAULT \'1\'';
         $this->assertEquals($expected, $result);
 
         $column = [
@@ -618,7 +618,7 @@ class SqlserverTest extends CakeTestCase
             'type' => 'biginteger',
         ];
         $result = $this->db->buildColumn($column);
-        $expected = "[huge] bigint";
+        $expected = '[huge] bigint';
         $this->assertEquals($expected, $result);
     }
 

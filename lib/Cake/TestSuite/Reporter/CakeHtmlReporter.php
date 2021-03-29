@@ -103,19 +103,19 @@ class CakeHtmlReporter extends CakeBaseReporter
             $buffer = "<h3>Core Test Cases:</h3>\n<ul>";
             $urlExtra = '&core=true';
         } elseif ($plugin) {
-            $buffer = "<h3>" . Inflector::humanize($plugin) . " Test Cases:</h3>\n<ul>";
+            $buffer = '<h3>' . Inflector::humanize($plugin) . " Test Cases:</h3>\n<ul>";
             $urlExtra = '&plugin=' . $plugin;
         }
 
         if (count($testCases) < 1) {
-            $buffer .= "<strong>EMPTY</strong>";
+            $buffer .= '<strong>EMPTY</strong>';
         }
 
         foreach ($testCases as $testCase) {
             $title = explode(DS, str_replace('.test.php', '', $testCase));
             $title[count($title) - 1] = Inflector::camelize($title[count($title) - 1]);
             $title = implode(' / ', $title);
-            $buffer .= "<li><a href='" . $this->baseUrl() . "?case=" . urlencode($testCase) . $urlExtra . "'>" . $title . "</a></li>\n";
+            $buffer .= '<li><a href=\'' . $this->baseUrl() . '?case=' . urlencode($testCase) . $urlExtra . '\'>' . $title . "</a></li>\n";
         }
         $buffer .= "</ul>\n";
         echo $buffer;
@@ -131,11 +131,11 @@ class CakeHtmlReporter extends CakeBaseReporter
     public function sendNoCacheHeaders()
     {
         if (!headers_sent()) {
-            header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
-            header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
-            header("Cache-Control: no-store, no-cache, must-revalidate");
-            header("Cache-Control: post-check=0, pre-check=0", false);
-            header("Pragma: no-cache");
+            header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+            header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT');
+            header('Cache-Control: no-store, no-cache, must-revalidate');
+            header('Cache-Control: post-check=0, pre-check=0', false);
+            header('Pragma: no-cache');
         }
     }
 
@@ -151,17 +151,17 @@ class CakeHtmlReporter extends CakeBaseReporter
         echo $this->_buffer;
         ob_end_flush();
 
-        $colour = ($result->failureCount() + $result->errorCount() > 0 ? "red" : "green");
+        $colour = ($result->failureCount() + $result->errorCount() > 0 ? 'red' : 'green');
         echo "</ul>\n";
-        echo "<div style=\"";
+        echo '<div style="';
         echo "padding: 8px; margin: 1em 0; background-color: $colour; color: white;";
-        echo "\">";
-        echo($result->count() - $result->skippedCount()) . "/" . $result->count();
+        echo '">';
+        echo($result->count() - $result->skippedCount()) . '/' . $result->count();
         echo " test methods complete:\n";
-        echo "<strong>" . count($result->passed()) . "</strong> passes, ";
-        echo "<strong>" . $result->failureCount() . "</strong> fails, ";
-        echo "<strong>" . $this->numAssertions . "</strong> assertions and ";
-        echo "<strong>" . $result->errorCount() . "</strong> exceptions.";
+        echo '<strong>' . count($result->passed()) . '</strong> passes, ';
+        echo '<strong>' . $result->failureCount() . '</strong> fails, ';
+        echo '<strong>' . $this->numAssertions . '</strong> assertions and ';
+        echo '<strong>' . $result->errorCount() . '</strong> exceptions.';
         echo "</div>\n";
         echo '<div style="padding:0 0 5px;">';
         echo '<p><strong>Time:</strong> ' . $result->time() . ' seconds</p>';
@@ -219,10 +219,10 @@ class CakeHtmlReporter extends CakeBaseReporter
         }
         list($show, $query) = $this->_getQueryLink();
 
-        echo "<p><a href='" . $this->baseUrl() . $show . "'>Run more tests</a> | <a href='" . $this->baseUrl() . $query . "&amp;show_passes=1'>Show Passes</a> | \n";
-        echo "<a href='" . $this->baseUrl() . $query . "&amp;debug=1'>Enable Debug Output</a> | \n";
-        echo "<a href='" . $this->baseUrl() . $query . "&amp;code_coverage=true'>Analyze Code Coverage</a> | \n";
-        echo "<a href='" . $this->baseUrl() . $query . "&amp;code_coverage=true&amp;show_passes=1&amp;debug=1'>All options enabled</a></p>\n";
+        echo '<p><a href=\'' . $this->baseUrl() . $show . '\'>Run more tests</a> | <a href=\'' . $this->baseUrl() . $query . "&amp;show_passes=1'>Show Passes</a> | \n";
+        echo '<a href=\'' . $this->baseUrl() . $query . "&amp;debug=1'>Enable Debug Output</a> | \n";
+        echo '<a href=\'' . $this->baseUrl() . $query . "&amp;code_coverage=true'>Analyze Code Coverage</a> | \n";
+        echo '<a href=\'' . $this->baseUrl() . $query . "&amp;code_coverage=true&amp;show_passes=1&amp;debug=1'>All options enabled</a></p>\n";
     }
 
     /**
@@ -284,11 +284,11 @@ class CakeHtmlReporter extends CakeBaseReporter
         }
 
         echo "<li class='fail'>\n";
-        echo "<span>Failed</span>";
-        echo "<div class='msg'><pre>" . $this->_htmlEntities($message->toString());
+        echo '<span>Failed</span>';
+        echo '<div class=\'msg\'><pre>' . $this->_htmlEntities($message->toString());
 
         if ((is_string($actualMsg) && is_string($expectedMsg)) || (is_array($actualMsg) && is_array($expectedMsg))) {
-            $diffs = "";
+            $diffs = '';
             if (class_exists('PHPUnit_Util_Diff')) {
                 $diffs = PHPUnit_Util_Diff::diff($expectedMsg, $actualMsg);
             } elseif (class_exists('SebastianBergmann\Diff\Differ')) {
@@ -296,16 +296,16 @@ class CakeHtmlReporter extends CakeBaseReporter
                 $diffs = $differ->diff($expectedMsg, $actualMsg);
             }
 
-            echo "<br />" . $this->_htmlEntities($diffs);
+            echo '<br />' . $this->_htmlEntities($diffs);
         }
 
         echo "</pre></div>\n";
-        echo "<div class='msg'>" . __d('cake_dev', 'Test case: %s', $testName) . "</div>\n";
-        if (strpos($className, "PHPUnit_") === false) {
+        echo '<div class=\'msg\'>' . __d('cake_dev', 'Test case: %s', $testName) . "</div>\n";
+        if (strpos($className, 'PHPUnit_') === false) {
             list($show, $query) = $this->_getQueryLink();
-            echo "<div class='msg'><a href='" . $this->baseUrl() . $query . "&amp;filter=" . $test->getName() . "'>" . __d('cake_dev', 'Rerun only this test: %s', $testName) . "</a></div>\n";
+            echo '<div class=\'msg\'><a href=\'' . $this->baseUrl() . $query . '&amp;filter=' . $test->getName() . '\'>' . __d('cake_dev', 'Rerun only this test: %s', $testName) . "</a></div>\n";
         }
-        echo "<div class='msg'>" . __d('cake_dev', 'Stack trace:') . '<br />' . $trace . "</div>\n";
+        echo '<div class=\'msg\'>' . __d('cake_dev', 'Stack trace:') . '<br />' . $trace . "</div>\n";
         echo "</li>\n";
         $this->_buffer .= ob_get_clean();
     }
@@ -324,9 +324,9 @@ class CakeHtmlReporter extends CakeBaseReporter
         ob_start();
         if (isset($this->params['showPasses']) && $this->params['showPasses']) {
             echo "<li class='pass'>\n";
-            echo "<span>Passed</span> ";
+            echo '<span>Passed</span> ';
 
-            echo "<br />" . $this->_htmlEntities($test->getName()) . " ($time seconds)\n";
+            echo '<br />' . $this->_htmlEntities($test->getName()) . " ($time seconds)\n";
             echo "</li>\n";
         }
         $this->_buffer .= ob_get_clean();
@@ -346,11 +346,11 @@ class CakeHtmlReporter extends CakeBaseReporter
         $testName = get_class($test) . '(' . $test->getName() . ')';
 
         echo "<li class='fail'>\n";
-        echo "<span>" . get_class($message) . "</span>";
+        echo '<span>' . get_class($message) . '</span>';
 
-        echo "<div class='msg'>" . $this->_htmlEntities($message->getMessage()) . "</div>\n";
-        echo "<div class='msg'>" . __d('cake_dev', 'Test case: %s', $testName) . "</div>\n";
-        echo "<div class='msg'>" . __d('cake_dev', 'Stack trace:') . '<br />' . $trace . "</div>\n";
+        echo '<div class=\'msg\'>' . $this->_htmlEntities($message->getMessage()) . "</div>\n";
+        echo '<div class=\'msg\'>' . __d('cake_dev', 'Test case: %s', $testName) . "</div>\n";
+        echo '<div class=\'msg\'>' . __d('cake_dev', 'Stack trace:') . '<br />' . $trace . "</div>\n";
         echo "</li>\n";
         $this->_buffer .= ob_get_clean();
     }
@@ -366,7 +366,7 @@ class CakeHtmlReporter extends CakeBaseReporter
     {
         ob_start();
         echo "<li class='skipped'>\n";
-        echo "<span>Skipped</span> ";
+        echo '<span>Skipped</span> ';
         echo $test->getName() . ': ' . $this->_htmlEntities($message->getMessage());
         echo "</li>\n";
         $this->_buffer .= ob_get_clean();

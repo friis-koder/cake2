@@ -327,8 +327,8 @@ class HttpSocketResponse implements ArrayAccess
         $cookies = [];
         foreach ((array)$cookieHeader as $cookie) {
             if (strpos($cookie, '";"') !== false) {
-                $cookie = str_replace('";"', "{__cookie_replace__}", $cookie);
-                $parts = str_replace("{__cookie_replace__}", '";"', explode(';', $cookie));
+                $cookie = str_replace('";"', '{__cookie_replace__}', $cookie);
+                $parts = str_replace('{__cookie_replace__}', '";"', explode(';', $cookie));
             } else {
                 $parts = preg_split('/\;[ \t]*/', $cookie);
             }
@@ -385,7 +385,7 @@ class HttpSocketResponse implements ArrayAccess
         if (!empty($chars)) {
             $escape = $chars;
         } else {
-            $escape = ['"', "(", ")", "<", ">", "@", ",", ";", ":", "\\", "/", "[", "]", "?", "=", "{", "}", " "];
+            $escape = ['"', '(', ')', '<', '>', '@', ',', ';', ':', '\\', '/', '[', ']', '?', '=', '{', '}', ' '];
             for ($i = 0; $i <= 31; $i++) {
                 $escape[] = chr($i);
             }

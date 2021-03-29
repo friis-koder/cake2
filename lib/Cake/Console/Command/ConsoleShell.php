@@ -123,57 +123,57 @@ class ConsoleShell extends AppShell
             '',
             'To test model results, use the name of your model without a leading $',
             'e.g. Foo->find("all")',
-            "",
+            '',
             'To dynamically set associations, you can do the following:',
             '',
             "\tModelA bind <association> ModelB",
             '',
-            "where the supported associations are hasOne, hasMany, belongsTo, hasAndBelongsToMany",
-            "",
+            'where the supported associations are hasOne, hasMany, belongsTo, hasAndBelongsToMany',
+            '',
             'To dynamically remove associations, you can do the following:',
             '',
             "\t ModelA unbind <association> ModelB",
             '',
-            "where the supported associations are the same as above",
-            "",
-            "To save a new field in a model, you can do the following:",
+            'where the supported associations are the same as above',
+            '',
+            'To save a new field in a model, you can do the following:',
             '',
             "\tModelA->save(array('foo' => 'bar', 'baz' => 0))",
             '',
-            "where you are passing a hash of data to be saved in the format",
-            "of field => value pairs",
-            "",
-            "To get column information for a model, use the following:",
+            'where you are passing a hash of data to be saved in the format',
+            'of field => value pairs',
+            '',
+            'To get column information for a model, use the following:',
             '',
             "\tModelA columns",
             '',
-            "which returns a list of columns and their type",
-            "",
+            'which returns a list of columns and their type',
+            '',
             '<info>Route testing</info>',
-            "",
+            '',
             'To test URLs against your app\'s route configuration, type:',
-            "",
+            '',
             "\tRoute <url>",
-            "",
-            "where url is the path to your your action plus any query parameters,",
-            "minus the application's base path. For example:",
-            "",
+            '',
+            'where url is the path to your your action plus any query parameters,',
+            'minus the application\'s base path. For example:',
+            '',
             "\tRoute /posts/view/1",
-            "",
-            "will return something like the following:",
-            "",
+            '',
+            'will return something like the following:',
+            '',
             "\tarray(",
             "\t  [...]",
             "\t  'controller' => 'posts',",
             "\t  'action' => 'view',",
             "\t  [...]",
             "\t)",
-            "",
+            '',
             'Alternatively, you can use simple array syntax to test reverse',
             'To reload your routes config (Config/routes.php), do the following:',
-            "",
+            '',
             "\tRoutes reload",
-            "",
+            '',
             'To show all connected routes, do the following:',
             '',
             "\tRoutes show",
@@ -212,7 +212,7 @@ class ConsoleShell extends AppShell
             if ($method) {
                 $this->$method($command);
             } else {
-                $this->out(__d('cake_console', "Invalid command"));
+                $this->out(__d('cake_console', 'Invalid command'));
                 $this->out();
             }
             $command = '';
@@ -272,7 +272,7 @@ class ConsoleShell extends AppShell
 
         foreach ($tmp as $data) {
             $data = strip_tags($data);
-            $data = str_replace($this->badCommandChars, "", $data);
+            $data = str_replace($this->badCommandChars, '', $data);
         }
 
         $modelA = $tmp[1];
@@ -283,13 +283,13 @@ class ConsoleShell extends AppShell
             $this->{$modelA}->bindModel([$association => [$modelB => ['className' => $modelB]]], false);
             $this->out(__d(
                 'cake_console',
-                "Created %s association between %s and %s",
+                'Created %s association between %s and %s',
                 $association,
                 $modelA,
                 $modelB
             ));
         } else {
-            $this->out(__d('cake_console', "Please verify you are using valid models and association types"));
+            $this->out(__d('cake_console', 'Please verify you are using valid models and association types'));
         }
     }
 
@@ -305,7 +305,7 @@ class ConsoleShell extends AppShell
 
         foreach ($tmp as $data) {
             $data = strip_tags($data);
-            $data = str_replace($this->badCommandChars, "", $data);
+            $data = str_replace($this->badCommandChars, '', $data);
         }
 
         $modelA = $tmp[1];
@@ -326,13 +326,13 @@ class ConsoleShell extends AppShell
             $this->{$modelA}->unbindModel([$association => [$modelB]]);
             $this->out(__d(
                 'cake_console',
-                "Removed %s association between %s and %s",
+                'Removed %s association between %s and %s',
                 $association,
                 $modelA,
                 $modelB
             ));
         } else {
-            $this->out(__d('cake_console', "Please verify you are using valid models, valid current association, and valid association types"));
+            $this->out(__d('cake_console', 'Please verify you are using valid models, valid current association, and valid association types'));
         }
     }
 
@@ -345,7 +345,7 @@ class ConsoleShell extends AppShell
     protected function _find($command)
     {
         $command = strip_tags($command);
-        $command = str_replace($this->badCommandChars, "", $command);
+        $command = str_replace($this->badCommandChars, '', $command);
 
         // Do we have a valid model?
         list($modelToCheck) = explode('->', $command);
@@ -392,10 +392,10 @@ class ConsoleShell extends AppShell
                 }
             } else {
                 $this->out();
-                $this->out(__d('cake_console', "No result set found"));
+                $this->out(__d('cake_console', 'No result set found'));
             }
         } else {
-            $this->out(__d('cake_console', "%s is not a valid model", $modelToCheck));
+            $this->out(__d('cake_console', '%s is not a valid model', $modelToCheck));
         }
     }
 
@@ -409,12 +409,12 @@ class ConsoleShell extends AppShell
     {
         // Validate the model we're trying to save here
         $command = strip_tags($command);
-        $command = str_replace($this->badCommandChars, "", $command);
-        list($modelToSave) = explode("->", $command);
+        $command = str_replace($this->badCommandChars, '', $command);
+        list($modelToSave) = explode('->', $command);
 
         if ($this->_isValidModel($modelToSave)) {
             // Extract the array of data we are trying to build
-            list(, $data) = explode("->save", $command);
+            list(, $data) = explode('->save', $command);
             $data = preg_replace('/^\(*(array)?\(*(.+?)\)*$/i', '\\2', $data);
             $saveCommand = "\$this->{$modelToSave}->save(array('{$modelToSave}' => array({$data})));";
             //@codingStandardsIgnoreStart
@@ -434,7 +434,7 @@ class ConsoleShell extends AppShell
     {
         preg_match($this->_methodPatterns[__FUNCTION__], $command, $tmp);
 
-        $modelToCheck = strip_tags(str_replace($this->badCommandChars, "", $tmp[1]));
+        $modelToCheck = strip_tags(str_replace($this->badCommandChars, '', $tmp[1]));
 
         if ($this->_isValidModel($modelToCheck)) {
             // Get the column info for this model
@@ -449,7 +449,7 @@ class ConsoleShell extends AppShell
                 }
             }
         } else {
-            $this->out(__d('cake_console', "Please verify that you selected a valid model"));
+            $this->out(__d('cake_console', 'Please verify that you selected a valid model'));
         }
     }
 
@@ -461,9 +461,9 @@ class ConsoleShell extends AppShell
     protected function _routesReload()
     {
         if (!$this->_loadRoutes()) {
-            return $this->err(__d('cake_console', "There was an error loading the routes config. Please check that the file exists and is free of parse errors."));
+            return $this->err(__d('cake_console', 'There was an error loading the routes config. Please check that the file exists and is free of parse errors.'));
         }
-        $this->out(__d('cake_console', "Routes configuration reloaded, %d routes connected", count(Router::$routes)));
+        $this->out(__d('cake_console', 'Routes configuration reloaded, %d routes connected', count(Router::$routes)));
     }
 
     /**

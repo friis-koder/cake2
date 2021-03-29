@@ -3570,7 +3570,7 @@ class ContainableBehaviorTest extends CakeTestCase
                     'foreignKey'            => 'article_id',
                     'associationForeignKey' => 'tag_id',
                     // LENGTH function mysql-only, using LIKE does almost the same
-                    'conditions' => "ShortTag.tag LIKE '???'"
+                    'conditions' => 'ShortTag.tag LIKE \'???\''
                 ]
             ]
         ];

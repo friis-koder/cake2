@@ -34,21 +34,21 @@ class Sqlserver extends DboSource
      *
      * @var string
      */
-    public $description = "SQL Server DBO Driver";
+    public $description = 'SQL Server DBO Driver';
 
     /**
      * Starting quote character for quoted identifiers
      *
      * @var string
      */
-    public $startQuote = "[";
+    public $startQuote = '[';
 
     /**
      * Ending quote character for quoted identifiers
      *
      * @var string
      */
-    public $endQuote = "]";
+    public $endQuote = ']';
 
     /**
      * Creates a map between field aliases and numeric indexes. Workaround for the
@@ -187,7 +187,7 @@ class Sqlserver extends DboSource
         if ($cache !== null) {
             return $cache;
         }
-        $result = $this->_execute("SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES");
+        $result = $this->_execute('SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES');
 
         if (!$result) {
             $result->closeCursor();
@@ -227,16 +227,16 @@ class Sqlserver extends DboSource
         $schema = is_object($model) ? $model->schemaName : false;
 
         $cols = $this->_execute(
-            "SELECT
+            'SELECT
 				COLUMN_NAME as Field,
 				DATA_TYPE as Type,
-				COL_LENGTH('" . ($schema ? $fulltable : $table) . "', COLUMN_NAME) as Length,
+				COL_LENGTH(\'' . ($schema ? $fulltable : $table) . '\', COLUMN_NAME) as Length,
 				IS_NULLABLE As [Null],
 				COLUMN_DEFAULT as [Default],
-				COLUMNPROPERTY(OBJECT_ID('" . ($schema ? $fulltable : $table) . "'), COLUMN_NAME, 'IsIdentity') as [Key],
+				COLUMNPROPERTY(OBJECT_ID(\'' . ($schema ? $fulltable : $table) . '\'), COLUMN_NAME, \'IsIdentity\') as [Key],
 				NUMERIC_SCALE as Size
 			FROM INFORMATION_SCHEMA.COLUMNS
-			WHERE TABLE_NAME = '" . $table . "'" . ($schema ? " AND TABLE_SCHEMA = '" . $schema . "'" : '')
+			WHERE TABLE_NAME = \'' . $table . '\'' . ($schema ? ' AND TABLE_SCHEMA = \'' . $schema . '\'' : '')
         );
 
         if (!$cols) {
@@ -258,8 +258,8 @@ class Sqlserver extends DboSource
             }
             if ($fields[$field]['default'] !== null) {
                 $fields[$field]['default'] = preg_replace(
-                    "/^[(]{1,2}'?([^')]*)?'?[)]{1,2}$/",
-                    "$1",
+                    '/^[(]{1,2}\'?([^\')]*)?\'?[)]{1,2}$/',
+                    '$1',
                     $fields[$field]['default']
                 );
                 $this->value($fields[$field]['default'], $fields[$field]['type']);
@@ -608,7 +608,7 @@ class Sqlserver extends DboSource
                 }
 
                 return trim("SELECT {$limit} {$fields} FROM {$table} {$alias}{$lock} {$joins} {$conditions} {$group}{$having} {$order}");
-            case "schema":
+            case 'schema':
                 extract($data);
 
                 foreach ($indexes as $i => $index) {
@@ -748,14 +748,14 @@ class Sqlserver extends DboSource
         $result = preg_replace('/(bit)\([0-9]+\)/i', '$1', $result);
         if (strpos($result, 'DEFAULT NULL') !== false) {
             if (isset($column['default']) && $column['default'] === '') {
-                $result = str_replace('DEFAULT NULL', "DEFAULT ''", $result);
+                $result = str_replace('DEFAULT NULL', 'DEFAULT \'\'', $result);
             } else {
                 $result = str_replace('DEFAULT NULL', 'NULL', $result);
             }
         } elseif (array_keys($column) === ['type', 'name']) {
             $result .= ' NULL';
-        } elseif (strpos($result, "DEFAULT N'")) {
-            $result = str_replace("DEFAULT N'", "DEFAULT '", $result);
+        } elseif (strpos($result, 'DEFAULT N\'')) {
+            $result = str_replace('DEFAULT N\'', 'DEFAULT \'', $result);
         }
 
         return $result;
@@ -876,7 +876,7 @@ class Sqlserver extends DboSource
      */
     protected function _dropTable($table)
     {
-        return "IF OBJECT_ID('" . $this->fullTableName($table, false) . "', 'U') IS NOT NULL DROP TABLE " . $this->fullTableName($table) . ";";
+        return 'IF OBJECT_ID(\'' . $this->fullTableName($table, false) . '\', \'U\') IS NOT NULL DROP TABLE ' . $this->fullTableName($table) . ';';
     }
 
     /**

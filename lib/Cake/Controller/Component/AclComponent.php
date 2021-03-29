@@ -109,7 +109,7 @@ class AclComponent extends Component
      * @param string $action Action (defaults to *)
      * @return bool Success
      */
-    public function check($aro, $aco, $action = "*")
+    public function check($aro, $aco, $action = '*')
     {
         return $this->_Instance->check($aro, $aco, $action);
     }
@@ -123,7 +123,7 @@ class AclComponent extends Component
      * @param string $action Action (defaults to *)
      * @return bool Success
      */
-    public function allow($aro, $aco, $action = "*")
+    public function allow($aro, $aco, $action = '*')
     {
         return $this->_Instance->allow($aro, $aco, $action);
     }
@@ -137,7 +137,7 @@ class AclComponent extends Component
      * @param string $action Action (defaults to *)
      * @return bool Success
      */
-    public function deny($aro, $aco, $action = "*")
+    public function deny($aro, $aco, $action = '*')
     {
         return $this->_Instance->deny($aro, $aco, $action);
     }
@@ -151,7 +151,7 @@ class AclComponent extends Component
      * @param string $action Action (defaults to *)
      * @return bool Success
      */
-    public function inherit($aro, $aco, $action = "*")
+    public function inherit($aro, $aco, $action = '*')
     {
         return $this->_Instance->inherit($aro, $aco, $action);
     }
@@ -165,7 +165,7 @@ class AclComponent extends Component
      * @return bool Success
      * @deprecated 3.0.0 Will be removed in 3.0.
      */
-    public function grant($aro, $aco, $action = "*")
+    public function grant($aro, $aco, $action = '*')
     {
         trigger_error(__d('cake_dev', '%s is deprecated, use %s instead', 'AclComponent::grant()', 'allow()'), E_USER_WARNING);
 
@@ -181,7 +181,7 @@ class AclComponent extends Component
      * @return bool Success
      * @deprecated 3.0.0 Will be removed in 3.0.
      */
-    public function revoke($aro, $aco, $action = "*")
+    public function revoke($aro, $aco, $action = '*')
     {
         trigger_error(__d('cake_dev', '%s is deprecated, use %s instead', 'AclComponent::revoke()', 'deny()'), E_USER_WARNING);
 

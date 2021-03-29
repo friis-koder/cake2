@@ -31,7 +31,7 @@ class Mysql extends DboSource
      *
      * @var string
      */
-    public $description = "MySQL DBO Driver";
+    public $description = 'MySQL DBO Driver';
 
     /**
      * Base configuration settings for MySQL driver
@@ -60,14 +60,14 @@ class Mysql extends DboSource
      *
      * @var string
      */
-    public $startQuote = "`";
+    public $startQuote = '`';
 
     /**
      * End quote
      *
      * @var string
      */
-    public $endQuote = "`";
+    public $endQuote = '`';
 
     /**
      * use alias for update and delete. Set to true if version >= 4.1
@@ -204,7 +204,7 @@ class Mysql extends DboSource
         }
 
         $this->_charsets = [];
-        $this->_useAlias = (bool)version_compare($this->getVersion(), "4.1", ">=");
+        $this->_useAlias = (bool)version_compare($this->getVersion(), '4.1', '>=');
 
         return $this->connected;
     }
@@ -319,7 +319,7 @@ class Mysql extends DboSource
      */
     public function getCharsetName($name)
     {
-        if ((bool)version_compare($this->getVersion(), "5", "<")) {
+        if ((bool)version_compare($this->getVersion(), '5', '<')) {
             return false;
         }
         if (isset($this->_charsets[$name])) {
@@ -643,7 +643,7 @@ class Mysql extends DboSource
      */
     protected function _dropTable($table)
     {
-        return 'DROP TABLE IF EXISTS ' . $this->fullTableName($table) . ";";
+        return 'DROP TABLE IF EXISTS ' . $this->fullTableName($table) . ';';
     }
 
     /**

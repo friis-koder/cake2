@@ -98,7 +98,7 @@ class DbConfigTask extends AppShell
             $name = '';
 
             while (!$name) {
-                $name = $this->in(__d('cake_console', "Name:"), null, 'default');
+                $name = $this->in(__d('cake_console', 'Name:'), null, 'default');
                 if (preg_match('/[^a-z0-9_]/i', $name)) {
                     $name = '';
                     $this->out(__d('cake_console', 'The name may only contain unaccented latin characters, numbers or underscores'));
@@ -214,29 +214,29 @@ class DbConfigTask extends AppShell
         $this->hr();
         $this->out(__d('cake_console', 'The following database configuration will be created:'));
         $this->hr();
-        $this->out(__d('cake_console', "Name:         %s", $name));
-        $this->out(__d('cake_console', "Datasource:   %s", $datasource));
-        $this->out(__d('cake_console', "Persistent:   %s", $persistent));
-        $this->out(__d('cake_console', "Host:         %s", $host));
+        $this->out(__d('cake_console', 'Name:         %s', $name));
+        $this->out(__d('cake_console', 'Datasource:   %s', $datasource));
+        $this->out(__d('cake_console', 'Persistent:   %s', $persistent));
+        $this->out(__d('cake_console', 'Host:         %s', $host));
 
         if ($port) {
-            $this->out(__d('cake_console', "Port:         %s", $port));
+            $this->out(__d('cake_console', 'Port:         %s', $port));
         }
 
-        $this->out(__d('cake_console', "User:         %s", $login));
-        $this->out(__d('cake_console', "Pass:         %s", str_repeat('*', strlen($password))));
-        $this->out(__d('cake_console', "Database:     %s", $database));
+        $this->out(__d('cake_console', 'User:         %s', $login));
+        $this->out(__d('cake_console', 'Pass:         %s', str_repeat('*', strlen($password))));
+        $this->out(__d('cake_console', 'Database:     %s', $database));
 
         if ($prefix) {
-            $this->out(__d('cake_console', "Table prefix: %s", $prefix));
+            $this->out(__d('cake_console', 'Table prefix: %s', $prefix));
         }
 
         if ($schema) {
-            $this->out(__d('cake_console', "Schema:       %s", $schema));
+            $this->out(__d('cake_console', 'Schema:       %s', $schema));
         }
 
         if ($encoding) {
-            $this->out(__d('cake_console', "Encoding:     %s", $encoding));
+            $this->out(__d('cake_console', 'Encoding:     %s', $encoding));
         }
 
         $this->hr();

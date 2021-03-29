@@ -20,7 +20,7 @@
 App::uses('ShellDispatcher', 'Console');
 App::uses('Shell', 'Console');
 App::uses('Folder', 'Utility');
-App::uses("ProgressHelper", "Console/Helper");
+App::uses('ProgressHelper', 'Console/Helper');
 
 /**
  * ShellTestShell class
@@ -323,7 +323,7 @@ class ShellTest extends CakeTestCase
     {
         $this->Shell->stdout->expects($this->at(0))
             ->method('write')
-            ->with("Just a test", 1);
+            ->with('Just a test', 1);
 
         $this->Shell->stdout->expects($this->at(1))
             ->method('write')
@@ -426,7 +426,7 @@ class ShellTest extends CakeTestCase
     {
         $this->Shell->stderr->expects($this->at(0))
             ->method('write')
-            ->with("Just a test", 1);
+            ->with('Just a test', 1);
 
         $this->Shell->stderr->expects($this->at(1))
             ->method('write')
@@ -462,7 +462,7 @@ class ShellTest extends CakeTestCase
         }
         $this->assertEquals($this->Shell->nl(), $newLine);
         $this->assertEquals($this->Shell->nl(true), $newLine);
-        $this->assertEquals("", $this->Shell->nl(false));
+        $this->assertEquals('', $this->Shell->nl(false));
         $this->assertEquals($this->Shell->nl(2), $newLine . $newLine);
         $this->assertEquals($this->Shell->nl(1), $newLine);
     }
@@ -480,13 +480,13 @@ class ShellTest extends CakeTestCase
         $this->Shell->stdout->expects($this->at(1))->method('write')->with($bar, 1);
         $this->Shell->stdout->expects($this->at(2))->method('write')->with('', 0);
 
-        $this->Shell->stdout->expects($this->at(3))->method('write')->with("", true);
+        $this->Shell->stdout->expects($this->at(3))->method('write')->with('', true);
         $this->Shell->stdout->expects($this->at(4))->method('write')->with($bar, 1);
-        $this->Shell->stdout->expects($this->at(5))->method('write')->with("", true);
+        $this->Shell->stdout->expects($this->at(5))->method('write')->with('', true);
 
-        $this->Shell->stdout->expects($this->at(6))->method('write')->with("", 2);
+        $this->Shell->stdout->expects($this->at(6))->method('write')->with('', 2);
         $this->Shell->stdout->expects($this->at(7))->method('write')->with($bar, 1);
-        $this->Shell->stdout->expects($this->at(8))->method('write')->with("", 2);
+        $this->Shell->stdout->expects($this->at(8))->method('write')->with('', 2);
 
         $this->Shell->hr();
 
@@ -504,15 +504,15 @@ class ShellTest extends CakeTestCase
     {
         $this->Shell->stderr->expects($this->at(0))
             ->method('write')
-            ->with("<error>Error:</error> Foo Not Found", 1);
+            ->with('<error>Error:</error> Foo Not Found', 1);
 
         $this->Shell->stderr->expects($this->at(1))
             ->method('write')
-            ->with("<error>Error:</error> Foo Not Found", 1);
+            ->with('<error>Error:</error> Foo Not Found', 1);
 
         $this->Shell->stderr->expects($this->at(2))
             ->method('write')
-            ->with("Searched all...", 1);
+            ->with('Searched all...', 1);
 
         $this->Shell->error('Foo Not Found');
         $this->assertSame($this->Shell->stopped, 1);
@@ -1053,8 +1053,8 @@ TEXT;
      */
     public function testGetInstanceOfHelper()
     {
-        $actual = $this->Shell->helper("progress");
-        $this->assertInstanceOf("ProgressShellHelper", $actual);
+        $actual = $this->Shell->helper('progress');
+        $this->assertInstanceOf('ProgressShellHelper', $actual);
     }
 
     /**
@@ -1065,7 +1065,7 @@ TEXT;
      */
     public function testGetInvalidHelper()
     {
-        $this->Shell->helper("tomato");
+        $this->Shell->helper('tomato');
     }
 
     /**
@@ -1076,23 +1076,23 @@ TEXT;
     public function testShellLoggersDoNotGetOverridden()
     {
         $shell = $this->getMock(
-            "Shell",
+            'Shell',
             [
-                "_loggerIsConfigured",
-                "_configureStdOutLogger",
-                "_configureStdErrLogger",
+                '_loggerIsConfigured',
+                '_configureStdOutLogger',
+                '_configureStdErrLogger',
             ],
             [],
-            "",
+            '',
             false
         );
         $shell->expects($this->exactly(2))
-            ->method("_loggerIsConfigured")
+            ->method('_loggerIsConfigured')
             ->will($this->returnValue(true));
         $shell->expects($this->never())
-            ->method("_configureStdOutLogger");
+            ->method('_configureStdOutLogger');
         $shell->expects($this->never())
-            ->method("_configureStdErrLogger");
+            ->method('_configureStdErrLogger');
         $shell->__construct();
     }
 }

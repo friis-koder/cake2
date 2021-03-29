@@ -73,7 +73,7 @@ class Configure
                 trigger_error(
                     __d(
                         'cake_dev',
-                        "Can't find application core file. Please create %s, and make sure it is readable by PHP.",
+                        'Can\'t find application core file. Please create %s, and make sure it is readable by PHP.',
                         CONFIG . 'core.php'
                     ),
                     E_USER_ERROR
@@ -102,7 +102,7 @@ class Configure
                 trigger_error(
                     __d(
                         'cake_dev',
-                        "Can't find application bootstrap file. Please create %s, and make sure it is readable by PHP.",
+                        'Can\'t find application bootstrap file. Please create %s, and make sure it is readable by PHP.',
                         CONFIG . 'bootstrap.php'
                     ),
                     E_USER_ERROR

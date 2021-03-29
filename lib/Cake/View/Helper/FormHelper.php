@@ -2391,7 +2391,7 @@ class FormHelper extends AppHelper
             $attributes['value'] = null;
         }
 
-        return $this->select($fieldName . ".day", $this->_generateOptions('day'), $attributes);
+        return $this->select($fieldName . '.day', $this->_generateOptions('day'), $attributes);
     }
 
     /**
@@ -2496,7 +2496,7 @@ class FormHelper extends AppHelper
         unset($attributes['monthNames']);
 
         return $this->select(
-            $fieldName . ".month",
+            $fieldName . '.month',
             $this->_generateOptions('month', ['monthNames' => $monthNames]),
             $attributes
         );
@@ -2550,7 +2550,7 @@ class FormHelper extends AppHelper
         }
 
         return $this->select(
-            $fieldName . ".hour",
+            $fieldName . '.hour',
             $this->_generateOptions($format24Hours ? 'hour24' : 'hour'),
             $attributes
         );
@@ -2592,7 +2592,7 @@ class FormHelper extends AppHelper
         }
 
         return $this->select(
-            $fieldName . ".min",
+            $fieldName . '.min',
             $this->_generateOptions('minute', $minuteOptions),
             $attributes
         );
@@ -2667,7 +2667,7 @@ class FormHelper extends AppHelper
         }
 
         return $this->select(
-            $fieldName . ".meridian",
+            $fieldName . '.meridian',
             $this->_generateOptions('meridian'),
             $attributes
         );
@@ -3144,7 +3144,7 @@ class FormHelper extends AppHelper
                     $data = $options['monthNames'];
                 } else {
                     for ($m = 1; $m <= 12; $m++) {
-                        $data[sprintf("%02s", $m)] = strftime("%m", mktime(1, 1, 1, $m, 1, 1999));
+                        $data[sprintf('%02s', $m)] = strftime('%m', mktime(1, 1, 1, $m, 1, 1999));
                     }
                 }
 

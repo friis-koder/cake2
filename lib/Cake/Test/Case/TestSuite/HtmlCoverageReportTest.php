@@ -224,7 +224,7 @@ class HtmlCoverageReportTest extends CakeTestCase
             'Missing method coverage for line 4'
         );
         $this->assertTrue(
-            strpos($result, "title=\"\"><span class=\"line-num\">5") !== false,
+            strpos($result, 'title=""><span class="line-num">5') !== false,
             'Coverage report is wrong for line 5'
         );
     }

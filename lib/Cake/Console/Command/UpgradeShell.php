@@ -424,7 +424,7 @@ class UpgradeShell extends AppShell
         }
         $patterns = [
             [
-                "Configure::read() -> Configure::read('debug')",
+                'Configure::read() -> Configure::read(\'debug\')',
                 '/Configure::read\(\)/',
                 'Configure::read(\'debug\')'
             ],
@@ -447,67 +447,67 @@ class UpgradeShell extends AppShell
         }
         $patterns = [
             [
-                "LIBS -> CAKE",
+                'LIBS -> CAKE',
                 '/\bLIBS\b/',
                 'CAKE'
             ],
             [
-                "CONFIGS -> APP . 'Config' . DS",
+                'CONFIGS -> APP . \'Config\' . DS',
                 '/\bCONFIGS\b/',
                 'APP . \'Config\' . DS'
             ],
             [
-                "CONTROLLERS -> APP . 'Controller' . DS",
+                'CONTROLLERS -> APP . \'Controller\' . DS',
                 '/\bCONTROLLERS\b/',
                 'APP . \'Controller\' . DS'
             ],
             [
-                "COMPONENTS -> APP . 'Controller' . DS . 'Component' . DS",
+                'COMPONENTS -> APP . \'Controller\' . DS . \'Component\' . DS',
                 '/\bCOMPONENTS\b/',
                 'APP . \'Controller\' . DS . \'Component\''
             ],
             [
-                "MODELS -> APP . 'Model' . DS",
+                'MODELS -> APP . \'Model\' . DS',
                 '/\bMODELS\b/',
                 'APP . \'Model\' . DS'
             ],
             [
-                "BEHAVIORS -> APP . 'Model' . DS . 'Behavior' . DS",
+                'BEHAVIORS -> APP . \'Model\' . DS . \'Behavior\' . DS',
                 '/\bBEHAVIORS\b/',
                 'APP . \'Model\' . DS . \'Behavior\' . DS'
             ],
             [
-                "VIEWS -> APP . 'View' . DS",
+                'VIEWS -> APP . \'View\' . DS',
                 '/\bVIEWS\b/',
                 'APP . \'View\' . DS'
             ],
             [
-                "HELPERS -> APP . 'View' . DS . 'Helper' . DS",
+                'HELPERS -> APP . \'View\' . DS . \'Helper\' . DS',
                 '/\bHELPERS\b/',
                 'APP . \'View\' . DS . \'Helper\' . DS'
             ],
             [
-                "LAYOUTS -> APP . 'View' . DS . 'Layouts' . DS",
+                'LAYOUTS -> APP . \'View\' . DS . \'Layouts\' . DS',
                 '/\bLAYOUTS\b/',
                 'APP . \'View\' . DS . \'Layouts\' . DS'
             ],
             [
-                "ELEMENTS -> APP . 'View' . DS . 'Elements' . DS",
+                'ELEMENTS -> APP . \'View\' . DS . \'Elements\' . DS',
                 '/\bELEMENTS\b/',
                 'APP . \'View\' . DS . \'Elements\' . DS'
             ],
             [
-                "CONSOLE_LIBS -> CAKE . 'Console' . DS",
+                'CONSOLE_LIBS -> CAKE . \'Console\' . DS',
                 '/\bCONSOLE_LIBS\b/',
                 'CAKE . \'Console\' . DS'
             ],
             [
-                "CAKE_TESTS_LIB -> CAKE . 'TestSuite' . DS",
+                'CAKE_TESTS_LIB -> CAKE . \'TestSuite\' . DS',
                 '/\bCAKE_TESTS_LIB\b/',
                 'CAKE . \'TestSuite\' . DS'
             ],
             [
-                "CAKE_TESTS -> CAKE . 'Test' . DS",
+                'CAKE_TESTS -> CAKE . \'Test\' . DS',
                 '/\bCAKE_TESTS\b/',
                 'CAKE . \'Test\' . DS'
             ]
@@ -867,9 +867,9 @@ class UpgradeShell extends AppShell
         $parser->description(
             __d(
                 'cake_console',
-                "A tool to help automate upgrading an application or plugin " .
-            "from CakePHP 1.3 to 2.0. Be sure to have a backup of your application before " .
-            "running these commands."
+                'A tool to help automate upgrading an application or plugin ' .
+            'from CakePHP 1.3 to 2.0. Be sure to have a backup of your application before ' .
+            'running these commands.'
             )
         )->addSubcommand('all', [
             'help'   => __d('cake_console', 'Run all upgrade commands.'),
@@ -893,10 +893,10 @@ class UpgradeShell extends AppShell
             'help'   => __d('cake_console', 'Update removed request access, and replace with $this->request.'),
             'parser' => $subcommandParser
         ])->addSubcommand('configure', [
-            'help'   => __d('cake_console', "Update Configure::read() to Configure::read('debug')"),
+            'help'   => __d('cake_console', 'Update Configure::read() to Configure::read(\'debug\')'),
             'parser' => $subcommandParser
         ])->addSubcommand('constants', [
-            'help'   => __d('cake_console', "Replace Obsolete constants"),
+            'help'   => __d('cake_console', 'Replace Obsolete constants'),
             'parser' => $subcommandParser
         ])->addSubcommand('controller_redirects', [
             'help'   => __d('cake_console', 'Return early on controller redirect calls.'),

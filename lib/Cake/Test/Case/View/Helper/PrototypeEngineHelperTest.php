@@ -67,11 +67,11 @@ class PrototypeEngineHelperTest extends CakeTestCase
 
         $result = $this->Proto->get('document');
         $this->assertEquals($this->Proto, $result);
-        $this->assertEquals($this->Proto->selection, "$(document)");
+        $this->assertEquals($this->Proto->selection, '$(document)');
 
         $result = $this->Proto->get('window');
         $this->assertEquals($this->Proto, $result);
-        $this->assertEquals($this->Proto->selection, "$(window)");
+        $this->assertEquals($this->Proto->selection, '$(window)');
 
         $result = $this->Proto->get('ul');
         $this->assertEquals($this->Proto, $result);

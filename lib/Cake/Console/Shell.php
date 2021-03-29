@@ -856,10 +856,10 @@ class Shell extends CakeObject
             return $this->_helpers[$name];
         }
         list($plugin, $helperClassName) = pluginSplit($name, true);
-        $helperClassNameShellHelper = Inflector::camelize($helperClassName) . "ShellHelper";
-        App::uses($helperClassNameShellHelper, $plugin . "Console/Helper");
+        $helperClassNameShellHelper = Inflector::camelize($helperClassName) . 'ShellHelper';
+        App::uses($helperClassNameShellHelper, $plugin . 'Console/Helper');
         if (!class_exists($helperClassNameShellHelper)) {
-            throw new RuntimeException("Class " . $helperClassName . " not found");
+            throw new RuntimeException('Class ' . $helperClassName . ' not found');
         }
         $helper = new $helperClassNameShellHelper($this->stdout);
         $this->_helpers[$name] = $helper;
@@ -1041,10 +1041,10 @@ class Shell extends CakeObject
 
             return;
         }
-        if (!$this->_loggerIsConfigured("stdout")) {
+        if (!$this->_loggerIsConfigured('stdout')) {
             $this->_configureStdOutLogger();
         }
-        if (!$this->_loggerIsConfigured("stderr")) {
+        if (!$this->_loggerIsConfigured('stderr')) {
             $this->_configureStdErrLogger();
         }
     }

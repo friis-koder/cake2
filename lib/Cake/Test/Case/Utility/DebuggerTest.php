@@ -146,7 +146,7 @@ class DebuggerTest extends CakeTestCase
         $this->assertTags($result[0], [
             'pre' => ['class' => 'cake-error'],
             'a'   => [
-                'href'    => "javascript:void(0);",
+                'href'    => 'javascript:void(0);',
                 'onclick' => "preg:/document\.getElementById\('cakeErr[a-z0-9]+\-trace'\)\.style\.display = " .
                     "\(document\.getElementById\('cakeErr[a-z0-9]+\-trace'\)\.style\.display == 'none'" .
                     " \? '' \: 'none'\);/"
@@ -199,8 +199,8 @@ class DebuggerTest extends CakeTestCase
         Debugger::output('xml', [
             'error' => '<error><code>{:code}</code><file>{:file}</file><line>{:line}</line>' .
                 '{:description}</error>',
-            'context' => "<context>{:context}</context>",
-            'trace'   => "<stack>{:trace}</stack>",
+            'context' => '<context>{:context}</context>',
+            'trace'   => '<stack>{:trace}</stack>',
         ]);
         Debugger::output('xml');
 
@@ -493,7 +493,7 @@ TEXT;
         Debugger::log('cool');
         $result = file_get_contents(LOGS . 'debug.log');
         $this->assertContains('DebuggerTest::testLog', $result);
-        $this->assertContains("'cool'", $result);
+        $this->assertContains('\'cool\'', $result);
 
         unlink(LOGS . 'debug.log');
 
@@ -502,8 +502,8 @@ TEXT;
         $this->assertContains('DebuggerTest::testLog', $result);
         $this->assertContains('[main]', $result);
         $this->assertContains('array', $result);
-        $this->assertContains("'whatever',", $result);
-        $this->assertContains("'here'", $result);
+        $this->assertContains('\'whatever\',', $result);
+        $this->assertContains('\'here\'', $result);
     }
 
     /**
@@ -524,7 +524,7 @@ TEXT;
         Debugger::log($val, LOG_DEBUG, 0);
         $result = file_get_contents(LOGS . 'debug.log');
         $this->assertContains('DebuggerTest::testLog', $result);
-        $this->assertNotContains("/'val'/", $result);
+        $this->assertNotContains('/\'val\'/', $result);
 
         unlink(LOGS . 'debug.log');
     }
@@ -652,7 +652,7 @@ TEXT;
     public function testExportVarRecursion()
     {
         $output = Debugger::exportVar($GLOBALS);
-        $this->assertContains("'GLOBALS' => [recursion]", $output);
+        $this->assertContains('\'GLOBALS\' => [recursion]', $output);
     }
 
     /**

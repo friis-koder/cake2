@@ -134,9 +134,9 @@ class AclShellTest extends CakeTestCase
     public function testCreate()
     {
         $this->Task->args = ['aro', 'root', 'User.1'];
-        $this->Task->expects($this->at(0))->method('out')->with("<success>New Aro</success> 'User.1' created.", 2);
-        $this->Task->expects($this->at(1))->method('out')->with("<success>New Aro</success> 'User.3' created.", 2);
-        $this->Task->expects($this->at(2))->method('out')->with("<success>New Aro</success> 'somealias' created.", 2);
+        $this->Task->expects($this->at(0))->method('out')->with('<success>New Aro</success> \'User.1\' created.', 2);
+        $this->Task->expects($this->at(1))->method('out')->with('<success>New Aro</success> \'User.3\' created.', 2);
+        $this->Task->expects($this->at(2))->method('out')->with('<success>New Aro</success> \'somealias\' created.', 2);
 
         $this->Task->create();
 
@@ -177,7 +177,7 @@ class AclShellTest extends CakeTestCase
     {
         $this->Task->args = ['aro', 'AuthUser.1'];
         $this->Task->expects($this->at(0))->method('out')
-            ->with("<success>Aro deleted.</success>", 2);
+            ->with('<success>Aro deleted.</success>', 2);
         $this->Task->delete();
 
         $Aro = ClassRegistry::init('Aro');

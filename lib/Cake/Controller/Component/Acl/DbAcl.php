@@ -70,7 +70,7 @@ class DbAcl extends CakeObject implements AclInterface
      * @return bool Success (true if ARO has access to action in ACO, false otherwise)
      * @link https://book.cakephp.org/2.0/en/core-libraries/components/access-control-lists.html#checking-permissions-the-acl-component
      */
-    public function check($aro, $aco, $action = "*")
+    public function check($aro, $aco, $action = '*')
     {
         return $this->Permission->check($aro, $aco, $action);
     }
@@ -85,7 +85,7 @@ class DbAcl extends CakeObject implements AclInterface
      * @return bool Success
      * @link https://book.cakephp.org/2.0/en/core-libraries/components/access-control-lists.html#assigning-permissions
      */
-    public function allow($aro, $aco, $actions = "*", $value = 1)
+    public function allow($aro, $aco, $actions = '*', $value = 1)
     {
         return $this->Permission->allow($aro, $aco, $actions, $value);
     }
@@ -99,7 +99,7 @@ class DbAcl extends CakeObject implements AclInterface
      * @return bool Success
      * @link https://book.cakephp.org/2.0/en/core-libraries/components/access-control-lists.html#assigning-permissions
      */
-    public function deny($aro, $aco, $action = "*")
+    public function deny($aro, $aco, $action = '*')
     {
         return $this->allow($aro, $aco, $action, -1);
     }
@@ -112,7 +112,7 @@ class DbAcl extends CakeObject implements AclInterface
      * @param string $action Action (defaults to *)
      * @return bool Success
      */
-    public function inherit($aro, $aco, $action = "*")
+    public function inherit($aro, $aco, $action = '*')
     {
         return $this->allow($aro, $aco, $action, 0);
     }
@@ -126,7 +126,7 @@ class DbAcl extends CakeObject implements AclInterface
      * @return bool Success
      * @see allow()
      */
-    public function grant($aro, $aco, $action = "*")
+    public function grant($aro, $aco, $action = '*')
     {
         return $this->allow($aro, $aco, $action);
     }
@@ -140,7 +140,7 @@ class DbAcl extends CakeObject implements AclInterface
      * @return bool Success
      * @see deny()
      */
-    public function revoke($aro, $aco, $action = "*")
+    public function revoke($aro, $aco, $action = '*')
     {
         return $this->deny($aro, $aco, $action);
     }

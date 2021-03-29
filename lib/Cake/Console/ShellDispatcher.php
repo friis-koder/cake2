@@ -110,9 +110,9 @@ class ShellDispatcher
 
         if (!isset($this->args[0]) || !isset($this->params['working'])) {
             $message = "This file has been loaded incorrectly and cannot continue.\n" .
-                "Please make sure that " . DS . 'lib' . DS . 'Cake' . DS . "Console is in your system path,\n" .
+                'Please make sure that ' . DS . 'lib' . DS . 'Cake' . DS . "Console is in your system path,\n" .
                 "and check the cookbook for the correct usage of this command.\n" .
-                "(https://book.cakephp.org/)";
+                '(https://book.cakephp.org/)';
 
             throw new CakeException($message);
         }

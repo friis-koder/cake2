@@ -53,7 +53,7 @@ class Debugger
     protected $_templates = [
         'log' => [
             'trace' => '{:reference} - {:path}, line {:line}',
-            'error' => "{:error} ({:code}): {:description} in [{:file}, line {:line}]"
+            'error' => '{:error} ({:code}): {:description} in [{:file}, line {:line}]'
         ],
         'js' => [
             'error'         => '',
@@ -429,7 +429,7 @@ class Debugger
             if (!isset($data[$i])) {
                 continue;
             }
-            $string = str_replace(["\r\n", "\n"], "", static::_highlight($data[$i]));
+            $string = str_replace(["\r\n", "\n"], '', static::_highlight($data[$i]));
             if ($i == $line) {
                 $lines[] = '<span class="code-highlight">' . $string . '</span>';
             } else {
@@ -513,10 +513,10 @@ class Debugger
                 return '(float) ' . $var;
             case 'string':
                 if (trim($var) === '') {
-                    return "''";
+                    return '\'\'';
                 }
 
-                return "'" . $var . "'";
+                return '\'' . $var . '\'';
             case 'array':
                 return static::_array($var, $depth - 1, $indent + 1);
             case 'resource':
@@ -558,7 +558,7 @@ class Debugger
         $replace = array_intersect_key($secrets, $var);
         $var = $replace + $var;
 
-        $out = "array(";
+        $out = 'array(';
         $break = $end = null;
         if (!empty($var)) {
             $break = "\n" . str_repeat("\t", $indent);

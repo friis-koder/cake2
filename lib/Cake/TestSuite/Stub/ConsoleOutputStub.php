@@ -12,7 +12,7 @@
  * @since         2.8
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-App::uses("ConsoleOutput", "Console");
+App::uses('ConsoleOutput', 'Console');
 
 /**
  * StubOutput makes testing shell commands/shell helpers easier.
@@ -75,7 +75,7 @@ class ConsoleOutputStub extends ConsoleOutput
     public function overwrite($message, $newlines = 1, $size = null)
     {
         //insert an empty array to mock deletion of existing output
-        $this->_out[] = "";
+        $this->_out[] = '';
         //append new message to output
         $this->write($message, $newlines);
     }

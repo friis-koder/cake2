@@ -1072,7 +1072,7 @@ EXPECTED;
         ob_start();
         pr('this is a test');
         $result = ob_get_clean();
-        $expected = "<pre>this is a test</pre>";
+        $expected = '<pre>this is a test</pre>';
         $this->assertEquals($expected, $result);
 
         ob_start();
@@ -1112,10 +1112,10 @@ EXPECTED;
     {
         $this->skipIf(ini_get('magic_quotes_sybase') === '1', 'magic_quotes_sybase is on.');
 
-        $this->assertEquals(stripslashes_deep("tes\'t"), "tes't");
+        $this->assertEquals(stripslashes_deep("tes\'t"), 'tes\'t');
         $this->assertEquals(stripslashes_deep('tes\\' . chr(0) . 't'), 'tes' . chr(0) . 't');
         $this->assertEquals(stripslashes_deep('tes\"t'), 'tes"t');
-        $this->assertEquals(stripslashes_deep("tes\'t"), "tes't");
+        $this->assertEquals(stripslashes_deep("tes\'t"), 'tes\'t');
         $this->assertEquals(stripslashes_deep('te\\st'), 'test');
 
         $nested = [
@@ -1129,12 +1129,12 @@ EXPECTED;
             'g' => 'te\\st'
         ];
         $expected = [
-            'a' => "tes't",
+            'a' => 'tes\'t',
             'b' => 'tes' . chr(0) . 't',
             'c' => [
                 'd'  => 'tes"t',
-                'e'  => "te's't",
-                ['f' => "tes't"]
+                'e'  => 'te\'s\'t',
+                ['f' => 'tes\'t']
             ],
             'g' => 'test'
         ];
@@ -1155,24 +1155,24 @@ EXPECTED;
         $this->assertEquals(stripslashes_deep("tes\'t"), "tes\'t");
 
         $nested = [
-            'a' => "tes't",
-            'b' => "tes''t",
+            'a' => 'tes\'t',
+            'b' => 'tes\'\'t',
             'c' => [
-                'd'  => "tes'''t",
-                'e'  => "tes''''t",
-                ['f' => "tes''t"]
+                'd'  => 'tes\'\'\'t',
+                'e'  => 'tes\'\'\'\'t',
+                ['f' => 'tes\'\'t']
             ],
-            'g' => "te'''''st"
+            'g' => 'te\'\'\'\'\'st'
         ];
         $expected = [
-            'a' => "tes't",
-            'b' => "tes't",
+            'a' => 'tes\'t',
+            'b' => 'tes\'t',
             'c' => [
-                'd'  => "tes''t",
-                'e'  => "tes''t",
-                ['f' => "tes't"]
+                'd'  => 'tes\'\'t',
+                'e'  => 'tes\'\'t',
+                ['f' => 'tes\'t']
             ],
-            'g' => "te'''st"
+            'g' => 'te\'\'\'st'
         ];
         $this->assertEquals($expected, stripslashes_deep($nested));
     }

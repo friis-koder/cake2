@@ -433,14 +433,14 @@ class CakeSchema extends CakeObject
                         $value = ['type' => $type];
                     }
                     $value['type'] = addslashes($value['type']);
-                    $col = "\t\t'{$field}' => array('type' => '" . $value['type'] . "', ";
+                    $col = "\t\t'{$field}' => array('type' => '" . $value['type'] . '\', ';
                     unset($value['type']);
                     $col .= implode(', ', $this->_values($value));
                 } elseif ($field === 'indexes') {
                     $col = "\t\t'indexes' => array(\n\t\t\t";
                     $props = [];
                     foreach ((array)$value as $key => $index) {
-                        $props[] = "'{$key}' => array(" . implode(', ', $this->_values($index)) . ")";
+                        $props[] = "'{$key}' => array(" . implode(', ', $this->_values($index)) . ')';
                     }
                     $col .= implode(",\n\t\t\t", $props) . "\n\t\t";
                 } elseif ($field === 'tableParameters') {
@@ -448,7 +448,7 @@ class CakeSchema extends CakeObject
                     $props = $this->_values($value);
                     $col .= implode(', ', $props);
                 }
-                $col .= ")";
+                $col .= ')';
                 $cols[] = $col;
             }
             $out .= implode(",\n", $cols);
@@ -606,7 +606,7 @@ class CakeSchema extends CakeObject
         if (is_array($values)) {
             foreach ($values as $key => $val) {
                 if (is_array($val)) {
-                    $vals[] = "'{$key}' => array(" . implode(", ", $this->_values($val)) . ")";
+                    $vals[] = "'{$key}' => array(" . implode(', ', $this->_values($val)) . ')';
                 } else {
                     $val = var_export($val, true);
                     if ($val === 'NULL') {

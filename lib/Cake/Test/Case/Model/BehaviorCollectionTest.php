@@ -280,7 +280,7 @@ class TestBehavior extends ModelBehavior
         if (!isset($settings['onError']) || $settings['onError'] === 'off') {
             return parent::onError($model, $error);
         }
-        echo "onError trigger success";
+        echo 'onError trigger success';
     }
 
     /**
@@ -1102,11 +1102,11 @@ class BehaviorCollectionTest extends CakeTestCase
         $this->assertEquals(['unhandled'], $result);
 
         $result = $Apple->{'look for the remote'}('in the couch');
-        $expected = "Item.name = 'the remote' AND Location.name = 'the couch'";
+        $expected = 'Item.name = \'the remote\' AND Location.name = \'the couch\'';
         $this->assertEquals($expected, $result);
 
         $result = $Apple->{'look for THE REMOTE'}('in the couch');
-        $expected = "Item.name = 'THE REMOTE' AND Location.name = 'the couch'";
+        $expected = 'Item.name = \'THE REMOTE\' AND Location.name = \'the couch\'';
         $this->assertEquals($expected, $result, 'Mapped method was lowercased.');
     }
 

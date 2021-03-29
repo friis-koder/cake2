@@ -150,7 +150,7 @@ class ErrorHandler
     protected static function _getMessage($exception)
     {
         $message = sprintf(
-            "[%s] %s",
+            '[%s] %s',
             get_class($exception),
             $exception->getMessage()
         );

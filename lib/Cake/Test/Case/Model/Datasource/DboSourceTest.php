@@ -285,9 +285,9 @@ class DboSourceTest extends CakeTestCase
      */
     public function testOrderWithExpression()
     {
-        $expression = $this->testDb->expression("CASE Sample.id WHEN 1 THEN 'Id One' ELSE 'Other Id' END AS case_col");
+        $expression = $this->testDb->expression('CASE Sample.id WHEN 1 THEN \'Id One\' ELSE \'Other Id\' END AS case_col');
         $result = $this->testDb->order($expression);
-        $expected = " ORDER BY CASE Sample.id WHEN 1 THEN 'Id One' ELSE 'Other Id' END AS case_col";
+        $expected = ' ORDER BY CASE Sample.id WHEN 1 THEN \'Id One\' ELSE \'Other Id\' END AS case_col';
         $this->assertEquals($expected, $result);
     }
 
@@ -842,7 +842,7 @@ class DboSourceTest extends CakeTestCase
 
         $method = 'fields';
         $key = '2b57253ab1fffb3e95fa4f95299220b1';
-        $value = ["`Menu`.`id`", "`Menu`.`name`"];
+        $value = ['`Menu`.`id`', '`Menu`.`name`'];
         $actual = $this->testDb->cacheMethodFilter($method, $key, $value);
 
         $this->assertTrue($actual);
@@ -880,7 +880,7 @@ class DboSourceTest extends CakeTestCase
 
         $method = 'fields';
         $key = '2b57253ab1fffb3e95fa4f95299220b1';
-        $value = ["`Menu`.`id`", "`Menu`.`name`"];
+        $value = ['`Menu`.`id`', '`Menu`.`name`'];
         $actual = $testDb->cacheMethodFilter($method, $key, $value);
 
         $this->assertFalse($actual);
@@ -1732,7 +1732,7 @@ class DboSourceTest extends CakeTestCase
 
         $conditions = ['Article.name' => 'just text'];
         $result = $db->conditionKeysToString($conditions, true, $Article);
-        $expected = "Article.name = just text";
+        $expected = 'Article.name = just text';
         $this->assertEquals($expected, $result[0]);
 
         $conn->expects($this->at(0))
@@ -1744,7 +1744,7 @@ class DboSourceTest extends CakeTestCase
 
         $conditions = ['Article.name' => ['just text', 'other text']];
         $result = $db->conditionKeysToString($conditions, true, $Article);
-        $expected = "Article.name IN (just text, other text)";
+        $expected = 'Article.name IN (just text, other text)';
         $this->assertEquals($expected, $result[0]);
     }
 
@@ -1769,7 +1769,7 @@ class DboSourceTest extends CakeTestCase
 
         $conditions = ['Article.extra' => 'just text'];
         $result = $db->conditionKeysToString($conditions, true, $Article);
-        $expected = "(" . $Article->virtualFields['extra']->value . ") = just text";
+        $expected = '(' . $Article->virtualFields['extra']->value . ') = just text';
         $this->assertEquals($expected, $result[0]);
 
         $conn->expects($this->at(0))
@@ -1781,7 +1781,7 @@ class DboSourceTest extends CakeTestCase
 
         $conditions = ['Article.extra' => ['just text', 'other text']];
         $result = $db->conditionKeysToString($conditions, true, $Article);
-        $expected = "(" . $Article->virtualFields['extra']->value . ") IN (just text, other text)";
+        $expected = '(' . $Article->virtualFields['extra']->value . ') IN (just text, other text)';
         $this->assertEquals($expected, $result[0]);
     }
 
@@ -1806,7 +1806,7 @@ class DboSourceTest extends CakeTestCase
 
         $conditions = ['Article.extra' => 'just text'];
         $result = $db->conditionKeysToString($conditions, true, $Article);
-        $expected = "(" . $Article->virtualFields['extra'] . ") = just text";
+        $expected = '(' . $Article->virtualFields['extra'] . ') = just text';
         $this->assertEquals($expected, $result[0]);
 
         $conn->expects($this->at(0))
@@ -1818,7 +1818,7 @@ class DboSourceTest extends CakeTestCase
 
         $conditions = ['Article.extra' => ['just text', 'other text']];
         $result = $db->conditionKeysToString($conditions, true, $Article);
-        $expected = "(" . $Article->virtualFields['extra'] . ") IN (just text, other text)";
+        $expected = '(' . $Article->virtualFields['extra'] . ') IN (just text, other text)';
         $this->assertEquals($expected, $result[0]);
     }
 
@@ -2259,7 +2259,7 @@ class DboSourceTest extends CakeTestCase
         $result = $this->db->length('enum("one", "longer")');
         $this->assertNull($result);
 
-        $result = $this->db->length("enum('One Value','ANOTHER ... VALUE ...')");
+        $result = $this->db->length('enum(\'One Value\',\'ANOTHER ... VALUE ...\')');
         $this->assertNull($result);
     }
 

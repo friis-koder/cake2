@@ -67,11 +67,11 @@ class MootoolsEngineHelperTest extends CakeTestCase
 
         $result = $this->Moo->get('document');
         $this->assertEquals($this->Moo, $result);
-        $this->assertEquals($this->Moo->selection, "$(document)");
+        $this->assertEquals($this->Moo->selection, '$(document)');
 
         $result = $this->Moo->get('window');
         $this->assertEquals($this->Moo, $result);
-        $this->assertEquals($this->Moo->selection, "$(window)");
+        $this->assertEquals($this->Moo->selection, '$(window)');
 
         $result = $this->Moo->get('ul');
         $this->assertEquals($this->Moo, $result);

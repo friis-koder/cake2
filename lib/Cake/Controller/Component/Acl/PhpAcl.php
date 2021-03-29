@@ -129,7 +129,7 @@ class PhpAcl extends CakeObject implements AclInterface
      * @param string $action Action (defaults to *)
      * @return bool Success
      */
-    public function allow($aro, $aco, $action = "*")
+    public function allow($aro, $aco, $action = '*')
     {
         return $this->Aco->access($this->Aro->resolve($aro), $aco, $action, 'allow');
     }
@@ -142,7 +142,7 @@ class PhpAcl extends CakeObject implements AclInterface
      * @param string $action Action (defaults to *)
      * @return bool Success
      */
-    public function deny($aro, $aco, $action = "*")
+    public function deny($aro, $aco, $action = '*')
     {
         return $this->Aco->access($this->Aro->resolve($aro), $aco, $action, 'deny');
     }
@@ -155,7 +155,7 @@ class PhpAcl extends CakeObject implements AclInterface
      * @param string $action Action (defaults to *)
      * @return bool Success
      */
-    public function inherit($aro, $aco, $action = "*")
+    public function inherit($aro, $aco, $action = '*')
     {
         return false;
     }
@@ -169,12 +169,12 @@ class PhpAcl extends CakeObject implements AclInterface
      * @param string $action Action
      * @return bool true if access is granted, false otherwise
      */
-    public function check($aro, $aco, $action = "*")
+    public function check($aro, $aco, $action = '*')
     {
         $allow = $this->options['policy'];
         $prioritizedAros = $this->Aro->roles($aro);
 
-        if ($action && $action !== "*") {
+        if ($action && $action !== '*') {
             $aco .= '/' . $action;
         }
 

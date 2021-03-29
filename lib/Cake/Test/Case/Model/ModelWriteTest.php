@@ -662,7 +662,7 @@ class ModelWriteTest extends BaseModelTest
         $this->db->query('ALTER TABLE ' . $this->db->fullTableName('category_threads') . ' ADD ' . $column);
         $this->db->flushMethodCache();
         $Category = new CategoryThread();
-        $result = $Category->updateAll(['CategoryThread.name' => "'updated'"], ['CategoryThread.parent_id' => 5]);
+        $result = $Category->updateAll(['CategoryThread.name' => '\'updated\''], ['CategoryThread.parent_id' => 5]);
         $this->assertFalse(empty($result));
 
         $Category = new CategoryThread();
@@ -3014,7 +3014,7 @@ class ModelWriteTest extends BaseModelTest
         $this->assertEquals($expected, $result);
 
         $result = $TestModel->updateAll(
-            ['Comment.comment' => "'Updated today'"],
+            ['Comment.comment' => '\'Updated today\''],
             ['Comment.user_id' => 5]
         );
         $this->assertFalse(empty($result));
@@ -4740,7 +4740,7 @@ class ModelWriteTest extends BaseModelTest
             ],
             'Author' => [
                 'user'     => '',
-                'password' => "sekret"
+                'password' => 'sekret'
             ]
         ];
         $Post->saveAll($data, ['validate' => true]);
@@ -4762,7 +4762,7 @@ class ModelWriteTest extends BaseModelTest
             ],
             'Author' => [
                 'user'     => 'New user',
-                'password' => "sekret"
+                'password' => 'sekret'
             ]
         ];
 
@@ -4789,7 +4789,7 @@ class ModelWriteTest extends BaseModelTest
             ],
             'Author' => [
                 'user'     => 'New user',
-                'password' => "sekret"
+                'password' => 'sekret'
             ]
         ];
         $Post->saveAll($data, ['validate' => true]);
@@ -6275,7 +6275,7 @@ class ModelWriteTest extends BaseModelTest
             ],
             'Author' => [
                 'user'     => '',
-                'password' => "sekret"
+                'password' => 'sekret'
             ]
         ];
         $Post->saveAssociated($data, ['validate' => true, 'atomic' => true]);
@@ -6297,7 +6297,7 @@ class ModelWriteTest extends BaseModelTest
             ],
             'Author' => [
                 'user'     => 'New user',
-                'password' => "sekret"
+                'password' => 'sekret'
             ]
         ];
 
@@ -6324,7 +6324,7 @@ class ModelWriteTest extends BaseModelTest
             ],
             'Author' => [
                 'user'     => 'New user',
-                'password' => "sekret"
+                'password' => 'sekret'
             ]
         ];
         $Post->saveAssociated($data, ['validate' => true, 'atomic' => true]);
@@ -7046,7 +7046,7 @@ class ModelWriteTest extends BaseModelTest
 
         $TestModel->saveAssociated([
             'Post' => [
-                'title' => $db->expression("(SELECT 'Post with Author')"),
+                'title' => $db->expression('(SELECT \'Post with Author\')'),
                 'body'  => 'This post will be saved with an author'
             ],
             'Author' => [
@@ -7230,7 +7230,7 @@ class ModelWriteTest extends BaseModelTest
                 'Group' => ['className' => 'GroupUpdateAll']]]
         );
 
-        $ProductUpdateAll->updateAll(['name' => "'new product'"], $conditions);
+        $ProductUpdateAll->updateAll(['name' => '\'new product\''], $conditions);
         $results = $ProductUpdateAll->find('all', [
             'conditions' => ['ProductUpdateAll.name' => 'new product']
         ]);
@@ -7286,7 +7286,7 @@ class ModelWriteTest extends BaseModelTest
             ]
         ];
 
-        $ProductUpdateAll->updateAll(['name' => "'new product'"], $conditions);
+        $ProductUpdateAll->updateAll(['name' => '\'new product\''], $conditions);
         $resultsFkFalse = $ProductUpdateAll->find('all', ['conditions' => ['ProductUpdateAll.name' => 'new product']]);
         $expected = [
             '0' => [
@@ -7322,7 +7322,7 @@ class ModelWriteTest extends BaseModelTest
     {
         $restore = setlocale(LC_NUMERIC, 0);
 
-        $this->skipIf(setlocale(LC_NUMERIC, 'de_DE') === false, "The German locale isn't available.");
+        $this->skipIf(setlocale(LC_NUMERIC, 'de_DE') === false, 'The German locale isn\'t available.');
 
         $model = new DataTest();
         $result = $model->save([

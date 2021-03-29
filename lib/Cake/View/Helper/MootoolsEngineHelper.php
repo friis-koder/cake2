@@ -123,7 +123,7 @@ class MootoolsEngineHelper extends JsBaseEngineHelper
     {
         $this->_multipleSelection = false;
         if ($selector === 'window' || $selector === 'document') {
-            $this->selection = "$(" . $selector . ")";
+            $this->selection = '$(' . $selector . ')';
 
             return $this;
         }

@@ -170,7 +170,7 @@ abstract class JsBaseEngineHelper extends AppHelper
 
                 break;
             case (is_float($val)):
-                $val = sprintf("%.11f", $val);
+                $val = sprintf('%.11f', $val);
 
                 break;
             default:

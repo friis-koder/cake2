@@ -230,7 +230,7 @@ class FixtureTaskTest extends CakeTestCase
         $this->assertContains('class ArticleFixture extends CakeTestFixture', $result);
         $this->assertContains('public $records', $result);
         $this->assertContains('public $import', $result);
-        $this->assertContains("'title' => 'First Article'", $result, 'Missing import data');
+        $this->assertContains('\'title\' => \'First Article\'', $result, 'Missing import data');
         $this->assertContains('Second Article', $result, 'Missing import data');
     }
 
@@ -243,7 +243,7 @@ class FixtureTaskTest extends CakeTestCase
     {
         $this->Task->connection = 'test';
         $result = $this->Task->bake('Article', false, ['schema' => 'Article']);
-        $this->assertContains("'connection' => 'test'", $result);
+        $this->assertContains('\'connection\' => \'test\'', $result);
     }
 
     /**
@@ -259,7 +259,7 @@ class FixtureTaskTest extends CakeTestCase
         }
 
         $Article = ClassRegistry::init('Article');
-        $Article->updateAll(['body' => "'Body \"value\"'"]);
+        $Article->updateAll(['body' => '\'Body "value"\'']);
 
         $this->Task->interactive = true;
         $this->Task->expects($this->at(0))
@@ -273,7 +273,7 @@ class FixtureTaskTest extends CakeTestCase
             'schema'    => 'Article',
             'records'   => false
         ]);
-        $this->assertContains("'body' => 'Body \"value\"'", $result, 'Data has bad escaping');
+        $this->assertContains('\'body\' => \'Body "value"\'', $result, 'Data has bad escaping');
     }
 
     /**
@@ -299,7 +299,7 @@ class FixtureTaskTest extends CakeTestCase
             ->method('createFile')
             ->with($filename, $this->logicalAnd(
                 $this->stringContains('class ArticleFixture'),
-                $this->stringContains("\$import = array('model' => 'Article'")
+                $this->stringContains('$import = array(\'model\' => \'Article\'')
             ));
 
         $this->Task->execute();
@@ -328,7 +328,7 @@ class FixtureTaskTest extends CakeTestCase
             ->method('createFile')
             ->with($filename, $this->logicalAnd(
                 $this->stringContains('class ArticleFixture'),
-                $this->stringContains("\$import = array('model' => 'Article', 'connection' => 'test')")
+                $this->stringContains('$import = array(\'model\' => \'Article\', \'connection\' => \'test\')')
             ));
 
         $this->Task->execute();
@@ -396,11 +396,11 @@ class FixtureTaskTest extends CakeTestCase
 
         $filename = '/my/path/ArticleFixture.php';
         $this->Task->expects($this->at(0))->method('createFile')
-            ->with($filename, $this->stringContains("'title' => 'Third Article'"));
+            ->with($filename, $this->stringContains('\'title\' => \'Third Article\''));
 
         $filename = '/my/path/CommentFixture.php';
         $this->Task->expects($this->at(1))->method('createFile')
-            ->with($filename, $this->stringContains("'comment' => 'First Comment for First Article'"));
+            ->with($filename, $this->stringContains('\'comment\' => \'First Comment for First Article\''));
         $this->Task->expects($this->exactly(2))->method('createFile');
 
         $this->Task->all();
@@ -478,15 +478,15 @@ class FixtureTaskTest extends CakeTestCase
         $this->assertContains('public $fields = array(', $result);
 
         $result = $this->Task->bake('Article', 'comments', ['records' => true]);
-        $this->assertContains("public \$import = array('records' => true, 'connection' => 'test');", $result);
+        $this->assertContains('public $import = array(\'records\' => true, \'connection\' => \'test\');', $result);
         $this->assertNotContains('public $records', $result);
 
         $result = $this->Task->bake('Article', 'comments', ['schema' => 'Article']);
-        $this->assertContains("public \$import = array('model' => 'Article', 'connection' => 'test');", $result);
+        $this->assertContains('public $import = array(\'model\' => \'Article\', \'connection\' => \'test\');', $result);
         $this->assertNotContains('public $fields', $result);
 
         $result = $this->Task->bake('Article', 'comments', ['schema' => 'Article', 'records' => true]);
-        $this->assertContains("public \$import = array('model' => 'Article', 'records' => true, 'connection' => 'test');", $result);
+        $this->assertContains('public $import = array(\'model\' => \'Article\', \'records\' => true, \'connection\' => \'test\');', $result);
         $this->assertNotContains('public $fields', $result);
         $this->assertNotContains('public $records', $result);
     }
@@ -502,14 +502,14 @@ class FixtureTaskTest extends CakeTestCase
         $this->Task->path = '/my/path/';
 
         $result = $this->Task->bake('Article', 'datatypes');
-        $this->assertContains("'float_field' => 1", $result);
-        $this->assertContains("'bool' => 1", $result);
-        $this->assertContains("'tiny_int' => 1", $result);
-        $this->assertContains("'small_int' => 1", $result);
-        $this->assertContains("'huge_int' => 1", $result);
+        $this->assertContains('\'float_field\' => 1', $result);
+        $this->assertContains('\'bool\' => 1', $result);
+        $this->assertContains('\'tiny_int\' => 1', $result);
+        $this->assertContains('\'small_int\' => 1', $result);
+        $this->assertContains('\'huge_int\' => 1', $result);
 
         $result = $this->Task->bake('Article', 'binary_tests');
-        $this->assertContains("'data' => 'Lorem ipsum dolor sit amet'", $result);
+        $this->assertContains('\'data\' => \'Lorem ipsum dolor sit amet\'', $result);
     }
 
     /**

@@ -453,7 +453,7 @@ class TextHelperTest extends CakeTestCase
             ],
 
             [
-                "Text with o'hare._-bob@example.com address",
+                'Text with o\'hare._-bob@example.com address',
                 'Text with <a href="mailto:o&#039;hare._-bob@example.com">o&#039;hare._-bob@example.com</a> address',
             ],
 

@@ -163,7 +163,7 @@ class ValidationTest extends CakeTestCase
         $this->assertTrue(Validation::notBlank('é'));
         $this->assertTrue(Validation::notBlank('π'));
         $this->assertFalse(Validation::notBlank("\t "));
-        $this->assertFalse(Validation::notBlank(""));
+        $this->assertFalse(Validation::notBlank(''));
     }
 
     /**
@@ -181,7 +181,7 @@ class ValidationTest extends CakeTestCase
         $this->assertTrue(Validation::notBlank('José'));
         $this->assertTrue(Validation::notBlank(utf8_decode('José')));
         $this->assertFalse(Validation::notBlank("\t "));
-        $this->assertFalse(Validation::notBlank(""));
+        $this->assertFalse(Validation::notBlank(''));
     }
 
     /**
@@ -1685,7 +1685,7 @@ class ValidationTest extends CakeTestCase
     {
         $this->skipIf(DS === '\\', 'The locale is not supported in Windows and affects other tests.');
         $restore = setlocale(LC_NUMERIC, 0);
-        $this->skipIf(setlocale(LC_NUMERIC, 'da_DK') === false, "The Danish locale isn't available.");
+        $this->skipIf(setlocale(LC_NUMERIC, 'da_DK') === false, 'The Danish locale isn\'t available.');
 
         $this->assertTrue(Validation::decimal(1.54), '1.54 should be considered a valid float');
         $this->assertTrue(Validation::decimal('1.54'), '"1.54" should be considered a valid float');
@@ -1709,7 +1709,7 @@ class ValidationTest extends CakeTestCase
         $this->assertTrue(Validation::email('abc_efg@domain.com'));
         $this->assertTrue(Validation::email('raw@test.ra.ru'));
         $this->assertTrue(Validation::email('abc-efg@domain-hyphened.com'));
-        $this->assertTrue(Validation::email("p.o'malley@domain.com"));
+        $this->assertTrue(Validation::email('p.o\'malley@domain.com'));
         $this->assertTrue(Validation::email('abc+efg@domain.com'));
         $this->assertTrue(Validation::email('abc&efg@domain.com'));
         $this->assertTrue(Validation::email('abc.efg@12345.com'));
@@ -1773,7 +1773,7 @@ class ValidationTest extends CakeTestCase
         $this->assertFalse(Validation::email('abc efg@example.com'));
         $this->assertFalse(Validation::email('abc,efg@example.com'));
         $this->assertFalse(Validation::email('abc@sub,example.com'));
-        $this->assertFalse(Validation::email("abc@sub'example.com"));
+        $this->assertFalse(Validation::email('abc@sub\'example.com'));
         $this->assertFalse(Validation::email('abc@sub/example.com'));
         $this->assertFalse(Validation::email('abc@yahoo!.com'));
         $this->assertFalse(Validation::email('abc@example_underscored.com'));
@@ -1811,10 +1811,10 @@ class ValidationTest extends CakeTestCase
      */
     public function testEqualTo()
     {
-        $this->assertTrue(Validation::equalTo("1", "1"));
-        $this->assertFalse(Validation::equalTo(1, "1"));
-        $this->assertFalse(Validation::equalTo("", null));
-        $this->assertFalse(Validation::equalTo("", false));
+        $this->assertTrue(Validation::equalTo('1', '1'));
+        $this->assertFalse(Validation::equalTo(1, '1'));
+        $this->assertFalse(Validation::equalTo('', null));
+        $this->assertFalse(Validation::equalTo('', false));
         $this->assertFalse(Validation::equalTo(0, false));
         $this->assertFalse(Validation::equalTo(null, false));
     }

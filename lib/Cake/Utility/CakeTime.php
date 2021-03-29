@@ -175,7 +175,7 @@ class CakeTime
 
                 break;
             case 'C':
-                return sprintf("%02d", date('Y', static::$_time) / 100);
+                return sprintf('%02d', date('Y', static::$_time) / 100);
             case 'D':
                 return '%m/%d/%y';
             case 'e':
@@ -420,22 +420,22 @@ class CakeTime
         $timestamp = static::fromString($date, $timezone);
 
         if (static::isToday($date, $timezone)) {
-            $formattedDate = static::_strftimeWithTimezone("%H:%M", $timestamp, $date, $timezone);
+            $formattedDate = static::_strftimeWithTimezone('%H:%M', $timestamp, $date, $timezone);
 
             return __d('cake', 'Today, %s', $formattedDate);
         }
         if (static::wasYesterday($date, $timezone)) {
-            $formattedDate = static::_strftimeWithTimezone("%H:%M", $timestamp, $date, $timezone);
+            $formattedDate = static::_strftimeWithTimezone('%H:%M', $timestamp, $date, $timezone);
 
             return __d('cake', 'Yesterday, %s', $formattedDate);
         }
         if (static::isTomorrow($date, $timezone)) {
-            $formattedDate = static::_strftimeWithTimezone("%H:%M", $timestamp, $date, $timezone);
+            $formattedDate = static::_strftimeWithTimezone('%H:%M', $timestamp, $date, $timezone);
 
             return __d('cake', 'Tomorrow, %s', $formattedDate);
         }
 
-        $d = static::_strftimeWithTimezone("%w", $timestamp, $date, $timezone);
+        $d = static::_strftimeWithTimezone('%w', $timestamp, $date, $timezone);
         $day = [
             __d('cake', 'Sunday'),
             __d('cake', 'Monday'),
@@ -735,7 +735,7 @@ class CakeTime
         $date = static::fromString($dateString, $timezone);
 
         if ($timezone === null) {
-            return date("r", $date);
+            return date('r', $date);
         }
 
         $userOffset = $timezone;

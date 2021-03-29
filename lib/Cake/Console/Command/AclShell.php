@@ -134,15 +134,15 @@ class AclShell extends AppShell
         if (is_string($data) && $data !== '/') {
             $data = ['alias' => $data];
         } elseif (is_string($data)) {
-            $this->error(__d('cake_console', '/ can not be used as an alias!') . __d('cake_console', "	/ is the root, please supply a sub alias"));
+            $this->error(__d('cake_console', '/ can not be used as an alias!') . __d('cake_console', '	/ is the root, please supply a sub alias'));
         }
 
         $data['parent_id'] = $parent;
         $this->Acl->{$class}->create();
         if ($this->Acl->{$class}->save($data)) {
-            $this->out(__d('cake_console', "<success>New %s</success> '%s' created.", $class, $this->args[2]), 2);
+            $this->out(__d('cake_console', '<success>New %s</success> \'%s\' created.', $class, $this->args[2]), 2);
         } else {
-            $this->err(__d('cake_console', "There was a problem creating a new %s '%s'.", $class, $this->args[2]));
+            $this->err(__d('cake_console', 'There was a problem creating a new %s \'%s\'.', $class, $this->args[2]));
         }
     }
 
@@ -211,7 +211,7 @@ class AclShell extends AppShell
 
         if (empty($nodes)) {
             $this->error(
-                __d('cake_console', "Supplied Node '%s' not found", $this->args[1]),
+                __d('cake_console', 'Supplied Node \'%s\' not found', $this->args[1]),
                 __d('cake_console', 'No tree returned.')
             );
         }
@@ -235,9 +235,9 @@ class AclShell extends AppShell
         $indent = str_repeat('  ', $indent);
         $data = $node[$class];
         if ($data['alias']) {
-            $this->out($indent . "[" . $data['id'] . "] " . $data['alias']);
+            $this->out($indent . '[' . $data['id'] . '] ' . $data['alias']);
         } else {
-            $this->out($indent . "[" . $data['id'] . "] " . $data['model'] . '.' . $data['foreign_key']);
+            $this->out($indent . '[' . $data['id'] . '] ' . $data['model'] . '.' . $data['foreign_key']);
         }
     }
 
@@ -442,8 +442,8 @@ class AclShell extends AppShell
             'help'   => __d('cake_console', 'Print out the path to an ACL node.'),
             'parser' => [
                 'description' => [
-                    __d('cake_console', "Returns the path to the ACL object specified by <node>."),
-                    __d('cake_console', "This command is useful in determining the inheritance of permissions for a certain object in the tree.")
+                    __d('cake_console', 'Returns the path to the ACL object specified by <node>.'),
+                    __d('cake_console', 'This command is useful in determining the inheritance of permissions for a certain object in the tree.')
                 ],
                 'arguments' => [
                     'type' => $type,
@@ -493,7 +493,7 @@ class AclShell extends AppShell
             'help'   => __d('cake_console', 'Inherit an ARO\'s parent permissions.'),
             'parser' => [
                 'description' => [
-                    __d('cake_console', "Use this command to force a child ARO object to inherit its permissions settings from its parent.")
+                    __d('cake_console', 'Use this command to force a child ARO object to inherit its permissions settings from its parent.')
                 ],
                 'arguments' => [
                     'aro'    => ['help' => __d('cake_console', 'ARO to have permissions inherit.'), 'required' => true],
@@ -505,9 +505,9 @@ class AclShell extends AppShell
             'help'   => __d('cake_console', 'View a tree or a single node\'s subtree.'),
             'parser' => [
                 'description' => [
-                    __d('cake_console', "The view command will return the ARO or ACO tree."),
-                    __d('cake_console', "The optional node parameter allows you to return"),
-                    __d('cake_console', "only a portion of the requested tree.")
+                    __d('cake_console', 'The view command will return the ARO or ACO tree.'),
+                    __d('cake_console', 'The optional node parameter allows you to return'),
+                    __d('cake_console', 'only a portion of the requested tree.')
                 ],
                 'arguments' => [
                     'type' => $type,
@@ -522,10 +522,10 @@ class AclShell extends AppShell
             ' - <model>.<id> - The node will be bound to a specific record of the given model.',
             '',
             ' - <alias> - The node will be given a string alias (or path, in the case of <parent>)',
-            "   i.e. 'John'. When used with <parent>, this takes the form of an alias path,",
-            "   i.e. <group>/<subgroup>/<parent>.",
+            '   i.e. \'John\'. When used with <parent>, this takes the form of an alias path,',
+            '   i.e. <group>/<subgroup>/<parent>.',
             '',
-            "To add a node at the root level, enter 'root' or '/' as the <parent> parameter."
+            'To add a node at the root level, enter \'root\' or \'/\' as the <parent> parameter.'
         ]);
 
         return $parser;

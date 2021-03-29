@@ -140,7 +140,7 @@ class FileEngineTest extends CakeTestCase
         $result = Cache::read('other_test', 'file_test');
         $this->assertFalse($result);
 
-        Cache::set(['duration' => "+1 second"], 'file_test');
+        Cache::set(['duration' => '+1 second'], 'file_test');
 
         $data = 'this is a test of the emergency broadcasting system';
         $result = Cache::write('other_test', $data, 'file_test');
@@ -381,13 +381,13 @@ class FileEngineTest extends CakeTestCase
         Cache::config('file_test', ['engine' => 'File', 'path' => TMP . 'tests']);
         Cache::write('App.doubleQuoteTest', '"this is a quoted string"', 'file_test');
         $this->assertSame(Cache::read('App.doubleQuoteTest', 'file_test'), '"this is a quoted string"');
-        Cache::write('App.singleQuoteTest', "'this is a quoted string'", 'file_test');
-        $this->assertSame(Cache::read('App.singleQuoteTest', 'file_test'), "'this is a quoted string'");
+        Cache::write('App.singleQuoteTest', '\'this is a quoted string\'', 'file_test');
+        $this->assertSame(Cache::read('App.singleQuoteTest', 'file_test'), '\'this is a quoted string\'');
 
         Cache::config('file_test', ['isWindows' => true, 'path' => TMP . 'tests']);
         $this->assertSame(Cache::read('App.doubleQuoteTest', 'file_test'), '"this is a quoted string"');
-        Cache::write('App.singleQuoteTest', "'this is a quoted string'", 'file_test');
-        $this->assertSame(Cache::read('App.singleQuoteTest', 'file_test'), "'this is a quoted string'");
+        Cache::write('App.singleQuoteTest', '\'this is a quoted string\'', 'file_test');
+        $this->assertSame(Cache::read('App.singleQuoteTest', 'file_test'), '\'this is a quoted string\'');
         Cache::delete('App.singleQuoteTest', 'file_test');
         Cache::delete('App.doubleQuoteTest', 'file_test');
     }

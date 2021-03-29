@@ -12,7 +12,7 @@
  * @since         2.8
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-App::uses("ConsoleOutputStub", "TestSuite/Stub");
+App::uses('ConsoleOutputStub', 'TestSuite/Stub');
 
 /*
  * ConsoleOutputStub test
@@ -38,7 +38,7 @@ class ConsoleOutputStubTest extends CakeTestCase
      */
     public function testCanActAsConsoleOutput()
     {
-        $this->assertInstanceOf("ConsoleOutput", $this->stub);
+        $this->assertInstanceOf('ConsoleOutput', $this->stub);
     }
 
     /**
@@ -48,8 +48,8 @@ class ConsoleOutputStubTest extends CakeTestCase
      */
     public function testWrite()
     {
-        $this->stub->write(["foo", "bar", "baz"]);
-        $this->assertEquals(["foo", "bar", "baz"], $this->stub->messages());
+        $this->stub->write(['foo', 'bar', 'baz']);
+        $this->assertEquals(['foo', 'bar', 'baz'], $this->stub->messages());
     }
 
     /**
@@ -59,8 +59,8 @@ class ConsoleOutputStubTest extends CakeTestCase
      */
     public function testOverwrite()
     {
-        $this->stub->write(["foo", "bar", "baz"]);
-        $this->stub->overwrite("bat");
-        $this->assertEquals(["foo", "bar", "baz", "", "bat"], $this->stub->messages());
+        $this->stub->write(['foo', 'bar', 'baz']);
+        $this->stub->overwrite('bat');
+        $this->assertEquals(['foo', 'bar', 'baz', '', 'bat'], $this->stub->messages());
     }
 }

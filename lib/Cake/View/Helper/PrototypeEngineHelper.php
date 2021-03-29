@@ -119,7 +119,7 @@ class PrototypeEngineHelper extends JsBaseEngineHelper
     {
         $this->_multiple = false;
         if ($selector === 'window' || $selector === 'document') {
-            $this->selection = "$(" . $selector . ")";
+            $this->selection = '$(' . $selector . ')';
 
             return $this;
         }

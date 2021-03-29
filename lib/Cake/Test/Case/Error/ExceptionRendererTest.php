@@ -584,7 +584,7 @@ class ExceptionRendererTest extends CakeTestCase
             [
                 new MissingLayoutException(['file' => 'layouts/my_layout.ctp']),
                 [
-                    "/Missing Layout/",
+                    '/Missing Layout/',
                     "/layouts\/my_layout.ctp/"
                 ],
                 500
@@ -907,7 +907,7 @@ class ExceptionRendererTest extends CakeTestCase
         $this->assertContains('<h2>Database Error</h2>', $result);
         $this->assertContains('There was an error in the SQL query', $result);
         $this->assertContains(h('SELECT * from poo_query < 5 and :seven'), $result);
-        $this->assertContains("'seven' => (int) 7", $result);
+        $this->assertContains('\'seven\' => (int) 7', $result);
     }
 
     /**

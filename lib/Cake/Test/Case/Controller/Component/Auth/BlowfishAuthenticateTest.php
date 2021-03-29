@@ -132,7 +132,7 @@ class BlowfishAuthenticateTest extends CakeTestCase
         $request = new CakeRequest('posts/index', false);
         $request->data = ['User' => [
             'user'     => '> 1',
-            'password' => "' OR 1 = 1"
+            'password' => '\' OR 1 = 1'
         ]];
         $this->assertFalse($this->auth->authenticate($request, $this->response));
     }

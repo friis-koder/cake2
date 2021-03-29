@@ -83,7 +83,7 @@ class PluginTask extends AppShell
         }
 
         if (!$this->bake($plugin)) {
-            $this->error(__d('cake_console', "An error occurred trying to bake: %s in %s", $plugin, $this->path . $plugin));
+            $this->error(__d('cake_console', 'An error occurred trying to bake: %s in %s', $plugin, $this->path . $plugin));
         }
     }
 
@@ -100,8 +100,8 @@ class PluginTask extends AppShell
             $this->findPath($pathOptions);
         }
         $this->hr();
-        $this->out(__d('cake_console', "<info>Plugin Name:</info> %s", $plugin));
-        $this->out(__d('cake_console', "<info>Plugin Directory:</info> %s", $this->path . $plugin));
+        $this->out(__d('cake_console', '<info>Plugin Name:</info> %s', $plugin));
+        $this->out(__d('cake_console', '<info>Plugin Directory:</info> %s', $this->path . $plugin));
         $this->hr();
 
         $looksGood = $this->in(__d('cake_console', 'Look okay?'), ['y', 'n', 'q'], 'y');

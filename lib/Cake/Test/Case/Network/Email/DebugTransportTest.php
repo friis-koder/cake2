@@ -57,12 +57,12 @@ class DebugTransportTest extends CakeTestCase
         $headers .= "To: CakePHP <cake@cakephp.org>\r\n";
         $headers .= "Cc: Mark Story <mark@cakephp.org>, Juan Basso <juan@cakephp.org>\r\n";
         $headers .= "X-Mailer: CakePHP Email\r\n";
-        $headers .= "Date: " . $date . "\r\n";
+        $headers .= 'Date: ' . $date . "\r\n";
         $headers .= "Message-ID: <4d9946cf-0a44-4907-88fe-1d0ccbdd56cb@localhost>\r\n";
         $headers .= "Subject: Testing Message\r\n";
         $headers .= "MIME-Version: 1.0\r\n";
         $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
-        $headers .= "Content-Transfer-Encoding: 8bit";
+        $headers .= 'Content-Transfer-Encoding: 8bit';
 
         $data = "First Line\r\n";
         $data .= "Second Line\r\n";

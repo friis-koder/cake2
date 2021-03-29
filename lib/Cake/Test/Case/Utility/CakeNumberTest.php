@@ -683,7 +683,7 @@ class CakeNumberTest extends CakeTestCase
     {
         $restore = setlocale(LC_NUMERIC, 0);
 
-        $this->skipIf(setlocale(LC_NUMERIC, 'de_DE') === false, "The German locale isn't available.");
+        $this->skipIf(setlocale(LC_NUMERIC, 'de_DE') === false, 'The German locale isn\'t available.');
 
         $result = $this->Number->toReadableSize(1321205);
         $this->assertEquals('1,26 MB', $result);
@@ -702,7 +702,7 @@ class CakeNumberTest extends CakeTestCase
     {
         $restore = setlocale(LC_NUMERIC, 0);
 
-        $this->skipIf(setlocale(LC_NUMERIC, 'de_DE') === false, "The German locale isn't available.");
+        $this->skipIf(setlocale(LC_NUMERIC, 'de_DE') === false, 'The German locale isn\'t available.');
 
         $result = $this->Number->precision(1.234);
         $this->assertEquals('1,234', $result);

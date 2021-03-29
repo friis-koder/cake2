@@ -162,7 +162,7 @@ class ExtractTaskTest extends CakeTestCase
         $this->assertRegExp($pattern, $result);
 
         $this->assertContains('msgid "double \\"quoted\\""', $result, 'Strings with quotes not handled correctly');
-        $this->assertContains("msgid \"single 'quoted'\"", $result, 'Strings with quotes not handled correctly');
+        $this->assertContains('msgid "single \'quoted\'"', $result, 'Strings with quotes not handled correctly');
 
         $pattern = '/\#: extract\.ctp:36\nmsgid "letter"/';
         $this->assertRegExp($pattern, $result, 'Strings with context should not overwrite strings without context');
@@ -399,7 +399,7 @@ class ExtractTaskTest extends CakeTestCase
         $this->assertContains('msgid "Post body is required"', $result);
         $this->assertContains('msgid "Post body is super required"', $result);
         $this->assertContains('msgid "double \\"quoted\\" validation"', $result, 'Strings with quotes not handled correctly');
-        $this->assertContains("msgid \"single 'quoted' validation\"", $result, 'Strings with quotes not handled correctly');
+        $this->assertContains('msgid "single \'quoted\' validation"', $result, 'Strings with quotes not handled correctly');
     }
 
     /**

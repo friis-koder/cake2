@@ -290,7 +290,7 @@ class TranslateBehaviorTest extends CakeTestCase
         ];
         $this->assertEquals($expected, $result);
 
-        $result = $TestModel->find('all', ['conditions' => "TranslatedItem.slug = 'first_translated'"]);
+        $result = $TestModel->find('all', ['conditions' => 'TranslatedItem.slug = \'first_translated\'']);
         $expected = [
             [
                 'TranslatedItem' => [
@@ -432,7 +432,7 @@ class TranslateBehaviorTest extends CakeTestCase
 
         $model = new TranslatedItem();
         $translateModel = $model->translateModel();
-        $translateModel->updateAll(['content' => "'0'"]);
+        $translateModel->updateAll(['content' => '\'0\'']);
         $model->locale = 'eng';
 
         $result = $model->read(null, 1);

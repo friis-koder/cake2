@@ -235,7 +235,7 @@ class AuthTestController extends Controller
      */
     public function add()
     {
-        echo "add";
+        echo 'add';
     }
 
     /**
@@ -245,7 +245,7 @@ class AuthTestController extends Controller
      */
     public function camelCase()
     {
-        echo "camelCase";
+        echo 'camelCase';
     }
 
     /**

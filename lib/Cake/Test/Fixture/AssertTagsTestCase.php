@@ -21,7 +21,7 @@ class AssertTagsTestCase extends CakeTestCase
         ];
         $this->assertTags($input, $pattern);
 
-        $input = "<a href='/test.html' class='active'>My link</a>";
+        $input = '<a href=\'/test.html\' class=\'active\'>My link</a>';
         $pattern = [
             'a' => ['href' => '/test.html', 'class' => 'active'],
             'My link',
@@ -29,7 +29,7 @@ class AssertTagsTestCase extends CakeTestCase
         ];
         $this->assertTags($input, $pattern);
 
-        $input = "<a href='/test.html' class='active'>My link</a>";
+        $input = '<a href=\'/test.html\' class=\'active\'>My link</a>';
         $pattern = [
             'a' => ['href' => 'preg:/.*\.html/', 'class' => 'active'],
             'My link',

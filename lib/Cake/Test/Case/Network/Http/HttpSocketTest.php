@@ -368,7 +368,7 @@ class HttpSocketTest extends CakeTestCase
                         'body'     => '',
                         'line'     => "GET /?foo=bar HTTP/1.1\r\n",
                         'header'   => "Host: www.cakephp.org\r\nConnection: close\r\nUser-Agent: CakePHP\r\n",
-                        'raw'      => "",
+                        'raw'      => '',
                         'redirect' => false,
                         'cookies'  => [],
                         'proxy'    => [],
@@ -469,10 +469,10 @@ class HttpSocketTest extends CakeTestCase
                             'path'     => '/posts/add',
                             'fragment' => null
                         ],
-                        'body'   => "name=HttpSocket-is-released&date=today",
+                        'body'   => 'name=HttpSocket-is-released&date=today',
                         'line'   => "POST /posts/add HTTP/1.1\r\n",
                         'header' => "Host: www.cakephp.org\r\nConnection: close\r\nUser-Agent: CakePHP\r\nContent-Type: application/x-www-form-urlencoded\r\nContent-Length: 38\r\n",
-                        'raw'    => "name=HttpSocket-is-released&date=today"
+                        'raw'    => 'name=HttpSocket-is-released&date=today'
                     ]
                 ]
             ],
@@ -583,7 +583,7 @@ class HttpSocketTest extends CakeTestCase
         $this->Socket->reset();
         $request = ['method' => 'POST', 'uri' => 'http://www.cakephp.org/posts/add', 'body' => ['name' => 'HttpSocket-is-released', 'date' => 'today']];
         $this->Socket->request($request);
-        $this->assertEquals("name=HttpSocket-is-released&date=today", $this->Socket->request['body']);
+        $this->assertEquals('name=HttpSocket-is-released&date=today', $this->Socket->request['body']);
     }
 
     /**
@@ -633,7 +633,7 @@ class HttpSocketTest extends CakeTestCase
             'method' => 'GET'
         ];
         $this->Socket->request($request);
-        $this->assertContains("GET /index.php?somestring HTTP/1.1", $this->Socket->request['line']);
+        $this->assertContains('GET /index.php?somestring HTTP/1.1', $this->Socket->request['line']);
     }
 
     /**
@@ -661,7 +661,7 @@ class HttpSocketTest extends CakeTestCase
         $request = ['uri' => 'htpp://www.cakephp.org/'];
         $number = mt_rand(0, 9999999);
         $this->Socket->expects($this->any())->method('connect')->will($this->returnValue(true));
-        $serverResponse = "HTTP/1.x 200 OK\r\nDate: Mon, 16 Apr 2007 04:14:16 GMT\r\nServer: CakeHttp Server\r\nContent-Type: text/html\r\n\r\n<h1>Hello, your lucky number is " . $number . "</h1>";
+        $serverResponse = "HTTP/1.x 200 OK\r\nDate: Mon, 16 Apr 2007 04:14:16 GMT\r\nServer: CakeHttp Server\r\nContent-Type: text/html\r\n\r\n<h1>Hello, your lucky number is " . $number . '</h1>';
         $this->Socket->expects($this->at(0))->method('write')
             ->with("GET / HTTP/1.1\r\nHost: www.cakephp.org\r\nConnection: close\r\nUser-Agent: CakePHP\r\n\r\n");
 
@@ -670,7 +670,7 @@ class HttpSocketTest extends CakeTestCase
             ->will($this->onConsecutiveCalls($serverResponse, false));
 
         $response = (string)$this->Socket->request($request);
-        $this->assertEquals($response, "<h1>Hello, your lucky number is " . $number . "</h1>");
+        $this->assertEquals($response, '<h1>Hello, your lucky number is ' . $number . '</h1>');
     }
 
     /**
@@ -1486,7 +1486,7 @@ class HttpSocketTest extends CakeTestCase
             'user'     => null,
             'pass'     => null,
             'path'     => '/query',
-            'query'    => ['foo' => ""],
+            'query'    => ['foo' => ''],
             'fragment' => null
         ]);
 
@@ -1748,7 +1748,7 @@ class HttpSocketTest extends CakeTestCase
         $r = $this->Socket->buildHeader(['Multi-Line-Field' => "This is my\r\n\tMulti Line field"]);
         $this->assertEquals("Multi-Line-Field: This is my\r\n\tMulti Line field\r\n", $r);
 
-        $r = $this->Socket->buildHeader(['Test@Field' => "My value"]);
+        $r = $this->Socket->buildHeader(['Test@Field' => 'My value']);
         $this->assertEquals("Test\"@\"Field: My value\r\n", $r);
     }
 
