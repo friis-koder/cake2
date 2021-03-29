@@ -7,21 +7,22 @@ return $config
     ->setCacheFile(__DIR__ . DIRECTORY_SEPARATOR . '.cache' . DIRECTORY_SEPARATOR . 'php-cs-fixer.cache')
     ->setHideProgress(false)
     ->setRules([
-        '@PSR12' => true,
-        'array_indentation' => true,
-        'array_syntax' => ['syntax'=>'short'],
-        'binary_operator_spaces' => ['operators' => ['=>' => 'align_single_space']],
-        'blank_line_before_statement' => true,
-        'class_attributes_separation' => true,
-        'concat_space' => ['spacing'=>'one'],
-        'no_blank_lines_after_phpdoc' => true,
-        'no_empty_comment' => true,
-        'no_empty_phpdoc' => true,
-        'no_empty_statement' => true,
-        'no_extra_blank_lines' => true,
-        'no_short_bool_cast' => true,
-        'object_operator_without_whitespace' => true
-    ])
+        '@PSR12'                             => true,
+        'array_indentation'                  => true,
+        'array_syntax'                       => ['syntax' => 'short'],
+        'binary_operator_spaces'             => ['operators' => ['=>' => 'align_single_space']],
+        'blank_line_before_statement'        => true,
+        'class_attributes_separation'        => true,
+        'concat_space'                       => ['spacing' => 'one'],
+        'no_blank_lines_after_phpdoc'        => true,
+        'no_empty_comment'                   => true,
+        'no_empty_phpdoc'                    => true,
+        'no_empty_statement'                 => true,
+        'no_extra_blank_lines'               => true,
+        'no_short_bool_cast'                 => true,
+        'object_operator_without_whitespace' => true,
+        'single_quote'                       => ['strings_containing_single_quote_chars' => true],
+   ])
     ->setFinder(PhpCsFixer\Finder::create()
         ->files()
         ->name('*.php')
