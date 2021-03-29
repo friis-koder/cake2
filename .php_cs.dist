@@ -19,6 +19,7 @@ return $config
         'no_empty_phpdoc' => true,
         'no_empty_statement' => true,
         'no_extra_blank_lines' => true,
+        'no_short_bool_cast' => true,
         'object_operator_without_whitespace' => true
     ])
     ->setFinder(PhpCsFixer\Finder::create()
