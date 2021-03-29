@@ -1,4 +1,5 @@
 <?php
+
 App::uses('EmailComponent', 'Controller/Component');
 
 /**
@@ -6,5 +7,6 @@ App::uses('EmailComponent', 'Controller/Component');
  *
  * @package       Cake.Test.TestApp.Plugin.TestPlugin.Controller.Component
  */
-class TestPluginEmailComponent extends EmailComponent {
+class TestPluginEmailComponent extends EmailComponent
+{
 }

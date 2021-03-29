@@ -32,190 +32,198 @@ App::uses('File', 'Utility');
  *
  * @package       Cake.Test.Case.Console.Command.Task
  */
-class PluginTaskTest extends CakeTestCase {
-
+class PluginTaskTest extends CakeTestCase
+{
 /**
  * setUp method
  *
  * @return void
  */
-	public function setUp() {
-		parent::setUp();
-		$this->out = $this->getMock('ConsoleOutput', array(), array(), '', false);
-		$this->in = $this->getMock('ConsoleInput', array(), array(), '', false);
+    public function setUp()
+    {
+        parent::setUp();
+        $this->out = $this->getMock('ConsoleOutput', array(), array(), '', false);
+        $this->in = $this->getMock('ConsoleInput', array(), array(), '', false);
 
-		$this->Task = $this->getMock('PluginTask',
-			array('in', 'err', 'createFile', '_stop', 'clear'),
-			array($this->out, $this->out, $this->in)
-		);
-		$this->Task->path = TMP . 'tests' . DS;
-		$this->Task->bootstrap = TMP . 'tests' . DS . 'bootstrap.php';
-		touch($this->Task->bootstrap);
+        $this->Task = $this->getMock(
+            'PluginTask',
+            array('in', 'err', 'createFile', '_stop', 'clear'),
+            array($this->out, $this->out, $this->in)
+        );
+        $this->Task->path = TMP . 'tests' . DS;
+        $this->Task->bootstrap = TMP . 'tests' . DS . 'bootstrap.php';
+        touch($this->Task->bootstrap);
 
-		$this->_paths = $paths = App::path('plugins');
-		foreach ($paths as $i => $p) {
-			if (!is_dir($p)) {
-				array_splice($paths, $i, 1);
-			}
-		}
-		$this->_testPath = array_push($paths, TMP . 'tests' . DS) - 1;
-		App::build(array('plugins' => $paths));
-	}
+        $this->_paths = $paths = App::path('plugins');
+        foreach ($paths as $i => $p) {
+            if (!is_dir($p)) {
+                array_splice($paths, $i, 1);
+            }
+        }
+        $this->_testPath = array_push($paths, TMP . 'tests' . DS) - 1;
+        App::build(array('plugins' => $paths));
+    }
 
-/**
- * tearDown()
- *
- * @return void
- */
-	public function tearDown() {
-		if (file_exists($this->Task->bootstrap)) {
-			unlink($this->Task->bootstrap);
-		}
-		parent::tearDown();
-	}
+    /**
+     * tearDown()
+     *
+     * @return void
+     */
+    public function tearDown()
+    {
+        if (file_exists($this->Task->bootstrap)) {
+            unlink($this->Task->bootstrap);
+        }
+        parent::tearDown();
+    }
 
-/**
- * test bake()
- *
- * @return void
- */
-	public function testBakeFoldersAndFiles() {
-		$this->Task->expects($this->at(0))
-			->method('in')
-			->will($this->returnValue($this->_testPath));
-		$this->Task->expects($this->at(1))
-			->method('in')
-			->will($this->returnValue('y'));
+    /**
+     * test bake()
+     *
+     * @return void
+     */
+    public function testBakeFoldersAndFiles()
+    {
+        $this->Task->expects($this->at(0))
+            ->method('in')
+            ->will($this->returnValue($this->_testPath));
+        $this->Task->expects($this->at(1))
+            ->method('in')
+            ->will($this->returnValue('y'));
 
-		$path = $this->Task->path . 'BakeTestPlugin';
+        $path = $this->Task->path . 'BakeTestPlugin';
 
-		$file = $path . DS . 'Controller' . DS . 'BakeTestPluginAppController.php';
-		$this->Task->expects($this->at(2))
-			->method('createFile')
-			->with($file, new PHPUnit_Framework_Constraint_IsAnything());
+        $file = $path . DS . 'Controller' . DS . 'BakeTestPluginAppController.php';
+        $this->Task->expects($this->at(2))
+            ->method('createFile')
+            ->with($file, new PHPUnit_Framework_Constraint_IsAnything());
 
-		$file = $path . DS . 'Model' . DS . 'BakeTestPluginAppModel.php';
-		$this->Task->expects($this->at(3))
-			->method('createFile')
-			->with($file, new PHPUnit_Framework_Constraint_IsAnything());
+        $file = $path . DS . 'Model' . DS . 'BakeTestPluginAppModel.php';
+        $this->Task->expects($this->at(3))
+            ->method('createFile')
+            ->with($file, new PHPUnit_Framework_Constraint_IsAnything());
 
-		$this->Task->bake('BakeTestPlugin');
+        $this->Task->bake('BakeTestPlugin');
 
-		$path = $this->Task->path . 'BakeTestPlugin';
-		$this->assertTrue(is_dir($path), 'No plugin dir %s');
+        $path = $this->Task->path . 'BakeTestPlugin';
+        $this->assertTrue(is_dir($path), 'No plugin dir %s');
 
-		$directories = array(
-			'Config' . DS . 'Schema',
-			'Console' . DS . 'Command' . DS . 'Task',
-			'Console' . DS . 'Templates',
-			'Controller' . DS . 'Component',
-			'Lib',
-			'Locale' . DS . 'eng' . DS . 'LC_MESSAGES',
-			'Model' . DS . 'Behavior',
-			'Model' . DS . 'Datasource',
-			'Test' . DS . 'Case' . DS . 'Controller' . DS . 'Component',
-			'Test' . DS . 'Case' . DS . 'Lib',
-			'Test' . DS . 'Case' . DS . 'Model' . DS . 'Behavior',
-			'Test' . DS . 'Case' . DS . 'Model' . DS . 'Datasource',
-			'Test' . DS . 'Case' . DS . 'View' . DS . 'Helper',
-			'Test' . DS . 'Fixture',
-			'View' . DS . 'Elements',
-			'View' . DS . 'Helper',
-			'View' . DS . 'Layouts',
-			'webroot' . DS . 'css',
-			'webroot' . DS . 'js',
-			'webroot' . DS . 'img',
-		);
-		foreach ($directories as $dir) {
-			$this->assertTrue(is_dir($path . DS . $dir), 'Missing directory for ' . $dir);
-		}
+        $directories = array(
+            'Config' . DS . 'Schema',
+            'Console' . DS . 'Command' . DS . 'Task',
+            'Console' . DS . 'Templates',
+            'Controller' . DS . 'Component',
+            'Lib',
+            'Locale' . DS . 'eng' . DS . 'LC_MESSAGES',
+            'Model' . DS . 'Behavior',
+            'Model' . DS . 'Datasource',
+            'Test' . DS . 'Case' . DS . 'Controller' . DS . 'Component',
+            'Test' . DS . 'Case' . DS . 'Lib',
+            'Test' . DS . 'Case' . DS . 'Model' . DS . 'Behavior',
+            'Test' . DS . 'Case' . DS . 'Model' . DS . 'Datasource',
+            'Test' . DS . 'Case' . DS . 'View' . DS . 'Helper',
+            'Test' . DS . 'Fixture',
+            'View' . DS . 'Elements',
+            'View' . DS . 'Helper',
+            'View' . DS . 'Layouts',
+            'webroot' . DS . 'css',
+            'webroot' . DS . 'js',
+            'webroot' . DS . 'img',
+        );
+        foreach ($directories as $dir) {
+            $this->assertTrue(is_dir($path . DS . $dir), 'Missing directory for ' . $dir);
+        }
 
-		$Folder = new Folder($this->Task->path . 'BakeTestPlugin');
-		$Folder->delete();
-	}
+        $Folder = new Folder($this->Task->path . 'BakeTestPlugin');
+        $Folder->delete();
+    }
 
-/**
- * test execute with no args, flowing into interactive,
- *
- * @return void
- */
-	public function testExecuteWithNoArgs() {
-		$this->Task->expects($this->at(0))->method('in')->will($this->returnValue('TestPlugin'));
-		$this->Task->expects($this->at(1))->method('in')->will($this->returnValue($this->_testPath));
-		$this->Task->expects($this->at(2))->method('in')->will($this->returnValue('y'));
+    /**
+     * test execute with no args, flowing into interactive,
+     *
+     * @return void
+     */
+    public function testExecuteWithNoArgs()
+    {
+        $this->Task->expects($this->at(0))->method('in')->will($this->returnValue('TestPlugin'));
+        $this->Task->expects($this->at(1))->method('in')->will($this->returnValue($this->_testPath));
+        $this->Task->expects($this->at(2))->method('in')->will($this->returnValue('y'));
 
-		$path = $this->Task->path . 'TestPlugin';
-		$file = $path . DS . 'Controller' . DS . 'TestPluginAppController.php';
+        $path = $this->Task->path . 'TestPlugin';
+        $file = $path . DS . 'Controller' . DS . 'TestPluginAppController.php';
 
-		$this->Task->expects($this->at(3))->method('createFile')
-			->with($file, new PHPUnit_Framework_Constraint_IsAnything());
+        $this->Task->expects($this->at(3))->method('createFile')
+            ->with($file, new PHPUnit_Framework_Constraint_IsAnything());
 
-		$file = $path . DS . 'Model' . DS . 'TestPluginAppModel.php';
-		$this->Task->expects($this->at(4))->method('createFile')
-			->with($file, new PHPUnit_Framework_Constraint_IsAnything());
+        $file = $path . DS . 'Model' . DS . 'TestPluginAppModel.php';
+        $this->Task->expects($this->at(4))->method('createFile')
+            ->with($file, new PHPUnit_Framework_Constraint_IsAnything());
 
-		$this->Task->args = array();
-		$this->Task->execute();
+        $this->Task->args = array();
+        $this->Task->execute();
 
-		$Folder = new Folder($path);
-		$Folder->delete();
-	}
+        $Folder = new Folder($path);
+        $Folder->delete();
+    }
 
-/**
- * Test Execute
- *
- * @return void
- */
-	public function testExecuteWithOneArg() {
-		$this->Task->expects($this->at(0))->method('in')
-			->will($this->returnValue($this->_testPath));
-		$this->Task->expects($this->at(1))->method('in')
-			->will($this->returnValue('y'));
+    /**
+     * Test Execute
+     *
+     * @return void
+     */
+    public function testExecuteWithOneArg()
+    {
+        $this->Task->expects($this->at(0))->method('in')
+            ->will($this->returnValue($this->_testPath));
+        $this->Task->expects($this->at(1))->method('in')
+            ->will($this->returnValue('y'));
 
-		$path = $this->Task->path . 'BakeTestPlugin';
-		$file = $path . DS . 'Controller' . DS . 'BakeTestPluginAppController.php';
-		$this->Task->expects($this->at(2))->method('createFile')
-			->with($file, new PHPUnit_Framework_Constraint_IsAnything());
+        $path = $this->Task->path . 'BakeTestPlugin';
+        $file = $path . DS . 'Controller' . DS . 'BakeTestPluginAppController.php';
+        $this->Task->expects($this->at(2))->method('createFile')
+            ->with($file, new PHPUnit_Framework_Constraint_IsAnything());
 
-		$path = $this->Task->path . 'BakeTestPlugin';
-		$file = $path . DS . 'Model' . DS . 'BakeTestPluginAppModel.php';
-		$this->Task->expects($this->at(3))->method('createFile')
-			->with($file, new PHPUnit_Framework_Constraint_IsAnything());
+        $path = $this->Task->path . 'BakeTestPlugin';
+        $file = $path . DS . 'Model' . DS . 'BakeTestPluginAppModel.php';
+        $this->Task->expects($this->at(3))->method('createFile')
+            ->with($file, new PHPUnit_Framework_Constraint_IsAnything());
 
-		$this->Task->args = array('BakeTestPlugin');
+        $this->Task->args = array('BakeTestPlugin');
 
-		$this->Task->execute();
+        $this->Task->execute();
 
-		$Folder = new Folder($this->Task->path . 'BakeTestPlugin');
-		$Folder->delete();
-	}
+        $Folder = new Folder($this->Task->path . 'BakeTestPlugin');
+        $Folder->delete();
+    }
 
-/**
- * Test that findPath ignores paths that don't exist.
- *
- * @return void
- */
-	public function testFindPathNonExistant() {
-		$paths = App::path('plugins');
-		$last = count($paths);
+    /**
+     * Test that findPath ignores paths that don't exist.
+     *
+     * @return void
+     */
+    public function testFindPathNonExistant()
+    {
+        $paths = App::path('plugins');
+        $last = count($paths);
 
-		array_unshift($paths, '/fake/path');
-		$paths[] = '/fake/path2';
+        array_unshift($paths, '/fake/path');
+        $paths[] = '/fake/path2';
 
-		$this->Task = $this->getMock('PluginTask',
-			array('in', 'out', 'err', 'createFile', '_stop'),
-			array($this->out, $this->out, $this->in)
-		);
-		$this->Task->path = TMP . 'tests' . DS;
+        $this->Task = $this->getMock(
+            'PluginTask',
+            array('in', 'out', 'err', 'createFile', '_stop'),
+            array($this->out, $this->out, $this->in)
+        );
+        $this->Task->path = TMP . 'tests' . DS;
 
-		// Make sure the added path is filtered out.
-		$this->Task->expects($this->exactly($last))
-			->method('out');
+        // Make sure the added path is filtered out.
+        $this->Task->expects($this->exactly($last))
+            ->method('out');
 
-		$this->Task->expects($this->once())
-			->method('in')
-			->will($this->returnValue($last));
+        $this->Task->expects($this->once())
+            ->method('in')
+            ->will($this->returnValue($last));
 
-		$this->Task->findPath($paths);
-	}
+        $this->Task->findPath($paths);
+    }
 }

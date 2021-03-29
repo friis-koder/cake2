@@ -55,8 +55,8 @@ App::uses('CakeRequest', 'Network');
  * @package       Cake.View
  * @deprecated 3.0.0 Deprecated since version 2.3, use CakeResponse::file() instead
  */
-class MediaView extends View {
-
+class MediaView extends View
+{
 /**
  * Display or download the given file
  *
@@ -64,40 +64,40 @@ class MediaView extends View {
  * @param string $layout Not used
  * @return void
  */
-	public function render($view = null, $layout = null) {
-		$name = $extension = $download = $id = $modified = $path = $cache = $mimeType = $compress = null;
-		extract($this->viewVars, EXTR_OVERWRITE);
+    public function render($view = null, $layout = null)
+    {
+        $name = $extension = $download = $id = $modified = $path = $cache = $mimeType = $compress = null;
+        extract($this->viewVars, EXTR_OVERWRITE);
 
-		$path = $path . $id;
+        $path = $path . $id;
 
-		if (is_array($mimeType)) {
-			$this->response->type($mimeType);
-		}
+        if (is_array($mimeType)) {
+            $this->response->type($mimeType);
+        }
 
-		if ($cache) {
-			if (!empty($modified) && !is_numeric($modified)) {
-				$modified = strtotime($modified, time());
-			} else {
-				$modified = time();
-			}
-			$this->response->cache($modified, $cache);
-		} else {
-			$this->response->disableCache();
-		}
+        if ($cache) {
+            if (!empty($modified) && !is_numeric($modified)) {
+                $modified = strtotime($modified, time());
+            } else {
+                $modified = time();
+            }
+            $this->response->cache($modified, $cache);
+        } else {
+            $this->response->disableCache();
+        }
 
-		if ($name !== null) {
-			if (empty($extension)) {
-				$extension = pathinfo($id, PATHINFO_EXTENSION);
-			}
-			if (!empty($extension)) {
-				$name .= '.' . $extension;
-			}
-		}
-		$this->response->file($path, compact('name', 'download'));
+        if ($name !== null) {
+            if (empty($extension)) {
+                $extension = pathinfo($id, PATHINFO_EXTENSION);
+            }
+            if (!empty($extension)) {
+                $name .= '.' . $extension;
+            }
+        }
+        $this->response->file($path, compact('name', 'download'));
 
-		if ($compress) {
-			$this->response->compress();
-		}
-	}
-
+        if ($compress) {
+            $this->response->compress();
+        }
+    }
 }

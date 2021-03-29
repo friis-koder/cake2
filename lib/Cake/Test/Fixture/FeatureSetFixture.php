@@ -21,24 +21,24 @@
  *
  * @package       Cake.Test.Fixture
  */
-class FeatureSetFixture extends CakeTestFixture {
-
+class FeatureSetFixture extends CakeTestFixture
+{
 /**
  * fields property
  *
  * @var array
  */
-	public $fields = array(
-		'id' => array('type' => 'integer', 'key' => 'primary'),
-		'name' => array('type' => 'string', 'null' => false)
-	);
+    public $fields = array(
+        'id' => array('type' => 'integer', 'key' => 'primary'),
+        'name' => array('type' => 'string', 'null' => false)
+    );
 
-/**
- * records property
- *
- * @var array
- */
-	public $records = array(
-		array('name' => 'FeatureSet 1')
-	);
+    /**
+     * records property
+     *
+     * @var array
+     */
+    public $records = array(
+        array('name' => 'FeatureSet 1')
+    );
 }

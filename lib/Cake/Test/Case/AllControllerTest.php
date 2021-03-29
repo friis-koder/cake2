@@ -23,22 +23,23 @@
  *
  * @package       Cake.Test.Case
  */
-class AllControllersTest extends PHPUnit_Framework_TestSuite {
-
+class AllControllersTest extends PHPUnit_Framework_TestSuite
+{
 /**
  * suite method, defines tests for this suite.
  *
  * @return void
  */
-	public static function suite() {
-		$suite = new CakeTestSuite('All Controller related class tests');
+    public static function suite()
+    {
+        $suite = new CakeTestSuite('All Controller related class tests');
 
-		$suite->addTestFile(CORE_TEST_CASES . DS . 'Controller' . DS . 'ControllerTest.php');
-		$suite->addTestFile(CORE_TEST_CASES . DS . 'Controller' . DS . 'ScaffoldTest.php');
-		$suite->addTestFile(CORE_TEST_CASES . DS . 'Controller' . DS . 'PagesControllerTest.php');
-		$suite->addTestFile(CORE_TEST_CASES . DS . 'Controller' . DS . 'ComponentTest.php');
-		$suite->addTestFile(CORE_TEST_CASES . DS . 'Controller' . DS . 'ControllerMergeVarsTest.php');
-		$suite->addTestFile(CORE_TEST_CASES . DS . 'Controller' . DS . 'ApplicationControllerTest.php');
-		return $suite;
-	}
+        $suite->addTestFile(CORE_TEST_CASES . DS . 'Controller' . DS . 'ControllerTest.php');
+        $suite->addTestFile(CORE_TEST_CASES . DS . 'Controller' . DS . 'ScaffoldTest.php');
+        $suite->addTestFile(CORE_TEST_CASES . DS . 'Controller' . DS . 'PagesControllerTest.php');
+        $suite->addTestFile(CORE_TEST_CASES . DS . 'Controller' . DS . 'ComponentTest.php');
+        $suite->addTestFile(CORE_TEST_CASES . DS . 'Controller' . DS . 'ControllerMergeVarsTest.php');
+        $suite->addTestFile(CORE_TEST_CASES . DS . 'Controller' . DS . 'ApplicationControllerTest.php');
+        return $suite;
+    }
 }

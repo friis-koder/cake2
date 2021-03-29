@@ -20,14 +20,15 @@
  * ExampleShell
  * @package       Cake.Test.TestApp.Plugin.TestPlugin.Console.Command
  */
-class ExampleShell extends Shell {
-
+class ExampleShell extends Shell
+{
 /**
  * main method
  *
  * @return void
  */
-	public function main() {
-		$this->out('This is the main method called from TestPlugin.ExampleShell');
-	}
+    public function main()
+    {
+        $this->out('This is the main method called from TestPlugin.ExampleShell');
+    }
 }

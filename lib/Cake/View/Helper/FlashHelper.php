@@ -27,8 +27,8 @@ App::uses('CakeSession', 'Model/Datasource');
  *
  * @package       Cake.View.Helper
  */
-class FlashHelper extends AppHelper {
-
+class FlashHelper extends AppHelper
+{
 /**
  * Used to render the message set in FlashComponent::set()
  *
@@ -68,32 +68,33 @@ class FlashHelper extends AppHelper {
  *   in session.
  * @throws UnexpectedValueException If value for flash settings key is not an array.
  */
-	public function render($key = 'flash', $options = array()) {
-		if (!CakeSession::check("Message.$key")) {
-			return null;
-		}
+    public function render($key = 'flash', $options = array())
+    {
+        if (!CakeSession::check("Message.$key")) {
+            return null;
+        }
 
-		$flash = CakeSession::read("Message.$key");
+        $flash = CakeSession::read("Message.$key");
 
-		if (!is_array($flash)) {
-			throw new UnexpectedValueException(sprintf(
-				'Value for flash setting key "%s" must be an array.',
-				$key
-			));
-		}
+        if (!is_array($flash)) {
+            throw new UnexpectedValueException(sprintf(
+                'Value for flash setting key "%s" must be an array.',
+                $key
+            ));
+        }
 
-		CakeSession::delete("Message.$key");
+        CakeSession::delete("Message.$key");
 
-		$out = '';
-		foreach ($flash as $message) {
-			$message['key'] = $key;
-			$message = $options + $message;
-			if ($message['element'] === 'default') {
-				$message['element'] = 'Flash/default';
-			}
-			$out .= $this->_View->element($message['element'], $message);
-		}
+        $out = '';
+        foreach ($flash as $message) {
+            $message['key'] = $key;
+            $message = $options + $message;
+            if ($message['element'] === 'default') {
+                $message['element'] = 'Flash/default';
+            }
+            $out .= $this->_View->element($message['element'], $message);
+        }
 
-		return $out;
-	}
+        return $out;
+    }
 }

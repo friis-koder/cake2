@@ -21,14 +21,15 @@ App::uses('DispatcherFilter', 'Routing');
  *
  * @package		  Cake.Test.TestApp.Routing.Filter
  */
-class TestDispatcherFilter extends DispatcherFilter {
+class TestDispatcherFilter extends DispatcherFilter
+{
+    public function beforeDispatch(CakeEvent $event)
+    {
+        $event->data['request']->params['altered'] = true;
+    }
 
-	public function beforeDispatch(CakeEvent $event) {
-		$event->data['request']->params['altered'] = true;
-	}
-
-	public function afterDispatch(CakeEvent $event) {
-		$event->data['response']->statusCode(304);
-	}
-
+    public function afterDispatch(CakeEvent $event)
+    {
+        $event->data['response']->statusCode(304);
+    }
 }

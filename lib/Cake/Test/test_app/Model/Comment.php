@@ -21,13 +21,12 @@
  *
  * @package       Cake.Test.TestApp.Model
  */
-class Comment extends AppModel {
-
+class Comment extends AppModel
+{
 /**
  * Table name
  *
  * @var string
  */
-	public $useTable = 'comments';
-
+    public $useTable = 'comments';
 }

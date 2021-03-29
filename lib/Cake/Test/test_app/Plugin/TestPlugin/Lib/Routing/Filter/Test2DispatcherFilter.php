@@ -21,16 +21,17 @@ App::uses('DispatcherFilter', 'Routing');
  *
  * @package		  Cake.Test.TestApp.Routing.Filter
  */
-class Test2DispatcherFilter extends DispatcherFilter {
+class Test2DispatcherFilter extends DispatcherFilter
+{
+    public function beforeDispatch(CakeEvent $event)
+    {
+        $event->data['response']->statusCode(500);
+        $event->stopPropagation();
+        return $event->data['response'];
+    }
 
-	public function beforeDispatch(CakeEvent $event) {
-		$event->data['response']->statusCode(500);
-		$event->stopPropagation();
-		return $event->data['response'];
-	}
-
-	public function afterDispatch(CakeEvent $event) {
-		$event->data['response']->statusCode(200);
-	}
-
+    public function afterDispatch(CakeEvent $event)
+    {
+        $event->data['response']->statusCode(200);
+    }
 }
