@@ -12,9 +12,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Controller.Component
+ *
  * @since         CakePHP(tm) v 0.10.0.1076
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Component', 'Controller');
@@ -33,6 +37,7 @@ App::uses('CakeEvent', 'Event');
  * Binds access control with user authentication and session management.
  *
  * @package       Cake.Controller.Component
+ *
  * @link https://book.cakephp.org/2.0/en/core-libraries/components/authentication.html
  */
 class AuthComponent extends Component
@@ -81,6 +86,7 @@ class AuthComponent extends Component
      * You can also use AuthComponent::ALL instead of the string 'all'.
      *
      * @var array
+     *
      * @link https://book.cakephp.org/2.0/en/core-libraries/components/authentication.html
      */
     public $authenticate = ['Form'];
@@ -121,6 +127,7 @@ class AuthComponent extends Component
      * You can also use AuthComponent::ALL instead of the string 'all'
      *
      * @var mixed
+     *
      * @link https://book.cakephp.org/2.0/en/core-libraries/components/authentication.html#authorization
      */
     public $authorize = false;
@@ -192,6 +199,7 @@ class AuthComponent extends Component
      * set, redirectUrl() method will return the URL specified in $loginRedirect.
      *
      * @var mixed
+     *
      * @link https://book.cakephp.org/2.0/en/core-libraries/components/authentication.html#AuthComponent::$loginRedirect
      */
     public $loginRedirect = null;
@@ -202,6 +210,7 @@ class AuthComponent extends Component
      * Defaults to AuthComponent::$loginAction.
      *
      * @var mixed
+     *
      * @see AuthComponent::$loginAction
      * @see AuthComponent::logout()
      */
@@ -212,6 +221,7 @@ class AuthComponent extends Component
      * access.
      *
      * @var string|bool
+     *
      * @link https://book.cakephp.org/2.0/en/core-libraries/components/authentication.html#AuthComponent::$authError
      */
     public $authError = null;
@@ -231,6 +241,7 @@ class AuthComponent extends Component
      * Controller actions for which user validation is not required.
      *
      * @var array
+     *
      * @see AuthComponent::allow()
      */
     public $allowedActions = [];
@@ -260,7 +271,6 @@ class AuthComponent extends Component
      * Initializes AuthComponent for use in the controller.
      *
      * @param Controller $controller A reference to the instantiating controller object
-     * @return void
      */
     public function initialize(Controller $controller)
     {
@@ -278,6 +288,7 @@ class AuthComponent extends Component
      * of login form data.
      *
      * @param Controller $controller A reference to the instantiating controller object
+     *
      * @return bool
      */
     public function startup(Controller $controller)
@@ -322,6 +333,7 @@ class AuthComponent extends Component
      * Checks whether current action is accessible without authentication.
      *
      * @param Controller $controller A reference to the instantiating controller object
+     *
      * @return bool True if action is accessible without authentication else false
      */
     protected function _isAllowed(Controller $controller)
@@ -344,6 +356,7 @@ class AuthComponent extends Component
      * is returned.
      *
      * @param Controller $controller A reference to the controller object.
+     *
      * @return bool True if current action is login action else false.
      */
     protected function _unauthenticated(Controller $controller)
@@ -393,6 +406,7 @@ class AuthComponent extends Component
      * Normalizes $loginAction and checks if current request URL is same as login action.
      *
      * @param Controller $controller A reference to the controller object.
+     *
      * @return bool True if current action is login action else false.
      */
     protected function _isLoginAction(Controller $controller)
@@ -411,8 +425,11 @@ class AuthComponent extends Component
      * Handle unauthorized access attempt
      *
      * @param Controller $controller A reference to the controller object
-     * @return bool Returns false
+     *
      * @throws ForbiddenException
+     *
+     * @return bool Returns false
+     *
      * @see AuthComponent::$unauthorizedRedirect
      */
     protected function _unauthorized(Controller $controller)
@@ -465,6 +482,7 @@ class AuthComponent extends Component
      *
      * @param array|null $user The user to check the authorization of. If empty the user in the session will be used.
      * @param CakeRequest|null $request The request to authenticate for. If empty, the current request will be used.
+     *
      * @return bool True if $user is authorized, otherwise false
      */
     public function isAuthorized($user = null, CakeRequest $request = null)
@@ -493,8 +511,9 @@ class AuthComponent extends Component
     /**
      * Loads the authorization objects configured.
      *
-     * @return mixed Either null when authorize is empty, or the loaded authorization objects.
      * @throws CakeException
+     *
+     * @return mixed Either null when authorize is empty, or the loaded authorization objects.
      */
     public function constructAuthorize()
     {
@@ -536,7 +555,7 @@ class AuthComponent extends Component
      * `$this->Auth->allow();` to allow all actions
      *
      * @param string|array|null $action Controller action name or array of actions
-     * @return void
+     *
      * @link https://book.cakephp.org/2.0/en/core-libraries/components/authentication.html#making-actions-public
      */
     public function allow($action = null)
@@ -563,7 +582,7 @@ class AuthComponent extends Component
      * `$this->Auth->deny();` to remove all items from the allowed list
      *
      * @param string|array|null $action Controller action name or array of actions
-     * @return void
+     *
      * @see AuthComponent::allow()
      * @link https://book.cakephp.org/2.0/en/core-libraries/components/authentication.html#making-actions-require-authorization
      */
@@ -595,7 +614,9 @@ class AuthComponent extends Component
      * attached authorize objects.
      *
      * @param array $map Actions to map
+     *
      * @return array
+     *
      * @see BaseAuthorize::mapActions()
      * @link https://book.cakephp.org/2.0/en/core-libraries/components/authentication.html#mapping-actions-when-using-crudauthorize
      * @deprecated 3.0.0 Map actions using `actionMap` config key on authorize objects instead
@@ -625,7 +646,9 @@ class AuthComponent extends Component
      * will also change the session id in order to help mitigate session replays.
      *
      * @param array|null $user Either an array of user data, or null to identify a user using the current request.
+     *
      * @return bool True on login success, false on failure
+     *
      * @link https://book.cakephp.org/2.0/en/core-libraries/components/authentication.html#identifying-users-and-logging-them-in
      */
     public function login($user = null)
@@ -659,6 +682,7 @@ class AuthComponent extends Component
      * This helps mitigate issues with session replays.
      *
      * @return string AuthComponent::$logoutRedirect
+     *
      * @see AuthComponent::$logoutRedirect
      * @link https://book.cakephp.org/2.0/en/core-libraries/components/authentication.html#logging-users-out
      */
@@ -688,7 +712,9 @@ class AuthComponent extends Component
      * cookies + sessions will be used.
      *
      * @param string|null $key field to retrieve. Leave null to get entire User record
+     *
      * @return mixed|null User record. or null if no user is logged in.
+     *
      * @link https://book.cakephp.org/2.0/en/core-libraries/components/authentication.html#accessing-the-logged-in-user
      */
     public static function user($key = null)
@@ -741,7 +767,9 @@ class AuthComponent extends Component
      * Backwards compatible alias for AuthComponent::redirectUrl().
      *
      * @param string|array|null $url Optional URL to write as the login redirect URL.
+     *
      * @return string Redirect URL
+     *
      * @deprecated 3.0.0 Since 2.3.0, use AuthComponent::redirectUrl() instead
      */
     public function redirect($url = null)
@@ -765,6 +793,7 @@ class AuthComponent extends Component
      *  - If there is no session and no $loginRedirect, / is returned.
      *
      * @param string|array|null $url Optional URL to write as the login redirect URL.
+     *
      * @return string Redirect URL
      */
     public function redirectUrl($url = null)
@@ -797,6 +826,7 @@ class AuthComponent extends Component
      *
      * @param CakeRequest $request The request that contains authentication data.
      * @param CakeResponse $response The response
+     *
      * @return array|bool User record data, or false, if the user could not be identified.
      */
     public function identify(CakeRequest $request, CakeResponse $response)
@@ -817,8 +847,9 @@ class AuthComponent extends Component
     /**
      * Loads the configured authentication objects.
      *
-     * @return mixed Either null on empty authenticate value, or an array of loaded objects.
      * @throws CakeException
+     *
+     * @return mixed Either null on empty authenticate value, or an array of loaded objects.
      */
     public function constructAuthenticate()
     {
@@ -862,7 +893,9 @@ class AuthComponent extends Component
      * a hashing/encryption system not supported by that method, do not use this method.
      *
      * @param string $password Password to hash
+     *
      * @return string Hashed password
+     *
      * @deprecated 3.0.0 Since 2.4. Use Security::hash() directly or a password hasher object.
      */
     public static function password($password)
@@ -874,6 +907,7 @@ class AuthComponent extends Component
      * Check whether or not the current user has data in the session, and is considered logged in.
      *
      * @return bool true if the user is logged in, false otherwise
+     *
      * @deprecated 3.0.0 Since 2.5. Use AuthComponent::user() directly.
      */
     public function loggedIn()
@@ -885,7 +919,6 @@ class AuthComponent extends Component
      * Set a flash message. Uses the Session component, and values from AuthComponent::$flash.
      *
      * @param string $message The message to set.
-     * @return void
      */
     public function flash($message)
     {

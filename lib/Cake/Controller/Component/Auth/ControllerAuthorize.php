@@ -8,7 +8,9 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('BaseAuthorize', 'Controller/Component/Auth');
@@ -30,6 +32,7 @@ App::uses('BaseAuthorize', 'Controller/Component/Auth');
  * admin routing.
  *
  * @package       Cake.Controller.Component.Auth
+ *
  * @since 2.0
  * @see AuthComponent::$authenticate
  */
@@ -39,8 +42,10 @@ class ControllerAuthorize extends BaseAuthorize
      * Get/set the controller this authorize object will be working with. Also checks that isAuthorized is implemented.
      *
      * @param Controller $controller null to get, a controller to set.
-     * @return mixed
+     *
      * @throws CakeException
+     *
+     * @return mixed
      */
     public function controller(Controller $controller = null)
     {
@@ -58,6 +63,7 @@ class ControllerAuthorize extends BaseAuthorize
      *
      * @param array $user Active user data
      * @param CakeRequest $request Request instance.
+     *
      * @return bool
      */
     public function authorize($user, CakeRequest $request)

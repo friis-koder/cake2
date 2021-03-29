@@ -12,9 +12,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Test.Case.TestSuite
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('HtmlCoverageReport', 'TestSuite/Coverage');
@@ -29,8 +33,6 @@ class HtmlCoverageReportTest extends CakeTestCase
 {
     /**
      * setUp
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -47,8 +49,6 @@ class HtmlCoverageReportTest extends CakeTestCase
 
     /**
      * test getting the path filters.
-     *
-     * @return void
      */
     public function testGetPathFilter()
     {
@@ -68,8 +68,6 @@ class HtmlCoverageReportTest extends CakeTestCase
 
     /**
      * test filtering coverage data.
-     *
-     * @return void
      */
     public function testFilterCoverageDataByPathRemovingElements()
     {
@@ -91,8 +89,6 @@ class HtmlCoverageReportTest extends CakeTestCase
 
     /**
      * test generating HTML reports from file arrays.
-     *
-     * @return void
      */
     public function testGenerateDiff()
     {
@@ -139,8 +135,6 @@ class HtmlCoverageReportTest extends CakeTestCase
 
     /**
      * Test that coverage works with phpunit 3.6 as the data formats from coverage are totally different.
-     *
-     * @return void
      */
     public function testPhpunit36Compatibility()
     {
@@ -188,8 +182,6 @@ class HtmlCoverageReportTest extends CakeTestCase
 
     /**
      * test that covering methods show up as title attributes for lines.
-     *
-     * @return void
      */
     public function testCoveredLinesTitleAttributes()
     {
@@ -231,8 +223,6 @@ class HtmlCoverageReportTest extends CakeTestCase
 
     /**
      * tearDown
-     *
-     * @return void
      */
     public function tearDown()
     {

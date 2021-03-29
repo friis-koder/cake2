@@ -8,9 +8,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP Project
+ *
  * @package       Cake.Test.Case.TestSuite
+ *
  * @since         CakePHP v 1.2.0.4487
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -23,8 +27,6 @@ class CakeTestSuiteTest extends CakeTestCase
 {
     /**
      * testAddTestDirectory
-     *
-     * @return void
      */
     public function testAddTestDirectory()
     {
@@ -41,8 +43,6 @@ class CakeTestSuiteTest extends CakeTestCase
 
     /**
      * testAddTestDirectoryRecursive
-     *
-     * @return void
      */
     public function testAddTestDirectoryRecursive()
     {
@@ -60,8 +60,6 @@ class CakeTestSuiteTest extends CakeTestCase
 
     /**
      * testAddTestDirectoryRecursiveWithHidden
-     *
-     * @return void
      */
     public function testAddTestDirectoryRecursiveWithHidden()
     {
@@ -85,8 +83,6 @@ class CakeTestSuiteTest extends CakeTestCase
 
     /**
      * testAddTestDirectoryRecursiveWithNonPhp
-     *
-     * @return void
      */
     public function testAddTestDirectoryRecursiveWithNonPhp()
     {

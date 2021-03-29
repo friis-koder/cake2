@@ -12,9 +12,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Model
+ *
  * @since         CakePHP(tm) v 2.2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('CakeValidationSet', 'Model/Validator');
@@ -28,6 +32,7 @@ App::uses('Hash', 'Utility');
  * definition array
  *
  * @package       Cake.Model
+ *
  * @link          https://book.cakephp.org/2.0/en/data-validation.html
  */
 class ModelValidator implements ArrayAccess, IteratorAggregate, Countable
@@ -93,6 +98,7 @@ class ModelValidator implements ArrayAccess, IteratorAggregate, Countable
      * Will validate the currently set data. Use `Model::set()` or `Model::create()` to set the active data.
      *
      * @param array $options An optional array of custom options to be made available in the beforeValidate callback
+     *
      * @return bool True if there are no errors
      */
     public function validates($options = [])
@@ -123,6 +129,7 @@ class ModelValidator implements ArrayAccess, IteratorAggregate, Countable
      *
      * @param array &$data Record data to validate. This should be an array indexed by association name.
      * @param array $options Options to use when validating record data (see above), See also $options of validates().
+     *
      * @return array|bool If atomic: True on success, or false on failure.
      *    Otherwise: array similar to the $data array passed, but values are set to true/false
      *    depending on whether each record validated successfully.
@@ -202,6 +209,7 @@ class ModelValidator implements ArrayAccess, IteratorAggregate, Countable
      *
      * @param array &$data Record data to validate. This should be a numerically-indexed array
      * @param array $options Options to use when validating record data (see above), See also $options of validates().
+     *
      * @return mixed If atomic: True on success, or false on failure.
      *    Otherwise: array similar to the $data array passed, but values are set to true/false
      *    depending on whether each record validated successfully.
@@ -240,8 +248,10 @@ class ModelValidator implements ArrayAccess, IteratorAggregate, Countable
      * actually run validation rules over data, not just return the messages.
      *
      * @param string $options An optional array of custom options to be made available in the beforeValidate callback
+     *
      * @return array|bool Array of invalid fields
      * @triggers Model.afterValidate $model
+     *
      * @see ModelValidator::validates()
      */
     public function errors($options = [])
@@ -289,7 +299,6 @@ class ModelValidator implements ArrayAccess, IteratorAggregate, Countable
      *
      * @param string $field The name of the field to invalidate
      * @param string|bool $message Validation message explaining why the rule failed, defaults to true.
-     * @return void
      */
     public function invalidate($field, $message = true)
     {
@@ -329,6 +338,7 @@ class ModelValidator implements ArrayAccess, IteratorAggregate, Countable
      * params are passed then it returns an array with all CakeValidationSet objects for each field
      *
      * @param string $name [optional] The fieldname to fetch. Defaults to null.
+     *
      * @return CakeValidationSet|array|null
      */
     public function getField($name = null)
@@ -379,6 +389,7 @@ class ModelValidator implements ArrayAccess, IteratorAggregate, Countable
      * Sets the I18n domain for validation messages. This method is chainable.
      *
      * @param string $validationDomain [optional] The validation domain to be used.
+     *
      * @return self
      */
     public function setValidationDomain($validationDomain = null)
@@ -405,6 +416,7 @@ class ModelValidator implements ArrayAccess, IteratorAggregate, Countable
      * Processes the passed fieldList and returns the list of fields to be validated
      *
      * @param array $fieldList list of fields to be used for validation
+     *
      * @return CakeValidationSet[] List of validation rules to be applied
      */
     protected function _validationList($fieldList = [])
@@ -429,7 +441,9 @@ class ModelValidator implements ArrayAccess, IteratorAggregate, Countable
      * set and data in the data set.
      *
      * @param array $options Array of options to use on Validation of with models
+     *
      * @return bool Failure of validation on with models.
+     *
      * @see Model::validates()
      */
     protected function _validateWithModels($options)
@@ -466,6 +480,7 @@ class ModelValidator implements ArrayAccess, IteratorAggregate, Countable
      * Propagates beforeValidate event
      *
      * @param array $options Options to pass to callback.
+     *
      * @return bool
      * @triggers Model.beforeValidate $model, array($options)
      */
@@ -486,6 +501,7 @@ class ModelValidator implements ArrayAccess, IteratorAggregate, Countable
      * Returns whether a rule set is defined for a field or not
      *
      * @param string $field name of the field to check
+     *
      * @return bool
      */
     public function offsetExists($field)
@@ -499,6 +515,7 @@ class ModelValidator implements ArrayAccess, IteratorAggregate, Countable
      * Returns the rule set for a field
      *
      * @param string $field name of the field to check
+     *
      * @return CakeValidationSet
      */
     public function offsetGet($field)
@@ -513,7 +530,6 @@ class ModelValidator implements ArrayAccess, IteratorAggregate, Countable
      *
      * @param string $field name of the field to set
      * @param array|CakeValidationSet $rules set of rules to apply to field
-     * @return void
      */
     public function offsetSet($field, $rules)
     {
@@ -530,7 +546,6 @@ class ModelValidator implements ArrayAccess, IteratorAggregate, Countable
      * Unsets the rule set for a field
      *
      * @param string $field name of the field to unset
-     * @return void
      */
     public function offsetUnset($field)
     {
@@ -583,6 +598,7 @@ class ModelValidator implements ArrayAccess, IteratorAggregate, Countable
      * @param string $field The name of the field where the rule is to be added
      * @param string|array|CakeValidationSet $name name of the rule to be added or list of rules for the field
      * @param array|CakeValidationRule $rule or list of rules to be added to the field's rule set
+     *
      * @return self
      */
     public function add($field, $name, $rule = null)
@@ -624,6 +640,7 @@ class ModelValidator implements ArrayAccess, IteratorAggregate, Countable
      *
      * @param string $field The name of the field from which the rule will be removed
      * @param string $rule the name of the rule to be removed
+     *
      * @return self
      */
     public function remove($field, $rule = null)

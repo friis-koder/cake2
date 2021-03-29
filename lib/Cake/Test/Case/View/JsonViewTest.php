@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.View
+ *
  * @since         CakePHP(tm) v 2.1.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Controller', 'Controller');
@@ -30,7 +34,6 @@ class JsonViewTest extends CakeTestCase
     /**
      * setUp method
      *
-     * @return void
      **/
     public function setUp()
     {
@@ -42,8 +45,6 @@ class JsonViewTest extends CakeTestCase
      * Generates testRenderWithoutView data.
      *
      * Note: array($data, $serialize, expected)
-     *
-     * @return void
      */
     public static function renderWithoutViewProvider()
     {
@@ -164,12 +165,13 @@ class JsonViewTest extends CakeTestCase
 
     /**
      * Custom error handler for use while testing methods that use json_encode
+     *
      * @param int $errno
      * @param string $errstr
      * @param string $errfile
      * @param int $errline
      * @param array $errcontext
-     * @return void
+     *
      * @throws CakeException
      **/
     public function jsonEncodeErrorHandler($errno, $errstr, $errfile, $errline, $errcontext)
@@ -181,7 +183,6 @@ class JsonViewTest extends CakeTestCase
      * Test render with a valid string in _serialize.
      *
      * @dataProvider renderWithoutViewProvider
-     * @return void
      */
     public function testRenderWithoutView($data, $serialize, $expected)
     {
@@ -199,8 +200,6 @@ class JsonViewTest extends CakeTestCase
 
     /**
      * Test render with _jsonOptions setting.
-     *
-     * @return void
      */
     public function testRenderWithoutViewJsonOptions()
     {
@@ -226,8 +225,6 @@ class JsonViewTest extends CakeTestCase
 
     /**
      * Test that rendering with _serialize does not load helpers.
-     *
-     * @return void
      */
     public function testRenderSerializeNoHelpers()
     {
@@ -248,8 +245,6 @@ class JsonViewTest extends CakeTestCase
 
     /**
      * testJsonpResponse method
-     *
-     * @return void
      */
     public function testJsonpResponse()
     {
@@ -284,8 +279,6 @@ class JsonViewTest extends CakeTestCase
 
     /**
      * Test render with a View file specified.
-     *
-     * @return void
      */
     public function testRenderWithView()
     {
@@ -317,8 +310,6 @@ class JsonViewTest extends CakeTestCase
 
     /**
      * Test render with a View file specified and named parameters.
-     *
-     * @return void
      */
     public function testRenderWithViewAndNamed()
     {
@@ -362,8 +353,6 @@ class JsonViewTest extends CakeTestCase
 
     /**
      * JsonViewTest::testRenderInvalidJSON()
-     *
-     * @return void
      */
     public function testRenderInvalidJSON()
     {
@@ -397,8 +386,6 @@ class JsonViewTest extends CakeTestCase
 
     /**
      * JsonViewTest::testRenderJSONBoolFalse()
-     *
-     * @return void
      */
     public function testRenderJSONBoolFalse()
     {

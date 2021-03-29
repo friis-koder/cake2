@@ -13,9 +13,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Routing
+ *
  * @since         CakePHP(tm) v 0.2.9
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Router', 'Routing');
@@ -89,7 +93,7 @@ class Dispatcher implements CakeEventListener
      * dispatcher filters from the configured locations.
      *
      * @param CakeEventManager $manager Event manager instance.
-     * @return void
+     *
      * @throws MissingDispatcherFilterException
      */
     protected function _attachFilters($manager)
@@ -141,10 +145,12 @@ class Dispatcher implements CakeEventListener
      * @param CakeRequest $request Request object to dispatch.
      * @param CakeResponse $response Response object to put the results of the dispatch into.
      * @param array $additionalParams Settings array ("bare", "return") which is melded with the GET and POST params
+     *
+     * @throws MissingControllerException When the controller is missing.
+     *
      * @return string|null if `$request['return']` is set then it returns response body, null otherwise
      * @triggers Dispatcher.beforeDispatch $this, compact('request', 'response', 'additionalParams')
      * @triggers Dispatcher.afterDispatch $this, compact('request', 'response')
-     * @throws MissingControllerException When the controller is missing.
      */
     public function dispatch(CakeRequest $request, CakeResponse $response, $additionalParams = [])
     {
@@ -188,6 +194,7 @@ class Dispatcher implements CakeEventListener
      *
      * @param Controller $controller Controller to invoke
      * @param CakeRequest $request The request object to invoke the controller for.
+     *
      * @return CakeResponse the resulting response object
      */
     protected function _invoke(Controller $controller, CakeRequest $request)
@@ -218,7 +225,6 @@ class Dispatcher implements CakeEventListener
      * If Routes have not been loaded they will be loaded, and app/Config/routes.php will be run.
      *
      * @param CakeEvent $event containing the request, response and additional params
-     * @return void
      */
     public function parseParams($event)
     {
@@ -237,6 +243,7 @@ class Dispatcher implements CakeEventListener
      *
      * @param CakeRequest $request Request object
      * @param CakeResponse $response Response for the controller.
+     *
      * @return mixed name of controller if not loaded, or object if loaded
      */
     protected function _getController($request, $response)
@@ -257,6 +264,7 @@ class Dispatcher implements CakeEventListener
      * Load controller and return controller class name
      *
      * @param CakeRequest $request Request instance.
+     *
      * @return string|bool Name of controller class name
      */
     protected function _loadController($request)

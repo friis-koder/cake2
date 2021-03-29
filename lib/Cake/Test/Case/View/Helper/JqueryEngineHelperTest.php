@@ -10,8 +10,11 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP Project
+ *
  * @package       Cake.Test.Case.View.Helper
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('HtmlHelper', 'View/Helper');
@@ -28,8 +31,6 @@ class JqueryEngineHelperTest extends CakeTestCase
 {
     /**
      * setUp
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -41,8 +42,6 @@ class JqueryEngineHelperTest extends CakeTestCase
 
     /**
      * tearDown
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -52,8 +51,6 @@ class JqueryEngineHelperTest extends CakeTestCase
 
     /**
      * test selector method
-     *
-     * @return void
      */
     public function testSelector()
     {
@@ -76,8 +73,6 @@ class JqueryEngineHelperTest extends CakeTestCase
 
     /**
      * test event binding
-     *
-     * @return void
      */
     public function testEvent()
     {
@@ -97,8 +92,6 @@ class JqueryEngineHelperTest extends CakeTestCase
 
     /**
      * test dom ready event creation
-     *
-     * @return void
      */
     public function testDomReady()
     {
@@ -109,8 +102,6 @@ class JqueryEngineHelperTest extends CakeTestCase
 
     /**
      * test Each method
-     *
-     * @return void
      */
     public function testEach()
     {
@@ -122,8 +113,6 @@ class JqueryEngineHelperTest extends CakeTestCase
 
     /**
      * test Effect generation
-     *
-     * @return void
      */
     public function testEffect()
     {
@@ -167,8 +156,6 @@ class JqueryEngineHelperTest extends CakeTestCase
 
     /**
      * Test Request Generation
-     *
-     * @return void
      */
     public function testRequest()
     {
@@ -239,8 +226,6 @@ class JqueryEngineHelperTest extends CakeTestCase
 
     /**
      * Test that querystring arguments are not double escaped.
-     *
-     * @return void
      */
     public function testRequestWithQueryStringArguments()
     {
@@ -252,8 +237,6 @@ class JqueryEngineHelperTest extends CakeTestCase
 
     /**
      * test that alternate jQuery object values work for request()
-     *
-     * @return void
      */
     public function testRequestWithAlternateJqueryObject()
     {
@@ -273,8 +256,6 @@ class JqueryEngineHelperTest extends CakeTestCase
 
     /**
      * test sortable list generation
-     *
-     * @return void
      */
     public function testSortable()
     {
@@ -303,8 +284,6 @@ class JqueryEngineHelperTest extends CakeTestCase
 
     /**
      * test drag() method
-     *
-     * @return void
      */
     public function testDrag()
     {
@@ -333,8 +312,6 @@ class JqueryEngineHelperTest extends CakeTestCase
 
     /**
      * test drop() method
-     *
-     * @return void
      */
     public function testDrop()
     {
@@ -361,8 +338,6 @@ class JqueryEngineHelperTest extends CakeTestCase
 
     /**
      * test slider generation
-     *
-     * @return void
      */
     public function testSlider()
     {
@@ -393,8 +368,6 @@ class JqueryEngineHelperTest extends CakeTestCase
 
     /**
      * test the serializeForm method
-     *
-     * @return void
      */
     public function testSerializeForm()
     {

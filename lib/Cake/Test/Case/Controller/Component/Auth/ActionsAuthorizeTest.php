@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Test.Case.Controller.Component.Auth
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('ActionsAuthorize', 'Controller/Component/Auth');
@@ -30,8 +34,6 @@ class ActionsAuthorizeTest extends CakeTestCase
 {
     /**
      * setUp
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -46,8 +48,6 @@ class ActionsAuthorizeTest extends CakeTestCase
 
     /**
      * setup the mock acl.
-     *
-     * @return void
      */
     protected function _mockAcl()
     {
@@ -59,8 +59,6 @@ class ActionsAuthorizeTest extends CakeTestCase
 
     /**
      * test failure
-     *
-     * @return void
      */
     public function testAuthorizeFailure()
     {
@@ -89,8 +87,6 @@ class ActionsAuthorizeTest extends CakeTestCase
 
     /**
      * test isAuthorized working.
-     *
-     * @return void
      */
     public function testAuthorizeSuccess()
     {
@@ -119,8 +115,6 @@ class ActionsAuthorizeTest extends CakeTestCase
 
     /**
      * testAuthorizeSettings
-     *
-     * @return void
      */
     public function testAuthorizeSettings()
     {
@@ -150,8 +144,6 @@ class ActionsAuthorizeTest extends CakeTestCase
 
     /**
      * test action()
-     *
-     * @return void
      */
     public function testActionMethod()
     {
@@ -168,8 +160,6 @@ class ActionsAuthorizeTest extends CakeTestCase
 
     /**
      * Make sure that action() doesn't create double slashes anywhere.
-     *
-     * @return void
      */
     public function testActionNoDoubleSlash()
     {
@@ -186,8 +176,6 @@ class ActionsAuthorizeTest extends CakeTestCase
 
     /**
      * test action() and plugins
-     *
-     * @return void
      */
     public function testActionWithPlugin()
     {

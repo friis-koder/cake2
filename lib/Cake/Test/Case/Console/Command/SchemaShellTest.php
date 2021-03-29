@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP Project
+ *
  * @package       Cake.Test.Case.Console.Command
+ *
  * @since         CakePHP v 1.3
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('ShellDispatcher', 'Console');
@@ -98,8 +102,6 @@ class SchemaShellTest extends CakeTestCase
 
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -116,8 +118,6 @@ class SchemaShellTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -130,8 +130,6 @@ class SchemaShellTest extends CakeTestCase
 
     /**
      * test startup method
-     *
-     * @return void
      */
     public function testStartup()
     {
@@ -166,8 +164,6 @@ class SchemaShellTest extends CakeTestCase
 
     /**
      * Test View - and that it dumps the schema file to stdout
-     *
-     * @return void
      */
     public function testView()
     {
@@ -181,8 +177,6 @@ class SchemaShellTest extends CakeTestCase
 
     /**
      * test that view() can find plugin schema files.
-     *
-     * @return void
      */
     public function testViewWithPlugins()
     {
@@ -207,8 +201,6 @@ class SchemaShellTest extends CakeTestCase
 
     /**
      * test dump() with sql file generation
-     *
-     * @return void
      */
     public function testDumpWithFileWriting()
     {
@@ -235,8 +227,6 @@ class SchemaShellTest extends CakeTestCase
 
     /**
      * test that dump() can find and work with plugin schema files.
-     *
-     * @return void
      */
     public function testDumpFileWritingWithPlugins()
     {
@@ -267,8 +257,6 @@ class SchemaShellTest extends CakeTestCase
 
     /**
      * test generate with snapshot generation
-     *
-     * @return void
      */
     public function testGenerateSnapshot()
     {
@@ -288,8 +276,6 @@ class SchemaShellTest extends CakeTestCase
 
     /**
      * test generate without a snapshot.
-     *
-     * @return void
      */
     public function testGenerateNoOverwrite()
     {
@@ -309,8 +295,6 @@ class SchemaShellTest extends CakeTestCase
 
     /**
      * test generate with overwriting of the schema files.
-     *
-     * @return void
      */
     public function testGenerateOverwrite()
     {
@@ -340,8 +324,6 @@ class SchemaShellTest extends CakeTestCase
     /**
      * test that generate() can read plugin dirs and generate schema files for the models
      * in a plugin.
-     *
-     * @return void
      */
     public function testGenerateWithPlugins()
     {
@@ -375,8 +357,6 @@ class SchemaShellTest extends CakeTestCase
 
     /**
      * test generate with specific models
-     *
-     * @return void
      */
     public function testGenerateModels()
     {
@@ -410,8 +390,6 @@ class SchemaShellTest extends CakeTestCase
 
     /**
      * test generate with excluded tables
-     *
-     * @return void
      */
     public function testGenerateExclude()
     {
@@ -438,8 +416,6 @@ class SchemaShellTest extends CakeTestCase
 
     /**
      * Test schema run create with --yes option
-     *
-     * @return void
      */
     public function testCreateOptionYes()
     {
@@ -462,8 +438,6 @@ class SchemaShellTest extends CakeTestCase
 
     /**
      * Test schema run create with no table args.
-     *
-     * @return void
      */
     public function testCreateNoArgs()
     {
@@ -487,8 +461,6 @@ class SchemaShellTest extends CakeTestCase
 
     /**
      * Test schema run create with no table args.
-     *
-     * @return void
      */
     public function testCreateWithTableArgs()
     {
@@ -518,8 +490,6 @@ class SchemaShellTest extends CakeTestCase
 
     /**
      * test run update with a table arg.
-     *
-     * @return void
      */
     public function testUpdateWithTable()
     {
@@ -548,7 +518,6 @@ class SchemaShellTest extends CakeTestCase
     /**
      * test run update with a table arg. and checks that a CREATE statement is issued
      * table creation
-     * @return void
      */
     public function testUpdateWithTableCreate()
     {
@@ -576,8 +545,6 @@ class SchemaShellTest extends CakeTestCase
 
     /**
      * test run update with --yes option
-     *
-     * @return void
      */
     public function testUpdateWithOptionYes()
     {
@@ -604,8 +571,6 @@ class SchemaShellTest extends CakeTestCase
 
     /**
      * test that the plugin param creates the correct path in the schema object.
-     *
-     * @return void
      */
     public function testPluginParam()
     {
@@ -625,8 +590,6 @@ class SchemaShellTest extends CakeTestCase
 
     /**
      * test that underscored names also result in CamelCased class names
-     *
-     * @return void
      */
     public function testName()
     {
@@ -656,8 +619,6 @@ class SchemaShellTest extends CakeTestCase
     /**
      * test that passing name and file creates the passed filename with the
      * passed class name
-     *
-     * @return void
      */
     public function testNameAndFile()
     {
@@ -692,8 +653,6 @@ class SchemaShellTest extends CakeTestCase
 
     /**
      * test that using Plugin.name with write.
-     *
-     * @return void
      */
     public function testPluginDotSyntaxWithCreate()
     {

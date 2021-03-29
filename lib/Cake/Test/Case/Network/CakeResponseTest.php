@@ -8,9 +8,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Test.Case.Network
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('CakeResponse', 'Network');
@@ -25,8 +29,6 @@ class CakeResponseTest extends CakeTestCase
 {
     /**
      * Setup for tests
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -36,8 +38,6 @@ class CakeResponseTest extends CakeTestCase
 
     /**
      * Cleanup after tests
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -47,8 +47,6 @@ class CakeResponseTest extends CakeTestCase
 
     /**
      * Tests the request object constructor
-     *
-     * @return void
      */
     public function testConstruct()
     {
@@ -88,8 +86,6 @@ class CakeResponseTest extends CakeTestCase
 
     /**
      * Tests the body method
-     *
-     * @return void
      */
     public function testBody()
     {
@@ -102,8 +98,6 @@ class CakeResponseTest extends CakeTestCase
 
     /**
      * Tests the charset method
-     *
-     * @return void
      */
     public function testCharset()
     {
@@ -118,7 +112,6 @@ class CakeResponseTest extends CakeTestCase
      * Tests the statusCode method
      *
      * @expectedException CakeException
-     * @return void
      */
     public function testStatusCode()
     {
@@ -134,8 +127,6 @@ class CakeResponseTest extends CakeTestCase
 
     /**
      * Tests the type method
-     *
-     * @return void
      */
     public function testType()
     {
@@ -158,8 +149,6 @@ class CakeResponseTest extends CakeTestCase
 
     /**
      * Tests the header method
-     *
-     * @return void
      */
     public function testHeader()
     {
@@ -212,8 +201,6 @@ class CakeResponseTest extends CakeTestCase
 
     /**
      * Tests the send method
-     *
-     * @return void
      */
     public function testSend()
     {
@@ -263,7 +250,6 @@ class CakeResponseTest extends CakeTestCase
      * Tests the send method and changing the content type
      *
      * @dataProvider charsetTypeProvider
-     * @return void
      */
     public function testSendChangingContentType($original, $expected)
     {
@@ -283,8 +269,6 @@ class CakeResponseTest extends CakeTestCase
 
     /**
      * Tests the send method and changing the content type to JS without adding the charset
-     *
-     * @return void
      */
     public function testSendChangingContentTypeWithoutCharset()
     {
@@ -306,8 +290,6 @@ class CakeResponseTest extends CakeTestCase
 
     /**
      * Tests the send method and changing the content type
-     *
-     * @return void
      */
     public function testSendWithLocation()
     {
@@ -325,8 +307,6 @@ class CakeResponseTest extends CakeTestCase
 
     /**
      * Tests the disableCache method
-     *
-     * @return void
      */
     public function testDisableCache()
     {
@@ -342,8 +322,6 @@ class CakeResponseTest extends CakeTestCase
 
     /**
      * Tests the cache method
-     *
-     * @return void
      */
     public function testCache()
     {
@@ -387,8 +365,6 @@ class CakeResponseTest extends CakeTestCase
 
     /**
      * Tests the compress method
-     *
-     * @return void
      */
     public function testCompress()
     {
@@ -418,7 +394,6 @@ class CakeResponseTest extends CakeTestCase
      * Tests the httpCodes method
      *
      * @expectedException CakeException
-     * @return void
      */
     public function testHttpCodes()
     {
@@ -463,8 +438,6 @@ class CakeResponseTest extends CakeTestCase
 
     /**
      * Tests the download method
-     *
-     * @return void
      */
     public function testDownload()
     {
@@ -478,8 +451,6 @@ class CakeResponseTest extends CakeTestCase
 
     /**
      * Tests the mapType method
-     *
-     * @return void
      */
     public function testMapType()
     {
@@ -496,8 +467,6 @@ class CakeResponseTest extends CakeTestCase
 
     /**
      * Tests the outputCompressed method
-     *
-     * @return void
      */
     public function testOutputCompressed()
     {
@@ -535,8 +504,6 @@ class CakeResponseTest extends CakeTestCase
 
     /**
      * Tests the send and setting of Content-Length
-     *
-     * @return void
      */
     public function testSendContentLength()
     {
@@ -609,8 +576,6 @@ class CakeResponseTest extends CakeTestCase
 
     /**
      * Tests getting/setting the protocol
-     *
-     * @return void
      */
     public function testProtocol()
     {
@@ -624,8 +589,6 @@ class CakeResponseTest extends CakeTestCase
 
     /**
      * Tests getting/setting the Content-Length
-     *
-     * @return void
      */
     public function testLength()
     {
@@ -646,8 +609,6 @@ class CakeResponseTest extends CakeTestCase
 
     /**
      * Tests that the response body is unset if the status code is 304 or 204
-     *
-     * @return void
      */
     public function testUnmodifiedContent()
     {
@@ -676,8 +637,6 @@ class CakeResponseTest extends CakeTestCase
 
     /**
      * Tests setting the expiration date
-     *
-     * @return void
      */
     public function testExpires()
     {
@@ -709,8 +668,6 @@ class CakeResponseTest extends CakeTestCase
 
     /**
      * Tests setting the modification date
-     *
-     * @return void
      */
     public function testModified()
     {
@@ -742,8 +699,6 @@ class CakeResponseTest extends CakeTestCase
 
     /**
      * Tests setting of public/private Cache-Control directives
-     *
-     * @return void
      */
     public function testSharable()
     {
@@ -792,8 +747,6 @@ class CakeResponseTest extends CakeTestCase
 
     /**
      * Tests setting of max-age Cache-Control directive
-     *
-     * @return void
      */
     public function testMaxAge()
     {
@@ -819,8 +772,6 @@ class CakeResponseTest extends CakeTestCase
 
     /**
      * Tests setting of s-maxage Cache-Control directive
-     *
-     * @return void
      */
     public function testSharedMaxAge()
     {
@@ -846,8 +797,6 @@ class CakeResponseTest extends CakeTestCase
 
     /**
      * Tests setting of must-revalidate Cache-Control directive
-     *
-     * @return void
      */
     public function testMustRevalidate()
     {
@@ -875,8 +824,6 @@ class CakeResponseTest extends CakeTestCase
 
     /**
      * Tests getting/setting the Vary header
-     *
-     * @return void
      */
     public function testVary()
     {
@@ -897,8 +844,6 @@ class CakeResponseTest extends CakeTestCase
 
     /**
      * Tests getting/setting the Etag header
-     *
-     * @return void
      */
     public function testEtag()
     {
@@ -919,8 +864,6 @@ class CakeResponseTest extends CakeTestCase
 
     /**
      * Tests that the response is able to be marked as not modified
-     *
-     * @return void
      */
     public function testNotModified()
     {
@@ -938,8 +881,6 @@ class CakeResponseTest extends CakeTestCase
 
     /**
      * Test checkNotModified method
-     *
-     * @return void
      */
     public function testCheckNotModifiedByEtagStar()
     {
@@ -952,8 +893,6 @@ class CakeResponseTest extends CakeTestCase
 
     /**
      * Test checkNotModified method
-     *
-     * @return void
      */
     public function testCheckNotModifiedByEtagExact()
     {
@@ -966,8 +905,6 @@ class CakeResponseTest extends CakeTestCase
 
     /**
      * Test checkNotModified method
-     *
-     * @return void
      */
     public function testCheckNotModifiedByEtagAndTime()
     {
@@ -982,8 +919,6 @@ class CakeResponseTest extends CakeTestCase
 
     /**
      * Test checkNotModified method
-     *
-     * @return void
      */
     public function testCheckNotModifiedByEtagAndTimeMismatch()
     {
@@ -998,8 +933,6 @@ class CakeResponseTest extends CakeTestCase
 
     /**
      * Test checkNotModified method
-     *
-     * @return void
      */
     public function testCheckNotModifiedByEtagMismatch()
     {
@@ -1014,8 +947,6 @@ class CakeResponseTest extends CakeTestCase
 
     /**
      * Test checkNotModified method
-     *
-     * @return void
      */
     public function testCheckNotModifiedByTime()
     {
@@ -1028,8 +959,6 @@ class CakeResponseTest extends CakeTestCase
 
     /**
      * Test checkNotModified method
-     *
-     * @return void
      */
     public function testCheckNotModifiedNoHints()
     {
@@ -1042,8 +971,6 @@ class CakeResponseTest extends CakeTestCase
 
     /**
      * Test cookie setting
-     *
-     * @return void
      */
     public function testCookieSettings()
     {
@@ -1127,6 +1054,7 @@ class CakeResponseTest extends CakeTestCase
      * Test CORS
      *
      * @dataProvider corsData
+     *
      * @param CakeRequest $request
      * @param string $origin
      * @param string|array $domains
@@ -1135,7 +1063,6 @@ class CakeResponseTest extends CakeTestCase
      * @param string|bool $expectedOrigin
      * @param string|bool $expectedMethods
      * @param string|bool $expectedHeaders
-     * @return void
      */
     public function testCors($request, $origin, $domains, $methods, $headers, $expectedOrigin, $expectedMethods = false, $expectedHeaders = false)
     {
@@ -1205,7 +1132,6 @@ class CakeResponseTest extends CakeTestCase
      * testFileNotFound
      *
      * @expectedException NotFoundException
-     * @return void
      */
     public function testFileNotFound()
     {
@@ -1218,7 +1144,6 @@ class CakeResponseTest extends CakeTestCase
      *
      * @expectedException NotFoundException
      * @expectedExceptionMessage The requested file contains `..` and will not be read.
-     * @return void
      */
     public function testFileWithForwardSlashPathTraversal()
     {
@@ -1231,7 +1156,6 @@ class CakeResponseTest extends CakeTestCase
      *
      * @expectedException NotFoundException
      * @expectedExceptionMessage The requested file contains `..` and will not be read.
-     * @return void
      */
     public function testFileWithBackwardSlashPathTraversal()
     {
@@ -1245,7 +1169,6 @@ class CakeResponseTest extends CakeTestCase
      *
      * @expectedException NotFoundException
      * @execptedExceptionMessageRegExp #The requested file .+my/Some..cat.gif was not found or not readable#
-     * @return void
      */
     public function testFileWithDotsInFilename()
     {
@@ -1255,8 +1178,6 @@ class CakeResponseTest extends CakeTestCase
 
     /**
      * testFile method
-     *
-     * @return void
      */
     public function testFile()
     {
@@ -1301,8 +1222,6 @@ class CakeResponseTest extends CakeTestCase
 
     /**
      * testFileWithUnknownFileTypeGeneric method
-     *
-     * @return void
      */
     public function testFileWithUnknownFileTypeGeneric()
     {
@@ -1362,8 +1281,6 @@ class CakeResponseTest extends CakeTestCase
 
     /**
      * testFileWithUnknownFileTypeOpera method
-     *
-     * @return void
      */
     public function testFileWithUnknownFileTypeOpera()
     {
@@ -1427,8 +1344,6 @@ class CakeResponseTest extends CakeTestCase
 
     /**
      * testFileWithUnknownFileTypeIE method
-     *
-     * @return void
      */
     public function testFileWithUnknownFileTypeIE()
     {
@@ -1494,8 +1409,6 @@ class CakeResponseTest extends CakeTestCase
 
     /**
      * testFileWithUnknownFileNoDownload method
-     *
-     * @return void
      */
     public function testFileWithUnknownFileNoDownload()
     {
@@ -1536,8 +1449,6 @@ class CakeResponseTest extends CakeTestCase
 
     /**
      * testConnectionAbortedOnBuffering method
-     *
-     * @return void
      */
     public function testConnectionAbortedOnBuffering()
     {
@@ -1572,8 +1483,6 @@ class CakeResponseTest extends CakeTestCase
 
     /**
      * Test downloading files with UPPERCASE extensions.
-     *
-     * @return void
      */
     public function testFileUpperExtension()
     {
@@ -1602,8 +1511,6 @@ class CakeResponseTest extends CakeTestCase
 
     /**
      * Test downloading files with extension not explicitly set.
-     *
-     * @return void
      */
     public function testFileExtensionNotSet()
     {
@@ -1659,7 +1566,6 @@ class CakeResponseTest extends CakeTestCase
      * Test the various range offset types.
      *
      * @dataProvider rangeProvider
-     * @return void
      */
     public function testFileRangeOffsets($range, $length, $offsetResponse)
     {
@@ -1708,8 +1614,6 @@ class CakeResponseTest extends CakeTestCase
 
     /**
      * Test fetching ranges from a file.
-     *
-     * @return void
      */
     public function testFileRange()
     {
@@ -1794,7 +1698,6 @@ class CakeResponseTest extends CakeTestCase
      * Test invalid file ranges.
      *
      * @dataProvider invalidFileRangeProvider
-     * @return void
      */
     public function testFileRangeInvalid($range)
     {
@@ -1821,8 +1724,6 @@ class CakeResponseTest extends CakeTestCase
 
     /**
      * Test backwards file range
-     *
-     * @return void
      */
     public function testFileRangeReversed()
     {
@@ -1851,7 +1752,6 @@ class CakeResponseTest extends CakeTestCase
      * testFileRangeOffsetsNoDownload method
      *
      * @dataProvider rangeProvider
-     * @return void
      */
     public function testFileRangeOffsetsNoDownload($range, $length, $offsetResponse)
     {
@@ -1892,8 +1792,6 @@ class CakeResponseTest extends CakeTestCase
 
     /**
      * testFileRangeNoDownload method
-     *
-     * @return void
      */
     public function testFileRangeNoDownload()
     {
@@ -1945,8 +1843,6 @@ class CakeResponseTest extends CakeTestCase
 
     /**
      * testFileRangeInvalidNoDownload method
-     *
-     * @return void
      */
     public function testFileRangeInvalidNoDownload()
     {
@@ -1982,8 +1878,6 @@ class CakeResponseTest extends CakeTestCase
 
     /**
      * Test the location method.
-     *
-     * @return void
      */
     public function testLocation()
     {

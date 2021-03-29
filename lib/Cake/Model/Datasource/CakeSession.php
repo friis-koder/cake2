@@ -15,9 +15,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Model.Datasource
+ *
  * @since         CakePHP(tm) v .0.10.0.1222
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Hash', 'Utility');
@@ -115,6 +119,7 @@ class CakeSession
      * This feature is only used when config value `Session.autoRegenerate` is set to true.
      *
      * @var int
+     *
      * @see CakeSession::_checkValid()
      */
     public static $requestCountdown = 10;
@@ -151,7 +156,6 @@ class CakeSession
      * Pseudo constructor.
      *
      * @param string|null $base The base path for the Session
-     * @return void
      */
     public static function init($base = null)
     {
@@ -176,7 +180,6 @@ class CakeSession
      * Setup the Path variable
      *
      * @param string|null $base base path
-     * @return void
      */
     protected static function _setPath($base = null)
     {
@@ -198,7 +201,6 @@ class CakeSession
      * Set the host name
      *
      * @param string $host Hostname
-     * @return void
      */
     protected static function _setHost($host)
     {
@@ -249,6 +251,7 @@ class CakeSession
      * Returns true if given variable is set in session.
      *
      * @param string $name Variable name to check for
+     *
      * @return bool True if variable is there
      */
     public static function check($name)
@@ -275,6 +278,7 @@ class CakeSession
      * characters in the range a-z A-Z 0-9 , (comma) and - (minus).
      *
      * @param string|null $id Id to replace the current session id
+     *
      * @return string Session id
      */
     public static function id($id = null)
@@ -294,6 +298,7 @@ class CakeSession
      * Removes a variable from session.
      *
      * @param string $name Session variable to remove
+     *
      * @return bool Success
      */
     public static function delete($name)
@@ -312,7 +317,6 @@ class CakeSession
      *
      * @param array &$old Set of old variables => values
      * @param array $new New set of variable => value
-     * @return void
      */
     protected static function _overwrite(&$old, $new)
     {
@@ -332,6 +336,7 @@ class CakeSession
      * Return error description for given error number.
      *
      * @param int $errorNumber Error to set
+     *
      * @return string Error as string
      */
     protected static function _error($errorNumber)
@@ -403,6 +408,7 @@ class CakeSession
      * Get / Set the user agent
      *
      * @param string|null $userAgent Set the user agent
+     *
      * @return string Current user agent.
      */
     public static function userAgent($userAgent = null)
@@ -421,6 +427,7 @@ class CakeSession
      * Returns given session variable, or all of them, if no parameters given.
      *
      * @param string|null $name The name of the session variable (or a path as sent to Set.extract)
+     *
      * @return mixed The value of the session variable, null if session not available,
      *   session not started, or provided name not found in the session, false on failure.
      */
@@ -461,6 +468,7 @@ class CakeSession
      *
      * @param string|array $name Name of variable
      * @param mixed $value Value to write
+     *
      * @return bool True if the write was successful, false if the write failed
      */
     public static function write($name, $value = null)
@@ -487,6 +495,7 @@ class CakeSession
      * Reads and deletes a variable from session.
      *
      * @param string $name The key to read and remove (or a path as sent to Hash.extract).
+     *
      * @return mixed The value of the session variable, null if session not available,
      *   session not started, or provided name not found in the session.
      */
@@ -505,8 +514,6 @@ class CakeSession
 
     /**
      * Helper method to destroy invalid sessions.
-     *
-     * @return void
      */
     public static function destroy()
     {
@@ -534,7 +541,6 @@ class CakeSession
      * Optionally also clears the session id and renews the session.
      *
      * @param bool $renew If the session should also be renewed. Defaults to true.
-     * @return void
      */
     public static function clear($renew = true)
     {
@@ -554,7 +560,6 @@ class CakeSession
      *
      * Sessions can be configured with a few shortcut names as well as have any number of ini settings declared.
      *
-     * @return void
      * @throws CakeSessionException Throws exceptions when ini_set() fails.
      */
     protected static function _configureSession()
@@ -678,8 +683,10 @@ class CakeSession
      * Find the handler class and make sure it implements the correct interface.
      *
      * @param string $handler Handler name.
-     * @return CakeSessionHandlerInterface
+     *
      * @throws CakeSessionException
+     *
+     * @return CakeSessionHandlerInterface
      */
     protected static function _getHandler($handler)
     {
@@ -700,6 +707,7 @@ class CakeSession
      * Get one of the prebaked default session configurations.
      *
      * @param string $name Config name.
+     *
      * @return bool|array
      */
     protected static function _defaultConfig($name)
@@ -793,8 +801,6 @@ class CakeSession
 
     /**
      * Helper method to create a new session.
-     *
-     * @return void
      */
     protected static function _checkValid()
     {
@@ -828,8 +834,6 @@ class CakeSession
 
     /**
      * Writes configuration variables to the session
-     *
-     * @return void
      */
     protected static function _writeConfig()
     {
@@ -840,8 +844,6 @@ class CakeSession
 
     /**
      * Restarts this session.
-     *
-     * @return void
      */
     public static function renew()
     {
@@ -863,7 +865,6 @@ class CakeSession
      *
      * @param int $errorNumber Number of the error
      * @param string $errorMessage Description of the error
-     * @return void
      */
     protected static function _setError($errorNumber, $errorMessage)
     {

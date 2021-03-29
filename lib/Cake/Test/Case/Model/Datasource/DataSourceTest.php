@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Model.Datasource
+ *
  * @since         CakePHP(tm) v 1.2.0.4206
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Model', 'Model');
@@ -27,6 +31,7 @@ class TestSource extends DataSource
 {
     /**
      * _schema
+     *
      * @var type
      */
     protected $_schema = [
@@ -67,6 +72,7 @@ class TestSource extends DataSource
      * Returns the schema for the datasource to enable create/update
      *
      * @param Model $Model
+     *
      * @return array
      */
     public function describe(Model $Model)
@@ -81,6 +87,7 @@ class TestSource extends DataSource
      * @param Model $Model
      * @param type $func
      * @param type $params
+     *
      * @return array
      */
     public function calculate(Model $Model, $func, $params = [])
@@ -105,8 +112,6 @@ class DataSourceTest extends CakeTestCase
 
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -131,8 +136,6 @@ class DataSourceTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -143,8 +146,6 @@ class DataSourceTest extends CakeTestCase
 
     /**
      * testCreate
-     *
-     * @return void
      */
     public function testCreate()
     {
@@ -170,8 +171,6 @@ class DataSourceTest extends CakeTestCase
 
     /**
      * testRead
-     *
-     * @return void
      */
     public function testRead()
     {
@@ -201,8 +200,6 @@ class DataSourceTest extends CakeTestCase
 
     /**
      * testUpdate
-     *
-     * @return void
      */
     public function testUpdate()
     {
@@ -234,8 +231,6 @@ class DataSourceTest extends CakeTestCase
 
     /**
      * testDelete
-     *
-     * @return void
      */
     public function testDelete()
     {

@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Test.Case.Controller.Component.Acl
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('IniAcl', 'Controller/Component/Acl');
@@ -26,8 +30,6 @@ class IniAclTest extends CakeTestCase
 {
     /**
      * testIniCheck method
-     *
-     * @return void
      */
     public function testCheck()
     {
@@ -50,8 +52,6 @@ class IniAclTest extends CakeTestCase
 
     /**
      * check should accept a user array.
-     *
-     * @return void
      */
     public function testCheckArray()
     {

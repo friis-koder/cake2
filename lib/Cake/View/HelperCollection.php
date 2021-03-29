@@ -11,9 +11,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.View
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('ObjectCollection', 'Utility');
@@ -50,9 +54,11 @@ class HelperCollection extends ObjectCollection implements CakeEventListener
      * if any
      *
      * @param string $helper The helper name to be loaded
-     * @return bool whether the helper could be loaded or not
+     *
      * @throws MissingHelperException When a helper could not be found.
      *    App helpers are searched, and then plugin helpers.
+     *
+     * @return bool whether the helper could be loaded or not
      */
     public function __isset($helper)
     {
@@ -81,6 +87,7 @@ class HelperCollection extends ObjectCollection implements CakeEventListener
      * Provide public read access to the loaded objects
      *
      * @param string $name Name of property to read
+     *
      * @return mixed
      */
     public function __get($name)
@@ -113,8 +120,10 @@ class HelperCollection extends ObjectCollection implements CakeEventListener
      *
      * @param string $helper Helper name to load
      * @param array $settings Settings for the helper.
-     * @return Helper A helper object, Either the existing loaded helper or a new one.
+     *
      * @throws MissingHelperException when the helper could not be found
+     *
+     * @return Helper A helper object, Either the existing loaded helper or a new one.
      */
     public function load($helper, $settings = [])
     {
@@ -197,8 +206,10 @@ class HelperCollection extends ObjectCollection implements CakeEventListener
      *   (eg. `Model.afterSave` event will trigger the `afterSave` callback)
      * @param array $params Array of parameters for the triggered callback.
      * @param array $options Array of options.
-     * @return mixed Either the last result or all results if collectReturn is on.
+     *
      * @throws CakeException when modParams is used with an index that does not exist.
+     *
+     * @return mixed Either the last result or all results if collectReturn is on.
      */
     public function trigger($callback, $params = [], $options = [])
     {

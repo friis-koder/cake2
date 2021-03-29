@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Test.Case.Controller.Component.Acl
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('ComponentCollection', 'Controller');
@@ -184,8 +188,6 @@ class DbAclTest extends CakeTestCase
 
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -198,8 +200,6 @@ class DbAclTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -209,8 +209,6 @@ class DbAclTest extends CakeTestCase
 
     /**
      * testAclCreate method
-     *
-     * @return void
      */
     public function testCreate()
     {
@@ -237,8 +235,6 @@ class DbAclTest extends CakeTestCase
 
     /**
      * testAclCreateWithParent method
-     *
-     * @return void
      */
     public function testCreateWithParent()
     {
@@ -257,8 +253,6 @@ class DbAclTest extends CakeTestCase
 
     /**
      * testDbAclAllow method
-     *
-     * @return void
      */
     public function testAllow()
     {
@@ -296,7 +290,6 @@ class DbAclTest extends CakeTestCase
      * Test that allow() with an invalid permission name triggers an error.
      *
      * @expectedException CakeException
-     * @return void
      */
     public function testAllowInvalidPermission()
     {
@@ -305,8 +298,6 @@ class DbAclTest extends CakeTestCase
 
     /**
      * testAllowInvalidNode method
-     *
-     * @return void
      */
     public function testAllowInvalidNode()
     {
@@ -315,8 +306,6 @@ class DbAclTest extends CakeTestCase
 
     /**
      * testDbAclCheck method
-     *
-     * @return void
      */
     public function testCheck()
     {
@@ -336,8 +325,6 @@ class DbAclTest extends CakeTestCase
 
     /**
      * testCheckInvalidNode method
-     *
-     * @return void
      */
     public function testCheckInvalidNode()
     {
@@ -346,8 +333,6 @@ class DbAclTest extends CakeTestCase
 
     /**
      * testCheckInvalidPermission method
-     *
-     * @return void
      */
     public function testCheckInvalidPermission()
     {
@@ -356,8 +341,6 @@ class DbAclTest extends CakeTestCase
 
     /**
      * testCheckMissingPermission method
-     *
-     * @return void
      */
     public function testCheckMissingPermission()
     {
@@ -369,8 +352,6 @@ class DbAclTest extends CakeTestCase
      *
      * Setup the acl permissions such that Bobs inherits from admin.
      * deny Admin delete access to a specific resource, check the permissions are inherited.
-     *
-     * @return void
      */
     public function testAclCascadingDeny()
     {
@@ -384,8 +365,6 @@ class DbAclTest extends CakeTestCase
 
     /**
      * testDbAclDeny method
-     *
-     * @return void
      */
     public function testDeny()
     {
@@ -413,8 +392,6 @@ class DbAclTest extends CakeTestCase
 
     /**
      * testAclNodeLookup method
-     *
-     * @return void
      */
     public function testAclNodeLookup()
     {
@@ -438,8 +415,6 @@ class DbAclTest extends CakeTestCase
 
     /**
      * testDbInherit method
-     *
-     * @return void
      */
     public function testInherit()
     {
@@ -456,8 +431,6 @@ class DbAclTest extends CakeTestCase
 
     /**
      * test inherit from deny method
-     *
-     * @return void
      */
     public function testInheritParentDeny()
     {
@@ -500,8 +473,6 @@ class DbAclTest extends CakeTestCase
 
     /**
      * testDbGrant method
-     *
-     * @return void
      */
     public function testGrant()
     {
@@ -521,8 +492,6 @@ class DbAclTest extends CakeTestCase
 
     /**
      * testDbRevoke method
-     *
-     * @return void
      */
     public function testRevoke()
     {
@@ -547,7 +516,6 @@ class DbAclTest extends CakeTestCase
      * Only designed to work with the db based ACL
      *
      * @param bool $treesToo
-     * @return void
      */
     protected function _debug($printTreesToo = false)
     {
@@ -596,7 +564,6 @@ class DbAclTest extends CakeTestCase
      *
      * @param string $string
      * @param int $len
-     * @return void
      */
     protected function _pad($string = '', $len = 14)
     {

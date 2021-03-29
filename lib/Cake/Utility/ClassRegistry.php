@@ -8,9 +8,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Utility
+ *
  * @since         CakePHP(tm) v 0.9.2
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -93,8 +97,10 @@ class ClassRegistry
      *  stored in the registry and returned.
      * @param bool $strict if set to true it will return false if the class was not found instead
      *	of trying to create an AppModel
-     * @return bool|object $class instance of ClassName.
+     *
      * @throws CakeException when you try to construct an interface or abstract class.
+     *
+     * @return bool|object $class instance of ClassName.
      */
     public static function init($class, $strict = false)
     {
@@ -206,6 +212,7 @@ class ClassRegistry
      *
      * @param string $key Key for the object in registry
      * @param object $object Object to store
+     *
      * @return bool True if the object was written, false if $key already exists
      */
     public static function addObject($key, $object)
@@ -225,7 +232,6 @@ class ClassRegistry
      * Remove object which corresponds to given key.
      *
      * @param string $key Key of object to remove from registry
-     * @return void
      */
     public static function removeObject($key)
     {
@@ -240,6 +246,7 @@ class ClassRegistry
      * Returns true if given key is present in the ClassRegistry.
      *
      * @param string $key Key to look for
+     *
      * @return bool true if key exists in registry, false otherwise
      */
     public static function isKeySet($key)
@@ -264,6 +271,7 @@ class ClassRegistry
      * Return object which corresponds to given key.
      *
      * @param string $key Key of object to look for
+     *
      * @return mixed Object stored in registry or boolean false if the object does not exist.
      */
     public static function getObject($key)
@@ -289,6 +297,7 @@ class ClassRegistry
      * @param string $type Type of object. If this parameter is omitted, defaults to "Model"
      * @param array $param The parameter that will be passed to object constructors when objects
      *                      of $type are created
+     *
      * @return mixed Void if $param is being set. Otherwise, if only $type is passed, returns
      *               the previously-set value of $param, or null if not set.
      */
@@ -315,6 +324,7 @@ class ClassRegistry
      *
      * @param string $alias Alias to check.
      * @param string $class Class name.
+     *
      * @return bool|object Object stored in registry or `false` if the object does not exist.
      */
     protected function &_duplicate($alias, $class)
@@ -336,7 +346,6 @@ class ClassRegistry
      *
      * @param string $key Key to include in map
      * @param string $name Key that is being mapped
-     * @return void
      */
     public static function map($key, $name)
     {
@@ -362,6 +371,7 @@ class ClassRegistry
      * Return the name of a class in the registry.
      *
      * @param string $key Key to find in map
+     *
      * @return string Mapped value
      */
     protected function _getMap($key)
@@ -373,8 +383,6 @@ class ClassRegistry
 
     /**
      * Flushes all objects from the ClassRegistry.
-     *
-     * @return void
      */
     public static function flush()
     {

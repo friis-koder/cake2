@@ -10,8 +10,11 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP Project
+ *
  * @package       Cake.Test.Case.View.Helper
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('View', 'View');
@@ -28,8 +31,6 @@ class PrototypeEngineHelperTest extends CakeTestCase
 {
     /**
      * setUp
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -41,8 +42,6 @@ class PrototypeEngineHelperTest extends CakeTestCase
 
     /**
      * tearDown
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -52,8 +51,6 @@ class PrototypeEngineHelperTest extends CakeTestCase
 
     /**
      * test selector method
-     *
-     * @return void
      */
     public function testSelector()
     {
@@ -84,8 +81,6 @@ class PrototypeEngineHelperTest extends CakeTestCase
 
     /**
      * test event binding
-     *
-     * @return void
      */
     public function testEvent()
     {
@@ -105,8 +100,6 @@ class PrototypeEngineHelperTest extends CakeTestCase
 
     /**
      * test dom ready event creation
-     *
-     * @return void
      */
     public function testDomReady()
     {
@@ -117,8 +110,6 @@ class PrototypeEngineHelperTest extends CakeTestCase
 
     /**
      * test Each method
-     *
-     * @return void
      */
     public function testEach()
     {
@@ -130,8 +121,6 @@ class PrototypeEngineHelperTest extends CakeTestCase
 
     /**
      * test Effect generation
-     *
-     * @return void
      */
     public function testEffect()
     {
@@ -187,8 +176,6 @@ class PrototypeEngineHelperTest extends CakeTestCase
 
     /**
      * Test Request Generation
-     *
-     * @return void
      */
     public function testRequest()
     {
@@ -279,8 +266,6 @@ class PrototypeEngineHelperTest extends CakeTestCase
 
     /**
      * test sortable list generation
-     *
-     * @return void
      */
     public function testSortable()
     {
@@ -297,8 +282,6 @@ class PrototypeEngineHelperTest extends CakeTestCase
     /**
      * test drag() method. Scriptaculous lacks the ability to take an Array of Elements
      * in new Drag() when selection is a multiple type. Iterate over the array.
-     *
-     * @return void
      */
     public function testDrag()
     {
@@ -327,8 +310,6 @@ class PrototypeEngineHelperTest extends CakeTestCase
 
     /**
      * test drop() method
-     *
-     * @return void
      */
     public function testDrop()
     {
@@ -345,8 +326,6 @@ class PrototypeEngineHelperTest extends CakeTestCase
 
     /**
      * ensure that slider() method behaves properly
-     *
-     * @return void
      */
     public function testSlider()
     {
@@ -377,8 +356,6 @@ class PrototypeEngineHelperTest extends CakeTestCase
 
     /**
      * test the serializeForm implementation.
-     *
-     * @return void
      */
     public function testSerializeForm()
     {

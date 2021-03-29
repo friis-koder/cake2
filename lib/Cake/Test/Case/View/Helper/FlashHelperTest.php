@@ -12,9 +12,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.View.Helper
+ *
  * @since         CakePHP(tm) v 2.7.0-dev
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('FlashHelper', 'View/Helper');
@@ -30,8 +34,6 @@ class FlashHelperTest extends CakeTestCase
 {
     /**
      * setupBeforeClass method
-     *
-     * @return void
      */
     public static function setupBeforeClass()
     {
@@ -42,8 +44,6 @@ class FlashHelperTest extends CakeTestCase
 
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -104,8 +104,6 @@ class FlashHelperTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -116,8 +114,6 @@ class FlashHelperTest extends CakeTestCase
 
     /**
      * testFlash method
-     *
-     * @return void
      */
     public function testFlash()
     {
@@ -149,8 +145,6 @@ class FlashHelperTest extends CakeTestCase
 
     /**
      * test setting the element from the attrs.
-     *
-     * @return void
      */
     public function testFlashElementInAttrs()
     {
@@ -166,8 +160,6 @@ class FlashHelperTest extends CakeTestCase
 
     /**
      * test using elements in plugins.
-     *
-     * @return void
      */
     public function testFlashWithPluginElement()
     {

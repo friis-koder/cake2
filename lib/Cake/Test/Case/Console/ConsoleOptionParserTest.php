@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Console
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('ConsoleOptionParser', 'Console');
@@ -26,8 +30,6 @@ class ConsoleOptionParserTest extends CakeTestCase
 {
     /**
      * test setting the console description
-     *
-     * @return void
      */
     public function testDescription()
     {
@@ -43,8 +45,6 @@ class ConsoleOptionParserTest extends CakeTestCase
 
     /**
      * test setting the console epilog
-     *
-     * @return void
      */
     public function testEpilog()
     {
@@ -60,8 +60,6 @@ class ConsoleOptionParserTest extends CakeTestCase
 
     /**
      * test adding an option returns self.
-     *
-     * @return void
      */
     public function testAddOptionReturnSelf()
     {
@@ -72,8 +70,6 @@ class ConsoleOptionParserTest extends CakeTestCase
 
     /**
      * test adding an option and using the long value for parsing.
-     *
-     * @return void
      */
     public function testAddOptionLong()
     {
@@ -87,8 +83,6 @@ class ConsoleOptionParserTest extends CakeTestCase
 
     /**
      * test adding an option with a zero value
-     *
-     * @return void
      */
     public function testAddOptionZero()
     {
@@ -100,8 +94,6 @@ class ConsoleOptionParserTest extends CakeTestCase
 
     /**
      * test addOption with an object.
-     *
-     * @return void
      */
     public function testAddOptionObject()
     {
@@ -113,8 +105,6 @@ class ConsoleOptionParserTest extends CakeTestCase
 
     /**
      * test adding an option and using the long value for parsing.
-     *
-     * @return void
      */
     public function testAddOptionLongEquals()
     {
@@ -128,8 +118,6 @@ class ConsoleOptionParserTest extends CakeTestCase
 
     /**
      * test adding an option and using the default.
-     *
-     * @return void
      */
     public function testAddOptionDefault()
     {
@@ -150,8 +138,6 @@ class ConsoleOptionParserTest extends CakeTestCase
 
     /**
      * test adding an option and using the short value for parsing.
-     *
-     * @return void
      */
     public function testAddOptionShort()
     {
@@ -168,7 +154,6 @@ class ConsoleOptionParserTest extends CakeTestCase
      * As they will not parse correctly.
      *
      * @expectedException ConsoleException
-     * @return void
      */
     public function testAddOptionShortOneLetter()
     {
@@ -178,8 +163,6 @@ class ConsoleOptionParserTest extends CakeTestCase
 
     /**
      * test adding and using boolean options.
-     *
-     * @return void
      */
     public function testAddOptionBoolean()
     {
@@ -199,8 +182,6 @@ class ConsoleOptionParserTest extends CakeTestCase
 
     /**
      * test adding an multiple shorts.
-     *
-     * @return void
      */
     public function testAddOptionMultipleShort()
     {
@@ -219,8 +200,6 @@ class ConsoleOptionParserTest extends CakeTestCase
 
     /**
      * test multiple options at once.
-     *
-     * @return void
      */
     public function testMultipleOptions()
     {
@@ -236,8 +215,6 @@ class ConsoleOptionParserTest extends CakeTestCase
 
     /**
      * Test adding multiple options.
-     *
-     * @return void
      */
     public function testAddOptions()
     {
@@ -254,8 +231,6 @@ class ConsoleOptionParserTest extends CakeTestCase
 
     /**
      * test that boolean options work
-     *
-     * @return void
      */
     public function testOptionWithBooleanParam()
     {
@@ -272,7 +247,6 @@ class ConsoleOptionParserTest extends CakeTestCase
      * test parsing options that do not exist.
      *
      * @expectedException ConsoleException
-     * @return void
      */
     public function testOptionThatDoesNotExist()
     {
@@ -286,7 +260,6 @@ class ConsoleOptionParserTest extends CakeTestCase
      * test parsing short options that do not exist.
      *
      * @expectedException ConsoleException
-     * @return void
      */
     public function testShortOptionThatDoesNotExist()
     {
@@ -300,7 +273,6 @@ class ConsoleOptionParserTest extends CakeTestCase
      * test that options with choices enforce them.
      *
      * @expectedException ConsoleException
-     * @return void
      */
     public function testOptionWithChoices()
     {
@@ -316,8 +288,6 @@ class ConsoleOptionParserTest extends CakeTestCase
 
     /**
      * Ensure that option values can start with -
-     *
-     * @return void
      */
     public function testOptionWithValueStartingWithMinus()
     {
@@ -332,8 +302,6 @@ class ConsoleOptionParserTest extends CakeTestCase
 
     /**
      * test positional argument parsing.
-     *
-     * @return void
      */
     public function testPositionalArgument()
     {
@@ -344,8 +312,6 @@ class ConsoleOptionParserTest extends CakeTestCase
 
     /**
      * test addOption with an object.
-     *
-     * @return void
      */
     public function testAddArgumentObject()
     {
@@ -358,8 +324,6 @@ class ConsoleOptionParserTest extends CakeTestCase
 
     /**
      * Test adding arguments out of order.
-     *
-     * @return void
      */
     public function testAddArgumentOutOfOrder()
     {
@@ -378,8 +342,6 @@ class ConsoleOptionParserTest extends CakeTestCase
 
     /**
      * test overwriting positional arguments.
-     *
-     * @return void
      */
     public function testPositionalArgOverwrite()
     {
@@ -395,7 +357,6 @@ class ConsoleOptionParserTest extends CakeTestCase
      * test parsing arguments.
      *
      * @expectedException ConsoleException
-     * @return void
      */
     public function testParseArgumentTooMany()
     {
@@ -412,8 +373,6 @@ class ConsoleOptionParserTest extends CakeTestCase
 
     /**
      * test parsing arguments with 0 value.
-     *
-     * @return void
      */
     public function testParseArgumentZero()
     {
@@ -428,7 +387,6 @@ class ConsoleOptionParserTest extends CakeTestCase
      * test that when there are not enough arguments an exception is raised
      *
      * @expectedException ConsoleException
-     * @return void
      */
     public function testPositionalArgNotEnough()
     {
@@ -443,7 +401,6 @@ class ConsoleOptionParserTest extends CakeTestCase
      * test that arguments with choices enforce them.
      *
      * @expectedException ConsoleException
-     * @return void
      */
     public function testPositionalArgWithChoices()
     {
@@ -461,8 +418,6 @@ class ConsoleOptionParserTest extends CakeTestCase
 
     /**
      * Test adding multiple arguments.
-     *
-     * @return void
      */
     public function testAddArguments()
     {
@@ -479,8 +434,6 @@ class ConsoleOptionParserTest extends CakeTestCase
 
     /**
      * test setting a subcommand up.
-     *
-     * @return void
      */
     public function testSubcommand()
     {
@@ -493,8 +446,6 @@ class ConsoleOptionParserTest extends CakeTestCase
 
     /**
      * test addSubcommand with an object.
-     *
-     * @return void
      */
     public function testAddSubcommandObject()
     {
@@ -507,8 +458,6 @@ class ConsoleOptionParserTest extends CakeTestCase
 
     /**
      * test removeSubcommand with an object.
-     *
-     * @return void
      */
     public function testRemoveSubcommand()
     {
@@ -523,8 +472,6 @@ class ConsoleOptionParserTest extends CakeTestCase
 
     /**
      * test adding multiple subcommands
-     *
-     * @return void
      */
     public function testAddSubcommands()
     {
@@ -540,8 +487,6 @@ class ConsoleOptionParserTest extends CakeTestCase
 
     /**
      * test that no exception is triggered when help is being generated
-     *
-     * @return void
      */
     public function testHelpNoExceptionWhenGettingHelp()
     {
@@ -555,8 +500,6 @@ class ConsoleOptionParserTest extends CakeTestCase
 
     /**
      * test that help() with a command param shows the help for a subcommand
-     *
-     * @return void
      */
     public function testHelpSubcommandHelp()
     {
@@ -586,8 +529,6 @@ TEXT;
 
     /**
      * test building a parser from an array.
-     *
-     * @return void
      */
     public function testBuildFromArray()
     {
@@ -625,8 +566,6 @@ TEXT;
 
     /**
      * test that create() returns instances
-     *
-     * @return void
      */
     public function testCreateFactory()
     {
@@ -637,8 +576,6 @@ TEXT;
 
     /**
      * test that command() inflects the command name.
-     *
-     * @return void
      */
     public function testCommandInflection()
     {
@@ -649,8 +586,6 @@ TEXT;
     /**
      * test that parse() takes a subcommand argument, and that the subcommand parser
      * is used.
-     *
-     * @return void
      */
     public function testParsingWithSubParser()
     {

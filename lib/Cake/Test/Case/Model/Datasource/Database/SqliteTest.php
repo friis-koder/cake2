@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Test.Case.Model.Datasource.Database
+ *
  * @since         CakePHP(tm) v 1.2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Model', 'Model');
@@ -39,7 +43,6 @@ class DboSqliteTestDb extends Sqlite
      * execute method
      *
      * @param mixed $sql
-     * @return void
      */
     protected function _execute($sql, $params = [], $prepareOptions = [])
     {
@@ -50,8 +53,6 @@ class DboSqliteTestDb extends Sqlite
 
     /**
      * getLastQuery method
-     *
-     * @return void
      */
     public function getLastQuery()
     {
@@ -89,8 +90,6 @@ class SqliteTest extends CakeTestCase
 
     /**
      * Sets up a Dbo class instance for testing
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -104,8 +103,6 @@ class SqliteTest extends CakeTestCase
 
     /**
      * Sets up a Dbo class instance for testing
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -115,8 +112,6 @@ class SqliteTest extends CakeTestCase
 
     /**
      * Tests that SELECT queries from DboSqlite::listSources() are not cached
-     *
-     * @return void
      */
     public function testTableListCacheDisabling()
     {
@@ -132,8 +127,6 @@ class SqliteTest extends CakeTestCase
 
     /**
      * test Index introspection.
-     *
-     * @return void
      */
     public function testIndex()
     {
@@ -164,8 +157,6 @@ class SqliteTest extends CakeTestCase
 
     /**
      * Tests that cached table descriptions are saved under the sanitized key name
-     *
-     * @return void
      */
     public function testCacheKeyName()
     {
@@ -200,8 +191,6 @@ class SqliteTest extends CakeTestCase
 
     /**
      * test building columns with SQLite
-     *
-     * @return void
      */
     public function testBuildColumn()
     {
@@ -316,8 +305,6 @@ class SqliteTest extends CakeTestCase
 
     /**
      * test describe() and normal results.
-     *
-     * @return void
      */
     public function testDescribe()
     {
@@ -376,8 +363,6 @@ class SqliteTest extends CakeTestCase
 
     /**
      * Test that datatypes are reflected
-     *
-     * @return void
      */
     public function testDatatypes()
     {
@@ -444,8 +429,6 @@ class SqliteTest extends CakeTestCase
 
     /**
      * test that describe does not corrupt UUID primary keys
-     *
-     * @return void
      */
     public function testDescribeWithUuidPrimaryKey()
     {
@@ -480,8 +463,6 @@ class SqliteTest extends CakeTestCase
 
     /**
      * Test that describe ignores `default current_timestamp` in timestamp columns.
-     *
-     * @return void
      */
     public function testDescribeHandleCurrentTimestamp()
     {
@@ -515,8 +496,6 @@ SQL;
 
     /**
      * Test virtualFields with functions.
-     *
-     * @return void
      */
     public function testVirtualFieldWithFunction()
     {
@@ -533,8 +512,6 @@ SQL;
     /**
      * Test that records can be inserted with UUID primary keys, and
      * that the primary key is not blank
-     *
-     * @return void
      */
     public function testUuidPrimaryKeyInsertion()
     {
@@ -555,8 +532,6 @@ SQL;
 
     /**
      * Test nested transaction
-     *
-     * @return void
      */
     public function testNestedTransaction()
     {
@@ -590,8 +565,6 @@ SQL;
 
     /**
      * Test the limit function.
-     *
-     * @return void
      */
     public function testLimit()
     {
@@ -616,8 +589,6 @@ SQL;
 
     /**
      * Test that fields are parsed out in a reasonable fashion.
-     *
-     * @return void
      */
     public function testFetchRowColumnParsing()
     {
@@ -659,8 +630,6 @@ SQL;
 
     /**
      * Test parsing more complex field names.
-     *
-     * @return void
      */
     public function testFetchColumnRowParsingMoreComplex()
     {
@@ -685,8 +654,6 @@ SQL;
 
     /**
      * Test Sqlite Datasource doesn't support locking hint
-     *
-     * @return void
      */
     public function testBuildStatementWithoutLockingHint()
     {

@@ -8,8 +8,10 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
  * @since         CakePHP(tm) v2.1
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -55,6 +57,7 @@ class ViewBlock
      * Should the currently captured content be discarded on ViewBlock::end()
      *
      * @var bool
+     *
      * @see ViewBlock::end()
      * @see ViewBlock::startIfEmpty()
      */
@@ -70,8 +73,8 @@ class ViewBlock
      * using View::get();
      *
      * @param string $name The name of the block to capture for.
+     *
      * @throws CakeException When starting a block twice
-     * @return void
      */
     public function start($name)
     {
@@ -92,7 +95,6 @@ class ViewBlock
      * using View::get();
      *
      * @param string $name The name of the block to capture for.
-     * @return void
      */
     public function startIfEmpty($name)
     {
@@ -106,7 +108,6 @@ class ViewBlock
     /**
      * End a capturing block. The compliment to ViewBlock::start()
      *
-     * @return void
      * @see ViewBlock::start()
      */
     public function end()
@@ -140,7 +141,6 @@ class ViewBlock
      * @param mixed $value The content for the block
      * @param string $mode If ViewBlock::APPEND content will be appended to existing content.
      *   If ViewBlock::PREPEND it will be prepended.
-     * @return void
      */
     public function concat($name, $value = null, $mode = ViewBlock::APPEND)
     {
@@ -168,7 +168,7 @@ class ViewBlock
      *
      * @param string $name Name of the block
      * @param string $value The content for the block.
-     * @return void
+     *
      * @deprecated 3.0.0 As of 2.3 use ViewBlock::concat() instead.
      */
     public function append($name, $value = null)
@@ -182,7 +182,6 @@ class ViewBlock
      *
      * @param string $name Name of the block
      * @param mixed $value The content for the block.
-     * @return void
      */
     public function set($name, $value)
     {
@@ -194,6 +193,7 @@ class ViewBlock
      *
      * @param string $name Name of the block
      * @param string $default Default string
+     *
      * @return string The block content or $default if the block does not exist.
      */
     public function get($name, $default = '')
@@ -209,6 +209,7 @@ class ViewBlock
      * Check if a block exists
      *
      * @param string $name Name of the block
+     *
      * @return bool
      */
     public function exists($name)

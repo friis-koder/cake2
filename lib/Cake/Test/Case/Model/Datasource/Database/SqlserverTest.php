@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Test.Case.Model.Datasource.Database
+ *
  * @since         CakePHP(tm) v 1.2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Model', 'Model');
@@ -48,6 +52,7 @@ class SqlserverTestDb extends Sqlserver
      * @param mixed $sql
      * @param mixed $params
      * @param mixed $prepareOptions
+     *
      * @return mixed
      */
     protected function _execute($sql, $params = [], $prepareOptions = [])
@@ -61,7 +66,6 @@ class SqlserverTestDb extends Sqlserver
      * fetchAll method
      *
      * @param mixed $sql
-     * @return void
      */
     protected function _matchRecords(Model $model, $conditions = null)
     {
@@ -82,6 +86,7 @@ class SqlserverTestDb extends Sqlserver
      * getPrimaryKey method
      *
      * @param mixed $model
+     *
      * @return string
      */
     public function getPrimaryKey($model)
@@ -91,8 +96,6 @@ class SqlserverTestDb extends Sqlserver
 
     /**
      * clearFieldMappings method
-     *
-     * @return void
      */
     public function clearFieldMappings()
     {
@@ -103,7 +106,6 @@ class SqlserverTestDb extends Sqlserver
      * describe method
      *
      * @param Model $model
-     * @return void
      */
     public function describe($model)
     {
@@ -169,7 +171,6 @@ class SqlserverTestModel extends CakeTestModel
      * @param mixed $fields
      * @param mixed $order
      * @param mixed $recursive
-     * @return void
      */
     public function find($conditions = null, $fields = null, $order = null, $recursive = null)
     {
@@ -214,8 +215,6 @@ class SqlserverTestResultIterator extends ArrayIterator
 {
     /**
      * closeCursor method
-     *
-     * @return void
      */
     public function closeCursor()
     {
@@ -223,8 +222,6 @@ class SqlserverTestResultIterator extends ArrayIterator
 
     /**
      * fetch method
-     *
-     * @return void
      */
     public function fetch()
     {
@@ -268,8 +265,6 @@ class SqlserverTest extends CakeTestCase
 
     /**
      * Sets up a Dbo class instance for testing
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -284,8 +279,6 @@ class SqlserverTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -296,8 +289,6 @@ class SqlserverTest extends CakeTestCase
 
     /**
      * testQuoting method
-     *
-     * @return void
      */
     public function testQuoting()
     {
@@ -328,8 +319,6 @@ class SqlserverTest extends CakeTestCase
 
     /**
      * testFields method
-     *
-     * @return void
      */
     public function testFields()
     {
@@ -383,8 +372,6 @@ class SqlserverTest extends CakeTestCase
 
     /**
      * testDistinctFields method
-     *
-     * @return void
      */
     public function testDistinctFields()
     {
@@ -403,8 +390,6 @@ class SqlserverTest extends CakeTestCase
 
     /**
      * testDistinctWithLimit method
-     *
-     * @return void
      */
     public function testDistinctWithLimit()
     {
@@ -425,8 +410,6 @@ class SqlserverTest extends CakeTestCase
 
     /**
      * testDescribe method
-     *
-     * @return void
      */
     public function testDescribe()
     {
@@ -532,8 +515,6 @@ class SqlserverTest extends CakeTestCase
 
     /**
      * testBuildColumn
-     *
-     * @return void
      */
     public function testBuildColumn()
     {
@@ -624,8 +605,6 @@ class SqlserverTest extends CakeTestCase
 
     /**
      * testBuildIndex method
-     *
-     * @return void
      */
     public function testBuildIndex()
     {
@@ -652,8 +631,6 @@ class SqlserverTest extends CakeTestCase
 
     /**
      * testUpdateAllSyntax method
-     *
-     * @return void
      */
     public function testUpdateAllSyntax()
     {
@@ -669,8 +646,6 @@ class SqlserverTest extends CakeTestCase
 
     /**
      * testGetPrimaryKey method
-     *
-     * @return void
      */
     public function testGetPrimaryKey()
     {
@@ -688,8 +663,6 @@ class SqlserverTest extends CakeTestCase
 
     /**
      * SQL server < 11 doesn't have proper limit/offset support, test that our hack works.
-     *
-     * @return void
      */
     public function testLimitOffsetHack()
     {
@@ -722,8 +695,6 @@ class SqlserverTest extends CakeTestCase
 
     /**
      * Test that the return of stored procedures is honoured
-     *
-     * @return void
      */
     public function testStoredProcedureReturn()
     {
@@ -750,8 +721,6 @@ SQL;
 
     /**
      * Test build statement with having option
-     *
-     * @return void
      */
     public function testBuildStatementWithHaving()
     {
@@ -782,8 +751,6 @@ SQL;
 
     /**
      * Test build statement with lock option
-     *
-     * @return void
      */
     public function testBuildStatementWithLockingHint()
     {
@@ -813,8 +780,6 @@ SQL;
 
     /**
      * Test build statement with having option for legacy version
-     *
-     * @return void
      */
     public function testBuildStatementWithHavingForLegacyVersion()
     {
@@ -852,8 +817,6 @@ SQL;
 
     /**
      * Test build statement with lock option for legacy version
-     *
-     * @return void
      */
     public function testBuildStatementWithLockingHintForLegacyVersion()
     {

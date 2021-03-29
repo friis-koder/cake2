@@ -9,9 +9,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Test.Case.Model.Datasource.Database
+ *
  * @since         CakePHP(tm) v 1.2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Model', 'Model');
@@ -38,7 +42,6 @@ class DboPostgresTestDb extends Postgres
      * execute method
      *
      * @param mixed $sql
-     * @return void
      */
     protected function _execute($sql, $params = [], $prepareOptions = [])
     {
@@ -49,8 +52,6 @@ class DboPostgresTestDb extends Postgres
 
     /**
      * getLastQuery method
-     *
-     * @return void
      */
     public function getLastQuery()
     {
@@ -90,7 +91,6 @@ class PostgresTestModel extends Model
      * @param mixed $fields
      * @param mixed $order
      * @param mixed $recursive
-     * @return void
      */
     public function find($conditions = null, $fields = null, $order = null, $recursive = null)
     {
@@ -104,7 +104,6 @@ class PostgresTestModel extends Model
      * @param mixed $fields
      * @param mixed $order
      * @param mixed $recursive
-     * @return void
      */
     public function findAll($conditions = null, $fields = null, $order = null, $recursive = null)
     {
@@ -113,8 +112,6 @@ class PostgresTestModel extends Model
 
     /**
      * schema method
-     *
-     * @return void
      */
     public function schema($field = false)
     {
@@ -158,8 +155,6 @@ class PostgresClientTestModel extends Model
 
     /**
      * schema method
-     *
-     * @return void
      */
     public function schema($field = false)
     {
@@ -214,8 +209,6 @@ class PostgresTest extends CakeTestCase
 
     /**
      * Sets up a Dbo class instance for testing
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -229,8 +222,6 @@ class PostgresTest extends CakeTestCase
 
     /**
      * Sets up a Dbo class instance for testing
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -241,8 +232,6 @@ class PostgresTest extends CakeTestCase
 
     /**
      * Test field quoting method
-     *
-     * @return void
      */
     public function testFieldQuoting()
     {
@@ -294,8 +283,6 @@ class PostgresTest extends CakeTestCase
 
     /**
      * testColumnParsing method
-     *
-     * @return void
      */
     public function testColumnParsing()
     {
@@ -318,8 +305,6 @@ class PostgresTest extends CakeTestCase
 
     /**
      * testValueQuoting method
-     *
-     * @return void
      */
     public function testValueQuoting()
     {
@@ -353,8 +338,6 @@ class PostgresTest extends CakeTestCase
 
     /**
      * test that localized floats don't cause trouble.
-     *
-     * @return void
      */
     public function testLocalizedFloats()
     {
@@ -373,8 +356,6 @@ class PostgresTest extends CakeTestCase
 
     /**
      * test that date and time columns do not generate errors with null and nullish values.
-     *
-     * @return void
      */
     public function testDateAndTimeAsNull()
     {
@@ -393,8 +374,6 @@ class PostgresTest extends CakeTestCase
 
     /**
      * Tests that different Postgres boolean 'flavors' are properly returned as native PHP booleans
-     *
-     * @return void
      */
     public function testBooleanNormalization()
     {
@@ -415,8 +394,6 @@ class PostgresTest extends CakeTestCase
 
     /**
      * test that default -> false in schemas works correctly.
-     *
-     * @return void
      */
     public function testBooleanDefaultFalseInSchema()
     {
@@ -429,8 +406,6 @@ class PostgresTest extends CakeTestCase
 
     /**
      * testLastInsertIdMultipleInsert method
-     *
-     * @return void
      */
     public function testLastInsertIdMultipleInsert()
     {
@@ -452,8 +427,6 @@ class PostgresTest extends CakeTestCase
     /**
      * Tests that column types without default lengths in $columns do not have length values
      * applied when generating schemas.
-     *
-     * @return void
      */
     public function testColumnUseLength()
     {
@@ -468,8 +441,6 @@ class PostgresTest extends CakeTestCase
 
     /**
      * Tests that binary data is escaped/unescaped properly on reads and writes
-     *
-     * @return void
      */
     public function testBinaryDataIntegrity()
     {
@@ -502,8 +473,6 @@ class PostgresTest extends CakeTestCase
 
     /**
      * Tests passing PostgreSQL regular expression operators when building queries
-     *
-     * @return void
      */
     public function testRegexpOperatorConditionsParsing()
     {
@@ -519,8 +488,6 @@ class PostgresTest extends CakeTestCase
 
     /**
      * Tests the syntax of generated schema indexes
-     *
-     * @return void
      */
     public function testSchemaIndexSyntax()
     {
@@ -555,8 +522,6 @@ class PostgresTest extends CakeTestCase
      *
      * Test that schema generated postgresql queries are valid. ref #5696
      * Check that the create statement for a schema generated table is the same as the original sql
-     *
-     * @return void
      */
     public function testCakeSchema()
     {
@@ -607,8 +572,6 @@ class PostgresTest extends CakeTestCase
      * testCakeSchemaBegserial method
      *
      * Test that schema generated postgresql queries are valid.
-     *
-     * @return void
      */
     public function testCakeSchemaBigserial()
     {
@@ -638,8 +601,6 @@ class PostgresTest extends CakeTestCase
 
     /**
      * Test index generation from table info.
-     *
-     * @return void
      */
     public function testIndexGeneration()
     {
@@ -670,8 +631,6 @@ class PostgresTest extends CakeTestCase
 
     /**
      * Test the alterSchema capabilities of postgres
-     *
-     * @return void
      */
     public function testAlterSchema()
     {
@@ -735,8 +694,6 @@ class PostgresTest extends CakeTestCase
 
     /**
      * Test the alterSchema changing boolean to integer
-     *
-     * @return void
      */
     public function testAlterSchemaBooleanToIntegerField()
     {
@@ -764,8 +721,6 @@ class PostgresTest extends CakeTestCase
 
     /**
      * Test the alterSchema changing text to integer
-     *
-     * @return void
      */
     public function testAlterSchemaTextToIntegerField()
     {
@@ -801,8 +756,6 @@ class PostgresTest extends CakeTestCase
 
     /**
      * Test the alter index capabilities of postgres
-     *
-     * @return void
      */
     public function testAlterIndexes()
     {
@@ -877,8 +830,6 @@ class PostgresTest extends CakeTestCase
 
     /**
      * Test the alterSchema RENAME statements
-     *
-     * @return void
      */
     public function testAlterSchemaRenameTo()
     {
@@ -897,8 +848,6 @@ class PostgresTest extends CakeTestCase
 
     /**
      * Test it is possible to use virtual field with postgresql
-     *
-     * @return void
      */
     public function testVirtualFields()
     {
@@ -919,8 +868,6 @@ class PostgresTest extends CakeTestCase
 
     /**
      * Test that virtual fields work with SQL constants
-     *
-     * @return void
      */
     public function testVirtualFieldAsAConstant()
     {
@@ -939,8 +886,6 @@ class PostgresTest extends CakeTestCase
 
     /**
      * Tests additional order options for postgres
-     *
-     * @return void
      */
     public function testOrderAdditionalParams()
     {
@@ -952,8 +897,6 @@ class PostgresTest extends CakeTestCase
     /**
      * Test it is possible to do a SELECT COUNT(DISTINCT Model.field)
      * query in postgres and it gets correctly quoted
-     *
-     * @return void
      */
     public function testQuoteDistinctInFunction()
     {
@@ -974,8 +917,6 @@ class PostgresTest extends CakeTestCase
 
     /**
      * test that saveAll works even with conditions that lack a model name.
-     *
-     * @return void
      */
     public function testUpdateAllWithNonQualifiedConditions()
     {
@@ -992,8 +933,6 @@ class PostgresTest extends CakeTestCase
 
     /**
      * test alterSchema on two tables.
-     *
-     * @return void
      */
     public function testAlteringTwoTables()
     {
@@ -1028,8 +967,6 @@ class PostgresTest extends CakeTestCase
 
     /**
      * test encoding setting.
-     *
-     * @return void
      */
     public function testEncoding()
     {
@@ -1048,8 +985,6 @@ class PostgresTest extends CakeTestCase
 
     /**
      * Test truncate with a mock.
-     *
-     * @return void
      */
     public function testTruncateStatements()
     {
@@ -1082,8 +1017,6 @@ class PostgresTest extends CakeTestCase
 
     /**
      * Test nested transaction
-     *
-     * @return void
      */
     public function testNestedTransaction()
     {
@@ -1157,8 +1090,6 @@ class PostgresTest extends CakeTestCase
 
     /**
      * Test the limit function.
-     *
-     * @return void
      */
     public function testLimit()
     {
@@ -1183,8 +1114,6 @@ class PostgresTest extends CakeTestCase
 
     /**
      * Test that postgres describes UUID columns correctly.
-     *
-     * @return void
      */
     public function testDescribeUuid()
     {
@@ -1204,8 +1133,6 @@ class PostgresTest extends CakeTestCase
 
     /**
      * Test describe() behavior for timestamp columns.
-     *
-     * @return void
      */
     public function testDescribeTimestamp()
     {
@@ -1261,8 +1188,6 @@ class PostgresTest extends CakeTestCase
 
     /**
      * Test that postgres describes default columns with functions correctly.
-     *
-     * @return void
      */
     public function testDescribeFunctionDefault()
     {

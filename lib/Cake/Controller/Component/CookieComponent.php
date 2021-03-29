@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Controller.Component
+ *
  * @since         CakePHP(tm) v 1.2.0.4213
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Component', 'Controller');
@@ -25,6 +29,7 @@ App::uses('Hash', 'Utility');
  * Cookie handling for the controller.
  *
  * @package       Cake.Controller.Component
+ *
  * @link https://book.cakephp.org/2.0/en/core-libraries/components/cookie.html
  */
 class CookieComponent extends Component
@@ -120,6 +125,7 @@ class CookieComponent extends Component
      * Accessed in the controller using $this->Cookie->read('Name.key');
      *
      * @see CookieComponent::read();
+     *
      * @var string
      */
     protected $_values = [];
@@ -185,7 +191,6 @@ class CookieComponent extends Component
      * Start CookieComponent for use in the controller
      *
      * @param Controller $controller Controller instance.
-     * @return void
      */
     public function startup(Controller $controller)
     {
@@ -211,7 +216,7 @@ class CookieComponent extends Component
      * @param bool $encrypt Set to true to encrypt value, false otherwise
      * @param int|string $expires Can be either the number of seconds until a cookie
      *   expires, or a strtotime compatible time offset.
-     * @return void
+     *
      * @link https://book.cakephp.org/2.0/en/core-libraries/components/cookie.html#CookieComponent::write
      */
     public function write($key, $value = null, $encrypt = true, $expires = null)
@@ -250,7 +255,9 @@ class CookieComponent extends Component
      * $this->Cookie->read(Name.key);
      *
      * @param string $key Key of the value to be obtained. If none specified, obtain map key => values
+     *
      * @return string|array|null Value for specified key
+     *
      * @link https://book.cakephp.org/2.0/en/core-libraries/components/cookie.html#CookieComponent::read
      */
     public function read($key = null)
@@ -272,6 +279,7 @@ class CookieComponent extends Component
      * Returns true if given variable is set in cookie.
      *
      * @param string $key Variable name to check for
+     *
      * @return bool True if variable is there
      */
     public function check($key = null)
@@ -299,7 +307,7 @@ class CookieComponent extends Component
      * were stored inconsistently.
      *
      * @param string $key Key of the value to be deleted
-     * @return void
+     *
      * @link https://book.cakephp.org/2.0/en/core-libraries/components/cookie.html#CookieComponent::delete
      */
     public function delete($key)
@@ -326,7 +334,6 @@ class CookieComponent extends Component
      * You must use this method before any output is sent to the browser.
      * Failure to do so will result in header already sent errors.
      *
-     * @return void
      * @link https://book.cakephp.org/2.0/en/core-libraries/components/cookie.html#CookieComponent::destroy
      */
     public function destroy()
@@ -346,7 +353,6 @@ class CookieComponent extends Component
      * written any cookies.
      *
      * @param string $type Encryption method
-     * @return void
      */
     public function type($type = 'cipher')
     {
@@ -373,6 +379,7 @@ class CookieComponent extends Component
      * CookieComponent::write(string, string, boolean, '5 Days');
      *
      * @param int|string $expires Can be either Unix timestamp, or date string
+     *
      * @return int Unix timestamp
      */
     protected function _expire($expires = null)
@@ -399,7 +406,6 @@ class CookieComponent extends Component
      *
      * @param string $name Name for cookie
      * @param string $value Value for cookie
-     * @return void
      */
     protected function _write($name, $value)
     {
@@ -423,7 +429,6 @@ class CookieComponent extends Component
      * Sets a cookie expire time to remove cookie value
      *
      * @param string $name Name of cookie
-     * @return void
      */
     protected function _delete($name)
     {
@@ -442,6 +447,7 @@ class CookieComponent extends Component
      * Encrypts $value using public $type method in Security class
      *
      * @param string $value Value to encrypt
+     *
      * @return string Encoded values
      */
     protected function _encrypt($value)
@@ -470,6 +476,7 @@ class CookieComponent extends Component
      * Decrypts $value using public $type method in Security class
      *
      * @param array $values Values to decrypt
+     *
      * @return array decrypted string
      */
     protected function _decrypt($values)
@@ -494,6 +501,7 @@ class CookieComponent extends Component
      * Decodes and decrypts a single value.
      *
      * @param string $value The value to decode & decrypt.
+     *
      * @return string|array Decoded value.
      */
     protected function _decode($value)
@@ -521,6 +529,7 @@ class CookieComponent extends Component
      * Implode method to keep keys are multidimensional arrays
      *
      * @param array $array Map of key and values
+     *
      * @return string A json encoded string.
      */
     protected function _implode(array $array)
@@ -533,6 +542,7 @@ class CookieComponent extends Component
      * Maintains reading backwards compatibility with 1.x CookieComponent::_implode().
      *
      * @param string $string A string containing JSON encoded data, or a bare string.
+     *
      * @return string|array Map of key and values
      */
     protected function _explode($string)

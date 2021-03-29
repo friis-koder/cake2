@@ -12,9 +12,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Utility
+ *
  * @since         CakePHP(tm) v 1.2.4560
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('CakeLog', 'Log');
@@ -26,6 +30,7 @@ App::uses('CakeText', 'Utility');
  * Debugger overrides PHP's default error handling to provide stack traces and enhanced logging
  *
  * @package       Cake.Utility
+ *
  * @link          https://book.cakephp.org/2.0/en/development/debugging.html#debugger-class
  */
 class Debugger
@@ -148,6 +153,7 @@ class Debugger
      * Returns a reference to the Debugger singleton object instance.
      *
      * @param string $class Debugger class name.
+     *
      * @return object
      */
     public static function getInstance($class = null)
@@ -170,7 +176,7 @@ class Debugger
      *
      * @param mixed $var the variable to dump
      * @param int $depth The depth to output to. Defaults to 3.
-     * @return void
+     *
      * @see Debugger::exportVar()
      * @link https://book.cakephp.org/2.0/en/development/debugging.html#Debugger::dump
      */
@@ -188,7 +194,7 @@ class Debugger
      *    or a string matching the recognized levels, then it will
      *    be treated as a log level. Otherwise it's treated as a scope.
      * @param int $depth The depth to output to. Defaults to 3.
-     * @return void
+     *
      * @link https://book.cakephp.org/2.0/en/development/debugging.html#Debugger::log
      */
     public static function log($var, $level = LOG_DEBUG, $depth = 3)
@@ -205,7 +211,9 @@ class Debugger
      * @param string $file File on which error occurred
      * @param int $line Line that triggered the error
      * @param array $context Context
+     *
      * @return bool|null True if error was handled, otherwise null.
+     *
      * @deprecated 3.0.0 Will be removed in 3.0. This function is superseded by Debugger::outputError().
      */
     public static function showError($code, $description, $file = null, $line = null, $context = null)
@@ -291,7 +299,9 @@ class Debugger
      * - `start` - The stack frame to start generating a trace from. Defaults to 0
      *
      * @param array $options Format for outputting stack trace
+     *
      * @return mixed Formatted stack trace
+     *
      * @link https://book.cakephp.org/2.0/en/development/debugging.html#Debugger::trace
      */
     public static function trace($options = [])
@@ -371,6 +381,7 @@ class Debugger
      * path with 'CORE'.
      *
      * @param string $path Path to shorten
+     *
      * @return string Normalized path
      */
     public static function trimPath($path)
@@ -405,7 +416,9 @@ class Debugger
      * @param string $file Absolute path to a PHP file
      * @param int $line Line number to highlight
      * @param int $context Number of lines of context to extract above and below $line
+     *
      * @return array Set of lines highlighted
+     *
      * @see http://php.net/highlight_string
      * @link https://book.cakephp.org/2.0/en/development/debugging.html#Debugger::excerpt
      */
@@ -445,6 +458,7 @@ class Debugger
      * implement the function as it is the case of the HipHop interpreter
      *
      * @param string $str the string to convert
+     *
      * @return string
      */
     protected static function _highlight($str)
@@ -486,7 +500,9 @@ class Debugger
      *
      * @param string $var Variable to convert
      * @param int $depth The depth to output to. Defaults to 3.
+     *
      * @return string Variable as a formatted string
+     *
      * @link https://book.cakephp.org/2.0/en/development/debugging.html#Debugger::exportVar
      */
     public static function exportVar($var, $depth = 3)
@@ -500,6 +516,7 @@ class Debugger
      * @param mixed $var The variable to dump.
      * @param int $depth The remaining depth.
      * @param int $indent The current indentation level.
+     *
      * @return string The dumped variable.
      */
     protected static function _export($var, $depth, $indent)
@@ -544,6 +561,7 @@ class Debugger
      * @param array $var The array to export.
      * @param int $depth The current depth, used for recursion tracking.
      * @param int $indent The current indentation level.
+     *
      * @return string Exported array.
      */
     protected static function _array(array $var, $depth, $indent)
@@ -591,7 +609,9 @@ class Debugger
      * @param string $var Object to convert
      * @param int $depth The current depth, used for tracking recursion.
      * @param int $indent The current indentation level.
+     *
      * @return string
+     *
      * @see Debugger::exportVar()
      */
     protected static function _object($var, $depth, $indent)
@@ -643,8 +663,10 @@ class Debugger
      *
      * @param string $format The format you want errors to be output as.
      *   Leave null to get the current format.
-     * @return mixed Returns null when setting. Returns the current format when getting.
+     *
      * @throws CakeException when choosing a format that doesn't exist.
+     *
+     * @return mixed Returns null when setting. Returns the current format when getting.
      */
     public static function outputAs($format = null)
     {
@@ -695,6 +717,7 @@ class Debugger
      * @param string $format Format to use, including 'js' for JavaScript-enhanced HTML, 'html' for
      *    straight HTML output, or 'txt' for unformatted text.
      * @param array $strings Template strings, or a callback to be used for the output format.
+     *
      * @return The resulting format string set.
      */
     public static function addFormat($format, array $strings)
@@ -723,7 +746,9 @@ class Debugger
      * @param string $format Format to use, including 'js' for JavaScript-enhanced HTML, 'html' for
      *    straight HTML output, or 'txt' for unformatted text.
      * @param array $strings Template strings to be used for the output format.
+     *
      * @return string
+     *
      * @deprecated 3.0.0 Use Debugger::outputAs() and Debugger::addFormat(). Will be removed
      *   in 3.0
      */
@@ -754,7 +779,6 @@ class Debugger
      * Takes a processed array of data from an error and displays it in the chosen format.
      *
      * @param string $data Data to output.
-     * @return void
      */
     public function outputError($data)
     {
@@ -840,6 +864,7 @@ class Debugger
      * for objects.
      *
      * @param mixed $var The variable to get the type of
+     *
      * @return string The type of variable.
      */
     public static function getType($var)
@@ -874,8 +899,6 @@ class Debugger
 
     /**
      * Verifies that the application's salt and cipher seed value has been changed from the default value.
-     *
-     * @return void
      */
     public static function checkSecurityKeys()
     {

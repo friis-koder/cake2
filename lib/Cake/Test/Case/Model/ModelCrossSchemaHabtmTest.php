@@ -12,9 +12,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Model
+ *
  * @since         CakePHP(tm) v 2.1
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 require_once dirname(__FILE__) . DS . 'ModelTestBase.php';
@@ -52,8 +56,6 @@ class ModelCrossSchemaHabtmTest extends BaseModelTest
 
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -63,8 +65,6 @@ class ModelCrossSchemaHabtmTest extends BaseModelTest
 
     /**
      * Check if primary and secondary test databases are configured.
-     *
-     * @return void
      */
     protected function _checkConfigs()
     {
@@ -80,8 +80,6 @@ class ModelCrossSchemaHabtmTest extends BaseModelTest
 
     /**
      * testModelDatasources method
-     *
-     * @return void
      */
     public function testModelDatasources()
     {
@@ -99,8 +97,6 @@ class ModelCrossSchemaHabtmTest extends BaseModelTest
 
     /**
      * testHabtmFind method
-     *
-     * @return void
      */
     public function testHabtmFind()
     {
@@ -134,8 +130,6 @@ class ModelCrossSchemaHabtmTest extends BaseModelTest
 
     /**
      * testHabtmSave method
-     *
-     * @return void
      */
     public function testHabtmSave()
     {
@@ -178,8 +172,6 @@ class ModelCrossSchemaHabtmTest extends BaseModelTest
 
     /**
      * testHabtmWithThreeDatabases method
-     *
-     * @return void
      */
     public function testHabtmWithThreeDatabases()
     {

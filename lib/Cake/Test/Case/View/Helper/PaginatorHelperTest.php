@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.View.Helper
+ *
  * @since         CakePHP(tm) v 1.2.0.4206
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('View', 'View');
@@ -34,8 +38,6 @@ class PaginatorHelperTest extends CakeTestCase
 {
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -73,8 +75,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -84,8 +84,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * testHasPrevious method
-     *
-     * @return void
      */
     public function testHasPrevious()
     {
@@ -97,8 +95,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * testHasNext method
-     *
-     * @return void
      */
     public function testHasNext()
     {
@@ -110,8 +106,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * testDisabledLink method
-     *
-     * @return void
      */
     public function testDisabledLink()
     {
@@ -131,8 +125,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * testSortLinks method
-     *
-     * @return void
      */
     public function testSortLinks()
     {
@@ -238,8 +230,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * testSortLinksWithLockOption method
-     *
-     * @return void
      */
     public function testSortLinksWithLockOption()
     {
@@ -286,8 +276,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * test that sort() works with virtual field order options.
-     *
-     * @return void
      */
     public function testSortLinkWithVirtualField()
     {
@@ -333,8 +321,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * testSortLinksUsingDirectionOption method
-     *
-     * @return void
      */
     public function testSortLinksUsingDirectionOption()
     {
@@ -366,8 +352,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * testSortLinksUsingDotNotation method
-     *
-     * @return void
      */
     public function testSortLinksUsingDotNotation()
     {
@@ -417,8 +401,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * test multiple pagination sort links
-     *
-     * @return void
      */
     public function testSortLinksMultiplePagination()
     {
@@ -464,8 +446,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * testSortKey method
-     *
-     * @return void
      */
     public function testSortKey()
     {
@@ -487,8 +467,6 @@ class PaginatorHelperTest extends CakeTestCase
     /**
      * Test that sortKey falls back to the default sorting options set
      * in the $params which are the default pagination options.
-     *
-     * @return void
      */
     public function testSortKeyFallbackToParams()
     {
@@ -511,8 +489,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * testSortDir method
-     *
-     * @return void
      */
     public function testSortDir()
     {
@@ -582,8 +558,6 @@ class PaginatorHelperTest extends CakeTestCase
     /**
      * Test that sortDir falls back to the default sorting options set
      * in the $params which are the default pagination options.
-     *
-     * @return void
      */
     public function testSortDirFallbackToParams()
     {
@@ -608,8 +582,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * testSortAdminLinks method
-     *
-     * @return void
      */
     public function testSortAdminLinks()
     {
@@ -659,8 +631,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * testUrlGeneration method
-     *
-     * @return void
      */
     public function testUrlGeneration()
     {
@@ -691,8 +661,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * test URL generation with prefix routes
-     *
-     * @return void
      */
     public function testUrlGenerationWithPrefixes()
     {
@@ -756,8 +724,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * test url with multiple pagination
-     *
-     * @return void
      */
     public function testUrlMultiplePagination()
     {
@@ -810,8 +776,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * testOptions method
-     *
-     * @return void
      */
     public function testOptions()
     {
@@ -858,8 +822,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * testPassedArgsMergingWithUrlOptions method
-     *
-     * @return void
      */
     public function testPassedArgsMergingWithUrlOptions()
     {
@@ -926,8 +888,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * testPassedArgsMergingWithUrlOptionsParamTypeQuerystring method
-     *
-     * @return void
      */
     public function testPassedArgsMergingWithUrlOptionsParamTypeQuerystring()
     {
@@ -994,8 +954,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * testPagingLinks method
-     *
-     * @return void
      */
     public function testPagingLinks()
     {
@@ -1309,8 +1267,6 @@ class PaginatorHelperTest extends CakeTestCase
     /**
      * test that __pagingLink methods use $options when $disabledOptions is an empty value.
      * allowing you to use shortcut syntax
-     *
-     * @return void
      */
     public function testPagingLinksOptionsReplaceEmptyDisabledOptions()
     {
@@ -1351,8 +1307,6 @@ class PaginatorHelperTest extends CakeTestCase
      * testPagingLinksNotDefaultModel
      *
      * Test the creation of paging links when the non default model is used.
-     *
-     * @return void
      */
     public function testPagingLinksNotDefaultModel()
     {
@@ -1410,8 +1364,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * Test creating paging links for missing models.
-     *
-     * @return void
      */
     public function testPagingLinksMissingModel()
     {
@@ -1444,8 +1396,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * testGenericLinks method
-     *
-     * @return void
      */
     public function testGenericLinks()
     {
@@ -1478,8 +1428,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * Tests generation of generic links with preset options
-     *
-     * @return void
      */
     public function testGenericLinksWithPresetOptions()
     {
@@ -1516,8 +1464,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * testNumbers method
-     *
-     * @return void
      */
     public function testNumbers()
     {
@@ -1993,8 +1939,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * Test that numbers() works with first and last options.
-     *
-     * @return void
      */
     public function testNumbersFirstAndLast()
     {
@@ -2342,8 +2286,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * Test first/last options as strings.
-     *
-     * @return void
      */
     public function testNumbersStringFirstAndLast()
     {
@@ -2391,8 +2333,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * test first() and last() with tag options
-     *
-     * @return void
      */
     public function testFirstAndLastTag()
     {
@@ -2425,8 +2365,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * test that on the last page you don't get a link ot the last page.
-     *
-     * @return void
      */
     public function testLastNoOutput()
     {
@@ -2440,8 +2378,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * test first() on the first page.
-     *
-     * @return void
      */
     public function testFirstEmpty()
     {
@@ -2454,8 +2390,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * test first() and options()
-     *
-     * @return void
      */
     public function testFirstFullBaseUrl()
     {
@@ -2478,8 +2412,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * test first() on the fence-post
-     *
-     * @return void
      */
     public function testFirstBoundaries()
     {
@@ -2512,8 +2444,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * test params() method
-     *
-     * @return void
      */
     public function testParams()
     {
@@ -2524,8 +2454,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * test param() method
-     *
-     * @return void
      */
     public function testParam()
     {
@@ -2538,8 +2466,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * test last() method
-     *
-     * @return void
      */
     public function testLast()
     {
@@ -2589,8 +2515,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * undocumented function
-     *
-     * @return void
      */
     public function testLastOptions()
     {
@@ -2660,8 +2584,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * testCounter method
-     *
-     * @return void
      */
     public function testCounter()
     {
@@ -2716,8 +2638,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * testHasPage method
-     *
-     * @return void
      */
     public function testHasPage()
     {
@@ -2736,8 +2656,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * testWithPlugin method
-     *
-     * @return void
      */
     public function testWithPlugin()
     {
@@ -2787,8 +2705,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * testNextLinkUsingDotNotation method
-     *
-     * @return void
      */
     public function testNextLinkUsingDotNotation()
     {
@@ -2825,8 +2741,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * Ensure that the internal link class object is called when the update key is present
-     *
-     * @return void
      */
     public function testAjaxLinkGenerationNumbers()
     {
@@ -2840,8 +2754,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * test that paginatorHelper::link() uses JsHelper to make links when 'update' key is present
-     *
-     * @return void
      */
     public function testAjaxLinkGenerationLink()
     {
@@ -2857,7 +2769,6 @@ class PaginatorHelperTest extends CakeTestCase
      * test that mock classes injected into paginatorHelper are called when using link()
      *
      * @expectedException CakeException
-     * @return void
      */
     public function testMockAjaxProviderClassInjection()
     {
@@ -2884,8 +2795,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * test that query string URLs can be generated.
-     *
-     * @return void
      */
     public function testQuerystringUrlGeneration()
     {
@@ -2909,8 +2818,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * test query string paging link.
-     *
-     * @return void
      */
     public function testQuerystringNextAndPrev()
     {
@@ -2942,8 +2849,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * test that additional keys can be flagged as query string args.
-     *
-     * @return void
      */
     public function testOptionsConvertKeys()
     {
@@ -2958,8 +2863,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * test the current() method
-     *
-     * @return void
      */
     public function testCurrent()
     {
@@ -2972,8 +2875,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * test the defaultModel() method
-     *
-     * @return void
      */
     public function testNoDefaultModel()
     {
@@ -2983,8 +2884,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * test the defaultModel() method
-     *
-     * @return void
      */
     public function testDefaultModel()
     {
@@ -2998,8 +2897,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * test the numbers() method when there is only one page
-     *
-     * @return void
      */
     public function testWithOnePage()
     {
@@ -3024,8 +2921,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * test the numbers() method when there is only one page
-     *
-     * @return void
      */
     public function testWithZeroPages()
     {
@@ -3053,8 +2948,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * Verify that no next and prev links are created for single page results
-     *
-     * @return void
      */
     public function testMetaPage0()
     {
@@ -3073,8 +2966,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * Verify that page 1 only has a next link
-     *
-     * @return void
      */
     public function testMetaPage1()
     {
@@ -3095,8 +2986,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * Verify that the method will append to a block
-     *
-     * @return void
      */
     public function testMetaPage1InlineFalse()
     {
@@ -3118,8 +3007,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * Verify that the last page only has a prev link
-     *
-     * @return void
      */
     public function testMetaPage1Last()
     {
@@ -3140,8 +3027,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * Verify that a page in the middle has both links
-     *
-     * @return void
      */
     public function testMetaPage10Last()
     {
@@ -3163,8 +3048,6 @@ class PaginatorHelperTest extends CakeTestCase
 
     /**
      * Verify that meta() uses URL options
-     *
-     * @return void
      */
     public function testMetaPageUrlOptions()
     {

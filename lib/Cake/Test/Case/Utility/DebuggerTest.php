@@ -8,8 +8,10 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP Project
  * @since         CakePHP(tm) v 1.2.0.5432
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Debugger', 'Utility');
@@ -37,8 +39,6 @@ class DebuggerTest extends CakeTestCase
 
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -49,8 +49,6 @@ class DebuggerTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -63,8 +61,6 @@ class DebuggerTest extends CakeTestCase
 
     /**
      * testDocRef method
-     *
-     * @return void
      */
     public function testDocRef()
     {
@@ -76,8 +72,6 @@ class DebuggerTest extends CakeTestCase
 
     /**
      * test Excerpt writing
-     *
-     * @return void
      */
     public function testExcerpt()
     {
@@ -105,8 +99,6 @@ class DebuggerTest extends CakeTestCase
 
     /**
      * testOutput method
-     *
-     * @return void
      */
     public function testOutput()
     {
@@ -162,8 +154,6 @@ class DebuggerTest extends CakeTestCase
 
     /**
      * test encodes error messages
-     *
-     * @return void
      */
     public function testOutputEncodeDescription()
     {
@@ -181,8 +171,6 @@ class DebuggerTest extends CakeTestCase
 
     /**
      * Tests that changes in output formats using Debugger::output() change the templates used.
-     *
-     * @return void
      */
     public function testChangeOutputFormats()
     {
@@ -221,8 +209,6 @@ class DebuggerTest extends CakeTestCase
 
     /**
      * Test that outputAs works.
-     *
-     * @return void
      */
     public function testOutputAs()
     {
@@ -234,7 +220,6 @@ class DebuggerTest extends CakeTestCase
      * Test that choosing a non-existent format causes an exception
      *
      * @expectedException CakeException
-     * @return void
      */
     public function testOutputAsException()
     {
@@ -243,8 +228,6 @@ class DebuggerTest extends CakeTestCase
 
     /**
      * Tests that changes in output formats using Debugger::output() change the templates used.
-     *
-     * @return void
      */
     public function testAddFormat()
     {
@@ -283,8 +266,6 @@ class DebuggerTest extends CakeTestCase
 
     /**
      * Test adding a format that is handled by a callback.
-     *
-     * @return void
      */
     public function testAddFormatCallback()
     {
@@ -303,8 +284,6 @@ class DebuggerTest extends CakeTestCase
 
     /**
      * Test method for testing addFormat with callbacks.
-     *
-     * @return void
      */
     public function customFormat($error, $strings)
     {
@@ -313,8 +292,6 @@ class DebuggerTest extends CakeTestCase
 
     /**
      * testTrimPath method
-     *
-     * @return void
      */
     public function testTrimPath()
     {
@@ -327,8 +304,6 @@ class DebuggerTest extends CakeTestCase
 
     /**
      * testExportVar method
-     *
-     * @return void
      */
     public function testExportVar()
     {
@@ -453,8 +428,6 @@ TEXT;
 
     /**
      * Test exporting various kinds of false.
-     *
-     * @return void
      */
     public function testExportVarZero()
     {
@@ -480,8 +453,6 @@ TEXT;
 
     /**
      * testLog method
-     *
-     * @return void
      */
     public function testLog()
     {
@@ -508,8 +479,6 @@ TEXT;
 
     /**
      * test log() depth
-     *
-     * @return void
      */
     public function testLogDepth()
     {
@@ -531,8 +500,6 @@ TEXT;
 
     /**
      * testDump method
-     *
-     * @return void
      */
     public function testDump()
     {
@@ -590,8 +557,6 @@ TEXT;
 
     /**
      * test getInstance.
-     *
-     * @return void
      */
     public function testGetInstance()
     {
@@ -613,8 +578,6 @@ TEXT;
      *
      * If a connection error occurs, the config variable is passed through exportVar
      * *** our database login credentials such that they are never visible
-     *
-     * @return void
      */
     public function testNoDbCredentials()
     {
@@ -646,8 +609,6 @@ TEXT;
 
     /**
      * Test that exportVar() doesn't loop through recursive structures.
-     *
-     * @return void
      */
     public function testExportVarRecursion()
     {
@@ -657,8 +618,6 @@ TEXT;
 
     /**
      * test trace exclude
-     *
-     * @return void
      */
     public function testTraceExclude()
     {

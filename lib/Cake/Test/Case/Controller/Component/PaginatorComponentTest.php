@@ -12,9 +12,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Controller.Component
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Controller', 'Controller');
@@ -78,7 +82,6 @@ class PaginatorControllerPost extends CakeTestModel
      * beforeFind method
      *
      * @param mixed $query
-     * @return void
      */
     public function beforeFind($query)
     {
@@ -90,7 +93,6 @@ class PaginatorControllerPost extends CakeTestModel
      *
      * @param mixed $type
      * @param array $options
-     * @return void
      */
     public function find($conditions = null, $fields = [], $order = null, $recursive = null)
     {
@@ -133,8 +135,6 @@ class ControllerPaginateModel extends CakeTestModel
 
     /**
      * paginateCount
-     *
-     * @return void
      */
     public function paginateCount($conditions, $recursive, $extra)
     {
@@ -307,8 +307,6 @@ class PaginatorComponentTest extends CakeTestCase
 
     /**
      * setup
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -324,8 +322,6 @@ class PaginatorComponentTest extends CakeTestCase
 
     /**
      * testPaginate method
-     *
-     * @return void
      */
     public function testPaginate()
     {
@@ -543,8 +539,6 @@ class PaginatorComponentTest extends CakeTestCase
 
     /**
      * Test that non-numeric values are rejected for page, and limit
-     *
-     * @return void
      */
     public function testPageParamCasting()
     {
@@ -574,8 +568,6 @@ class PaginatorComponentTest extends CakeTestCase
 
     /**
      * testPaginateExtraParams method
-     *
-     * @return void
      */
     public function testPaginateExtraParams()
     {
@@ -680,8 +672,6 @@ class PaginatorComponentTest extends CakeTestCase
 
     /**
      * Test that special paginate types are called and that the type param doesn't leak out into defaults or options.
-     *
-     * @return void
      */
     public function testPaginateSpecialType()
     {
@@ -711,8 +701,6 @@ class PaginatorComponentTest extends CakeTestCase
 
     /**
      * testDefaultPaginateParams method
-     *
-     * @return void
      */
     public function testDefaultPaginateParams()
     {
@@ -732,8 +720,6 @@ class PaginatorComponentTest extends CakeTestCase
 
     /**
      * test paginate() and model default order
-     *
-     * @return void
      */
     public function testPaginateOrderModelDefault()
     {
@@ -791,8 +777,6 @@ class PaginatorComponentTest extends CakeTestCase
 
     /**
      * test paginate() and virtualField interactions
-     *
-     * @return void
      */
     public function testPaginateOrderVirtualField()
     {
@@ -820,8 +804,6 @@ class PaginatorComponentTest extends CakeTestCase
 
     /**
      * test paginate() and virtualField on joined model
-     *
-     * @return void
      */
     public function testPaginateOrderVirtualFieldJoinedModel()
     {
@@ -847,7 +829,6 @@ class PaginatorComponentTest extends CakeTestCase
      * Tests for missing models
      *
      * @expectedException MissingModelException
-     * @return void
      */
     public function testPaginateMissingModel()
     {
@@ -858,8 +839,6 @@ class PaginatorComponentTest extends CakeTestCase
 
     /**
      * test that option merging prefers specific models
-     *
-     * @return void
      */
     public function testMergeOptionsModelSpecific()
     {
@@ -886,8 +865,6 @@ class PaginatorComponentTest extends CakeTestCase
 
     /**
      * test mergeOptions with named params.
-     *
-     * @return void
      */
     public function testMergeOptionsNamedParams()
     {
@@ -908,8 +885,6 @@ class PaginatorComponentTest extends CakeTestCase
 
     /**
      * test mergeOptions with custom scope
-     *
-     * @return void
      */
     public function testMergeOptionsCustomScope()
     {
@@ -977,8 +952,6 @@ class PaginatorComponentTest extends CakeTestCase
 
     /**
      * test mergeOptions with customFind key
-     *
-     * @return void
      */
     public function testMergeOptionsCustomFindKey()
     {
@@ -1007,8 +980,6 @@ class PaginatorComponentTest extends CakeTestCase
 
     /**
      * test merging options from the querystring.
-     *
-     * @return void
      */
     public function testMergeOptionsQueryString()
     {
@@ -1039,8 +1010,6 @@ class PaginatorComponentTest extends CakeTestCase
 
     /**
      * test that the default whitelist doesn't let people screw with things they should not be allowed to.
-     *
-     * @return void
      */
     public function testMergeOptionsDefaultWhiteList()
     {
@@ -1065,8 +1034,6 @@ class PaginatorComponentTest extends CakeTestCase
 
     /**
      * test that modifying the whitelist works.
-     *
-     * @return void
      */
     public function testMergeOptionsExtraWhitelist()
     {
@@ -1099,8 +1066,6 @@ class PaginatorComponentTest extends CakeTestCase
 
     /**
      * test mergeOptions with limit > maxLimit in code.
-     *
-     * @return void
      */
     public function testMergeOptionsMaxLimit()
     {
@@ -1134,8 +1099,6 @@ class PaginatorComponentTest extends CakeTestCase
 
     /**
      * test that invalid directions are ignored.
-     *
-     * @return void
      */
     public function testValidateSortInvalidDirection()
     {
@@ -1153,7 +1116,6 @@ class PaginatorComponentTest extends CakeTestCase
      * Test that a really large page number gets clamped to the max page size.
      *
      * @expectedException NotFoundException
-     * @return void
      */
     public function testOutOfRangePageNumberGetsClamped()
     {
@@ -1171,7 +1133,6 @@ class PaginatorComponentTest extends CakeTestCase
      * Test that a really REALLY large page number gets clamped to the max page size.
      *
      * @expectedException NotFoundException
-     * @return void
      */
     public function testOutOfVeryBigPageNumberGetsClamped()
     {
@@ -1187,8 +1148,6 @@ class PaginatorComponentTest extends CakeTestCase
 
     /**
      * testOutOfRangePageNumberAndPageCountZero
-     *
-     * @return void
      */
     public function testOutOfRangePageNumberAndPageCountZero()
     {
@@ -1217,8 +1176,6 @@ class PaginatorComponentTest extends CakeTestCase
 
     /**
      * test that fields not in whitelist won't be part of order conditions.
-     *
-     * @return void
      */
     public function testValidateSortWhitelistFailure()
     {
@@ -1234,8 +1191,6 @@ class PaginatorComponentTest extends CakeTestCase
 
     /**
      * test that fields in the whitelist are not validated
-     *
-     * @return void
      */
     public function testValidateSortWhitelistTrusted()
     {
@@ -1252,8 +1207,6 @@ class PaginatorComponentTest extends CakeTestCase
 
     /**
      * test that virtual fields work.
-     *
-     * @return void
      */
     public function testValidateSortVirtualField()
     {
@@ -1278,8 +1231,6 @@ class PaginatorComponentTest extends CakeTestCase
 
     /**
      * test that sorting fields is alias specific
-     *
-     * @return void
      */
     public function testValidateSortSharedFields()
     {
@@ -1304,8 +1255,6 @@ class PaginatorComponentTest extends CakeTestCase
 
     /**
      * test that multiple sort works.
-     *
-     * @return void
      */
     public function testValidateSortMultiple()
     {
@@ -1330,8 +1279,6 @@ class PaginatorComponentTest extends CakeTestCase
 
     /**
      * Test that no sort doesn't trigger an error.
-     *
-     * @return void
      */
     public function testValidateSortNoSort()
     {
@@ -1351,8 +1298,6 @@ class PaginatorComponentTest extends CakeTestCase
 
     /**
      * Test sorting with incorrect aliases on valid fields.
-     *
-     * @return void
      */
     public function testValidateSortInvalidAlias()
     {
@@ -1367,8 +1312,6 @@ class PaginatorComponentTest extends CakeTestCase
 
     /**
      * test that maxLimit is respected
-     *
-     * @return void
      */
     public function testCheckLimit()
     {
@@ -1390,8 +1333,6 @@ class PaginatorComponentTest extends CakeTestCase
 
     /**
      * testPaginateMaxLimit
-     *
-     * @return void
      */
     public function testPaginateMaxLimit()
     {
@@ -1429,8 +1370,6 @@ class PaginatorComponentTest extends CakeTestCase
 
     /**
      * test paginate() and virtualField overlapping with real fields.
-     *
-     * @return void
      */
     public function testPaginateOrderVirtualFieldSharedWithRealField()
     {
@@ -1474,8 +1413,6 @@ class PaginatorComponentTest extends CakeTestCase
 
     /**
      * test paginate() and custom find, to make sure the correct count is returned.
-     *
-     * @return void
      */
     public function testPaginateCustomFind()
     {
@@ -1516,8 +1453,6 @@ class PaginatorComponentTest extends CakeTestCase
 
     /**
      * test paginate() and custom find with fields array, to make sure the correct count is returned.
-     *
-     * @return void
      */
     public function testPaginateCustomFindFieldsArray()
     {
@@ -1550,8 +1485,6 @@ class PaginatorComponentTest extends CakeTestCase
 
     /**
      * test paginate() and custom find with customFind key, to make sure the correct count is returned.
-     *
-     * @return void
      */
     public function testPaginateCustomFindWithCustomFindKey()
     {
@@ -1584,8 +1517,6 @@ class PaginatorComponentTest extends CakeTestCase
 
     /**
      * test paginate() and custom find with fields array, to make sure the correct count is returned.
-     *
-     * @return void
      */
     public function testPaginateCustomFindGroupBy()
     {
@@ -1650,8 +1581,6 @@ class PaginatorComponentTest extends CakeTestCase
     /**
      * test paginate() and custom find with returning other query on count operation,
      * to make sure the correct count is returned.
-     *
-     * @return void
      */
     public function testPaginateCustomFindCount()
     {

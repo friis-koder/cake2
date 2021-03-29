@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Model
+ *
  * @since         CakePHP(tm) v 1.2.0.4206
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('DbAcl', 'Controller/Component/Acl');
@@ -160,7 +164,6 @@ class DbAroUserTest extends CakeTestModel
      * bindNode method
      *
      * @param string|array|Model $ref
-     * @return void
      */
     public function bindNode($ref = null)
     {
@@ -207,8 +210,6 @@ class AclNodeTest extends CakeTestCase
 
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -219,8 +220,6 @@ class AclNodeTest extends CakeTestCase
 
     /**
      * testNode method
-     *
-     * @return void
      */
     public function testNode()
     {
@@ -259,8 +258,6 @@ class AclNodeTest extends CakeTestCase
 
     /**
      * test that node() doesn't dig deeper than it should.
-     *
-     * @return void
      */
     public function testNodeWithDuplicatePathSegments()
     {
@@ -271,8 +268,6 @@ class AclNodeTest extends CakeTestCase
 
     /**
      * testNodeArrayFind method
-     *
-     * @return void
      */
     public function testNodeArrayFind()
     {
@@ -290,8 +285,6 @@ class AclNodeTest extends CakeTestCase
 
     /**
      * testNodeObjectFind method
-     *
-     * @return void
      */
     public function testNodeObjectFind()
     {
@@ -310,8 +303,6 @@ class AclNodeTest extends CakeTestCase
 
     /**
      * testNodeAliasParenting method
-     *
-     * @return void
      */
     public function testNodeAliasParenting()
     {
@@ -335,8 +326,6 @@ class AclNodeTest extends CakeTestCase
 
     /**
      * testNodeActionAuthorize method
-     *
-     * @return void
      */
     public function testNodeActionAuthorize()
     {

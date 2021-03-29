@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Routing
+ *
  * @since         CakePHP(tm) v 1.2.0.4206
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Router', 'Routing');
@@ -31,8 +35,6 @@ class RouterTest extends CakeTestCase
 {
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -42,8 +44,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -55,8 +55,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * testFullBaseUrl method
-     *
-     * @return void
      */
     public function testFullBaseUrl()
     {
@@ -68,8 +66,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * Tests that the base URL can be changed at runtime.
-     *
-     * @return void
      */
     public function testBaseUrl()
     {
@@ -85,8 +81,6 @@ class RouterTest extends CakeTestCase
     /**
      * Test that Router uses App.base to build URL's when there are no stored
      * request objects.
-     *
-     * @return void
      */
     public function testBaseUrlWithBasePath()
     {
@@ -97,8 +91,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * testRouteDefaultParams method
-     *
-     * @return void
      */
     public function testRouteDefaultParams()
     {
@@ -108,8 +100,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * testMapResources method
-     *
-     * @return void
      */
     public function testMapResources()
     {
@@ -158,8 +148,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * testMapResources with plugin controllers.
-     *
-     * @return void
      */
     public function testPluginMapResources()
     {
@@ -222,8 +210,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * Test mapResources with a plugin and prefix.
-     *
-     * @return void
      */
     public function testPluginMapResourcesWithPrefix()
     {
@@ -264,8 +250,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * testMultipleResourceRoute method
-     *
-     * @return void
      */
     public function testMultipleResourceRoute()
     {
@@ -282,8 +266,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * testGenerateUrlResourceRoute method
-     *
-     * @return void
      */
     public function testGenerateUrlResourceRoute()
     {
@@ -316,8 +298,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * testUrlNormalization method
-     *
-     * @return void
      */
     public function testUrlNormalization()
     {
@@ -388,8 +368,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * test generation of basic URLs.
-     *
-     * @return void
      */
     public function testUrlGenerationBasic()
     {
@@ -526,8 +504,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * Test that catch all routes work with a variety of falsey inputs.
-     *
-     * @return void
      */
     public function testUrlCatchAllRoute()
     {
@@ -551,8 +527,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * Tests using arrays in named parameters
-     *
-     * @return void
      */
     public function testArrayNamedParameters()
     {
@@ -608,8 +582,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * Test generation of routes with query string parameters.
-     *
-     * @return void
      */
     public function testUrlGenerationWithQueryStrings()
     {
@@ -633,8 +605,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * test that regex validation of keyed route params is working.
-     *
-     * @return void
      */
     public function testUrlGenerationWithRegexQualifiedParams()
     {
@@ -721,8 +691,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * Test URL generation with an admin prefix
-     *
-     * @return void
      */
     public function testUrlGenerationWithAdminPrefix()
     {
@@ -914,8 +882,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * testUrlGenerationWithExtensions method
-     *
-     * @return void
      */
     public function testUrlGenerationWithExtensions()
     {
@@ -939,8 +905,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * testPluginUrlGeneration method
-     *
-     * @return void
      */
     public function testUrlGenerationPlugins()
     {
@@ -981,8 +945,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * test that you can leave active plugin routes with plugin = null
-     *
-     * @return void
      */
     public function testCanLeavePlugin()
     {
@@ -1023,8 +985,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * Test that URL's fail to parse when they are prefixed with //
-     *
-     * @return void
      */
     public function testUrlParseFailureDoubleSlash()
     {
@@ -1041,8 +1001,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * testUrlParsing method
-     *
-     * @return void
      */
     public function testUrlParsing()
     {
@@ -1168,8 +1126,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * test that the persist key works.
-     *
-     * @return void
      */
     public function testPersistentParameters()
     {
@@ -1230,8 +1186,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * testUuidRoutes method
-     *
-     * @return void
      */
     public function testUuidRoutes()
     {
@@ -1247,8 +1201,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * testRouteSymmetry method
-     *
-     * @return void
      */
     public function testRouteSymmetry()
     {
@@ -1286,7 +1238,6 @@ class RouterTest extends CakeTestCase
     /**
      * Test parse and reverse symmetry
      *
-     * @return void
      * @dataProvider parseReverseSymmetryData
      */
     public function testParseReverseSymmetry($url)
@@ -1315,8 +1266,6 @@ class RouterTest extends CakeTestCase
     /**
      * Test that Routing.prefixes are used when a Router instance is created
      * or reset
-     *
-     * @return void
      */
     public function testRoutingPrefixesSetting()
     {
@@ -1339,8 +1288,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * Test prefix routing and plugin combinations
-     *
-     * @return void
      */
     public function testPrefixRoutingAndPlugins()
     {
@@ -1405,8 +1352,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * testParseExtensions method
-     *
-     * @return void
      */
     public function testParseExtensions()
     {
@@ -1418,8 +1363,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * testSetExtensions method
-     *
-     * @return void
      */
     public function testSetExtensions()
     {
@@ -1450,8 +1393,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * testExtensionParsing method
-     *
-     * @return void
      */
     public function testExtensionParsing()
     {
@@ -1504,8 +1445,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * testQuerystringGeneration method
-     *
-     * @return void
      */
     public function testQuerystringGeneration()
     {
@@ -1534,8 +1473,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * testConnectNamed method
-     *
-     * @return void
      */
     public function testConnectNamed()
     {
@@ -1566,8 +1503,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * testNamedArgsUrlGeneration method
-     *
-     * @return void
      */
     public function testNamedArgsUrlGeneration()
     {
@@ -1628,8 +1563,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * testNamedArgsUrlParsing method
-     *
-     * @return void
      */
     public function testNamedArgsUrlParsing()
     {
@@ -1691,7 +1624,6 @@ class RouterTest extends CakeTestCase
     /**
      * Test URL generation with legacy (1.2) style prefix routes.
      *
-     * @return void
      * @see testUrlGenerationWithAutoPrefixes
      */
     public function testUrlGenerationWithLegacyPrefixes()
@@ -1763,8 +1695,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * test newer style automatically generated prefix routes.
-     *
-     * @return void
      */
     public function testUrlGenerationWithAutoPrefixes()
     {
@@ -1836,8 +1766,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * test that auto-generated prefix routes persist
-     *
-     * @return void
      */
     public function testAutoPrefixRoutePersistence()
     {
@@ -1868,8 +1796,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * test that setting a prefix override the current one
-     *
-     * @return void
      */
     public function testPrefixOverride()
     {
@@ -1911,8 +1837,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * Test that setting a prefix to false is ignored, as its generally user error.
-     *
-     * @return void
      */
     public function testPrefixFalseIgnored()
     {
@@ -1935,8 +1859,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * testRemoveBase method
-     *
-     * @return void
      */
     public function testRemoveBase()
     {
@@ -1967,8 +1889,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * testPagesUrlParsing method
-     *
-     * @return void
      */
     public function testPagesUrlParsing()
     {
@@ -2014,8 +1934,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * test that requests with a trailing dot don't loose the do.
-     *
-     * @return void
      */
     public function testParsingWithTrailingPeriod()
     {
@@ -2030,8 +1948,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * test that requests with a trailing dot don't loose the do.
-     *
-     * @return void
      */
     public function testParsingWithTrailingPeriodAndParseExtensions()
     {
@@ -2048,8 +1964,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * test that patterns work for :action
-     *
-     * @return void
      */
     public function testParsingWithPatternOnAction()
     {
@@ -2081,8 +1995,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * testParsingWithPrefixes method
-     *
-     * @return void
      */
     public function testParsingWithPrefixes()
     {
@@ -2151,8 +2063,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * Tests URL generation with flags and prefixes in and out of context
-     *
-     * @return void
      */
     public function testUrlWritingWithPrefixes()
     {
@@ -2186,8 +2096,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * test url generation with prefixes and custom routes
-     *
-     * @return void
      */
     public function testUrlWritingWithPrefixesAndCustomRoutes()
     {
@@ -2218,8 +2126,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * testPassedArgsOrder method
-     *
-     * @return void
      */
     public function testPassedArgsOrder()
     {
@@ -2273,8 +2179,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * testRegexRouteMatching method
-     *
-     * @return void
      */
     public function testRegexRouteMatching()
     {
@@ -2317,8 +2221,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * testStripPlugin
-     *
-     * @return void
      */
     public function testStripPlugin()
     {
@@ -2333,8 +2235,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * testCurrentRouteWhenNonExistentRoute
-     *
-     * @return void
      */
     public function testCurrentRouteWhenNonExistentRoute()
     {
@@ -2346,8 +2246,6 @@ class RouterTest extends CakeTestCase
      * testCurrentRoute
      *
      * This test needs some improvement and actual requestAction() usage
-     *
-     * @return void
      */
     public function testCurrentRoute()
     {
@@ -2360,8 +2258,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * testRequestRoute
-     *
-     * @return void
      */
     public function testRequestRoute()
     {
@@ -2386,8 +2282,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * testGetParams
-     *
-     * @return void
      */
     public function testGetParams()
     {
@@ -2419,8 +2313,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * test that connectDefaults() can disable default route connection
-     *
-     * @return void
      */
     public function testDefaultsMethod()
     {
@@ -2432,8 +2324,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * test that the required default routes are connected.
-     *
-     * @return void
      */
     public function testConnectDefaultRoutes()
     {
@@ -2470,8 +2360,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * test using a custom route class for route connection
-     *
-     * @return void
      */
     public function testUsingCustomRouteClass()
     {
@@ -2492,8 +2380,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * test using custom route class in PluginDot notation
-     *
-     * @return void
      */
     public function testUsingCustomRouteClassPluginDotSyntax()
     {
@@ -2517,7 +2403,6 @@ class RouterTest extends CakeTestCase
      * test that route classes must extend CakeRoute
      *
      * @expectedException RouterException
-     * @return void
      */
     public function testCustomRouteException()
     {
@@ -2528,8 +2413,6 @@ class RouterTest extends CakeTestCase
      * test reversing parameter arrays back into strings.
      *
      * Mark the router as initialized so it doesn't auto-load routes
-     *
-     * @return void
      */
     public function testReverseToken()
     {
@@ -2673,8 +2556,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * Test that extensions work with Router::reverse()
-     *
-     * @return void
      */
     public function testReverseWithExtension()
     {
@@ -2696,8 +2577,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * test that setRequestInfo can accept arrays and turn that into a CakeRequest object.
-     *
-     * @return void
      */
     public function testSetRequestInfoLegacy()
     {
@@ -2722,8 +2601,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * Test that Router::url() uses the first request
-     *
-     * @return void
      */
     public function testUrlWithRequestAction()
     {
@@ -2755,8 +2632,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * test that a route object returning a full URL is not modified.
-     *
-     * @return void
      */
     public function testUrlFullUrlReturnFromRoute()
     {
@@ -2773,8 +2648,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * test protocol in url
-     *
-     * @return void
      */
     public function testUrlProtocol()
     {
@@ -2815,8 +2688,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * Testing that patterns on the :action param work properly.
-     *
-     * @return void
      */
     public function testPatternOnAction()
     {
@@ -2841,8 +2712,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * Tests resourceMap as getter and setter.
-     *
-     * @return void
      */
     public function testResourceMap()
     {
@@ -2873,8 +2742,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * test setting redirect routes
-     *
-     * @return void
      */
     public function testRouteRedirection()
     {
@@ -2896,8 +2763,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * Test setting the default route class
-     *
-     * @return void
      */
     public function testDefaultRouteClass()
     {
@@ -2910,8 +2775,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * Test getting the default route class
-     *
-     * @return void
      */
     public function testDefaultRouteClassGetter()
     {
@@ -2926,7 +2789,6 @@ class RouterTest extends CakeTestCase
      * Test that route classes must extend CakeRoute
      *
      * @expectedException RouterException
-     * @return void
      */
     public function testDefaultRouteException()
     {
@@ -2938,7 +2800,6 @@ class RouterTest extends CakeTestCase
      * Test that route classes must extend CakeRoute
      *
      * @expectedException RouterException
-     * @return void
      */
     public function testSettingInvalidDefaultRouteException()
     {
@@ -2949,7 +2810,6 @@ class RouterTest extends CakeTestCase
      * Test that class must exist
      *
      * @expectedException RouterException
-     * @return void
      */
     public function testSettingNonExistentDefaultRouteException()
     {
@@ -2958,8 +2818,6 @@ class RouterTest extends CakeTestCase
 
     /**
      * Tests generating well-formed querystrings
-     *
-     * @return void
      */
     public function testQueryString()
     {

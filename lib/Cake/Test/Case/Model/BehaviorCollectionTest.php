@@ -12,9 +12,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Test.Case.Model
+ *
  * @since         1.2
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('AppModel', 'Model');
@@ -40,7 +44,6 @@ class TestBehavior extends ModelBehavior
      *
      * @param Model $model
      * @param array $config
-     * @return void
      */
     public function setup(Model $model, $config = [])
     {
@@ -56,7 +59,6 @@ class TestBehavior extends ModelBehavior
      *
      * @param Model $model
      * @param array $query
-     * @return void
      */
     public function beforeFind(Model $model, $query)
     {
@@ -83,7 +85,6 @@ class TestBehavior extends ModelBehavior
      * @param Model $model
      * @param array $results
      * @param bool $primary
-     * @return void
      */
     public function afterFind(Model $model, $results, $primary = false)
     {
@@ -108,7 +109,9 @@ class TestBehavior extends ModelBehavior
      *
      * @param Model $model Model using this behavior
      * @param array $options Options passed from Model::save().
+     *
      * @return mixed False if the operation should abort. Any other result will continue.
+     *
      * @see Model::save()
      */
     public function beforeSave(Model $model, $options = [])
@@ -135,7 +138,6 @@ class TestBehavior extends ModelBehavior
      * @param Model $model
      * @param bool $created
      * @param array $options Options passed from Model::save().
-     * @return void
      */
     public function afterSave(Model $model, $created, $options = [])
     {
@@ -170,7 +172,9 @@ class TestBehavior extends ModelBehavior
      *
      * @param Model $Model Model invalidFields was called on.
      * @param array $options Options passed from Model::save().
+     *
      * @return bool
+     *
      * @see Model::save()
      */
     public function beforeValidate(Model $model, $options = [])
@@ -202,7 +206,6 @@ class TestBehavior extends ModelBehavior
      *
      * @param Model $model
      * @param bool $cascade
-     * @return void
      */
     public function afterValidate(Model $model)
     {
@@ -225,7 +228,6 @@ class TestBehavior extends ModelBehavior
      *
      * @param Model $model
      * @param bool $cascade
-     * @return void
      */
     public function beforeDelete(Model $model, $cascade = true)
     {
@@ -252,7 +254,6 @@ class TestBehavior extends ModelBehavior
      * afterDelete method
      *
      * @param Model $model
-     * @return void
      */
     public function afterDelete(Model $model)
     {
@@ -272,7 +273,6 @@ class TestBehavior extends ModelBehavior
      * onError method
      *
      * @param Model $model
-     * @return void
      */
     public function onError(Model $model, $error)
     {
@@ -287,7 +287,6 @@ class TestBehavior extends ModelBehavior
      * beforeTest method
      *
      * @param Model $model
-     * @return void
      */
     public function beforeTest(Model $model)
     {
@@ -304,7 +303,6 @@ class TestBehavior extends ModelBehavior
      *
      * @param Model $model
      * @param bool $param
-     * @return void
      */
     public function testMethod(Model $model, $param = true)
     {
@@ -317,7 +315,6 @@ class TestBehavior extends ModelBehavior
      * testData method
      *
      * @param Model $model
-     * @return void
      */
     public function testData(Model $model)
     {
@@ -334,7 +331,6 @@ class TestBehavior extends ModelBehavior
      *
      * @param Model $model
      * @param string|array $field
-     * @return void
      */
     public function validateField(Model $model, $field)
     {
@@ -347,7 +343,6 @@ class TestBehavior extends ModelBehavior
      * @param Model $model
      * @param string $method
      * @param string $query
-     * @return void
      */
     public function speakEnglish(Model $model, $method, $query)
     {
@@ -507,8 +502,6 @@ class BehaviorCollectionTest extends CakeTestCase
 
     /**
      * Test load() with enabled => false
-     *
-     * @return void
      */
     public function testLoadDisabled()
     {
@@ -522,8 +515,6 @@ class BehaviorCollectionTest extends CakeTestCase
 
     /**
      * Tests loading aliased behaviors
-     *
-     * @return void
      */
     public function testLoadAlias()
     {
@@ -552,8 +543,6 @@ class BehaviorCollectionTest extends CakeTestCase
 
     /**
      * testBehaviorBinding method
-     *
-     * @return void
      */
     public function testBehaviorBinding()
     {
@@ -618,8 +607,6 @@ class BehaviorCollectionTest extends CakeTestCase
 
     /**
      * test that attach()/detach() works with plugin.banana
-     *
-     * @return void
      */
     public function testDetachWithPluginNames()
     {
@@ -643,7 +630,6 @@ class BehaviorCollectionTest extends CakeTestCase
      * test that attaching a non existent Behavior triggers a cake error.
      *
      * @expectedException MissingBehaviorException
-     * @return void
      */
     public function testInvalidBehaviorCausingCakeError()
     {
@@ -653,8 +639,6 @@ class BehaviorCollectionTest extends CakeTestCase
 
     /**
      * testBehaviorToggling method
-     *
-     * @return void
      */
     public function testBehaviorToggling()
     {
@@ -688,8 +672,6 @@ class BehaviorCollectionTest extends CakeTestCase
 
     /**
      * testBehaviorFindCallbacks method
-     *
-     * @return void
      */
     public function testBehaviorFindCallbacks()
     {
@@ -747,8 +729,6 @@ class BehaviorCollectionTest extends CakeTestCase
 
     /**
      * testBehaviorHasManyFindCallbacks method
-     *
-     * @return void
      */
     public function testBehaviorHasManyFindCallbacks()
     {
@@ -789,8 +769,6 @@ class BehaviorCollectionTest extends CakeTestCase
 
     /**
      * testBehaviorHasOneFindCallbacks method
-     *
-     * @return void
      */
     public function testBehaviorHasOneFindCallbacks()
     {
@@ -826,8 +804,6 @@ class BehaviorCollectionTest extends CakeTestCase
 
     /**
      * testBehaviorBelongsToFindCallbacks method
-     *
-     * @return void
      */
     public function testBehaviorBelongsToFindCallbacks()
     {
@@ -885,8 +861,6 @@ class BehaviorCollectionTest extends CakeTestCase
 
     /**
      * testBehaviorSaveCallbacks method
-     *
-     * @return void
      */
     public function testBehaviorSaveCallbacks()
     {
@@ -967,8 +941,6 @@ class BehaviorCollectionTest extends CakeTestCase
 
     /**
      * testBehaviorDeleteCallbacks method
-     *
-     * @return void
      */
     public function testBehaviorDeleteCallbacks()
     {
@@ -1001,8 +973,6 @@ class BehaviorCollectionTest extends CakeTestCase
 
     /**
      * testBehaviorOnErrorCallback method
-     *
-     * @return void
      */
     public function testBehaviorOnErrorCallback()
     {
@@ -1016,8 +986,6 @@ class BehaviorCollectionTest extends CakeTestCase
 
     /**
      * testBehaviorValidateCallback method
-     *
-     * @return void
      */
     public function testBehaviorValidateCallback()
     {
@@ -1045,8 +1013,6 @@ class BehaviorCollectionTest extends CakeTestCase
 
     /**
      * testBehaviorValidateAfterCallback method
-     *
-     * @return void
      */
     public function testBehaviorValidateAfterCallback()
     {
@@ -1067,8 +1033,6 @@ class BehaviorCollectionTest extends CakeTestCase
 
     /**
      * testBehaviorValidateMethods method
-     *
-     * @return void
      */
     public function testBehaviorValidateMethods()
     {
@@ -1086,8 +1050,6 @@ class BehaviorCollectionTest extends CakeTestCase
 
     /**
      * testBehaviorMethodDispatching method
-     *
-     * @return void
      */
     public function testBehaviorMethodDispatching()
     {
@@ -1112,8 +1074,6 @@ class BehaviorCollectionTest extends CakeTestCase
 
     /**
      * testBehaviorMethodDispatchingWithData method
-     *
-     * @return void
      */
     public function testBehaviorMethodDispatchingWithData()
     {
@@ -1129,8 +1089,6 @@ class BehaviorCollectionTest extends CakeTestCase
 
     /**
      * undocumented function
-     *
-     * @return void
      */
     public function testBindModelCallsInBehaviors()
     {
@@ -1175,8 +1133,6 @@ class BehaviorCollectionTest extends CakeTestCase
 
     /**
      * Test attach and detaching
-     *
-     * @return void
      */
     public function testBehaviorAttachAndDetach()
     {
@@ -1191,8 +1147,6 @@ class BehaviorCollectionTest extends CakeTestCase
 
     /**
      * test that hasMethod works with basic functions.
-     *
-     * @return void
      */
     public function testHasMethodBasic()
     {
@@ -1208,8 +1162,6 @@ class BehaviorCollectionTest extends CakeTestCase
 
     /**
      * test that hasMethod works with mapped methods.
-     *
-     * @return void
      */
     public function testHasMethodMappedMethods()
     {
@@ -1223,8 +1175,6 @@ class BehaviorCollectionTest extends CakeTestCase
 
     /**
      * test hasMethod returning a 'callback'
-     *
-     * @return void
      */
     public function testHasMethodAsCallback()
     {
@@ -1247,8 +1197,6 @@ class BehaviorCollectionTest extends CakeTestCase
 
     /**
      * Test that behavior priority
-     *
-     * @return void
      */
     public function testBehaviorOrderCallbacks()
     {

@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Model
+ *
  * @since         CakePHP(tm) v 1.2.0.4206
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 require_once dirname(__FILE__) . DS . 'ModelTestBase.php';
@@ -26,8 +30,6 @@ class ModelDeleteTest extends BaseModelTest
 {
     /**
      * testDeleteHabtmReferenceWithConditions method
-     *
-     * @return void
      */
     public function testDeleteHabtmReferenceWithConditions()
     {
@@ -117,8 +119,6 @@ class ModelDeleteTest extends BaseModelTest
 
     /**
      * testDeleteArticleBLinks method
-     *
-     * @return void
      */
     public function testDeleteArticleBLinks()
     {
@@ -146,8 +146,6 @@ class ModelDeleteTest extends BaseModelTest
 
     /**
      * testDeleteDependentWithConditions method
-     *
-     * @return void
      */
     public function testDeleteDependentWithConditions()
     {
@@ -186,8 +184,6 @@ class ModelDeleteTest extends BaseModelTest
 
     /**
      * testDel method
-     *
-     * @return void
      */
     public function testDelete()
     {
@@ -265,8 +261,6 @@ class ModelDeleteTest extends BaseModelTest
 
     /**
      * test that delete() updates the correct records counterCache() records.
-     *
-     * @return void
      */
     public function testDeleteUpdatingCounterCacheCorrectly()
     {
@@ -283,8 +277,6 @@ class ModelDeleteTest extends BaseModelTest
 
     /**
      * testDeleteAll method
-     *
-     * @return void
      */
     public function testDeleteAll()
     {
@@ -428,8 +420,6 @@ class ModelDeleteTest extends BaseModelTest
 
     /**
      * testDeleteAll diamond operator method
-     *
-     * @return void
      */
     public function testDeleteAllDiamondOperator()
     {
@@ -445,7 +435,6 @@ class ModelDeleteTest extends BaseModelTest
      * testDeleteAllUnknownColumn method
      *
      * @expectedException PDOException
-     * @return void
      */
     public function testDeleteAllUnknownColumn()
     {
@@ -459,8 +448,6 @@ class ModelDeleteTest extends BaseModelTest
      * testDeleteAllFailedFind method
      *
      * Eg: Behavior callback stops the event, find returns null
-     *
-     * @return void
      */
     public function testDeleteAllFailedFind()
     {
@@ -479,8 +466,6 @@ class ModelDeleteTest extends BaseModelTest
      *
      * Ensure find done in deleteAll only returns distinct ids. A wacky combination
      * of association and conditions can sometimes generate multiple rows per id.
-     *
-     * @return void
      */
     public function testDeleteAllMultipleRowsPerId()
     {
@@ -516,8 +501,6 @@ class ModelDeleteTest extends BaseModelTest
      * testDeleteAllWithOrderProperty
      *
      * Ensure find done in deleteAll works with models that has $order property set
-     *
-     * @return void
      */
     public function testDeleteAllWithOrderProperty()
     {
@@ -542,8 +525,6 @@ class ModelDeleteTest extends BaseModelTest
 
     /**
      * testRecursiveDel method
-     *
-     * @return void
      */
     public function testRecursiveDel()
     {
@@ -578,8 +559,6 @@ class ModelDeleteTest extends BaseModelTest
 
     /**
      * testDependentExclusiveDelete method
-     *
-     * @return void
      */
     public function testDependentExclusiveDelete()
     {
@@ -597,8 +576,6 @@ class ModelDeleteTest extends BaseModelTest
 
     /**
      * testDeleteLinks method
-     *
-     * @return void
      */
     public function testDeleteLinks()
     {
@@ -645,8 +622,6 @@ class ModelDeleteTest extends BaseModelTest
 
     /**
      * test that a plugin model as the 'with' model doesn't have issues
-     *
-     * @return void
      */
     public function testDeleteLinksWithPLuginJoinModel()
     {
@@ -664,8 +639,6 @@ class ModelDeleteTest extends BaseModelTest
 
     /**
      * testDeleteDependent method
-     *
-     * @return void
      */
     public function testDeleteDependent()
     {
@@ -766,8 +739,6 @@ class ModelDeleteTest extends BaseModelTest
 
     /**
      * test deleteLinks with Multiple habtm associations
-     *
-     * @return void
      */
     public function testDeleteLinksWithMultipleHabtmAssociations()
     {
@@ -802,8 +773,6 @@ class ModelDeleteTest extends BaseModelTest
 
     /**
      * testHabtmDeleteLinksWhenNoPrimaryKeyInJoinTable method
-     *
-     * @return void
      */
     public function testHabtmDeleteLinksWhenNoPrimaryKeyInJoinTable()
     {
@@ -868,8 +837,6 @@ class ModelDeleteTest extends BaseModelTest
 
     /**
      * test that beforeDelete returning false can abort deletion.
-     *
-     * @return void
      */
     public function testBeforeDeleteDeleteAbortion()
     {
@@ -887,8 +854,6 @@ class ModelDeleteTest extends BaseModelTest
     /**
      * test for a habtm deletion error that occurs in postgres but should not.
      * And should not occur in any dbo.
-     *
-     * @return void
      */
     public function testDeleteHabtmPostgresFailure()
     {
@@ -944,8 +909,6 @@ class ModelDeleteTest extends BaseModelTest
 
     /**
      * test that deleting records inside the beforeDelete doesn't truncate the table.
-     *
-     * @return void
      */
     public function testBeforeDeleteWipingTable()
     {
@@ -973,8 +936,6 @@ class ModelDeleteTest extends BaseModelTest
 
     /**
      * test that deleting the same record from the beforeDelete and the delete doesn't truncate the table.
-     *
-     * @return void
      */
     public function testBeforeDeleteWipingTableWithDuplicateDelete()
     {

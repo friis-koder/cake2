@@ -10,8 +10,10 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
  * @since         CakePHP(tm) v 1.3
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('CakeBaseReporter', 'TestSuite/Reporter');
@@ -26,8 +28,6 @@ class CakeTextReporter extends CakeBaseReporter
 {
     /**
      * Sets the text/plain header if the test is not a CLI test.
-     *
-     * @return void
      */
     public function paintDocumentStart()
     {
@@ -38,8 +38,6 @@ class CakeTextReporter extends CakeBaseReporter
 
     /**
      * Paints a pass
-     *
-     * @return void
      */
     public function paintPass()
     {
@@ -51,7 +49,6 @@ class CakeTextReporter extends CakeBaseReporter
      *
      * @param PHPUnit_Framework_AssertionFailedError $message Failure object displayed in
      *   the context of the other tests.
-     * @return void
      */
     public function paintFail($message)
     {
@@ -73,7 +70,6 @@ class CakeTextReporter extends CakeBaseReporter
      * the passes and failures.
      *
      * @param PHPUnit_Framework_TestResult $result Result object
-     * @return void
      */
     public function paintFooter($result)
     {
@@ -100,8 +96,6 @@ class CakeTextReporter extends CakeBaseReporter
 
     /**
      * Paints the title only.
-     *
-     * @return void
      */
     public function paintHeader()
     {
@@ -113,7 +107,6 @@ class CakeTextReporter extends CakeBaseReporter
      * Paints a PHP exception.
      *
      * @param Exception $exception Exception to describe.
-     * @return void
      */
     public function paintException($exception)
     {
@@ -128,7 +121,6 @@ class CakeTextReporter extends CakeBaseReporter
      * Prints the message for skipping tests.
      *
      * @param string $message Text of skip condition.
-     * @return void
      */
     public function paintSkip($message)
     {
@@ -139,7 +131,6 @@ class CakeTextReporter extends CakeBaseReporter
      * Paints formatted text such as dumped variables.
      *
      * @param string $message Text to show.
-     * @return void
      */
     public function paintFormattedMessage($message)
     {
@@ -151,8 +142,6 @@ class CakeTextReporter extends CakeBaseReporter
      * Generate a test case list in plain text.
      * Creates as series of URLs for tests that can be run.
      * One case per line.
-     *
-     * @return void
      */
     public function testCaseList()
     {
@@ -184,7 +173,6 @@ class CakeTextReporter extends CakeBaseReporter
      * Generates a Text summary of the coverage data.
      *
      * @param array $coverage Array of coverage data.
-     * @return void
      */
     public function paintCoverage($coverage)
     {

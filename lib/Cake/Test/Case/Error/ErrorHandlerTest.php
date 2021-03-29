@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Error
+ *
  * @since         CakePHP(tm) v 1.2.0.5432
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('ErrorHandler', 'Error');
@@ -28,7 +32,6 @@ class FaultyExceptionRenderer extends ExceptionRenderer
     /**
      * Dummy rendering implementation.
      *
-     * @return void
      * @throws Exception
      */
     public function render()
@@ -48,8 +51,6 @@ class ErrorHandlerTest extends CakeTestCase
 
     /**
      * setup create a request object to get out of router later.
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -72,8 +73,6 @@ class ErrorHandlerTest extends CakeTestCase
 
     /**
      * tearDown
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -87,8 +86,6 @@ class ErrorHandlerTest extends CakeTestCase
 
     /**
      * test error handling when debug is on, an error should be printed from Debugger.
-     *
-     * @return void
      */
     public function testHandleErrorDebugOn()
     {
@@ -108,8 +105,6 @@ class ErrorHandlerTest extends CakeTestCase
 
     /**
      * provides errors for mapping tests.
-     *
-     * @return void
      */
     public static function errorProvider()
     {
@@ -123,7 +118,6 @@ class ErrorHandlerTest extends CakeTestCase
      * test error mappings
      *
      * @dataProvider errorProvider
-     * @return void
      */
     public function testErrorMapping($error, $expected)
     {
@@ -141,8 +135,6 @@ class ErrorHandlerTest extends CakeTestCase
 
     /**
      * test error prepended by @
-     *
-     * @return void
      */
     public function testErrorSuppressed()
     {
@@ -159,8 +151,6 @@ class ErrorHandlerTest extends CakeTestCase
 
     /**
      * Test that errors go into CakeLog when debug = 0.
-     *
-     * @return void
      */
     public function testHandleErrorDebugOff()
     {
@@ -188,8 +178,6 @@ class ErrorHandlerTest extends CakeTestCase
 
     /**
      * Test that errors going into CakeLog include traces.
-     *
-     * @return void
      */
     public function testHandleErrorLoggingTrace()
     {
@@ -218,8 +206,6 @@ class ErrorHandlerTest extends CakeTestCase
 
     /**
      * test handleException generating a page.
-     *
-     * @return void
      */
     public function testHandleException()
     {
@@ -232,8 +218,6 @@ class ErrorHandlerTest extends CakeTestCase
 
     /**
      * test handleException generating log.
-     *
-     * @return void
      */
     public function testHandleExceptionLog()
     {
@@ -255,8 +239,6 @@ class ErrorHandlerTest extends CakeTestCase
 
     /**
      * test handleException generating log.
-     *
-     * @return void
      */
     public function testHandleExceptionLogSkipping()
     {
@@ -285,8 +267,6 @@ class ErrorHandlerTest extends CakeTestCase
 
     /**
      * tests it is possible to load a plugin exception renderer
-     *
-     * @return void
      */
     public function testLoadPluginHandler()
     {
@@ -309,8 +289,6 @@ class ErrorHandlerTest extends CakeTestCase
      * test handleFatalError generating a page.
      *
      * These tests start two buffers as handleFatalError blows the outer one up.
-     *
-     * @return void
      */
     public function testHandleFatalErrorPage()
     {
@@ -337,8 +315,6 @@ class ErrorHandlerTest extends CakeTestCase
 
     /**
      * test handleException generating log.
-     *
-     * @return void
      */
     public function testHandleFatalErrorLog()
     {
@@ -357,8 +333,6 @@ class ErrorHandlerTest extends CakeTestCase
 
     /**
      * testExceptionRendererNestingDebug method
-     *
-     * @return void
      */
     public function testExceptionRendererNestingDebug()
     {
@@ -381,8 +355,6 @@ class ErrorHandlerTest extends CakeTestCase
 
     /**
      * testExceptionRendererNestingProduction method
-     *
-     * @return void
      */
     public function testExceptionRendererNestingProduction()
     {

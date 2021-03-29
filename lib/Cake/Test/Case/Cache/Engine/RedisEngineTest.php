@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/view/1196/Testing CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Cache.Engine
+ *
  * @since         CakePHP(tm) v 2.2
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Cache', 'Cache');
@@ -27,8 +31,6 @@ class RedisEngineTest extends CakeTestCase
 {
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -53,8 +55,6 @@ class RedisEngineTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -68,8 +68,6 @@ class RedisEngineTest extends CakeTestCase
 
     /**
      * testSettings method
-     *
-     * @return void
      */
     public function testSettings()
     {
@@ -93,8 +91,6 @@ class RedisEngineTest extends CakeTestCase
 
     /**
      * testConnect method
-     *
-     * @return void
      */
     public function testConnect()
     {
@@ -104,8 +100,6 @@ class RedisEngineTest extends CakeTestCase
 
     /**
      * testMultiDatabaseOperations method
-     *
-     * @return void
      */
     public function testMultiDatabaseOperations()
     {
@@ -150,8 +144,6 @@ class RedisEngineTest extends CakeTestCase
 
     /**
      * test write numbers method
-     *
-     * @return void
      */
     public function testWriteNumbers()
     {
@@ -167,8 +159,6 @@ class RedisEngineTest extends CakeTestCase
 
     /**
      * testReadAndWriteCache method
-     *
-     * @return void
      */
     public function testReadAndWriteCache()
     {
@@ -195,8 +185,6 @@ class RedisEngineTest extends CakeTestCase
 
     /**
      * testExpiry method
-     *
-     * @return void
      */
     public function testExpiry()
     {
@@ -244,8 +232,6 @@ class RedisEngineTest extends CakeTestCase
 
     /**
      * testDeleteCache method
-     *
-     * @return void
      */
     public function testDeleteCache()
     {
@@ -259,8 +245,6 @@ class RedisEngineTest extends CakeTestCase
 
     /**
      * testDecrement method
-     *
-     * @return void
      */
     public function testDecrement()
     {
@@ -283,8 +267,6 @@ class RedisEngineTest extends CakeTestCase
 
     /**
      * testIncrement method
-     *
-     * @return void
      */
     public function testIncrement()
     {
@@ -304,8 +286,6 @@ class RedisEngineTest extends CakeTestCase
 
     /**
      * test clearing redis.
-     *
-     * @return void
      */
     public function testClear()
     {
@@ -331,8 +311,6 @@ class RedisEngineTest extends CakeTestCase
 
     /**
      * test that a 0 duration can successfully write.
-     *
-     * @return void
      */
     public function testZeroDuration()
     {
@@ -348,8 +326,6 @@ class RedisEngineTest extends CakeTestCase
      * Tests that configuring groups for stored keys return the correct values when read/written
      * Shows that altering the group value is equivalent to deleting all keys under the same
      * group
-     *
-     * @return void
      */
     public function testGroupReadWrite()
     {
@@ -380,8 +356,6 @@ class RedisEngineTest extends CakeTestCase
 
     /**
      * Tests that deleteing from a groups-enabled config is possible
-     *
-     * @return void
      */
     public function testGroupDelete()
     {
@@ -399,8 +373,6 @@ class RedisEngineTest extends CakeTestCase
 
     /**
      * Test clearing a cache group
-     *
-     * @return void
      */
     public function testGroupClear()
     {
@@ -421,8 +393,6 @@ class RedisEngineTest extends CakeTestCase
 
     /**
      * Test add method.
-     *
-     * @return void
      */
     public function testAdd()
     {

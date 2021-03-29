@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Model
+ *
  * @since         CakePHP(tm) v 1.2.0.4206
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 require_once dirname(__FILE__) . DS . 'ModelTestBase.php';
@@ -58,7 +62,6 @@ class ModelIntegrationTest extends BaseModelTest
      * testAssociationLazyLoading
      *
      * @group lazyloading
-     * @return void
      */
     public function testAssociationLazyLoading()
     {
@@ -95,7 +98,6 @@ class ModelIntegrationTest extends BaseModelTest
      * testAssociationLazyLoadWithHABTM
      *
      * @group lazyloading
-     * @return void
      */
     public function testAssociationLazyLoadWithHABTM()
     {
@@ -124,7 +126,6 @@ class ModelIntegrationTest extends BaseModelTest
      * testAssociationLazyLoadWithBindModel
      *
      * @group lazyloading
-     * @return void
      */
     public function testAssociationLazyLoadWithBindModel()
     {
@@ -144,7 +145,6 @@ class ModelIntegrationTest extends BaseModelTest
      * Tests that creating a model with no existent database table associated will throw an exception
      *
      * @expectedException MissingTableException
-     * @return void
      */
     public function testMissingTable()
     {
@@ -154,8 +154,6 @@ class ModelIntegrationTest extends BaseModelTest
 
     /**
      * testPkInHAbtmLinkModelArticleB
-     *
-     * @return void
      */
     public function testPkInHabtmLinkModelArticleB()
     {
@@ -166,8 +164,6 @@ class ModelIntegrationTest extends BaseModelTest
 
     /**
      * Tests that $cacheSources is restored despite the settings on the model.
-     *
-     * @return void
      */
     public function testCacheSourcesRestored()
     {
@@ -187,8 +183,6 @@ class ModelIntegrationTest extends BaseModelTest
 
     /**
      * testPkInHabtmLinkModel method
-     *
-     * @return void
      */
     public function testPkInHabtmLinkModel()
     {
@@ -214,8 +208,6 @@ class ModelIntegrationTest extends BaseModelTest
 
     /**
      * testDynamicBehaviorAttachment method
-     *
-     * @return void
      */
     public function testDynamicBehaviorAttachment()
     {
@@ -250,8 +242,6 @@ class ModelIntegrationTest extends BaseModelTest
 
     /**
      * testTreeWithContainable method
-     *
-     * @return void
      */
     public function testTreeWithContainable()
     {
@@ -277,8 +267,6 @@ class ModelIntegrationTest extends BaseModelTest
 
     /**
      * testFindWithJoinsOption method
-     *
-     * @return void
      */
     public function testFindWithJoinsOption()
     {
@@ -318,8 +306,6 @@ class ModelIntegrationTest extends BaseModelTest
      * Tests cross database joins. Requires $test and $test2 to both be set in DATABASE_CONFIG
      * NOTE: When testing on MySQL, you must set 'persistent' => false on *both* database connections,
      * or one connection will step on the other.
-     *
-     * @return void
      */
     public function testCrossDatabaseJoins()
     {
@@ -668,8 +654,6 @@ class ModelIntegrationTest extends BaseModelTest
 
     /**
      * test HABM operations without clobbering existing records #275
-     *
-     * @return void
      */
     public function testHABTMKeepExisting()
     {
@@ -757,8 +741,6 @@ class ModelIntegrationTest extends BaseModelTest
 
     /**
      * testHABTMKeepExistingAlternateDataFormat
-     *
-     * @return void
      */
     public function testHABTMKeepExistingAlternateDataFormat()
     {
@@ -854,8 +836,6 @@ class ModelIntegrationTest extends BaseModelTest
 
     /**
      * test HABM operations without clobbering existing records #275
-     *
-     * @return void
      */
     public function testHABTMKeepExistingWithThreeDbs()
     {
@@ -916,8 +896,6 @@ class ModelIntegrationTest extends BaseModelTest
 
     /**
      * testDisplayField method
-     *
-     * @return void
      */
     public function testDisplayField()
     {
@@ -933,8 +911,6 @@ class ModelIntegrationTest extends BaseModelTest
 
     /**
      * testSchema method
-     *
-     * @return void
      */
     public function testSchema()
     {
@@ -956,8 +932,6 @@ class ModelIntegrationTest extends BaseModelTest
 
     /**
      * Check schema() on a model with useTable = false;
-     *
-     * @return void
      */
     public function testSchemaUseTableFalse()
     {
@@ -1033,7 +1007,6 @@ class ModelIntegrationTest extends BaseModelTest
      * test deconstruct with time fields.
      *
      * @dataProvider timeProvider
-     * @return void
      */
     public function testDeconstructFieldsTime($input, $result)
     {
@@ -1056,8 +1029,6 @@ class ModelIntegrationTest extends BaseModelTest
 
     /**
      * testDeconstructFields with datetime, timestamp, and date fields
-     *
-     * @return void
      */
     public function testDeconstructFieldsDateTime()
     {
@@ -1235,8 +1206,6 @@ class ModelIntegrationTest extends BaseModelTest
 
     /**
      * testTablePrefixSwitching method
-     *
-     * @return void
      */
     public function testTablePrefixSwitching()
     {
@@ -1297,8 +1266,6 @@ class ModelIntegrationTest extends BaseModelTest
 
     /**
      * Tests validation parameter order in custom validation methods
-     *
-     * @return void
      */
     public function testInvalidAssociation()
     {
@@ -1308,8 +1275,6 @@ class ModelIntegrationTest extends BaseModelTest
 
     /**
      * testLoadModelSecondIteration method
-     *
-     * @return void
      */
     public function testLoadModelSecondIteration()
     {
@@ -1326,8 +1291,6 @@ class ModelIntegrationTest extends BaseModelTest
 
     /**
      * ensure that exists() does not persist between method calls reset on create
-     *
-     * @return void
      */
     public function testResetOfExistsOnCreate()
     {
@@ -1349,8 +1312,6 @@ class ModelIntegrationTest extends BaseModelTest
 
     /**
      * testUseTableFalseExistsCheck method
-     *
-     * @return void
      */
     public function testUseTableFalseExistsCheck()
     {
@@ -1374,8 +1335,6 @@ class ModelIntegrationTest extends BaseModelTest
 
     /**
      * testPluginAssociations method
-     *
-     * @return void
      */
     public function testPluginAssociations()
     {
@@ -1499,8 +1458,6 @@ class ModelIntegrationTest extends BaseModelTest
 
     /**
      * Tests getAssociated method
-     *
-     * @return void
      */
     public function testGetAssociated()
     {
@@ -1543,8 +1500,6 @@ class ModelIntegrationTest extends BaseModelTest
 
     /**
      * testAutoConstructAssociations method
-     *
-     * @return void
      */
     public function testAutoConstructAssociations()
     {
@@ -1649,8 +1604,6 @@ class ModelIntegrationTest extends BaseModelTest
 
     /**
      * test creating associations with plugins. Ensure a double alias isn't created
-     *
-     * @return void
      */
     public function testAutoConstructPluginAssociations()
     {
@@ -1668,8 +1621,6 @@ class ModelIntegrationTest extends BaseModelTest
      * test Model::__construct
      *
      * ensure that $actsAS and $findMethods are merged.
-     *
-     * @return void
      */
     public function testConstruct()
     {
@@ -1690,8 +1641,6 @@ class ModelIntegrationTest extends BaseModelTest
      * test Model::__construct
      *
      * ensure that $actsAS and $findMethods are merged.
-     *
-     * @return void
      */
     public function testConstructWithAlternateDataSource()
     {
@@ -1707,8 +1656,6 @@ class ModelIntegrationTest extends BaseModelTest
 
     /**
      * testColumnTypeFetching method
-     *
-     * @return void
      */
     public function testColumnTypeFetching()
     {
@@ -1726,8 +1673,6 @@ class ModelIntegrationTest extends BaseModelTest
 
     /**
      * testHabtmUniqueKey method
-     *
-     * @return void
      */
     public function testHabtmUniqueKey()
     {
@@ -1737,8 +1682,6 @@ class ModelIntegrationTest extends BaseModelTest
 
     /**
      * testIdentity method
-     *
-     * @return void
      */
     public function testIdentity()
     {
@@ -1768,8 +1711,6 @@ class ModelIntegrationTest extends BaseModelTest
 
     /**
      * testWithAssociation method
-     *
-     * @return void
      */
     public function testWithAssociation()
     {
@@ -2048,8 +1989,6 @@ class ModelIntegrationTest extends BaseModelTest
 
     /**
      * testFindSelfAssociations method
-     *
-     * @return void
      */
     public function testFindSelfAssociations()
     {
@@ -2158,8 +2097,6 @@ class ModelIntegrationTest extends BaseModelTest
 
     /**
      * testDynamicAssociations method
-     *
-     * @return void
      */
     public function testDynamicAssociations()
     {
@@ -2266,8 +2203,6 @@ class ModelIntegrationTest extends BaseModelTest
 
     /**
      * testCreation method
-     *
-     * @return void
      */
     public function testCreation()
     {
@@ -2385,8 +2320,6 @@ class ModelIntegrationTest extends BaseModelTest
 
     /**
      * testEscapeField to prove it escapes the field well even when it has part of the alias on it
-     *
-     * @return void
      */
     public function testEscapeField()
     {
@@ -2417,8 +2350,6 @@ class ModelIntegrationTest extends BaseModelTest
 
     /**
      * testGetID
-     *
-     * @return void
      */
     public function testGetID()
     {
@@ -2442,8 +2373,6 @@ class ModelIntegrationTest extends BaseModelTest
 
     /**
      * test that model->hasMethod checks self and behaviors.
-     *
-     * @return void
      */
     public function testHasMethod()
     {
@@ -2466,8 +2395,6 @@ class ModelIntegrationTest extends BaseModelTest
 
     /**
      * testMultischemaFixture
-     *
-     * @return void
      */
     public function testMultischemaFixture()
     {
@@ -2497,8 +2424,6 @@ class ModelIntegrationTest extends BaseModelTest
 
     /**
      * testMultischemaFixtureWithThreeDatabases, three databases
-     *
-     * @return void
      */
     public function testMultischemaFixtureWithThreeDatabases()
     {
@@ -2545,8 +2470,6 @@ class ModelIntegrationTest extends BaseModelTest
     /**
      * Tests that calling schema() on a model that is not supposed to use a table
      * does not trigger any calls on any datasource
-     *
-     * @return void
      */
     public function testSchemaNoDB()
     {
@@ -2559,8 +2482,6 @@ class ModelIntegrationTest extends BaseModelTest
     /**
      * Tests that calling getColumnType() on a model that is not supposed to use a table
      * does not trigger any calls on any datasource
-     *
-     * @return void
      */
     public function testGetColumnTypeNoDB()
     {

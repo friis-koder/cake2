@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Network.Email
+ *
  * @since         CakePHP(tm) v 2.0.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('AbstractTransport', 'Network/Email');
@@ -28,8 +32,10 @@ class MailTransport extends AbstractTransport
      * Send mail
      *
      * @param CakeEmail $email CakeEmail
-     * @return array
+     *
      * @throws SocketException When mail cannot be sent.
+     *
+     * @return array
      */
     public function send(CakeEmail $email)
     {
@@ -66,8 +72,8 @@ class MailTransport extends AbstractTransport
      * @param string $message email's body
      * @param string $headers email's custom headers
      * @param string $params additional params for sending email, will be ignored when in safe_mode
+     *
      * @throws SocketException if mail could not be sent
-     * @return void
      */
     protected function _mail($to, $subject, $message, $headers, $params = null)
     {

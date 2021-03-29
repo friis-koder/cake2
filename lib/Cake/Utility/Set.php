@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Utility
+ *
  * @since         CakePHP(tm) v 1.2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('CakeText', 'Utility');
@@ -22,6 +26,7 @@ App::uses('Hash', 'Utility');
  * Class used for manipulation of arrays.
  *
  * @package       Cake.Utility
+ *
  * @deprecated 3.0.0 Will be removed in 3.0. Use Hash instead.
  */
 class Set
@@ -39,7 +44,9 @@ class Set
      *
      * @param array $data Array to be merged
      * @param array $merge Array to merge with
+     *
      * @return array Merged array
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/set.html#Set::merge
      */
     public static function merge($data, $merge = null)
@@ -59,7 +66,9 @@ class Set
      * Filters empty elements out of a route array, excluding '0'.
      *
      * @param array $var Either an array to filter, or value when in callback
+     *
      * @return mixed Either filtered array, or true/false when in callback
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/set.html#Set::filter
      */
     public static function filter(array $var)
@@ -72,7 +81,9 @@ class Set
      *
      * @param array $array Original array
      * @param array $array2 Differences to push
+     *
      * @return array Combined array
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/set.html#Set::pushDiff
      */
     public static function pushDiff($array, $array2)
@@ -101,7 +112,9 @@ class Set
      *
      * @param string $class A class name of the type of object to map to
      * @param string $tmp A temporary class name used as $class if $class is an array
+     *
      * @return object|null Hierarchical object
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/set.html#Set::map
      */
     public static function map($class = 'stdClass', $tmp = 'stdClass')
@@ -129,6 +142,7 @@ class Set
      * @param array &$array Array to map
      * @param string $class Class name
      * @param bool $primary whether to assign first array key as the _name_
+     *
      * @return mixed Mapped object
      */
     protected static function _map(&$array, $class, $primary = false)
@@ -194,7 +208,9 @@ class Set
      * Checks to see if all the values in the array are numeric
      *
      * @param array $array The array to check. If null, the value of the current Set object
+     *
      * @return bool true if values are numeric, false otherwise
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/set.html#Set::numeric
      */
     public static function numeric($array = null)
@@ -214,7 +230,9 @@ class Set
      *
      * @param string $select Key in $list to return
      * @param array|string $list can be an array or a comma-separated list.
+     *
      * @return string the value of the array key or null if no match
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/set.html#Set::enum
      */
     public static function enum($select, $list = null)
@@ -239,7 +257,9 @@ class Set
      * @param array $data Source array from which to extract the data
      * @param string $format Format string into which values will be inserted, see sprintf()
      * @param array $keys An array containing one or more Set::extract()-style key paths
+     *
      * @return array|null An array of strings extracted from $keys and formatted with $format, otherwise null.
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/set.html#Set::format
      */
     public static function format($data, $format, $keys)
@@ -321,7 +341,9 @@ class Set
      * @param string $path An absolute XPath 2.0 path
      * @param array $data An array of data to extract from
      * @param array $options Currently only supports 'flatten' which can be disabled for higher XPath-ness
+     *
      * @return mixed An array of matched items or the content of a single selected item or null in any of these cases: $path or $data are null, no items found.
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/set.html#Set::extract
      */
     public static function extract($path, $data = null, $options = [])
@@ -476,7 +498,9 @@ class Set
      * @param array $data An array of data to execute the match on
      * @param int $i Optional: The 'nth'-number of the item being matched.
      * @param int $length Length.
+     *
      * @return bool
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/set.html#Set::matches
      */
     public static function matches($conditions, $data = [], $i = null, $length = null)
@@ -555,7 +579,9 @@ class Set
      *
      * @param array $data Array from where to extract
      * @param string|array $path As an array, or as a dot-separated string.
+     *
      * @return mixed An array of matched items or the content of a single selected item or null in any of these cases: $path or $data are null, no items found.
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/set.html#Set::classicExtract
      */
     public static function classicExtract($data, $path = null)
@@ -648,7 +674,9 @@ class Set
      * @param array $list Where to insert into
      * @param string $path A dot-separated string.
      * @param array $data Data to insert
+     *
      * @return array
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/set.html#Set::insert
      */
     public static function insert($list, $path, $data = null)
@@ -661,7 +689,9 @@ class Set
      *
      * @param array $list From where to remove
      * @param string $path A dot-separated string.
+     *
      * @return array Array with $path removed from its value
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/set.html#Set::remove
      */
     public static function remove($list, $path = null)
@@ -674,7 +704,9 @@ class Set
      *
      * @param string|array $data Data to check on
      * @param string|array $path A dot-separated string.
+     *
      * @return bool true if path is found, false otherwise
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/set.html#Set::check
      */
     public static function check($data, $path = null)
@@ -708,8 +740,10 @@ class Set
      *
      * @param mixed $val1 First value
      * @param mixed $val2 Second value
+     *
      * @return array Returns the key => value pairs that are not common in $val1 and $val2
      * The expression for this function is($val1 - $val2) + ($val2 - ($val1 - $val2))
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/set.html#Set::diff
      */
     public static function diff($val1, $val2 = null)
@@ -737,7 +771,9 @@ class Set
      *
      * @param array $val1 First value
      * @param array $val2 Second value
+     *
      * @return bool true if $val1 contains $val2, false otherwise
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/set.html#Set::contains
      */
     public static function contains($val1, $val2 = null)
@@ -766,7 +802,9 @@ class Set
      * @param array $array Array to count dimensions on
      * @param bool $all Set to true to count the dimension considering all elements in array
      * @param int $count Start the dimension count at this number
+     *
      * @return int The number of dimensions in $array
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/set.html#Set::countDim
      */
     public static function countDim($array, $all = false, $count = 0)
@@ -797,7 +835,9 @@ class Set
      * @param bool $assoc If true, $list will be converted to an associative array
      * @param string $sep If $list is a string, it will be split into an array with $sep
      * @param bool $trim If true, separated strings will be trimmed
+     *
      * @return array
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/set.html#Set::normalize
      */
     public static function normalize($list, $assoc = true, $sep = ',', $trim = true)
@@ -829,7 +869,9 @@ class Set
      * @param string|array $path1 As an array, or as a dot-separated string.
      * @param string|array $path2 As an array, or as a dot-separated string.
      * @param string $groupPath As an array, or as a dot-separated string.
+     *
      * @return array Combined array
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/set.html#Set::combine
      */
     public static function combine($data, $path1 = null, $path2 = null, $groupPath = null)
@@ -894,7 +936,9 @@ class Set
      * Converts an object into an array.
      *
      * @param object $object Object to reverse
+     *
      * @return array Array representation of given object
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/set.html#Set::reverse
      */
     public static function reverse($object)
@@ -945,7 +989,9 @@ class Set
      *
      * @param array $data Array to flatten
      * @param string $separator String used to separate array key elements in a path, defaults to '.'
+     *
      * @return array
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/set.html#Set::flatten
      */
     public static function flatten($data, $separator = '.')
@@ -962,6 +1008,7 @@ class Set
      *
      * @param array $data Flattened array
      * @param string $separator The delimiter used
+     *
      * @return array
      */
     public static function expand($data, $separator = '.')
@@ -974,6 +1021,7 @@ class Set
      *
      * @param array $results Array to flatten.
      * @param string $key Key.
+     *
      * @return array
      */
     protected static function _flatten($results, $key = null)
@@ -1000,7 +1048,9 @@ class Set
      * @param array $data An array of data to sort
      * @param string $path A Set-compatible path to the array value
      * @param string $dir Direction of sorting - either ascending (ASC), or descending (DESC)
+     *
      * @return array Sorted array of data
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/set.html#Set::sort
      */
     public static function sort($data, $path, $dir)
@@ -1055,7 +1105,9 @@ class Set
      *                       - type : can be pass, map, or reduce. Map will handoff the given callback
      *                                to array_map, reduce will handoff to array_reduce, and pass will
      *                                use call_user_func_array().
+     *
      * @return mixed Result of the callback when applied to extracted data
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/set.html#Set::apply
      */
     public static function apply($path, $data, $callback, $options = [])
@@ -1084,7 +1136,9 @@ class Set
      *      idPath     - the path to a key that identifies each entry
      *      parentPath - the path to a key that identifies the parent of each entry
      *      root       - the id of the desired top-most result
+     *
      * @return array of results, nested
+     *
      * @link
      */
     public static function nest($data, $options = [])
@@ -1146,6 +1200,7 @@ class Set
      *
      * @param array $input an array
      * @param string|array $path string or array of array keys
+     *
      * @return the value at the specified position or null if it doesn't exist
      */
     public static function get($input, $path = null)

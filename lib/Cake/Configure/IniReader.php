@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Configure
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Hash', 'Utility');
@@ -50,6 +54,7 @@ App::uses('CakePlugin', 'Core');
  * converted to their boolean equivalents.
  *
  * @package       Cake.Configure
+ *
  * @see http://php.net/parse_ini_file
  */
 class IniReader implements ConfigReaderInterface
@@ -92,9 +97,11 @@ class IniReader implements ConfigReaderInterface
      *
      * @param string $key The identifier to read from. If the key has a . it will be treated
      *  as a plugin prefix. The chosen file must be on the reader's path.
-     * @return array Parsed configuration values.
+     *
      * @throws ConfigureException when files don't exist.
      *  Or when files contain '..' as this could lead to abusive reads.
+     *
+     * @return array Parsed configuration values.
      */
     public function read($key)
     {
@@ -129,6 +136,7 @@ class IniReader implements ConfigReaderInterface
      * parses nested values out of keys.
      *
      * @param array $values Values to be exploded.
+     *
      * @return array Array of values exploded
      */
     protected function _parseNestedValues($values)
@@ -157,6 +165,7 @@ class IniReader implements ConfigReaderInterface
      * @param string $key The identifier to write to. If the key has a . it will be treated
      *  as a plugin prefix.
      * @param array $data The data to convert to ini file.
+     *
      * @return int Bytes saved.
      */
     public function dump($key, $data)
@@ -189,6 +198,7 @@ class IniReader implements ConfigReaderInterface
      * Converts a value into the ini equivalent
      *
      * @param mixed $val Value to export.
+     *
      * @return string String value for ini file.
      */
     protected function _value($val)
@@ -211,6 +221,7 @@ class IniReader implements ConfigReaderInterface
      *
      * @param string $key The identifier to write to. If the key has a . it will be treated
      *  as a plugin prefix.
+     *
      * @return string Full file path
      */
     protected function _getFilePath($key)

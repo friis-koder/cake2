@@ -12,9 +12,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Log
+ *
  * @since         CakePHP(tm) v 0.2.9
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('LogEngineCollection', 'Log');
@@ -69,6 +73,7 @@ App::uses('LogEngineCollection', 'Log');
  * on scopes
  *
  * @package       Cake.Log
+ *
  * @link https://book.cakephp.org/2.0/en/core-libraries/logging.html#logging
  */
 class CakeLog
@@ -116,8 +121,6 @@ class CakeLog
 
     /**
      * initialize ObjectCollection
-     *
-     * @return void
      */
     protected static function _init()
     {
@@ -185,8 +188,11 @@ class CakeLog
      * @param string $key The keyname for this logger, used to remove the
      *    logger later.
      * @param array $config Array of configuration information for the logger
-     * @return bool success of configuration.
+     *
      * @throws CakeLogException
+     *
+     * @return bool success of configuration.
+     *
      * @link https://book.cakephp.org/2.0/en/core-libraries/logging.html#creating-and-configuring-log-streams
      */
     public static function config($key, $config)
@@ -263,6 +269,7 @@ class CakeLog
      *
      * @param array $levels array
      * @param bool $append true to append, false to replace
+     *
      * @return array Active log levels
      */
     public static function levels($levels = [], $append = true)
@@ -302,7 +309,6 @@ class CakeLog
      * it will no longer have messages sent to it.
      *
      * @param string $streamName Key name of a configured stream to remove.
-     * @return void
      */
     public static function drop($streamName)
     {
@@ -316,8 +322,10 @@ class CakeLog
      * Checks whether $streamName is enabled
      *
      * @param string $streamName to check
-     * @return bool
+     *
      * @throws CakeLogException
+     *
+     * @return bool
      */
     public static function enabled($streamName)
     {
@@ -336,7 +344,7 @@ class CakeLog
      * can be re-enabled with this method.
      *
      * @param string $streamName to enable
-     * @return void
+     *
      * @throws CakeLogException
      */
     public static function enable($streamName)
@@ -356,7 +364,7 @@ class CakeLog
      * its re-enabled.
      *
      * @param string $streamName to disable
-     * @return void
+     *
      * @throws CakeLogException
      */
     public static function disable($streamName)
@@ -374,7 +382,9 @@ class CakeLog
      * Gets the logging engine from the active streams.
      *
      * @param string $streamName Key name of a configured stream to get.
+     *
      * @return mixed instance of BaseLog or false if not found
+     *
      * @see BaseLog
      */
     public static function stream($streamName)
@@ -417,7 +427,9 @@ class CakeLog
      * @param string|throwable $message Message content to log, or throwable to log
      * @param string|array $scope The scope(s) a log message is being created in.
      *    See CakeLog::config() for more information on logging scopes.
+     *
      * @return bool Success
+     *
      * @link https://book.cakephp.org/2.0/en/core-libraries/logging.html#writing-to-logs
      */
     public static function write($type, $message, $scope = [])
@@ -489,6 +501,7 @@ class CakeLog
      * @param string|throwable $message log message, or throwable to log
      * @param string|array $scope The scope(s) a log message is being created in.
      *    See CakeLog::config() for more information on logging scopes.
+     *
      * @return bool Success
      */
     public static function emergency($message, $scope = [])
@@ -502,6 +515,7 @@ class CakeLog
      * @param string|throwable $message log message, or throwable to log
      * @param string|array $scope The scope(s) a log message is being created in.
      *    See CakeLog::config() for more information on logging scopes.
+     *
      * @return bool Success
      */
     public static function alert($message, $scope = [])
@@ -515,6 +529,7 @@ class CakeLog
      * @param string|throwable $message log message, or throwable to log
      * @param string|array $scope The scope(s) a log message is being created in.
      *    See CakeLog::config() for more information on logging scopes.
+     *
      * @return bool Success
      */
     public static function critical($message, $scope = [])
@@ -528,6 +543,7 @@ class CakeLog
      * @param string|throwable $message log message, or throwable to log
      * @param string|array $scope The scope(s) a log message is being created in.
      *    See CakeLog::config() for more information on logging scopes.
+     *
      * @return bool Success
      */
     public static function error($message, $scope = [])
@@ -541,6 +557,7 @@ class CakeLog
      * @param string|throwable $message log message, or throwable to log
      * @param string|array $scope The scope(s) a log message is being created in.
      *    See CakeLog::config() for more information on logging scopes.
+     *
      * @return bool Success
      */
     public static function warning($message, $scope = [])
@@ -554,6 +571,7 @@ class CakeLog
      * @param string|throwable $message log message, or throwable to log
      * @param string|array $scope The scope(s) a log message is being created in.
      *    See CakeLog::config() for more information on logging scopes.
+     *
      * @return bool Success
      */
     public static function notice($message, $scope = [])
@@ -567,6 +585,7 @@ class CakeLog
      * @param string|throwable $message log message, or throwable to log
      * @param string|array $scope The scope(s) a log message is being created in.
      *    See CakeLog::config() for more information on logging scopes.
+     *
      * @return bool Success
      */
     public static function debug($message, $scope = [])
@@ -580,6 +599,7 @@ class CakeLog
      * @param string|throwable $message log message, or throwable to log
      * @param string|array $scope The scope(s) a log message is being created in.
      *    See CakeLog::config() for more information on logging scopes.
+     *
      * @return bool Success
      */
     public static function info($message, $scope = [])

@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Network.Email
+ *
  * @since         CakePHP(tm) v 2.0.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('AbstractTransport', 'Network/Email');
@@ -29,6 +33,7 @@ class DebugTransport extends AbstractTransport
      * Send mail
      *
      * @param CakeEmail $email CakeEmail
+     *
      * @return array
      */
     public function send(CakeEmail $email)

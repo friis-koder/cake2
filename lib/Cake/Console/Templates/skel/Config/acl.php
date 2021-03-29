@@ -5,7 +5,9 @@
  * Use it to configure access control of your CakePHP application.
  *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       app.Config
+ *
  * @since         CakePHP(tm) v 2.1
  */
 

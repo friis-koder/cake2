@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Model.Datasource.Database
+ *
  * @since         CakePHP(tm) v 0.10.5.1790
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('DboSource', 'Model/Datasource');
@@ -113,6 +117,7 @@ class Mysql extends DboSource
      * MySQL column definition
      *
      * @var array
+     *
      * @link https://dev.mysql.com/doc/refman/5.7/en/data-types.html MySQL Data Types
      */
     public $columns = [
@@ -153,8 +158,9 @@ class Mysql extends DboSource
      *   combined with `ssl_key`.
      * - `ssl_ca` The certificate authority for SSL connections.
      *
-     * @return bool True if the database could be connected, else false
      * @throws MissingConnectionException
+     *
+     * @return bool True if the database could be connected, else false
      */
     public function connect()
     {
@@ -223,6 +229,7 @@ class Mysql extends DboSource
      * Returns an array of sources (tables) in the database.
      *
      * @param mixed $data List of tables.
+     *
      * @return array Array of table names in the database
      */
     public function listSources($data = null)
@@ -254,7 +261,6 @@ class Mysql extends DboSource
      * Builds a map of the columns contained in a result
      *
      * @param PDOStatement $results The results to format.
-     * @return void
      */
     public function resultSet($results)
     {
@@ -315,6 +321,7 @@ class Mysql extends DboSource
      * Query charset by collation
      *
      * @param string $name Collation name
+     *
      * @return string|false Character set name
      */
     public function getCharsetName($name)
@@ -344,8 +351,10 @@ class Mysql extends DboSource
      * Returns an array of the fields in given table name.
      *
      * @param Model|string $model Name of database table to inspect or model instance
-     * @return array Fields in table. Keys are name and type
+     *
      * @throws CakeException
+     *
+     * @return array Fields in table. Keys are name and type
      */
     public function describe($model)
     {
@@ -405,6 +414,7 @@ class Mysql extends DboSource
      * @param array $fields The fields to update.
      * @param array $values The values to set.
      * @param mixed $conditions The conditions to use.
+     *
      * @return bool
      */
     public function update(Model $model, $fields = [], $values = null, $conditions = null)
@@ -450,6 +460,7 @@ class Mysql extends DboSource
      *
      * @param Model $model The model to delete from.
      * @param mixed $conditions The conditions to use.
+     *
      * @return bool Success
      */
     public function delete(Model $model, $conditions = null)
@@ -487,6 +498,7 @@ class Mysql extends DboSource
      *
      * @param Model $model The model to delete from.
      * @param mixed $conditions The conditions to use.
+     *
      * @return bool Whether or not complex conditions are needed
      */
     protected function _deleteNeedsComplexConditions(Model $model, $conditions)
@@ -509,6 +521,7 @@ class Mysql extends DboSource
      * Sets the database encoding
      *
      * @param string $enc Database encoding
+     *
      * @return bool
      */
     public function setEncoding($enc)
@@ -520,6 +533,7 @@ class Mysql extends DboSource
      * Returns an array of the indexes in given datasource name.
      *
      * @param string $model Name of model to inspect
+     *
      * @return array Fields in table. Keys are column and unique
      */
     public function index($model)
@@ -570,6 +584,7 @@ class Mysql extends DboSource
      *
      * @param array $compare Result of a CakeSchema::compare()
      * @param string $table The table name.
+     *
      * @return string|false String of alter statements to make.
      */
     public function alterSchema($compare, $table = null)
@@ -639,6 +654,7 @@ class Mysql extends DboSource
      * Generate a "drop table" statement for the given table
      *
      * @param type $table Name of the table to drop
+     *
      * @return string Drop table SQL statement
      */
     protected function _dropTable($table)
@@ -651,6 +667,7 @@ class Mysql extends DboSource
      *
      * @param string $table Table to alter parameters for.
      * @param array $parameters Parameters to add & drop.
+     *
      * @return array Array of table property alteration statements.
      */
     protected function _alterTableParameters($table, $parameters)
@@ -667,7 +684,9 @@ class Mysql extends DboSource
      *
      * @param array $indexes An array of indexes to generate SQL from
      * @param string $table Optional table name, not used
+     *
      * @return array An array of SQL statements for indexes
+     *
      * @see DboSource::buildIndex()
      */
     public function buildIndex($indexes, $table = null)
@@ -721,6 +740,7 @@ class Mysql extends DboSource
      *
      * @param string $table Table to alter indexes for
      * @param array $indexes Indexes to add and drop
+     *
      * @return array Index alteration statements
      */
     protected function _alterIndexes($table, $indexes)
@@ -752,6 +772,7 @@ class Mysql extends DboSource
      *
      * @param array $lengths An array of lengths for a single index
      * @param string $column The column for which to generate the index length
+     *
      * @return string Formatted length part of an index field
      */
     protected function _buildIndexSubPart($lengths, $column)
@@ -770,6 +791,7 @@ class Mysql extends DboSource
      * Returns a detailed array of sources (tables) in the database.
      *
      * @param string $name Table name to get parameters
+     *
      * @return array Array of table names in the database
      */
     public function listDetailedSources($name = null)
@@ -808,6 +830,7 @@ class Mysql extends DboSource
      * Converts database-layer column types to basic types
      *
      * @param string $real Real database-layer column type (i.e. "varchar(255)")
+     *
      * @return string Abstract column type (i.e. "string")
      */
     public function column($real)
@@ -907,6 +930,7 @@ class Mysql extends DboSource
      * Check if column type is unsigned
      *
      * @param string $real Real database-layer column type (i.e. "varchar(255)")
+     *
      * @return bool True if column is unsigned, false otherwise
      */
     protected function _unsigned($real)
@@ -923,6 +947,7 @@ class Mysql extends DboSource
      * @param array $values The array of values to insert. The values should
      *   be an array of rows. Each row should have values keyed by the column name.
      *   Each row must have the values in the same order as $fields.
+     *
      * @return bool
      */
     public function insertMulti($table, $fields, $values)

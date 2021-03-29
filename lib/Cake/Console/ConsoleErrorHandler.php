@@ -10,8 +10,10 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('ErrorHandler', 'Error');
@@ -51,7 +53,6 @@ class ConsoleErrorHandler
      * Handle an exception in the console environment. Prints a message to stderr.
      *
      * @param Exception|ParserError $exception The exception to handle
-     * @return void
      */
     public function handleException($exception)
     {
@@ -77,7 +78,6 @@ class ConsoleErrorHandler
      * @param string $file The file the error occurred in.
      * @param int $line The line the error occurred on.
      * @param array $context The backtrace of the error.
-     * @return void
      */
     public function handleError($code, $description, $file = null, $line = null, $context = null)
     {
@@ -102,7 +102,6 @@ class ConsoleErrorHandler
      * Wrapper for exit(), used for testing.
      *
      * @param int $code The exit code.
-     * @return void
      */
     protected function _stop($code = 0)
     {

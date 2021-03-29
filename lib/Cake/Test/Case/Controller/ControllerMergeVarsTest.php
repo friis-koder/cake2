@@ -12,9 +12,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Controller
+ *
  * @since         CakePHP(tm) v 1.2.3
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Controller', 'Controller');
@@ -125,8 +129,6 @@ class ControllerMergeVarsTest extends CakeTestCase
 {
     /**
      * test that component settings are not duplicated when merging component settings
-     *
-     * @return void
      */
     public function testComponentParamMergingNoDuplication()
     {
@@ -139,8 +141,6 @@ class ControllerMergeVarsTest extends CakeTestCase
 
     /**
      * test component merges with redeclared components
-     *
-     * @return void
      */
     public function testComponentMergingWithRedeclarations()
     {
@@ -154,8 +154,6 @@ class ControllerMergeVarsTest extends CakeTestCase
 
     /**
      * test merging of helpers array, ensure no duplication occurs
-     *
-     * @return void
      */
     public function testHelperSettingMergingNoDuplication()
     {
@@ -169,8 +167,6 @@ class ControllerMergeVarsTest extends CakeTestCase
     /**
      * Test that helpers declared in appcontroller come before those in the subclass
      * orderwise
-     *
-     * @return void
      */
     public function testHelperOrderPrecedence()
     {
@@ -188,8 +184,6 @@ class ControllerMergeVarsTest extends CakeTestCase
 
     /**
      * test merging of vars with plugin
-     *
-     * @return void
      */
     public function testMergeVarsWithPlugin()
     {
@@ -226,8 +220,6 @@ class ControllerMergeVarsTest extends CakeTestCase
     /**
      * Ensure that _mergeControllerVars is not being greedy and merging with
      * AppController when you make an instance of Controller
-     *
-     * @return void
      */
     public function testMergeVarsNotGreedy()
     {
@@ -242,8 +234,6 @@ class ControllerMergeVarsTest extends CakeTestCase
     /**
      * Ensure that $modelClass is correct even when Controller::$uses
      * has been iterated, eg: by a Component, or event handlers.
-     *
-     * @return void
      */
     public function testMergeVarsModelClass()
     {

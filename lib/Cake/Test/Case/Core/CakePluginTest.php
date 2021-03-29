@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Test.Case.Core
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('CakePlugin', 'Core');
@@ -24,8 +28,6 @@ class CakePluginTest extends CakeTestCase
 {
     /**
      * Sets the plugins folder for this test
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -38,8 +40,6 @@ class CakePluginTest extends CakeTestCase
 
     /**
      * Reverts the changes done to the environment while testing
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -49,8 +49,6 @@ class CakePluginTest extends CakeTestCase
 
     /**
      * Tests loading a single plugin
-     *
-     * @return void
      */
     public function testLoadSingle()
     {
@@ -62,8 +60,6 @@ class CakePluginTest extends CakeTestCase
 
     /**
      * Tests unloading plugins
-     *
-     * @return void
      */
     public function testUnload()
     {
@@ -84,8 +80,6 @@ class CakePluginTest extends CakeTestCase
 
     /**
      * Tests loading a plugin and its bootstrap file
-     *
-     * @return void
      */
     public function testLoadSingleWithBootstrap()
     {
@@ -96,8 +90,6 @@ class CakePluginTest extends CakeTestCase
 
     /**
      * Tests loading a plugin with bootstrap file and routes file
-     *
-     * @return void
      */
     public function testLoadSingleWithBootstrapAndRoutes()
     {
@@ -111,8 +103,6 @@ class CakePluginTest extends CakeTestCase
 
     /**
      * Tests loading multiple plugins at once
-     *
-     * @return void
      */
     public function testLoadMultiple()
     {
@@ -123,8 +113,6 @@ class CakePluginTest extends CakeTestCase
 
     /**
      * Tests loading multiple plugins and their bootstrap files
-     *
-     * @return void
      */
     public function testLoadMultipleWithDefaults()
     {
@@ -137,8 +125,6 @@ class CakePluginTest extends CakeTestCase
 
     /**
      * Tests loading multiple plugins with default loading params and some overrides
-     *
-     * @return void
      */
     public function testLoadMultipleWithDefaultsAndOverride()
     {
@@ -154,8 +140,6 @@ class CakePluginTest extends CakeTestCase
 
     /**
      * Tests that it is possible to load multiple bootstrap files at once
-     *
-     * @return void
      */
     public function testMultipleBootstrapFiles()
     {
@@ -166,8 +150,6 @@ class CakePluginTest extends CakeTestCase
 
     /**
      * Tests that it is possible to load plugin bootstrap by calling a callback function
-     *
-     * @return void
      */
     public function testCallbackBootstrap()
     {
@@ -179,7 +161,6 @@ class CakePluginTest extends CakeTestCase
     /**
      * Tests that loading a missing routes file throws a warning
      *
-     * @return void
      * @expectedException PHPUNIT_FRAMEWORK_ERROR_WARNING
      */
     public function testLoadMultipleWithDefaultsMissingFile()
@@ -190,8 +171,6 @@ class CakePluginTest extends CakeTestCase
 
     /**
      * Test ignoring missing bootstrap/routes file
-     *
-     * @return void
      */
     public function testIgnoreMissingFiles()
     {
@@ -206,7 +185,6 @@ class CakePluginTest extends CakeTestCase
     /**
      * Tests that CakePlugin::load() throws an exception on unknown plugin
      *
-     * @return void
      * @expectedException MissingPluginException
      */
     public function testLoadNotFound()
@@ -216,8 +194,6 @@ class CakePluginTest extends CakeTestCase
 
     /**
      * Tests that CakePlugin::path() returns the correct path for the loaded plugins
-     *
-     * @return void
      */
     public function testPath()
     {
@@ -232,7 +208,6 @@ class CakePluginTest extends CakeTestCase
     /**
      * Tests that CakePlugin::path() throws an exception on unknown plugin
      *
-     * @return void
      * @expectedException MissingPluginException
      */
     public function testPathNotFound()
@@ -242,8 +217,6 @@ class CakePluginTest extends CakeTestCase
 
     /**
      * Tests that CakePlugin::loadAll() will load all plugins in the configured folder
-     *
-     * @return void
      */
     public function testLoadAll()
     {
@@ -254,8 +227,6 @@ class CakePluginTest extends CakeTestCase
 
     /**
      * Tests that CakePlugin::loadAll() will load all plugins in the configured folder with bootstrap loading
-     *
-     * @return void
      */
     public function testLoadAllWithDefaults()
     {
@@ -271,8 +242,6 @@ class CakePluginTest extends CakeTestCase
     /**
      * Tests that CakePlugin::loadAll() will load all plugins in the configured folder with defaults
      * and merges in global defaults.
-     *
-     * @return void
      */
     public function testLoadAllWithDefaultsAndOverride()
     {
@@ -290,8 +259,6 @@ class CakePluginTest extends CakeTestCase
     /**
      * Tests that CakePlugin::loadAll() will load all plugins in the configured folder with defaults
      * and overrides for a plugin
-     *
-     * @return void
      */
     public function testLoadAllWithDefaultsAndOverrideComplex()
     {
@@ -308,8 +275,6 @@ class CakePluginTest extends CakeTestCase
 
     /**
      * Auxiliary function to test plugin bootstrap callbacks
-     *
-     * @return void
      */
     public function pluginBootstrap()
     {

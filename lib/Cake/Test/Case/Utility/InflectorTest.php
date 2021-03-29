@@ -12,9 +12,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html
+ *
  * @package       Cake.Test.Case.Utility
+ *
  * @since         CakePHP(tm) v 1.2.0.4206
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -83,8 +87,6 @@ class InflectorTest extends CakeTestCase
 
     /**
      * tearDown
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -94,8 +96,6 @@ class InflectorTest extends CakeTestCase
 
     /**
      * testInflectingSingulars method
-     *
-     * @return void
      */
     public function testInflectingSingulars()
     {
@@ -187,8 +187,6 @@ class InflectorTest extends CakeTestCase
 
     /**
      * Test that overlapping irregulars don't collide.
-     *
-     * @return void
      */
     public function testSingularizeMultiWordIrregular()
     {
@@ -211,8 +209,6 @@ class InflectorTest extends CakeTestCase
 
     /**
      * testInflectingPlurals method
-     *
-     * @return void
      */
     public function testInflectingPlurals()
     {
@@ -285,8 +281,6 @@ class InflectorTest extends CakeTestCase
 
     /**
      * Test that overlapping irregulars don't collide.
-     *
-     * @return void
      */
     public function testPluralizeMultiWordIrregular()
     {
@@ -316,8 +310,6 @@ class InflectorTest extends CakeTestCase
 
     /**
      * testInflectingMultiWordIrregulars
-     *
-     * @return void
      */
     public function testInflectingMultiWordIrregulars()
     {
@@ -342,8 +334,6 @@ class InflectorTest extends CakeTestCase
 
     /**
      * testInflectorSlug method
-     *
-     * @return void
      */
     public function testInflectorSlug()
     {
@@ -409,8 +399,6 @@ class InflectorTest extends CakeTestCase
 
     /**
      * Test slug() with a complete list of special chars.
-     *
-     * @return void
      */
     public function testInflectorSlugCharList()
     {
@@ -424,8 +412,6 @@ class InflectorTest extends CakeTestCase
 
     /**
      * testInflectorSlugWithMap method
-     *
-     * @return void
      */
     public function testInflectorSlugWithMap()
     {
@@ -441,8 +427,6 @@ class InflectorTest extends CakeTestCase
 
     /**
      * testInflectorSlugWithMapOverridingDefault method
-     *
-     * @return void
      */
     public function testInflectorSlugWithMapOverridingDefault()
     {
@@ -454,8 +438,6 @@ class InflectorTest extends CakeTestCase
 
     /**
      * testInflectorUnderscore method
-     *
-     * @return void
      */
     public function testInflectorUnderscore()
     {
@@ -480,8 +462,6 @@ class InflectorTest extends CakeTestCase
 
     /**
      * Test camelize()
-     *
-     * @return void
      */
     public function testCamelize()
     {
@@ -494,8 +474,6 @@ class InflectorTest extends CakeTestCase
 
     /**
      * testVariableNaming method
-     *
-     * @return void
      */
     public function testVariableNaming()
     {
@@ -507,8 +485,6 @@ class InflectorTest extends CakeTestCase
 
     /**
      * testClassNaming method
-     *
-     * @return void
      */
     public function testClassNaming()
     {
@@ -520,8 +496,6 @@ class InflectorTest extends CakeTestCase
 
     /**
      * testTableNaming method
-     *
-     * @return void
      */
     public function testTableNaming()
     {
@@ -533,8 +507,6 @@ class InflectorTest extends CakeTestCase
 
     /**
      * testHumanization method
-     *
-     * @return void
      */
     public function testHumanization()
     {
@@ -548,8 +520,6 @@ class InflectorTest extends CakeTestCase
 
     /**
      * testCustomPluralRule method
-     *
-     * @return void
      */
     public function testCustomPluralRule()
     {
@@ -573,8 +543,6 @@ class InflectorTest extends CakeTestCase
 
     /**
      * testCustomSingularRule method
-     *
-     * @return void
      */
     public function testCustomSingularRule()
     {
@@ -597,8 +565,6 @@ class InflectorTest extends CakeTestCase
 
     /**
      * testCustomTransliterationRule method
-     *
-     * @return void
      */
     public function testCustomTransliterationRule()
     {
@@ -613,8 +579,6 @@ class InflectorTest extends CakeTestCase
 
     /**
      * test that setting new rules clears the inflector caches.
-     *
-     * @return void
      */
     public function testRulesClearsCaches()
     {
@@ -637,8 +601,6 @@ class InflectorTest extends CakeTestCase
 
     /**
      * Test resetting inflection rules.
-     *
-     * @return void
      */
     public function testCustomRuleWithReset()
     {

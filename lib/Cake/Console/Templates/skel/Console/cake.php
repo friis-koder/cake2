@@ -11,8 +11,11 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       app.Console
+ *
  * @since         CakePHP(tm) v 2.0
  */
 if (!defined('DS')) {

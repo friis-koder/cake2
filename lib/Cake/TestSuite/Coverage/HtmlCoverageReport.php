@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.TestSuite.Coverage
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('BaseCoverageReport', 'TestSuite/Coverage');
@@ -81,6 +85,7 @@ HTML;
      * @param string $filename Name of the file having coverage generated
      * @param array $fileLines File data as an array. See file() for how to get one of these.
      * @param array $coverageData Array of coverage data to use to generate HTML diffs with
+     *
      * @return string HTML diff.
      */
     public function generateDiff($filename, $fileLines, $coverageData)
@@ -131,6 +136,7 @@ HTML;
      * Guess the class name the test was for based on the test case filename.
      *
      * @param ReflectionClass $testReflection The class to reflect
+     *
      * @return string Possible test subject name.
      */
     protected function _guessSubjectName($testReflection)
@@ -153,6 +159,7 @@ HTML;
      * @param int $linenumber The line number
      * @param string $class The classname to use.
      * @param array $coveringTests The tests covering the line.
+     *
      * @return string
      */
     protected function _paintLine($line, $linenumber, $class, $coveringTests)
@@ -205,6 +212,7 @@ HTML;
      *
      * @param string $filename The file name being covered
      * @param string $percent The percentage covered
+     *
      * @return string
      */
     public function coverageHeader($filename, $percent)
@@ -229,8 +237,6 @@ HTML;
 
     /**
      * Generate an HTML snippet for coverage footers
-     *
-     * @return void
      */
     public function coverageFooter()
     {

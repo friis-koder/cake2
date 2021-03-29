@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Model
+ *
  * @since         CakePHP(tm) v 1.2.0.4206
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 require_once dirname(__FILE__) . DS . 'ModelTestBase.php';
@@ -26,8 +30,6 @@ class ModelValidationTest extends BaseModelTest
 {
     /**
      * override locale to the default (eng).
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -37,8 +39,6 @@ class ModelValidationTest extends BaseModelTest
 
     /**
      * Tests validation parameter order in custom validation methods
-     *
-     * @return void
      */
     public function testValidationParams()
     {
@@ -132,8 +132,6 @@ class ModelValidationTest extends BaseModelTest
 
     /**
      * Tests validation parameter fieldList in invalidFields
-     *
-     * @return void
      */
     public function testInvalidFieldsWithFieldListParams()
     {
@@ -180,8 +178,6 @@ class ModelValidationTest extends BaseModelTest
 
     /**
      * Test that invalidFields() integrates well with save(). And that fieldList can be an empty type.
-     *
-     * @return void
      */
     public function testInvalidFieldsWhitelist()
     {
@@ -205,8 +201,6 @@ class ModelValidationTest extends BaseModelTest
 
     /**
      * testValidates method
-     *
-     * @return void
      */
     public function testValidates()
     {
@@ -560,8 +554,6 @@ class ModelValidationTest extends BaseModelTest
 
     /**
      * test that validates() still performs correctly when useTable = false on the model.
-     *
-     * @return void
      */
     public function testValidatesWithNoTable()
     {
@@ -600,8 +592,6 @@ class ModelValidationTest extends BaseModelTest
     /**
      * test that validates() checks all the 'with' associations as well for validation
      * as this can cause partial/wrong data insertion.
-     *
-     * @return void
      */
     public function testValidatesWithAssociations()
     {
@@ -657,8 +647,6 @@ class ModelValidationTest extends BaseModelTest
     /**
      * Test that if a behavior modifies the model's whitelist validation gets triggered
      * properly for those fields.
-     *
-     * @return void
      */
     public function testValidateWithFieldListAndBehavior()
     {
@@ -685,8 +673,6 @@ class ModelValidationTest extends BaseModelTest
 
     /**
      * test that saveAll and with models with validation interact well
-     *
-     * @return void
      */
     public function testValidatesWithModelsAndSaveAll()
     {
@@ -734,8 +720,6 @@ class ModelValidationTest extends BaseModelTest
     /**
      * test that saveAll and with models at initial insert (no id has set yet)
      * with validation interact well
-     *
-     * @return void
      */
     public function testValidatesWithModelsAndSaveAllWithoutId()
     {
@@ -782,7 +766,6 @@ class ModelValidationTest extends BaseModelTest
      * Helps to make development easier.
      *
      * @expectedException PHPUnit_Framework_Error
-     * @return void
      */
     public function testMissingValidationErrorTriggering()
     {
@@ -801,8 +784,6 @@ class ModelValidationTest extends BaseModelTest
 
     /**
      * Test placeholder replacement when validation message is an array
-     *
-     * @return void
      */
     public function testValidationMessageAsArray()
     {
@@ -844,8 +825,6 @@ class ModelValidationTest extends BaseModelTest
 
     /**
      * Test validation message translation
-     *
-     * @return void
      */
     public function testValidationMessageTranslation()
     {
@@ -883,8 +862,6 @@ class ModelValidationTest extends BaseModelTest
 
     /**
      * Test for 'on' => [create|update] in validation rules.
-     *
-     * @return void
      */
     public function testStateValidation()
     {
@@ -937,8 +914,6 @@ class ModelValidationTest extends BaseModelTest
 
     /**
      * Test for 'required' => [create|update] in validation rules.
-     *
-     * @return void
      */
     public function testStateRequiredValidation()
     {
@@ -991,8 +966,6 @@ class ModelValidationTest extends BaseModelTest
 
     /**
      * Test that 'required' and 'on' are not conflicting
-     *
-     * @return void
      */
     public function testOnRequiredConflictValidation()
     {
@@ -1117,8 +1090,6 @@ class ModelValidationTest extends BaseModelTest
     /**
      * testSaveAllDeepValidateOnly
      * tests the validate methods with deeper recursive data
-     *
-     * @return void
      */
     public function testSaveAllDeepValidateOnly()
     {
@@ -1446,8 +1417,6 @@ class ModelValidationTest extends BaseModelTest
     /**
      * testSaveAllNotDeepValidateOnly
      * tests the validate methods to not validate deeper recursive data
-     *
-     * @return void
      */
     public function testSaveAllNotDeepValidateOnly()
     {
@@ -1599,8 +1568,6 @@ class ModelValidationTest extends BaseModelTest
 
     /**
      * testValidateAssociated method
-     *
-     * @return void
      */
     public function testValidateAssociated()
     {
@@ -1733,8 +1700,6 @@ class ModelValidationTest extends BaseModelTest
 
     /**
      * testValidateMany method
-     *
-     * @return void
      */
     public function testValidateMany()
     {
@@ -1774,8 +1739,6 @@ class ModelValidationTest extends BaseModelTest
 
     /**
      * testGetMethods method
-     *
-     * @return void
      */
     public function testGetMethods()
     {
@@ -1791,8 +1754,6 @@ class ModelValidationTest extends BaseModelTest
 
     /**
      *  Tests that methods are refreshed when the list of behaviors change
-     *
-     * @return void
      */
     public function testGetMethodsRefresh()
     {
@@ -1821,8 +1782,6 @@ class ModelValidationTest extends BaseModelTest
 
     /**
      * testSetValidationDomain method
-     *
-     * @return void
      */
     public function testSetValidationDomain()
     {
@@ -1839,8 +1798,6 @@ class ModelValidationTest extends BaseModelTest
 
     /**
      * testGetModel method
-     *
-     * @return void
      */
     public function testGetModel()
     {
@@ -1853,8 +1810,6 @@ class ModelValidationTest extends BaseModelTest
 
     /**
      * Tests it is possible to get validation sets for a field using an array inteface
-     *
-     * @return void
      */
     public function testArrayAccessGet()
     {
@@ -1882,8 +1837,6 @@ class ModelValidationTest extends BaseModelTest
 
     /**
      * Tests it is possible to check for validation sets for a field using an array inteface
-     *
-     * @return void
      */
     public function testArrayAccessExists()
     {
@@ -1898,8 +1851,6 @@ class ModelValidationTest extends BaseModelTest
 
     /**
      * Tests it is possible to set validation rules for a field using an array inteface
-     *
-     * @return void
      */
     public function testArrayAccessSet()
     {
@@ -1931,8 +1882,6 @@ class ModelValidationTest extends BaseModelTest
 
     /**
      * Tests it is possible to unset validation rules
-     *
-     * @return void
      */
     public function testArrayAccessUset()
     {
@@ -1946,8 +1895,6 @@ class ModelValidationTest extends BaseModelTest
 
     /**
      * Tests it is possible to iterate a validation object
-     *
-     * @return void
      */
     public function testIterator()
     {
@@ -1973,8 +1920,6 @@ class ModelValidationTest extends BaseModelTest
 
     /**
      * Tests countable interface in ModelValidator
-     *
-     * @return void
      */
     public function testCount()
     {
@@ -1997,8 +1942,6 @@ class ModelValidationTest extends BaseModelTest
 
     /**
      * Tests it is possible to add validation rules
-     *
-     * @return void
      */
     public function testAddRule()
     {
@@ -2018,8 +1961,6 @@ class ModelValidationTest extends BaseModelTest
 
     /**
      * Tests it is possible to remove validation rules
-     *
-     * @return void
      */
     public function testRemoveRule()
     {
@@ -2045,8 +1986,6 @@ class ModelValidationTest extends BaseModelTest
 
     /**
      * Tests validation callbacks are triggered
-     *
-     * @return void
      */
     public function testValidateCallbacks()
     {
@@ -2061,8 +2000,6 @@ class ModelValidationTest extends BaseModelTest
     /**
      * Tests that altering data in a beforeValidate callback will lead to saving those
      * values in database
-     *
-     * @return void
      */
     public function testValidateFirstWithBeforeValidate()
     {
@@ -2116,8 +2053,6 @@ class ModelValidationTest extends BaseModelTest
     /**
      * Tests that altering data in a beforeValidate callback will lead to saving those
      * values in database
-     *
-     * @return void
      */
     public function testValidateFirstAssociatedWithBeforeValidate()
     {
@@ -2152,8 +2087,6 @@ class ModelValidationTest extends BaseModelTest
 
     /**
      * testValidateFirstWithDefaults method
-     *
-     * @return void
      */
     public function testFirstWithDefaults()
     {
@@ -2226,8 +2159,6 @@ class ModelValidationTest extends BaseModelTest
 
     /**
      * Test that rules are parsed correctly when calling getField()
-     *
-     * @return void
      */
     public function testValidator()
     {
@@ -2245,8 +2176,6 @@ class ModelValidationTest extends BaseModelTest
 
     /**
      * Test that validator override works as expected
-     *
-     * @return void
      */
     public function testValidatorOverride()
     {
@@ -2265,7 +2194,7 @@ class ModelValidationTest extends BaseModelTest
      * Test that type hint exception is thrown
      *
      * @expectedException PHPUnit_Framework_Error
-     * @return void
+     *
      * @throws PHPUnit_Framework_Error
      */
     public function testValidatorTypehintException()
@@ -2281,8 +2210,6 @@ class ModelValidationTest extends BaseModelTest
     /**
      * Tests that altering data in a beforeValidate callback will lead to saving those
      * values in database, this time with belongsTo associations
-     *
-     * @return void
      */
     public function testValidateFirstAssociatedWithBeforeValidate2()
     {
@@ -2312,8 +2239,6 @@ class ModelValidationTest extends BaseModelTest
     /**
      * Testing you can dynamically add rules to a field, added this to dispel doubts
      * after a presentation made to show off this new feature
-     *
-     * @return void
      */
     public function testDynamicValidationRuleBuilding()
     {
@@ -2331,8 +2256,6 @@ class ModelValidationTest extends BaseModelTest
 
     /**
      * Test to ensure custom validation methods work with CakeValidationSet
-     *
-     * @return void
      */
     public function testCustomMethodsWithCakeValidationSet()
     {
@@ -2377,8 +2300,6 @@ class ModelValidationTest extends BaseModelTest
 
     /**
      * Test validateAssociated with atomic=false & deep=true
-     *
-     * @return void
      */
     public function testValidateAssociatedAtomicFalseDeepTrueWithErrors()
     {
@@ -2438,8 +2359,6 @@ class ModelValidationTest extends BaseModelTest
 
     /**
      * Test validateMany with atomic=false & deep=true
-     *
-     * @return void
      */
     public function testValidateManyAtomicFalseDeepTrueWithErrors()
     {
@@ -2500,8 +2419,6 @@ class ModelValidationTest extends BaseModelTest
 
     /**
      * Test the isUnique method when used as a validator for multiple fields.
-     *
-     * @return void
      */
     public function testIsUniqueValidator()
     {
@@ -2545,8 +2462,6 @@ class ModelValidationTest extends BaseModelTest
 
     /**
      * Test backward compatibility of the isUnique method when used as a validator for a single field.
-     *
-     * @return void
      */
     public function testBackwardCompatIsUniqueValidator()
     {

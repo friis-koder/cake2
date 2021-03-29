@@ -10,8 +10,10 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
  * @since         CakePHP(tm) v 1.2
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('AppShell', 'Console/Command');
@@ -41,8 +43,6 @@ class ControllerTask extends BakeTask
 
     /**
      * Override initialize
-     *
-     * @return void
      */
     public function initialize()
     {
@@ -51,8 +51,6 @@ class ControllerTask extends BakeTask
 
     /**
      * Execution method always used for tasks
-     *
-     * @return void
      */
     public function execute()
     {
@@ -97,8 +95,6 @@ class ControllerTask extends BakeTask
 
     /**
      * Bake All the controllers at once. Will only bake controllers for models that exist.
-     *
-     * @return void
      */
     public function all()
     {
@@ -137,8 +133,6 @@ class ControllerTask extends BakeTask
 
     /**
      * Interactive
-     *
-     * @return void
      */
     protected function _interactive()
     {
@@ -237,7 +231,6 @@ class ControllerTask extends BakeTask
      * @param string $useDynamicScaffold Whether or not to use dynamic scaffolds.
      * @param array $helpers The list of helpers to include.
      * @param array $components The list of components to include.
-     * @return void
      */
     public function confirmController($controllerName, $useDynamicScaffold, $helpers, $components)
     {
@@ -300,6 +293,7 @@ class ControllerTask extends BakeTask
      * @param string $controllerName Controller name
      * @param string $admin Admin route to use
      * @param bool $wannaUseSession Set to true to use sessions, false otherwise
+     *
      * @return string Baked actions
      */
     public function bakeActions($controllerName, $admin = null, $wannaUseSession = true)
@@ -351,6 +345,7 @@ class ControllerTask extends BakeTask
      * @param string $actions Actions to add, or set the whole controller to use $scaffold (set $actions to 'scaffold')
      * @param array $helpers Helpers to use in controller
      * @param array $components Components to use in controller
+     *
      * @return string Baked controller
      */
     public function bake($controllerName, $actions = '', $helpers = null, $components = null)
@@ -390,6 +385,7 @@ class ControllerTask extends BakeTask
      * Assembles and writes a unit test file
      *
      * @param string $className Controller class name
+     *
      * @return string Baked test
      */
     public function bakeTest($className)
@@ -434,6 +430,7 @@ class ControllerTask extends BakeTask
      *
      * @param string $prompt A yes/no question to precede the list
      * @param string $example A question for a comma separated list, with examples.
+     *
      * @return array Array of values for property.
      */
     protected function _doPropertyChoices($prompt, $example)
@@ -453,6 +450,7 @@ class ControllerTask extends BakeTask
      * Outputs and gets the list of possible controllers from database
      *
      * @param string $useDbConfig Database configuration name
+     *
      * @return array Set of controllers
      */
     public function listAll($useDbConfig = null)
@@ -482,6 +480,7 @@ class ControllerTask extends BakeTask
      * Forces the user to specify the controller he wants to bake, and returns the selected controller name.
      *
      * @param string $useDbConfig Connection name to get a controller name for.
+     *
      * @return string Controller name
      */
     public function getName($useDbConfig = null)

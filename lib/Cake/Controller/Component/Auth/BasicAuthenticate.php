@@ -8,7 +8,9 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('BaseAuthenticate', 'Controller/Component/Auth');
@@ -45,6 +47,7 @@ App::uses('BaseAuthenticate', 'Controller/Component/Auth');
  * false, a ForbiddenException exception is thrown instead of redirecting.
  *
  * @package       Cake.Controller.Component.Auth
+ *
  * @since 2.0
  */
 class BasicAuthenticate extends BaseAuthenticate
@@ -69,6 +72,7 @@ class BasicAuthenticate extends BaseAuthenticate
      *
      * @param CakeRequest $request The request to authenticate with.
      * @param CakeResponse $response The response to add headers to.
+     *
      * @return mixed Either false on failure, or an array of user data on success.
      */
     public function authenticate(CakeRequest $request, CakeResponse $response)
@@ -80,6 +84,7 @@ class BasicAuthenticate extends BaseAuthenticate
      * Get a user based on information in the request. Used by cookie-less auth for stateless clients.
      *
      * @param CakeRequest $request Request object.
+     *
      * @return mixed Either false or an array of user information
      */
     public function getUser(CakeRequest $request)
@@ -105,7 +110,7 @@ class BasicAuthenticate extends BaseAuthenticate
      *
      * @param CakeRequest $request A request object.
      * @param CakeResponse $response A response object.
-     * @return void
+     *
      * @throws UnauthorizedException
      */
     public function unauthenticated(CakeRequest $request, CakeResponse $response)

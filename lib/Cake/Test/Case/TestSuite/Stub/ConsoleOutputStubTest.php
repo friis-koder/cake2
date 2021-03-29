@@ -8,8 +8,10 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
  * @since         2.8
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('ConsoleOutputStub', 'TestSuite/Stub');
@@ -21,8 +23,6 @@ class ConsoleOutputStubTest extends CakeTestCase
 {
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -33,8 +33,6 @@ class ConsoleOutputStubTest extends CakeTestCase
 
     /**
      * Test that stub can be used as an instance of ConsoleOutput
-     *
-     * @return void
      */
     public function testCanActAsConsoleOutput()
     {
@@ -43,8 +41,6 @@ class ConsoleOutputStubTest extends CakeTestCase
 
     /**
      * Test write method
-     *
-     * @return void
      */
     public function testWrite()
     {
@@ -54,8 +50,6 @@ class ConsoleOutputStubTest extends CakeTestCase
 
     /**
      * Test overwrite method
-     *
-     * @return void
      */
     public function testOverwrite()
     {

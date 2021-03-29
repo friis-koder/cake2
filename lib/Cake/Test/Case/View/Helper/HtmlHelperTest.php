@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.View.Helper
+ *
  * @since         CakePHP(tm) v 1.2.0.4206
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Controller', 'Controller');
@@ -59,7 +63,6 @@ class TestHtmlHelper extends HtmlHelper
      * @param string $exclude
      * @param string $insertBefore
      * @param string $insertAfter
-     * @return void
      */
     public function parseAttributes($options, $exclude = null, $insertBefore = ' ', $insertAfter = null)
     {
@@ -70,6 +73,7 @@ class TestHtmlHelper extends HtmlHelper
      * Get a protected attribute value
      *
      * @param string $attribute
+     *
      * @return mixed
      */
     public function getAttribute($attribute)
@@ -141,8 +145,6 @@ class HtmlHelperTest extends CakeTestCase
 
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -161,8 +163,6 @@ class HtmlHelperTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -172,8 +172,6 @@ class HtmlHelperTest extends CakeTestCase
 
     /**
      * testDocType method
-     *
-     * @return void
      */
     public function testDocType()
     {
@@ -190,8 +188,6 @@ class HtmlHelperTest extends CakeTestCase
 
     /**
      * testLink method
-     *
-     * @return void
      */
     public function testLink()
     {
@@ -400,8 +396,6 @@ class HtmlHelperTest extends CakeTestCase
 
     /**
      * testImageTag method
-     *
-     * @return void
      */
     public function testImageTag()
     {
@@ -425,8 +419,6 @@ class HtmlHelperTest extends CakeTestCase
 
     /**
      * Test image() with query strings.
-     *
-     * @return void
      */
     public function testImageQueryString()
     {
@@ -444,8 +436,6 @@ class HtmlHelperTest extends CakeTestCase
 
     /**
      * Test that image works with pathPrefix.
-     *
-     * @return void
      */
     public function testImagePathPrefix()
     {
@@ -467,8 +457,6 @@ class HtmlHelperTest extends CakeTestCase
 
     /**
      * Test that image() works with fullBase and a webroot not equal to /
-     *
-     * @return void
      */
     public function testImageWithFullBase()
     {
@@ -492,8 +480,6 @@ class HtmlHelperTest extends CakeTestCase
 
     /**
      * test image() with Asset.timestamp
-     *
-     * @return void
      */
     public function testImageWithTimestampping()
     {
@@ -519,8 +505,6 @@ class HtmlHelperTest extends CakeTestCase
 
     /**
      * Tests creation of an image tag using a theme and asset timestamping
-     *
-     * @return void
      */
     public function testImageTagWithTheme()
     {
@@ -566,8 +550,6 @@ class HtmlHelperTest extends CakeTestCase
 
     /**
      * testBase64ImageTag method
-     *
-     * @return void
      */
     public function testBase64ImageTag()
     {
@@ -591,7 +573,6 @@ class HtmlHelperTest extends CakeTestCase
     /**
      * testLoadConfigWrongFile method
      *
-     * @return void
      * @expectedException InvalidArgumentException
      */
     public function testBase64InvalidArgumentException()
@@ -602,8 +583,6 @@ class HtmlHelperTest extends CakeTestCase
 
     /**
      * test theme assets in main webroot path
-     *
-     * @return void
      */
     public function testThemeAssetsInMainWebrootPath()
     {
@@ -632,8 +611,6 @@ class HtmlHelperTest extends CakeTestCase
 
     /**
      * testStyle method
-     *
-     * @return void
      */
     public function testStyle()
     {
@@ -652,8 +629,6 @@ class HtmlHelperTest extends CakeTestCase
 
     /**
      * testCssLink method
-     *
-     * @return void
      */
     public function testCssLink()
     {
@@ -748,8 +723,6 @@ class HtmlHelperTest extends CakeTestCase
 
     /**
      * Test css() with once option.
-     *
-     * @return void
      */
     public function testCssLinkOnce()
     {
@@ -774,8 +747,6 @@ class HtmlHelperTest extends CakeTestCase
 
     /**
      * Test css link BC usage
-     *
-     * @return void
      */
     public function testCssLinkBC()
     {
@@ -810,8 +781,6 @@ class HtmlHelperTest extends CakeTestCase
 
     /**
      * testCssWithFullBase method
-     *
-     * @return void
      */
     public function testCssWithFullBase()
     {
@@ -827,8 +796,6 @@ class HtmlHelperTest extends CakeTestCase
 
     /**
      * testPluginCssLink method
-     *
-     * @return void
      */
     public function testPluginCssLink()
     {
@@ -871,8 +838,6 @@ class HtmlHelperTest extends CakeTestCase
 
     /**
      * test use of css() and timestamping
-     *
-     * @return void
      */
     public function testCssTimestamping()
     {
@@ -912,8 +877,6 @@ class HtmlHelperTest extends CakeTestCase
 
     /**
      * test use of css() and timestamping with plugin syntax
-     *
-     * @return void
      */
     public function testPluginCssTimestamping()
     {
@@ -957,8 +920,6 @@ class HtmlHelperTest extends CakeTestCase
 
     /**
      * Resource names must be treated differently for css() and script()
-     *
-     * @return void
      */
     public function testBufferedCssAndScriptWithIdenticalResourceName()
     {
@@ -974,8 +935,6 @@ class HtmlHelperTest extends CakeTestCase
 
     /**
      * test timestamp enforcement for script tags.
-     *
-     * @return void
      */
     public function testScriptTimestamping()
     {
@@ -1000,8 +959,6 @@ class HtmlHelperTest extends CakeTestCase
 
     /**
      * test timestamp enforcement for script tags with plugin syntax.
-     *
-     * @return void
      */
     public function testPluginScriptTimestamping()
     {
@@ -1033,8 +990,6 @@ class HtmlHelperTest extends CakeTestCase
     /**
      * test that scripts added with uses() are only ever included once.
      * test script tag generation
-     *
-     * @return void
      */
     public function testScript()
     {
@@ -1129,8 +1084,6 @@ class HtmlHelperTest extends CakeTestCase
     /**
      * test that plugin scripts added with uses() are only ever included once.
      * test script tag generation with plugin syntax
-     *
-     * @return void
      */
     public function testPluginScript()
     {
@@ -1195,8 +1148,6 @@ class HtmlHelperTest extends CakeTestCase
 
     /**
      * test that script() works with blocks.
-     *
-     * @return void
      */
     public function testScriptWithBlocks()
     {
@@ -1224,8 +1175,6 @@ class HtmlHelperTest extends CakeTestCase
 
     /**
      * Test that Asset.filter.js works.
-     *
-     * @return void
      */
     public function testScriptAssetFilter()
     {
@@ -1246,8 +1195,6 @@ class HtmlHelperTest extends CakeTestCase
 
     /**
      * testScriptWithFullBase method
-     *
-     * @return void
      */
     public function testScriptWithFullBase()
     {
@@ -1271,8 +1218,6 @@ class HtmlHelperTest extends CakeTestCase
 
     /**
      * test a script file in the webroot/theme dir.
-     *
-     * @return void
      */
     public function testScriptInTheme()
     {
@@ -1307,8 +1252,6 @@ class HtmlHelperTest extends CakeTestCase
 
     /**
      * test Script block generation
-     *
-     * @return void
      */
     public function testScriptBlock()
     {
@@ -1375,8 +1318,6 @@ class HtmlHelperTest extends CakeTestCase
 
     /**
      * test script tag output buffering when using scriptStart() and scriptEnd();
-     *
-     * @return void
      */
     public function testScriptStartAndScriptEnd()
     {
@@ -1432,8 +1373,6 @@ class HtmlHelperTest extends CakeTestCase
 
     /**
      * testCharsetTag method
-     *
-     * @return void
      */
     public function testCharsetTag()
     {
@@ -1451,8 +1390,6 @@ class HtmlHelperTest extends CakeTestCase
 
     /**
      * testGetCrumb and addCrumb method
-     *
-     * @return void
      */
     public function testBreadcrumb()
     {
@@ -1561,8 +1498,6 @@ class HtmlHelperTest extends CakeTestCase
 
     /**
      * Test the array form of $startText
-     *
-     * @return void
      */
     public function testGetCrumbFirstLink()
     {
@@ -1600,8 +1535,6 @@ class HtmlHelperTest extends CakeTestCase
 
     /**
      * testNestedList method
-     *
-     * @return void
      */
     public function testNestedList()
     {
@@ -1814,8 +1747,6 @@ class HtmlHelperTest extends CakeTestCase
 
     /**
      * testMeta method
-     *
-     * @return void
      */
     public function testMeta()
     {
@@ -1859,8 +1790,6 @@ class HtmlHelperTest extends CakeTestCase
 
     /**
      * Test generating favicon's with meta()
-     *
-     * @return void
      */
     public function testMetaIcon()
     {
@@ -1907,8 +1836,6 @@ class HtmlHelperTest extends CakeTestCase
 
     /**
      * Test the inline and block options for meta()
-     *
-     * @return void
      */
     public function testMetaWithBlocks()
     {
@@ -1929,8 +1856,6 @@ class HtmlHelperTest extends CakeTestCase
 
     /**
      * testTableHeaders method
-     *
-     * @return void
      */
     public function testTableHeaders()
     {
@@ -1953,8 +1878,6 @@ class HtmlHelperTest extends CakeTestCase
 
     /**
      * testTableCells method
-     *
-     * @return void
      */
     public function testTableCells()
     {
@@ -2042,8 +1965,6 @@ class HtmlHelperTest extends CakeTestCase
 
     /**
      * testTag method
-     *
-     * @return void
      */
     public function testTag()
     {
@@ -2068,8 +1989,6 @@ class HtmlHelperTest extends CakeTestCase
 
     /**
      * testUseTag method
-     *
-     * @return void
      */
     public function testUseTag()
     {
@@ -2088,8 +2007,6 @@ class HtmlHelperTest extends CakeTestCase
 
     /**
      * testDiv method
-     *
-     * @return void
      */
     public function testDiv()
     {
@@ -2105,8 +2022,6 @@ class HtmlHelperTest extends CakeTestCase
 
     /**
      * testPara method
-     *
-     * @return void
      */
     public function testPara()
     {
@@ -2122,8 +2037,6 @@ class HtmlHelperTest extends CakeTestCase
 
     /**
      * testMedia method
-     *
-     * @return void
      */
     public function testMedia()
     {
@@ -2190,8 +2103,6 @@ class HtmlHelperTest extends CakeTestCase
 
     /**
      * testCrumbList method
-     *
-     * @return void
      */
     public function testCrumbList()
     {
@@ -2223,8 +2134,6 @@ class HtmlHelperTest extends CakeTestCase
 
     /**
      * Test getCrumbList startText
-     *
-     * @return void
      */
     public function testCrumbListFirstLink()
     {
@@ -2270,8 +2179,6 @@ class HtmlHelperTest extends CakeTestCase
 
     /**
      * test getCrumbList() in Twitter Bootstrap style.
-     *
-     * @return void
      */
     public function testCrumbListBootstrapStyle()
     {
@@ -2304,8 +2211,6 @@ class HtmlHelperTest extends CakeTestCase
 
     /**
      * Test GetCrumbList using style of Zurb Foundation.
-     *
-     * @return void
      */
     public function testCrumbListZurbStyle()
     {
@@ -2340,8 +2245,6 @@ class HtmlHelperTest extends CakeTestCase
 
     /**
      * testLoadConfig method
-     *
-     * @return void
      */
     public function testLoadConfig()
     {
@@ -2372,7 +2275,6 @@ class HtmlHelperTest extends CakeTestCase
     /**
      * testLoadConfigWrongFile method
      *
-     * @return void
      * @expectedException ConfigureException
      */
     public function testLoadConfigWrongFile()
@@ -2383,7 +2285,6 @@ class HtmlHelperTest extends CakeTestCase
     /**
      * testLoadConfigWrongReader method
      *
-     * @return void
      * @expectedException ConfigureException
      */
     public function testLoadConfigWrongReader()
@@ -2394,8 +2295,6 @@ class HtmlHelperTest extends CakeTestCase
 
     /**
      * test parsing attributes.
-     *
-     * @return void
      */
     public function testParseAttributeCompact()
     {

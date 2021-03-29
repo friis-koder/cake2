@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Model.Datasource
+ *
  * @since         CakePHP(tm) v 0.10.5.1790
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -22,6 +26,7 @@
  * DataSources are the link between models and the source of data that models represent.
  *
  * @link          https://book.cakephp.org/2.0/en/models/datasources.html#basic-api-for-datasources
+ *
  * @package       Cake.Model.Datasource
  */
 class DataSource extends CakeObject
@@ -91,6 +96,7 @@ class DataSource extends CakeObject
      * Caches/returns cached results for child instances
      *
      * @param mixed $data Unused in this class.
+     *
      * @return array|null Array of sources available in this datasource.
      */
     public function listSources($data = null)
@@ -119,6 +125,7 @@ class DataSource extends CakeObject
      * Returns a Model description (metadata) or null if none found.
      *
      * @param Model|string $model The model to describe.
+     *
      * @return array|null Array of Metadata for the $model
      */
     public function describe($model)
@@ -180,6 +187,7 @@ class DataSource extends CakeObject
      * Converts column types to basic types
      *
      * @param string $real Real column type (i.e. "varchar(255)")
+     *
      * @return string Abstract column type (i.e. "string")
      */
     public function column($real)
@@ -195,6 +203,7 @@ class DataSource extends CakeObject
      * @param Model $Model The Model to be created.
      * @param array $fields An Array of fields to be saved.
      * @param array $values An Array of values to save.
+     *
      * @return bool success
      */
     public function create(Model $Model, $fields = null, $values = null)
@@ -210,6 +219,7 @@ class DataSource extends CakeObject
      * @param Model $Model The model being read.
      * @param array $queryData An array of query data used to find the data you want
      * @param int $recursive Number of levels of association
+     *
      * @return mixed
      */
     public function read(Model $Model, $queryData = [], $recursive = null)
@@ -226,6 +236,7 @@ class DataSource extends CakeObject
      * @param array $fields Array of fields to be updated
      * @param array $values Array of values to be update $fields to.
      * @param mixed $conditions The array of conditions to use.
+     *
      * @return bool Success
      */
     public function update(Model $Model, $fields = null, $values = null, $conditions = null)
@@ -240,6 +251,7 @@ class DataSource extends CakeObject
      *
      * @param Model $Model The model class having record(s) deleted
      * @param mixed $conditions The conditions to use for deleting.
+     *
      * @return bool Success
      */
     public function delete(Model $Model, $conditions = null)
@@ -251,6 +263,7 @@ class DataSource extends CakeObject
      * Returns the ID generated from the previous INSERT operation.
      *
      * @param mixed $source The source name.
+     *
      * @return mixed Last ID key generated in previous INSERT
      */
     public function lastInsertId($source = null)
@@ -262,6 +275,7 @@ class DataSource extends CakeObject
      * Returns the number of rows returned by last operation.
      *
      * @param mixed $source The source name.
+     *
      * @return int Number of rows returned by last operation
      */
     public function lastNumRows($source = null)
@@ -273,6 +287,7 @@ class DataSource extends CakeObject
      * Returns the number of rows affected by last query.
      *
      * @param mixed $source The source name.
+     *
      * @return int Number of rows affected by last query.
      */
     public function lastAffected($source = null)
@@ -297,7 +312,6 @@ class DataSource extends CakeObject
      * Merges the $config information with the _baseConfig and the existing $config property.
      *
      * @param array $config The configuration array
-     * @return void
      */
     public function setConfig($config = [])
     {
@@ -309,6 +323,7 @@ class DataSource extends CakeObject
      *
      * @param string $object The name of the object (model) to cache
      * @param mixed $data The description of the model, usually a string or array
+     *
      * @return mixed
      */
     protected function _cacheDescription($object, $data = null)
@@ -340,6 +355,7 @@ class DataSource extends CakeObject
      * @param string $association Name of association model being replaced.
      * @param Model $Model Model instance.
      * @param array $stack The context stack.
+     *
      * @return mixed String of query data with placeholders replaced, or false on failure.
      */
     public function insertQueryData($query, $data, $association, Model $Model, $stack)
@@ -419,6 +435,7 @@ class DataSource extends CakeObject
      *
      * @param Model $Model Model instance
      * @param string $key Key name to make
+     *
      * @return string Key name for model.
      */
     public function resolveKey(Model $Model, $key)

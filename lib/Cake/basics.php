@@ -12,15 +12,19 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake
+ *
  * @since         CakePHP(tm) v 0.2.9
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
-/**
- * Basic defines for timing functions.
- */
+    /**
+     * Basic defines for timing functions.
+     */
     define('SECOND', 1);
     define('MINUTE', 60);
     define('HOUR', 3600);
@@ -31,16 +35,17 @@
 
 if (!function_exists('config')) {
 
-/**
- * Loads configuration files. Receives a set of configuration files
- * to load.
- * Example:
- *
- * `config('config1', 'config2');`
- *
- * @return bool Success
- * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#config
- */
+    /**
+     * Loads configuration files. Receives a set of configuration files
+     * to load.
+     * Example:
+     *
+     * `config('config1', 'config2');`
+     *
+     * @return bool Success
+     *
+     * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#config
+     */
     function config()
     {
         $args = func_get_args();
@@ -59,18 +64,18 @@ if (!function_exists('config')) {
 
 if (!function_exists('debug')) {
 
-/**
- * Prints out debug information about given variable.
- *
- * Only runs if debug level is greater than zero.
- *
- * @param mixed $var Variable to show debug information for.
- * @param bool $showHtml If set to true, the method prints the debug data in a browser-friendly way.
- * @param bool $showFrom If set to true, the method prints from where the function was called.
- * @return void
- * @link https://book.cakephp.org/2.0/en/development/debugging.html#basic-debugging
- * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#debug
- */
+    /**
+     * Prints out debug information about given variable.
+     *
+     * Only runs if debug level is greater than zero.
+     *
+     * @param mixed $var Variable to show debug information for.
+     * @param bool $showHtml If set to true, the method prints the debug data in a browser-friendly way.
+     * @param bool $showFrom If set to true, the method prints from where the function was called.
+     *
+     * @link https://book.cakephp.org/2.0/en/development/debugging.html#basic-debugging
+     * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#debug
+     */
     function debug($var, $showHtml = null, $showFrom = true)
     {
         if (!Configure::read('debug')) {
@@ -125,20 +130,20 @@ TEXT;
 
 if (!function_exists('stackTrace')) {
 
-/**
- * Outputs a stack trace based on the supplied options.
- *
- * ### Options
- *
- * - `depth` - The number of stack frames to return. Defaults to 999
- * - `args` - Should arguments for functions be shown? If true, the arguments for each method call
- *   will be displayed.
- * - `start` - The stack frame to start generating a trace from. Defaults to 1
- *
- * @param array $options Format for outputting stack trace
- * @return void Outputs formatted stack trace.
- * @see Debugger::trace()
- */
+    /**
+     * Outputs a stack trace based on the supplied options.
+     *
+     * ### Options
+     *
+     * - `depth` - The number of stack frames to return. Defaults to 999
+     * - `args` - Should arguments for functions be shown? If true, the arguments for each method call
+     *   will be displayed.
+     * - `start` - The stack frame to start generating a trace from. Defaults to 1
+     *
+     * @param array $options Format for outputting stack trace
+     *
+     * @see Debugger::trace()
+     */
     function stackTrace(array $options = [])
     {
         if (!Configure::read('debug')) {
@@ -154,16 +159,18 @@ if (!function_exists('stackTrace')) {
 
 if (!function_exists('sortByKey')) {
 
-/**
- * Sorts given $array by key $sortBy.
- *
- * @param array &$array Array to sort
- * @param string $sortBy Sort by this key
- * @param string $order Sort order asc/desc (ascending or descending).
- * @param int $type Type of sorting to perform
- * @return array|null Sorted array, or null if not an array.
- * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#sortByKey
- */
+    /**
+     * Sorts given $array by key $sortBy.
+     *
+     * @param array &$array Array to sort
+     * @param string $sortBy Sort by this key
+     * @param string $order Sort order asc/desc (ascending or descending).
+     * @param int $type Type of sorting to perform
+     *
+     * @return array|null Sorted array, or null if not an array.
+     *
+     * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#sortByKey
+     */
     function sortByKey(&$array, $sortBy, $order = 'asc', $type = SORT_NUMERIC)
     {
         if (!is_array($array)) {
@@ -189,17 +196,19 @@ if (!function_exists('sortByKey')) {
 
 if (!function_exists('h')) {
 
-/**
- * Convenience method for htmlspecialchars.
- *
- * @param string|array|object $text Text to wrap through htmlspecialchars. Also works with arrays, and objects.
- *    Arrays will be mapped and have all their elements escaped. Objects will be string cast if they
- *    implement a `__toString` method. Otherwise the class name will be used.
- * @param bool|string $double Boolean - encode existing html entities. String - character set to use when escaping.
- * @param string $charset Character set to use when escaping. Defaults to config value in 'App.encoding' or 'UTF-8'
- * @return string|array|bool|object Wrapped text, Wrapped Array or Wrapped Object.
- * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#h
- */
+    /**
+     * Convenience method for htmlspecialchars.
+     *
+     * @param string|array|object $text Text to wrap through htmlspecialchars. Also works with arrays, and objects.
+     *    Arrays will be mapped and have all their elements escaped. Objects will be string cast if they
+     *    implement a `__toString` method. Otherwise the class name will be used.
+     * @param bool|string $double Boolean - encode existing html entities. String - character set to use when escaping.
+     * @param string $charset Character set to use when escaping. Defaults to config value in 'App.encoding' or 'UTF-8'
+     *
+     * @return string|array|bool|object Wrapped text, Wrapped Array or Wrapped Object.
+     *
+     * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#h
+     */
     function h($text, $double = true, $charset = null)
     {
         if (is_string($text)) {
@@ -239,18 +248,20 @@ if (!function_exists('h')) {
 
 if (!function_exists('pluginSplit')) {
 
-/**
- * Splits a dot syntax plugin name into its plugin and class name.
- * If $name does not have a dot, then index 0 will be null.
- *
- * Commonly used like `list($plugin, $name) = pluginSplit($name);`
- *
- * @param string $name The name you want to plugin split.
- * @param bool $dotAppend Set to true if you want the plugin to have a '.' appended to it.
- * @param string $plugin Optional default plugin to use if no plugin is found. Defaults to null.
- * @return array Array with 2 indexes. 0 => plugin name, 1 => class name
- * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#pluginSplit
- */
+    /**
+     * Splits a dot syntax plugin name into its plugin and class name.
+     * If $name does not have a dot, then index 0 will be null.
+     *
+     * Commonly used like `list($plugin, $name) = pluginSplit($name);`
+     *
+     * @param string $name The name you want to plugin split.
+     * @param bool $dotAppend Set to true if you want the plugin to have a '.' appended to it.
+     * @param string $plugin Optional default plugin to use if no plugin is found. Defaults to null.
+     *
+     * @return array Array with 2 indexes. 0 => plugin name, 1 => class name
+     *
+     * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#pluginSplit
+     */
     function pluginSplit($name, $dotAppend = false, $plugin = null)
     {
         if (strpos($name, '.') !== false) {
@@ -268,17 +279,17 @@ if (!function_exists('pluginSplit')) {
 
 if (!function_exists('pr')) {
 
-/**
- * print_r() convenience function
- *
- * In terminals this will act the same as using print_r() directly, when not run on cli
- * print_r() will wrap <PRE> tags around the output of given array. Similar to debug().
- *
- * @param mixed $var Variable to print out
- * @return void
- * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#pr
- * @see debug()
- */
+    /**
+     * print_r() convenience function
+     *
+     * In terminals this will act the same as using print_r() directly, when not run on cli
+     * print_r() will wrap <PRE> tags around the output of given array. Similar to debug().
+     *
+     * @param mixed $var Variable to print out
+     *
+     * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#pr
+     * @see debug()
+     */
     function pr($var)
     {
         if (Configure::read('debug') > 0) {
@@ -290,14 +301,15 @@ if (!function_exists('pr')) {
 
 if (!function_exists('am')) {
 
-/**
- * Merge a group of arrays
- *
- * Accepts variable arguments. Each argument will be converted into an array and then merged.
- *
- * @return array All array parameters merged into one
- * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#am
- */
+    /**
+     * Merge a group of arrays
+     *
+     * Accepts variable arguments. Each argument will be converted into an array and then merged.
+     *
+     * @return array All array parameters merged into one
+     *
+     * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#am
+     */
     function am()
     {
         $r = [];
@@ -315,17 +327,19 @@ if (!function_exists('am')) {
 
 if (!function_exists('env')) {
 
-/**
- * Gets an environment variable from available sources, and provides emulation
- * for unsupported or inconsistent environment variables (i.e. DOCUMENT_ROOT on
- * IIS, or SCRIPT_NAME in CGI mode). Also exposes some additional custom
- * environment information.
- *
- * @param string $key Environment variable name.
- * @param mixed $default Default value.
- * @return string|bool|null Environment variable setting.
- * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#env
- */
+    /**
+     * Gets an environment variable from available sources, and provides emulation
+     * for unsupported or inconsistent environment variables (i.e. DOCUMENT_ROOT on
+     * IIS, or SCRIPT_NAME in CGI mode). Also exposes some additional custom
+     * environment information.
+     *
+     * @param string $key Environment variable name.
+     * @param mixed $default Default value.
+     *
+     * @return string|bool|null Environment variable setting.
+     *
+     * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#env
+     */
     function env($key, $default = null)
     {
         if ($key === 'HTTPS') {
@@ -424,16 +438,18 @@ if (!function_exists('env')) {
 
 if (!function_exists('cache')) {
 
-/**
- * Reads/writes temporary data to cache files or session.
- *
- * @param string $path File path within /tmp to save the file.
- * @param mixed $data The data to save to the temporary file.
- * @param mixed $expires A valid strtotime string when the data expires.
- * @param string $target The target of the cached data; either 'cache' or 'public'.
- * @return mixed The contents of the temporary file.
- * @deprecated 3.0.0 Will be removed in 3.0. Please use Cache::write() instead.
- */
+    /**
+     * Reads/writes temporary data to cache files or session.
+     *
+     * @param string $path File path within /tmp to save the file.
+     * @param mixed $data The data to save to the temporary file.
+     * @param mixed $expires A valid strtotime string when the data expires.
+     * @param string $target The target of the cached data; either 'cache' or 'public'.
+     *
+     * @return mixed The contents of the temporary file.
+     *
+     * @deprecated 3.0.0 Will be removed in 3.0. Please use Cache::write() instead.
+     */
     function cache($path, $data = null, $expires = '+1 day', $target = 'cache')
     {
         if (Configure::read('Cache.disable')) {
@@ -501,16 +517,17 @@ if (!function_exists('cache')) {
 
 if (!function_exists('clearCache')) {
 
-/**
- * Used to delete files in the cache directories, or clear contents of cache directories
- *
- * @param string|array $params As String name to be searched for deletion, if name is a directory all files in
- *   directory will be deleted. If array, names to be searched for deletion. If clearCache() without params,
- *   all files in app/tmp/cache/views will be deleted
- * @param string $type Directory in tmp/cache defaults to view directory
- * @param string $ext The file extension you are deleting
- * @return bool `true` if files found and deleted, `false` otherwise.
- */
+    /**
+     * Used to delete files in the cache directories, or clear contents of cache directories
+     *
+     * @param string|array $params As String name to be searched for deletion, if name is a directory all files in
+     *   directory will be deleted. If array, names to be searched for deletion. If clearCache() without params,
+     *   all files in app/tmp/cache/views will be deleted
+     * @param string $type Directory in tmp/cache defaults to view directory
+     * @param string $ext The file extension you are deleting
+     *
+     * @return bool `true` if files found and deleted, `false` otherwise.
+     */
     function clearCache($params = null, $type = 'views', $ext = '.php')
     {
         if (is_string($params) || $params === null) {
@@ -576,13 +593,15 @@ if (!function_exists('clearCache')) {
 
 if (!function_exists('stripslashes_deep')) {
 
-/**
- * Recursively strips slashes from all values in an array
- *
- * @param array|string $values Array of values or a string to strip slashes.
- * @return array|string What is returned from calling stripslashes.
- * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#stripslashes_deep
- */
+    /**
+     * Recursively strips slashes from all values in an array
+     *
+     * @param array|string $values Array of values or a string to strip slashes.
+     *
+     * @return array|string What is returned from calling stripslashes.
+     *
+     * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#stripslashes_deep
+     */
     function stripslashes_deep($values)
     {
         if (is_array($values)) {
@@ -599,14 +618,16 @@ if (!function_exists('stripslashes_deep')) {
 
 if (!function_exists('__')) {
 
-/**
- * Returns a translated string if one is found; Otherwise, the submitted message.
- *
- * @param string $singular Text to translate
- * @param mixed $args Array with arguments or multiple arguments in function
- * @return mixed translated string
- * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#__
- */
+    /**
+     * Returns a translated string if one is found; Otherwise, the submitted message.
+     *
+     * @param string $singular Text to translate
+     * @param mixed $args Array with arguments or multiple arguments in function
+     *
+     * @return mixed translated string
+     *
+     * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#__
+     */
     function __($singular, $args = null)
     {
         if (!$singular) {
@@ -623,17 +644,19 @@ if (!function_exists('__')) {
 
 if (!function_exists('__n')) {
 
-/**
- * Returns correct plural form of message identified by $singular and $plural for count $count.
- * Some languages have more than one form for plural messages dependent on the count.
- *
- * @param string $singular Singular text to translate
- * @param string $plural Plural text
- * @param int $count Count
- * @param mixed $args Array with arguments or multiple arguments in function, otherwise null.
- * @return mixed plural form of translated string
- * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#__n
- */
+    /**
+     * Returns correct plural form of message identified by $singular and $plural for count $count.
+     * Some languages have more than one form for plural messages dependent on the count.
+     *
+     * @param string $singular Singular text to translate
+     * @param string $plural Plural text
+     * @param int $count Count
+     * @param mixed $args Array with arguments or multiple arguments in function, otherwise null.
+     *
+     * @return mixed plural form of translated string
+     *
+     * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#__n
+     */
     function __n($singular, $plural, $count, $args = null)
     {
         if (!$singular) {
@@ -650,15 +673,17 @@ if (!function_exists('__n')) {
 
 if (!function_exists('__d')) {
 
-/**
- * Allows you to override the current domain for a single message lookup.
- *
- * @param string $domain Domain
- * @param string $msg String to translate
- * @param mixed $args Array with arguments or multiple arguments in function, otherwise null.
- * @return string translated string
- * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#__d
- */
+    /**
+     * Allows you to override the current domain for a single message lookup.
+     *
+     * @param string $domain Domain
+     * @param string $msg String to translate
+     * @param mixed $args Array with arguments or multiple arguments in function, otherwise null.
+     *
+     * @return string translated string
+     *
+     * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#__d
+     */
     function __d($domain, $msg, $args = null)
     {
         if (!$msg) {
@@ -674,19 +699,21 @@ if (!function_exists('__d')) {
 
 if (!function_exists('__dn')) {
 
-/**
- * Allows you to override the current domain for a single plural message lookup.
- * Returns correct plural form of message identified by $singular and $plural for count $count
- * from domain $domain.
- *
- * @param string $domain Domain
- * @param string $singular Singular string to translate
- * @param string $plural Plural
- * @param int $count Count
- * @param mixed $args Array with arguments or multiple arguments in function, otherwise null.
- * @return string plural form of translated string
- * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#__dn
- */
+    /**
+     * Allows you to override the current domain for a single plural message lookup.
+     * Returns correct plural form of message identified by $singular and $plural for count $count
+     * from domain $domain.
+     *
+     * @param string $domain Domain
+     * @param string $singular Singular string to translate
+     * @param string $plural Plural
+     * @param int $count Count
+     * @param mixed $args Array with arguments or multiple arguments in function, otherwise null.
+     *
+     * @return string plural form of translated string
+     *
+     * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#__dn
+     */
     function __dn($domain, $singular, $plural, $count, $args = null)
     {
         if (!$singular) {
@@ -702,30 +729,32 @@ if (!function_exists('__dn')) {
 
 if (!function_exists('__dc')) {
 
-/**
- * Allows you to override the current domain for a single message lookup.
- * It also allows you to specify a category.
- *
- * The category argument allows a specific category of the locale settings to be used for fetching a message.
- * Valid categories are: LC_CTYPE, LC_NUMERIC, LC_TIME, LC_COLLATE, LC_MONETARY, LC_MESSAGES and LC_ALL.
- *
- * Note that the category must be specified with a class constant of I18n, instead of the constant name. The values are:
- *
- * - LC_ALL       I18n::LC_ALL
- * - LC_COLLATE   I18n::LC_COLLATE
- * - LC_CTYPE     I18n::LC_CTYPE
- * - LC_MONETARY  I18n::LC_MONETARY
- * - LC_NUMERIC   I18n::LC_NUMERIC
- * - LC_TIME      I18n::LC_TIME
- * - LC_MESSAGES  I18n::LC_MESSAGES
- *
- * @param string $domain Domain
- * @param string $msg Message to translate
- * @param int $category Category
- * @param mixed $args Array with arguments or multiple arguments in function, otherwise null.
- * @return string translated string
- * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#__dc
- */
+    /**
+     * Allows you to override the current domain for a single message lookup.
+     * It also allows you to specify a category.
+     *
+     * The category argument allows a specific category of the locale settings to be used for fetching a message.
+     * Valid categories are: LC_CTYPE, LC_NUMERIC, LC_TIME, LC_COLLATE, LC_MONETARY, LC_MESSAGES and LC_ALL.
+     *
+     * Note that the category must be specified with a class constant of I18n, instead of the constant name. The values are:
+     *
+     * - LC_ALL       I18n::LC_ALL
+     * - LC_COLLATE   I18n::LC_COLLATE
+     * - LC_CTYPE     I18n::LC_CTYPE
+     * - LC_MONETARY  I18n::LC_MONETARY
+     * - LC_NUMERIC   I18n::LC_NUMERIC
+     * - LC_TIME      I18n::LC_TIME
+     * - LC_MESSAGES  I18n::LC_MESSAGES
+     *
+     * @param string $domain Domain
+     * @param string $msg Message to translate
+     * @param int $category Category
+     * @param mixed $args Array with arguments or multiple arguments in function, otherwise null.
+     *
+     * @return string translated string
+     *
+     * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#__dc
+     */
     function __dc($domain, $msg, $category, $args = null)
     {
         if (!$msg) {
@@ -741,34 +770,36 @@ if (!function_exists('__dc')) {
 
 if (!function_exists('__dcn')) {
 
-/**
- * Allows you to override the current domain for a single plural message lookup.
- * It also allows you to specify a category.
- * Returns correct plural form of message identified by $singular and $plural for count $count
- * from domain $domain.
- *
- * The category argument allows a specific category of the locale settings to be used for fetching a message.
- * Valid categories are: LC_CTYPE, LC_NUMERIC, LC_TIME, LC_COLLATE, LC_MONETARY, LC_MESSAGES and LC_ALL.
- *
- * Note that the category must be specified with a class constant of I18n, instead of the constant name. The values are:
- *
- * - LC_ALL       I18n::LC_ALL
- * - LC_COLLATE   I18n::LC_COLLATE
- * - LC_CTYPE     I18n::LC_CTYPE
- * - LC_MONETARY  I18n::LC_MONETARY
- * - LC_NUMERIC   I18n::LC_NUMERIC
- * - LC_TIME      I18n::LC_TIME
- * - LC_MESSAGES  I18n::LC_MESSAGES
- *
- * @param string $domain Domain
- * @param string $singular Singular string to translate
- * @param string $plural Plural
- * @param int $count Count
- * @param int $category Category
- * @param mixed $args Array with arguments or multiple arguments in function, otherwise null.
- * @return string plural form of translated string
- * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#__dcn
- */
+    /**
+     * Allows you to override the current domain for a single plural message lookup.
+     * It also allows you to specify a category.
+     * Returns correct plural form of message identified by $singular and $plural for count $count
+     * from domain $domain.
+     *
+     * The category argument allows a specific category of the locale settings to be used for fetching a message.
+     * Valid categories are: LC_CTYPE, LC_NUMERIC, LC_TIME, LC_COLLATE, LC_MONETARY, LC_MESSAGES and LC_ALL.
+     *
+     * Note that the category must be specified with a class constant of I18n, instead of the constant name. The values are:
+     *
+     * - LC_ALL       I18n::LC_ALL
+     * - LC_COLLATE   I18n::LC_COLLATE
+     * - LC_CTYPE     I18n::LC_CTYPE
+     * - LC_MONETARY  I18n::LC_MONETARY
+     * - LC_NUMERIC   I18n::LC_NUMERIC
+     * - LC_TIME      I18n::LC_TIME
+     * - LC_MESSAGES  I18n::LC_MESSAGES
+     *
+     * @param string $domain Domain
+     * @param string $singular Singular string to translate
+     * @param string $plural Plural
+     * @param int $count Count
+     * @param int $category Category
+     * @param mixed $args Array with arguments or multiple arguments in function, otherwise null.
+     *
+     * @return string plural form of translated string
+     *
+     * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#__dcn
+     */
     function __dcn($domain, $singular, $plural, $count, $category, $args = null)
     {
         if (!$singular) {
@@ -784,26 +815,28 @@ if (!function_exists('__dcn')) {
 
 if (!function_exists('__c')) {
 
-/**
- * The category argument allows a specific category of the locale settings to be used for fetching a message.
- * Valid categories are: LC_CTYPE, LC_NUMERIC, LC_TIME, LC_COLLATE, LC_MONETARY, LC_MESSAGES and LC_ALL.
- *
- * Note that the category must be specified with a class constant of I18n, instead of the constant name. The values are:
- *
- * - LC_ALL       I18n::LC_ALL
- * - LC_COLLATE   I18n::LC_COLLATE
- * - LC_CTYPE     I18n::LC_CTYPE
- * - LC_MONETARY  I18n::LC_MONETARY
- * - LC_NUMERIC   I18n::LC_NUMERIC
- * - LC_TIME      I18n::LC_TIME
- * - LC_MESSAGES  I18n::LC_MESSAGES
- *
- * @param string $msg String to translate
- * @param int $category Category
- * @param mixed $args Array with arguments or multiple arguments in function, otherwise null.
- * @return string translated string
- * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#__c
- */
+    /**
+     * The category argument allows a specific category of the locale settings to be used for fetching a message.
+     * Valid categories are: LC_CTYPE, LC_NUMERIC, LC_TIME, LC_COLLATE, LC_MONETARY, LC_MESSAGES and LC_ALL.
+     *
+     * Note that the category must be specified with a class constant of I18n, instead of the constant name. The values are:
+     *
+     * - LC_ALL       I18n::LC_ALL
+     * - LC_COLLATE   I18n::LC_COLLATE
+     * - LC_CTYPE     I18n::LC_CTYPE
+     * - LC_MONETARY  I18n::LC_MONETARY
+     * - LC_NUMERIC   I18n::LC_NUMERIC
+     * - LC_TIME      I18n::LC_TIME
+     * - LC_MESSAGES  I18n::LC_MESSAGES
+     *
+     * @param string $msg String to translate
+     * @param int $category Category
+     * @param mixed $args Array with arguments or multiple arguments in function, otherwise null.
+     *
+     * @return string translated string
+     *
+     * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#__c
+     */
     function __c($msg, $category, $args = null)
     {
         if (!$msg) {
@@ -819,15 +852,17 @@ if (!function_exists('__c')) {
 
 if (!function_exists('__x')) {
 
-/**
- * Returns a translated string if one is found; Otherwise, the submitted message.
- *
- * @param string $context Context of the text
- * @param string $singular Text to translate
- * @param mixed $args Array with arguments or multiple arguments in function, otherwise null.
- * @return mixed translated string
- * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#__
- */
+    /**
+     * Returns a translated string if one is found; Otherwise, the submitted message.
+     *
+     * @param string $context Context of the text
+     * @param string $singular Text to translate
+     * @param mixed $args Array with arguments or multiple arguments in function, otherwise null.
+     *
+     * @return mixed translated string
+     *
+     * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#__
+     */
     function __x($context, $singular, $args = null)
     {
         if (!$singular) {
@@ -844,18 +879,20 @@ if (!function_exists('__x')) {
 
 if (!function_exists('__xn')) {
 
-/**
- * Returns correct plural form of message identified by $singular and $plural for count $count.
- * Some languages have more than one form for plural messages dependent on the count.
- *
- * @param string $context Context of the text
- * @param string $singular Singular text to translate
- * @param string $plural Plural text
- * @param int $count Count
- * @param mixed $args Array with arguments or multiple arguments in function, otherwise null.
- * @return mixed plural form of translated string
- * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#__n
- */
+    /**
+     * Returns correct plural form of message identified by $singular and $plural for count $count.
+     * Some languages have more than one form for plural messages dependent on the count.
+     *
+     * @param string $context Context of the text
+     * @param string $singular Singular text to translate
+     * @param string $plural Plural text
+     * @param int $count Count
+     * @param mixed $args Array with arguments or multiple arguments in function, otherwise null.
+     *
+     * @return mixed plural form of translated string
+     *
+     * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#__n
+     */
     function __xn($context, $singular, $plural, $count, $args = null)
     {
         if (!$singular) {
@@ -872,16 +909,18 @@ if (!function_exists('__xn')) {
 
 if (!function_exists('__dx')) {
 
-/**
- * Allows you to override the current domain for a single message lookup.
- *
- * @param string $domain Domain
- * @param string $context Context of the text
- * @param string $msg String to translate
- * @param mixed $args Array with arguments or multiple arguments in function, otherwise null.
- * @return string translated string
- * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#__d
- */
+    /**
+     * Allows you to override the current domain for a single message lookup.
+     *
+     * @param string $domain Domain
+     * @param string $context Context of the text
+     * @param string $msg String to translate
+     * @param mixed $args Array with arguments or multiple arguments in function, otherwise null.
+     *
+     * @return string translated string
+     *
+     * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#__d
+     */
     function __dx($domain, $context, $msg, $args = null)
     {
         if (!$msg) {
@@ -897,20 +936,22 @@ if (!function_exists('__dx')) {
 
 if (!function_exists('__dxn')) {
 
-/**
- * Allows you to override the current domain for a single plural message lookup.
- * Returns correct plural form of message identified by $singular and $plural for count $count
- * from domain $domain.
- *
- * @param string $domain Domain
- * @param string $context Context of the text
- * @param string $singular Singular string to translate
- * @param string $plural Plural
- * @param int $count Count
- * @param mixed $args Array with arguments or multiple arguments in function, otherwise null.
- * @return string plural form of translated string
- * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#__dn
- */
+    /**
+     * Allows you to override the current domain for a single plural message lookup.
+     * Returns correct plural form of message identified by $singular and $plural for count $count
+     * from domain $domain.
+     *
+     * @param string $domain Domain
+     * @param string $context Context of the text
+     * @param string $singular Singular string to translate
+     * @param string $plural Plural
+     * @param int $count Count
+     * @param mixed $args Array with arguments or multiple arguments in function, otherwise null.
+     *
+     * @return string plural form of translated string
+     *
+     * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#__dn
+     */
     function __dxn($domain, $context, $singular, $plural, $count, $args = null)
     {
         if (!$singular) {
@@ -926,31 +967,33 @@ if (!function_exists('__dxn')) {
 
 if (!function_exists('__dxc')) {
 
-/**
- * Allows you to override the current domain for a single message lookup.
- * It also allows you to specify a category.
- *
- * The category argument allows a specific category of the locale settings to be used for fetching a message.
- * Valid categories are: LC_CTYPE, LC_NUMERIC, LC_TIME, LC_COLLATE, LC_MONETARY, LC_MESSAGES and LC_ALL.
- *
- * Note that the category must be specified with a class constant of I18n, instead of the constant name. The values are:
- *
- * - LC_ALL       I18n::LC_ALL
- * - LC_COLLATE   I18n::LC_COLLATE
- * - LC_CTYPE     I18n::LC_CTYPE
- * - LC_MONETARY  I18n::LC_MONETARY
- * - LC_NUMERIC   I18n::LC_NUMERIC
- * - LC_TIME      I18n::LC_TIME
- * - LC_MESSAGES  I18n::LC_MESSAGES
- *
- * @param string $domain Domain
- * @param string $context Context of the text
- * @param string $msg Message to translate
- * @param int $category Category
- * @param mixed $args Array with arguments or multiple arguments in function, otherwise null.
- * @return string translated string
- * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#__dc
- */
+    /**
+     * Allows you to override the current domain for a single message lookup.
+     * It also allows you to specify a category.
+     *
+     * The category argument allows a specific category of the locale settings to be used for fetching a message.
+     * Valid categories are: LC_CTYPE, LC_NUMERIC, LC_TIME, LC_COLLATE, LC_MONETARY, LC_MESSAGES and LC_ALL.
+     *
+     * Note that the category must be specified with a class constant of I18n, instead of the constant name. The values are:
+     *
+     * - LC_ALL       I18n::LC_ALL
+     * - LC_COLLATE   I18n::LC_COLLATE
+     * - LC_CTYPE     I18n::LC_CTYPE
+     * - LC_MONETARY  I18n::LC_MONETARY
+     * - LC_NUMERIC   I18n::LC_NUMERIC
+     * - LC_TIME      I18n::LC_TIME
+     * - LC_MESSAGES  I18n::LC_MESSAGES
+     *
+     * @param string $domain Domain
+     * @param string $context Context of the text
+     * @param string $msg Message to translate
+     * @param int $category Category
+     * @param mixed $args Array with arguments or multiple arguments in function, otherwise null.
+     *
+     * @return string translated string
+     *
+     * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#__dc
+     */
     function __dxc($domain, $context, $msg, $category, $args = null)
     {
         if (!$msg) {
@@ -966,35 +1009,37 @@ if (!function_exists('__dxc')) {
 
 if (!function_exists('__dxcn')) {
 
-/**
- * Allows you to override the current domain for a single plural message lookup.
- * It also allows you to specify a category.
- * Returns correct plural form of message identified by $singular and $plural for count $count
- * from domain $domain.
- *
- * The category argument allows a specific category of the locale settings to be used for fetching a message.
- * Valid categories are: LC_CTYPE, LC_NUMERIC, LC_TIME, LC_COLLATE, LC_MONETARY, LC_MESSAGES and LC_ALL.
- *
- * Note that the category must be specified with a class constant of I18n, instead of the constant name. The values are:
- *
- * - LC_ALL       I18n::LC_ALL
- * - LC_COLLATE   I18n::LC_COLLATE
- * - LC_CTYPE     I18n::LC_CTYPE
- * - LC_MONETARY  I18n::LC_MONETARY
- * - LC_NUMERIC   I18n::LC_NUMERIC
- * - LC_TIME      I18n::LC_TIME
- * - LC_MESSAGES  I18n::LC_MESSAGES
- *
- * @param string $domain Domain
- * @param string $context Context of the text
- * @param string $singular Singular string to translate
- * @param string $plural Plural
- * @param int $count Count
- * @param int $category Category
- * @param mixed $args Array with arguments or multiple arguments in function, otherwise null.
- * @return string plural form of translated string
- * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#__dcn
- */
+    /**
+     * Allows you to override the current domain for a single plural message lookup.
+     * It also allows you to specify a category.
+     * Returns correct plural form of message identified by $singular and $plural for count $count
+     * from domain $domain.
+     *
+     * The category argument allows a specific category of the locale settings to be used for fetching a message.
+     * Valid categories are: LC_CTYPE, LC_NUMERIC, LC_TIME, LC_COLLATE, LC_MONETARY, LC_MESSAGES and LC_ALL.
+     *
+     * Note that the category must be specified with a class constant of I18n, instead of the constant name. The values are:
+     *
+     * - LC_ALL       I18n::LC_ALL
+     * - LC_COLLATE   I18n::LC_COLLATE
+     * - LC_CTYPE     I18n::LC_CTYPE
+     * - LC_MONETARY  I18n::LC_MONETARY
+     * - LC_NUMERIC   I18n::LC_NUMERIC
+     * - LC_TIME      I18n::LC_TIME
+     * - LC_MESSAGES  I18n::LC_MESSAGES
+     *
+     * @param string $domain Domain
+     * @param string $context Context of the text
+     * @param string $singular Singular string to translate
+     * @param string $plural Plural
+     * @param int $count Count
+     * @param int $category Category
+     * @param mixed $args Array with arguments or multiple arguments in function, otherwise null.
+     *
+     * @return string plural form of translated string
+     *
+     * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#__dcn
+     */
     function __dxcn($domain, $context, $singular, $plural, $count, $category, $args = null)
     {
         if (!$singular) {
@@ -1010,27 +1055,29 @@ if (!function_exists('__dxcn')) {
 
 if (!function_exists('__xc')) {
 
-/**
- * The category argument allows a specific category of the locale settings to be used for fetching a message.
- * Valid categories are: LC_CTYPE, LC_NUMERIC, LC_TIME, LC_COLLATE, LC_MONETARY, LC_MESSAGES and LC_ALL.
- *
- * Note that the category must be specified with a class constant of I18n, instead of the constant name. The values are:
- *
- * - LC_ALL       I18n::LC_ALL
- * - LC_COLLATE   I18n::LC_COLLATE
- * - LC_CTYPE     I18n::LC_CTYPE
- * - LC_MONETARY  I18n::LC_MONETARY
- * - LC_NUMERIC   I18n::LC_NUMERIC
- * - LC_TIME      I18n::LC_TIME
- * - LC_MESSAGES  I18n::LC_MESSAGES
- *
- * @param string $context Context of the text
- * @param string $msg String to translate
- * @param int $category Category
- * @param mixed $args Array with arguments or multiple arguments in function, otherwise null.
- * @return string translated string
- * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#__c
- */
+    /**
+     * The category argument allows a specific category of the locale settings to be used for fetching a message.
+     * Valid categories are: LC_CTYPE, LC_NUMERIC, LC_TIME, LC_COLLATE, LC_MONETARY, LC_MESSAGES and LC_ALL.
+     *
+     * Note that the category must be specified with a class constant of I18n, instead of the constant name. The values are:
+     *
+     * - LC_ALL       I18n::LC_ALL
+     * - LC_COLLATE   I18n::LC_COLLATE
+     * - LC_CTYPE     I18n::LC_CTYPE
+     * - LC_MONETARY  I18n::LC_MONETARY
+     * - LC_NUMERIC   I18n::LC_NUMERIC
+     * - LC_TIME      I18n::LC_TIME
+     * - LC_MESSAGES  I18n::LC_MESSAGES
+     *
+     * @param string $context Context of the text
+     * @param string $msg String to translate
+     * @param int $category Category
+     * @param mixed $args Array with arguments or multiple arguments in function, otherwise null.
+     *
+     * @return string translated string
+     *
+     * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#__c
+     */
     function __xc($context, $msg, $category, $args = null)
     {
         if (!$msg) {
@@ -1046,13 +1093,13 @@ if (!function_exists('__xc')) {
 
 if (!function_exists('LogError')) {
 
-/**
- * Shortcut to Log::write.
- *
- * @param string $message Message to write to log
- * @return void
- * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#LogError
- */
+    /**
+     * Shortcut to Log::write.
+     *
+     * @param string $message Message to write to log
+     *
+     * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#LogError
+     */
     function LogError($message)
     {
         App::uses('CakeLog', 'Log');
@@ -1064,13 +1111,15 @@ if (!function_exists('LogError')) {
 
 if (!function_exists('fileExistsInPath')) {
 
-/**
- * Searches include path for files.
- *
- * @param string $file File to look for
- * @return bool|string Full path to file if exists, otherwise `false`.
- * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#fileExistsInPath
- */
+    /**
+     * Searches include path for files.
+     *
+     * @param string $file File to look for
+     *
+     * @return bool|string Full path to file if exists, otherwise `false`.
+     *
+     * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#fileExistsInPath
+     */
     function fileExistsInPath($file)
     {
         $paths = explode(PATH_SEPARATOR, ini_get('include_path'));
@@ -1089,13 +1138,15 @@ if (!function_exists('fileExistsInPath')) {
 
 if (!function_exists('convertSlash')) {
 
-/**
- * Convert forward slashes to underscores and removes first and last underscores in a string
- *
- * @param string $string String to convert
- * @return string with underscore remove from start and end of string
- * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#convertSlash
- */
+    /**
+     * Convert forward slashes to underscores and removes first and last underscores in a string
+     *
+     * @param string $string String to convert
+     *
+     * @return string with underscore remove from start and end of string
+     *
+     * @link https://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#convertSlash
+     */
     function convertSlash($string)
     {
         $string = trim($string, '/');
@@ -1108,11 +1159,11 @@ if (!function_exists('convertSlash')) {
 
 if (!function_exists('json_last_error_msg')) {
 
-/**
- * Provides the fallback implementation of json_last_error_msg() available in PHP 5.5 and above.
- *
- * @return string Error message.
- */
+    /**
+     * Provides the fallback implementation of json_last_error_msg() available in PHP 5.5 and above.
+     *
+     * @return string Error message.
+     */
     function json_last_error_msg()
     {
         static $errors = [

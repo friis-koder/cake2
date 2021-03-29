@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Test.Case.Model.Datasource.Session
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('CakeSession', 'Model/Datasource');
@@ -30,8 +34,6 @@ class CacheSessionTest extends CakeTestCase
 
     /**
      * test case startup
-     *
-     * @return void
      */
     public static function setupBeforeClass()
     {
@@ -46,8 +48,6 @@ class CacheSessionTest extends CakeTestCase
 
     /**
      * cleanup after test case.
-     *
-     * @return void
      */
     public static function teardownAfterClass()
     {
@@ -59,8 +59,6 @@ class CacheSessionTest extends CakeTestCase
 
     /**
      * setup
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -70,8 +68,6 @@ class CacheSessionTest extends CakeTestCase
 
     /**
      * tearDown
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -81,8 +77,6 @@ class CacheSessionTest extends CakeTestCase
 
     /**
      * test open
-     *
-     * @return void
      */
     public function testOpen()
     {
@@ -91,8 +85,6 @@ class CacheSessionTest extends CakeTestCase
 
     /**
      * test write()
-     *
-     * @return void
      */
     public function testWrite()
     {
@@ -103,8 +95,6 @@ class CacheSessionTest extends CakeTestCase
 
     /**
      * test reading.
-     *
-     * @return void
      */
     public function testRead()
     {
@@ -116,8 +106,6 @@ class CacheSessionTest extends CakeTestCase
 
     /**
      * test destroy
-     *
-     * @return void
      */
     public function testDestroy()
     {

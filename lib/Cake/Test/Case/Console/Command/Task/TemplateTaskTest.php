@@ -12,9 +12,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Test.Case.Console.Command.Task
+ *
  * @since         CakePHP(tm) v 1.3
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('ShellDispatcher', 'Console');
@@ -32,8 +36,6 @@ class TemplateTaskTest extends CakeTestCase
 {
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -50,8 +52,6 @@ class TemplateTaskTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -61,8 +61,6 @@ class TemplateTaskTest extends CakeTestCase
 
     /**
      * test that set sets variables
-     *
-     * @return void
      */
     public function testSet()
     {
@@ -85,8 +83,6 @@ class TemplateTaskTest extends CakeTestCase
 
     /**
      * test finding themes installed in
-     *
-     * @return void
      */
     public function testFindingInstalledThemesForBake()
     {
@@ -98,8 +94,6 @@ class TemplateTaskTest extends CakeTestCase
     /**
      * test getting the correct theme name. Ensure that with only one theme, or a theme param
      * that the user is not bugged. If there are more, find and return the correct theme name
-     *
-     * @return void
      */
     public function testGetThemePath()
     {
@@ -124,8 +118,6 @@ class TemplateTaskTest extends CakeTestCase
 
     /**
      * test generate
-     *
-     * @return void
      */
     public function testGenerate()
     {
@@ -145,8 +137,6 @@ class TemplateTaskTest extends CakeTestCase
     /**
      * test generate with a missing template in the chosen theme.
      * ensure fallback to default works.
-     *
-     * @return void
      */
     public function testGenerateWithTemplateFallbacks()
     {

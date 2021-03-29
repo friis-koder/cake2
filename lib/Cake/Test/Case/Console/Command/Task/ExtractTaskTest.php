@@ -12,9 +12,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP Project
+ *
  * @package       Cake.Test.Case.Console.Command.Task
+ *
  * @since         CakePHP v 1.2.0.7726
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Folder', 'Utility');
@@ -33,8 +37,6 @@ class ExtractTaskTest extends CakeTestCase
 {
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -53,8 +55,6 @@ class ExtractTaskTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -68,8 +68,6 @@ class ExtractTaskTest extends CakeTestCase
 
     /**
      * testExecute method
-     *
-     * @return void
      */
     public function testExecute()
     {
@@ -195,8 +193,6 @@ class ExtractTaskTest extends CakeTestCase
 
     /**
      * testExtractCategory method
-     *
-     * @return void
      */
     public function testExtractCategory()
     {
@@ -226,8 +222,6 @@ class ExtractTaskTest extends CakeTestCase
 
     /**
      * testExtractWithoutLocations method
-     *
-     * @return void
      */
     public function testExtractWithoutLocations()
     {
@@ -255,8 +249,6 @@ class ExtractTaskTest extends CakeTestCase
 
     /**
      * test exclusions
-     *
-     * @return void
      */
     public function testExtractWithExclude()
     {
@@ -283,8 +275,6 @@ class ExtractTaskTest extends CakeTestCase
 
     /**
      * test extract can read more than one path.
-     *
-     * @return void
      */
     public function testExtractMultiplePaths()
     {
@@ -308,8 +298,6 @@ class ExtractTaskTest extends CakeTestCase
 
     /**
      * Tests that it is possible to exclude plugin paths by enabling the param option for the ExtractTask
-     *
-     * @return void
      */
     public function testExtractExcludePlugins()
     {
@@ -336,8 +324,6 @@ class ExtractTaskTest extends CakeTestCase
 
     /**
      * Test that is possible to extract messages form a single plugin
-     *
-     * @return void
      */
     public function testExtractPlugin()
     {
@@ -366,8 +352,6 @@ class ExtractTaskTest extends CakeTestCase
 
     /**
      * Tests that the task will inspect application models and extract the validation messages from them
-     *
-     * @return void
      */
     public function testExtractModelValidation()
     {
@@ -405,8 +389,6 @@ class ExtractTaskTest extends CakeTestCase
     /**
      *  Tests that the task will inspect application models and extract the validation messages from them
      *	while using a custom validation domain for the messages set on the model itself
-     *
-     * @return void
      */
     public function testExtractModelValidationWithDomainInModel()
     {
@@ -439,8 +421,6 @@ class ExtractTaskTest extends CakeTestCase
 
     /**
      *  Test that the extract shell can obtain validation messages from models inside a specific plugin
-     *
-     * @return void
      */
     public function testExtractModelValidationInPlugin()
     {
@@ -471,8 +451,6 @@ class ExtractTaskTest extends CakeTestCase
 
     /**
      *  Test that the extract shell overwrites existing files with the overwrite parameter
-     *
-     * @return void
      */
     public function testExtractOverwrite()
     {
@@ -494,8 +472,6 @@ class ExtractTaskTest extends CakeTestCase
 
     /**
      *  Test that the extract shell scans the core libs
-     *
-     * @return void
      */
     public function testExtractCore()
     {

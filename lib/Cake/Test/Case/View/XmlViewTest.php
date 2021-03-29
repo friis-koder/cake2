@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.View
+ *
  * @since         CakePHP(tm) v 2.1.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Controller', 'Controller');
@@ -35,8 +39,6 @@ class XmlViewTest extends CakeTestCase
 
     /**
      * testRenderWithoutView method
-     *
-     * @return void
      */
     public function testRenderWithoutView()
     {
@@ -80,8 +82,6 @@ class XmlViewTest extends CakeTestCase
 
     /**
      * Test that rendering with _serialize does not load helpers
-     *
-     * @return void
      */
     public function testRenderSerializeNoHelpers()
     {
@@ -100,8 +100,6 @@ class XmlViewTest extends CakeTestCase
 
     /**
      * Test that rendering with _serialize respects XML options.
-     *
-     * @return void
      */
     public function testRenderSerializeWithOptions()
     {
@@ -135,8 +133,6 @@ class XmlViewTest extends CakeTestCase
 
     /**
      * Test that rendering with _serialize can work with string setting.
-     *
-     * @return void
      */
     public function testRenderSerializeWithString()
     {
@@ -172,8 +168,6 @@ class XmlViewTest extends CakeTestCase
 
     /**
      * Test render with an array in _serialize
-     *
-     * @return void
      */
     public function testRenderWithoutViewMultiple()
     {
@@ -202,8 +196,6 @@ class XmlViewTest extends CakeTestCase
 
     /**
      * Test render with an array in _serialize and alias
-     *
-     * @return void
      */
     public function testRenderWithoutViewMultipleAndAlias()
     {
@@ -232,8 +224,6 @@ class XmlViewTest extends CakeTestCase
 
     /**
      * testRenderWithView method
-     *
-     * @return void
      */
     public function testRenderWithView()
     {

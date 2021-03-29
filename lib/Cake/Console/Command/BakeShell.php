@@ -14,8 +14,10 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
  * @since         CakePHP(tm) v 1.2.0.5012
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('AppShell', 'Console/Command');
@@ -29,6 +31,7 @@ App::uses('Model', 'Model');
  * models, and views. Going further, Bake can also write Unit Tests for you.
  *
  * @package       Cake.Console.Command
+ *
  * @link          https://book.cakephp.org/2.0/en/console-and-shells/code-generation-with-bake.html
  */
 class BakeShell extends AppShell
@@ -49,8 +52,6 @@ class BakeShell extends AppShell
 
     /**
      * Assign $this->connection to the active task if a connection param is set.
-     *
-     * @return void
      */
     public function startup()
     {
@@ -143,8 +144,6 @@ class BakeShell extends AppShell
 
     /**
      * Quickly bake the MVC
-     *
-     * @return void
      */
     public function all()
     {

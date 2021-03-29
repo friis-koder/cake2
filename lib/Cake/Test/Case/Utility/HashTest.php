@@ -8,9 +8,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Utility
+ *
  * @since         CakePHP(tm) v 2.2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Hash', 'Utility');
@@ -184,8 +188,6 @@ class HashTest extends CakeTestCase
 
     /**
      * Test get()
-     *
-     * @return void
      */
     public function testGet()
     {
@@ -233,8 +235,6 @@ class HashTest extends CakeTestCase
 
     /**
      * Test that get() can extract '' key data.
-     *
-     * @return void
      */
     public function testGetEmptyKey()
     {
@@ -252,7 +252,6 @@ class HashTest extends CakeTestCase
      * Test get() with an invalid path
      *
      * @expectedException InvalidArgumentException
-     * @return void
      */
     public function testGetInvalidPath()
     {
@@ -261,8 +260,6 @@ class HashTest extends CakeTestCase
 
     /**
      * Test testGetNullPath()
-     *
-     * @return void
      */
     public function testGetNullPath()
     {
@@ -275,8 +272,6 @@ class HashTest extends CakeTestCase
 
     /**
      * Test dimensions.
-     *
-     * @return void
      */
     public function testDimensions()
     {
@@ -306,8 +301,6 @@ class HashTest extends CakeTestCase
 
     /**
      * Test maxDimensions
-     *
-     * @return void
      */
     public function testMaxDimensions()
     {
@@ -349,8 +342,6 @@ class HashTest extends CakeTestCase
 
     /**
      * Tests Hash::flatten
-     *
-     * @return void
      */
     public function testFlatten()
     {
@@ -419,8 +410,6 @@ class HashTest extends CakeTestCase
 
     /**
      * Test diff();
-     *
-     * @return void
      */
     public function testDiff()
     {
@@ -502,8 +491,6 @@ class HashTest extends CakeTestCase
 
     /**
      * Test merge()
-     *
-     * @return void
      */
     public function testMerge()
     {
@@ -590,8 +577,6 @@ class HashTest extends CakeTestCase
 
     /**
      * test normalizing arrays
-     *
-     * @return void
      */
     public function testNormalize()
     {
@@ -618,8 +603,6 @@ class HashTest extends CakeTestCase
 
     /**
      * testContains method
-     *
-     * @return void
      */
     public function testContains()
     {
@@ -663,8 +646,6 @@ class HashTest extends CakeTestCase
 
     /**
      * testFilter method
-     *
-     * @return void
      */
     public function testFilter()
     {
@@ -706,8 +687,6 @@ class HashTest extends CakeTestCase
 
     /**
      * testNumericArrayCheck method
-     *
-     * @return void
      */
     public function testNumeric()
     {
@@ -747,8 +726,6 @@ class HashTest extends CakeTestCase
 
     /**
      * Test simple paths.
-     *
-     * @return void
      */
     public function testExtractBasic()
     {
@@ -769,8 +746,6 @@ class HashTest extends CakeTestCase
 
     /**
      * Test the {n} selector
-     *
-     * @return void
      */
     public function testExtractNumericKey()
     {
@@ -792,8 +767,6 @@ class HashTest extends CakeTestCase
 
     /**
      * Test the {n} selector with inconsistent arrays
-     *
-     * @return void
      */
     public function testExtractNumericMixedKeys()
     {
@@ -819,8 +792,6 @@ class HashTest extends CakeTestCase
 
     /**
      * Test the {n} selector with non-zero based arrays
-     *
-     * @return void
      */
     public function testExtractNumericNonZero()
     {
@@ -851,8 +822,6 @@ class HashTest extends CakeTestCase
 
     /**
      * Test the {s} selector.
-     *
-     * @return void
      */
     public function testExtractStringKey()
     {
@@ -873,8 +842,6 @@ class HashTest extends CakeTestCase
 
     /**
      * Test wildcard matcher
-     *
-     * @return void
      */
     public function testExtractWildcard()
     {
@@ -900,8 +867,6 @@ class HashTest extends CakeTestCase
 
     /**
      * Test the attribute presense selector.
-     *
-     * @return void
      */
     public function testExtractAttributePresence()
     {
@@ -918,8 +883,6 @@ class HashTest extends CakeTestCase
 
     /**
      * Test = and != operators.
-     *
-     * @return void
      */
     public function testExtractAttributeEquality()
     {
@@ -942,8 +905,6 @@ class HashTest extends CakeTestCase
 
     /**
      * Test extracting based on attributes with boolean values.
-     *
-     * @return void
      */
     public function testExtractAttributeBoolean()
     {
@@ -985,8 +946,6 @@ class HashTest extends CakeTestCase
 
     /**
      * Test that attribute matchers don't cause errors on scalar data.
-     *
-     * @return void
      */
     public function testExtractAttributeEqualityOnScalarValue()
     {
@@ -1006,8 +965,6 @@ class HashTest extends CakeTestCase
 
     /**
      * Test comparison operators.
-     *
-     * @return void
      */
     public function testExtractAttributeComparison()
     {
@@ -1036,8 +993,6 @@ class HashTest extends CakeTestCase
 
     /**
      * Test multiple attributes with conditions.
-     *
-     * @return void
      */
     public function testExtractAttributeMultiple()
     {
@@ -1054,8 +1009,6 @@ class HashTest extends CakeTestCase
 
     /**
      * Test attribute pattern matching.
-     *
-     * @return void
      */
     public function testExtractAttributePattern()
     {
@@ -1072,8 +1025,6 @@ class HashTest extends CakeTestCase
 
     /**
      * Test that extract() + matching can hit null things.
-     *
-     * @return void
      */
     public function testExtractMatchesNull()
     {
@@ -1098,8 +1049,6 @@ class HashTest extends CakeTestCase
 
     /**
      * Test that uneven keys are handled correctly.
-     *
-     * @return void
      */
     public function testExtractUnevenKeys()
     {
@@ -1138,8 +1087,6 @@ class HashTest extends CakeTestCase
 
     /**
      * testSort method
-     *
-     * @return void
      */
     public function testSort()
     {
@@ -1291,8 +1238,6 @@ class HashTest extends CakeTestCase
 
     /**
      * Test sort() with numeric option.
-     *
-     * @return void
      */
     public function testSortNumeric()
     {
@@ -1326,8 +1271,6 @@ class HashTest extends CakeTestCase
 
     /**
      * Test natural sorting.
-     *
-     * @return void
      */
     public function testSortNatural()
     {
@@ -1364,8 +1307,6 @@ class HashTest extends CakeTestCase
 
     /**
      * Test natural sorting ignoring case.
-     *
-     * @return void
      */
     public function testSortNaturalIgnoreCase()
     {
@@ -1402,8 +1343,6 @@ class HashTest extends CakeTestCase
 
     /**
      * Test that sort() with 'natural' type will fallback to 'regular' as SORT_NATURAL is introduced in PHP 5.4
-     *
-     * @return void
      */
     public function testSortNaturalFallbackToRegular()
     {
@@ -1425,8 +1364,6 @@ class HashTest extends CakeTestCase
 
     /**
      * Test sort() with locale option.
-     *
-     * @return void
      */
     public function testSortLocale()
     {
@@ -1458,8 +1395,6 @@ class HashTest extends CakeTestCase
 
     /**
      * test sorting with out of order keys.
-     *
-     * @return void
      */
     public function testSortWithOutOfOrderKeys()
     {
@@ -1486,8 +1421,6 @@ class HashTest extends CakeTestCase
 
     /**
      * test sorting with string keys.
-     *
-     * @return void
      */
     public function testSortStringKeys()
     {
@@ -1524,8 +1457,6 @@ class HashTest extends CakeTestCase
 
     /**
      * test sorting with string ignoring case.
-     *
-     * @return void
      */
     public function testSortStringIgnoreCase()
     {
@@ -1547,8 +1478,6 @@ class HashTest extends CakeTestCase
 
     /**
      * test regular sorting ignoring case.
-     *
-     * @return void
      */
     public function testSortRegularIgnoreCase()
     {
@@ -1570,8 +1499,6 @@ class HashTest extends CakeTestCase
 
     /**
      * Test sorting on a nested key that is sometimes undefined.
-     *
-     * @return void
      */
     public function testSortSparse()
     {
@@ -1623,8 +1550,6 @@ class HashTest extends CakeTestCase
 
     /**
      * Test insert()
-     *
-     * @return void
      */
     public function testInsertSimple()
     {
@@ -1657,8 +1582,6 @@ class HashTest extends CakeTestCase
 
     /**
      * Test inserting with multiple values.
-     *
-     * @return void
      */
     public function testInsertMulti()
     {
@@ -1703,8 +1626,6 @@ class HashTest extends CakeTestCase
 
     /**
      * Test that insert() can insert data over a string value.
-     *
-     * @return void
      */
     public function testInsertOverwriteStringValue()
     {
@@ -1726,8 +1647,6 @@ class HashTest extends CakeTestCase
 
     /**
      * Test remove() method.
-     *
-     * @return void
      */
     public function testRemove()
     {
@@ -1834,8 +1753,6 @@ class HashTest extends CakeTestCase
 
     /**
      * Test removing multiple values.
-     *
-     * @return void
      */
     public function testRemoveMulti()
     {
@@ -1881,8 +1798,6 @@ class HashTest extends CakeTestCase
 
     /**
      * testCheck method
-     *
-     * @return void
      */
     public function testCheck()
     {
@@ -1911,8 +1826,6 @@ class HashTest extends CakeTestCase
 
     /**
      * testCombine method
-     *
-     * @return void
      */
     public function testCombine()
     {
@@ -1948,7 +1861,6 @@ class HashTest extends CakeTestCase
      * test combine() giving errors on key/value length mismatches.
      *
      * @expectedException CakeException
-     * @return void
      */
     public function testCombineErrorMissingValue()
     {
@@ -1963,7 +1875,6 @@ class HashTest extends CakeTestCase
      * test combine() giving errors on key/value length mismatches.
      *
      * @expectedException CakeException
-     * @return void
      */
     public function testCombineErrorMissingKey()
     {
@@ -1976,8 +1887,6 @@ class HashTest extends CakeTestCase
 
     /**
      * test combine() with a group path.
-     *
-     * @return void
      */
     public function testCombineWithGroupPath()
     {
@@ -2034,8 +1943,6 @@ class HashTest extends CakeTestCase
 
     /**
      * Test combine with formatting rules.
-     *
-     * @return void
      */
     public function testCombineWithFormatting()
     {
@@ -2101,8 +2008,6 @@ class HashTest extends CakeTestCase
 
     /**
      * testFormat method
-     *
-     * @return void
      */
     public function testFormat()
     {
@@ -2135,8 +2040,6 @@ class HashTest extends CakeTestCase
 
     /**
      * testFormattingNullValues method
-     *
-     * @return void
      */
     public function testFormatNullValues()
     {
@@ -2163,8 +2066,6 @@ class HashTest extends CakeTestCase
 
     /**
      * Test map()
-     *
-     * @return void
      */
     public function testMap()
     {
@@ -2177,8 +2078,6 @@ class HashTest extends CakeTestCase
 
     /**
      * testApply
-     *
-     * @return void
      */
     public function testApply()
     {
@@ -2190,8 +2089,6 @@ class HashTest extends CakeTestCase
 
     /**
      * Test reduce()
-     *
-     * @return void
      */
     public function testReduce()
     {
@@ -2205,6 +2102,7 @@ class HashTest extends CakeTestCase
      * testing method for map callbacks.
      *
      * @param mixed $value Value
+     *
      * @return mixed
      */
     public function mapCallback($value)
@@ -2217,6 +2115,7 @@ class HashTest extends CakeTestCase
      *
      * @param mixed $one First param
      * @param mixed $two Second param
+     *
      * @return mixed
      */
     public function reduceCallback($one, $two)
@@ -2227,8 +2126,6 @@ class HashTest extends CakeTestCase
     /**
      * test Hash nest with a normal model result set. For kicks rely on Hash nest detecting the key names
      * automatically
-     *
-     * @return void
      */
     public function testNestModel()
     {
@@ -2375,8 +2272,6 @@ class HashTest extends CakeTestCase
 
     /**
      * test Hash nest with a normal model result set, and a nominated root id
-     *
-     * @return void
      */
     public function testNestModelExplicitRoot()
     {
@@ -2486,8 +2381,6 @@ class HashTest extends CakeTestCase
 
     /**
      * test Hash nest with a 1d array - this method should be able to handle any type of array input
-     *
-     * @return void
      */
     public function testNest1Dimensional()
     {
@@ -2597,8 +2490,6 @@ class HashTest extends CakeTestCase
      *
      * The result should be the same as the input.
      * For an easier comparison, unset all the empty children arrays from the result
-     *
-     * @return void
      */
     public function testMissingParent()
     {
@@ -2648,7 +2539,6 @@ class HashTest extends CakeTestCase
      * Tests that nest() throws an InvalidArgumentException when providing an invalid input.
      *
      * @expectedException InvalidArgumentException
-     * @return void
      */
     public function testNestInvalid()
     {
@@ -2666,8 +2556,6 @@ class HashTest extends CakeTestCase
 
     /**
      * testMergeDiff method
-     *
-     * @return void
      */
     public function testMergeDiff()
     {
@@ -2768,8 +2656,6 @@ class HashTest extends CakeTestCase
 
     /**
      * Tests Hash::expand
-     *
-     * @return void
      */
     public function testExpand()
     {
@@ -2827,8 +2713,6 @@ class HashTest extends CakeTestCase
 
     /**
      * Test that flattening a large complex set doesn't loop forever.
-     *
-     * @return void
      */
     public function testFlattenInfiniteLoop()
     {

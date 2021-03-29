@@ -8,7 +8,9 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -23,6 +25,7 @@
  * when loaded.
  *
  * @package       Cake.Utility
+ *
  * @since CakePHP(tm) v 2.0
  */
 abstract class ObjectCollection
@@ -56,6 +59,7 @@ abstract class ObjectCollection
      *
      * @param string $name Name of object to load.
      * @param array $options Array of configuration options for the object to be constructed.
+     *
      * @return CakeObject the constructed object
      */
     abstract public function load($name, $options = []);
@@ -88,8 +92,10 @@ abstract class ObjectCollection
      *   (eg. `Model.afterSave` event will trigger the `afterSave` callback)
      * @param array $params Array of parameters for the triggered callback.
      * @param array $options Array of options.
-     * @return mixed Either the last result or all results if collectReturn is on.
+     *
      * @throws CakeException when modParams is used with an index that does not exist.
+     *
+     * @return mixed Either the last result or all results if collectReturn is on.
      */
     public function trigger($callback, $params = [], $options = [])
     {
@@ -150,6 +156,7 @@ abstract class ObjectCollection
      * Provide public read access to the loaded objects
      *
      * @param string $name Name of property to read
+     *
      * @return mixed
      */
     public function __get($name)
@@ -165,6 +172,7 @@ abstract class ObjectCollection
      * Provide isset access to _loaded
      *
      * @param string $name Name of object being checked.
+     *
      * @return bool
      */
     public function __isset($name)
@@ -177,7 +185,6 @@ abstract class ObjectCollection
      *
      * @param string|array $name CamelCased name of the object(s) to enable (string or array)
      * @param bool $prioritize Prioritize enabled list after enabling object(s)
-     * @return void
      */
     public function enable($name, $prioritize = true)
     {
@@ -222,7 +229,6 @@ abstract class ObjectCollection
      * 	If string the second param $priority is used else it should be an associative array
      * 	with keys as object names and values as priorities to set.
      * @param int|null $priority Integer priority to set or null for default
-     * @return void
      */
     public function setPriority($name, $priority = null)
     {
@@ -249,7 +255,6 @@ abstract class ObjectCollection
      * callable as normal.
      *
      * @param string|array $name CamelCased name of the objects(s) to disable (string or array)
-     * @return void
      */
     public function disable($name)
     {
@@ -264,6 +269,7 @@ abstract class ObjectCollection
      *
      * @param string $name Optional. The name of the object to check the status of. If omitted,
      *   returns an array of currently-enabled object
+     *
      * @return mixed If $name is specified, returns the boolean status of the corresponding object.
      *   Otherwise, returns an array of all enabled objects.
      */
@@ -283,8 +289,10 @@ abstract class ObjectCollection
      *
      * @param string $name Optional. The name of the object to check the status of. If omitted,
      *   returns an array of currently-attached objects
+     *
      * @return mixed If $name is specified, returns the boolean status of the corresponding object.
      *    Otherwise, returns an array of all attached objects.
+     *
      * @deprecated 3.0.0 Will be removed in 3.0. Use loaded instead.
      */
     public function attached($name = null)
@@ -297,6 +305,7 @@ abstract class ObjectCollection
      *
      * @param string $name Optional. The name of the object to check the status of. If omitted,
      *   returns an array of currently-loaded objects
+     *
      * @return mixed If $name is specified, returns the boolean status of the corresponding object.
      *    Otherwise, returns an array of all loaded objects.
      */
@@ -315,7 +324,6 @@ abstract class ObjectCollection
      * Name of the object to remove from the collection
      *
      * @param string $name Name of the object to delete.
-     * @return void
      */
     public function unload($name)
     {
@@ -328,6 +336,7 @@ abstract class ObjectCollection
      *
      * @param string $name Name of the object
      * @param CakeObject $object The object to use
+     *
      * @return array Loaded objects
      */
     public function set($name = null, $object = null)
@@ -345,6 +354,7 @@ abstract class ObjectCollection
      * easier
      *
      * @param array $objects Array of child objects to normalize.
+     *
      * @return array Array of normalized objects.
      */
     public static function normalizeObjectArray($objects)

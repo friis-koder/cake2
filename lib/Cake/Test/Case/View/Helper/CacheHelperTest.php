@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.View.Helper
+ *
  * @since         CakePHP(tm) v 1.2.0.4206
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Controller', 'Controller');
@@ -36,8 +40,6 @@ class CacheTestController extends Controller
 
     /**
      * cache_parsing method
-     *
-     * @return void
      */
     public function cache_parsing()
     {
@@ -59,8 +61,6 @@ class CacheHelperTest extends CakeTestCase
 {
     /**
      * Checks if TMP/views is writable, and skips the case if it is not.
-     *
-     * @return void
      */
     public function skip()
     {
@@ -71,8 +71,6 @@ class CacheHelperTest extends CakeTestCase
 
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -91,8 +89,6 @@ class CacheHelperTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -103,8 +99,6 @@ class CacheHelperTest extends CakeTestCase
 
     /**
      * test cache parsing with no cake:nocache tags in view file.
-     *
-     * @return void
      */
     public function testLayoutCacheParsingNoTagsInView()
     {
@@ -137,8 +131,6 @@ class CacheHelperTest extends CakeTestCase
 
     /**
      * test cache parsing with non-latin characters in current route
-     *
-     * @return void
      */
     public function testCacheNonLatinCharactersInRoute()
     {
@@ -164,8 +156,6 @@ class CacheHelperTest extends CakeTestCase
 
     /**
      * Test cache parsing with cake:nocache tags in view file.
-     *
-     * @return void
      */
     public function testLayoutCacheParsingWithTagsInView()
     {
@@ -199,8 +189,6 @@ class CacheHelperTest extends CakeTestCase
 
     /**
      * test that multiple <!--nocache--> tags function with multiple nocache tags in the layout.
-     *
-     * @return void
      */
     public function testMultipleNoCacheTagsInViewfile()
     {
@@ -231,8 +219,6 @@ class CacheHelperTest extends CakeTestCase
 
     /**
      * testComplexNoCache method
-     *
-     * @return void
      */
     public function testComplexNoCache()
     {
@@ -292,8 +278,6 @@ class CacheHelperTest extends CakeTestCase
 
     /**
      * test cache of view vars
-     *
-     * @return void
      */
     public function testCacheViewVars()
     {
@@ -325,8 +309,6 @@ class CacheHelperTest extends CakeTestCase
 
     /**
      * Test that callback code is generated correctly.
-     *
-     * @return void
      */
     public function testCacheCallbacks()
     {
@@ -360,8 +342,6 @@ class CacheHelperTest extends CakeTestCase
 
     /**
      * test cacheAction set to a boolean
-     *
-     * @return void
      */
     public function testCacheActionArray()
     {
@@ -391,8 +371,6 @@ class CacheHelperTest extends CakeTestCase
 
     /**
      * Test that cacheAction works with camelcased controller names.
-     *
-     * @return void
      */
     public function testCacheActionArrayCamelCase()
     {
@@ -421,8 +399,6 @@ class CacheHelperTest extends CakeTestCase
 
     /**
      * test with named and pass args.
-     *
-     * @return void
      */
     public function testCacheWithNamedAndPassedArgs()
     {
@@ -456,8 +432,6 @@ class CacheHelperTest extends CakeTestCase
 
     /**
      * Test that query string parameters are included in the cache filename.
-     *
-     * @return void
      */
     public function testCacheWithQueryStringParams()
     {
@@ -489,8 +463,6 @@ class CacheHelperTest extends CakeTestCase
 
     /**
      * test that custom routes are respected when generating cache files.
-     *
-     * @return void
      */
     public function testCacheWithCustomRoutes()
     {
@@ -528,8 +500,6 @@ class CacheHelperTest extends CakeTestCase
      * This test verifies view cache is created correctly when the app name is contained in part of the controller name.
      * (webapp Name) base name is 'cache' controller is 'cacheTest' action is 'cache_name'
      * apps URL would look something like http://localhost/cache/cacheTest/cache_name
-     *
-     * @return void
      */
     public function testCacheBaseNameControllerName()
     {
@@ -560,8 +530,6 @@ class CacheHelperTest extends CakeTestCase
 
     /**
      * test that afterRender checks the conditions correctly.
-     *
-     * @return void
      */
     public function testAfterRenderConditions()
     {
@@ -588,8 +556,6 @@ class CacheHelperTest extends CakeTestCase
 
     /**
      * test that afterRender checks the conditions correctly.
-     *
-     * @return void
      */
     public function testAfterLayoutConditions()
     {
@@ -618,8 +584,6 @@ class CacheHelperTest extends CakeTestCase
      * testCacheEmptySections method
      *
      * This test must be uncommented/fixed in next release (1.2+)
-     *
-     * @return void
      */
     public function testCacheEmptySections()
     {

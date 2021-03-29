@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Configure
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('IniReader', 'Configure');
@@ -46,8 +50,6 @@ class IniReaderTest extends CakeTestCase
 
     /**
      * setup
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -57,8 +59,6 @@ class IniReaderTest extends CakeTestCase
 
     /**
      * test construct
-     *
-     * @return void
      */
     public function testConstruct()
     {
@@ -72,8 +72,6 @@ class IniReaderTest extends CakeTestCase
 
     /**
      * Test reading files.
-     *
-     * @return void
      */
     public function testRead()
     {
@@ -87,8 +85,6 @@ class IniReaderTest extends CakeTestCase
 
     /**
      * No other sections should exist.
-     *
-     * @return void
      */
     public function testReadOnlyOneSection()
     {
@@ -101,8 +97,6 @@ class IniReaderTest extends CakeTestCase
 
     /**
      * Test reading acl.ini.php.
-     *
-     * @return void
      */
     public function testReadSpecialAclIniPhp()
     {
@@ -116,8 +110,6 @@ class IniReaderTest extends CakeTestCase
 
     /**
      * Test without section.
-     *
-     * @return void
      */
     public function testReadWithoutSection()
     {
@@ -133,8 +125,6 @@ class IniReaderTest extends CakeTestCase
 
     /**
      * Test that names with .'s get exploded into arrays.
-     *
-     * @return void
      */
     public function testReadValuesWithDots()
     {
@@ -150,8 +140,6 @@ class IniReaderTest extends CakeTestCase
 
     /**
      * Test boolean reading.
-     *
-     * @return void
      */
     public function testBooleanReading()
     {
@@ -174,7 +162,6 @@ class IniReaderTest extends CakeTestCase
      * Test an exception is thrown by reading files that exist without .ini extension.
      *
      * @expectedException ConfigureException
-     * @return void
      */
     public function testReadWithExistentFileWithoutExtension()
     {
@@ -186,7 +173,6 @@ class IniReaderTest extends CakeTestCase
      * Test an exception is thrown by reading files that don't exist.
      *
      * @expectedException ConfigureException
-     * @return void
      */
     public function testReadWithNonExistentFile()
     {
@@ -196,8 +182,6 @@ class IniReaderTest extends CakeTestCase
 
     /**
      * Test reading an empty file.
-     *
-     * @return void
      */
     public function testReadEmptyFile()
     {
@@ -210,7 +194,6 @@ class IniReaderTest extends CakeTestCase
      * Test reading keys with ../ doesn't work.
      *
      * @expectedException ConfigureException
-     * @return void
      */
     public function testReadWithDots()
     {
@@ -220,8 +203,6 @@ class IniReaderTest extends CakeTestCase
 
     /**
      * Test reading from plugins.
-     *
-     * @return void
      */
     public function testReadPluginValue()
     {
@@ -244,8 +225,6 @@ class IniReaderTest extends CakeTestCase
 
     /**
      * Test reading acl.ini.php from plugins.
-     *
-     * @return void
      */
     public function testReadPluginSpecialAclIniPhpValue()
     {
@@ -264,8 +243,6 @@ class IniReaderTest extends CakeTestCase
 
     /**
      * Test dump method.
-     *
-     * @return void
      */
     public function testDump()
     {
@@ -300,8 +277,6 @@ INI;
 
     /**
      * Test that dump() makes files read() can read.
-     *
-     * @return void
      */
     public function testDumpRead()
     {

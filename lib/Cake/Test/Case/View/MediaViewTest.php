@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.View
+ *
  * @since         CakePHP(tm) v 1.2.0.4206
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Controller', 'Controller');
@@ -28,8 +32,6 @@ class MediaViewTest extends CakeTestCase
 {
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -47,8 +49,6 @@ class MediaViewTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -58,8 +58,6 @@ class MediaViewTest extends CakeTestCase
 
     /**
      * testRender method
-     *
-     * @return void
      */
     public function testRender()
     {
@@ -84,8 +82,6 @@ class MediaViewTest extends CakeTestCase
 
     /**
      * Test render() when caching is on.
-     *
-     * @return void
      */
     public function testRenderCachingAndName()
     {
@@ -120,8 +116,6 @@ class MediaViewTest extends CakeTestCase
 
     /**
      * Test downloading files with UPPERCASE extensions.
-     *
-     * @return void
      */
     public function testRenderUpperExtension()
     {

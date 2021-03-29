@@ -8,8 +8,10 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
  * @since         CakePHP(tm) v 1.2.0.5669
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Model', 'Model');
@@ -44,8 +46,6 @@ class TranslateBehaviorTest extends CakeTestCase
 
     /**
      * Test that count queries with conditions get the correct joins
-     *
-     * @return void
      */
     public function testCountWithConditions()
     {
@@ -63,8 +63,6 @@ class TranslateBehaviorTest extends CakeTestCase
 
     /**
      * testTranslateModel method
-     *
-     * @return void
      */
     public function testTranslateModel()
     {
@@ -95,8 +93,6 @@ class TranslateBehaviorTest extends CakeTestCase
 
     /**
      * testLocaleFalsePlain method
-     *
-     * @return void
      */
     public function testLocaleFalsePlain()
     {
@@ -124,8 +120,6 @@ class TranslateBehaviorTest extends CakeTestCase
 
     /**
      * testLocaleFalseAssociations method
-     *
-     * @return void
      */
     public function testLocaleFalseAssociations()
     {
@@ -179,8 +173,6 @@ class TranslateBehaviorTest extends CakeTestCase
 
     /**
      * testLocaleSingle method
-     *
-     * @return void
      */
     public function testLocaleSingle()
     {
@@ -266,8 +258,6 @@ class TranslateBehaviorTest extends CakeTestCase
 
     /**
      * testLocaleSingleWithConditions method
-     *
-     * @return void
      */
     public function testLocaleSingleWithConditions()
     {
@@ -308,8 +298,6 @@ class TranslateBehaviorTest extends CakeTestCase
 
     /**
      * testLocaleSingleCountWithConditions method
-     *
-     * @return void
      */
     public function testLocaleSingleCountWithConditions()
     {
@@ -343,8 +331,6 @@ class TranslateBehaviorTest extends CakeTestCase
 
     /**
      * testLocaleSingleAssociations method
-     *
-     * @return void
      */
     public function testLocaleSingleAssociations()
     {
@@ -423,8 +409,6 @@ class TranslateBehaviorTest extends CakeTestCase
 
     /**
      * Test loading fields with 0 as the translated value.
-     *
-     * @return void
      */
     public function testFetchTranslationsWithZero()
     {
@@ -451,8 +435,6 @@ class TranslateBehaviorTest extends CakeTestCase
 
     /**
      * testLocaleMultiple method
-     *
-     * @return void
      */
     public function testLocaleMultiple()
     {
@@ -511,8 +493,6 @@ class TranslateBehaviorTest extends CakeTestCase
 
     /**
      * testMissingTranslation method
-     *
-     * @return void
      */
     public function testMissingTranslation()
     {
@@ -564,8 +544,6 @@ class TranslateBehaviorTest extends CakeTestCase
 
     /**
      * testTranslatedFindList method
-     *
-     * @return void
      */
     public function testTranslatedFindList()
     {
@@ -598,8 +576,6 @@ class TranslateBehaviorTest extends CakeTestCase
 
     /**
      * testReadSelectedFields method
-     *
-     * @return void
      */
     public function testReadSelectedFields()
     {
@@ -634,8 +610,6 @@ class TranslateBehaviorTest extends CakeTestCase
 
     /**
      * testSaveCreate method
-     *
-     * @return void
      */
     public function testSaveCreate()
     {
@@ -658,8 +632,6 @@ class TranslateBehaviorTest extends CakeTestCase
 
     /**
      * test saving/deleting with an alias, uses the model name.
-     *
-     * @return void
      */
     public function testSaveDeleteIgnoreAlias()
     {
@@ -689,8 +661,6 @@ class TranslateBehaviorTest extends CakeTestCase
 
     /**
      * test save multiple locales method
-     *
-     * @return void
      */
     public function testSaveMultipleLocales()
     {
@@ -728,8 +698,6 @@ class TranslateBehaviorTest extends CakeTestCase
 
     /**
      * testSaveAssociatedCreate method
-     *
-     * @return void
      */
     public function testSaveAssociatedMultipleLocale()
     {
@@ -761,8 +729,6 @@ class TranslateBehaviorTest extends CakeTestCase
 
     /**
      * testSaveAssociatedAtomic method
-     *
-     * @return void
      */
     public function testSaveAssociatedAtomic()
     {
@@ -810,8 +776,6 @@ class TranslateBehaviorTest extends CakeTestCase
 
     /**
      * Test that saving only some of the translated fields allows the record to be found again.
-     *
-     * @return void
      */
     public function testSavePartialFields()
     {
@@ -839,8 +803,6 @@ class TranslateBehaviorTest extends CakeTestCase
 
     /**
      * Test that all fields are create with partial data + multiple locales.
-     *
-     * @return void
      */
     public function testSavePartialFieldMultipleLocales()
     {
@@ -910,8 +872,6 @@ class TranslateBehaviorTest extends CakeTestCase
 
     /**
      * testSaveUpdate method
-     *
-     * @return void
      */
     public function testSaveUpdate()
     {
@@ -933,8 +893,6 @@ class TranslateBehaviorTest extends CakeTestCase
 
     /**
      * testMultipleCreate method
-     *
-     * @return void
      */
     public function testMultipleCreate()
     {
@@ -979,8 +937,6 @@ class TranslateBehaviorTest extends CakeTestCase
 
     /**
      * testMultipleUpdate method
-     *
-     * @return void
      */
     public function testMultipleUpdate()
     {
@@ -1029,8 +985,6 @@ class TranslateBehaviorTest extends CakeTestCase
 
     /**
      * testMixedCreateUpdateWithArrayLocale method
-     *
-     * @return void
      */
     public function testMixedCreateUpdateWithArrayLocale()
     {
@@ -1079,8 +1033,6 @@ class TranslateBehaviorTest extends CakeTestCase
     /**
      * Test that saveAll() works with hasMany associations that contain
      * translations.
-     *
-     * @return void
      */
     public function testSaveAllTranslatedAssociations()
     {
@@ -1122,8 +1074,6 @@ class TranslateBehaviorTest extends CakeTestCase
 
     /**
      * testValidation method
-     *
-     * @return void
      */
     public function testValidation()
     {
@@ -1158,8 +1108,6 @@ class TranslateBehaviorTest extends CakeTestCase
 
     /**
      * test restoring fields after temporary binds method
-     *
-     * @return void
      */
     public function testFieldsRestoreAfterBind()
     {
@@ -1192,8 +1140,6 @@ class TranslateBehaviorTest extends CakeTestCase
 
     /**
      * testAttachDetach method
-     *
-     * @return void
      */
     public function testAttachDetach()
     {
@@ -1242,8 +1188,6 @@ class TranslateBehaviorTest extends CakeTestCase
 
     /**
      * testAnotherTranslateTable method
-     *
-     * @return void
      */
     public function testAnotherTranslateTable()
     {
@@ -1267,8 +1211,6 @@ class TranslateBehaviorTest extends CakeTestCase
 
     /**
      * testTranslateWithAssociations method
-     *
-     * @return void
      */
     public function testTranslateWithAssociations()
     {
@@ -1379,8 +1321,6 @@ class TranslateBehaviorTest extends CakeTestCase
     /**
      * testTranslateTableWithPrefix method
      * Tests that is possible to have a translation model with a custom tablePrefix
-     *
-     * @return void
      */
     public function testTranslateTableWithPrefix()
     {
@@ -1401,8 +1341,6 @@ class TranslateBehaviorTest extends CakeTestCase
 
     /**
      * Test infinite loops not occurring with unbindTranslation()
-     *
-     * @return void
      */
     public function testUnbindTranslationInfinteLoop()
     {
@@ -1422,7 +1360,6 @@ class TranslateBehaviorTest extends CakeTestCase
      * Test that an exception is raised when you try to over-write the name attribute.
      *
      * @expectedException CakeException
-     * @return void
      */
     public function testExceptionOnNameTranslation()
     {
@@ -1433,8 +1370,6 @@ class TranslateBehaviorTest extends CakeTestCase
 
     /**
      * Test that translations can be bound and unbound dynamically.
-     *
-     * @return void
      */
     public function testUnbindTranslation()
     {
@@ -1457,8 +1392,6 @@ class TranslateBehaviorTest extends CakeTestCase
 
     /**
      * Test that additional records are not inserted for associated translations.
-     *
-     * @return void
      */
     public function testNoExtraRowsForAssociatedTranslations()
     {

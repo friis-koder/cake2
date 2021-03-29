@@ -8,9 +8,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Log.Engine
+ *
  * @since         CakePHP(tm) v 2.4
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('SyslogLog', 'Log/Engine');
@@ -24,8 +28,6 @@ class SyslogLogTest extends CakeTestCase
 {
     /**
      * Tests that the connection to the logger is open with the right arguments
-     *
-     * @return void
      */
     public function testOpenLog()
     {
@@ -49,7 +51,6 @@ class SyslogLogTest extends CakeTestCase
      * Tests that single lines are written to syslog
      *
      * @dataProvider typesProvider
-     * @return void
      */
     public function testWriteOneLine($type, $expected)
     {
@@ -60,8 +61,6 @@ class SyslogLogTest extends CakeTestCase
 
     /**
      * Tests that multiple lines are split and logged separately
-     *
-     * @return void
      */
     public function testWriteMultiLine()
     {

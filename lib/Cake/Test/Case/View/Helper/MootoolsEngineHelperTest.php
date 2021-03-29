@@ -10,8 +10,11 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP Project
+ *
  * @package       Cake.Test.Case.View.Helper
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('View', 'View');
@@ -28,8 +31,6 @@ class MootoolsEngineHelperTest extends CakeTestCase
 {
     /**
      * setUp
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -41,8 +42,6 @@ class MootoolsEngineHelperTest extends CakeTestCase
 
     /**
      * tearDown
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -52,8 +51,6 @@ class MootoolsEngineHelperTest extends CakeTestCase
 
     /**
      * test selector method
-     *
-     * @return void
      */
     public function testSelector()
     {
@@ -84,8 +81,6 @@ class MootoolsEngineHelperTest extends CakeTestCase
 
     /**
      * test event binding
-     *
-     * @return void
      */
     public function testEvent()
     {
@@ -105,8 +100,6 @@ class MootoolsEngineHelperTest extends CakeTestCase
 
     /**
      * test dom ready event creation
-     *
-     * @return void
      */
     public function testDomReady()
     {
@@ -117,8 +110,6 @@ class MootoolsEngineHelperTest extends CakeTestCase
 
     /**
      * test Each method
-     *
-     * @return void
      */
     public function testEach()
     {
@@ -130,8 +121,6 @@ class MootoolsEngineHelperTest extends CakeTestCase
 
     /**
      * test Effect generation
-     *
-     * @return void
      */
     public function testEffect()
     {
@@ -171,8 +160,6 @@ class MootoolsEngineHelperTest extends CakeTestCase
 
     /**
      * Test Request Generation
-     *
-     * @return void
      */
     public function testRequest()
     {
@@ -243,8 +230,6 @@ class MootoolsEngineHelperTest extends CakeTestCase
 
     /**
      * test sortable list generation
-     *
-     * @return void
      */
     public function testSortable()
     {
@@ -263,8 +248,6 @@ class MootoolsEngineHelperTest extends CakeTestCase
 
     /**
      * test drag() method
-     *
-     * @return void
      */
     public function testDrag()
     {
@@ -284,7 +267,6 @@ class MootoolsEngineHelperTest extends CakeTestCase
      * test drop() method with the required drag option missing
      *
      * @expectedException PHPUnit_Framework_Error_Warning
-     * @return void
      */
     public function testDropWithMissingOption()
     {
@@ -298,8 +280,6 @@ class MootoolsEngineHelperTest extends CakeTestCase
 
     /**
      * test drop() method
-     *
-     * @return void
      */
     public function testDrop()
     {
@@ -327,8 +307,6 @@ class MootoolsEngineHelperTest extends CakeTestCase
 
     /**
      * test slider generation
-     *
-     * @return void
      */
     public function testSlider()
     {
@@ -370,8 +348,6 @@ class MootoolsEngineHelperTest extends CakeTestCase
 
     /**
      * test the serializeForm implementation.
-     *
-     * @return void
      */
     public function testSerializeForm()
     {

@@ -11,9 +11,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Controller
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('ObjectCollection', 'Utility');
@@ -40,7 +44,6 @@ class ComponentCollection extends ObjectCollection implements CakeEventListener
      * Attaches a reference of each component to the Controller.
      *
      * @param Controller $Controller Controller to initialize components for.
-     * @return void
      */
     public function init(Controller $Controller)
     {
@@ -58,7 +61,6 @@ class ComponentCollection extends ObjectCollection implements CakeEventListener
      * Set the controller associated with the collection.
      *
      * @param Controller $Controller Controller to set
-     * @return void
      */
     public function setController(Controller $Controller)
     {
@@ -92,8 +94,10 @@ class ComponentCollection extends ObjectCollection implements CakeEventListener
      *
      * @param string $component Component name to load
      * @param array $settings Settings for the component.
-     * @return Component A component object, Either the existing loaded component or a new one.
+     *
      * @throws MissingComponentException when the component could not be found
+     *
+     * @return Component A component object, Either the existing loaded component or a new one.
      */
     public function load($component, $settings = [])
     {

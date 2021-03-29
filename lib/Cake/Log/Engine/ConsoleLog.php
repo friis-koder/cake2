@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          http://www.cakefoundation.org/projects/info/cakephp CakePHP(tm) Project
+ *
  * @package       Cake.Log.Engine
+ *
  * @since         CakePHP(tm) v 2.2
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('BaseLog', 'Log/Engine');
@@ -43,6 +47,7 @@ class ConsoleLog extends BaseLog
      * - `outputAs` integer or ConsoleOutput::[RAW|PLAIN|COLOR]
      *
      * @param array $config Options for the FileLog, see above.
+     *
      * @throws CakeLogException
      */
     public function __construct($config = [])
@@ -77,6 +82,7 @@ class ConsoleLog extends BaseLog
      *
      * @param string $type The type of log you are making.
      * @param string $message The message you want to log.
+     *
      * @return bool success of write.
      */
     public function write($type, $message)

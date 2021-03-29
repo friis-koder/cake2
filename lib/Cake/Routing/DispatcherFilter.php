@@ -8,9 +8,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright	  Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link		  https://cakephp.org CakePHP(tm) Project
+ *
  * @package		  Cake.Routing
+ *
  * @since		  CakePHP(tm) v 2.2
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('CakeEventListener', 'Event');
@@ -79,6 +83,7 @@ abstract class DispatcherFilter implements CakeEventListener
      *
      * @param CakeEvent $event container object having the `request`, `response` and `additionalParams`
      *	keys in the data property.
+     *
      * @return CakeResponse|bool
      */
     public function beforeDispatch(CakeEvent $event)
@@ -95,6 +100,7 @@ abstract class DispatcherFilter implements CakeEventListener
      *
      * @param CakeEvent $event container object having the `request` and  `response`
      *	keys in the data property.
+     *
      * @return mixed boolean to stop the event dispatching or null to continue
      */
     public function afterDispatch(CakeEvent $event)

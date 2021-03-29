@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.View.Helper
+ *
  * @since         CakePHP(tm) v 1.2.0.4206
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('ClassRegistry', 'Utility');
@@ -111,8 +115,6 @@ class Contact extends CakeTestModel
 
     /**
      * schema method
-     *
-     * @return void
      */
     public function setSchema($schema)
     {
@@ -162,8 +164,6 @@ class ContactTagsContact extends CakeTestModel
 
     /**
      * schema method
-     *
-     * @return void
      */
     public function setSchema($schema)
     {
@@ -187,8 +187,6 @@ class ContactNonStandardPk extends Contact
 
     /**
      * schema method
-     *
-     * @return void
      */
     public function schema($field = false)
     {
@@ -312,8 +310,6 @@ class OpenidUrl extends CakeTestModel
 
     /**
      * beforeValidate method
-     *
-     * @return void
      */
     public function beforeValidate($options = [])
     {
@@ -366,8 +362,6 @@ class ValidateUser extends CakeTestModel
 
     /**
      * beforeValidate method
-     *
-     * @return void
      */
     public function beforeValidate($options = [])
     {
@@ -425,8 +419,6 @@ class ValidateProfile extends CakeTestModel
 
     /**
      * beforeValidate method
-     *
-     * @return void
      */
     public function beforeValidate($options = [])
     {
@@ -476,8 +468,6 @@ class ValidateItem extends CakeTestModel
 
     /**
      * beforeValidate method
-     *
-     * @return void
      */
     public function beforeValidate($options = [])
     {
@@ -506,6 +496,7 @@ class TestMail extends CakeTestModel
  * FormHelperTest class
  *
  * @package       Cake.Test.Case.View.Helper
+ *
  * @property FormHelper $Form
  */
 class FormHelperTest extends CakeTestCase
@@ -526,8 +517,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -572,8 +561,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -586,8 +573,6 @@ class FormHelperTest extends CakeTestCase
      * testFormCreateWithSecurity method
      *
      * Test form->create() with security key.
-     *
-     * @return void
      */
     public function testCreateWithSecurity()
     {
@@ -614,8 +599,6 @@ class FormHelperTest extends CakeTestCase
      * testFormCreateGetNoSecurity method
      *
      * Test form->create() with no security key as its a get form
-     *
-     * @return void
      */
     public function testCreateEndGetNoSecurity()
     {
@@ -630,8 +613,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * test that create() clears the fields property so it starts fresh
-     *
-     * @return void
      */
     public function testCreateClearingFields()
     {
@@ -642,8 +623,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Tests form hash generation with model-less data
-     *
-     * @return void
      */
     public function testValidateHashNoModel()
     {
@@ -654,8 +633,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Tests that models with identical field names get resolved properly
-     *
-     * @return void
      */
     public function testDuplicateFieldNameResolution()
     {
@@ -683,8 +660,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Tests that hidden fields generated for checkboxes don't get locked
-     *
-     * @return void
      */
     public function testNoCheckboxLocking()
     {
@@ -699,8 +674,6 @@ class FormHelperTest extends CakeTestCase
      * testFormSecurityFields method
      *
      * Test generation of secure form hash generation.
-     *
-     * @return void
      */
     public function testFormSecurityFields()
     {
@@ -750,8 +723,6 @@ class FormHelperTest extends CakeTestCase
      * testFormSecurityFields method
      *
      * Test debug token is not generated if debug is false
-     *
-     * @return void
      */
     public function testFormSecurityFieldsNoDebugMode()
     {
@@ -787,8 +758,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Tests correct generation of number fields for double and float fields
-     *
-     * @return void
      */
     public function testTextFieldGenerationForFloats()
     {
@@ -836,8 +805,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Tests correct generation of decimal fields as text inputs
-     *
-     * @return void
      */
     public function testTextFieldGenerationForDecimalAsText()
     {
@@ -862,8 +829,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Tests correct generation of number fields for integer fields
-     *
-     * @return void
      */
     public function testTextFieldTypeNumberGenerationForIntegers()
     {
@@ -893,8 +858,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Tests correct generation of file upload fields for binary fields
-     *
-     * @return void
      */
     public function testFileUploadFieldTypeGenerationForBinaries()
     {
@@ -926,8 +889,6 @@ class FormHelperTest extends CakeTestCase
      * testFormSecurityMultipleFields method
      *
      * Test secure() with multiple row form. Ensure hash is correct.
-     *
-     * @return void
      */
     public function testFormSecurityMultipleFields()
     {
@@ -974,8 +935,6 @@ class FormHelperTest extends CakeTestCase
      * testFormSecurityMultipleSubmitButtons
      *
      * test form submit generation and ensure that _Token is only created on end()
-     *
-     * @return void
      */
     public function testFormSecurityMultipleSubmitButtons()
     {
@@ -1034,8 +993,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test that buttons created with foo[bar] name attributes are unlocked correctly.
-     *
-     * @return void
      */
     public function testSecurityButtonNestedNamed()
     {
@@ -1050,8 +1007,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test that submit inputs created with foo[bar] name attributes are unlocked correctly.
-     *
-     * @return void
      */
     public function testSecuritySubmitNestedNamed()
     {
@@ -1066,8 +1021,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test that the correct fields are unlocked for image submits with no names.
-     *
-     * @return void
      */
     public function testSecuritySubmitImageNoName()
     {
@@ -1087,8 +1040,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test that the correct fields are unlocked for image submits with names.
-     *
-     * @return void
      */
     public function testSecuritySubmitImageName()
     {
@@ -1110,8 +1061,6 @@ class FormHelperTest extends CakeTestCase
      * testFormSecurityMultipleInputFields method
      *
      * Test secure form creation with multiple row creation. Checks hidden, text, checkbox field types
-     *
-     * @return void
      */
     public function testFormSecurityMultipleInputFields()
     {
@@ -1187,8 +1136,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test form security with Model.field.0 style inputs
-     *
-     * @return void
      */
     public function testFormSecurityArrayFields()
     {
@@ -1207,8 +1154,6 @@ class FormHelperTest extends CakeTestCase
      * testFormSecurityMultipleInputDisabledFields method
      *
      * test secure form generation with multiple records and disabled fields.
-     *
-     * @return void
      */
     public function testFormSecurityMultipleInputDisabledFields()
     {
@@ -1285,8 +1230,6 @@ class FormHelperTest extends CakeTestCase
      * testFormSecurityInputDisabledFields method
      *
      * Test single record form with disabled fields.
-     *
-     * @return void
      */
     public function testFormSecurityInputUnlockedFields()
     {
@@ -1359,8 +1302,6 @@ class FormHelperTest extends CakeTestCase
      * testFormSecurityInputUnlockedFieldsDebugSecurityTrue method
      *
      * Test single record form with debugSecurity param.
-     *
-     * @return void
      */
     public function testFormSecurityInputUnlockedFieldsDebugSecurityTrue()
     {
@@ -1432,8 +1373,6 @@ class FormHelperTest extends CakeTestCase
      * testFormSecurityInputUnlockedFieldsDebugSecurityDebugFalse method
      *
      * Debug is false, debugSecurity is true -> no debug
-     *
-     * @return void
      */
     public function testFormSecurityInputUnlockedFieldsDebugSecurityDebugFalse()
     {
@@ -1486,8 +1425,6 @@ class FormHelperTest extends CakeTestCase
      * testFormSecurityInputUnlockedFieldsDebugSecurityFalse method
      *
      * Test single record form with debugSecurity param.
-     *
-     * @return void
      */
     public function testFormSecurityInputUnlockedFieldsDebugSecurityFalse()
     {
@@ -1540,8 +1477,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * test securing inputs with custom name attributes.
-     *
-     * @return void
      */
     public function testFormSecureWithCustomNameAttribute()
     {
@@ -1558,8 +1493,6 @@ class FormHelperTest extends CakeTestCase
      * testFormSecuredInput method
      *
      * Test generation of entire secure form, assertions made on input() output.
-     *
-     * @return void
      */
     public function testFormSecuredInput()
     {
@@ -1686,8 +1619,6 @@ class FormHelperTest extends CakeTestCase
     /**
      * Test that a hidden field followed by a visible field
      * undoes the hidden field locking.
-     *
-     * @return void
      */
     public function testSecuredInputDuplicate()
     {
@@ -1710,8 +1641,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test secured inputs with custom names.
-     *
-     * @return void
      */
     public function testSecuredInputCustomName()
     {
@@ -1735,8 +1664,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Tests that the correct keys are added to the field hash index
-     *
-     * @return void
      */
     public function testSecuredFileInput()
     {
@@ -1753,8 +1680,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * test that multiple selects keys are added to field hash
-     *
-     * @return void
      */
     public function testSecuredMultipleSelect()
     {
@@ -1773,8 +1698,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * testFormSecuredRadio method
-     *
-     * @return void
      */
     public function testSecuredRadio()
     {
@@ -1801,8 +1724,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test that when disabled is in a list based attribute array it works.
-     *
-     * @return void
      */
     public function testSecuredAndDisabledNotAssoc()
     {
@@ -1824,8 +1745,6 @@ class FormHelperTest extends CakeTestCase
     /**
      * test that forms with disabled inputs + secured forms leave off the inputs from the form
      * hashing.
-     *
-     * @return void
      */
     public function testSecuredAndDisabled()
     {
@@ -1854,8 +1773,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test that only the path + query elements of a form's URL show up in their hash.
-     *
-     * @return void
      */
     public function testSecuredFormUrlIgnoresHost()
     {
@@ -1883,8 +1800,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Ensure named parameters work correctly with hash generation.
-     *
-     * @return void
      */
     public function testSecuredFormUrlWorksWithNamedParameter()
     {
@@ -1900,8 +1815,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test that URL, HTML and identifier show up in their hashs.
-     *
-     * @return void
      */
     public function testSecuredFormUrlHasHtmlAndIdentifier()
     {
@@ -1934,8 +1847,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * testDisableSecurityUsingForm method
-     *
-     * @return void
      */
     public function testDisableSecurityUsingForm()
     {
@@ -1962,8 +1873,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * test disableField
-     *
-     * @return void
      */
     public function testUnlockFieldAddsToList()
     {
@@ -1981,8 +1890,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * test unlockField removing from fields array.
-     *
-     * @return void
      */
     public function testUnlockFieldRemovingFromFields()
     {
@@ -2004,8 +1911,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * test reset unlockFields, when create new form.
-     *
-     * @return void
      */
     public function testResetUnlockFields()
     {
@@ -2027,8 +1932,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * test unlockField removing from fields array. multiple field version.
-     *
-     * @return void
      */
     public function testUnlockMultipleFieldRemovingFromFields()
     {
@@ -2051,8 +1954,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * testTagIsInvalid method
-     *
-     * @return void
      */
     public function testTagIsInvalid()
     {
@@ -2074,8 +1975,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test tagIsInvalid with validation errors from a saveMany
-     *
-     * @return void
      */
     public function testTagIsInvalidSaveMany()
     {
@@ -2095,8 +1994,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test validation errors.
-     *
-     * @return void
      */
     public function testPasswordValidation()
     {
@@ -2137,8 +2034,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test validation errors with error options
-     *
-     * @return void
      */
     public function testPasswordValidationWithOptions()
     {
@@ -2194,8 +2089,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test validation errors, when validation message is an empty string.
-     *
-     * @return void
      */
     public function testEmptyErrorValidation()
     {
@@ -2235,8 +2128,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test validation errors, when calling input() overriding validation message by an empty string.
-     *
-     * @return void
      */
     public function testEmptyInputErrorValidation()
     {
@@ -2278,8 +2169,6 @@ class FormHelperTest extends CakeTestCase
      * testFormValidationAssociated method
      *
      * test display of form errors in conjunction with model::validates.
-     *
-     * @return void
      */
     public function testFormValidationAssociated()
     {
@@ -2324,8 +2213,6 @@ class FormHelperTest extends CakeTestCase
      * testFormValidationAssociatedFirstLevel method
      *
      * test form error display with associated model.
-     *
-     * @return void
      */
     public function testFormValidationAssociatedFirstLevel()
     {
@@ -2381,8 +2268,6 @@ class FormHelperTest extends CakeTestCase
      * testFormValidationAssociatedSecondLevel method
      *
      * test form error display with associated model.
-     *
-     * @return void
      */
     public function testFormValidationAssociatedSecondLevel()
     {
@@ -2448,8 +2333,6 @@ class FormHelperTest extends CakeTestCase
      * testFormValidationMultiRecord method
      *
      * test form error display with multiple records.
-     *
-     * @return void
      */
     public function testFormValidationMultiRecord()
     {
@@ -2479,8 +2362,6 @@ class FormHelperTest extends CakeTestCase
      * testMultipleInputValidation method
      *
      * test multiple record form validation error display.
-     *
-     * @return void
      */
     public function testMultipleInputValidation()
     {
@@ -2557,8 +2438,6 @@ class FormHelperTest extends CakeTestCase
      * testInput method
      *
      * Test various incarnations of input().
-     *
-     * @return void
      */
     public function testInput()
     {
@@ -2904,8 +2783,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test that inputs with 0 can be created.
-     *
-     * @return void
      */
     public function testInputZero()
     {
@@ -2922,8 +2799,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * test input() with checkbox creation
-     *
-     * @return void
      */
     public function testInputCheckbox()
     {
@@ -2979,8 +2854,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * test form->input() with time types.
-     *
-     * @return void
      */
     public function testInputTime()
     {
@@ -3041,8 +2914,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test interval + selected near the hour roll over.
-     *
-     * @return void
      */
     public function testTimeSelectedWithInterval()
     {
@@ -3097,8 +2968,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test interval + value near the hour roll over.
-     *
-     * @return void
      */
     public function testTimeValueWithInterval()
     {
@@ -3153,8 +3022,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test time with selected values around 12:xx:xx
-     *
-     * @return void
      */
     public function testTimeSelectedWithIntervalTwelve()
     {
@@ -3191,8 +3058,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test time with selected values around 12:xx:xx
-     *
-     * @return void
      */
     public function testTimeValueWithIntervalTwelve()
     {
@@ -3229,8 +3094,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test interval & timeFormat = 12
-     *
-     * @return void
      */
     public function testInputTimeWithIntervalAnd12HourFormat()
     {
@@ -3287,8 +3150,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * test form->input() with datetime, date and time types
-     *
-     * @return void
      */
     public function testInputDatetime()
     {
@@ -3376,8 +3237,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test generating checkboxes in a loop.
-     *
-     * @return void
      */
     public function testInputCheckboxesInLoop()
     {
@@ -3398,8 +3257,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test generating checkboxes with disabled elements.
-     *
-     * @return void
      */
     public function testInputCheckboxWithDisabledElements()
     {
@@ -3498,8 +3355,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * test input name with leading integer, ensure attributes are generated correctly.
-     *
-     * @return void
      */
     public function testInputWithLeadingInteger()
     {
@@ -3512,8 +3367,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * test form->input() with select type inputs.
-     *
-     * @return void
      */
     public function testInputSelectType()
     {
@@ -3689,8 +3542,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * test that input() and a non standard primary key makes a hidden input by default.
-     *
-     * @return void
      */
     public function testInputWithNonStandardPrimaryKeyMakesHidden()
     {
@@ -3713,8 +3564,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * test that overriding the magic select type widget is possible
-     *
-     * @return void
      */
     public function testInputOverridingMagicSelectType()
     {
@@ -3745,8 +3594,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test that inferred types do not override developer input
-     *
-     * @return void
      */
     public function testInputMagicTypeDoesNotOverride()
     {
@@ -3774,8 +3621,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test that magic input() selects are created for type=number
-     *
-     * @return void
      */
     public function testInputMagicSelectForTypeNumber()
     {
@@ -3805,8 +3650,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test that magic input() selects can easily be converted into radio types without error.
-     *
-     * @return void
      */
     public function testInputMagicSelectChangeToRadio()
     {
@@ -3817,8 +3660,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * fields with the same name as the model should work.
-     *
-     * @return void
      */
     public function testInputWithMatchingFieldAndModelName()
     {
@@ -3847,8 +3688,6 @@ class FormHelperTest extends CakeTestCase
      * testFormInputs method
      *
      * test correct results from form::inputs().
-     *
-     * @return void
      */
     public function testFormInputs()
     {
@@ -4112,8 +3951,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Tests inputs() works with plugin models
-     *
-     * @return void
      */
     public function testInputsPluginModel()
     {
@@ -4140,8 +3977,6 @@ class FormHelperTest extends CakeTestCase
      * testSelectAsCheckbox method
      *
      * test multi-select widget with checkbox formatting.
-     *
-     * @return void
      */
     public function testSelectAsCheckbox()
     {
@@ -4186,8 +4021,6 @@ class FormHelperTest extends CakeTestCase
      * testLabel method
      *
      * test label generation.
-     *
-     * @return void
      */
     public function testLabel()
     {
@@ -4222,8 +4055,6 @@ class FormHelperTest extends CakeTestCase
      * testTextbox method
      *
      * test textbox element generation
-     *
-     * @return void
      */
     public function testTextbox()
     {
@@ -4258,8 +4089,6 @@ class FormHelperTest extends CakeTestCase
      * testDefaultValue method
      *
      * Test default value setting
-     *
-     * @return void
      */
     public function testDefaultValue()
     {
@@ -4276,8 +4105,6 @@ class FormHelperTest extends CakeTestCase
      * testCheckboxDefaultValue method
      *
      * Test default value setting on checkbox() method
-     *
-     * @return void
      */
     public function testCheckboxDefaultValue()
     {
@@ -4302,8 +4129,6 @@ class FormHelperTest extends CakeTestCase
      * testError method
      *
      * Test field error generation
-     *
-     * @return void
      */
     public function testError()
     {
@@ -4406,8 +4231,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * test error options when using form->input();
-     *
-     * @return void
      */
     public function testInputErrorEscape()
     {
@@ -4425,8 +4248,6 @@ class FormHelperTest extends CakeTestCase
      * testPassword method
      *
      * Test password element generation
-     *
-     * @return void
      */
     public function testPassword()
     {
@@ -4444,8 +4265,6 @@ class FormHelperTest extends CakeTestCase
      * testRadio method
      *
      * Test radio element set generation
-     *
-     * @return void
      */
     public function testRadio()
     {
@@ -4669,8 +4488,6 @@ class FormHelperTest extends CakeTestCase
     /**
      * testRadioDifferentModel
      * Refs #2911
-     *
-     * @return void
      */
     public function testRadioDifferentModel()
     {
@@ -4703,8 +4520,6 @@ class FormHelperTest extends CakeTestCase
     /**
      * Test radio inputs with between as string or array. Also ensure
      * that an array with less between elements works.
-     *
-     * @return void
      */
     public function testRadioBetween()
     {
@@ -4857,8 +4672,6 @@ class FormHelperTest extends CakeTestCase
     /**
      * Test that radios with a 0 value are selected under the correct conditions.
      * Also ensure that values that are booleanish are handled correctly.
-     *
-     * @return void
      */
     public function testRadioOptionWithBooleanishValues()
     {
@@ -4938,8 +4751,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * test disabled radio options
-     *
-     * @return void
      */
     public function testRadioDisabled()
     {
@@ -5084,8 +4895,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * test disabling the hidden input for radio buttons
-     *
-     * @return void
      */
     public function testRadioHiddenInputDisabling()
     {
@@ -5119,8 +4928,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * test setting a hiddenField value
-     *
-     * @return void
      */
     public function testRadioHiddenFieldValue()
     {
@@ -5146,8 +4953,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * test adding an empty option for radio buttons
-     *
-     * @return void
      */
     public function testRadioAddEmptyOption()
     {
@@ -5212,8 +5017,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test that radio() accepts a deep array for options
-     *
-     * @return void
      */
     public function testRadioOptionsArray()
     {
@@ -5241,8 +5044,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test that radio() accepts an array for label
-     *
-     * @return void
      */
     public function testRadioLabelArray()
     {
@@ -5262,8 +5063,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test that label id's match the input element id's when radio is called after create().
-     *
-     * @return void
      */
     public function testRadioWithCreate()
     {
@@ -5285,8 +5084,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * testDomIdSuffix method
-     *
-     * @return void
      */
     public function testDomIdSuffix()
     {
@@ -5305,8 +5102,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * testDomIdSuffixCollisionResolvement()
-     *
-     * @return void
      */
     public function testDomIdSuffixCollisionResolvement()
     {
@@ -5333,8 +5128,6 @@ class FormHelperTest extends CakeTestCase
      * testSelect method
      *
      * Test select element generation.
-     *
-     * @return void
      */
     public function testSelect()
     {
@@ -5502,8 +5295,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * testSelect boolean method
-     *
-     * @return void
      */
     public function testSelectBoolean()
     {
@@ -5547,8 +5338,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * test that select() with numeric label of optiongroup.
-     *
-     * @return void
      */
     public function testSelectOptionGroupWithNumericLabel()
     {
@@ -5602,8 +5391,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * test that select() with optiongroups listens to the escape param.
-     *
-     * @return void
      */
     public function testSelectOptionGroupEscaping()
     {
@@ -5644,8 +5431,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Tests that FormHelper::select() allows null to be passed in the $attributes parameter
-     *
-     * @return void
      */
     public function testSelectWithNullAttributes()
     {
@@ -5667,8 +5452,6 @@ class FormHelperTest extends CakeTestCase
      * testNestedSelect method
      *
      * test select element generation with optgroups
-     *
-     * @return void
      */
     public function testNestedSelect()
     {
@@ -5731,8 +5514,6 @@ class FormHelperTest extends CakeTestCase
      * testSelectMultiple method
      *
      * test generation of multiple select elements
-     *
-     * @return void
      */
     public function testSelectMultiple()
     {
@@ -5921,8 +5702,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test generating multiple select with disabled elements.
-     *
-     * @return void
      */
     public function testSelectMultipleWithDisabledElements()
     {
@@ -6017,8 +5796,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test generating select with disabled elements.
-     *
-     * @return void
      */
     public function testSelectWithDisabledElements()
     {
@@ -6106,8 +5883,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * test generation of habtm select boxes.
-     *
-     * @return void
      */
     public function testHabtmSelectBox()
     {
@@ -6197,8 +5972,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * test generation of multi select elements in checkbox format
-     *
-     * @return void
      */
     public function testSelectMultipleCheckboxes()
     {
@@ -6416,8 +6189,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * test multiple checkboxes with div styles.
-     *
-     * @return void
      */
     public function testSelectMultipleCheckboxDiv()
     {
@@ -6497,8 +6268,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Checks the security hash array generated for multiple-input checkbox elements
-     *
-     * @return void
      */
     public function testSelectMultipleCheckboxSecurity()
     {
@@ -6520,8 +6289,6 @@ class FormHelperTest extends CakeTestCase
     /**
      * Multiple select elements should always be secured as they always participate
      * in the POST data.
-     *
-     * @return void
      */
     public function testSelectMultipleSecureWithNoOptions()
     {
@@ -6539,8 +6306,6 @@ class FormHelperTest extends CakeTestCase
     /**
      * When a select box has no options it should not be added to the fields list
      * as it always fail post validation.
-     *
-     * @return void
      */
     public function testSelectNoSecureWithNoOptions()
     {
@@ -6565,8 +6330,6 @@ class FormHelperTest extends CakeTestCase
      * testInputMultipleCheckboxes method
      *
      * test input() resulting in multi select elements being generated.
-     *
-     * @return void
      */
     public function testInputMultipleCheckboxes()
     {
@@ -6673,8 +6436,6 @@ class FormHelperTest extends CakeTestCase
      * testSelectHiddenFieldOmission method
      *
      * test that select() with 'hiddenField' => false omits the hidden field
-     *
-     * @return void
      */
     public function testSelectHiddenFieldOmission()
     {
@@ -6728,8 +6489,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * test that select() with multiple = checkbox works with overriding name attribute.
-     *
-     * @return void
      */
     public function testSelectCheckboxMultipleOverrideName()
     {
@@ -6757,8 +6516,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test that 'id' overrides all the checkbox id's as well.
-     *
-     * @return void
      */
     public function testSelectCheckboxMultipleId()
     {
@@ -6807,8 +6564,6 @@ class FormHelperTest extends CakeTestCase
      * testCheckbox method
      *
      * Test generation of checkboxes
-     *
-     * @return void
      */
     public function testCheckbox()
     {
@@ -6896,8 +6651,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * test checkbox() with a custom name attribute
-     *
-     * @return void
      */
     public function testCheckboxCustomNameAttribute()
     {
@@ -6911,8 +6664,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * test the checked option for checkboxes.
-     *
-     * @return void
      */
     public function testCheckboxCheckedOption()
     {
@@ -6955,8 +6706,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test that disabled attribute works on both the checkbox and hidden input.
-     *
-     * @return void
      */
     public function testCheckboxDisabling()
     {
@@ -6978,8 +6727,6 @@ class FormHelperTest extends CakeTestCase
     /**
      * Test that the hidden input for checkboxes can be omitted or set to a
      * specific value.
-     *
-     * @return void
      */
     public function testCheckboxHiddenField()
     {
@@ -7025,8 +6772,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test that a checkbox can have 0 for the value and 1 for the hidden input.
-     *
-     * @return void
      */
     public function testCheckboxZeroValue()
     {
@@ -7057,8 +6802,6 @@ class FormHelperTest extends CakeTestCase
      * testDateTime method
      *
      * Test generation of date/time select elements
-     *
-     * @return void
      */
     public function testDateTime()
     {
@@ -7417,8 +7160,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test dateTime with rounding
-     *
-     * @return void
      */
     public function testDateTimeRounding()
     {
@@ -7445,8 +7186,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test that empty values don't trigger errors.
-     *
-     * @return void
      */
     public function testDateTimeNoErrorsOnEmptyData()
     {
@@ -7466,8 +7205,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * test that datetime() and default values work.
-     *
-     * @return void
      */
     public function testDatetimeWithDefault()
     {
@@ -7486,8 +7223,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * test that bogus non-date time data doesn't cause errors.
-     *
-     * @return void
      */
     public function testDateTimeWithBogusData()
     {
@@ -7497,8 +7232,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * testDateTime all zeros
-     *
-     * @return void
      */
     public function testDateTimeAllZeros()
     {
@@ -7518,8 +7251,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * testDateTimeEmptyAsArray
-     *
-     * @return void
      */
     public function testDateTimeEmptyAsArray()
     {
@@ -7562,8 +7293,6 @@ class FormHelperTest extends CakeTestCase
      * testFormDateTimeMulti method
      *
      * test multiple datetime element generation
-     *
-     * @return void
      */
     public function testFormDateTimeMulti()
     {
@@ -7651,8 +7380,6 @@ class FormHelperTest extends CakeTestCase
     /**
      * When changing the date format, the label should always focus the first select box when
      * clicked.
-     *
-     * @return void
      */
     public function testDateTimeLabelIdMatchesFirstInput()
     {
@@ -7668,8 +7395,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * testMonth method
-     *
-     * @return void
      */
     public function testMonth()
     {
@@ -7772,8 +7497,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * testDay method
-     *
-     * @return void
      */
     public function testDay()
     {
@@ -7900,8 +7623,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * testMinute method
-     *
-     * @return void
      */
     public function testMinute()
     {
@@ -8012,8 +7733,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * testHour method
-     *
-     * @return void
      */
     public function testHour()
     {
@@ -8128,8 +7847,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * testYear method
-     *
-     * @return void
      */
     public function testYear()
     {
@@ -8327,8 +8044,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * testYearAutoExpandRange method
-     *
-     * @return void
      */
     public function testYearAutoExpandRange()
     {
@@ -8363,8 +8078,6 @@ class FormHelperTest extends CakeTestCase
      * Test various inputs with type date and different dateFormat values.
      * Failing to provide a dateFormat key should not error.
      * It should simply not pre-select any value then.
-     *
-     * @return void
      */
     public function testInputDate()
     {
@@ -8430,8 +8143,6 @@ class FormHelperTest extends CakeTestCase
      * testInputDate method
      *
      * Test various inputs with type date and different option attributes.
-     *
-     * @return void
      */
     public function testInputDateOptions()
     {
@@ -8483,8 +8194,6 @@ class FormHelperTest extends CakeTestCase
      *
      * Let's say we want to only allow users born from 2006 to 2008 to register
      * This being the first singup page, we still don't have any data
-     *
-     * @return void
      */
     public function testInputDateMaxYear()
     {
@@ -8509,8 +8218,6 @@ class FormHelperTest extends CakeTestCase
      *
      * since times and datetimes can now have a Length, specifying the microsecond
      * precision, a text-type input shouldn't have set a maxLength attribute.
-     *
-     * @return void
      */
     public function testInputTimeWithMicrosecondsAsText()
     {
@@ -8528,8 +8235,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * testTextArea method
-     *
-     * @return void
      */
     public function testTextArea()
     {
@@ -8578,8 +8283,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test textareas maxlength reading from schema.
-     *
-     * @return void
      */
     public function testTextAreaMaxLength()
     {
@@ -8612,8 +8315,6 @@ class FormHelperTest extends CakeTestCase
      * testTextAreaWithStupidCharacters method
      *
      * test text area with non-ascii characters
-     *
-     * @return void
      */
     public function testTextAreaWithStupidCharacters()
     {
@@ -8636,8 +8337,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * testHiddenField method
-     *
-     * @return void
      */
     public function testHiddenField()
     {
@@ -8654,8 +8353,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * testFileUploadField method
-     *
-     * @return void
      */
     public function testFileUploadField()
     {
@@ -8681,8 +8378,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * test File upload input on a model not used in create();
-     *
-     * @return void
      */
     public function testFileUploadOnOtherModel()
     {
@@ -8696,8 +8391,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * testButton method
-     *
-     * @return void
      */
     public function testButton()
     {
@@ -8722,8 +8415,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test that button() makes unlocked fields by default.
-     *
-     * @return void
      */
     public function testButtonUnlockedByDefault()
     {
@@ -8737,8 +8428,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * testPostButton method
-     *
-     * @return void
      */
     public function testPostButton()
     {
@@ -8760,8 +8449,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test using postButton with N dimensional data.
-     *
-     * @return void
      */
     public function testPostButtonNestedData()
     {
@@ -8780,8 +8467,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test that postButton adds _Token fields.
-     *
-     * @return void
      */
     public function testSecurePostButton()
     {
@@ -8820,8 +8505,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * testPostLink method
-     *
-     * @return void
      */
     public function testPostLink()
     {
@@ -8913,8 +8596,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test that security hashes for postLink include the url.
-     *
-     * @return void
      */
     public function testPostLinkSecurityHash()
     {
@@ -8960,8 +8641,6 @@ class FormHelperTest extends CakeTestCase
      *
      * postLink() calls inside open forms should not modify the field list
      * for the form.
-     *
-     * @return void
      */
     public function testPostLinkSecurityHashInline()
     {
@@ -8993,8 +8672,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test using postLink with N dimensional data.
-     *
-     * @return void
      */
     public function testPostLinkNestedData()
     {
@@ -9013,8 +8690,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * test creating postLinks after a GET form.
-     *
-     * @return void
      */
     public function testPostLinkAfterGetForm()
     {
@@ -9052,8 +8727,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test that postLink adds _Token fields.
-     *
-     * @return void
      */
     public function testSecurePostLink()
     {
@@ -9090,8 +8763,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test that postLink adds form tags to view block
-     *
-     * @return void
      */
     public function testPostLinkFormBuffer()
     {
@@ -9161,8 +8832,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * testSubmitButton method
-     *
-     * @return void
      */
     public function testSubmitButton()
     {
@@ -9270,8 +8939,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * test image submit types.
-     *
-     * @return void
      */
     public function testSubmitImage()
     {
@@ -9362,8 +9029,6 @@ class FormHelperTest extends CakeTestCase
     /**
      * Submit buttons should be unlocked by default as there could be multiples, and only one will
      * be submitted at a time.
-     *
-     * @return void
      */
     public function testSubmitUnlockedByDefault()
     {
@@ -9377,8 +9042,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test submit image with timestamps.
-     *
-     * @return void
      */
     public function testSubmitImageTimestamp()
     {
@@ -9395,8 +9058,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * test the create() method
-     *
-     * @return void
      */
     public function testCreate()
     {
@@ -9578,8 +9239,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test create() with no URL (no "action" attribute for <form> tag)
-     *
-     * @return void
      */
     public function testCreateNoUrl()
     {
@@ -9601,8 +9260,6 @@ class FormHelperTest extends CakeTestCase
      * Test that the action key still uses the model as the implicit controller
      * when the url option is undefined. While the action parameter is deprecated
      * we need it to continue working for the duration of 2.x
-     *
-     * @return void
      */
     public function testCreateUrlImpliedController()
     {
@@ -9630,8 +9287,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test the onsubmit option for create()
-     *
-     * @return void
      */
     public function testCreateOnSubmit()
     {
@@ -9675,8 +9330,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * test create() with automatic url generation
-     *
-     * @return void
      */
     public function testCreateAutoUrl()
     {
@@ -9713,8 +9366,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * test create() with a custom route
-     *
-     * @return void
      */
     public function testCreateCustomRoute()
     {
@@ -9736,8 +9387,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * test that inputDefaults are stored and used.
-     *
-     * @return void
      */
     public function testCreateWithInputDefaults()
     {
@@ -9789,8 +9438,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * test automatic accept-charset overriding
-     *
-     * @return void
      */
     public function testCreateWithAcceptCharset()
     {
@@ -9814,8 +9461,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test base form URL when url param is passed with multiple parameters (&)
-     *
-     * @return void
      */
     public function testCreateQuerystringrequest()
     {
@@ -9867,8 +9512,6 @@ class FormHelperTest extends CakeTestCase
     /**
      * test that create() doesn't cause errors by multiple id's being in the primary key
      * as could happen with multiple select or checkboxes.
-     *
-     * @return void
      */
     public function testCreateWithMultipleIdInData()
     {
@@ -9892,8 +9535,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * test that create() doesn't add in extra passed params.
-     *
-     * @return void
      */
     public function testCreatePassedArgs()
     {
@@ -9924,8 +9565,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * test that create() works without raising errors with a Mock Model
-     *
-     * @return void
      */
     public function testCreateNoErrorsWithMockModel()
     {
@@ -9945,8 +9584,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * test creating a get form, and get form inputs.
-     *
-     * @return void
      */
     public function testGetFormCreate()
     {
@@ -9976,8 +9613,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * test get form, and inputs when the model param is false
-     *
-     * @return void
      */
     public function testGetFormWithFalseModel()
     {
@@ -10000,8 +9635,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * test that datetime() works with GET style forms.
-     *
-     * @return void
      */
     public function testDateTimeWithGetForms()
     {
@@ -10021,8 +9654,6 @@ class FormHelperTest extends CakeTestCase
      * testEditFormWithData method
      *
      * test auto populating form elements from submitted data.
-     *
-     * @return void
      */
     public function testEditFormWithData()
     {
@@ -10056,8 +9687,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test that required fields are created for various types of validation.
-     *
-     * @return void
      */
     public function testFormInputRequiredDetection()
     {
@@ -10287,8 +9916,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test that required fields are created when only using ModelValidator::add().
-     *
-     * @return void
      */
     public function testFormInputRequiredDetectionModelValidator()
     {
@@ -10314,8 +9941,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * testFormMagicInput method
-     *
-     * @return void
      */
     public function testFormMagicInput()
     {
@@ -10486,8 +10111,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * testForMagicInputNonExistingNorValidated method
-     *
-     * @return void
      */
     public function testForMagicInputNonExistingNorValidated()
     {
@@ -10548,8 +10171,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * testFormMagicInputLabel method
-     *
-     * @return void
      */
     public function testFormMagicInputLabel()
     {
@@ -10671,8 +10292,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * testFormEnd method
-     *
-     * @return void
      */
     public function testFormEnd()
     {
@@ -10764,8 +10383,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * testMultipleFormWithIdFields method
-     *
-     * @return void
      */
     public function testMultipleFormWithIdFields()
     {
@@ -10791,8 +10408,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * testDbLessModel method
-     *
-     * @return void
      */
     public function testDbLessModel()
     {
@@ -10831,8 +10446,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * testBrokenness method
-     *
-     * @return void
      */
     public function testBrokenness()
     {
@@ -10922,8 +10535,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test the generation of fields for a multi record form.
-     *
-     * @return void
      */
     public function testMultiRecordForm()
     {
@@ -11007,8 +10618,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * test the correct display of multi-record form validation errors.
-     *
-     * @return void
      */
     public function testMultiRecordFormValidationErrors()
     {
@@ -11028,8 +10637,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * test the correct display of multi-record form validation errors.
-     *
-     * @return void
      */
     public function testSaveManyRecordFormValidationErrors()
     {
@@ -11047,8 +10654,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * tests the ability to change the order of the form input placeholder "input", "label", "before", "between", "after", "error"
-     *
-     * @return void
      */
     public function testInputTemplate()
     {
@@ -11146,8 +10751,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * test that some html5 inputs + FormHelper::__call() work
-     *
-     * @return void
      */
     public function testHtml5Inputs()
     {
@@ -11184,7 +10787,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * @expectedException CakeException
-     * @return void
      */
     public function testHtml5InputException()
     {
@@ -11193,8 +10795,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Tests that a model can be loaded from the model names passed in the request object
-     *
-     * @return void
      */
     public function testIntrospectModelFromRequest()
     {
@@ -11216,8 +10816,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Tests that it is possible to set the validation errors directly in the helper for a field
-     *
-     * @return void
      */
     public function testCustomValidationErrors()
     {
@@ -11228,8 +10826,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Tests that the 'on' key validates as expected on create
-     *
-     * @return void
      */
     public function testRequiredOnCreate()
     {
@@ -11317,8 +10913,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Tests that the 'on' key validates as expected on update
-     *
-     * @return void
      */
     public function testRequiredOnUpdate()
     {
@@ -11386,8 +10980,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Test inputDefaults setter and getter
-     *
-     * @return void
      */
     public function testInputDefaults()
     {
@@ -11450,8 +11042,6 @@ class FormHelperTest extends CakeTestCase
      * Tests `_lastAction`.
      *
      *  With named, numeric value
-     *
-     * @return void
      */
     public function testLastActionWithNamedNumeric()
     {
@@ -11467,8 +11057,6 @@ class FormHelperTest extends CakeTestCase
      * Tests `_lastAction`.
      *
      *  With named, string value
-     *
-     * @return void
      */
     public function testLastActionWithNamedString()
     {
@@ -11482,8 +11070,6 @@ class FormHelperTest extends CakeTestCase
 
     /**
      * Tests the 'errorClass' option when error is returned.
-     *
-     * @return void
      */
     public function testInputErrorClass()
     {

@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Log.Engine
+ *
  * @since         CakePHP(tm) v 1.3
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('ConsoleLog', 'Log/Engine');
@@ -74,8 +78,6 @@ class ConsoleLogTest extends CakeTestCase
 
     /**
      * Test writing to ConsoleOutput
-     *
-     * @return void
      */
     public function testConsoleOutputWrites()
     {
@@ -96,8 +98,6 @@ class ConsoleLogTest extends CakeTestCase
 
     /**
      * Test logging to both ConsoleLog and FileLog
-     *
-     * @return void
      */
     public function testCombinedLogWriting()
     {
@@ -135,8 +135,6 @@ class ConsoleLogTest extends CakeTestCase
 
     /**
      * test default value of stream 'outputAs'
-     *
-     * @return void
      */
     public function testDefaultOutputAs()
     {

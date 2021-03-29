@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Model
+ *
  * @since         CakePHP(tm) v 1.2.0.4206
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 require_once dirname(__FILE__) . DS . 'ModelTestBase.php';
@@ -26,7 +30,6 @@ class ModelReadTest extends BaseModelTest
 {
     /**
      * testExists function
-     * @return void
      */
     public function testExists()
     {
@@ -52,8 +55,6 @@ class ModelReadTest extends BaseModelTest
      * something_id | something_else_id | doomed = 1
      * something_id | something_else_id | doomed = 0
      * Should return both records and not just one.
-     *
-     * @return void
      */
     public function testFetchingNonUniqueFKJoinTableRecords()
     {
@@ -89,8 +90,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * Test IN operator
-     *
-     * @return void
      */
     public function testInOperator()
     {
@@ -218,8 +217,6 @@ class ModelReadTest extends BaseModelTest
      *
      * This test will never pass with Postgres or Oracle as all fields in a select must be
      * part of an aggregate function or in the GROUP BY statement.
-     *
-     * @return void
      */
     public function testGroupByAndOrder()
     {
@@ -276,8 +273,6 @@ class ModelReadTest extends BaseModelTest
      *
      * These tests will never pass with Postgres or Oracle as all fields in a select must be
      * part of an aggregate function or in the GROUP BY statement.
-     *
-     * @return void
      */
     public function testGroupBy()
     {
@@ -391,8 +386,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * Test find method with having clause
-     *
-     * @return void
      */
     public function testHaving()
     {
@@ -419,8 +412,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * testOldQuery method
-     *
-     * @return void
      */
     public function testOldQuery()
     {
@@ -456,8 +447,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * testPreparedQuery method
-     *
-     * @return void
      */
     public function testPreparedQuery()
     {
@@ -526,7 +515,6 @@ class ModelReadTest extends BaseModelTest
      * testParameterMismatch method
      *
      * @expectedException PDOException
-     * @return void
      */
     public function testParameterMismatch()
     {
@@ -546,7 +534,6 @@ class ModelReadTest extends BaseModelTest
      * testVeryStrangeUseCase method
      *
      * @expectedException PDOException
-     * @return void
      */
     public function testVeryStrangeUseCase()
     {
@@ -565,8 +552,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * testRecursiveUnbind method
-     *
-     * @return void
      */
     public function testRecursiveUnbind()
     {
@@ -3162,8 +3147,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * testSelfAssociationAfterFind method
-     *
-     * @return void
      */
     public function testSelfAssociationAfterFind()
     {
@@ -3185,8 +3168,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * Test that afterFind can completely unset data.
-     *
-     * @return void
      */
     public function testAfterFindUnset()
     {
@@ -3210,8 +3191,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * testFindThreadedNoParent method
-     *
-     * @return void
      */
     public function testFindThreadedNoParent()
     {
@@ -3225,8 +3204,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * testFindThreaded method
-     *
-     * @return void
      */
     public function testFindThreaded()
     {
@@ -3312,8 +3289,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * testFindAllThreaded method
-     *
-     * @return void
      */
     public function testFindAllThreaded()
     {
@@ -3789,8 +3764,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * test find('neighbors')
-     *
-     * @return void
      */
     public function testFindNeighbors()
     {
@@ -3944,8 +3917,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * Test find(neighbors) with missing fields so no neighbors are found.
-     *
-     * @return void
      */
     public function testFindNeighborsNoPrev()
     {
@@ -3970,8 +3941,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * testFindCombinedRelations method
-     *
-     * @return void
      */
     public function testFindCombinedRelations()
     {
@@ -4249,8 +4218,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * testSaveEmpty method
-     *
-     * @return void
      */
     public function testSaveEmpty()
     {
@@ -4263,8 +4230,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * testFindAllWithConditionInChildQuery
-     *
-     * @return void
      */
     public function testFindAllWithConditionInChildQuery()
     {
@@ -4307,8 +4272,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * testFindAllWithConditionsHavingMixedDataTypes method
-     *
-     * @return void
      */
     public function testFindAllWithConditionsHavingMixedDataTypes()
     {
@@ -4389,8 +4352,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * testBindUnbind method
-     *
-     * @return void
      */
     public function testBindUnbind()
     {
@@ -4883,8 +4844,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * testBindMultipleTimes method
-     *
-     * @return void
      */
     public function testBindMultipleTimes()
     {
@@ -5056,8 +5015,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * test that multiple reset = true calls to bindModel() result in the original associations.
-     *
-     * @return void
      */
     public function testBindModelMultipleTimesResetCorrectly()
     {
@@ -5073,8 +5030,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * testBindMultipleTimes method with different reset settings
-     *
-     * @return void
      */
     public function testBindMultipleTimesWithDifferentResetSettings()
     {
@@ -5108,8 +5063,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * test that bindModel behaves with Custom primary Key associations
-     *
-     * @return void
      */
     public function testBindWithCustomPrimaryKey()
     {
@@ -5129,8 +5082,6 @@ class ModelReadTest extends BaseModelTest
     /**
      * test that calling unbindModel() with reset == true multiple times
      * leaves associations in the correct state.
-     *
-     * @return void
      */
     public function testUnbindMultipleTimesResetCorrectly()
     {
@@ -5146,8 +5097,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * testBindMultipleTimes method with different reset settings
-     *
-     * @return void
      */
     public function testUnBindMultipleTimesWithDifferentResetSettings()
     {
@@ -5181,8 +5130,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * testAssociationAfterFind method
-     *
-     * @return void
      */
     public function testAssociationAfterFind()
     {
@@ -5277,8 +5224,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * testDeeperAssociationAfterFind method
-     *
-     * @return void
      */
     public function testDeeperAssociationAfterFind()
     {
@@ -5311,8 +5256,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * Tests that callbacks can be properly disabled
-     *
-     * @return void
      */
     public function testCallbackDisabling()
     {
@@ -5338,8 +5281,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * testAssociationAfterFindCallbacksDisabled method
-     *
-     * @return void
      */
     public function testAssociationAfterFindCalbacksDisabled()
     {
@@ -5433,8 +5374,6 @@ class ModelReadTest extends BaseModelTest
     /**
      * Tests that the database configuration assigned to the model can be changed using
      * (before|after)Find callbacks
-     *
-     * @return void
      */
     public function testCallbackSourceChange()
     {
@@ -5447,7 +5386,6 @@ class ModelReadTest extends BaseModelTest
      * testCallbackSourceChangeUnknownDatasource method
      *
      * @expectedException MissingDatasourceConfigException
-     * @return void
      */
     public function testCallbackSourceChangeUnknownDatasource()
     {
@@ -5458,8 +5396,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * testMultipleBelongsToWithSameClass method
-     *
-     * @return void
      */
     public function testMultipleBelongsToWithSameClass()
     {
@@ -5557,8 +5493,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * testHabtmRecursiveBelongsTo method
-     *
-     * @return void
      */
     public function testHabtmRecursiveBelongsTo()
     {
@@ -5616,8 +5550,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * testNonNumericHabtmJoinKey method
-     *
-     * @return void
      */
     public function testNonNumericHabtmJoinKey()
     {
@@ -5719,8 +5651,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * testHabtmFinderQuery method
-     *
-     * @return void
      */
     public function testHabtmFinderQuery()
     {
@@ -5768,8 +5698,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * testHabtmLimitOptimization method
-     *
-     * @return void
      */
     public function testHabtmLimitOptimization()
     {
@@ -5839,8 +5767,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * testHasManyLimitOptimization method
-     *
-     * @return void
      */
     public function testHasManyLimitOptimization()
     {
@@ -5956,8 +5882,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * testFindAllRecursiveSelfJoin method
-     *
-     * @return void
      */
     public function testFindAllRecursiveSelfJoin()
     {
@@ -6065,8 +5989,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * testFindAllRecursiveWithHabtm method
-     *
-     * @return void
      */
     public function testFindAllRecursiveWithHabtm()
     {
@@ -6136,8 +6058,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * testReadFakeThread method
-     *
-     * @return void
      */
     public function testReadFakeThread()
     {
@@ -6201,8 +6121,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * testFindFakeThread method
-     *
-     * @return void
      */
     public function testFindFakeThread()
     {
@@ -6266,8 +6184,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * testFindAllFakeThread method
-     *
-     * @return void
      */
     public function testFindAllFakeThread()
     {
@@ -6487,8 +6403,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * testConditionalNumerics method
-     *
-     * @return void
      */
     public function testConditionalNumerics()
     {
@@ -6505,8 +6419,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * test buildQuery()
-     *
-     * @return void
      */
     public function testBuildQuery()
     {
@@ -6678,8 +6590,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * test find('all') method
-     *
-     * @return void
      */
     public function testFindAll()
     {
@@ -6908,8 +6818,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * Test that find() with array conditions works when there is only one element.
-     *
-     * @return void
      */
     public function testFindAllArrayConditions()
     {
@@ -6997,8 +6905,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * test find('list') method
-     *
-     * @return void
      */
     public function testFindList()
     {
@@ -7279,8 +7185,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * test find('list') method
-     *
-     * @return void
      */
     public function testFindListZeroValue()
     {
@@ -7308,8 +7212,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * Test that find(list) works with array conditions that have only one element.
-     *
-     * @return void
      */
     public function testFindListArrayCondition()
     {
@@ -7335,8 +7237,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * testFindField method
-     *
-     * @return void
      */
     public function testFindField()
     {
@@ -7371,8 +7271,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * testFindUnique method
-     *
-     * @return void
      */
     public function testFindUnique()
     {
@@ -7394,8 +7292,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * test find('count') method
-     *
-     * @return void
      */
     public function testFindCount()
     {
@@ -7463,8 +7359,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * Test that find('first') does not use the id set to the object.
-     *
-     * @return void
      */
     public function testFindFirstNoIdUsed()
     {
@@ -7479,8 +7373,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * test find with COUNT(DISTINCT field)
-     *
-     * @return void
      */
     public function testFindCountDistinct()
     {
@@ -7499,8 +7391,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * Test find(count) with DboSource::expression
-     *
-     * @return void
      */
     public function testFindCountWithDbExpressions()
     {
@@ -7556,8 +7446,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * testFindMagic method
-     *
-     * @return void
      */
     public function testFindMagic()
     {
@@ -7695,8 +7583,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * testRead method
-     *
-     * @return void
      */
     public function testRead()
     {
@@ -7776,8 +7662,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * testRecursiveRead method
-     *
-     * @return void
      */
     public function testRecursiveRead()
     {
@@ -8204,8 +8088,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * testRecursiveFindAllWithLimit method
-     *
-     * @return void
      */
     public function testRecursiveFindAllWithLimit()
     {
@@ -8371,8 +8253,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * Testing availability of $this->findQueryType in Model callbacks
-     *
-     * @return void
      */
     public function testFindQueryTypeInCallbacks()
     {
@@ -8389,8 +8269,6 @@ class ModelReadTest extends BaseModelTest
      *
      * Test correct fetching of virtual fields
      * currently is not possible to do Relation.virtualField
-     *
-     * @return void
      */
     public function testVirtualFields()
     {
@@ -8471,8 +8349,6 @@ class ModelReadTest extends BaseModelTest
     /**
      * Test virtualfields that contain subqueries get correctly
      * quoted allowing reserved words to be used.
-     *
-     * @return void
      */
     public function testVirtualFieldSubqueryReservedWords()
     {
@@ -8505,8 +8381,6 @@ class ModelReadTest extends BaseModelTest
      * testVirtualFieldsOrder()
      *
      * Test correct order on virtual fields
-     *
-     * @return void
      */
     public function testVirtualFieldsOrder()
     {
@@ -8577,8 +8451,6 @@ class ModelReadTest extends BaseModelTest
      *
      * Test correct fetching of virtual fields
      * currently is not possible to do Relation.virtualField
-     *
-     * @return void
      */
     public function testVirtualFieldsMysql()
     {
@@ -8604,8 +8476,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * test that virtual fields work when they don't contain functions.
-     *
-     * @return void
      */
     public function testVirtualFieldAsAString()
     {
@@ -8620,8 +8490,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * test that isVirtualField will accept both aliased and non aliased fieldnames
-     *
-     * @return void
      */
     public function testIsVirtualField()
     {
@@ -8639,8 +8507,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * test that getting virtual fields works with and without model alias attached
-     *
-     * @return void
      */
     public function testGetVirtualField()
     {
@@ -8654,8 +8520,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * test that checks for error when NOT condition passed in key and a 1 element array value
-     *
-     * @return void
      */
     public function testNotInArrayWithOneValue()
     {
@@ -8676,8 +8540,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * test to assert that != in key together with a single element array will work
-     *
-     * @return void
      */
     public function testNotEqualsInArrayWithOneValue()
     {
@@ -8698,8 +8560,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * test custom find method
-     *
-     * @return void
      */
     public function testfindCustom()
     {
@@ -8719,8 +8579,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * test after find callback on related model
-     *
-     * @return void
      */
     public function testRelatedAfterFindCallback()
     {
@@ -8966,6 +8824,7 @@ class ModelReadTest extends BaseModelTest
      * Pull out the username from a result set.
      *
      * @param array $result The results.
+     *
      * @return string The username.
      */
     public static function extractUserNameFromQueryResult(array $result)
@@ -8975,8 +8834,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * Test that query() doesn't override the 2nd argument with a default.
-     *
-     * @return void
      */
     public function testQueryRespectsCacheQueriesAsSecondArgument()
     {
@@ -9004,8 +8861,6 @@ class ModelReadTest extends BaseModelTest
     /**
      * Test that query() doesn't override the cache param in the 3nd argument
      * with a default.
-     *
-     * @return void
      */
     public function testQueryRespectsCacheQueriesAsThirdArgument()
     {
@@ -9032,8 +8887,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * Test that query() uses the cacheQueries property when there is one argument.
-     *
-     * @return void
      */
     public function testQueryTakesModelCacheQueriesValueAsDefaultForOneArgument()
     {
@@ -9059,8 +8912,6 @@ class ModelReadTest extends BaseModelTest
 
     /**
      * Test that query() uses the cacheQueries property when there are two arguments.
-     *
-     * @return void
      */
     public function testQueryTakesModelCacheQueriesValueAsDefaultForTwoArguments()
     {

@@ -12,9 +12,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Utility
+ *
  * @since         CakePHP(tm) v 0.10.0.1076
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -24,6 +28,7 @@
  * Methods to make numbers more readable.
  *
  * @package       Cake.Utility
+ *
  * @link https://book.cakephp.org/2.0/en/core-libraries/helpers/number.html
  */
 class CakeNumber
@@ -97,7 +102,9 @@ class CakeNumber
      *
      * @param float $value A floating point number.
      * @param int $precision The precision of the returned number.
+     *
      * @return float Formatted float.
+     *
      * @link https://book.cakephp.org/2.0/en/core-libraries/helpers/number.html#NumberHelper::precision
      */
     public static function precision($value, $precision = 3)
@@ -109,7 +116,9 @@ class CakeNumber
      * Returns a formatted-for-humans file size.
      *
      * @param int $size Size in bytes
+     *
      * @return string Human readable size
+     *
      * @link https://book.cakephp.org/2.0/en/core-libraries/helpers/number.html#NumberHelper::toReadableSize
      */
     public static function toReadableSize($size)
@@ -133,8 +142,11 @@ class CakeNumber
      *
      * @param string $size Size in human readable string like '5MB', '5M', '500B', '50kb' etc.
      * @param mixed $default Value to be returned when invalid size was used, for example 'Unknown type'
-     * @return mixed Number of bytes as integer on success, `$default` on failure if not false
+     *
      * @throws CakeException On invalid Unit type.
+     *
+     * @return mixed Number of bytes as integer on success, `$default` on failure if not false
+     *
      * @link https://book.cakephp.org/2.0/en/core-libraries/helpers/number.html#NumberHelper::fromReadableSize
      */
     public static function fromReadableSize($size, $default = false)
@@ -179,7 +191,9 @@ class CakeNumber
      * @param float $value A floating point number
      * @param int $precision The precision of the returned number
      * @param array $options Options
+     *
      * @return string Percentage string
+     *
      * @link https://book.cakephp.org/2.0/en/core-libraries/helpers/number.html#NumberHelper::toPercentage
      */
     public static function toPercentage($value, $precision = 2, $options = [])
@@ -198,7 +212,9 @@ class CakeNumber
      * @param float $value A floating point number
      * @param int $options If integer then places, if string then before, if (,.-) then use it
      *   or array with places and before keys
+     *
      * @return string formatted number
+     *
      * @link https://book.cakephp.org/2.0/en/core-libraries/helpers/number.html#NumberHelper::format
      */
     public static function format($value, $options = false)
@@ -254,7 +270,9 @@ class CakeNumber
      *
      * @param float $value A floating point number
      * @param array $options Options list.
+     *
      * @return string formatted delta
+     *
      * @link https://book.cakephp.org/2.0/en/core-libraries/helpers/number.html#NumberHelper::formatDelta
      */
     public static function formatDelta($value, $options = [])
@@ -274,6 +292,7 @@ class CakeNumber
      * @param int $places Decimal places to use.
      * @param string $decimals Decimal position string.
      * @param string $thousands Thousands separator string.
+     *
      * @return string
      */
     protected static function _numberFormat($value, $places = 0, $decimals = '.', $thousands = ',')
@@ -333,7 +352,9 @@ class CakeNumber
      * @param string $currency Shortcut to default options. Valid values are
      *   'USD', 'EUR', 'GBP', otherwise set at least 'before' and 'after' options.
      * @param array $options Options list.
+     *
      * @return string Number formatted as a currency.
+     *
      * @link https://book.cakephp.org/2.0/en/core-libraries/helpers/number.html#NumberHelper::currency
      */
     public static function currency($value, $currency = null, $options = [])
@@ -407,7 +428,7 @@ class CakeNumber
      *
      * @param string $formatName The format name to be used in the future.
      * @param array $options The array of options for this format.
-     * @return void
+     *
      * @see NumberHelper::currency()
      * @link https://book.cakephp.org/2.0/en/core-libraries/helpers/number.html#NumberHelper::addFormat
      */
@@ -420,7 +441,9 @@ class CakeNumber
      * Getter/setter for default currency
      *
      * @param string $currency Default currency string used by currency() if $currency argument is not provided
+     *
      * @return string Currency
+     *
      * @link https://book.cakephp.org/2.0/en/core-libraries/helpers/number.html#NumberHelper::defaultCurrency
      */
     public static function defaultCurrency($currency = null)

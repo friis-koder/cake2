@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Test.Case.Console.Command.Task
+ *
  * @since         CakePHP(tm) v 1.3
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('ShellDispatcher', 'Console');
@@ -30,8 +34,6 @@ class DbConfigTaskTest extends CakeTestCase
 {
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -50,8 +52,6 @@ class DbConfigTaskTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -61,8 +61,6 @@ class DbConfigTaskTest extends CakeTestCase
 
     /**
      * Test the getConfig method.
-     *
-     * @return void
      */
     public function testGetConfig()
     {
@@ -76,8 +74,6 @@ class DbConfigTaskTest extends CakeTestCase
 
     /**
      * test that initialize sets the path up.
-     *
-     * @return void
      */
     public function testInitialize()
     {
@@ -88,8 +84,6 @@ class DbConfigTaskTest extends CakeTestCase
 
     /**
      * test execute and by extension _interactive
-     *
-     * @return void
      */
     public function testExecuteIntoInteractive()
     {

@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Cache.Engine
+ *
  * @since         CakePHP(tm) v 1.2.0.5434
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Cache', 'Cache');
@@ -33,8 +37,6 @@ class FileEngineTest extends CakeTestCase
 
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -45,8 +47,6 @@ class FileEngineTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -60,8 +60,6 @@ class FileEngineTest extends CakeTestCase
 
     /**
      * testCacheDirChange method
-     *
-     * @return void
      */
     public function testCacheDirChange()
     {
@@ -75,8 +73,6 @@ class FileEngineTest extends CakeTestCase
 
     /**
      * testReadAndWriteCache method
-     *
-     * @return void
      */
     public function testReadAndWriteCache()
     {
@@ -104,8 +100,6 @@ class FileEngineTest extends CakeTestCase
 
     /**
      * Test read/write on the same cache key. Ensures file handles are re-wound.
-     *
-     * @return void
      */
     public function testConsecutiveReadWrite()
     {
@@ -122,8 +116,6 @@ class FileEngineTest extends CakeTestCase
 
     /**
      * testExpiry method
-     *
-     * @return void
      */
     public function testExpiry()
     {
@@ -153,8 +145,6 @@ class FileEngineTest extends CakeTestCase
 
     /**
      * testDeleteCache method
-     *
-     * @return void
      */
     public function testDeleteCache()
     {
@@ -172,8 +162,6 @@ class FileEngineTest extends CakeTestCase
 
     /**
      * testSerialize method
-     *
-     * @return void
      */
     public function testSerialize()
     {
@@ -196,8 +184,6 @@ class FileEngineTest extends CakeTestCase
 
     /**
      * testClear method
-     *
-     * @return void
      */
     public function testClear()
     {
@@ -234,8 +220,6 @@ class FileEngineTest extends CakeTestCase
 
     /**
      * test that clear() doesn't wipe files not in the current engine's prefix.
-     *
-     * @return void
      */
     public function testClearWithPrefixes()
     {
@@ -264,8 +248,6 @@ class FileEngineTest extends CakeTestCase
 
     /**
      * Test that clear() also removes files with group tags.
-     *
-     * @return void
      */
     public function testClearWithGroups()
     {
@@ -283,8 +265,6 @@ class FileEngineTest extends CakeTestCase
 
     /**
      * Test that clear() also removes files with group tags.
-     *
-     * @return void
      */
     public function testClearWithNoKeys()
     {
@@ -301,8 +281,6 @@ class FileEngineTest extends CakeTestCase
 
     /**
      * testKeyPath method
-     *
-     * @return void
      */
     public function testKeyPath()
     {
@@ -327,8 +305,6 @@ class FileEngineTest extends CakeTestCase
 
     /**
      * testRemoveWindowsSlashesFromCache method
-     *
-     * @return void
      */
     public function testRemoveWindowsSlashesFromCache()
     {
@@ -373,8 +349,6 @@ class FileEngineTest extends CakeTestCase
 
     /**
      * testWriteQuotedString method
-     *
-     * @return void
      */
     public function testWriteQuotedString()
     {
@@ -394,8 +368,6 @@ class FileEngineTest extends CakeTestCase
 
     /**
      * check that FileEngine does not generate an error when a configured Path does not exist in debug mode.
-     *
-     * @return void
      */
     public function testPathDoesNotExist()
     {
@@ -411,8 +383,6 @@ class FileEngineTest extends CakeTestCase
 
     /**
      * Testing the mask setting in FileEngine
-     *
-     * @return void
      */
     public function testMaskSetting()
     {
@@ -455,8 +425,6 @@ class FileEngineTest extends CakeTestCase
 
     /**
      * Tests that configuring groups for stored keys return the correct values when read/written
-     *
-     * @return void
      */
     public function testGroupsReadWrite()
     {
@@ -470,8 +438,6 @@ class FileEngineTest extends CakeTestCase
 
     /**
      * Test that clearing with repeat writes works properly
-     *
-     * @return void
      */
     public function testClearingWithRepeatWrites()
     {
@@ -499,8 +465,6 @@ class FileEngineTest extends CakeTestCase
 
     /**
      * Tests that deleting from a groups-enabled config is possible
-     *
-     * @return void
      */
     public function testGroupDelete()
     {
@@ -518,8 +482,6 @@ class FileEngineTest extends CakeTestCase
 
     /**
      * Test clearing a cache group
-     *
-     * @return void
      */
     public function testGroupClear()
     {
@@ -553,8 +515,6 @@ class FileEngineTest extends CakeTestCase
 
     /**
      * Test that clearGroup works with no prefix.
-     *
-     * @return void
      */
     public function testGroupClearNoPrefix()
     {
@@ -573,8 +533,6 @@ class FileEngineTest extends CakeTestCase
 
     /**
      * Test add method.
-     *
-     * @return void
      */
     public function testAdd()
     {

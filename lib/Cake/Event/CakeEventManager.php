@@ -8,9 +8,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright	  Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link		  https://cakephp.org CakePHP(tm) Project
+ *
  * @package		  Cake.Event
+ *
  * @since		  CakePHP(tm) v 2.1
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('CakeEventListener', 'Event');
@@ -63,6 +67,7 @@ class CakeEventManager
      * If called with the first parameter, it will be set as the globally available instance
      *
      * @param CakeEventManager $manager Optional event manager instance.
+     *
      * @return CakeEventManager the global event manager
      */
     public static function instance($manager = null)
@@ -86,16 +91,13 @@ class CakeEventManager
      * when the event named with $eventKey is triggered. If a CakeEventListener instance is passed, then the `implementedEvents`
      * method will be called on the object to register the declared events individually as methods to be managed by this class.
      * It is possible to define multiple event handlers per event name.
-     *
      * @param string $eventKey The event unique identifier name with which the callback will be associated. If $callable
      * is an instance of CakeEventListener this argument will be ignored
-     *
      * @param array $options used to set the `priority` and `passParams` flags to the listener.
      * Priorities are handled like queues, and multiple attachments added to the same priority queue will be treated in
      * the order of insertion. `passParams` means that the event data property will be converted to function arguments
      * when the listener is called. If $called is an instance of CakeEventListener, this parameter will be ignored
      *
-     * @return void
      * @throws InvalidArgumentException When event key is missing or callable is not an
      *   instance of CakeEventListener.
      */
@@ -121,7 +123,6 @@ class CakeEventManager
      * as individual methods on this manager
      *
      * @param CakeEventListener $subscriber Event listener.
-     * @return void
      */
     protected function _attachSubscriber(CakeEventListener $subscriber)
     {
@@ -151,6 +152,7 @@ class CakeEventManager
      *
      * @param array $function the array taken from a handler definition for an event
      * @param CakeEventListener $object The handler object
+     *
      * @return callable
      */
     protected function _extractCallable($function, $object)
@@ -170,7 +172,6 @@ class CakeEventManager
      *
      * @param callable|CakeEventListener $callable any valid PHP callback type or an instance of CakeEventListener
      * @param string $eventKey The event unique identifier name with which the callback has been associated
-     * @return void
      */
     public function detach($callable, $eventKey = null)
     {
@@ -203,7 +204,6 @@ class CakeEventManager
      *
      * @param CakeEventListener $subscriber the subscriber to be detached
      * @param string $eventKey optional event key name to unsubscribe the listener from
-     * @return void
      */
     protected function _detachSubscriber(CakeEventListener $subscriber, $eventKey = null)
     {
@@ -233,6 +233,7 @@ class CakeEventManager
      * Dispatches a new event to all configured listeners
      *
      * @param string|CakeEvent $event the event key name or instance of CakeEvent
+     *
      * @return CakeEvent
      * @triggers $event
      */
@@ -271,6 +272,7 @@ class CakeEventManager
      * Returns a list of all listeners for an eventKey in the order they should be called
      *
      * @param string $eventKey Event key.
+     *
      * @return array
      */
     public function listeners($eventKey)
@@ -305,6 +307,7 @@ class CakeEventManager
      * Returns the listeners for the specified event key indexed by priority
      *
      * @param string $eventKey Event key.
+     *
      * @return array
      */
     public function prioritisedListeners($eventKey)

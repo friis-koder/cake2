@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Utility
+ *
  * @since         CakePHP(tm) v 1.2.0.5432
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('CakeText', 'Utility');
@@ -27,8 +31,6 @@ class CakeTextTest extends CakeTestCase
 {
     /**
      * Setup object under test
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -38,8 +40,6 @@ class CakeTextTest extends CakeTestCase
 
     /**
      * Tear down object under test
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -50,7 +50,6 @@ class CakeTextTest extends CakeTestCase
     /**
      * testUuidGeneration method
      *
-     * @return void
      * @covers ::uuid
      */
     public function testUuidGeneration()
@@ -64,7 +63,6 @@ class CakeTextTest extends CakeTestCase
     /**
      * testMultipleUuidGeneration method
      *
-     * @return void
      * @covers ::uuid
      */
     public function testMultipleUuidGeneration()
@@ -85,7 +83,6 @@ class CakeTextTest extends CakeTestCase
     /**
      * testInsert method
      *
-     * @return void
      * @covers ::insert
      */
     public function testInsert()
@@ -248,7 +245,6 @@ class CakeTextTest extends CakeTestCase
     /**
      * test Clean Insert
      *
-     * @return void
      * @covers ::cleanInsert
      */
     public function testCleanInsert()
@@ -294,7 +290,6 @@ class CakeTextTest extends CakeTestCase
      * Tests that non-insertable variables (i.e. arrays) are skipped when used as values in
      * CakeText::insert().
      *
-     * @return void
      * @covers ::insert
      */
     public function testAutoIgnoreBadInsertData()
@@ -307,7 +302,6 @@ class CakeTextTest extends CakeTestCase
     /**
      * testTokenize method
      *
-     * @return void
      * @covers ::tokenize
      */
     public function testTokenize()
@@ -345,7 +339,6 @@ class CakeTextTest extends CakeTestCase
     /**
      * testReplaceWithQuestionMarkInString method
      *
-     * @return void
      * @covers ::insert
      */
     public function testReplaceWithQuestionMarkInString()
@@ -360,7 +353,6 @@ class CakeTextTest extends CakeTestCase
      * test that wordWrap() works the same as built-in wordwrap function
      *
      * @dataProvider wordWrapProvider
-     * @return void
      * @covers ::wordWrap
      * @covers ::_wordWrap
      */
@@ -397,7 +389,6 @@ class CakeTextTest extends CakeTestCase
     /**
      * test that wordWrap() properly handle unicode strings.
      *
-     * @return void
      * @covers ::wordWrap
      * @covers ::_wordWrap
      */
@@ -427,7 +418,6 @@ TEXT;
     /**
      * test that wordWrap() properly handle newline characters.
      *
-     * @return void
      * @covers ::wordWrap
      * @covers ::_wordWrap
      */
@@ -447,7 +437,6 @@ TEXT;
     /**
      * test wrap method.
      *
-     * @return void
      * @covers ::wrap
      * @covers ::wordWrap
      * @covers ::_wordWrap
@@ -486,7 +475,6 @@ TEXT;
     /**
      * test wrap() indenting
      *
-     * @return void
      * @covers ::wrap
      * @covers ::wordWrap
      * @covers ::_wordWrap
@@ -506,7 +494,6 @@ TEXT;
     /**
      * testTruncate method
      *
-     * @return void
      * @covers ::truncate
      */
     public function testTruncate()
@@ -613,7 +600,6 @@ podeís adquirirla.</span></p>
     /**
      * testTruncate method with non utf8 sites
      *
-     * @return void
      * @covers ::truncate
      */
     public function testTruncateLegacy()
@@ -638,7 +624,6 @@ podeís adquirirla.</span></p>
     /**
      * testTail method
      *
-     * @return void
      * @covers ::tail
      */
     public function testTail()
@@ -683,7 +668,6 @@ podeís adquirirla.</span></p>
     /**
      * testHighlight method
      *
-     * @return void
      * @covers ::highlight
      */
     public function testHighlight()
@@ -719,7 +703,6 @@ podeís adquirirla.</span></p>
     /**
      * testHighlightHtml method
      *
-     * @return void
      * @covers ::highlight
      */
     public function testHighlightHtml()
@@ -747,7 +730,6 @@ podeís adquirirla.</span></p>
     /**
      * testHighlightMulti method
      *
-     * @return void
      * @covers ::highlight
      */
     public function testHighlightMulti()
@@ -762,7 +744,6 @@ podeís adquirirla.</span></p>
     /**
      * testStripLinks method
      *
-     * @return void
      * @covers ::stripLinks
      */
     public function testStripLinks()
@@ -791,7 +772,6 @@ podeís adquirirla.</span></p>
     /**
      * testHighlightCaseInsensitivity method
      *
-     * @return void
      * @covers ::highlight
      */
     public function testHighlightCaseInsensitivity()
@@ -809,7 +789,6 @@ podeís adquirirla.</span></p>
     /**
      * testExcerpt method
      *
-     * @return void
      * @covers ::excerpt
      */
     public function testExcerpt()
@@ -851,7 +830,6 @@ podeís adquirirla.</span></p>
     /**
      * testExcerptCaseInsensitivity method
      *
-     * @return void
      * @covers ::excerpt
      */
     public function testExcerptCaseInsensitivity()
@@ -870,7 +848,6 @@ podeís adquirirla.</span></p>
     /**
      * testListGeneration method
      *
-     * @return void
      * @covers ::toList
      */
     public function testListGeneration()

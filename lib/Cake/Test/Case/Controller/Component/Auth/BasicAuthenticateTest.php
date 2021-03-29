@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Test.Case.Controller.Component.Auth
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('BasicAuthenticate', 'Controller/Component/Auth');
@@ -38,8 +42,6 @@ class BasicAuthenticateTest extends CakeTestCase
 
     /**
      * setup
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -60,8 +62,6 @@ class BasicAuthenticateTest extends CakeTestCase
 
     /**
      * test applying settings in the constructor
-     *
-     * @return void
      */
     public function testConstructor()
     {
@@ -76,8 +76,6 @@ class BasicAuthenticateTest extends CakeTestCase
 
     /**
      * test the authenticate method
-     *
-     * @return void
      */
     public function testAuthenticateNoData()
     {
@@ -91,8 +89,6 @@ class BasicAuthenticateTest extends CakeTestCase
 
     /**
      * test the authenticate method
-     *
-     * @return void
      */
     public function testAuthenticateNoUsername()
     {
@@ -104,8 +100,6 @@ class BasicAuthenticateTest extends CakeTestCase
 
     /**
      * test the authenticate method
-     *
-     * @return void
      */
     public function testAuthenticateNoPassword()
     {
@@ -118,8 +112,6 @@ class BasicAuthenticateTest extends CakeTestCase
 
     /**
      * test the authenticate method
-     *
-     * @return void
      */
     public function testAuthenticateInjection()
     {
@@ -135,8 +127,6 @@ class BasicAuthenticateTest extends CakeTestCase
 
     /**
      * Test that username of 0 works.
-     *
-     * @return void
      */
     public function testAuthenticateUsernameZero()
     {
@@ -162,8 +152,6 @@ class BasicAuthenticateTest extends CakeTestCase
 
     /**
      * test that challenge headers are sent when no credentials are found.
-     *
-     * @return void
      */
     public function testAuthenticateChallenge()
     {
@@ -183,8 +171,6 @@ class BasicAuthenticateTest extends CakeTestCase
 
     /**
      * test authenticate success
-     *
-     * @return void
      */
     public function testAuthenticateSuccess()
     {
@@ -206,8 +192,6 @@ class BasicAuthenticateTest extends CakeTestCase
 
     /**
      * test authenticate success with header values
-     *
-     * @return void
      */
     public function testAuthenticateSuccessFromHeaders()
     {
@@ -229,8 +213,6 @@ class BasicAuthenticateTest extends CakeTestCase
 
     /**
      * test contain success
-     *
-     * @return void
      */
     public function testAuthenticateContainSuccess()
     {
@@ -259,8 +241,6 @@ class BasicAuthenticateTest extends CakeTestCase
 
     /**
      * test userFields success
-     *
-     * @return void
      */
     public function testAuthenticateUserFieldsSuccess()
     {
@@ -281,8 +261,6 @@ class BasicAuthenticateTest extends CakeTestCase
 
     /**
      * test userFields and related models success
-     *
-     * @return void
      */
     public function testAuthenticateUserFieldsRelatedModelsSuccess()
     {
@@ -313,7 +291,6 @@ class BasicAuthenticateTest extends CakeTestCase
      *
      * @expectedException UnauthorizedException
      * @expectedExceptionCode 401
-     * @return void
      */
     public function testAuthenticateFailReChallenge()
     {
@@ -329,8 +306,6 @@ class BasicAuthenticateTest extends CakeTestCase
 
     /**
      * testAuthenticateWithBlowfish
-     *
-     * @return void
      */
     public function testAuthenticateWithBlowfish()
     {

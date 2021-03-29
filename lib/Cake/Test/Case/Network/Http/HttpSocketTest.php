@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Network.Http
+ *
  * @since         CakePHP(tm) v 1.2.0.4206
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('HttpSocket', 'Network/Http');
@@ -30,7 +34,6 @@ class TestAuthentication
      *
      * @param HttpSocket $http A HTTP socket.
      * @param array &$authInfo Some auth info.
-     * @return void
      */
     public static function authentication(HttpSocket $http, &$authInfo)
     {
@@ -42,7 +45,6 @@ class TestAuthentication
      *
      * @param HttpSocket $http A HTTP socket.
      * @param array &$proxyInfo Some proxy info.
-     * @return void
      */
     public static function proxyAuthentication(HttpSocket $http, &$proxyInfo)
     {
@@ -82,6 +84,7 @@ class TestHttpSocket extends HttpSocket
      * Convenience method for testing protected method
      *
      * @param string|array $uri URI (see {@link _parseUri()})
+     *
      * @return array Current configuration settings
      */
     public function configUri($uri = null)
@@ -94,6 +97,7 @@ class TestHttpSocket extends HttpSocket
      *
      * @param string|array $uri URI to parse
      * @param bool|array $base If true use default URI config, otherwise indexed array to set 'scheme', 'host', 'port', etc.
+     *
      * @return array Parsed URI
      */
     public function parseUri($uri = null, $base = [])
@@ -106,6 +110,7 @@ class TestHttpSocket extends HttpSocket
      *
      * @param array $uri A $uri array, or uses $this->config if left empty
      * @param string $uriTemplate The Uri template/format to use
+     *
      * @return string A fully qualified URL formatted according to $uriTemplate
      */
     public function buildUri($uri = [], $uriTemplate = '%scheme://%user:%pass@%host:%port/%path?%query#%fragment')
@@ -117,6 +122,7 @@ class TestHttpSocket extends HttpSocket
      * Convenience method for testing protected method
      *
      * @param array $header Header to build
+     *
      * @return string Header built from array
      */
     public function buildHeader($header, $mode = 'standard')
@@ -128,6 +134,7 @@ class TestHttpSocket extends HttpSocket
      * Convenience method for testing protected method
      *
      * @param string|array $query A query string to parse into an array or an array to return directly "as is"
+     *
      * @return array The $query parsed into a possibly multi-level array. If an empty $query is given, an empty array is returned.
      */
     public function parseQuery($query)
@@ -139,6 +146,7 @@ class TestHttpSocket extends HttpSocket
      * Convenience method for testing protected method
      *
      * @param array $request Needs to contain a 'uri' key. Should also contain a 'method' key, otherwise defaults to GET.
+     *
      * @return string Request line
      */
     public function buildRequestLine($request = [])
@@ -150,6 +158,7 @@ class TestHttpSocket extends HttpSocket
      * Convenience method for testing protected method
      *
      * @param bool $hex true to get them as HEX values, false otherwise
+     *
      * @return array Escape chars
      */
     public function tokenEscapeChars($hex = true, $chars = null)
@@ -161,6 +170,7 @@ class TestHttpSocket extends HttpSocket
      * Convenience method for testing protected method
      *
      * @param string $token Token to escape
+     *
      * @return string Escaped token
      */
     public function escapeToken($token, $chars = null)
@@ -192,8 +202,6 @@ class HttpSocketTest extends CakeTestCase
 
     /**
      * This function sets up a TestHttpSocket instance we are going to use for testing
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -204,8 +212,6 @@ class HttpSocketTest extends CakeTestCase
 
     /**
      * We use this function to clean up after the test case was executed
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -215,8 +221,6 @@ class HttpSocketTest extends CakeTestCase
 
     /**
      * Test that HttpSocket::__construct does what one would expect it to do
-     *
-     * @return void
      */
     public function testConstruct()
     {
@@ -244,8 +248,6 @@ class HttpSocketTest extends CakeTestCase
 
     /**
      * Test that HttpSocket::configUri works properly with different types of arguments
-     *
-     * @return void
      */
     public function testConfigUri()
     {
@@ -314,8 +316,6 @@ class HttpSocketTest extends CakeTestCase
 
     /**
      * Tests that HttpSocket::request (the heart of the HttpSocket) is working properly.
-     *
-     * @return void
      */
     public function testRequest()
     {
@@ -588,8 +588,6 @@ class HttpSocketTest extends CakeTestCase
 
     /**
      * Test the scheme + port keys
-     *
-     * @return void
      */
     public function testGetWithSchemeAndPort()
     {
@@ -613,8 +611,6 @@ class HttpSocketTest extends CakeTestCase
 
     /**
      * Test URLs like https://cakephp.org/index.php?somestring without key/value pair for query
-     *
-     * @return void
      */
     public function testRequestWithStringQuery()
     {
@@ -640,7 +636,6 @@ class HttpSocketTest extends CakeTestCase
      * The "*" asterisk character is only allowed for the following methods: OPTIONS.
      *
      * @expectedException SocketException
-     * @return void
      */
     public function testRequestNotAllowedUri()
     {
@@ -651,8 +646,6 @@ class HttpSocketTest extends CakeTestCase
 
     /**
      * testRequest2 method
-     *
-     * @return void
      */
     public function testRequest2()
     {
@@ -675,8 +668,6 @@ class HttpSocketTest extends CakeTestCase
 
     /**
      * testRequest3 method
-     *
-     * @return void
      */
     public function testRequest3()
     {
@@ -702,8 +693,6 @@ class HttpSocketTest extends CakeTestCase
 
     /**
      * testRequestWithConstructor method
-     *
-     * @return void
      */
     public function testRequestWithConstructor()
     {
@@ -731,8 +720,6 @@ class HttpSocketTest extends CakeTestCase
 
     /**
      * testRequestWithResource
-     *
-     * @return void
      */
     public function testRequestWithResource()
     {
@@ -763,8 +750,6 @@ class HttpSocketTest extends CakeTestCase
 
     /**
      * testRequestWithCrossCookie
-     *
-     * @return void
      */
     public function testRequestWithCrossCookie()
     {
@@ -805,8 +790,6 @@ class HttpSocketTest extends CakeTestCase
 
     /**
      * testRequestCustomResponse
-     *
-     * @return void
      */
     public function testRequestCustomResponse()
     {
@@ -824,8 +807,6 @@ class HttpSocketTest extends CakeTestCase
 
     /**
      * Test that redirect URLs are urldecoded
-     *
-     * @return void
      */
     public function testRequestWithRedirectUrlEncoded()
     {
@@ -859,8 +840,6 @@ class HttpSocketTest extends CakeTestCase
 
     /**
      * testRequestWithRedirect method
-     *
-     * @return void
      */
     public function testRequestWithRedirectAsTrue()
     {
@@ -881,8 +860,6 @@ class HttpSocketTest extends CakeTestCase
 
     /**
      * Test that redirects with a count limit are decremented.
-     *
-     * @return void
      */
     public function testRequestWithRedirectAsInt()
     {
@@ -903,8 +880,6 @@ class HttpSocketTest extends CakeTestCase
 
     /**
      * Test that redirects after the redirect count reaches 9 are not followed.
-     *
-     * @return void
      */
     public function testRequestWithRedirectAsIntReachingZero()
     {
@@ -927,8 +902,6 @@ class HttpSocketTest extends CakeTestCase
 
     /**
      * testProxy method
-     *
-     * @return void
      */
     public function testProxy()
     {
@@ -1003,8 +976,6 @@ class HttpSocketTest extends CakeTestCase
 
     /**
      * testUrl method
-     *
-     * @return void
      */
     public function testUrl()
     {
@@ -1058,8 +1029,6 @@ class HttpSocketTest extends CakeTestCase
 
     /**
      * testGet method
-     *
-     * @return void
      */
     public function testGet()
     {
@@ -1108,8 +1077,6 @@ class HttpSocketTest extends CakeTestCase
 
     /**
      * Test the head method
-     *
-     * @return void
      */
     public function testHead()
     {
@@ -1157,8 +1124,6 @@ class HttpSocketTest extends CakeTestCase
 
     /**
      * Test authentication
-     *
-     * @return void
      */
     public function testAuth()
     {
@@ -1202,8 +1167,6 @@ class HttpSocketTest extends CakeTestCase
 
     /**
      * test that two consecutive get() calls reset the authentication credentials.
-     *
-     * @return void
      */
     public function testConsecutiveGetResetsAuthCredentials()
     {
@@ -1233,8 +1196,6 @@ class HttpSocketTest extends CakeTestCase
 
     /**
      * testPostPutDelete method
-     *
-     * @return void
      */
     public function testPost()
     {
@@ -1258,8 +1219,6 @@ class HttpSocketTest extends CakeTestCase
 
     /**
      * testPut
-     *
-     * @return void
      */
     public function testPut()
     {
@@ -1283,8 +1242,6 @@ class HttpSocketTest extends CakeTestCase
 
     /**
      * testPatch
-     *
-     * @return void
      */
     public function testPatch()
     {
@@ -1308,8 +1265,6 @@ class HttpSocketTest extends CakeTestCase
 
     /**
      * testDelete
-     *
-     * @return void
      */
     public function testDelete()
     {
@@ -1333,8 +1288,6 @@ class HttpSocketTest extends CakeTestCase
 
     /**
      * testBuildRequestLine method
-     *
-     * @return void
      */
     public function testBuildRequestLine()
     {
@@ -1396,7 +1349,6 @@ class HttpSocketTest extends CakeTestCase
      * testBadBuildRequestLine method
      *
      * @expectedException SocketException
-     * @return void
      */
     public function testBadBuildRequestLine()
     {
@@ -1407,7 +1359,6 @@ class HttpSocketTest extends CakeTestCase
      * testBadBuildRequestLine2 method
      *
      * @expectedException SocketException
-     * @return void
      */
     public function testBadBuildRequestLine2()
     {
@@ -1416,8 +1367,6 @@ class HttpSocketTest extends CakeTestCase
 
     /**
      * Asserts that HttpSocket::parseUri is working properly
-     *
-     * @return void
      */
     public function testParseUri()
     {
@@ -1544,8 +1493,6 @@ class HttpSocketTest extends CakeTestCase
 
     /**
      * Tests that HttpSocket::buildUri can turn all kinds of uri arrays (and strings) into fully or partially qualified URI's
-     *
-     * @return void
      */
     public function testBuildUri()
     {
@@ -1611,8 +1558,6 @@ class HttpSocketTest extends CakeTestCase
 
     /**
      * Asserts that HttpSocket::parseQuery is working properly
-     *
-     * @return void
      */
     public function testParseQuery()
     {
@@ -1717,8 +1662,6 @@ class HttpSocketTest extends CakeTestCase
     /**
      * Tests that HttpSocket::buildHeader can turn a given $header array into a proper header string according to
      * HTTP 1.1 specs.
-     *
-     * @return void
      */
     public function testBuildHeader()
     {
@@ -1754,8 +1697,6 @@ class HttpSocketTest extends CakeTestCase
 
     /**
      * testBuildCookies method
-     *
-     * @return void
      */
     public function testBuildCookies()
     {
@@ -1776,8 +1717,6 @@ class HttpSocketTest extends CakeTestCase
 
     /**
      * Tests that HttpSocket::_tokenEscapeChars() returns the right characters.
-     *
-     * @return void
      */
     public function testTokenEscapeChars()
     {
@@ -1802,8 +1741,6 @@ class HttpSocketTest extends CakeTestCase
 
     /**
      * Test that HttpSocket::escapeToken is escaping all characters as described in RFC 2616 (HTTP 1.1 specs)
-     *
-     * @return void
      */
     public function testEscapeToken()
     {
@@ -1829,8 +1766,6 @@ class HttpSocketTest extends CakeTestCase
     /**
      * This tests asserts HttpSocket::reset() resets a HttpSocket instance to it's initial state (before CakeObject::__construct
      * got executed)
-     *
-     * @return void
      */
     public function testReset()
     {
@@ -1853,8 +1788,6 @@ class HttpSocketTest extends CakeTestCase
     /**
      * This tests asserts HttpSocket::reset(false) resets certain HttpSocket properties to their initial state (before
      * CakeObject::__construct got executed).
-     *
-     * @return void
      */
     public function testPartialReset()
     {
@@ -1881,8 +1814,6 @@ class HttpSocketTest extends CakeTestCase
 
     /**
      * Test that requests fail when peer verification fails.
-     *
-     * @return void
      */
     public function testVerifyPeer()
     {
@@ -1920,7 +1851,6 @@ class HttpSocketTest extends CakeTestCase
      * test response status parsing
      *
      * @dataProvider statusProvider
-     * @return void
      */
     public function testResponseStatusParsing($status, $code, $msg = '')
     {

@@ -12,8 +12,10 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html
  * @since         CakePHP(tm) v 1.2.0.4433
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Shell', 'Console');
@@ -169,7 +171,6 @@ class TestShell extends Shell
     /**
      * Initialization method installs PHPUnit and loads all plugins
      *
-     * @return void
      * @throws Exception
      */
     public function initialize()
@@ -256,8 +257,6 @@ class TestShell extends Shell
 
     /**
      * Main entry point to this shell
-     *
-     * @return void
      */
     public function main()
     {
@@ -278,7 +277,6 @@ class TestShell extends Shell
      *
      * @param array $runnerArgs list of arguments as obtained from _parseArgs()
      * @param array $options list of options as constructed by _runnerOptions()
-     * @return void
      */
     protected function _run($runnerArgs, $options = [])
     {
@@ -291,8 +289,6 @@ class TestShell extends Shell
 
     /**
      * Shows a list of available test cases and gives the option to run one of them
-     *
-     * @return void
      */
     public function available()
     {
@@ -356,8 +352,10 @@ class TestShell extends Shell
      * @param string $file The file to map.
      * @param string $category The test file category.
      * @param bool $throwOnMissingFile Whether or not to throw an exception.
-     * @return array array(type, case)
+     *
      * @throws Exception
+     *
+     * @return array array(type, case)
      */
     protected function _mapFileToCase($file, $category, $throwOnMissingFile = true)
     {
@@ -429,6 +427,7 @@ class TestShell extends Shell
      * For the given file, what category of test is it? returns app, core or the name of the plugin
      *
      * @param string $file The file to map.
+     *
      * @return string
      */
     protected function _mapFileToCategory($file)

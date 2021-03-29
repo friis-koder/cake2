@@ -12,9 +12,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.View.Helper
+ *
  * @since         CakePHP(tm) v 1.2
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('AppHelper', 'View/Helper');
@@ -24,7 +28,9 @@ App::uses('Xml', 'Utility');
  * RSS Helper class for easy output RSS structures.
  *
  * @package       Cake.View.Helper
+ *
  * @property      TimeHelper $Time
+ *
  * @link https://book.cakephp.org/2.0/en/core-libraries/helpers/rss.html
  */
 class RssHelper extends AppHelper
@@ -97,7 +103,9 @@ class RssHelper extends AppHelper
      *
      * @param array $attrib `<rss />` tag attributes
      * @param string $content Tag content.
+     *
      * @return string An RSS document
+     *
      * @link https://book.cakephp.org/2.0/en/core-libraries/helpers/rss.html#RssHelper::document
      */
     public function document($attrib = [], $content = null)
@@ -119,7 +127,9 @@ class RssHelper extends AppHelper
      * @param array $attrib `<channel />` tag attributes
      * @param array $elements Named array elements which are converted to tags
      * @param string $content Content (`<item />`'s belonging to this channel
+     *
      * @return string An RSS `<channel />`
+     *
      * @link https://book.cakephp.org/2.0/en/core-libraries/helpers/rss.html#RssHelper::channel
      */
     public function channel($attrib = [], $elements = [], $content = null)
@@ -166,7 +176,9 @@ class RssHelper extends AppHelper
      * @param array $items The list of items to be mapped
      * @param string|array $callback A string function name, or array containing an object
      *     and a string method name
+     *
      * @return string A set of RSS `<item />` elements
+     *
      * @link https://book.cakephp.org/2.0/en/core-libraries/helpers/rss.html#RssHelper::items
      */
     public function items($items, $callback = null)
@@ -190,7 +202,9 @@ class RssHelper extends AppHelper
      *
      * @param array $att The attributes of the `<item />` element
      * @param array $elements The list of elements contained in this `<item />`
+     *
      * @return string An RSS `<item />` element
+     *
      * @link https://book.cakephp.org/2.0/en/core-libraries/helpers/rss.html#RssHelper::item
      */
     public function item($att = [], $elements = [])
@@ -287,7 +301,9 @@ class RssHelper extends AppHelper
      * Converts a time in any format to an RSS time
      *
      * @param int|string|DateTime $time UNIX timestamp or valid time string or DateTime object.
+     *
      * @return string An RSS-formatted timestamp
+     *
      * @see TimeHelper::toRSS
      * @link https://book.cakephp.org/2.0/en/core-libraries/helpers/rss.html#RssHelper::time
      */
@@ -303,7 +319,9 @@ class RssHelper extends AppHelper
      * @param array $attrib The attributes of the XML element
      * @param string|array $content XML element content
      * @param bool $endTag Whether the end tag of the element should be printed
+     *
      * @return string XML
+     *
      * @link https://book.cakephp.org/2.0/en/core-libraries/helpers/rss.html#RssHelper::elem
      */
     public function elem($name, $attrib = [], $content = null, $endTag = true)

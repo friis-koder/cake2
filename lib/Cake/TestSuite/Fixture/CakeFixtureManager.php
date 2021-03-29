@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.TestSuite.Fixture
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('ConnectionManager', 'Model');
@@ -57,7 +61,6 @@ class CakeFixtureManager
      * Inspects the test to look for unloaded fixtures and loads them
      *
      * @param CakeTestCase $test the test case to inspect
-     * @return void
      */
     public function fixturize($test)
     {
@@ -83,8 +86,6 @@ class CakeFixtureManager
 
     /**
      * Initializes this class with a DataSource object to use as default for all fixtures
-     *
-     * @return void
      */
     protected function _initDb()
     {
@@ -102,6 +103,7 @@ class CakeFixtureManager
      * real fixture path including sub-directories
      *
      * @param string $fixturePath the fixture path to parse
+     *
      * @return array containing fixture class name and optional additional path
      */
     protected function _parseFixturePath($fixturePath)
@@ -120,7 +122,7 @@ class CakeFixtureManager
      * Looks for fixture files and instantiates the classes accordingly
      *
      * @param array $fixtures the fixture names to load using the notation {type}.{name}
-     * @return void
+     *
      * @throws UnexpectedValueException when a referenced fixture does not exist.
      */
     protected function _loadFixtures($fixtures)
@@ -187,7 +189,6 @@ class CakeFixtureManager
      * @param CakeTestFixture $fixture the fixture object to create
      * @param DataSource $db the datasource instance to use
      * @param bool $drop whether drop the fixture if it is already created or not
-     * @return void
      */
     protected function _setupTable($fixture, $db = null, $drop = true)
     {
@@ -223,7 +224,6 @@ class CakeFixtureManager
      * Creates the fixtures tables and inserts data on them.
      *
      * @param CakeTestCase $test the test to inspect for fixture loading
-     * @return void
      */
     public function load(CakeTestCase $test)
     {
@@ -251,7 +251,6 @@ class CakeFixtureManager
      * Truncates the fixtures tables
      *
      * @param CakeTestCase $test the test to inspect for fixture unloading
-     * @return void
      */
     public function unload(CakeTestCase $test)
     {
@@ -275,7 +274,7 @@ class CakeFixtureManager
      * @param string $name of the fixture
      * @param DataSource $db DataSource instance or leave null to get DataSource from the fixture
      * @param bool $dropTables Whether or not tables should be dropped and re-created.
-     * @return void
+     *
      * @throws UnexpectedValueException if $name is not a previously loaded class
      */
     public function loadSingle($name, $db = null, $dropTables = true)
@@ -298,8 +297,6 @@ class CakeFixtureManager
      *
      * This will also close the session, as failing to do so will cause
      * fatal errors with database sessions.
-     *
-     * @return void
      */
     public function shutDown()
     {

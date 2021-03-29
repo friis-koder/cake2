@@ -8,8 +8,10 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
  * @since         CakePHP(tm) v 1.2.0.5550
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('AppShell', 'Console/Command');
@@ -24,6 +26,7 @@ App::uses('CakeSchema', 'Model');
  * of your database.
  *
  * @package       Cake.Console.Command
+ *
  * @link          https://book.cakephp.org/2.0/en/console-and-shells/schema-management-and-migrations.html
  */
 class SchemaShell extends AppShell
@@ -44,8 +47,6 @@ class SchemaShell extends AppShell
 
     /**
      * Override startup
-     *
-     * @return void
      */
     public function startup()
     {
@@ -96,8 +97,6 @@ class SchemaShell extends AppShell
     /**
      * Read and output contents of schema object
      * path to read as second arg
-     *
-     * @return void
      */
     public function view()
     {
@@ -116,8 +115,6 @@ class SchemaShell extends AppShell
     /**
      * Read database and Write schema object
      * accepts a connection as first arg or path to save as second arg
-     *
-     * @return void
      */
     public function generate()
     {
@@ -253,8 +250,6 @@ class SchemaShell extends AppShell
 
     /**
      * Run database create commands. Alias for run create.
-     *
-     * @return void
      */
     public function create()
     {
@@ -264,8 +259,6 @@ class SchemaShell extends AppShell
 
     /**
      * Run database create commands. Alias for run create.
-     *
-     * @return void
      */
     public function update()
     {
@@ -275,8 +268,6 @@ class SchemaShell extends AppShell
 
     /**
      * Prepares the Schema objects for database operations.
-     *
-     * @return void
      */
     protected function _loadSchema()
     {
@@ -326,7 +317,6 @@ class SchemaShell extends AppShell
      *
      * @param CakeSchema $Schema The schema instance to create.
      * @param string $table The table name.
-     * @return void
      */
     protected function _create(CakeSchema $Schema, $table = null)
     {
@@ -377,7 +367,6 @@ class SchemaShell extends AppShell
      *
      * @param CakeSchema &$Schema The schema instance
      * @param string $table The table name.
-     * @return void
      */
     protected function _update(&$Schema, $table = null)
     {
@@ -437,7 +426,6 @@ class SchemaShell extends AppShell
      * @param array $contents The contents to execute.
      * @param string $event The event to fire
      * @param CakeSchema $Schema The schema instance.
-     * @return void
      */
     protected function _run($contents, $event, CakeSchema $Schema)
     {

@@ -8,7 +8,9 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Security', 'Utility');
@@ -99,6 +101,7 @@ abstract class BaseAuthenticate implements CakeEventListener
      *
      * @param string|array $username The username/identifier, or an array of find conditions.
      * @param string $password The password, only used if $username param is string.
+     *
      * @return bool|array Either false on failure, or an array of user data.
      */
     protected function _findUser($username, $password = null)
@@ -152,9 +155,10 @@ abstract class BaseAuthenticate implements CakeEventListener
     /**
      * Return password hasher object
      *
-     * @return AbstractPasswordHasher Password hasher instance
      * @throws CakeException If password hasher class not found or
      *   it does not extend AbstractPasswordHasher
+     *
+     * @return AbstractPasswordHasher Password hasher instance
      */
     public function passwordHasher()
     {
@@ -189,7 +193,9 @@ abstract class BaseAuthenticate implements CakeEventListener
      * in the datasource.
      *
      * @param string $password The plain text password.
+     *
      * @return string The hashed form of the password.
+     *
      * @deprecated 3.0.0 Since 2.4. Use a PasswordHasher class instead.
      */
     protected function _password($password)
@@ -202,6 +208,7 @@ abstract class BaseAuthenticate implements CakeEventListener
      *
      * @param CakeRequest $request Request to get authentication information from.
      * @param CakeResponse $response A response object that can have headers added.
+     *
      * @return mixed Either false on failure, or an array of user data on success.
      */
     abstract public function authenticate(CakeRequest $request, CakeResponse $response);
@@ -214,7 +221,6 @@ abstract class BaseAuthenticate implements CakeEventListener
      * called when a user logs out.
      *
      * @param array $user The user about to be logged out.
-     * @return void
      */
     public function logout($user)
     {
@@ -225,6 +231,7 @@ abstract class BaseAuthenticate implements CakeEventListener
      * systems like basic and digest auth.
      *
      * @param CakeRequest $request Request object.
+     *
      * @return mixed Either false or an array of user information
      */
     public function getUser(CakeRequest $request)
@@ -237,6 +244,7 @@ abstract class BaseAuthenticate implements CakeEventListener
      *
      * @param CakeRequest $request A request object.
      * @param CakeResponse $response A response object.
+     *
      * @return mixed Either true to indicate the unauthenticated request has been
      *  dealt with and no more action is required by AuthComponent or void (default).
      */

@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Controller.Component
+ *
  * @since         CakePHP(tm) v 1.2.0.3467
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Component', 'Controller');
@@ -26,6 +30,7 @@ App::uses('CakeEmail', 'Network/Email');
  * based on the standard outlined in http://www.rfc-editor.org/rfc/rfc2822.txt
  *
  * @package       Cake.Controller.Component
+ *
  * @link          https://book.cakephp.org/2.0/en/core-libraries/components/email.html
  * @link          https://book.cakephp.org/2.0/en/core-utility-libraries/email.html
  * @deprecated    3.0.0 Will be removed in 3.0. Use Network/CakeEmail instead
@@ -267,7 +272,6 @@ class EmailComponent extends Component
      * Initialize component
      *
      * @param Controller $controller Instantiating controller
-     * @return void
      */
     public function initialize(Controller $controller)
     {
@@ -283,6 +287,7 @@ class EmailComponent extends Component
      *  If you are rendering a template this variable will be sent to the templates as `$content`
      * @param string $template Template to use when sending email
      * @param string $layout Layout to use to enclose email body
+     *
      * @return array Success
      */
     public function send($content = null, $template = null, $layout = null)
@@ -364,8 +369,6 @@ class EmailComponent extends Component
 
     /**
      * Reset all EmailComponent internal variables to be able to send out a new email.
-     *
-     * @return void
      */
     public function reset()
     {
@@ -411,6 +414,7 @@ class EmailComponent extends Component
      * Find the specified attachment in the list of file paths
      *
      * @param string $attachment Attachment file name to find
+     *
      * @return string|null Path to located file
      */
     protected function _findFiles($attachment)
@@ -433,6 +437,7 @@ class EmailComponent extends Component
      * Format addresses to be an array with email as key and alias as value
      *
      * @param array $addresses Address to format.
+     *
      * @return array
      */
     protected function _formatAddresses($addresses)
@@ -456,6 +461,7 @@ class EmailComponent extends Component
      *
      * @param string $value Value to strip
      * @param bool $message Set to true to indicate main message content
+     *
      * @return string Stripped value
      */
     protected function _strip($value, $message = false)

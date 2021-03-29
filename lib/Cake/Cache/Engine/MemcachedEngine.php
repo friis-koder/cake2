@@ -8,8 +8,10 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
  * @since         CakePHP(tm) v 2.5.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -74,8 +76,10 @@ class MemcachedEngine extends CacheEngine
      * To reinitialize the settings call Cache::engine('EngineName', [optional] settings = array());
      *
      * @param array $settings array of setting for the engine
-     * @return bool True if the engine has been successfully initialized, false if not
+     *
      * @throws CacheException when you try use authentication without Memcached compiled with SASL support
+     *
+     * @return bool True if the engine has been successfully initialized, false if not
      */
     public function init($settings = [])
     {
@@ -152,7 +156,6 @@ class MemcachedEngine extends CacheEngine
      * Settings the memcached instance
      *
      * @throws CacheException when the Memcached extension is not built with the desired serializer engine
-     * @return void
      */
     protected function _setOptions()
     {
@@ -186,6 +189,7 @@ class MemcachedEngine extends CacheEngine
      * addresses and Unix sockets
      *
      * @param string $server The server address string.
+     *
      * @return array Array containing host, port
      */
     protected function _parseServerString($server)
@@ -220,7 +224,9 @@ class MemcachedEngine extends CacheEngine
      * @param string $key Identifier for the data
      * @param mixed $value Data to be cached
      * @param int $duration How long to cache the data, in seconds
+     *
      * @return bool True if the data was successfully cached, false on failure
+     *
      * @see http://php.net/manual/en/memcache.set.php
      */
     public function write($key, $value, $duration)
@@ -236,6 +242,7 @@ class MemcachedEngine extends CacheEngine
      * Read a key from the cache
      *
      * @param string $key Identifier for the data
+     *
      * @return mixed The cached data, or false if the data doesn't exist, has expired, or if there was an error fetching it
      */
     public function read($key)
@@ -248,8 +255,10 @@ class MemcachedEngine extends CacheEngine
      *
      * @param string $key Identifier for the data
      * @param int $offset How much to increment
-     * @return New incremented value, false otherwise
+     *
      * @throws CacheException when you try to increment with compress = true
+     *
+     * @return New incremented value, false otherwise
      */
     public function increment($key, $offset = 1)
     {
@@ -261,8 +270,10 @@ class MemcachedEngine extends CacheEngine
      *
      * @param string $key Identifier for the data
      * @param int $offset How much to subtract
-     * @return New decremented value, false otherwise
+     *
      * @throws CacheException when you try to decrement with compress = true
+     *
+     * @return New decremented value, false otherwise
      */
     public function decrement($key, $offset = 1)
     {
@@ -273,6 +284,7 @@ class MemcachedEngine extends CacheEngine
      * Delete a key from the cache
      *
      * @param string $key Identifier for the data
+     *
      * @return bool True if the value was successfully deleted, false if it didn't exist or couldn't be removed
      */
     public function delete($key)
@@ -285,6 +297,7 @@ class MemcachedEngine extends CacheEngine
      *
      * @param bool $check If true no deletes will occur and instead CakePHP will rely
      *   on key TTL values.
+     *
      * @return bool True if the cache was successfully cleared, false otherwise. Will
      *   also return false if you are using a binary protocol.
      */
@@ -348,6 +361,7 @@ class MemcachedEngine extends CacheEngine
      * old values will remain in storage until they expire.
      *
      * @param string $group The group to clear.
+     *
      * @return bool success
      */
     public function clearGroup($group)
@@ -364,7 +378,9 @@ class MemcachedEngine extends CacheEngine
      * @param string $key Identifier for the data.
      * @param mixed $value Data to be cached.
      * @param int $duration How long to cache the data, in seconds.
+     *
      * @return bool True if the data was successfully cached, false on failure.
+     *
      * @link http://php.net/manual/en/memcached.add.php
      */
     public function add($key, $value, $duration)

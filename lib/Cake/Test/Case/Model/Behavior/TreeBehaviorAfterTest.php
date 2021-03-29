@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Model.Behavior
+ *
  * @since         CakePHP(tm) v 1.2.0.5330
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Model', 'Model');
@@ -55,8 +59,6 @@ class TreeBehaviorAfterTest extends CakeTestCase
 
     /**
      * Tests the afterSave callback in the model
-     *
-     * @return void
      */
     public function testAftersaveCallback()
     {

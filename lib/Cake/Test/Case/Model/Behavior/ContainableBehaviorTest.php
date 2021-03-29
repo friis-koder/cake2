@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Model.Behavior
+ *
  * @since         CakePHP(tm) v 1.2.0.5669
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Model', 'Model');
@@ -41,8 +45,6 @@ class ContainableBehaviorTest extends CakeTestCase
 
     /**
      * Method executed before each test
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -68,8 +70,6 @@ class ContainableBehaviorTest extends CakeTestCase
 
     /**
      * Method executed after each test
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -81,8 +81,6 @@ class ContainableBehaviorTest extends CakeTestCase
 
     /**
      * testContainments method
-     *
-     * @return void
      */
     public function testContainments()
     {
@@ -153,7 +151,6 @@ class ContainableBehaviorTest extends CakeTestCase
      * testInvalidContainments method
      *
      * @expectedException PHPUnit_Framework_Error
-     * @return void
      */
     public function testInvalidContainments()
     {
@@ -162,8 +159,6 @@ class ContainableBehaviorTest extends CakeTestCase
 
     /**
      * testInvalidContainments method with suppressing error notices
-     *
-     * @return void
      */
     public function testInvalidContainmentsNoNotices()
     {
@@ -173,8 +168,6 @@ class ContainableBehaviorTest extends CakeTestCase
 
     /**
      * testBeforeFind method
-     *
-     * @return void
      */
     public function testBeforeFind()
     {
@@ -247,7 +240,6 @@ class ContainableBehaviorTest extends CakeTestCase
      * testBeforeFindWithNonExistingBinding method
      *
      * @expectedException PHPUnit_Framework_Error
-     * @return void
      */
     public function testBeforeFindWithNonExistingBinding()
     {
@@ -256,8 +248,6 @@ class ContainableBehaviorTest extends CakeTestCase
 
     /**
      * testContain method
-     *
-     * @return void
      */
     public function testContain()
     {
@@ -272,8 +262,6 @@ class ContainableBehaviorTest extends CakeTestCase
 
     /**
      * testContainFindList method
-     *
-     * @return void
      */
     public function testContainFindList()
     {
@@ -297,8 +285,6 @@ class ContainableBehaviorTest extends CakeTestCase
 
     /**
      * Test that mixing contain() and the contain find option.
-     *
-     * @return void
      */
     public function testContainAndContainOption()
     {
@@ -311,8 +297,6 @@ class ContainableBehaviorTest extends CakeTestCase
 
     /**
      * testFindEmbeddedNoBindings method
-     *
-     * @return void
      */
     public function testFindEmbeddedNoBindings()
     {
@@ -336,8 +320,6 @@ class ContainableBehaviorTest extends CakeTestCase
 
     /**
      * testFindFirstLevel method
-     *
-     * @return void
      */
     public function testFindFirstLevel()
     {
@@ -445,8 +427,6 @@ class ContainableBehaviorTest extends CakeTestCase
 
     /**
      * testFindEmbeddedFirstLevel method
-     *
-     * @return void
      */
     public function testFindEmbeddedFirstLevel()
     {
@@ -552,8 +532,6 @@ class ContainableBehaviorTest extends CakeTestCase
 
     /**
      * testFindSecondLevel method
-     *
-     * @return void
      */
     public function testFindSecondLevel()
     {
@@ -958,8 +936,6 @@ class ContainableBehaviorTest extends CakeTestCase
 
     /**
      * testFindEmbeddedSecondLevel method
-     *
-     * @return void
      */
     public function testFindEmbeddedSecondLevel()
     {
@@ -1301,8 +1277,6 @@ class ContainableBehaviorTest extends CakeTestCase
 
     /**
      * testFindThirdLevel method
-     *
-     * @return void
      */
     public function testFindThirdLevel()
     {
@@ -1622,8 +1596,6 @@ class ContainableBehaviorTest extends CakeTestCase
 
     /**
      * testFindEmbeddedThirdLevel method
-     *
-     * @return void
      */
     public function testFindEmbeddedThirdLevel()
     {
@@ -1940,8 +1912,6 @@ class ContainableBehaviorTest extends CakeTestCase
 
     /**
      * testSettingsThirdLevel method
-     *
-     * @return void
      */
     public function testSettingsThirdLevel()
     {
@@ -2187,8 +2157,6 @@ class ContainableBehaviorTest extends CakeTestCase
 
     /**
      * testFindThirdLevelNonReset method
-     *
-     * @return void
      */
     public function testFindThirdLevelNonReset()
     {
@@ -2512,8 +2480,6 @@ class ContainableBehaviorTest extends CakeTestCase
 
     /**
      * testFindEmbeddedThirdLevelNonReset method
-     *
-     * @return void
      */
     public function testFindEmbeddedThirdLevelNonReset()
     {
@@ -3002,8 +2968,6 @@ class ContainableBehaviorTest extends CakeTestCase
 
     /**
      * testEmbeddedFindFields method
-     *
-     * @return void
      */
     public function testEmbeddedFindFields()
     {
@@ -3077,8 +3041,6 @@ class ContainableBehaviorTest extends CakeTestCase
 
     /**
      * test that hasOne and belongsTo fields act the same in a contain array.
-     *
-     * @return void
      */
     public function testHasOneFieldsInContain()
     {
@@ -3112,8 +3074,6 @@ class ContainableBehaviorTest extends CakeTestCase
 
     /**
      * testFindConditionalBinding method
-     *
-     * @return void
      */
     public function testFindConditionalBinding()
     {
@@ -3256,8 +3216,6 @@ class ContainableBehaviorTest extends CakeTestCase
 
     /**
      * testOtherFinds method
-     *
-     * @return void
      */
     public function testOtherFinds()
     {
@@ -3320,8 +3278,6 @@ class ContainableBehaviorTest extends CakeTestCase
 
     /**
      * testOriginalAssociations method
-     *
-     * @return void
      */
     public function testOriginalAssociations()
     {
@@ -3413,8 +3369,6 @@ class ContainableBehaviorTest extends CakeTestCase
 
     /**
      * testResetAddedAssociation method
-     *
-     * @return void
      */
     public function testResetAddedAssociation()
     {
@@ -3456,8 +3410,6 @@ class ContainableBehaviorTest extends CakeTestCase
 
     /**
      * testResetAssociation method
-     *
-     * @return void
      */
     public function testResetAssociation()
     {
@@ -3489,8 +3441,6 @@ class ContainableBehaviorTest extends CakeTestCase
 
     /**
      * testResetDeeperHasOneAssociations method
-     *
-     * @return void
      */
     public function testResetDeeperHasOneAssociations()
     {
@@ -3551,8 +3501,6 @@ class ContainableBehaviorTest extends CakeTestCase
 
     /**
      * testResetMultipleHabtmAssociations method
-     *
-     * @return void
      */
     public function testResetMultipleHabtmAssociations()
     {
@@ -3644,8 +3592,6 @@ class ContainableBehaviorTest extends CakeTestCase
 
     /**
      * test that bindModel and unbindModel work with find() calls in between.
-     *
-     * @return void
      */
     public function testBindMultipleTimesWithFind()
     {
@@ -3682,8 +3628,6 @@ class ContainableBehaviorTest extends CakeTestCase
 
     /**
      * test that autoFields doesn't splice in fields from other databases.
-     *
-     * @return void
      */
     public function testAutoFieldsWithMultipleDatabases()
     {
@@ -3712,8 +3656,6 @@ class ContainableBehaviorTest extends CakeTestCase
 
     /**
      * test that autoFields doesn't splice in columns that aren't part of the join.
-     *
-     * @return void
      */
     public function testAutoFieldsWithRecursiveNegativeOne()
     {
@@ -3725,8 +3667,6 @@ class ContainableBehaviorTest extends CakeTestCase
 
     /**
      * test that find(all) doesn't return incorrect values when mixed with containable.
-     *
-     * @return void
      */
     public function testFindAllReturn()
     {
@@ -3738,8 +3678,6 @@ class ContainableBehaviorTest extends CakeTestCase
 
     /**
      * testLazyLoad method
-     *
-     * @return void
      */
     public function testLazyLoad()
     {
@@ -3765,7 +3703,6 @@ class ContainableBehaviorTest extends CakeTestCase
      *
      * @param Model $Model
      * @param array $contain
-     * @return void
      */
     protected function _containments($Model, $contain = [])
     {
@@ -3787,7 +3724,6 @@ class ContainableBehaviorTest extends CakeTestCase
      *
      * @param Model $Model
      * @param array $expected
-     * @return void
      */
     protected function _assertBindings(Model $Model, $expected = [])
     {

@@ -12,9 +12,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP Project
+ *
  * @package       Cake.Test.Case.Model.Behavior
+ *
  * @since         CakePHP v 1.2.0.4487
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('AclBehavior', 'Model/Behavior');
@@ -70,8 +74,6 @@ class AclPerson extends CakeTestModel
 
     /**
      * parentNode method
-     *
-     * @return void
      */
     public function parentNode()
     {
@@ -121,8 +123,6 @@ class AclUser extends CakeTestModel
 
     /**
      * parentNode
-     *
-     * @return null
      */
     public function parentNode()
     {
@@ -160,8 +160,6 @@ class AclPost extends CakeTestModel
 
     /**
      * parentNode
-     *
-     * @return null
      */
     public function parentNode()
     {
@@ -199,8 +197,6 @@ class AclBehaviorTest extends CakeTestCase
 
     /**
      * Set up the test
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -213,8 +209,6 @@ class AclBehaviorTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -224,8 +218,6 @@ class AclBehaviorTest extends CakeTestCase
 
     /**
      * Test Setup of AclBehavior
-     *
-     * @return void
      */
     public function testSetup()
     {
@@ -243,8 +235,6 @@ class AclBehaviorTest extends CakeTestCase
 
     /**
      * Test Setup of AclBehavior as both requester and controlled
-     *
-     * @return void
      */
     public function testSetupMulti()
     {
@@ -257,8 +247,6 @@ class AclBehaviorTest extends CakeTestCase
 
     /**
      * test After Save
-     *
-     * @return void
      */
     public function testAfterSave()
     {
@@ -351,8 +339,6 @@ class AclBehaviorTest extends CakeTestCase
 
     /**
      * test that an afterSave on an update does not cause parent_id to become null.
-     *
-     * @return void
      */
     public function testAfterSaveUpdateParentIdNotNull()
     {
@@ -398,8 +384,6 @@ class AclBehaviorTest extends CakeTestCase
 
     /**
      * Test After Delete
-     *
-     * @return void
      */
     public function testAfterDelete()
     {
@@ -469,8 +453,6 @@ class AclBehaviorTest extends CakeTestCase
 
     /**
      * Test Node()
-     *
-     * @return void
      */
     public function testNode()
     {

@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.View.Helper
+ *
  * @since         CakePHP(tm) v 1.2.0.4206
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('CakeTime', 'Utility');
@@ -33,8 +37,6 @@ class CakeTimeTest extends CakeTestCase
 
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -46,8 +48,6 @@ class CakeTimeTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -60,7 +60,6 @@ class CakeTimeTest extends CakeTestCase
      * Restored the original system timezone
      *
      * @param string $timezoneIdentifier Timezone string
-     * @return void
      */
     protected function _restoreSystemTimezone()
     {
@@ -69,8 +68,6 @@ class CakeTimeTest extends CakeTestCase
 
     /**
      * testToQuarter method
-     *
-     * @return void
      */
     public function testToQuarter()
     {
@@ -124,7 +121,6 @@ class CakeTimeTest extends CakeTestCase
      * testTimeAgoInWords method
      *
      * @dataProvider timeAgoProvider
-     * @return void
      */
     public function testTimeAgoInWords($input, $expected)
     {
@@ -134,8 +130,6 @@ class CakeTimeTest extends CakeTestCase
 
     /**
      * provider for timeAgo with an end date.
-     *
-     * @return void
      */
     public function timeAgoEndProvider()
     {
@@ -182,7 +176,6 @@ class CakeTimeTest extends CakeTestCase
      * test the end option for timeAgoInWords
      *
      * @dataProvider timeAgoEndProvider
-     * @return void
      */
     public function testTimeAgoInWordsEnd($input, $expected, $end)
     {
@@ -195,8 +188,6 @@ class CakeTimeTest extends CakeTestCase
 
     /**
      * test the custom string options for timeAgoInWords
-     *
-     * @return void
      */
     public function testTimeAgoInWordsCustomStrings()
     {
@@ -224,8 +215,6 @@ class CakeTimeTest extends CakeTestCase
 
     /**
      * Test the accuracy option for timeAgoInWords()
-     *
-     * @return void
      */
     public function testTimeAgoInWordsAccuracy()
     {
@@ -281,8 +270,6 @@ class CakeTimeTest extends CakeTestCase
 
     /**
      * Test the format option of timeAgoInWords() with date() and strftime compatible strings
-     *
-     * @return void
      */
     public function testTimeAgoInWordsWithFormat()
     {
@@ -319,8 +306,6 @@ class CakeTimeTest extends CakeTestCase
 
     /**
      * test timeAgoInWords() with negative values.
-     *
-     * @return void
      */
     public function testTimeAgoInWordsNegativeValues()
     {
@@ -394,8 +379,6 @@ class CakeTimeTest extends CakeTestCase
 
     /**
      * testNice method
-     *
-     * @return void
      */
     public function testNice()
     {
@@ -449,8 +432,6 @@ class CakeTimeTest extends CakeTestCase
 
     /**
      * testNiceShort method
-     *
-     * @return void
      */
     public function testNiceShort()
     {
@@ -483,8 +464,6 @@ class CakeTimeTest extends CakeTestCase
 
     /**
      * testNiceShort translations
-     *
-     * @return void
      */
     public function testNiceShortI18n()
     {
@@ -497,8 +476,6 @@ class CakeTimeTest extends CakeTestCase
 
     /**
      * testDaysAsSql method
-     *
-     * @return void
      */
     public function testDaysAsSql()
     {
@@ -511,8 +488,6 @@ class CakeTimeTest extends CakeTestCase
 
     /**
      * testDayAsSql method
-     *
-     * @return void
      */
     public function testDayAsSql()
     {
@@ -524,8 +499,6 @@ class CakeTimeTest extends CakeTestCase
 
     /**
      * testToUnix method
-     *
-     * @return void
      */
     public function testToUnix()
     {
@@ -539,8 +512,6 @@ class CakeTimeTest extends CakeTestCase
 
     /**
      * testToServer method
-     *
-     * @return void
      */
     public function testToServer()
     {
@@ -616,8 +587,6 @@ class CakeTimeTest extends CakeTestCase
 
     /**
      * testToAtom method
-     *
-     * @return void
      */
     public function testToAtom()
     {
@@ -626,8 +595,6 @@ class CakeTimeTest extends CakeTestCase
 
     /**
      * testToRss method
-     *
-     * @return void
      */
     public function testToRss()
     {
@@ -648,8 +615,6 @@ class CakeTimeTest extends CakeTestCase
 
     /**
      * testFormat method
-     *
-     * @return void
      */
     public function testFormat()
     {
@@ -682,8 +647,6 @@ class CakeTimeTest extends CakeTestCase
 
     /**
      * testOfGmt method
-     *
-     * @return void
      */
     public function testGmt()
     {
@@ -709,8 +672,6 @@ class CakeTimeTest extends CakeTestCase
 
     /**
      * testIsToday method
-     *
-     * @return void
      */
     public function testIsToday()
     {
@@ -726,8 +687,6 @@ class CakeTimeTest extends CakeTestCase
 
     /**
      * testIsFuture method
-     *
-     * @return void
      */
     public function testIsFuture()
     {
@@ -744,8 +703,6 @@ class CakeTimeTest extends CakeTestCase
 
     /**
      * testIsPast method
-     *
-     * @return void
      */
     public function testIsPast()
     {
@@ -762,8 +719,6 @@ class CakeTimeTest extends CakeTestCase
 
     /**
      * testIsThisWeek method
-     *
-     * @return void
      */
     public function testIsThisWeek()
     {
@@ -784,8 +739,6 @@ class CakeTimeTest extends CakeTestCase
 
     /**
      * testIsThisMonth method
-     *
-     * @return void
      */
     public function testIsThisMonth()
     {
@@ -801,8 +754,6 @@ class CakeTimeTest extends CakeTestCase
 
     /**
      * testIsThisYear method
-     *
-     * @return void
      */
     public function testIsThisYear()
     {
@@ -814,8 +765,6 @@ class CakeTimeTest extends CakeTestCase
 
     /**
      * testWasYesterday method
-     *
-     * @return void
      */
     public function testWasYesterday()
     {
@@ -835,8 +784,6 @@ class CakeTimeTest extends CakeTestCase
 
     /**
      * testIsTomorrow method
-     *
-     * @return void
      */
     public function testIsTomorrow()
     {
@@ -852,8 +799,6 @@ class CakeTimeTest extends CakeTestCase
 
     /**
      * testWasWithinLast method
-     *
-     * @return void
      */
     public function testWasWithinLast()
     {
@@ -898,8 +843,6 @@ class CakeTimeTest extends CakeTestCase
 
     /**
      * testWasWithinLast method
-     *
-     * @return void
      */
     public function testIsWithinNext()
     {
@@ -947,8 +890,6 @@ class CakeTimeTest extends CakeTestCase
 
     /**
      * testUserOffset method
-     *
-     * @return void
      */
     public function testUserOffset()
     {
@@ -974,8 +915,6 @@ class CakeTimeTest extends CakeTestCase
 
     /**
      * test fromString()
-     *
-     * @return void
      */
     public function testFromString()
     {
@@ -1009,8 +948,6 @@ class CakeTimeTest extends CakeTestCase
 
     /**
      * test fromString() with a DateTime object as the dateString
-     *
-     * @return void
      */
     public function testFromStringWithDateTime()
     {
@@ -1061,8 +998,6 @@ class CakeTimeTest extends CakeTestCase
 
     /**
      * Test that datetimes in the default timezone are not modified.
-     *
-     * @return void
      */
     public function testFromStringWithDateTimeNoConversion()
     {
@@ -1093,8 +1028,6 @@ class CakeTimeTest extends CakeTestCase
 
     /**
      * test converting time specifiers using a time definition localfe file
-     *
-     * @return void
      */
     public function testConvertSpecifiers()
     {
@@ -1183,8 +1116,6 @@ class CakeTimeTest extends CakeTestCase
 
     /**
      * test convert %e on Windows.
-     *
-     * @return void
      */
     public function testConvertPercentE()
     {
@@ -1202,8 +1133,6 @@ class CakeTimeTest extends CakeTestCase
 
     /**
      * test formatting dates taking in account preferred i18n locale file
-     *
-     * @return void
      */
     public function testI18nFormat()
     {
@@ -1271,8 +1200,6 @@ class CakeTimeTest extends CakeTestCase
 
     /**
      * test new format() syntax which inverts first and second parameters
-     *
-     * @return void
      */
     public function testFormatNewSyntax()
     {
@@ -1283,8 +1210,6 @@ class CakeTimeTest extends CakeTestCase
 
     /**
      * testListTimezones
-     *
-     * @return void
      */
     public function testListTimezones()
     {
@@ -1336,8 +1261,6 @@ class CakeTimeTest extends CakeTestCase
     /**
      * Tests that using CakeTime::format() with the correct sytax actually converts
      * from one timezone to the other correctly
-     *
-     * @return void
      */
     public function testCorrectTimezoneConversionAsString()
     {

@@ -8,7 +8,9 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('View', 'View');
@@ -47,6 +49,7 @@ App::uses('View', 'View');
  * custom query string paramater name which will contain the callback function name.
  *
  * @package       Cake.View
+ *
  * @since         CakePHP(tm) v 2.1.0
  */
 class JsonView extends View
@@ -74,8 +77,6 @@ class JsonView extends View
 
     /**
      * Skip loading helpers if this is a _serialize based view.
-     *
-     * @return void
      */
     public function loadHelpers()
     {
@@ -99,6 +100,7 @@ class JsonView extends View
      *
      * @param string $view The view being rendered.
      * @param string $layout The layout being rendered.
+     *
      * @return string The rendered view.
      */
     public function render($view = null, $layout = null)
@@ -132,7 +134,9 @@ class JsonView extends View
      *   e.g. `JSON_HEX_TAG | JSON_HEX_APOS`.
      *
      * @param array $serialize The viewVars that need to be serialized
+     *
      * @throws CakeException
+     *
      * @return string The serialized data
      */
     protected function _serialize($serialize)

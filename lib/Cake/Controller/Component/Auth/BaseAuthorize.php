@@ -8,7 +8,9 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Hash', 'Utility');
@@ -17,6 +19,7 @@ App::uses('Hash', 'Utility');
  * Abstract base authorization adapter for AuthComponent.
  *
  * @package       Cake.Controller.Component.Auth
+ *
  * @since 2.0
  * @see AuthComponent::$authenticate
  */
@@ -78,6 +81,7 @@ abstract class BaseAuthorize
      *
      * @param array $user Active user data
      * @param CakeRequest $request Request instance.
+     *
      * @return bool
      */
     abstract public function authorize($user, CakeRequest $request);
@@ -86,8 +90,10 @@ abstract class BaseAuthorize
      * Accessor to the controller object.
      *
      * @param Controller $controller null to get, a controller to set.
-     * @return mixed
+     *
      * @throws CakeException
+     *
+     * @return mixed
      */
     public function controller(Controller $controller = null)
     {
@@ -109,6 +115,7 @@ abstract class BaseAuthorize
      *
      * @param CakeRequest $request The request a path is needed for.
      * @param string $path Path format.
+     *
      * @return string the action path for the given request.
      */
     public function action(CakeRequest $request, $path = '/:plugin/:controller/:action')
@@ -152,7 +159,9 @@ abstract class BaseAuthorize
      * create a custom admin CRUD operation for administration functions similarly if needed.
      *
      * @param array $map Either an array of mappings, or undefined to get current values.
+     *
      * @return mixed Either the current mappings or null when setting.
+     *
      * @see AuthComponent::mapActions()
      */
     public function mapActions($map = [])

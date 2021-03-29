@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Network
+ *
  * @since         CakePHP(tm) v 1.2.0.4206
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('CakeSocket', 'Network');
@@ -26,8 +30,6 @@ class CakeSocketTest extends CakeTestCase
 {
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -37,8 +39,6 @@ class CakeSocketTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -48,8 +48,6 @@ class CakeSocketTest extends CakeTestCase
 
     /**
      * testConstruct method
-     *
-     * @return void
      */
     public function testConstruct()
     {
@@ -81,8 +79,6 @@ class CakeSocketTest extends CakeTestCase
 
     /**
      * testSocketConnection method
-     *
-     * @return void
      */
     public function testSocketConnection()
     {
@@ -124,7 +120,6 @@ class CakeSocketTest extends CakeTestCase
      *
      * @dataProvider invalidConnections
      * @expectedException SocketException
-     * @return void
      */
     public function testInvalidConnection($data)
     {
@@ -134,8 +129,6 @@ class CakeSocketTest extends CakeTestCase
 
     /**
      * testSocketHost method
-     *
-     * @return void
      */
     public function testSocketHost()
     {
@@ -160,8 +153,6 @@ class CakeSocketTest extends CakeTestCase
 
     /**
      * testSocketWriting method
-     *
-     * @return void
      */
     public function testSocketWriting()
     {
@@ -175,8 +166,6 @@ class CakeSocketTest extends CakeTestCase
 
     /**
      * testSocketReading method
-     *
-     * @return void
      */
     public function testSocketReading()
     {
@@ -198,8 +187,6 @@ class CakeSocketTest extends CakeTestCase
 
     /**
      * testTimeOutConnection method
-     *
-     * @return void
      */
     public function testTimeOutConnection()
     {
@@ -220,8 +207,6 @@ class CakeSocketTest extends CakeTestCase
 
     /**
      * testLastError method
-     *
-     * @return void
      */
     public function testLastError()
     {
@@ -232,8 +217,6 @@ class CakeSocketTest extends CakeTestCase
 
     /**
      * testReset method
-     *
-     * @return void
      */
     public function testReset()
     {
@@ -253,7 +236,6 @@ class CakeSocketTest extends CakeTestCase
      * testEncrypt
      *
      * @expectedException SocketException
-     * @return void
      */
     public function testEnableCryptoSocketExceptionNoSsl()
     {
@@ -270,7 +252,6 @@ class CakeSocketTest extends CakeTestCase
      * testEnableCryptoSocketExceptionNoTls
      *
      * @expectedException SocketException
-     * @return void
      */
     public function testEnableCryptoSocketExceptionNoTls()
     {
@@ -284,8 +265,6 @@ class CakeSocketTest extends CakeTestCase
 
     /**
      * Test that protocol in the host doesn't cause cert errors.
-     *
-     * @return void
      */
     public function testConnectProtocolInHost()
     {
@@ -304,8 +283,6 @@ class CakeSocketTest extends CakeTestCase
 
     /**
      * _connectSocketToSslTls
-     *
-     * @return void
      */
     protected function _connectSocketToSslTls()
     {
@@ -324,7 +301,6 @@ class CakeSocketTest extends CakeTestCase
      * testEnableCryptoBadMode
      *
      * @expectedException InvalidArgumentException
-     * @return void
      */
     public function testEnableCryptoBadMode()
     {
@@ -336,8 +312,6 @@ class CakeSocketTest extends CakeTestCase
 
     /**
      * testEnableCrypto
-     *
-     * @return void
      */
     public function testEnableCrypto()
     {
@@ -349,8 +323,6 @@ class CakeSocketTest extends CakeTestCase
 
     /**
      * testEnableCrypto tlsv1_1
-     *
-     * @return void
      */
     public function testEnableCryptoTlsV11()
     {
@@ -366,7 +338,6 @@ class CakeSocketTest extends CakeTestCase
      * testEnableCryptoExceptionEnableTwice
      *
      * @expectedException SocketException
-     * @return void
      */
     public function testEnableCryptoExceptionEnableTwice()
     {
@@ -380,7 +351,6 @@ class CakeSocketTest extends CakeTestCase
      * testEnableCryptoExceptionDisableTwice
      *
      * @expectedException SocketException
-     * @return void
      */
     public function testEnableCryptoExceptionDisableTwice()
     {
@@ -391,8 +361,6 @@ class CakeSocketTest extends CakeTestCase
 
     /**
      * testEnableCryptoEnableStatus
-     *
-     * @return void
      */
     public function testEnableCryptoEnableStatus()
     {
@@ -405,8 +373,6 @@ class CakeSocketTest extends CakeTestCase
 
     /**
      * test getting the context for a socket.
-     *
-     * @return void
      */
     public function testGetContext()
     {
@@ -427,8 +393,6 @@ class CakeSocketTest extends CakeTestCase
 
     /**
      * test configuring the context from the flat keys.
-     *
-     * @return void
      */
     public function testConfigContext()
     {

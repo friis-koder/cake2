@@ -8,7 +8,9 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('BaseAuthenticate', 'Controller/Component/Auth');
@@ -29,6 +31,7 @@ App::uses('BaseAuthenticate', 'Controller/Component/Auth');
  * are used. See FormAuthenticate::$settings for more information.
  *
  * @package       Cake.Controller.Component.Auth
+ *
  * @since 2.0
  * @see AuthComponent::$authenticate
  */
@@ -40,6 +43,7 @@ class FormAuthenticate extends BaseAuthenticate
      * @param CakeRequest $request The request that contains login information.
      * @param string $model The model used for login verification.
      * @param array $fields The fields to be checked.
+     *
      * @return bool False if the fields have not been supplied. True if they exist.
      */
     protected function _checkFields(CakeRequest $request, $model, $fields)
@@ -64,6 +68,7 @@ class FormAuthenticate extends BaseAuthenticate
      *
      * @param CakeRequest $request The request that contains login information.
      * @param CakeResponse $response Unused response object.
+     *
      * @return mixed False on login failure. An array of User data on success.
      */
     public function authenticate(CakeRequest $request, CakeResponse $response)

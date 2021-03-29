@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          http://www.cakefoundation.org/projects/info/cakephp CakePHP(tm) Project
+ *
  * @package       Cake.Log.Engine
+ *
  * @since         CakePHP(tm) v 2.2
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('CakeLogInterface', 'Log');
@@ -50,6 +54,7 @@ abstract class BaseLog implements CakeLogInterface
      * - `scopes` string or array, scopes the engine is interested in
      *
      * @param array $config engine configuration
+     *
      * @return array
      */
     public function config($config = [])

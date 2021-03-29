@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Controller.Component
+ *
  * @since         CakePHP(tm) v 2.7.0-dev
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Component', 'Controller');
@@ -71,7 +75,6 @@ class FlashComponent extends Component
      *   of Exception the exception message will be used and code will be set
      *   in params.
      * @param array $options An array of options.
-     * @return void
      */
     public function set($message, $options = [])
     {
@@ -114,7 +117,7 @@ class FlashComponent extends Component
      *
      * @param string $name Element name to use.
      * @param array $args Parameters to pass when calling `FlashComponent::set()`.
-     * @return void
+     *
      * @throws InternalErrorException If missing the flash message.
      */
     public function __call($name, $args)

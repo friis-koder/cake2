@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Console
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('TaskCollection', 'Console');
@@ -34,8 +38,6 @@ class TaskCollectionTest extends CakeTestCase
 {
     /**
      * setUp
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -47,8 +49,6 @@ class TaskCollectionTest extends CakeTestCase
 
     /**
      * tearDown
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -58,8 +58,6 @@ class TaskCollectionTest extends CakeTestCase
 
     /**
      * test triggering callbacks on loaded tasks
-     *
-     * @return void
      */
     public function testLoad()
     {
@@ -73,8 +71,6 @@ class TaskCollectionTest extends CakeTestCase
 
     /**
      * test load and enable = false
-     *
-     * @return void
      */
     public function testLoadWithEnableFalse()
     {
@@ -89,7 +85,6 @@ class TaskCollectionTest extends CakeTestCase
      * test missingtask exception
      *
      * @expectedException MissingTaskException
-     * @return void
      */
     public function testLoadMissingTask()
     {
@@ -98,8 +93,6 @@ class TaskCollectionTest extends CakeTestCase
 
     /**
      * test loading a plugin helper.
-     *
-     * @return void
      */
     public function testLoadPluginTask()
     {
@@ -119,8 +112,6 @@ class TaskCollectionTest extends CakeTestCase
 
     /**
      * test unload()
-     *
-     * @return void
      */
     public function testUnload()
     {
@@ -140,8 +131,6 @@ class TaskCollectionTest extends CakeTestCase
 
     /**
      * Tests loading as an alias
-     *
-     * @return void
      */
     public function testLoadWithAlias()
     {

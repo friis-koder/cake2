@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Test.Case.Console.Command.Task
+ *
  * @since         CakePHP(tm) v 1.3
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('ConsoleOutput', 'Console');
@@ -64,8 +68,6 @@ class ControllerTaskTest extends CakeTestCase
 
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -100,8 +102,6 @@ class ControllerTaskTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -113,8 +113,6 @@ class ControllerTaskTest extends CakeTestCase
 
     /**
      * test ListAll
-     *
-     * @return void
      */
     public function testListAll()
     {
@@ -143,8 +141,6 @@ class ControllerTaskTest extends CakeTestCase
 
     /**
      * Test that getName interacts with the user and returns the controller name.
-     *
-     * @return void
      */
     public function testGetNameValidIndex()
     {
@@ -168,8 +164,6 @@ class ControllerTaskTest extends CakeTestCase
 
     /**
      * test getting invalid indexes.
-     *
-     * @return void
      */
     public function testGetNameInvalidIndex()
     {
@@ -185,8 +179,6 @@ class ControllerTaskTest extends CakeTestCase
 
     /**
      * test helper interactions
-     *
-     * @return void
      */
     public function testDoHelpersNo()
     {
@@ -197,8 +189,6 @@ class ControllerTaskTest extends CakeTestCase
 
     /**
      * test getting helper values
-     *
-     * @return void
      */
     public function testDoHelpersTrailingSpace()
     {
@@ -211,8 +201,6 @@ class ControllerTaskTest extends CakeTestCase
 
     /**
      * test doHelpers with extra commas
-     *
-     * @return void
      */
     public function testDoHelpersTrailingCommas()
     {
@@ -225,8 +213,6 @@ class ControllerTaskTest extends CakeTestCase
 
     /**
      * test component interactions
-     *
-     * @return void
      */
     public function testDoComponentsNo()
     {
@@ -237,8 +223,6 @@ class ControllerTaskTest extends CakeTestCase
 
     /**
      * test components with spaces
-     *
-     * @return void
      */
     public function testDoComponentsTrailingSpaces()
     {
@@ -252,8 +236,6 @@ class ControllerTaskTest extends CakeTestCase
 
     /**
      * test components with commas
-     *
-     * @return void
      */
     public function testDoComponentsTrailingCommas()
     {
@@ -267,8 +249,6 @@ class ControllerTaskTest extends CakeTestCase
 
     /**
      * test Confirming controller user interaction
-     *
-     * @return void
      */
     public function testConfirmController()
     {
@@ -285,8 +265,6 @@ class ControllerTaskTest extends CakeTestCase
 
     /**
      * test the bake method
-     *
-     * @return void
      */
     public function testBake()
     {
@@ -309,8 +287,6 @@ class ControllerTaskTest extends CakeTestCase
 
     /**
      * test bake() with a -plugin param
-     *
-     * @return void
      */
     public function testBakeWithPlugin()
     {
@@ -344,8 +320,6 @@ class ControllerTaskTest extends CakeTestCase
 
     /**
      * test that bakeActions is creating the correct controller Code. (Using sessions)
-     *
-     * @return void
      */
     public function testBakeActionsUsingSessions()
     {
@@ -363,8 +337,6 @@ class ControllerTaskTest extends CakeTestCase
 
     /**
      * Test baking with Controller::flash() or no sessions.
-     *
-     * @return void
      */
     public function testBakeActionsWithNoSessions()
     {
@@ -375,8 +347,6 @@ class ControllerTaskTest extends CakeTestCase
 
     /**
      * test baking a test
-     *
-     * @return void
      */
     public function testBakeTest()
     {
@@ -394,8 +364,6 @@ class ControllerTaskTest extends CakeTestCase
 
     /**
      * test Interactive mode.
-     *
-     * @return void
      */
     public function testInteractive()
     {
@@ -430,8 +398,6 @@ class ControllerTaskTest extends CakeTestCase
 
     /**
      * test Interactive mode.
-     *
-     * @return void
      */
     public function testInteractiveAdminMethodsNotInteractive()
     {
@@ -473,8 +439,6 @@ class ControllerTaskTest extends CakeTestCase
 
     /**
      * test that execute runs all when the first arg == all
-     *
-     * @return void
      */
     public function testExecuteIntoAll()
     {
@@ -501,8 +465,6 @@ class ControllerTaskTest extends CakeTestCase
 
     /**
      * Test execute() with all and --admin
-     *
-     * @return void
      */
     public function testExecuteIntoAllAdmin()
     {
@@ -535,8 +497,6 @@ class ControllerTaskTest extends CakeTestCase
 
     /**
      * test that `cake bake controller foos` works.
-     *
-     * @return void
      */
     public function testExecuteWithController()
     {
@@ -555,8 +515,6 @@ class ControllerTaskTest extends CakeTestCase
 
     /**
      * data provider for testExecuteWithControllerNameVariations
-     *
-     * @return void
      */
     public static function nameVariations()
     {
@@ -569,7 +527,6 @@ class ControllerTaskTest extends CakeTestCase
      * test that both plural and singular forms work for controller baking.
      *
      * @dataProvider nameVariations
-     * @return void
      */
     public function testExecuteWithControllerNameVariations($name)
     {
@@ -587,8 +544,6 @@ class ControllerTaskTest extends CakeTestCase
 
     /**
      * test that `cake bake controller foo scaffold` works.
-     *
-     * @return void
      */
     public function testExecuteWithPublicParam()
     {
@@ -608,8 +563,6 @@ class ControllerTaskTest extends CakeTestCase
 
     /**
      * test that `cake bake controller foos both` works.
-     *
-     * @return void
      */
     public function testExecuteWithControllerAndBoth()
     {
@@ -629,8 +582,6 @@ class ControllerTaskTest extends CakeTestCase
 
     /**
      * test that `cake bake controller foos admin` works.
-     *
-     * @return void
      */
     public function testExecuteWithControllerAndAdmin()
     {

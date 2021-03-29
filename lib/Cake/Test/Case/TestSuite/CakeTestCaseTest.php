@@ -12,9 +12,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP Project
+ *
  * @package       Cake.Test.Case.TestSuite
+ *
  * @since         CakePHP v 1.2.0.4487
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('CakePlugin', 'Core');
@@ -71,8 +75,6 @@ class CakeTestCaseTest extends CakeTestCase
 
     /**
      * CakeTestCaseTest::setUpBeforeClass()
-     *
-     * @return void
      */
     public static function setUpBeforeClass()
     {
@@ -82,8 +84,6 @@ class CakeTestCaseTest extends CakeTestCase
 
     /**
      * setUp
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -93,8 +93,6 @@ class CakeTestCaseTest extends CakeTestCase
 
     /**
      * tearDown
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -105,8 +103,6 @@ class CakeTestCaseTest extends CakeTestCase
 
     /**
      * testAssertTags
-     *
-     * @return void
      */
     public function testAssertTagsBasic()
     {
@@ -119,8 +115,6 @@ class CakeTestCaseTest extends CakeTestCase
 
     /**
      * test assertTags works with single and double quotes
-     *
-     * @return void
      */
     public function testAssertTagsQuoting()
     {
@@ -171,8 +165,6 @@ class CakeTestCaseTest extends CakeTestCase
 
     /**
      * Test that assertTags runs quickly.
-     *
-     * @return void
      */
     public function testAssertTagsRuntimeComplexity()
     {
@@ -199,8 +191,6 @@ class CakeTestCaseTest extends CakeTestCase
 
     /**
      * testNumericValuesInExpectationForAssertTags
-     *
-     * @return void
      */
     public function testNumericValuesInExpectationForAssertTags()
     {
@@ -213,8 +203,6 @@ class CakeTestCaseTest extends CakeTestCase
 
     /**
      * testBadAssertTags
-     *
-     * @return void
      */
     public function testBadAssertTags()
     {
@@ -233,8 +221,6 @@ class CakeTestCaseTest extends CakeTestCase
 
     /**
      * testLoadFixtures
-     *
-     * @return void
      */
     public function testLoadFixtures()
     {
@@ -252,8 +238,6 @@ class CakeTestCaseTest extends CakeTestCase
 
     /**
      * testLoadFixturesOnDemand
-     *
-     * @return void
      */
     public function testLoadFixturesOnDemand()
     {
@@ -269,8 +253,6 @@ class CakeTestCaseTest extends CakeTestCase
 
     /**
      * testLoadFixturesOnDemand
-     *
-     * @return void
      */
     public function testUnoadFixturesAfterFailure()
     {
@@ -286,8 +268,6 @@ class CakeTestCaseTest extends CakeTestCase
 
     /**
      * testThrowException
-     *
-     * @return void
      */
     public function testThrowException()
     {
@@ -303,8 +283,6 @@ class CakeTestCaseTest extends CakeTestCase
 
     /**
      * testSkipIf
-     *
-     * @return void
      */
     public function testSkipIf()
     {
@@ -319,8 +297,6 @@ class CakeTestCaseTest extends CakeTestCase
 
     /**
      * Test that CakeTestCase::setUp() backs up values.
-     *
-     * @return void
      */
     public function testSetupBackUpValues()
     {
@@ -330,8 +306,6 @@ class CakeTestCaseTest extends CakeTestCase
 
     /**
      * test assertTextNotEquals()
-     *
-     * @return void
      */
     public function testAssertTextNotEquals()
     {
@@ -342,8 +316,6 @@ class CakeTestCaseTest extends CakeTestCase
 
     /**
      * test assertTextEquals()
-     *
-     * @return void
      */
     public function testAssertTextEquals()
     {
@@ -354,8 +326,6 @@ class CakeTestCaseTest extends CakeTestCase
 
     /**
      * test assertTextStartsWith()
-     *
-     * @return void
      */
     public function testAssertTextStartsWith()
     {
@@ -371,8 +341,6 @@ class CakeTestCaseTest extends CakeTestCase
 
     /**
      * test assertTextStartsNotWith()
-     *
-     * @return void
      */
     public function testAssertTextStartsNotWith()
     {
@@ -382,8 +350,6 @@ class CakeTestCaseTest extends CakeTestCase
 
     /**
      * test assertTextEndsWith()
-     *
-     * @return void
      */
     public function testAssertTextEndsWith()
     {
@@ -394,8 +360,6 @@ class CakeTestCaseTest extends CakeTestCase
 
     /**
      * test assertTextEndsNotWith()
-     *
-     * @return void
      */
     public function testAssertTextEndsNotWith()
     {
@@ -406,8 +370,6 @@ class CakeTestCaseTest extends CakeTestCase
 
     /**
      * test assertTextContains()
-     *
-     * @return void
      */
     public function testAssertTextContains()
     {
@@ -419,8 +381,6 @@ class CakeTestCaseTest extends CakeTestCase
 
     /**
      * test assertTextNotContains()
-     *
-     * @return void
      */
     public function testAssertTextNotContains()
     {
@@ -430,8 +390,6 @@ class CakeTestCaseTest extends CakeTestCase
 
     /**
      * test getMockForModel()
-     *
-     * @return void
      */
     public function testGetMockForModel()
     {
@@ -455,8 +413,6 @@ class CakeTestCaseTest extends CakeTestCase
 
     /**
      * Test getMockForModel on secondary datasources.
-     *
-     * @return void
      */
     public function testGetMockForModelSecondaryDatasource()
     {
@@ -478,8 +434,6 @@ class CakeTestCaseTest extends CakeTestCase
 
     /**
      * Test getMockForModel when the model accesses the datasource in the constructor.
-     *
-     * @return void
      */
     public function testGetMockForModelConstructorDatasource()
     {
@@ -489,8 +443,6 @@ class CakeTestCaseTest extends CakeTestCase
 
     /**
      * test getMockForModel() with plugin models
-     *
-     * @return void
      */
     public function testGetMockForModelWithPlugin()
     {
@@ -522,8 +474,6 @@ class CakeTestCaseTest extends CakeTestCase
 
     /**
      * testGetMockForModelModel
-     *
-     * @return void
      */
     public function testGetMockForModelModel()
     {
@@ -548,7 +498,6 @@ class CakeTestCaseTest extends CakeTestCase
      *
      * @expectedException MissingModelException
      * @expectedExceptionMessage Model IDoNotExist could not be found
-     * @return void
      */
     public function testGetMockForModelDoesNotExist()
     {

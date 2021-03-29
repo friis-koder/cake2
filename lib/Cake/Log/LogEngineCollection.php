@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Log
+ *
  * @since         CakePHP(tm) v 2.2
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('ObjectCollection', 'Utility');
@@ -29,8 +33,10 @@ class LogEngineCollection extends ObjectCollection
      *
      * @param string $name instance identifier
      * @param array $options Setting for the Log Engine
-     * @return BaseLog BaseLog engine instance
+     *
      * @throws CakeLogException when logger class does not implement a write method
+     *
+     * @return BaseLog BaseLog engine instance
      */
     public function load($name, $options = [])
     {
@@ -57,8 +63,10 @@ class LogEngineCollection extends ObjectCollection
      * Checks that the logger class implements a write method as well.
      *
      * @param string $loggerName the plugin.className of the logger class you want to build.
-     * @return mixed boolean false on any failures, string of classname to use if search was successful.
+     *
      * @throws CakeLogException
+     *
+     * @return mixed boolean false on any failures, string of classname to use if search was successful.
      */
     protected static function _getLogger($loggerName)
     {

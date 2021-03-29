@@ -14,9 +14,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Controller.Component
+ *
  * @since         CakePHP(tm) v 0.10.4.1076
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Component', 'Controller');
@@ -30,6 +34,7 @@ App::uses('Xml', 'Utility');
  * should respond to the different needs of a handheld computer and a desktop machine.
  *
  * @package       Cake.Controller.Component
+ *
  * @link https://book.cakephp.org/2.0/en/core-libraries/components/request-handling.html
  */
 class RequestHandlerComponent extends Component
@@ -38,6 +43,7 @@ class RequestHandlerComponent extends Component
      * The layout that will be switched to for Ajax requests
      *
      * @var string
+     *
      * @see RequestHandler::setAjax()
      */
     public $ajaxLayout = 'ajax';
@@ -67,6 +73,7 @@ class RequestHandlerComponent extends Component
      * Contains the file extension parsed out by the Router
      *
      * @var string
+     *
      * @see Router::parseExtensions()
      */
     public $ext = null;
@@ -129,7 +136,7 @@ class RequestHandlerComponent extends Component
      * and the requested mime-types, RequestHandler::$ext is set to that value.
      *
      * @param Controller $controller A reference to the controller
-     * @return void
+     *
      * @see Router::parseExtensions()
      */
     public function initialize(Controller $controller)
@@ -157,8 +164,6 @@ class RequestHandlerComponent extends Component
      *
      * If html is one of the preferred types, no content type will be set, this
      * is to avoid issues with browsers that prefer html and several other content types.
-     *
-     * @return void
      */
     protected function _setExtension()
     {
@@ -204,7 +209,6 @@ class RequestHandlerComponent extends Component
      *   to the $data property of the controller, which can then be saved to a model object.
      *
      * @param Controller $controller A reference to the controller
-     * @return void
      */
     public function startup(Controller $controller)
     {
@@ -235,6 +239,7 @@ class RequestHandlerComponent extends Component
      * this lives here.
      *
      * @param string $xml XML string.
+     *
      * @return array Xml array data
      */
     public function convertXml($xml)
@@ -259,7 +264,6 @@ class RequestHandlerComponent extends Component
      * @param string|array $url A string or array containing the redirect location
      * @param int|array $status HTTP Status for redirect
      * @param bool $exit Whether to exit script, defaults to `true`.
-     * @return void
      */
     public function beforeRedirect(Controller $controller, $url, $status = null, $exit = true)
     {
@@ -295,6 +299,7 @@ class RequestHandlerComponent extends Component
      * "304 Not Modified" header.
      *
      * @param Controller $controller Controller instance.
+     *
      * @return bool False if the render process should be aborted.
      */
     public function beforeRender(Controller $controller)
@@ -308,6 +313,7 @@ class RequestHandlerComponent extends Component
      * Returns true if the current HTTP request is Ajax, false otherwise
      *
      * @return bool True if call is Ajax
+     *
      * @deprecated 3.0.0 Use `$this->request->is('ajax')` instead.
      */
     public function isAjax()
@@ -319,6 +325,7 @@ class RequestHandlerComponent extends Component
      * Returns true if the current HTTP request is coming from a Flash-based client
      *
      * @return bool True if call is from Flash
+     *
      * @deprecated 3.0.0 Use `$this->request->is('flash')` instead.
      */
     public function isFlash()
@@ -330,6 +337,7 @@ class RequestHandlerComponent extends Component
      * Returns true if the current request is over HTTPS, false otherwise.
      *
      * @return bool True if call is over HTTPS
+     *
      * @deprecated 3.0.0 Use `$this->request->is('ssl')` instead.
      */
     public function isSSL()
@@ -392,6 +400,7 @@ class RequestHandlerComponent extends Component
      * Returns true if the current call a POST request
      *
      * @return bool True if call is a POST
+     *
      * @deprecated 3.0.0 Use $this->request->is('post'); from your controller.
      */
     public function isPost()
@@ -403,6 +412,7 @@ class RequestHandlerComponent extends Component
      * Returns true if the current call a PUT request
      *
      * @return bool True if call is a PUT
+     *
      * @deprecated 3.0.0 Use $this->request->is('put'); from your controller.
      */
     public function isPut()
@@ -414,6 +424,7 @@ class RequestHandlerComponent extends Component
      * Returns true if the current call a GET request
      *
      * @return bool True if call is a GET
+     *
      * @deprecated 3.0.0 Use $this->request->is('get'); from your controller.
      */
     public function isGet()
@@ -425,6 +436,7 @@ class RequestHandlerComponent extends Component
      * Returns true if the current call a DELETE request
      *
      * @return bool True if call is a DELETE
+     *
      * @deprecated 3.0.0 Use $this->request->is('delete'); from your controller.
      */
     public function isDelete()
@@ -454,7 +466,7 @@ class RequestHandlerComponent extends Component
      * @param string $name The name of the Content-type, i.e. "html", "xml", "css"
      * @param string|array $type The Content-type or array of Content-types assigned to the name,
      *    i.e. "text/html", or "application/xml"
-     * @return void
+     *
      * @deprecated 3.0.0 Use `$this->response->type()` instead.
      */
     public function setContent($name, $type = null)
@@ -466,6 +478,7 @@ class RequestHandlerComponent extends Component
      * Gets the server name from which this request was referred
      *
      * @return string Server address
+     *
      * @deprecated 3.0.0 Use $this->request->referer() from your controller instead
      */
     public function getReferer()
@@ -478,7 +491,9 @@ class RequestHandlerComponent extends Component
      *
      * @param bool $safe Use safe = false when you think the user might manipulate
      *   their HTTP_CLIENT_IP header. Setting $safe = false will also look at HTTP_X_FORWARDED_FOR
+     *
      * @return string Client IP address
+     *
      * @deprecated 3.0.0 Use $this->request->clientIp() from your, controller instead.
      */
     public function getClientIP($safe = true)
@@ -503,10 +518,12 @@ class RequestHandlerComponent extends Component
      *
      * @param string|array $type Can be null (or no parameter), a string type name, or an
      *   array of types
+     *
      * @return mixed If null or no parameter is passed, returns an array of content
      *   types the client accepts. If a string is passed, returns true
      *   if the client accepts it. If an array is passed, returns true
      *   if the client accepts one or more elements in the array.
+     *
      * @see RequestHandlerComponent::setContent()
      */
     public function accepts($type = null)
@@ -537,6 +554,7 @@ class RequestHandlerComponent extends Component
      * Determines the content type of the data the client has sent (i.e. in a POST request)
      *
      * @param string|array $type Can be null (or no parameter), a string type name, or an array of types
+     *
      * @return mixed If a single type is supplied a boolean will be returned. If no type is provided
      *   The mapped value of CONTENT_TYPE will be returned. If an array is supplied the first type
      *   in the request content type will be returned.
@@ -583,11 +601,13 @@ class RequestHandlerComponent extends Component
      *
      * @param string|array $type An optional array of 'friendly' content-type names, i.e.
      *   'html', 'xml', 'js', etc.
+     *
      * @return mixed If $type is null or not provided, the first content-type in the
      *    list, based on preference, is returned. If a single type is provided
      *    a boolean will be returned if that type is preferred.
      *    If an array of types are provided then the first preferred type is returned.
      *    If no type is provided the first preferred type is returned.
+     *
      * @see RequestHandlerComponent::setContent()
      */
     public function prefers($type = null)
@@ -641,7 +661,7 @@ class RequestHandlerComponent extends Component
      * @param Controller $controller A reference to a controller object
      * @param string $type Type of response to send (e.g: 'ajax')
      * @param array $options Array of options to use
-     * @return void
+     *
      * @see RequestHandlerComponent::setContent()
      * @see RequestHandlerComponent::respondAs()
      */
@@ -708,9 +728,11 @@ class RequestHandlerComponent extends Component
      *    like 'application/x-shockwave'.
      * @param array $options If $type is a friendly type name that is associated with
      *    more than one type of content, $index is used to select which content-type to use.
+     *
      * @return bool Returns false if the friendly type name given in $type does
      *    not exist in the type map, or if the Content-type header has
      *    already been set by this method.
+     *
      * @see RequestHandlerComponent::setContent()
      */
     public function respondAs($type, $options = [])
@@ -765,7 +787,9 @@ class RequestHandlerComponent extends Component
      * Maps a content-type back to an alias
      *
      * @param string|array $cType Either a string content type to map, or an array of types.
+     *
      * @return string|array Aliases for the types provided.
+     *
      * @deprecated 3.0.0 Use $this->response->mapType() in your controller instead.
      */
     public function mapType($cType)
@@ -777,6 +801,7 @@ class RequestHandlerComponent extends Component
      * Maps a content type alias back to its mime-type(s)
      *
      * @param string|array $alias String alias to convert back into a content type. Or an array of aliases to map.
+     *
      * @return string|null Null on an undefined alias. String value of the mapped alias type. If an
      *   alias maps to more than one content type, the first one will be returned.
      */
@@ -805,7 +830,7 @@ class RequestHandlerComponent extends Component
      * @param array $handler The handler array for the type. The first index should
      *    be the handling callback, all other arguments should be additional parameters
      *    for the handler.
-     * @return void
+     *
      * @throws CakeException
      */
     public function addInputType($type, $handler)
@@ -821,6 +846,7 @@ class RequestHandlerComponent extends Component
      *
      * @param array|string $type The type string or array with format `array('type' => 'viewClass')` to map one or more
      * @param array $viewClass The viewClass to be used for the type without `View` appended
+     *
      * @return array|string Returns viewClass when only string $type is set, else array with viewClassMap
      */
     public function viewClassMap($type = null, $viewClass = null)

@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Model.Datasource
+ *
  * @since         CakePHP(tm) v 1.2.0.4206
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Model', 'Model');
@@ -190,8 +194,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -207,8 +209,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -218,8 +218,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * test that booleans and null make logical condition strings.
-     *
-     * @return void
      */
     public function testBooleanNullConditionsParsing()
     {
@@ -244,8 +242,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * test that booleans work on empty set.
-     *
-     * @return void
      */
     public function testBooleanEmptyConditionsParsing()
     {
@@ -258,8 +254,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * test that SQL JSON operators can be used.
-     *
-     * @return void
      */
     public function testColumnHyphenOperator()
     {
@@ -280,8 +274,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * test that order() will accept objects made from DboSource::expression
-     *
-     * @return void
      */
     public function testOrderWithExpression()
     {
@@ -293,8 +285,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * testMergeAssociations method
-     *
-     * @return void
      */
     public function testMergeAssociations()
     {
@@ -567,8 +557,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * testMagicMethodQuerying method
-     *
-     * @return void
      */
     public function testMagicMethodQuerying()
     {
@@ -697,7 +685,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * @expectedException PDOException
-     * @return void
      */
     public function testDirectCallThrowsException()
     {
@@ -706,8 +693,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * testValue method
-     *
-     * @return void
      */
     public function testValue()
     {
@@ -724,8 +709,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * Tests if the connection can be re-established and that the new (optional) config is set.
-     *
-     * @return void
      */
     public function testReconnect()
     {
@@ -736,8 +719,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * testName method
-     *
-     * @return void
      */
     public function testName()
     {
@@ -800,8 +781,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * test that cacheMethod works as expected
-     *
-     * @return void
      */
     public function testCacheMethod()
     {
@@ -828,8 +807,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * Test that cacheMethodFilter does not filter by default.
-     *
-     * @return void
      */
     public function testCacheMethodFilter()
     {
@@ -857,8 +834,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * Test that cacheMethodFilter can be overridden to do actual filtering.
-     *
-     * @return void
      */
     public function testCacheMethodFilterOverridden()
     {
@@ -902,8 +877,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * Test that cacheMethodHasher uses md5 by default.
-     *
-     * @return void
      */
     public function testCacheMethodHasher()
     {
@@ -916,8 +889,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * Test that cacheMethodHasher can be overridden to use a different hashing algorithm.
-     *
-     * @return void
      */
     public function testCacheMethodHasherOverridden()
     {
@@ -932,8 +903,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * Test that rare collisions do not happen with method caching
-     *
-     * @return void
      */
     public function testNameMethodCacheCollisions()
     {
@@ -947,8 +916,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * Test that flushMethodCache works as expected
-     *
-     * @return void
      */
     public function testFlushMethodCache()
     {
@@ -966,7 +933,6 @@ class DboSourceTest extends CakeTestCase
      * testLog method
      *
      * @outputBuffering enabled
-     * @return void
      */
     public function testLog()
     {
@@ -999,8 +965,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * test getting the query log as an array.
-     *
-     * @return void
      */
     public function testGetLog()
     {
@@ -1018,8 +982,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * test getting the query log as an array, setting bind params.
-     *
-     * @return void
      */
     public function testGetLogParams()
     {
@@ -1035,8 +997,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * test that query() returns boolean values from operations like CREATE TABLE
-     *
-     * @return void
      */
     public function testFetchAllBooleanReturns()
     {
@@ -1052,8 +1012,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * Test NOT NULL on ENUM data type with empty string as a value
-     *
-     * @return void
      */
     public function testNotNullOnEnum()
     {
@@ -1087,8 +1045,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * Test for MySQL enum datatype for a list of Integer stored as String
-     *
-     * @return void
      */
     public function testIntValueAsStringOnEnum()
     {
@@ -1122,8 +1078,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * test order to generate query order clause for virtual fields
-     *
-     * @return void
      */
     public function testVirtualFieldsInOrder()
     {
@@ -1145,8 +1099,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * test the permutations of fullTableName()
-     *
-     * @return void
      */
     public function testFullTablePermutations()
     {
@@ -1186,8 +1138,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * test that read() only calls queryAssociation on db objects when the method is defined.
-     *
-     * @return void
      */
     public function testReadOnlyCallingQueryAssociationWhenDefined()
     {
@@ -1204,8 +1154,6 @@ class DboSourceTest extends CakeTestCase
     /**
      * test that queryAssociation() reuse already joined data for 'belongsTo' and 'hasOne' associations
      * instead of running unneeded queries for each record
-     *
-     * @return void
      */
     public function testQueryAssociationUnneededQueries()
     {
@@ -1261,8 +1209,6 @@ class DboSourceTest extends CakeTestCase
     /**
      * Tests that generation association queries without LinkModel still works.
      * Mainly BC.
-     *
-     * @return void
      */
     public function testGenerateAssociationQuery()
     {
@@ -1295,8 +1241,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * test that fields() is using methodCache()
-     *
-     * @return void
      */
     public function testFieldsUsingMethodCache()
     {
@@ -1310,8 +1254,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * test that fields() method cache detects datasource changes
-     *
-     * @return void
      */
     public function testFieldsCacheKeyWithDatasourceChange()
     {
@@ -1341,8 +1283,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * test that fields() method cache detects schema name changes
-     *
-     * @return void
      */
     public function testFieldsCacheKeyWithSchemanameChange()
     {
@@ -1367,8 +1307,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * Test that group works without a model
-     *
-     * @return void
      */
     public function testGroupNoModel()
     {
@@ -1378,8 +1316,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * Test having method
-     *
-     * @return void
      */
     public function testHaving()
     {
@@ -1395,8 +1331,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * Test getLockingHint method
-     *
-     * @return void
      */
     public function testGetLockingHint()
     {
@@ -1407,8 +1341,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * Test getting the last error.
-     *
-     * @return void
      */
     public function testLastError()
     {
@@ -1424,8 +1356,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * Tests that transaction commands are logged
-     *
-     * @return void
      */
     public function testTransactionLogging()
     {
@@ -1460,8 +1390,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * Test nested transaction calls
-     *
-     * @return void
      */
     public function testTransactionNested()
     {
@@ -1483,8 +1411,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * Test nested transaction calls without support
-     *
-     * @return void
      */
     public function testTransactionNestedWithoutSupport()
     {
@@ -1503,8 +1429,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * Test nested transaction disabled
-     *
-     * @return void
      */
     public function testTransactionNestedDisabled()
     {
@@ -1525,7 +1449,6 @@ class DboSourceTest extends CakeTestCase
      * Nested transaction calls
      *
      * @param DboTestSource $db
-     * @return void
      */
     protected function _runTransactions($db)
     {
@@ -1539,8 +1462,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * Test build statement with some fields missing
-     *
-     * @return void
      */
     public function testBuildStatementDefaults()
     {
@@ -1568,8 +1489,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * Test build statement with having option
-     *
-     * @return void
      */
     public function testBuildStatementWithHaving()
     {
@@ -1598,8 +1517,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * Test build statement with lock option
-     *
-     * @return void
      */
     public function testBuildStatementWithLockingHint()
     {
@@ -1664,7 +1581,6 @@ class DboSourceTest extends CakeTestCase
      * ensure that schemaName is not added when table value is a subquery
      *
      * @dataProvider joinStatements
-     * @return void
      */
     public function testBuildJoinStatement($join, $expected)
     {
@@ -1704,7 +1620,6 @@ class DboSourceTest extends CakeTestCase
      * ensure that prefix is not added when table value is a subquery
      *
      * @dataProvider joinStatementsWithPrefix
-     * @return void
      */
     public function testBuildJoinStatementWithTablePrefix($join, $expected)
     {
@@ -1716,8 +1631,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * Test conditionKeysToString()
-     *
-     * @return void
      */
     public function testConditionKeysToString()
     {
@@ -1750,8 +1663,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * Test conditionKeysToString() with virtual field
-     *
-     * @return void
      */
     public function testConditionKeysToStringVirtualFieldExpression()
     {
@@ -1787,8 +1698,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * Test conditionKeysToString() with virtual field
-     *
-     * @return void
      */
     public function testConditionKeysToStringVirtualField()
     {
@@ -1824,8 +1733,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * Test the limit function.
-     *
-     * @return void
      */
     public function testLimit()
     {
@@ -1850,8 +1757,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * Test insertMulti with id position.
-     *
-     * @return void
      */
     public function testInsertMultiId()
     {
@@ -1909,8 +1814,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * Test defaultConditions()
-     *
-     * @return void
      */
     public function testDefaultConditions()
     {
@@ -1951,8 +1854,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * Test that count how many times afterFind is called
-     *
-     * @return void
      */
     public function testCountAfterFindCalls()
     {
@@ -2028,8 +1929,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * Test format of $results in afterFind
-     *
-     * @return void
      */
     public function testUseConsistentAfterFind()
     {
@@ -2092,8 +1991,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * Test that afterFind is called correctly for 'joins'
-     *
-     * @return void
      */
     public function testJoinsAfterFind()
     {
@@ -2152,8 +2049,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * Test that afterFind is called correctly for 'hasOne' association.
-     *
-     * @return void
      */
     public function testHasOneAfterFind()
     {
@@ -2208,8 +2103,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * Test that flushQueryCache works as expected
-     *
-     * @return void
      */
     public function testFlushQueryCache()
     {
@@ -2225,8 +2118,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * Test length parsing.
-     *
-     * @return void
      */
     public function testLength()
     {
@@ -2251,8 +2142,6 @@ class DboSourceTest extends CakeTestCase
 
     /**
      * Test length parsing of enum column.
-     *
-     * @return void
      */
     public function testLengthEnum()
     {

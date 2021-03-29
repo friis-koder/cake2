@@ -10,7 +10,9 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('CakeText', 'Utility');
@@ -25,6 +27,7 @@ App::uses('CakeText', 'Utility');
  * Xml output is useful for integration with other tools like IDE's or other build tools.
  *
  * @package       Cake.Console
+ *
  * @since  CakePHP(tm) v 2.0
  */
 class HelpFormatter
@@ -57,6 +60,7 @@ class HelpFormatter
      * Get the help as formatted text suitable for output on the command line.
      *
      * @param int $width The width of the help output.
+     *
      * @return string
      */
     public function text($width = 72)
@@ -164,6 +168,7 @@ class HelpFormatter
      * Iterate over a collection and find the longest named thing.
      *
      * @param array $collection The collection to find a max length of.
+     *
      * @return int
      */
     protected function _getMaxLength($collection)
@@ -180,6 +185,7 @@ class HelpFormatter
      * Get the help as an xml string.
      *
      * @param bool $string Return the SimpleXml object or a string. Defaults to true.
+     *
      * @return string|SimpleXmlElement See $string
      */
     public function xml($string = true)

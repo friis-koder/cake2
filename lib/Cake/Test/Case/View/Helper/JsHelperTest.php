@@ -12,9 +12,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.View.Helper
+ *
  * @since         CakePHP(tm) v 1.3
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('HtmlHelper', 'View/Helper');
@@ -58,6 +62,7 @@ class OptionEngineHelper extends JsBaseEngineHelper
      * test method for testing option mapping
      *
      * @param array $options
+     *
      * @return array
      */
     public function testMap($options = [])
@@ -70,7 +75,6 @@ class OptionEngineHelper extends JsBaseEngineHelper
      *
      * @param $options
      * @param array $safe
-     * @return void
      */
     public function testParseOptions($options, $safe = [])
     {
@@ -145,8 +149,6 @@ class JsHelperTest extends CakeTestCase
 
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -170,8 +172,6 @@ class JsHelperTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -181,8 +181,6 @@ class JsHelperTest extends CakeTestCase
 
     /**
      * Switches $this->Js to a mocked engine.
-     *
-     * @return void
      */
     protected function _useMock()
     {
@@ -200,8 +198,6 @@ class JsHelperTest extends CakeTestCase
 
     /**
      * test object construction
-     *
-     * @return void
      */
     public function testConstruction()
     {
@@ -222,7 +218,6 @@ class JsHelperTest extends CakeTestCase
      * test that methods dispatch internally and to the engine class
      *
      * @expectedException PHPUnit_Framework_Error_Warning
-     * @return void
      */
     public function testMethodDispatching()
     {
@@ -241,8 +236,6 @@ class JsHelperTest extends CakeTestCase
 
     /**
      * Test that method dispatching for events respects buffer parameters and bufferedMethods Lists.
-     *
-     * @return void
      */
     public function testEventDispatchWithBuffering()
     {
@@ -271,8 +264,6 @@ class JsHelperTest extends CakeTestCase
 
     /**
      * Test that method dispatching for effects respects buffer parameters and bufferedMethods Lists.
-     *
-     * @return void
      */
     public function testEffectDispatchWithBuffering()
     {
@@ -307,8 +298,6 @@ class JsHelperTest extends CakeTestCase
 
     /**
      * test that writeScripts generates scripts inline.
-     *
-     * @return void
      */
     public function testWriteScriptsNoFile()
     {
@@ -336,8 +325,6 @@ class JsHelperTest extends CakeTestCase
 
     /**
      * test that writing the buffer with inline = false includes a script tag.
-     *
-     * @return void
      */
     public function testWriteBufferNotInline()
     {
@@ -353,8 +340,6 @@ class JsHelperTest extends CakeTestCase
     /**
      * test that writeBuffer() sets domReady = false when the request is done by XHR.
      * Including a domReady() when in XHR can cause issues as events aren't triggered by some libraries
-     *
-     * @return void
      */
     public function testWriteBufferAndXhr()
     {
@@ -377,8 +362,6 @@ class JsHelperTest extends CakeTestCase
 
     /**
      * test that writeScripts makes files, and puts the events into them.
-     *
-     * @return void
      */
     public function testWriteScriptsInFile()
     {
@@ -412,8 +395,6 @@ class JsHelperTest extends CakeTestCase
 
     /**
      * test link()
-     *
-     * @return void
      */
     public function testLinkWithMock()
     {
@@ -444,8 +425,6 @@ class JsHelperTest extends CakeTestCase
 
     /**
      * test link with a mock and confirmation
-     *
-     * @return void
      */
     public function testLinkWithMockAndConfirm()
     {
@@ -482,8 +461,6 @@ class JsHelperTest extends CakeTestCase
 
     /**
      * test link passing on htmlAttributes
-     *
-     * @return void
      */
     public function testLinkWithAribtraryAttributes()
     {
@@ -502,8 +479,6 @@ class JsHelperTest extends CakeTestCase
 
     /**
      * test that link() and no buffering returns an <a> and <script> tags.
-     *
-     * @return void
      */
     public function testLinkWithNoBuffering()
     {
@@ -535,8 +510,6 @@ class JsHelperTest extends CakeTestCase
 
     /**
      * test link with buffering off and safe on.
-     *
-     * @return void
      */
     public function testLinkWithNoBufferingAndSafe()
     {
@@ -567,8 +540,6 @@ class JsHelperTest extends CakeTestCase
 
     /**
      * test submit() with a Mock to check Engine method calls
-     *
-     * @return void
      */
     public function testSubmitWithMock()
     {
@@ -607,8 +578,6 @@ class JsHelperTest extends CakeTestCase
 
     /**
      * test submit() with a mock
-     *
-     * @return void
      */
     public function testSubmitWithMockRequestParams()
     {
@@ -654,8 +623,6 @@ class JsHelperTest extends CakeTestCase
 
     /**
      * test that no buffer works with submit() and that parameters are leaking into the script tag.
-     *
-     * @return void
      */
     public function testSubmitWithNoBuffer()
     {
@@ -700,8 +667,6 @@ class JsHelperTest extends CakeTestCase
 
     /**
      * Test that Object::Object() is not breaking json output in JsHelper
-     *
-     * @return void
      */
     public function testObjectPassThrough()
     {
@@ -713,8 +678,6 @@ class JsHelperTest extends CakeTestCase
     /**
      * Test that inherited Helper::value() is overwritten in JsHelper::value()
      * and calls JsBaseEngineHelper::value().
-     *
-     * @return void
      */
     public function testValuePassThrough()
     {
@@ -725,8 +688,6 @@ class JsHelperTest extends CakeTestCase
 
     /**
      * test set()'ing variables to the JavaScript buffer and controlling the output var name.
-     *
-     * @return void
      */
     public function testSet()
     {
@@ -753,8 +714,6 @@ class JsHelperTest extends CakeTestCase
 
     /**
      * test that vars set with Js->set() go to the top of the buffered scripts list.
-     *
-     * @return void
      */
     public function testSetVarsAtTopOfBufferedScripts()
     {
@@ -779,8 +738,6 @@ class JsBaseEngineTest extends CakeTestCase
 {
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -792,8 +749,6 @@ class JsBaseEngineTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -803,8 +758,6 @@ class JsBaseEngineTest extends CakeTestCase
 
     /**
      * test escape string skills
-     *
-     * @return void
      */
     public function testEscaping()
     {
@@ -835,8 +788,6 @@ class JsBaseEngineTest extends CakeTestCase
 
     /**
      * test prompt() creation
-     *
-     * @return void
      */
     public function testPrompt()
     {
@@ -851,8 +802,6 @@ class JsBaseEngineTest extends CakeTestCase
 
     /**
      * test alert generation
-     *
-     * @return void
      */
     public function testAlert()
     {
@@ -867,8 +816,6 @@ class JsBaseEngineTest extends CakeTestCase
 
     /**
      * test confirm generation
-     *
-     * @return void
      */
     public function testConfirm()
     {
@@ -883,8 +830,6 @@ class JsBaseEngineTest extends CakeTestCase
 
     /**
      * test Redirect
-     *
-     * @return void
      */
     public function testRedirect()
     {
@@ -895,8 +840,6 @@ class JsBaseEngineTest extends CakeTestCase
 
     /**
      * testObject encoding with non-native methods.
-     *
-     * @return void
      */
     public function testObject()
     {
@@ -951,8 +894,6 @@ class JsBaseEngineTest extends CakeTestCase
 
     /**
      * test Mapping of options.
-     *
-     * @return void
      */
     public function testOptionMapping()
     {
@@ -972,8 +913,6 @@ class JsBaseEngineTest extends CakeTestCase
 
     /**
      * test that option parsing escapes strings and saves what is supposed to be saved.
-     *
-     * @return void
      */
     public function testOptionParsing()
     {

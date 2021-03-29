@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Controller.Component
+ *
  * @since         CakePHP(tm) v 1.2.0.5436
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Controller', 'Controller');
@@ -86,8 +90,6 @@ class SessionComponentTest extends CakeTestCase
 
     /**
      * test case startup
-     *
-     * @return void
      */
     public static function setupBeforeClass()
     {
@@ -101,8 +103,6 @@ class SessionComponentTest extends CakeTestCase
 
     /**
      * cleanup after test case.
-     *
-     * @return void
      */
     public static function teardownAfterClass()
     {
@@ -111,8 +111,6 @@ class SessionComponentTest extends CakeTestCase
 
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -123,8 +121,6 @@ class SessionComponentTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -134,8 +130,6 @@ class SessionComponentTest extends CakeTestCase
 
     /**
      * ensure that session ids don't change when request action is called.
-     *
-     * @return void
      */
     public function testSessionIdConsistentAcrossRequestAction()
     {
@@ -152,8 +146,6 @@ class SessionComponentTest extends CakeTestCase
 
     /**
      * testSessionValid method
-     *
-     * @return void
      */
     public function testSessionValid()
     {
@@ -172,8 +164,6 @@ class SessionComponentTest extends CakeTestCase
 
     /**
      * testSessionError method
-     *
-     * @return void
      */
     public function testSessionError()
     {
@@ -184,8 +174,6 @@ class SessionComponentTest extends CakeTestCase
 
     /**
      * testSessionReadWrite method
-     *
-     * @return void
      */
     public function testSessionReadWrite()
     {
@@ -216,8 +204,6 @@ class SessionComponentTest extends CakeTestCase
 
     /**
      * testSessionDelete method
-     *
-     * @return void
      */
     public function testSessionDelete()
     {
@@ -231,8 +217,6 @@ class SessionComponentTest extends CakeTestCase
 
     /**
      * testSessionCheck method
-     *
-     * @return void
      */
     public function testSessionCheck()
     {
@@ -247,8 +231,6 @@ class SessionComponentTest extends CakeTestCase
 
     /**
      * testSessionFlash method
-     *
-     * @return void
      */
     public function testSessionFlash()
     {
@@ -270,8 +252,6 @@ class SessionComponentTest extends CakeTestCase
 
     /**
      * testSessionId method
-     *
-     * @return void
      */
     public function testSessionId()
     {
@@ -283,8 +263,6 @@ class SessionComponentTest extends CakeTestCase
 
     /**
      * testSessionDestroy method
-     *
-     * @return void
      */
     public function testSessionDestroy()
     {

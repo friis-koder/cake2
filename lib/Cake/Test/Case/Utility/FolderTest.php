@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Utility
+ *
  * @since         CakePHP(tm) v 1.2.0.4206
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Folder', 'Utility');
@@ -29,8 +33,6 @@ class FolderTest extends CakeTestCase
 
     /**
      * Save the directory names in TMP and make sure default directories exist
-     *
-     * @return void
      */
     public static function setUpBeforeClass()
     {
@@ -48,8 +50,6 @@ class FolderTest extends CakeTestCase
 
     /**
      * setUp clearstatcache() to flush file descriptors.
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -59,8 +59,6 @@ class FolderTest extends CakeTestCase
 
     /**
      * Restore the TMP directory to its original state.
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -83,8 +81,6 @@ class FolderTest extends CakeTestCase
 
     /**
      * testBasic method
-     *
-     * @return void
      */
     public function testBasic()
     {
@@ -108,8 +104,6 @@ class FolderTest extends CakeTestCase
 
     /**
      * testInPath method
-     *
-     * @return void
      */
     public function testInPath()
     {
@@ -187,6 +181,7 @@ class FolderTest extends CakeTestCase
 
     /**
      * @dataProvider inPathInvalidPathArgumentDataProvider
+     *
      * @param string $path
      * @expectedException \InvalidArgumentException
      * @expectedExceptionMessage The $path argument is expected to be an absolute path.
@@ -199,8 +194,6 @@ class FolderTest extends CakeTestCase
 
     /**
      * test creation of single and multiple paths.
-     *
-     * @return void
      */
     public function testCreation()
     {
@@ -220,8 +213,6 @@ class FolderTest extends CakeTestCase
 
     /**
      * test that creation of folders with trailing ds works
-     *
-     * @return void
      */
     public function testCreateWithTrailingDs()
     {
@@ -238,8 +229,6 @@ class FolderTest extends CakeTestCase
 
     /**
      * Test that relative paths to create() are added to cwd.
-     *
-     * @return void
      */
     public function testCreateRelative()
     {
@@ -255,8 +244,6 @@ class FolderTest extends CakeTestCase
 
     /**
      * test recursive directory create failure.
-     *
-     * @return void
      */
     public function testRecursiveCreateFailure()
     {
@@ -280,8 +267,6 @@ class FolderTest extends CakeTestCase
 
     /**
      * testOperations method
-     *
-     * @return void
      */
     public function testOperations()
     {
@@ -352,8 +337,6 @@ class FolderTest extends CakeTestCase
 
     /**
      * testChmod method
-     *
-     * @return void
      */
     public function testChmod()
     {
@@ -394,8 +377,6 @@ class FolderTest extends CakeTestCase
 
     /**
      * testRealPathForWebroot method
-     *
-     * @return void
      */
     public function testRealPathForWebroot()
     {
@@ -405,8 +386,6 @@ class FolderTest extends CakeTestCase
 
     /**
      * testZeroAsDirectory method
-     *
-     * @return void
      */
     public function testZeroAsDirectory()
     {
@@ -428,8 +407,6 @@ class FolderTest extends CakeTestCase
 
     /**
      * test Adding path elements to a path
-     *
-     * @return void
      */
     public function testAddPathElement()
     {
@@ -455,8 +432,6 @@ class FolderTest extends CakeTestCase
 
     /**
      * testFolderRead method
-     *
-     * @return void
      */
     public function testFolderRead()
     {
@@ -474,8 +449,6 @@ class FolderTest extends CakeTestCase
 
     /**
      * testFolderReadWithHiddenFiles method
-     *
-     * @return void
      */
     public function testFolderReadWithHiddenFiles()
     {
@@ -510,8 +483,6 @@ class FolderTest extends CakeTestCase
 
     /**
      * testFolderTree method
-     *
-     * @return void
      */
     public function testFolderTree()
     {
@@ -559,8 +530,6 @@ class FolderTest extends CakeTestCase
 
     /**
      * testFolderTreeWithHiddenFiles method
-     *
-     * @return void
      */
     public function testFolderTreeWithHiddenFiles()
     {
@@ -619,8 +588,6 @@ class FolderTest extends CakeTestCase
 
     /**
      * testWindowsPath method
-     *
-     * @return void
      */
     public function testWindowsPath()
     {
@@ -632,8 +599,6 @@ class FolderTest extends CakeTestCase
 
     /**
      * testIsAbsolute method
-     *
-     * @return void
      */
     public function testIsAbsolute()
     {
@@ -657,8 +622,6 @@ class FolderTest extends CakeTestCase
 
     /**
      * testIsSlashTerm method
-     *
-     * @return void
      */
     public function testIsSlashTerm()
     {
@@ -670,8 +633,6 @@ class FolderTest extends CakeTestCase
 
     /**
      * testStatic method
-     *
-     * @return void
      */
     public function testSlashTerm()
     {
@@ -681,8 +642,6 @@ class FolderTest extends CakeTestCase
 
     /**
      * testNormalizePath method
-     *
-     * @return void
      */
     public function testNormalizePath()
     {
@@ -701,8 +660,6 @@ class FolderTest extends CakeTestCase
 
     /**
      * correctSlashFor method
-     *
-     * @return void
      */
     public function testCorrectSlashFor()
     {
@@ -721,8 +678,6 @@ class FolderTest extends CakeTestCase
 
     /**
      * testInCakePath method
-     *
-     * @return void
      */
     public function testInCakePath()
     {
@@ -745,8 +700,6 @@ class FolderTest extends CakeTestCase
 
     /**
      * testFind method
-     *
-     * @return void
      */
     public function testFind()
     {
@@ -798,8 +751,6 @@ class FolderTest extends CakeTestCase
 
     /**
      * testFindRecursive method
-     *
-     * @return void
      */
     public function testFindRecursive()
     {
@@ -856,8 +807,6 @@ class FolderTest extends CakeTestCase
 
     /**
      * testConstructWithNonExistentPath method
-     *
-     * @return void
      */
     public function testConstructWithNonExistentPath()
     {
@@ -869,8 +818,6 @@ class FolderTest extends CakeTestCase
 
     /**
      * testDirSize method
-     *
-     * @return void
      */
     public function testDirSize()
     {
@@ -889,8 +836,6 @@ class FolderTest extends CakeTestCase
 
     /**
      * test that errors and messages can be resetted
-     *
-     * @return void
      */
     public function testReset()
     {
@@ -939,8 +884,6 @@ class FolderTest extends CakeTestCase
 
     /**
      * testDelete method
-     *
-     * @return void
      */
     public function testDelete()
     {
@@ -982,8 +925,6 @@ class FolderTest extends CakeTestCase
      *
      * Verify that subdirectories existing in both destination and source directory
      * are merged recursively.
-     *
-     * @return void
      */
     public function testCopy()
     {
@@ -1012,8 +953,6 @@ class FolderTest extends CakeTestCase
      *
      * Verify that subdirectories existing in both destination and source directory
      * are merged recursively.
-     *
-     * @return void
      */
     public function testCopyWithMerge()
     {
@@ -1044,8 +983,6 @@ class FolderTest extends CakeTestCase
      * even if the destination directory already exists.
      * Subdirectories existing in both destination and source directory
      * are skipped and not merged or overwritten.
-     *
-     * @return void
      */
     public function testCopyWithSkip()
     {
@@ -1087,8 +1024,6 @@ class FolderTest extends CakeTestCase
 
     /**
      * Test that SKIP mode skips files too.
-     *
-     * @return void
      */
     public function testCopyWithSkipFileSkipped()
     {
@@ -1113,8 +1048,6 @@ class FolderTest extends CakeTestCase
      *
      * Verify that subdirectories existing in both destination and source directory
      * are overwritten/replaced recursively.
-     *
-     * @return void
      */
     public function testCopyWithOverwrite()
     {
@@ -1204,8 +1137,6 @@ class FolderTest extends CakeTestCase
      * even if the destination directory already exists.
      * Subdirectories existing in both destination and source directory
      * are merged recursively.
-     *
-     * @return void
      */
     public function testMove()
     {
@@ -1273,8 +1204,6 @@ class FolderTest extends CakeTestCase
      * even if the destination directory already exists.
      * Subdirectories existing in both destination and source directory
      * are skipped and not merged or overwritten.
-     *
-     * @return void
      */
     public function testMoveWithSkip()
     {
@@ -1337,8 +1266,6 @@ class FolderTest extends CakeTestCase
      * testSortByTime method
      *
      * Verify that the order using modified time is correct.
-     *
-     * @return void
      */
     public function testSortByTime()
     {
@@ -1363,8 +1290,6 @@ class FolderTest extends CakeTestCase
      * testSortByTime2 method
      *
      * Verify that the sort order using modified time is correct.
-     *
-     * @return void
      */
     public function testSortByTime2()
     {
@@ -1392,8 +1317,6 @@ class FolderTest extends CakeTestCase
 
     /**
      * Verify that the sort order using name is correct.
-     *
-     * @return void
      */
     public function testSortByName()
     {

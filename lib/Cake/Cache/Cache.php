@@ -8,9 +8,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Cache
+ *
  * @since         CakePHP(tm) v 1.2.0.4933
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Inflector', 'Utility');
@@ -114,8 +118,11 @@ class Cache
      *
      * @param string $name Name of the configuration
      * @param array $settings Optional associative array of settings passed to the engine
-     * @return array array(engine, settings) on success, false on failure
+     *
      * @throws CacheException
+     *
+     * @return array array(engine, settings) on success, false on failure
+     *
      * @see app/Config/core.php for configuration settings
      */
     public static function config($name = null, $settings = [])
@@ -161,8 +168,10 @@ class Cache
      * Finds and builds the instance of the required engine class.
      *
      * @param string $name Name of the config array that needs an engine instance built
-     * @return bool
+     *
      * @throws CacheException
+     *
+     * @return bool
      */
     protected static function _buildEngine($name)
     {
@@ -211,6 +220,7 @@ class Cache
      * the Engine instance is also unset.
      *
      * @param string $name A currently configured cache config you wish to remove.
+     *
      * @return bool success of the removal, returns false when the config does not exist.
      */
     public static function drop($name)
@@ -244,6 +254,7 @@ class Cache
      * @param string|array $settings Optional string for simple name-value pair or array
      * @param string $value Optional for a simple name-value pair
      * @param string $config The configuration name you are changing. Defaults to 'default'
+     *
      * @return array Array of settings.
      */
     public static function set($settings = [], $value = null, $config = 'default')
@@ -284,6 +295,7 @@ class Cache
      *
      * @param string $config [optional] The config name you wish to have garbage collected. Defaults to 'default'
      * @param int $expires [optional] An expires timestamp. Defaults to NULL
+     *
      * @return bool
      */
     public static function gc($config = 'default', $expires = null)
@@ -307,6 +319,7 @@ class Cache
      * @param string $key Identifier for the data
      * @param mixed $value Data to be cached - anything except a resource
      * @param string $config Optional string configuration name to write to. Defaults to 'default'
+     *
      * @return bool True if the data was successfully cached, false on failure
      */
     public static function write($key, $value, $config = 'default')
@@ -358,6 +371,7 @@ class Cache
      *
      * @param string $key Identifier for the data
      * @param string $config optional name of the configuration to use. Defaults to 'default'
+     *
      * @return mixed The cached data, or false if the data doesn't exist, has expired, or if there was an error fetching it
      */
     public static function read($key, $config = 'default')
@@ -384,6 +398,7 @@ class Cache
      * @param string $key Identifier for the data
      * @param int $offset How much to add
      * @param string $config Optional string configuration name. Defaults to 'default'
+     *
      * @return mixed new value, or false if the data doesn't exist, is not integer,
      *    or if there was an error fetching it.
      */
@@ -414,6 +429,7 @@ class Cache
      * @param string $key Identifier for the data
      * @param int $offset How much to subtract
      * @param string $config Optional string configuration name. Defaults to 'default'
+     *
      * @return mixed new value, or false if the data doesn't exist, is not integer,
      *   or if there was an error fetching it
      */
@@ -453,6 +469,7 @@ class Cache
      *
      * @param string $key Identifier for the data
      * @param string $config name of the configuration to use. Defaults to 'default'
+     *
      * @return bool True if the value was successfully deleted, false if it didn't exist or couldn't be removed
      */
     public static function delete($key, $config = 'default')
@@ -481,6 +498,7 @@ class Cache
      *
      * @param bool $check if true will check expiration, otherwise delete all
      * @param string $config name of the configuration to use. Defaults to 'default'
+     *
      * @return bool True if the cache was successfully cleared, false otherwise
      */
     public static function clear($check = false, $config = 'default')
@@ -499,6 +517,7 @@ class Cache
      *
      * @param string $group name of the group to be cleared
      * @param string $config name of the configuration to use. Defaults to 'default'
+     *
      * @return bool True if the cache group was successfully cleared, false otherwise
      */
     public static function clearGroup($group, $config = 'default')
@@ -516,6 +535,7 @@ class Cache
      * Check if Cache has initialized a working config for the given name.
      *
      * @param string $config name of the configuration to use. Defaults to 'default'
+     *
      * @return bool Whether or not the config name has been initialized.
      */
     public static function isInitialized($config = 'default')
@@ -531,7 +551,9 @@ class Cache
      * Return the settings for the named cache engine.
      *
      * @param string $name Name of the configuration to get settings for. Defaults to 'default'
+     *
      * @return array list of settings for this engine
+     *
      * @see Cache::config()
      */
     public static function settings($name = 'default')
@@ -559,8 +581,10 @@ class Cache
      * $config will equal to `array('posts' => array('daily', 'weekly'))`
      *
      * @param string $group group name or null to retrieve all group mappings
-     * @return array map of group and all configuration that has the same group
+     *
      * @throws CacheException
+     *
+     * @return array map of group and all configuration that has the same group
      */
     public static function groupConfigs($group = null)
     {
@@ -597,6 +621,7 @@ class Cache
      *   the cache key is empty. Can be any callable type supported by your PHP.
      * @param string $config The cache configuration to use for this operation.
      *   Defaults to default.
+     *
      * @return mixed The results of the callable or unserialized results.
      */
     public static function remember($key, $callable, $config = 'default')
@@ -627,6 +652,7 @@ class Cache
      * @param string $key Identifier for the data.
      * @param mixed $value Data to be cached - anything except a resource.
      * @param string $config Optional string configuration name to write to. Defaults to 'default'.
+     *
      * @return bool True if the data was successfully cached, false on failure.
      *   Or if the key existed already.
      */
@@ -656,6 +682,7 @@ class Cache
      * Fetch the engine attached to a specific configuration name.
      *
      * @param string $config Optional string configuration name to get an engine for. Defaults to 'default'.
+     *
      * @return null|CacheEngine Null if the engine has not been initialized or the engine.
      */
     public static function engine($config = 'default')

@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.View.Helper
+ *
  * @since         CakePHP(tm) v 1.2.0.4206
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('View', 'View');
@@ -54,8 +58,6 @@ class TextHelperTest extends CakeTestCase
 {
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -66,8 +68,6 @@ class TextHelperTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -77,8 +77,6 @@ class TextHelperTest extends CakeTestCase
 
     /**
      * test String class methods are called correctly
-     *
-     * @return void
      */
     public function testTextHelperProxyMethodCalls()
     {
@@ -96,8 +94,6 @@ class TextHelperTest extends CakeTestCase
 
     /**
      * test engine override
-     *
-     * @return void
      */
     public function testEngineOverride()
     {
@@ -118,8 +114,6 @@ class TextHelperTest extends CakeTestCase
 
     /**
      * testAutoLink method
-     *
-     * @return void
      */
     public function testAutoLink()
     {
@@ -189,8 +183,6 @@ class TextHelperTest extends CakeTestCase
 
     /**
      * Test mixing URLs and Email addresses in one confusing string.
-     *
-     * @return void
      */
     public function testAutoLinkMixed()
     {
@@ -203,8 +195,6 @@ class TextHelperTest extends CakeTestCase
 
     /**
      * test autoLink() and options.
-     *
-     * @return void
      */
     public function testAutoLinkOptions()
     {
@@ -221,8 +211,6 @@ class TextHelperTest extends CakeTestCase
 
     /**
      * Test escaping for autoLink
-     *
-     * @return void
      */
     public function testAutoLinkEscape()
     {
@@ -327,7 +315,6 @@ class TextHelperTest extends CakeTestCase
      * testAutoLinkUrls method
      *
      * @dataProvider autoLinkProvider
-     * @return void
      */
     public function testAutoLinkUrls($text, $expected)
     {
@@ -337,8 +324,6 @@ class TextHelperTest extends CakeTestCase
 
     /**
      * Test the options for autoLinkUrls
-     *
-     * @return void
      */
     public function testAutoLinkUrlsOptions()
     {
@@ -355,8 +340,6 @@ class TextHelperTest extends CakeTestCase
 
     /**
      * Test autoLinkUrls with the escape option.
-     *
-     * @return void
      */
     public function testAutoLinkUrlsEscape()
     {
@@ -408,8 +391,6 @@ class TextHelperTest extends CakeTestCase
 
     /**
      * Test autoLinkUrls with query strings.
-     *
-     * @return void
      */
     public function testAutoLinkUrlsQueryString()
     {
@@ -421,8 +402,6 @@ class TextHelperTest extends CakeTestCase
 
     /**
      * Data provider for autoLinkEmail.
-     *
-     * @return void
      */
     public function autoLinkEmailProvider()
     {
@@ -493,7 +472,6 @@ class TextHelperTest extends CakeTestCase
      * @param string $text The text to link
      * @param string $expected The expected results.
      * @dataProvider autoLinkEmailProvider
-     * @return void
      */
     public function testAutoLinkEmails($text, $expected, $attrs = [])
     {
@@ -503,8 +481,6 @@ class TextHelperTest extends CakeTestCase
 
     /**
      * test invalid email addresses.
-     *
-     * @return void
      */
     public function testAutoLinkEmailInvalid()
     {
@@ -515,8 +491,6 @@ class TextHelperTest extends CakeTestCase
 
     /**
      * testAutoParagraph method
-     *
-     * @return void
      */
     public function testAutoParagraph()
     {

@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Utility
+ *
  * @since         CakePHP(tm) v 1.2.0.4206
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Set', 'Utility');
@@ -27,8 +31,6 @@ class SetTest extends CakeTestCase
 {
     /**
      * testNumericKeyExtraction method
-     *
-     * @return void
      */
     public function testNumericKeyExtraction()
     {
@@ -39,8 +41,6 @@ class SetTest extends CakeTestCase
 
     /**
      * testEnum method
-     *
-     * @return void
      */
     public function testEnum()
     {
@@ -82,7 +82,6 @@ class SetTest extends CakeTestCase
      * testFilter method
      *
      * @see Hash test cases, as Set::filter() is just a proxy.
-     * @return void
      */
     public function testFilter()
     {
@@ -95,7 +94,6 @@ class SetTest extends CakeTestCase
      * testNumericArrayCheck method
      *
      * @see Hash test cases, as Set::numeric() is just a proxy.
-     * @return void
      */
     public function testNumericArrayCheck()
     {
@@ -105,8 +103,6 @@ class SetTest extends CakeTestCase
 
     /**
      * testKeyCheck method
-     *
-     * @return void
      */
     public function testKeyCheck()
     {
@@ -143,8 +139,6 @@ class SetTest extends CakeTestCase
 
     /**
      * testMerge method
-     *
-     * @return void
      */
     public function testMerge()
     {
@@ -226,8 +220,6 @@ class SetTest extends CakeTestCase
 
     /**
      * testSort method
-     *
-     * @return void
      */
     public function testSort()
     {
@@ -343,8 +335,6 @@ class SetTest extends CakeTestCase
 
     /**
      * test sorting with string keys.
-     *
-     * @return void
      */
     public function testSortString()
     {
@@ -368,8 +358,6 @@ class SetTest extends CakeTestCase
 
     /**
      * test sorting with out of order keys.
-     *
-     * @return void
      */
     public function testSortWithOutOfOrderKeys()
     {
@@ -396,8 +384,6 @@ class SetTest extends CakeTestCase
 
     /**
      * testExtract method
-     *
-     * @return void
      */
     public function testExtract()
     {
@@ -1016,8 +1002,6 @@ class SetTest extends CakeTestCase
 
     /**
      * test parent selectors with extract
-     *
-     * @return void
      */
     public function testExtractParentSelector()
     {
@@ -1193,8 +1177,6 @@ class SetTest extends CakeTestCase
 
     /**
      * test that extract() still works when arrays don't contain a 0 index.
-     *
-     * @return void
      */
     public function testExtractWithNonZeroArrays()
     {
@@ -1299,8 +1281,6 @@ class SetTest extends CakeTestCase
 
     /**
      * testExtractWithArrays method
-     *
-     * @return void
      */
     public function testExtractWithArrays()
     {
@@ -1316,8 +1296,6 @@ class SetTest extends CakeTestCase
 
     /**
      * test extract() with elements that have non-array children.
-     *
-     * @return void
      */
     public function testExtractWithNonArrayElements()
     {
@@ -1365,8 +1343,6 @@ class SetTest extends CakeTestCase
 
     /**
      * Test that extract() + matching can hit null things.
-     *
-     * @return void
      */
     public function testExtractMatchesNull()
     {
@@ -1395,8 +1371,6 @@ class SetTest extends CakeTestCase
 
     /**
      * testMatches method
-     *
-     * @return void
      */
     public function testMatches()
     {
@@ -1466,8 +1440,6 @@ class SetTest extends CakeTestCase
 
     /**
      * testSetExtractReturnsEmptyArray method
-     *
-     * @return void
      */
     public function testSetExtractReturnsEmptyArray()
     {
@@ -1485,8 +1457,6 @@ class SetTest extends CakeTestCase
 
     /**
      * testClassicExtract method
-     *
-     * @return void
      */
     public function testClassicExtract()
     {
@@ -1668,8 +1638,6 @@ class SetTest extends CakeTestCase
 
     /**
      * test classicExtract with keys that exceed 32bit max int.
-     *
-     * @return void
      */
     public function testClassicExtractMaxInt()
     {
@@ -1685,7 +1653,6 @@ class SetTest extends CakeTestCase
      * testInsert method
      *
      * @see Hash tests, as Set::insert() is just a proxy.
-     * @return void
      */
     public function testInsert()
     {
@@ -1703,8 +1670,6 @@ class SetTest extends CakeTestCase
 
     /**
      * testRemove method
-     *
-     * @return void
      */
     public function testRemove()
     {
@@ -1722,8 +1687,6 @@ class SetTest extends CakeTestCase
 
     /**
      * testCheck method
-     *
-     * @return void
      */
     public function testCheck()
     {
@@ -1745,8 +1708,6 @@ class SetTest extends CakeTestCase
 
     /**
      * testWritingWithFunkyKeys method
-     *
-     * @return void
      */
     public function testWritingWithFunkyKeys()
     {
@@ -1763,8 +1724,6 @@ class SetTest extends CakeTestCase
 
     /**
      * testDiff method
-     *
-     * @return void
      */
     public function testDiff()
     {
@@ -1846,8 +1805,6 @@ class SetTest extends CakeTestCase
 
     /**
      * testContains method
-     *
-     * @return void
      */
     public function testContains()
     {
@@ -1869,8 +1826,6 @@ class SetTest extends CakeTestCase
 
     /**
      * testCombine method
-     *
-     * @return void
      */
     public function testCombine()
     {
@@ -2005,8 +1960,6 @@ class SetTest extends CakeTestCase
 
     /**
      * testMapReverse method
-     *
-     * @return void
      */
     public function testMapReverse()
     {
@@ -2241,8 +2194,6 @@ class SetTest extends CakeTestCase
 
     /**
      * testFormatting method
-     *
-     * @return void
      */
     public function testFormatting()
     {
@@ -2289,8 +2240,6 @@ class SetTest extends CakeTestCase
 
     /**
      * testFormattingNullValues method
-     *
-     * @return void
      */
     public function testFormattingNullValues()
     {
@@ -2310,8 +2259,6 @@ class SetTest extends CakeTestCase
 
     /**
      * testCountDim method
-     *
-     * @return void
      */
     public function testCountDim()
     {
@@ -2365,8 +2312,6 @@ class SetTest extends CakeTestCase
 
     /**
      * testMapNesting method
-     *
-     * @return void
      */
     public function testMapNesting()
     {
@@ -2492,8 +2437,6 @@ class SetTest extends CakeTestCase
 
     /**
      * testNestedMappedData method
-     *
-     * @return void
      */
     public function testNestedMappedData()
     {
@@ -2748,8 +2691,6 @@ class SetTest extends CakeTestCase
 
     /**
      * testPushDiff method
-     *
-     * @return void
      */
     public function testPushDiff()
     {
@@ -2794,7 +2735,6 @@ class SetTest extends CakeTestCase
 
     /**
      * testSetApply method
-     * @return void
      */
     public function testApply()
     {
@@ -2831,8 +2771,6 @@ class SetTest extends CakeTestCase
 
     /**
      * Helper method to test Set::apply()
-     *
-     * @return void
      */
     public static function method($val1, $val2)
     {
@@ -2843,8 +2781,6 @@ class SetTest extends CakeTestCase
 
     /**
      * testXmlSetReverse method
-     *
-     * @return void
      */
     public function testXmlSetReverse()
     {
@@ -3086,8 +3022,6 @@ class SetTest extends CakeTestCase
 
     /**
      * testStrictKeyCheck method
-     *
-     * @return void
      */
     public function testStrictKeyCheck()
     {
@@ -3099,7 +3033,6 @@ class SetTest extends CakeTestCase
      * Tests Set::flatten
      *
      * @see Hash test cases, as Set::flatten() is just a proxy.
-     * @return void
      */
     public function testFlatten()
     {
@@ -3129,8 +3062,6 @@ class SetTest extends CakeTestCase
 
     /**
      * Tests Set::expand
-     *
-     * @return void
      */
     public function testExpand()
     {
@@ -3142,8 +3073,6 @@ class SetTest extends CakeTestCase
 
     /**
      * test normalization
-     *
-     * @return void
      */
     public function testNormalizeStrings()
     {
@@ -3162,8 +3091,6 @@ class SetTest extends CakeTestCase
 
     /**
      * test normalizing arrays
-     *
-     * @return void
      */
     public function testNormalizeArrays()
     {
@@ -3191,8 +3118,6 @@ class SetTest extends CakeTestCase
     /**
      * test Set nest with a normal model result set. For kicks rely on Set nest detecting the key names
      * automatically
-     *
-     * @return void
      */
     public function testNestModel()
     {
@@ -3339,8 +3264,6 @@ class SetTest extends CakeTestCase
 
     /**
      * test Set nest with a normal model result set, and a nominated root id
-     *
-     * @return void
      */
     public function testNestModelExplicitRoot()
     {
@@ -3450,8 +3373,6 @@ class SetTest extends CakeTestCase
 
     /**
      * test Set nest with a 1d array - this method should be able to handle any type of array input
-     *
-     * @return void
      */
     public function testNest1Dimensional()
     {
@@ -3561,8 +3482,6 @@ class SetTest extends CakeTestCase
      *
      * The result should be the same as the input.
      * For an easier comparison, unset all the empty children arrays from the result
-     *
-     * @return void
      */
     public function testMissingParent()
     {

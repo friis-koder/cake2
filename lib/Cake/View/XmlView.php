@@ -8,7 +8,9 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('View', 'View');
@@ -48,6 +50,7 @@ App::uses('Hash', 'Utility');
  * views to provide layout like functionality.
  *
  * @package       Cake.View
+ *
  * @since         CakePHP(tm) v 2.1.0
  */
 class XmlView extends View
@@ -75,8 +78,6 @@ class XmlView extends View
 
     /**
      * Skip loading helpers if this is a _serialize based view.
-     *
-     * @return void
      */
     public function loadHelpers()
     {
@@ -96,6 +97,7 @@ class XmlView extends View
      *
      * @param string $view The view being rendered.
      * @param string $layout The layout being rendered.
+     *
      * @return string The rendered view.
      */
     public function render($view = null, $layout = null)
@@ -116,6 +118,7 @@ class XmlView extends View
      *   'format' as 'attributes' instead of 'tags'.
      *
      * @param array $serialize The viewVars that need to be serialized.
+     *
      * @return string The serialized data
      */
     protected function _serialize($serialize)

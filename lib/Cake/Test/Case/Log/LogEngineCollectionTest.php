@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Log
+ *
  * @since         CakePHP(tm) v 2.4
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('LogEngineCollection', 'Log');
@@ -36,8 +40,6 @@ class LogEngineCollectionTest extends CakeTestCase
 
     /**
      * Start test callback
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -48,8 +50,6 @@ class LogEngineCollectionTest extends CakeTestCase
 
     /**
      * test load
-     *
-     * @return void
      */
     public function testLoad()
     {
@@ -59,8 +59,6 @@ class LogEngineCollectionTest extends CakeTestCase
 
     /**
      * test load with deprecated Log suffix
-     *
-     * @return void
      */
     public function testLoadWithSuffix()
     {
@@ -70,8 +68,6 @@ class LogEngineCollectionTest extends CakeTestCase
 
     /**
      * test that engines starting with Log also work properly
-     *
-     * @return void
      */
     public function testLoadWithSuffixAtBeginning()
     {
@@ -82,7 +78,6 @@ class LogEngineCollectionTest extends CakeTestCase
     /**
      * test load with invalid Log
      *
-     * @return void
      * @expectedException CakeLogException
      */
     public function testLoadInvalid()

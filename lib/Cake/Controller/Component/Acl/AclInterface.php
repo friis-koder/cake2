@@ -8,9 +8,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Controller.Component.Acl
+ *
  * @since         CakePHP(tm) v 0.10.0.1076
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -28,6 +32,7 @@ interface AclInterface
      * @param string $aro ARO The requesting object identifier.
      * @param string $aco ACO The controlled object identifier.
      * @param string $action Action (defaults to *)
+     *
      * @return bool Success
      */
     public function check($aro, $aco, $action = '*');
@@ -38,6 +43,7 @@ interface AclInterface
      * @param string $aro ARO The requesting object identifier.
      * @param string $aco ACO The controlled object identifier.
      * @param string $action Action (defaults to *)
+     *
      * @return bool Success
      */
     public function allow($aro, $aco, $action = '*');
@@ -48,6 +54,7 @@ interface AclInterface
      * @param string $aro ARO The requesting object identifier.
      * @param string $aco ACO The controlled object identifier.
      * @param string $action Action (defaults to *)
+     *
      * @return bool Success
      */
     public function deny($aro, $aco, $action = '*');
@@ -58,6 +65,7 @@ interface AclInterface
      * @param string $aro ARO The requesting object identifier.
      * @param string $aco ACO The controlled object identifier.
      * @param string $action Action (defaults to *)
+     *
      * @return bool Success
      */
     public function inherit($aro, $aco, $action = '*');
@@ -66,7 +74,6 @@ interface AclInterface
      * Initialization method for the Acl implementation
      *
      * @param Component $component The AclComponent instance.
-     * @return void
      */
     public function initialize(Component $component);
 }

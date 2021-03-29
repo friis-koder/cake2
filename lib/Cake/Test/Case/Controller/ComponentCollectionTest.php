@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Controller
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('CakeResponse', 'Network');
@@ -31,8 +35,6 @@ class ComponentCollectionTest extends CakeTestCase
 {
     /**
      * setUp
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -42,8 +44,6 @@ class ComponentCollectionTest extends CakeTestCase
 
     /**
      * tearDown
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -53,8 +53,6 @@ class ComponentCollectionTest extends CakeTestCase
 
     /**
      * test triggering callbacks on loaded helpers
-     *
-     * @return void
      */
     public function testLoad()
     {
@@ -73,8 +71,6 @@ class ComponentCollectionTest extends CakeTestCase
 
     /**
      * Tests loading as an alias
-     *
-     * @return void
      */
     public function testLoadWithAlias()
     {
@@ -105,8 +101,6 @@ class ComponentCollectionTest extends CakeTestCase
 
     /**
      * test load and enable = false
-     *
-     * @return void
      */
     public function testLoadWithEnableFalse()
     {
@@ -121,7 +115,6 @@ class ComponentCollectionTest extends CakeTestCase
      * test missingcomponent exception
      *
      * @expectedException MissingComponentException
-     * @return void
      */
     public function testLoadMissingComponent()
     {
@@ -130,8 +123,6 @@ class ComponentCollectionTest extends CakeTestCase
 
     /**
      * test loading a plugin component.
-     *
-     * @return void
      */
     public function testLoadPluginComponent()
     {
@@ -148,8 +139,6 @@ class ComponentCollectionTest extends CakeTestCase
 
     /**
      * test unload()
-     *
-     * @return void
      */
     public function testUnload()
     {
@@ -172,8 +161,6 @@ class ComponentCollectionTest extends CakeTestCase
 
     /**
      * test getting the controller out of the collection
-     *
-     * @return void
      */
     public function testGetController()
     {

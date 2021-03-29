@@ -8,9 +8,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.View.Helper
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('AppHelper', 'View/Helper');
@@ -59,6 +63,7 @@ abstract class JsBaseEngineHelper extends AppHelper
      * Create an `alert()` message in JavaScript
      *
      * @param string $message Message you want to alter.
+     *
      * @return string completed alert()
      */
     public function alert($message)
@@ -71,6 +76,7 @@ abstract class JsBaseEngineHelper extends AppHelper
      * that can be used to trigger 'redirects' from JavaScript.
      *
      * @param string|array $url URL
+     *
      * @return string completed redirect in javascript
      */
     public function redirect($url = null)
@@ -82,6 +88,7 @@ abstract class JsBaseEngineHelper extends AppHelper
      * Create a `confirm()` message
      *
      * @param string $message Message you want confirmed.
+     *
      * @return string completed confirm()
      */
     public function confirm($message)
@@ -94,6 +101,7 @@ abstract class JsBaseEngineHelper extends AppHelper
      * function scope.
      *
      * @param string $message Message to use in the confirm dialog.
+     *
      * @return string completed confirm with return script
      */
     public function confirmReturn($message)
@@ -109,6 +117,7 @@ abstract class JsBaseEngineHelper extends AppHelper
      *
      * @param string $message Message you want to prompt.
      * @param string $default Default message
+     *
      * @return string completed prompt()
      */
     public function prompt($message, $default = '')
@@ -127,6 +136,7 @@ abstract class JsBaseEngineHelper extends AppHelper
      *
      * @param array $data Data to be converted.
      * @param array $options Set of options, see above.
+     *
      * @return string A JSON code block
      */
     public function object($data = [], $options = [])
@@ -145,6 +155,7 @@ abstract class JsBaseEngineHelper extends AppHelper
      * @param mixed $val A PHP variable to be converted to JSON
      * @param bool $quoteString If false, leaves string values unquoted
      * @param string $key Key name.
+     *
      * @return string a JavaScript-safe/JSON representation of $val
      */
     public function value($val = [], $quoteString = null, $key = 'value')
@@ -193,6 +204,7 @@ abstract class JsBaseEngineHelper extends AppHelper
      * - '"' => '\"'
      *
      * @param string $string String that needs to get escaped.
+     *
      * @return string Escaped string.
      */
     public function escape($string)
@@ -204,7 +216,6 @@ abstract class JsBaseEngineHelper extends AppHelper
      * Encode a string into JSON. Converts and escapes necessary characters.
      *
      * @param string $string The string that needs to be utf8->hex encoded
-     * @return void
      */
     protected function _utf8ToHex($string)
     {
@@ -318,6 +329,7 @@ abstract class JsBaseEngineHelper extends AppHelper
      * Create javascript selector for a CSS rule
      *
      * @param string $selector The selector that is targeted
+     *
      * @return self instance of $this. Allows chained methods.
      */
     abstract public function get($selector);
@@ -333,6 +345,7 @@ abstract class JsBaseEngineHelper extends AppHelper
      * @param string $type Type of event to bind to the current dom id
      * @param string $callback The JavaScript function you wish to trigger or the function literal
      * @param array $options Options for the event.
+     *
      * @return string completed event handler
      */
     abstract public function event($type, $callback, $options = []);
@@ -341,6 +354,7 @@ abstract class JsBaseEngineHelper extends AppHelper
      * Create a domReady event. This is a special event in many libraries
      *
      * @param string $functionBody The code to run on domReady
+     *
      * @return string completed domReady method
      */
     abstract public function domReady($functionBody);
@@ -349,6 +363,7 @@ abstract class JsBaseEngineHelper extends AppHelper
      * Create an iteration over the current selection result.
      *
      * @param string $callback The function body you wish to apply during the iteration.
+     *
      * @return string completed iteration
      */
     abstract public function each($callback);
@@ -374,6 +389,7 @@ abstract class JsBaseEngineHelper extends AppHelper
      *
      * @param string $name The name of the effect to trigger.
      * @param array $options Array of options for the effect.
+     *
      * @return string completed string with effect.
      */
     abstract public function effect($name, $options = []);
@@ -401,6 +417,7 @@ abstract class JsBaseEngineHelper extends AppHelper
      *
      * @param string|array $url Array or String URL to target with the request.
      * @param array $options Array of options. See above for cross library supported options
+     *
      * @return string XHR request.
      */
     abstract public function request($url, $options = []);
@@ -422,6 +439,7 @@ abstract class JsBaseEngineHelper extends AppHelper
      * - `stop` - Event fired when dragging stops (mouse release)
      *
      * @param array $options Options array see above.
+     *
      * @return string Completed drag script
      */
     abstract public function drag($options = []);
@@ -442,6 +460,7 @@ abstract class JsBaseEngineHelper extends AppHelper
      * - `leave` - Event fired when a drag is removed from a drop zone without being dropped.
      *
      * @param array $options Array of options for the drop. See above.
+     *
      * @return string Completed drop script
      */
     abstract public function drop($options = []);
@@ -465,6 +484,7 @@ abstract class JsBaseEngineHelper extends AppHelper
      * - `complete` - Event fired when sorting completes.
      *
      * @param array $options Array of options for the sortable. See above.
+     *
      * @return string Completed sortable script.
      */
     abstract public function sortable($options = []);
@@ -488,6 +508,7 @@ abstract class JsBaseEngineHelper extends AppHelper
      * - `complete` - Fired when the user stops sliding the handle
      *
      * @param array $options Array of options for the slider. See above.
+     *
      * @return string Completed slider script
      */
     abstract public function slider($options = []);
@@ -504,6 +525,7 @@ abstract class JsBaseEngineHelper extends AppHelper
      * - `inline` - is the rendered statement going to be used inside another JS statement? (defaults to false)
      *
      * @param array $options options for serialization generation.
+     *
      * @return string completed form serialization script
      */
     abstract public function serializeForm($options = []);
@@ -515,6 +537,7 @@ abstract class JsBaseEngineHelper extends AppHelper
      *
      * @param array $options Options to be converted
      * @param array $safeKeys Keys that should not be escaped.
+     *
      * @return string Parsed JSON options without enclosing { }.
      */
     protected function _parseOptions($options, $safeKeys = [])
@@ -538,6 +561,7 @@ abstract class JsBaseEngineHelper extends AppHelper
      *
      * @param string $method Name of method whose options are being worked with.
      * @param array $options Array of options to map.
+     *
      * @return array Array of mapped options.
      */
     protected function _mapOptions($method, $options)
@@ -562,6 +586,7 @@ abstract class JsBaseEngineHelper extends AppHelper
      * @param string $method Name of the method you are preparing callbacks for.
      * @param array $options Array of options being parsed
      * @param array $callbacks Additional Keys that contain callbacks
+     *
      * @return array Array of options with callbacks added.
      */
     protected function _prepareCallbacks($method, $options, $callbacks = [])
@@ -600,6 +625,7 @@ abstract class JsBaseEngineHelper extends AppHelper
      *
      * @param string $method Name of method processing options for.
      * @param array $options Array of options to process.
+     *
      * @return string Parsed options string.
      */
     protected function _processOptions($method, $options)
@@ -615,6 +641,7 @@ abstract class JsBaseEngineHelper extends AppHelper
      * Convert an array of data into a query string
      *
      * @param array $parameters Array of parameters to convert to a query string
+     *
      * @return string Querystring fragment
      */
     protected function _toQuerystring($parameters)

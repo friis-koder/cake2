@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Cache.Engine
+ *
  * @since         CakePHP(tm) v 2.2
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -51,6 +55,7 @@ class RedisEngine extends CacheEngine
      * To reinitialize the settings call Cache::engine('EngineName', [optional] settings = array());
      *
      * @param array $settings array of setting for the engine
+     *
      * @return bool True if the engine has been successfully initialized, false if not
      */
     public function init($settings = [])
@@ -111,6 +116,7 @@ class RedisEngine extends CacheEngine
      * @param string $key Identifier for the data
      * @param mixed $value Data to be cached
      * @param int $duration How long to cache the data, in seconds
+     *
      * @return bool True if the data was successfully cached, false on failure
      */
     public function write($key, $value, $duration)
@@ -134,6 +140,7 @@ class RedisEngine extends CacheEngine
      * Read a key from the cache
      *
      * @param string $key Identifier for the data
+     *
      * @return mixed The cached data, or false if the data doesn't exist, has expired, or if there was an error fetching it
      */
     public function read($key)
@@ -154,8 +161,10 @@ class RedisEngine extends CacheEngine
      *
      * @param string $key Identifier for the data
      * @param int $offset How much to increment
-     * @return New incremented value, false otherwise
+     *
      * @throws CacheException when you try to increment with compress = true
+     *
+     * @return New incremented value, false otherwise
      */
     public function increment($key, $offset = 1)
     {
@@ -167,8 +176,10 @@ class RedisEngine extends CacheEngine
      *
      * @param string $key Identifier for the data
      * @param int $offset How much to subtract
-     * @return New decremented value, false otherwise
+     *
      * @throws CacheException when you try to decrement with compress = true
+     *
+     * @return New decremented value, false otherwise
      */
     public function decrement($key, $offset = 1)
     {
@@ -179,6 +190,7 @@ class RedisEngine extends CacheEngine
      * Delete a key from the cache
      *
      * @param string $key Identifier for the data
+     *
      * @return bool True if the value was successfully deleted, false if it didn't exist or couldn't be removed
      */
     public function delete($key)
@@ -191,6 +203,7 @@ class RedisEngine extends CacheEngine
      *
      * @param bool $check Whether or not expiration keys should be checked. If
      *   true, no keys will be removed as cache will rely on redis TTL's.
+     *
      * @return bool True if the cache was successfully cleared, false otherwise
      */
     public function clear($check)
@@ -231,6 +244,7 @@ class RedisEngine extends CacheEngine
      * old values will remain in storage until they expire.
      *
      * @param string $group The group name to clear.
+     *
      * @return bool success
      */
     public function clearGroup($group)
@@ -255,7 +269,9 @@ class RedisEngine extends CacheEngine
      * @param string $key Identifier for the data.
      * @param mixed $value Data to be cached.
      * @param int $duration How long to cache the data, in seconds.
+     *
      * @return bool True if the data was successfully cached, false on failure.
+     *
      * @link https://github.com/phpredis/phpredis#setnx
      */
     public function add($key, $value, $duration)

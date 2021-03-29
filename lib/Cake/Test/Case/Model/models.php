@@ -12,9 +12,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Model
+ *
  * @since         CakePHP(tm) v 1.2.0.6464
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Model', 'Model');
@@ -169,7 +173,6 @@ class TestValidate extends CakeTestModel
      *
      * @param mixed $value
      * @param mixed $options
-     * @return void
      */
     public function validateNumber($value, $options)
     {
@@ -183,7 +186,6 @@ class TestValidate extends CakeTestModel
      * validateTitle method
      *
      * @param mixed $value
-     * @return void
      */
     public function validateTitle($value)
     {
@@ -215,8 +217,9 @@ class User extends CakeTestModel
     /**
      * beforeFind() callback used to run ContainableBehaviorTest::testLazyLoad()
      *
-     * @return bool
      * @throws Exception
+     *
+     * @return bool
      */
     public function beforeFind($queryData)
     {
@@ -285,8 +288,6 @@ class Article extends CakeTestModel
 
     /**
      * beforeSave method
-     *
-     * @return void
      */
     public function beforeSave($options = [])
     {
@@ -297,7 +298,6 @@ class Article extends CakeTestModel
      * titleDuplicate method
      *
      * @param string $title
-     * @return void
      */
     public static function titleDuplicate($title)
     {
@@ -313,6 +313,7 @@ class Article extends CakeTestModel
  * Model stub for beforeDelete testing
  *
  * @see #250
+ *
  * @package       Cake.Test.Case.Model
  */
 class BeforeDeleteComment extends CakeTestModel
@@ -564,8 +565,6 @@ class ModifiedComment extends CakeTestModel
 
     /**
      * afterFind callback
-     *
-     * @return void
      */
     public function afterFind($results, $primary = false)
     {
@@ -610,8 +609,6 @@ class AgainModifiedComment extends CakeTestModel
 
     /**
      * afterFind callback
-     *
-     * @return void
      */
     public function afterFind($results, $primary = false)
     {
@@ -733,8 +730,6 @@ class ModifiedAttachment extends CakeTestModel
 
     /**
      * afterFind callback
-     *
-     * @return void
      */
     public function afterFind($results, $primary = false)
     {
@@ -943,6 +938,7 @@ class Post extends CakeTestModel
 
     /**
      * @param array $queryData
+     *
      * @return bool true
      */
     public function beforeFind($queryData)
@@ -957,6 +953,7 @@ class Post extends CakeTestModel
     /**
      * @param array $results
      * @param bool $primary
+     *
      * @return array results
      */
     public function afterFind($results, $primary = false)
@@ -992,7 +989,6 @@ class Author extends CakeTestModel
      * afterFind method
      *
      * @param array $results
-     * @return void
      */
     public function afterFind($results, $primary = false)
     {
@@ -1020,7 +1016,6 @@ class ModifiedAuthor extends Author
      * afterFind method
      *
      * @param array $results
-     * @return void
      */
     public function afterFind($results, $primary = false)
     {
@@ -1242,6 +1237,7 @@ class NodeAfterFind extends CakeTestModel
      * afterFind method
      *
      * @param mixed $results
+     *
      * @return array
      */
     public function afterFind($results, $primary = false)
@@ -1531,6 +1527,7 @@ class SomethingElse extends CakeTestModel
      *
      * @param array $results
      * @param bool $primary
+     *
      * @return array
      */
     public function afterFind($results, $primary = false)
@@ -1571,6 +1568,7 @@ class JoinThing extends CakeTestModel
      *
      * @param array $results
      * @param bool $primary
+     *
      * @return array
      */
     public function afterFind($results, $primary = false)
@@ -2101,7 +2099,9 @@ class CallbackPostTestModel extends CakeTestModel
      * beforeValidate callback
      *
      * @param array $options Options passed from Model::save().
+     *
      * @return bool True if validate operation should continue, false to abort
+     *
      * @see Model::save()
      */
     public function beforeValidate($options = [])
@@ -2234,7 +2234,6 @@ class ValidationTest1 extends CakeTestModel
      * customValidationMethod method
      *
      * @param mixed $data
-     * @return void
      */
     public function customValidationMethod($data)
     {
@@ -2266,8 +2265,6 @@ class ValidationTest1 extends CakeTestModel
 
     /**
      * Test validation with many parameters
-     *
-     * @return void
      */
     public function customValidatorWithSixParams($data, $one = 1, $two = 2, $three = 3, $four = 4, $five = 5, $six = 6)
     {
@@ -2318,7 +2315,6 @@ class ValidationTest2 extends CakeTestModel
      * customValidationMethod method
      *
      * @param mixed $data
-     * @return void
      */
     public function customValidationMethod($data)
     {
@@ -2327,8 +2323,6 @@ class ValidationTest2 extends CakeTestModel
 
     /**
      * schema method
-     *
-     * @return void
      */
     public function schema($field = false)
     {
@@ -2630,7 +2624,6 @@ class NumberTree extends CakeTestModel
      * @param mixed $parent_id
      * @param string $prefix
      * @param bool $hierarchal
-     * @return void
      */
     public function initialize($levelLimit = 3, $childLimit = 3, $currentLevel = null, $parentId = null, $prefix = '1', $hierarchal = true)
     {
@@ -2814,7 +2807,6 @@ class AfterTree extends NumberTree
     /**
      * @param bool $created
      * @param array $options
-     * @return void
      */
     public function afterSave($created, $options = [])
     {
@@ -3729,7 +3721,6 @@ class TestModel extends CakeTestModel
      * @param mixed $fields
      * @param mixed $order
      * @param mixed $recursive
-     * @return void
      */
     public function find($conditions = null, $fields = null, $order = null, $recursive = null)
     {
@@ -3743,7 +3734,6 @@ class TestModel extends CakeTestModel
      * @param mixed $fields
      * @param mixed $order
      * @param mixed $recursive
-     * @return void
      */
     public function findAll($conditions = null, $fields = null, $order = null, $recursive = null)
     {
@@ -3862,8 +3852,6 @@ class TestModel4 extends CakeTestModel
 
     /**
      * schema method
-     *
-     * @return void
      */
     public function schema($field = false)
     {
@@ -3910,8 +3898,6 @@ class TestModel4TestModel7 extends CakeTestModel
 
     /**
      * schema method
-     *
-     * @return void
      */
     public function schema($field = false)
     {
@@ -3976,8 +3962,6 @@ class TestModel5 extends CakeTestModel
 
     /**
      * schema method
-     *
-     * @return void
      */
     public function schema($field = false)
     {
@@ -4037,8 +4021,6 @@ class TestModel6 extends CakeTestModel
 
     /**
      * schema method
-     *
-     * @return void
      */
     public function schema($field = false)
     {
@@ -4086,8 +4068,6 @@ class TestModel7 extends CakeTestModel
 
     /**
      * schema method
-     *
-     * @return void
      */
     public function schema($field = false)
     {
@@ -4147,8 +4127,6 @@ class TestModel8 extends CakeTestModel
 
     /**
      * schema method
-     *
-     * @return void
      */
     public function schema($field = false)
     {
@@ -4209,8 +4187,6 @@ class TestModel9 extends CakeTestModel
 
     /**
      * schema method
-     *
-     * @return void
      */
     public function schema($field = false)
     {
@@ -4272,8 +4248,6 @@ class Level extends CakeTestModel
 
     /**
      * schema method
-     *
-     * @return void
      */
     public function schema($field = false)
     {
@@ -4332,8 +4306,6 @@ class Group extends CakeTestModel
 
     /**
      * schema method
-     *
-     * @return void
      */
     public function schema($field = false)
     {
@@ -4404,8 +4376,6 @@ class User2 extends CakeTestModel
 
     /**
      * schema method
-     *
-     * @return void
      */
     public function schema($field = false)
     {
@@ -4485,8 +4455,6 @@ class Category2 extends CakeTestModel
 
     /**
      * schema method
-     *
-     * @return void
      */
     public function schema($field = false)
     {
@@ -4546,8 +4514,6 @@ class Article2 extends CakeTestModel
 
     /**
      * schema method
-     *
-     * @return void
      */
     public function schema($field = false)
     {
@@ -4609,8 +4575,6 @@ class CategoryFeatured2 extends CakeTestModel
 
     /**
      * schema method
-     *
-     * @return void
      */
     public function schema($field = false)
     {
@@ -4669,8 +4633,6 @@ class Featured2 extends CakeTestModel
 
     /**
      * schema method
-     *
-     * @return void
      */
     public function schema($field = false)
     {
@@ -4724,8 +4686,6 @@ class Comment2 extends CakeTestModel
 
     /**
      * schema method
-     *
-     * @return void
      */
     public function schema($field = false)
     {
@@ -4800,8 +4760,6 @@ class ArticleFeatured2 extends CakeTestModel
 
     /**
      * schema method
-     *
-     * @return void
      */
     public function schema($field = false)
     {
@@ -4851,7 +4809,6 @@ class MysqlTestModel extends Model
      * @param mixed $fields
      * @param mixed $order
      * @param mixed $recursive
-     * @return void
      */
     public function find($conditions = null, $fields = null, $order = null, $recursive = null)
     {
@@ -4865,7 +4822,6 @@ class MysqlTestModel extends Model
      * @param mixed $fields
      * @param mixed $order
      * @param mixed $recursive
-     * @return void
      */
     public function findAll($conditions = null, $fields = null, $order = null, $recursive = null)
     {
@@ -4874,8 +4830,6 @@ class MysqlTestModel extends Model
 
     /**
      * schema method
-     *
-     * @return void
      */
     public function schema($field = false)
     {
@@ -5155,7 +5109,9 @@ class CustomArticle extends AppModel
      * Alters title data
      *
      * @param array $options Options passed from Model::save().
+     *
      * @return bool True if validate operation should continue, false to abort
+     *
      * @see Model::save()
      */
     public function beforeValidate($options = [])

@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Core
+ *
  * @since         CakePHP(tm) v 2.0.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -22,6 +26,7 @@
  * It also can retrieve plugin paths and load their bootstrap and routes files.
  *
  * @package       Cake.Core
+ *
  * @link https://book.cakephp.org/2.0/en/plugins.html
  */
 class CakePlugin
@@ -87,8 +92,8 @@ class CakePlugin
      *
      * @param string|array $plugin name of the plugin to be loaded in CamelCase format or array or plugins to load
      * @param array $config configuration options for the plugin
+     *
      * @throws MissingPluginException if the folder for the plugin to be loaded is not found
-     * @return void
      */
     public static function load($plugin, $config = [])
     {
@@ -159,7 +164,6 @@ class CakePlugin
      * to use.
      *
      * @param array $options Options list. See CakePlugin::load() for valid options.
-     * @return void
      */
     public static function loadAll($options = [])
     {
@@ -177,8 +181,10 @@ class CakePlugin
      * Returns the filesystem path for a plugin
      *
      * @param string $plugin name of the plugin in CamelCase format
-     * @return string path to the plugin folder
+     *
      * @throws MissingPluginException if the folder for plugin was not found or plugin has not been loaded
+     *
+     * @return string path to the plugin folder
      */
     public static function path($plugin)
     {
@@ -193,7 +199,9 @@ class CakePlugin
      * Loads the bootstrapping files for a plugin, or calls the initialization setup in the configuration
      *
      * @param string $plugin name of the plugin
+     *
      * @return mixed
+     *
      * @see CakePlugin::load() for examples of bootstrap configuration
      */
     public static function bootstrap($plugin)
@@ -230,6 +238,7 @@ class CakePlugin
      *
      * @param string $plugin name of the plugin, if null will operate on all plugins having enabled the
      * loading of routes files
+     *
      * @return bool
      */
     public static function routes($plugin = null)
@@ -257,6 +266,7 @@ class CakePlugin
      * If plugin is null, it will return a list of all loaded plugins
      *
      * @param string $plugin Plugin name to check.
+     *
      * @return mixed boolean true if $plugin is already loaded.
      * If $plugin is null, returns a list of plugins that have been loaded
      */
@@ -275,7 +285,6 @@ class CakePlugin
      * Forgets a loaded plugin or all of them if first parameter is null
      *
      * @param string $plugin name of the plugin to forget
-     * @return void
      */
     public static function unload($plugin = null)
     {
@@ -291,6 +300,7 @@ class CakePlugin
      *
      * @param string $file File to include
      * @param bool $ignoreMissing Whether to ignore include error for missing files
+     *
      * @return mixed
      */
     protected static function _includeFile($file, $ignoreMissing = false)

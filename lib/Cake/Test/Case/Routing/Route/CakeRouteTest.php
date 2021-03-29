@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Test.Case.Routing.Route
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('CakeRoute', 'Routing/Route');
@@ -27,8 +31,6 @@ class CakeRouteTest extends CakeTestCase
 {
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -38,8 +40,6 @@ class CakeRouteTest extends CakeTestCase
 
     /**
      * Test the construction of a CakeRoute
-     *
-     * @return void
      */
     public function testConstruction()
     {
@@ -53,8 +53,6 @@ class CakeRouteTest extends CakeTestCase
 
     /**
      * test Route compiling.
-     *
-     * @return void
      */
     public function testBasicRouteCompiling()
     {
@@ -91,8 +89,6 @@ class CakeRouteTest extends CakeTestCase
 
     /**
      * test that route parameters that overlap don't cause errors.
-     *
-     * @return void
      */
     public function testRouteParameterOverlap()
     {
@@ -107,8 +103,6 @@ class CakeRouteTest extends CakeTestCase
 
     /**
      * test compiling routes with keys that have patterns
-     *
-     * @return void
      */
     public function testRouteCompilingWithParamPatterns()
     {
@@ -178,8 +172,6 @@ class CakeRouteTest extends CakeTestCase
     /**
      * test more complex route compiling & parsing with mid route greedy stars
      * and optional routing parameters
-     *
-     * @return void
      */
     public function testComplexRouteCompilingAndParsing()
     {
@@ -237,8 +229,6 @@ class CakeRouteTest extends CakeTestCase
 
     /**
      * test that routes match their pattern.
-     *
-     * @return void
      */
     public function testMatchBasic()
     {
@@ -323,8 +313,6 @@ class CakeRouteTest extends CakeTestCase
 
     /**
      * test that non-greedy routes fail with extra passed args
-     *
-     * @return void
      */
     public function testGreedyRouteFailurePassedArg()
     {
@@ -339,8 +327,6 @@ class CakeRouteTest extends CakeTestCase
 
     /**
      * test that non-greedy routes fail with extra passed args
-     *
-     * @return void
      */
     public function testGreedyRouteFailureNamedParam()
     {
@@ -351,8 +337,6 @@ class CakeRouteTest extends CakeTestCase
 
     /**
      * test that falsey values do not interrupt a match.
-     *
-     * @return void
      */
     public function testMatchWithFalseyValues()
     {
@@ -365,8 +349,6 @@ class CakeRouteTest extends CakeTestCase
 
     /**
      * test match() with greedy routes, named parameters and passed args.
-     *
-     * @return void
      */
     public function testMatchWithNamedParametersAndPassedArgs()
     {
@@ -404,8 +386,6 @@ class CakeRouteTest extends CakeTestCase
 
     /**
      * Ensure that named parameters are urldecoded
-     *
-     * @return void
      */
     public function testParseNamedParametersUrlDecode()
     {
@@ -425,8 +405,6 @@ class CakeRouteTest extends CakeTestCase
 
     /**
      * Ensure that keys at named parameters are urldecoded
-     *
-     * @return void
      */
     public function testParseNamedKeyUrlDecode()
     {
@@ -446,8 +424,6 @@ class CakeRouteTest extends CakeTestCase
 
     /**
      * test that named params with null/false are excluded
-     *
-     * @return void
      */
     public function testNamedParamsWithNullFalse()
     {
@@ -458,8 +434,6 @@ class CakeRouteTest extends CakeTestCase
 
     /**
      * test that match with patterns works.
-     *
-     * @return void
      */
     public function testMatchWithPatterns()
     {
@@ -479,8 +453,6 @@ class CakeRouteTest extends CakeTestCase
 
     /**
      * test persistParams ability to persist parameters from $params and remove params.
-     *
-     * @return void
      */
     public function testPersistParams()
     {
@@ -504,8 +476,6 @@ class CakeRouteTest extends CakeTestCase
 
     /**
      * test persist with a non array value
-     *
-     * @return void
      */
     public function testPersistParamsNonArray()
     {
@@ -539,8 +509,6 @@ class CakeRouteTest extends CakeTestCase
 
     /**
      * test the parse method of CakeRoute.
-     *
-     * @return void
      */
     public function testParse()
     {
@@ -570,8 +538,6 @@ class CakeRouteTest extends CakeTestCase
 
     /**
      * Test that :key elements are urldecoded
-     *
-     * @return void
      */
     public function testParseUrlDecodeElements()
     {
@@ -593,8 +559,6 @@ class CakeRouteTest extends CakeTestCase
 
     /**
      * test numerically indexed defaults, get appended to pass
-     *
-     * @return void
      */
     public function testParseWithPassDefaults()
     {
@@ -611,8 +575,6 @@ class CakeRouteTest extends CakeTestCase
 
     /**
      * test that http header conditions can cause route failures.
-     *
-     * @return void
      */
     public function testParseWithHttpHeaderConditions()
     {
@@ -624,8 +586,6 @@ class CakeRouteTest extends CakeTestCase
 
     /**
      * test that patterns work for :action
-     *
-     * @return void
      */
     public function testPatternOnAction()
     {
@@ -650,8 +610,6 @@ class CakeRouteTest extends CakeTestCase
 
     /**
      * test the parseArgs method
-     *
-     * @return void
      */
     public function testParsePassedArgument()
     {
@@ -680,8 +638,6 @@ class CakeRouteTest extends CakeTestCase
 
     /**
      * test that only named parameter rules are followed.
-     *
-     * @return void
      */
     public function testParseNamedParametersWithRules()
     {
@@ -750,8 +706,6 @@ class CakeRouteTest extends CakeTestCase
 
     /**
      * test that greedyNamed ignores rules.
-     *
-     * @return void
      */
     public function testParseGreedyNamed()
     {
@@ -776,8 +730,6 @@ class CakeRouteTest extends CakeTestCase
 
     /**
      * Having greedNamed enabled should not capture routing.prefixes.
-     *
-     * @return void
      */
     public function testMatchGreedyNamedExcludesPrefixes()
     {
@@ -790,8 +742,6 @@ class CakeRouteTest extends CakeTestCase
 
     /**
      * test that parsing array format named parameters works
-     *
-     * @return void
      */
     public function testParseArrayNamedParameters()
     {
@@ -847,8 +797,6 @@ class CakeRouteTest extends CakeTestCase
 
     /**
      * Test that match can handle array named parameters
-     *
-     * @return void
      */
     public function testMatchNamedParametersArray()
     {
@@ -884,8 +832,6 @@ class CakeRouteTest extends CakeTestCase
 
     /**
      * Test matching of parameters where one parameter name starts with another parameter name
-     *
-     * @return void
      */
     public function testMatchSimilarParameters()
     {
@@ -903,8 +849,6 @@ class CakeRouteTest extends CakeTestCase
 
     /**
      * Test match() with trailing ** style routes.
-     *
-     * @return void
      */
     public function testMatchTrailing()
     {
@@ -921,8 +865,6 @@ class CakeRouteTest extends CakeTestCase
 
     /**
      * test restructuring args with pass key
-     *
-     * @return void
      */
     public function testPassArgRestructure()
     {
@@ -942,8 +884,6 @@ class CakeRouteTest extends CakeTestCase
 
     /**
      * Test the /** special type on parsing.
-     *
-     * @return void
      */
     public function testParseTrailing()
     {
@@ -969,8 +909,6 @@ class CakeRouteTest extends CakeTestCase
 
     /**
      * Test the /** special type on parsing - UTF8.
-     *
-     * @return void
      */
     public function testParseTrailingUTF8()
     {
@@ -987,8 +925,6 @@ class CakeRouteTest extends CakeTestCase
 
     /**
      * test that utf-8 patterns work for :section
-     *
-     * @return void
      */
     public function testUTF8PatternOnSection()
     {
@@ -1012,8 +948,6 @@ class CakeRouteTest extends CakeTestCase
 
     /**
      * Test for __set_state magic method on CakeRoute
-     *
-     * @return void
      */
     public function testSetState()
     {

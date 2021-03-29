@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP Project
+ *
  * @package       Cake.Test.Case.Console.Command
+ *
  * @since         CakePHP v 1.2.0.7726
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('ConsoleOutput', 'Console');
@@ -30,8 +34,6 @@ class ApiShellTest extends CakeTestCase
 {
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -48,8 +50,6 @@ class ApiShellTest extends CakeTestCase
 
     /**
      * Test that method names are detected properly including those with no arguments.
-     *
-     * @return void
      */
     public function testMethodNameDetection()
     {

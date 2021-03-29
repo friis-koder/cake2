@@ -12,9 +12,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.View
+ *
  * @since         Cake v 0.10.0.1076
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('View', 'View');
@@ -23,6 +27,7 @@ App::uses('View', 'View');
  * ScaffoldView provides specific view file loading features for scaffolded views.
  *
  * @package Cake.View
+ *
  * @deprecated 3.0.0 Dynamic scaffolding will be removed and replaced in 3.0
  */
 class ScaffoldView extends View
@@ -31,8 +36,10 @@ class ScaffoldView extends View
      * Override _getViewFileName Appends special scaffolding views in.
      *
      * @param string $name name of the view file to get.
-     * @return string action
+     *
      * @throws MissingViewException
+     *
+     * @return string action
      */
     protected function _getViewFileName($name = null)
     {

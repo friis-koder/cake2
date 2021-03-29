@@ -10,8 +10,10 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -20,6 +22,7 @@
  * Created when you call ConsoleOptionParser::addSubcommand()
  *
  * @see ConsoleOptionParser::addSubcommand()
+ *
  * @package       Cake.Console
  */
 class ConsoleInputSubcommand
@@ -84,6 +87,7 @@ class ConsoleInputSubcommand
      * Generate the help for this this subcommand.
      *
      * @param int $width The width to make the name of the subcommand.
+     *
      * @return string
      */
     public function help($width = 0)
@@ -114,6 +118,7 @@ class ConsoleInputSubcommand
      * Append this subcommand to the Parent element
      *
      * @param SimpleXmlElement $parent The parent element.
+     *
      * @return SimpleXmlElement The parent with this subcommand appended.
      */
     public function xml(SimpleXmlElement $parent)

@@ -12,9 +12,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Utility
+ *
  * @since         CakePHP v .0.10.3.1400
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('HttpSocket', 'Network/Http');
@@ -85,8 +89,10 @@ class Xml
      *
      * @param string|array $input XML string, a path to a file, a URL or an array
      * @param array $options The options to use
-     * @return SimpleXMLElement|DOMDocument SimpleXMLElement or DOMDocument
+     *
      * @throws XmlException
+     *
+     * @return SimpleXMLElement|DOMDocument SimpleXMLElement or DOMDocument
      */
     public static function build($input, $options = [])
     {
@@ -131,8 +137,10 @@ class Xml
      *
      * @param string $input The input to load.
      * @param array $options The options to use. See Xml::build()
-     * @return SimpleXmlElement|DOMDocument
+     *
      * @throws XmlException
+     *
+     * @return SimpleXmlElement|DOMDocument
      */
     protected static function _loadXml($input, $options)
     {
@@ -202,8 +210,10 @@ class Xml
      *
      * @param array $input Array with data
      * @param array $options The options to use
-     * @return SimpleXMLElement|DOMDocument SimpleXMLElement or DOMDocument
+     *
      * @throws XmlException
+     *
+     * @return SimpleXMLElement|DOMDocument SimpleXMLElement or DOMDocument
      */
     public static function fromArray($input, $options = [])
     {
@@ -248,7 +258,7 @@ class Xml
      * @param DOMElement $node Handler to DOMElement (child)
      * @param array &$data Array of data to append to the $node.
      * @param string $format Either 'attributes' or 'tags'. This determines where nested keys go.
-     * @return void
+     *
      * @throws XmlException
      */
     protected static function _fromArray($dom, $node, &$data, $format)
@@ -314,7 +324,6 @@ class Xml
      * Helper to _fromArray(). It will create childs of arrays
      *
      * @param array $data Array with informations to create childs
-     * @return void
      */
     protected static function _createChild($data)
     {
@@ -349,8 +358,10 @@ class Xml
      * Returns this XML structure as an array.
      *
      * @param SimpleXMLElement|DOMDocument|DOMNode $obj SimpleXMLElement, DOMDocument or DOMNode instance
-     * @return array Array representation of the XML structure.
+     *
      * @throws XmlException
+     *
+     * @return array Array representation of the XML structure.
      */
     public static function toArray($obj)
     {
@@ -374,7 +385,6 @@ class Xml
      * @param array &$parentData Parent array with data
      * @param string $ns Namespace of current child
      * @param array $namespaces List of namespaces in XML
-     * @return void
      */
     protected static function _toArray($xml, &$parentData, $ns, $namespaces)
     {

@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Test.Case.Controller.Component.Acl
+ *
  * @since         CakePHP(tm) v 2.1
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('AclComponent', 'Controller/Component');
@@ -28,8 +32,6 @@ class PhpAclTest extends CakeTestCase
 {
     /**
      * Setup
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -46,8 +48,6 @@ class PhpAclTest extends CakeTestCase
 
     /**
      * Test role inheritance
-     *
-     * @return void
      */
     public function testRoleInheritance()
     {
@@ -64,8 +64,6 @@ class PhpAclTest extends CakeTestCase
 
     /**
      * Test adding a role
-     *
-     * @return void
      */
     public function testAddRole()
     {
@@ -76,8 +74,6 @@ class PhpAclTest extends CakeTestCase
 
     /**
      * Test resolving ARO
-     *
-     * @return void
      */
     public function testAroResolve()
     {
@@ -103,8 +99,6 @@ class PhpAclTest extends CakeTestCase
 
     /**
      * test correct resolution of defined aliases
-     *
-     * @return void
      */
     public function testAroAliases()
     {
@@ -156,8 +150,6 @@ class PhpAclTest extends CakeTestCase
 
     /**
      * test check method
-     *
-     * @return void
      */
     public function testCheck()
     {
@@ -208,8 +200,6 @@ class PhpAclTest extends CakeTestCase
 
     /**
      * lhs of defined rules are case insensitive
-     *
-     * @return void
      */
     public function testCheckIsCaseInsensitive()
     {
@@ -221,8 +211,6 @@ class PhpAclTest extends CakeTestCase
 
     /**
      * allow should work in-memory
-     *
-     * @return void
      */
     public function testAllow()
     {
@@ -244,8 +232,6 @@ class PhpAclTest extends CakeTestCase
 
     /**
      * deny should work in-memory
-     *
-     * @return void
      */
     public function testDeny()
     {
@@ -261,8 +247,6 @@ class PhpAclTest extends CakeTestCase
 
     /**
      * test that a deny rule wins over an equally specific allow rule
-     *
-     * @return void
      */
     public function testDenyRuleIsStrongerThanAllowRule()
     {
@@ -288,8 +272,6 @@ class PhpAclTest extends CakeTestCase
 
     /**
      * test that an invalid configuration throws exception
-     *
-     * @return void
      */
     public function testInvalidConfigWithAroMissing()
     {
@@ -317,8 +299,6 @@ class PhpAclTest extends CakeTestCase
 
     /**
      * test resolving of ACOs
-     *
-     * @return void
      */
     public function testAcoResolve()
     {
@@ -339,8 +319,6 @@ class PhpAclTest extends CakeTestCase
 
     /**
      * test that declaring cyclic dependencies should give an error when building the tree
-     *
-     * @return void
      */
     public function testAroDeclarationContainsCycles()
     {
@@ -365,8 +343,6 @@ class PhpAclTest extends CakeTestCase
 
     /**
      * test that with policy allow, only denies count
-     *
-     * @return void
      */
     public function testPolicy()
     {

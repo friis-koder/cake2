@@ -12,9 +12,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Controller
+ *
  * @since         Cake v 0.10.0.1076
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -27,6 +31,7 @@
  * scaffolded actions with custom-made ones.
  *
  * @package Cake.Controller
+ *
  * @deprecated 3.0.0 Dynamic scaffolding will be removed and replaced in 3.0
  */
 class Scaffold
@@ -101,6 +106,7 @@ class Scaffold
      *
      * @param Controller $controller Controller to scaffold
      * @param CakeRequest $request Request parameters.
+     *
      * @throws MissingModelException
      */
     public function __construct(Controller $controller, CakeRequest $request)
@@ -164,8 +170,10 @@ class Scaffold
      * Renders a view action of scaffolded model.
      *
      * @param CakeRequest $request Request Object for scaffolding
-     * @return mixed A rendered view of a row from Models database table
+     *
      * @throws NotFoundException
+     *
+     * @return mixed A rendered view of a row from Models database table
      */
     protected function _scaffoldView(CakeRequest $request)
     {
@@ -192,6 +200,7 @@ class Scaffold
      * Renders index action of scaffolded model.
      *
      * @param array $params Parameters for scaffolding
+     *
      * @return mixed A rendered view listing rows from Models database table
      */
     protected function _scaffoldIndex($params)
@@ -212,7 +221,6 @@ class Scaffold
      * Renders an add or edit action for scaffolded model.
      *
      * @param string $action Action (add or edit)
-     * @return void
      */
     protected function _scaffoldForm($action = 'edit')
     {
@@ -228,8 +236,10 @@ class Scaffold
      *
      * @param CakeRequest $request Request Object for scaffolding
      * @param string $action add or edit
-     * @return mixed Success on save/update, add/edit form if data is empty or error if save or update fails
+     *
      * @throws NotFoundException
+     *
+     * @return mixed Success on save/update, add/edit form if data is empty or error if save or update fails
      */
     protected function _scaffoldSave(CakeRequest $request, $action = 'edit')
     {
@@ -303,9 +313,11 @@ class Scaffold
      * Performs a delete on given scaffolded Model.
      *
      * @param CakeRequest $request Request for scaffolding
-     * @return mixed Success on delete, error if delete fails
+     *
      * @throws MethodNotAllowedException When HTTP method is not a DELETE
      * @throws NotFoundException When id being deleted does not exist.
+     *
+     * @return mixed Success on delete, error if delete fails
      */
     protected function _scaffoldDelete(CakeRequest $request)
     {
@@ -345,6 +357,7 @@ class Scaffold
      *
      * @param string $message Message to display
      * @param string $element Flash template to use
+     *
      * @return CakeResponse|null
      */
     protected function _sendMessage($message, $element = 'default')
@@ -373,7 +386,7 @@ class Scaffold
      * `public $scaffold;` is placed in the controller's class definition.
      *
      * @param CakeRequest $request Request object for scaffolding
-     * @return void
+     *
      * @throws MissingActionException When methods are not scaffolded.
      * @throws MissingDatabaseException When the database connection is undefined.
      */

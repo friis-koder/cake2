@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Core
+ *
  * @since         CakePHP(tm) v 1.2.0.5432
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('CakeObject', 'Core');
@@ -52,8 +56,6 @@ class RequestActionController extends Controller
 
     /**
      * test_request_action method
-     *
-     * @return void
      */
     public function test_request_action()
     {
@@ -65,7 +67,6 @@ class RequestActionController extends Controller
      *
      * @param mixed $id
      * @param mixed $other
-     * @return void
      */
     public function another_ra_test($id, $other)
     {
@@ -165,8 +166,6 @@ class TestCakeObject extends CakeObject
 
     /**
      * emptyMethod method
-     *
-     * @return void
      */
     public function emptyMethod()
     {
@@ -177,7 +176,6 @@ class TestCakeObject extends CakeObject
      * oneParamMethod method
      *
      * @param mixed $param
-     * @return void
      */
     public function oneParamMethod($param)
     {
@@ -189,7 +187,6 @@ class TestCakeObject extends CakeObject
      *
      * @param mixed $param
      * @param mixed $paramTwo
-     * @return void
      */
     public function twoParamMethod($param, $paramTwo)
     {
@@ -202,7 +199,6 @@ class TestCakeObject extends CakeObject
      * @param mixed $param
      * @param mixed $paramTwo
      * @param mixed $paramThree
-     * @return void
      */
     public function threeParamMethod($param, $paramTwo, $paramThree)
     {
@@ -216,7 +212,6 @@ class TestCakeObject extends CakeObject
      * @param mixed $paramTwo
      * @param mixed $paramThree
      * @param mixed $paramFour
-     * @return void
      */
     public function fourParamMethod($param, $paramTwo, $paramThree, $paramFour)
     {
@@ -231,7 +226,6 @@ class TestCakeObject extends CakeObject
      * @param mixed $paramThree
      * @param mixed $paramFour
      * @param mixed $paramFive
-     * @return void
      */
     public function fiveParamMethod($param, $paramTwo, $paramThree, $paramFour, $paramFive)
     {
@@ -248,7 +242,6 @@ class TestCakeObject extends CakeObject
      * @param mixed $paramFive
      * @param mixed $paramSix
      * @param mixed $paramSeven
-     * @return void
      */
     public function crazyMethod($param, $paramTwo, $paramThree, $paramFour, $paramFive, $paramSix, $paramSeven = null)
     {
@@ -259,7 +252,6 @@ class TestCakeObject extends CakeObject
      * methodWithOptionalParam method
      *
      * @param mixed $param
-     * @return void
      */
     public function methodWithOptionalParam($param = null)
     {
@@ -270,7 +262,6 @@ class TestCakeObject extends CakeObject
      * Set properties.
      *
      * @param array $properties The $properties.
-     * @return void
      */
     public function set($properties = [])
     {
@@ -304,8 +295,6 @@ class ObjectTest extends CakeTestCase
 
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -315,8 +304,6 @@ class ObjectTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -327,8 +314,6 @@ class ObjectTest extends CakeTestCase
 
     /**
      * testLog method
-     *
-     * @return void
      */
     public function testLog()
     {
@@ -358,8 +343,6 @@ class ObjectTest extends CakeTestCase
 
     /**
      * testSet method
-     *
-     * @return void
      */
     public function testSet()
     {
@@ -379,8 +362,6 @@ class ObjectTest extends CakeTestCase
 
     /**
      * testToString method
-     *
-     * @return void
      */
     public function testToString()
     {
@@ -390,8 +371,6 @@ class ObjectTest extends CakeTestCase
 
     /**
      * testMethodDispatching method
-     *
-     * @return void
      */
     public function testMethodDispatching()
     {
@@ -457,8 +436,6 @@ class ObjectTest extends CakeTestCase
 
     /**
      * testRequestAction method
-     *
-     * @return void
      */
     public function testRequestAction()
     {
@@ -506,8 +483,6 @@ class ObjectTest extends CakeTestCase
 
     /**
      * Test that here() is calculated correctly in requestAction
-     *
-     * @return void
      */
     public function testRequestActionHere()
     {
@@ -518,8 +493,6 @@ class ObjectTest extends CakeTestCase
 
     /**
      * test requestAction() and plugins.
-     *
-     * @return void
      */
     public function testRequestActionPlugins()
     {
@@ -557,8 +530,6 @@ class ObjectTest extends CakeTestCase
 
     /**
      * test requestAction() with arrays.
-     *
-     * @return void
      */
     public function testRequestActionArray()
     {
@@ -614,8 +585,6 @@ class ObjectTest extends CakeTestCase
 
     /**
      * Test that requestAction() does not forward the 0 => return value.
-     *
-     * @return void
      */
     public function testRequestActionRemoveReturnParam()
     {
@@ -628,8 +597,6 @@ class ObjectTest extends CakeTestCase
 
     /**
      * Test that requestAction() is populating $this->params properly
-     *
-     * @return void
      */
     public function testRequestActionParamParseAndPass()
     {
@@ -652,8 +619,6 @@ class ObjectTest extends CakeTestCase
 
     /**
      * Test that requestAction handles get parameters correctly.
-     *
-     * @return void
      */
     public function testRequestActionGetParameters()
     {
@@ -672,8 +637,6 @@ class ObjectTest extends CakeTestCase
     /**
      * test that requestAction does not fish data out of the POST
      * superglobal.
-     *
-     * @return void
      */
     public function testRequestActionNoPostPassing()
     {
@@ -701,8 +664,6 @@ class ObjectTest extends CakeTestCase
 
     /**
      * Test requestAction with post data.
-     *
-     * @return void
      */
     public function testRequestActionPostWithData()
     {

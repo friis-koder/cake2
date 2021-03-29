@@ -10,8 +10,10 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
  * @since         CakePHP(tm) v 1.2
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('AppShell', 'Console/Command');
@@ -70,8 +72,6 @@ class ViewTask extends BakeTask
 
     /**
      * Override initialize
-     *
-     * @return void
      */
     public function initialize()
     {
@@ -164,8 +164,6 @@ class ViewTask extends BakeTask
 
     /**
      * Bake All views for All controllers.
-     *
-     * @return void
      */
     public function all()
     {
@@ -194,8 +192,6 @@ class ViewTask extends BakeTask
 
     /**
      * Handles interactive baking
-     *
-     * @return void
      */
     protected function _interactive()
     {
@@ -317,7 +313,6 @@ class ViewTask extends BakeTask
      *
      * @param array $actions Array of actions to make files for.
      * @param array $vars The template variables.
-     * @return void
      */
     public function bakeActions($actions, $vars)
     {
@@ -329,8 +324,6 @@ class ViewTask extends BakeTask
 
     /**
      * handle creation of baking a custom action view file
-     *
-     * @return void
      */
     public function customAction()
     {
@@ -363,6 +356,7 @@ class ViewTask extends BakeTask
      *
      * @param string $action Action to bake
      * @param string $content Content to write
+     *
      * @return bool Success
      */
     public function bake($action, $content = '')
@@ -385,6 +379,7 @@ class ViewTask extends BakeTask
      *
      * @param string $action name to generate content to
      * @param array $vars passed for use in templates
+     *
      * @return string content from template
      */
     public function getContent($action, $vars = null)
@@ -408,6 +403,7 @@ class ViewTask extends BakeTask
      * Gets the template name based on the action name
      *
      * @param string $action name
+     *
      * @return string template name
      */
     public function getTemplate($action)
@@ -483,6 +479,7 @@ class ViewTask extends BakeTask
      * Returns associations for controllers models.
      *
      * @param Model $model The Model instance.
+     *
      * @return array associations
      */
     protected function _associations(Model $model)

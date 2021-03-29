@@ -12,9 +12,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Controller.Component
+ *
  * @since         CakePHP(tm) v 1.2.0.5347
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Controller', 'Controller');
@@ -57,6 +61,7 @@ class DebugCompTransport extends AbstractTransport
      * Send mail
      *
      * @params object $email CakeEmail
+     *
      * @return bool
      */
     public function send(CakeEmail $email)
@@ -135,8 +140,6 @@ class EmailComponentTest extends CakeTestCase
 
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -157,8 +160,6 @@ class EmailComponentTest extends CakeTestCase
 
     /**
      * testSendFormats method
-     *
-     * @return void
      */
     public function testSendFormats()
     {
@@ -203,8 +204,6 @@ MSGBLOC;
 
     /**
      * testTemplates method
-     *
-     * @return void
      */
     public function testTemplates()
     {
@@ -318,8 +317,6 @@ HTMLBLOC;
 
     /**
      * test that elements used in email templates get helpers.
-     *
-     * @return void
      */
     public function testTemplateNestedElements()
     {
@@ -343,8 +340,6 @@ HTMLBLOC;
 
     /**
      * test send with null properties
-     *
-     * @return void
      */
     public function testSendNullProperties()
     {
@@ -370,8 +365,6 @@ HTMLBLOC;
 
     /**
      * testSendDebug method
-     *
-     * @return void
      */
     public function testSendDebug()
     {
@@ -402,8 +395,6 @@ HTMLBLOC;
 
     /**
      * test send with delivery = debug and not using sessions.
-     *
-     * @return void
      */
     public function testSendDebugWithNoSessions()
     {
@@ -433,8 +424,6 @@ HTMLBLOC;
 
     /**
      * testMessageRetrievalWithoutTemplate method
-     *
-     * @return void
      */
     public function testMessageRetrievalWithoutTemplate()
     {
@@ -471,8 +460,6 @@ HTMLBLOC;
 
     /**
      * testMessageRetrievalWithTemplate method
-     *
-     * @return void
      */
     public function testMessageRetrievalWithTemplate()
     {
@@ -532,8 +519,6 @@ HTMLBLOC;
 
     /**
      * testMessageRetrievalWithHelper method
-     *
-     * @return void
      */
     public function testMessageRetrievalWithHelper()
     {
@@ -561,8 +546,6 @@ HTMLBLOC;
 
     /**
      * testContentArray method
-     *
-     * @return void
      */
     public function testSendContentArray()
     {
@@ -591,8 +574,6 @@ HTMLBLOC;
 
     /**
      * test setting a custom date.
-     *
-     * @return void
      */
     public function testDateProperty()
     {
@@ -610,8 +591,6 @@ HTMLBLOC;
 
     /**
      * testContentStripping method
-     *
-     * @return void
      */
     public function testContentStripping()
     {
@@ -636,8 +615,6 @@ HTMLBLOC;
 
     /**
      * test that the _encode() will set mb_internal_encoding.
-     *
-     * @return void
      */
     public function testEncodeSettingInternalCharset()
     {
@@ -670,8 +647,6 @@ HTMLBLOC;
 
     /**
      * testMultibyte method
-     *
-     * @return void
      */
     public function testMultibyte()
     {
@@ -703,8 +678,6 @@ HTMLBLOC;
 
     /**
      * undocumented function
-     *
-     * @return void
      */
     public function testSendWithAttachments()
     {
@@ -729,8 +702,6 @@ HTMLBLOC;
 
     /**
      * testSendAsIsNotIgnoredIfAttachmentsPresent method
-     *
-     * @return void
      */
     public function testSendAsIsNotIgnoredIfAttachmentsPresent()
     {
@@ -766,8 +737,6 @@ HTMLBLOC;
 
     /**
      * testNoDoubleNewlinesInHeaders function
-     *
-     * @return void
      */
     public function testNoDoubleNewlinesInHeaders()
     {
@@ -789,8 +758,6 @@ HTMLBLOC;
 
     /**
      * testReset method
-     *
-     * @return void
      */
     public function testReset()
     {
@@ -861,8 +828,6 @@ HTMLBLOC;
 
     /**
      * testStartup method
-     *
-     * @return void
      */
     public function testStartup()
     {
@@ -871,8 +836,6 @@ HTMLBLOC;
 
     /**
      * testMessageId method
-     *
-     * @return void
      */
     public function testMessageId()
     {
@@ -906,8 +869,6 @@ HTMLBLOC;
 
     /**
      * Make sure from/to are not double encoded when UTF-8 is present
-     *
-     * @return void
      */
     public function testEncodingFrom()
     {

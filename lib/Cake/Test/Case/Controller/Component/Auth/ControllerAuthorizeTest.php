@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Test.Case.Controller.Component.Auth
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Controller', 'Controller');
@@ -29,8 +33,6 @@ class ControllerAuthorizeTest extends CakeTestCase
 {
     /**
      * setup
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -48,7 +50,7 @@ class ControllerAuthorizeTest extends CakeTestCase
      * testControllerTypeError
      *
      * @expectedException PHPUnit_Framework_Error
-     * @return void
+     *
      * @throws PHPUnit_Framework_Error
      */
     public function testControllerTypeError()
@@ -65,7 +67,6 @@ class ControllerAuthorizeTest extends CakeTestCase
      * testControllerErrorOnMissingMethod
      *
      * @expectedException CakeException
-     * @return void
      */
     public function testControllerErrorOnMissingMethod()
     {
@@ -74,8 +75,6 @@ class ControllerAuthorizeTest extends CakeTestCase
 
     /**
      * test failure
-     *
-     * @return void
      */
     public function testAuthorizeFailure()
     {
@@ -86,8 +85,6 @@ class ControllerAuthorizeTest extends CakeTestCase
 
     /**
      * test isAuthorized working.
-     *
-     * @return void
      */
     public function testAuthorizeSuccess()
     {

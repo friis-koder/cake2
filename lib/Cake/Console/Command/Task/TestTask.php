@@ -10,8 +10,10 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
  * @since         CakePHP(tm) v 1.3
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('AppShell', 'Console/Command');
@@ -76,8 +78,6 @@ class TestTask extends BakeTask
 
     /**
      * Execution method always used for tasks
-     *
-     * @return void
      */
     public function execute()
     {
@@ -103,6 +103,7 @@ class TestTask extends BakeTask
      * Handles interactive baking
      *
      * @param string $type The type of object to bake a test for.
+     *
      * @return string|bool
      */
     protected function _interactive($type = null)
@@ -131,6 +132,7 @@ class TestTask extends BakeTask
      *
      * @param string $type Type of object to bake test case for ie. Model, Controller
      * @param string $className the 'cake name' for the class ie. Posts for the PostsController
+     *
      * @return string|bool
      */
     public function bake($type, $className)
@@ -220,6 +222,7 @@ class TestTask extends BakeTask
      * Get the user chosen Class name for the chosen type
      *
      * @param string $objectType Type of object to list classes for i.e. Model, Controller.
+     *
      * @return string Class name the user chose.
      */
     public function getClassName($objectType)
@@ -257,6 +260,7 @@ class TestTask extends BakeTask
      * Currently only model, and controller are supported
      *
      * @param string $type The Type of object you are generating tests for eg. controller
+     *
      * @return bool
      */
     public function typeCanDetectFixtures($type)
@@ -271,6 +275,7 @@ class TestTask extends BakeTask
      *
      * @param string $package The package of object you are generating tests for eg. controller
      * @param string $class the Classname of the class the test is being generated for.
+     *
      * @return bool
      */
     public function isLoadableClass($package, $class)
@@ -292,6 +297,7 @@ class TestTask extends BakeTask
      *
      * @param string $type The Type of object you are generating tests for eg. controller
      * @param string $class the Classname of the class the test is being generated for.
+     *
      * @return object And instance of the class that is going to be tested.
      */
     public function buildTestSubject($type, $class)
@@ -314,6 +320,7 @@ class TestTask extends BakeTask
      *
      * @param string $type The Type of object you are generating tests for eg. controller
      * @param string $class the Classname of the class the test is being generated for.
+     *
      * @return string Real class name
      */
     public function getRealClassName($type, $class)
@@ -336,8 +343,10 @@ class TestTask extends BakeTask
      *
      * @param string $type The type of thing having a test generated.
      * @param string $plugin The plugin name.
-     * @return string
+     *
      * @throws CakeException When invalid object types are requested.
+     *
+     * @return string
      */
     public function mapType($type, $plugin)
     {
@@ -358,8 +367,10 @@ class TestTask extends BakeTask
      *
      * @param string $type The type the class having a test
      *   generated for is in.
-     * @return array Array of (class, type)
+     *
      * @throws CakeException on invalid types.
+     *
+     * @return array Array of (class, type)
      */
     public function getBaseType($type)
     {
@@ -375,6 +386,7 @@ class TestTask extends BakeTask
      * No parent methods will be returned
      *
      * @param string $className Name of class to look at.
+     *
      * @return array Array of method names.
      */
     public function getTestableMethods($className)
@@ -397,6 +409,7 @@ class TestTask extends BakeTask
      * loaded models.
      *
      * @param CakeObject $subject The object you want to generate fixtures for.
+     *
      * @return array Array of fixtures to be included in the test.
      */
     public function generateFixtureList($subject)
@@ -416,7 +429,6 @@ class TestTask extends BakeTask
      * model names converting them to fixture names.
      *
      * @param Model $subject A Model class to scan for associations and pull fixtures off of.
-     * @return void
      */
     protected function _processModel($subject)
     {
@@ -445,7 +457,6 @@ class TestTask extends BakeTask
      * and generate a fixture list.
      *
      * @param Controller $subject A controller to pull model names off of.
-     * @return void
      */
     protected function _processController($subject)
     {
@@ -465,7 +476,6 @@ class TestTask extends BakeTask
      * Sets the app. or plugin.plugin_name. prefix.
      *
      * @param string $name Name of the Model class that a fixture might be required for.
-     * @return void
      */
     protected function _addFixture($name)
     {
@@ -502,6 +512,7 @@ class TestTask extends BakeTask
      * Controllers require a mock class.
      *
      * @param string $type The type of object tests are being generated for eg. controller.
+     *
      * @return bool
      */
     public function hasMockClass($type)
@@ -517,6 +528,7 @@ class TestTask extends BakeTask
      * @param string $type The Type of object you are generating tests for eg. controller
      * @param string $fullClassName The Classname of the class the test is being generated for.
      * @param string $plugin The plugin name.
+     *
      * @return array Constructor snippets for the thing you are building.
      */
     public function generateConstructor($type, $fullClassName, $plugin)
@@ -547,6 +559,7 @@ class TestTask extends BakeTask
      * @param string $type The Type of object you are generating tests for eg. controller
      * @param string $realType The package name for the class.
      * @param string $className The Classname of the class the test is being generated for.
+     *
      * @return array An array containing used classes
      */
     public function generateUses($type, $realType, $className)
@@ -572,6 +585,7 @@ class TestTask extends BakeTask
      *
      * @param string $type The Type of object you are generating tests for eg. controller
      * @param string $className the Classname of the class the test is being generated for.
+     *
      * @return string filename the test should be created on.
      */
     public function testCaseFileName($type, $className)

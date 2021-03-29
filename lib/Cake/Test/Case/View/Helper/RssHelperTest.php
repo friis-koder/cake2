@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.View.Helper
+ *
  * @since         CakePHP(tm) v 1.2.0.4206
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('View', 'View');
@@ -29,8 +33,6 @@ class RssHelperTest extends CakeTestCase
 {
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -42,8 +44,6 @@ class RssHelperTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -53,8 +53,6 @@ class RssHelperTest extends CakeTestCase
 
     /**
      * testDocument method
-     *
-     * @return void
      */
     public function testDocument()
     {
@@ -88,8 +86,6 @@ class RssHelperTest extends CakeTestCase
 
     /**
      * testChannel method
-     *
-     * @return void
      */
     public function testChannel()
     {
@@ -118,8 +114,6 @@ class RssHelperTest extends CakeTestCase
 
     /**
      * test correct creation of channel sub elements.
-     *
-     * @return void
      */
     public function testChannelElements()
     {
@@ -211,8 +205,6 @@ class RssHelperTest extends CakeTestCase
 
     /**
      * testItems method
-     *
-     * @return void
      */
     public function testItems()
     {
@@ -285,8 +277,6 @@ class RssHelperTest extends CakeTestCase
 
     /**
      * testItem method
-     *
-     * @return void
      */
     public function testItem()
     {
@@ -459,8 +449,6 @@ class RssHelperTest extends CakeTestCase
 
     /**
      * test item() with cdata blocks.
-     *
-     * @return void
      */
     public function testItemCdata()
     {
@@ -583,8 +571,6 @@ class RssHelperTest extends CakeTestCase
 
     /**
      * test item() with enclosure data.
-     *
-     * @return void
      */
     public function testItemEnclosureLength()
     {
@@ -683,8 +669,6 @@ class RssHelperTest extends CakeTestCase
 
     /**
      * testElementAttrNotInParent method
-     *
-     * @return void
      */
     public function testElementAttrNotInParent()
     {

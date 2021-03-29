@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Model
+ *
  * @since         CakePHP(tm) v 1.2.0.5550
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('CakeSchema', 'Model');
@@ -84,6 +88,7 @@ class MyAppSchema extends CakeSchema
      * getVar method
      *
      * @param string $var Name of var
+     *
      * @return mixed
      */
     public function getVar($var)
@@ -192,7 +197,6 @@ class TestAppSchema extends CakeSchema
      * setup method
      *
      * @param mixed $version
-     * @return void
      */
     public function setup($version)
     {
@@ -202,7 +206,6 @@ class TestAppSchema extends CakeSchema
      * teardown method
      *
      * @param mixed $version
-     * @return void
      */
     public function teardown($version)
     {
@@ -305,6 +308,7 @@ class SchemaDatatype extends CakeTestModel
  * its source cache populated - I.e. if the test is run within a group
  *
  * @uses          CakeTestModel
+ *
  * @package       Cake.Test.Case.Model
  */
 class Testdescribe extends CakeTestModel
@@ -451,8 +455,6 @@ class CakeSchemaTest extends CakeTestCase
 
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -463,8 +465,6 @@ class CakeSchemaTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -478,8 +478,6 @@ class CakeSchemaTest extends CakeTestCase
 
     /**
      * testSchemaName method
-     *
-     * @return void
      */
     public function testSchemaName()
     {
@@ -489,8 +487,6 @@ class CakeSchemaTest extends CakeTestCase
 
     /**
      * testSchemaRead method
-     *
-     * @return void
      */
     public function testSchemaRead()
     {
@@ -543,8 +539,6 @@ class CakeSchemaTest extends CakeTestCase
 
     /**
      * testSchemaReadWithAppModel method
-     *
-     * @return void
      */
     public function testSchemaReadWithAppModel()
     {
@@ -567,8 +561,6 @@ class CakeSchemaTest extends CakeTestCase
 
     /**
      * testSchemaReadWithOddTablePrefix method
-     *
-     * @return void
      */
     public function testSchemaReadWithOddTablePrefix()
     {
@@ -589,8 +581,6 @@ class CakeSchemaTest extends CakeTestCase
 
     /**
      * test read() with tablePrefix properties.
-     *
-     * @return void
      */
     public function testSchemaReadWithTablePrefix()
     {
@@ -609,8 +599,6 @@ class CakeSchemaTest extends CakeTestCase
 
     /**
      * test reading schema with config prefix.
-     *
-     * @return void
      */
     public function testSchemaReadWithConfigPrefix()
     {
@@ -636,8 +624,6 @@ class CakeSchemaTest extends CakeTestCase
 
     /**
      * test reading schema from plugins.
-     *
-     * @return void
      */
     public function testSchemaReadWithPlugins()
     {
@@ -666,8 +652,6 @@ class CakeSchemaTest extends CakeTestCase
 
     /**
      * test reading schema with tables from another database.
-     *
-     * @return void
      */
     public function testSchemaReadWithCrossDatabase()
     {
@@ -707,8 +691,6 @@ class CakeSchemaTest extends CakeTestCase
 
     /**
      * testSchemaRead method when a primary key is on a non-conventional column
-     *
-     * @return void
      */
     public function testSchemaReadWithNonConventionalPrimaryKey()
     {
@@ -735,8 +717,6 @@ class CakeSchemaTest extends CakeTestCase
 
     /**
      * test that tables are generated correctly
-     *
-     * @return void
      */
     public function testGenerateTable()
     {
@@ -773,8 +753,6 @@ class CakeSchemaTest extends CakeTestCase
 
     /**
      * test that tables with unsupported name are not getting through
-     *
-     * @return void
      */
     public function testGenerateInvalidTable()
     {
@@ -791,8 +769,6 @@ class CakeSchemaTest extends CakeTestCase
 
     /**
      * testSchemaWrite method
-     *
-     * @return void
      */
     public function testSchemaWrite()
     {
@@ -811,8 +787,6 @@ class CakeSchemaTest extends CakeTestCase
 
     /**
      * testSchemaComparison method
-     *
-     * @return void
      */
     public function testSchemaComparison()
     {
@@ -900,8 +874,6 @@ class CakeSchemaTest extends CakeTestCase
 
     /**
      * test comparing '' and null and making sure they are different.
-     *
-     * @return void
      */
     public function testCompareEmptyStringAndNull()
     {
@@ -930,8 +902,6 @@ class CakeSchemaTest extends CakeTestCase
 
     /**
      * Test comparing tableParameters and indexes.
-     *
-     * @return void
      */
     public function testTableParametersAndIndexComparison()
     {
@@ -1022,8 +992,6 @@ class CakeSchemaTest extends CakeTestCase
 
     /**
      * Test comparing with field changed from VARCHAR to DATETIME
-     *
-     * @return void
      */
     public function testCompareVarcharToDatetime()
     {
@@ -1071,8 +1039,6 @@ class CakeSchemaTest extends CakeTestCase
 
     /**
      * Test comparing with field length/limit changed from some non-default value to the default
-     *
-     * @return void
      */
     public function testCompareLimitToDefault()
     {
@@ -1129,8 +1095,6 @@ class CakeSchemaTest extends CakeTestCase
 
     /**
      * testSchemaLoading method
-     *
-     * @return void
      */
     public function testSchemaLoading()
     {
@@ -1141,8 +1105,6 @@ class CakeSchemaTest extends CakeTestCase
 
     /**
      * test loading schema files inside of plugins.
-     *
-     * @return void
      */
     public function testSchemaLoadingFromPlugin()
     {
@@ -1159,8 +1121,6 @@ class CakeSchemaTest extends CakeTestCase
 
     /**
      * testSchemaCreateTable method
-     *
-     * @return void
      */
     public function testSchemaCreateTable()
     {

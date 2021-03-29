@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Cache
+ *
  * @since         CakePHP(tm) v 1.2.0.5432
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Cache', 'Cache');
@@ -28,8 +32,6 @@ class CacheTest extends CakeTestCase
 
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -43,8 +45,6 @@ class CacheTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -58,8 +58,6 @@ class CacheTest extends CakeTestCase
 
     /**
      * testConfig method
-     *
-     * @return void
      */
     public function testConfig()
     {
@@ -74,7 +72,6 @@ class CacheTest extends CakeTestCase
      * testConfigInvalidEngine method
      *
      * @expectedException CacheException
-     * @return void
      */
     public function testConfigInvalidEngine()
     {
@@ -84,8 +81,6 @@ class CacheTest extends CakeTestCase
 
     /**
      * Check that no fatal errors are issued doing normal things when Cache.disable is true.
-     *
-     * @return void
      */
     public function testNonFatalErrorsWithCachedisable()
     {
@@ -102,8 +97,6 @@ class CacheTest extends CakeTestCase
 
     /**
      * test configuring CacheEngines in App/libs
-     *
-     * @return void
      */
     public function testConfigWithLibAndPluginEngines()
     {
@@ -134,7 +127,6 @@ class CacheTest extends CakeTestCase
      * Test that the cache class doesn't cause fatal errors with a partial path
      *
      * @expectedException PHPUnit_Framework_Error_Warning
-     * @return void
      */
     public function testInvalidConfig()
     {
@@ -157,8 +149,6 @@ class CacheTest extends CakeTestCase
 
     /**
      * Test reading from a config that is undefined.
-     *
-     * @return void
      */
     public function testReadNonExistingConfig()
     {
@@ -172,7 +162,6 @@ class CacheTest extends CakeTestCase
      * test that trying to configure classes that don't extend CacheEngine fail.
      *
      * @expectedException CacheException
-     * @return void
      */
     public function testAttemptingToConfigureANonCacheEngineClass()
     {
@@ -184,8 +173,6 @@ class CacheTest extends CakeTestCase
 
     /**
      * testConfigChange method
-     *
-     * @return void
      */
     public function testConfigChange()
     {
@@ -208,8 +195,6 @@ class CacheTest extends CakeTestCase
 
     /**
      * test that calling config() sets the 'default' configuration up.
-     *
-     * @return void
      */
     public function testConfigSettingDefaultConfigKey()
     {
@@ -235,8 +220,6 @@ class CacheTest extends CakeTestCase
 
     /**
      * testWritingWithConfig method
-     *
-     * @return void
      */
     public function testWritingWithConfig()
     {
@@ -263,8 +246,6 @@ class CacheTest extends CakeTestCase
 
     /**
      * testGroupConfigs method
-     *
-     * @return void
      */
     public function testGroupConfigs()
     {
@@ -321,7 +302,6 @@ class CacheTest extends CakeTestCase
      * testGroupConfigsThrowsException method
      *
      * @expectedException CacheException
-     * @return void
      */
     public function testGroupConfigsThrowsException()
     {
@@ -331,8 +311,6 @@ class CacheTest extends CakeTestCase
     /**
      * test that configured returns an array of the currently configured cache
      * settings
-     *
-     * @return void
      */
     public function testConfigured()
     {
@@ -343,8 +321,6 @@ class CacheTest extends CakeTestCase
 
     /**
      * testInitSettings method
-     *
-     * @return void
      */
     public function testInitSettings()
     {
@@ -360,8 +336,6 @@ class CacheTest extends CakeTestCase
     /**
      * test that drop removes cache configs, and that further attempts to use that config
      * do not work.
-     *
-     * @return void
      */
     public function testDrop()
     {
@@ -391,8 +365,6 @@ class CacheTest extends CakeTestCase
 
     /**
      * testWriteEmptyValues method
-     *
-     * @return void
      */
     public function testWriteEmptyValues()
     {
@@ -414,8 +386,6 @@ class CacheTest extends CakeTestCase
 
     /**
      * Test that failed writes cause errors to be triggered.
-     *
-     * @return void
      */
     public function testWriteTriggerError()
     {
@@ -441,8 +411,6 @@ class CacheTest extends CakeTestCase
      *
      * Check that the "Cache.disable" configuration and a change to it
      * (even after a cache config has been setup) is taken into account.
-     *
-     * @return void
      */
     public function testCacheDisable()
     {
@@ -481,8 +449,6 @@ class CacheTest extends CakeTestCase
 
     /**
      * testSet method
-     *
-     * @return void
      */
     public function testSet()
     {
@@ -509,8 +475,6 @@ class CacheTest extends CakeTestCase
 
     /**
      * test set() parameter handling for user cache configs.
-     *
-     * @return void
      */
     public function testSetOnAlternateConfigs()
     {
@@ -524,8 +488,6 @@ class CacheTest extends CakeTestCase
 
     /**
      * test remember method.
-     *
-     * @return void
      */
     public function testRemember()
     {
@@ -550,8 +512,6 @@ class CacheTest extends CakeTestCase
 
     /**
      * Test add method.
-     *
-     * @return void
      */
     public function testAdd()
     {
@@ -572,8 +532,6 @@ class CacheTest extends CakeTestCase
      * Test engine method.
      *
      *  Success, default engine.
-     *
-     * @return void
      */
     public function testEngineSuccess()
     {
@@ -588,8 +546,6 @@ class CacheTest extends CakeTestCase
      * Test engine method.
      *
      *  Success, memcached engine.
-     *
-     * @return void
      */
     public function testEngineSuccessMemcached()
     {
@@ -619,8 +575,6 @@ class CacheTest extends CakeTestCase
      * Test engine method.
      *
      *  Failure.
-     *
-     * @return void
      */
     public function testEngineFailure()
     {

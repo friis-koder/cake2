@@ -10,8 +10,10 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
  * @since         CakePHP(tm) v 1.3
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('AppShell', 'Console/Command');
@@ -108,8 +110,6 @@ class FixtureTask extends BakeTask
     /**
      * Execution method always used for tasks
      * Handles dispatching to interactive, named, or all processes.
-     *
-     * @return void
      */
     public function execute()
     {
@@ -134,8 +134,6 @@ class FixtureTask extends BakeTask
 
     /**
      * Bake All the Fixtures at once. Will only bake fixtures for models that exist.
-     *
-     * @return void
      */
     public function all()
     {
@@ -155,8 +153,6 @@ class FixtureTask extends BakeTask
 
     /**
      * Interactive baking function
-     *
-     * @return void
      */
     protected function _interactive()
     {
@@ -178,6 +174,7 @@ class FixtureTask extends BakeTask
      * Interacts with the User to setup an array of import options. For a fixture.
      *
      * @param string $modelName Name of model you are dealing with.
+     *
      * @return array Array of import options.
      */
     public function importOptions($modelName)
@@ -222,6 +219,7 @@ class FixtureTask extends BakeTask
      * @param string $model Name of model to bake.
      * @param string $useTable Name of table to use.
      * @param array $importOptions Options for public $import
+     *
      * @return string|null Baked fixture content, otherwise null.
      */
     public function bake($model, $useTable = false, $importOptions = [])
@@ -285,6 +283,7 @@ class FixtureTask extends BakeTask
      *
      * @param string $model name of the model being generated
      * @param string $otherVars Contents of the fixture file.
+     *
      * @return string Content saved into fixture file.
      */
     public function generateFixtureFile($model, $otherVars)
@@ -324,6 +323,7 @@ class FixtureTask extends BakeTask
      * Generates a string representation of a schema.
      *
      * @param array $tableInfo Table schema array
+     *
      * @return string fields definitions
      */
     protected function _generateSchema($tableInfo)
@@ -338,6 +338,7 @@ class FixtureTask extends BakeTask
      *
      * @param array $tableInfo Table schema array
      * @param int $recordCount The number of records to generate.
+     *
      * @return array Array of records to use in the fixture.
      */
     protected function _generateRecords($tableInfo, $recordCount = 1)
@@ -418,6 +419,7 @@ class FixtureTask extends BakeTask
      * Convert a $records array into a string.
      *
      * @param array $records Array of records to be converted to string
+     *
      * @return string A string value of the $records array.
      */
     protected function _makeRecordString($records)
@@ -447,6 +449,7 @@ class FixtureTask extends BakeTask
      *
      * @param string $modelName name of the model to take records from.
      * @param string $useTable Name of table to use.
+     *
      * @return array Array of records.
      */
     protected function _getRecordsFromTable($modelName, $useTable = null)

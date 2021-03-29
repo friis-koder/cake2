@@ -12,9 +12,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Model
+ *
  * @since         CakePHP(tm) v 1.2.0.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('ObjectCollection', 'Utility');
@@ -55,7 +59,6 @@ class BehaviorCollection extends ObjectCollection implements CakeEventListener
      *
      * @param string $modelName Model name.
      * @param array $behaviors Behaviors list.
-     * @return void
      */
     public function init($modelName, $behaviors = [])
     {
@@ -73,7 +76,9 @@ class BehaviorCollection extends ObjectCollection implements CakeEventListener
      *
      * @param string $behavior Behavior name.
      * @param array $config Configuration options.
+     *
      * @return bool true.
+     *
      * @deprecated 3.0.0 Will be removed in 3.0. Replaced with load().
      */
     public function attach($behavior, $config = [])
@@ -98,8 +103,10 @@ class BehaviorCollection extends ObjectCollection implements CakeEventListener
      *
      * @param string $behavior CamelCased name of the behavior to load
      * @param array $config Behavior configuration parameters
-     * @return bool True on success.
+     *
      * @throws MissingBehaviorException when a behavior could not be found.
+     *
+     * @return bool True on success.
      */
     public function load($behavior, $config = [])
     {
@@ -183,7 +190,6 @@ class BehaviorCollection extends ObjectCollection implements CakeEventListener
      * Detaches a behavior from a model
      *
      * @param string $name CamelCased name of the behavior to unload
-     * @return void
      */
     public function unload($name)
     {
@@ -203,7 +209,7 @@ class BehaviorCollection extends ObjectCollection implements CakeEventListener
      * Backwards compatible alias for unload()
      *
      * @param string $name Name of behavior
-     * @return void
+     *
      * @deprecated 3.0.0 Will be removed in 3.0. Use unload instead.
      */
     public function detach($name)
@@ -221,6 +227,7 @@ class BehaviorCollection extends ObjectCollection implements CakeEventListener
      * @param string $method The method called.
      * @param array $params Parameters for the called method.
      * @param bool $strict If methods are not found, trigger an error.
+     *
      * @return array All methods for all behaviors attached to this object
      */
     public function dispatchMethod($model, $method, $params = [], $strict = false)
@@ -263,6 +270,7 @@ class BehaviorCollection extends ObjectCollection implements CakeEventListener
      *
      * @param string $method The method to find.
      * @param bool $callback Return the callback for the method.
+     *
      * @return mixed If $callback is false, a boolean will be returned, if its true, an array
      *   containing callback information will be returned. For mapped methods the array will have 3 elements.
      */

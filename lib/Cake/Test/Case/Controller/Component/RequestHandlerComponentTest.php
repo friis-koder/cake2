@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Controller.Component
+ *
  * @since         CakePHP(tm) v 1.2.0.5435
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Controller', 'Controller');
@@ -38,8 +42,6 @@ class RequestHandlerTestController extends Controller
 
     /**
      * test method for ajax redirection
-     *
-     * @return void
      */
     public function destination()
     {
@@ -49,8 +51,6 @@ class RequestHandlerTestController extends Controller
 
     /**
      * test method for ajax redirection + parameter parsing
-     *
-     * @return void
      */
     public function param_method($one = null, $two = null)
     {
@@ -60,8 +60,6 @@ class RequestHandlerTestController extends Controller
 
     /**
      * test method for testing layout rendering when isAjax()
-     *
-     * @return void
      */
     public function ajax2_layout()
     {
@@ -104,8 +102,6 @@ class RequestHandlerComponentTest extends CakeTestCase
 
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -115,8 +111,6 @@ class RequestHandlerComponentTest extends CakeTestCase
 
     /**
      * init method
-     *
-     * @return void
      */
     protected function _init()
     {
@@ -130,8 +124,6 @@ class RequestHandlerComponentTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -145,8 +137,6 @@ class RequestHandlerComponentTest extends CakeTestCase
 
     /**
      * Test that the constructor sets the settings.
-     *
-     * @return void
      */
     public function testConstructorSettings()
     {
@@ -163,8 +153,6 @@ class RequestHandlerComponentTest extends CakeTestCase
 
     /**
      * testInitializeCallback method
-     *
-     * @return void
      */
     public function testInitializeCallback()
     {
@@ -176,8 +164,6 @@ class RequestHandlerComponentTest extends CakeTestCase
 
     /**
      * test that a mapped Accept-type header will set $this->ext correctly.
-     *
-     * @return void
      */
     public function testInitializeContentTypeSettingExt()
     {
@@ -192,8 +178,6 @@ class RequestHandlerComponentTest extends CakeTestCase
 
     /**
      * Test that RequestHandler sets $this->ext when jQuery sends its wonky-ish headers.
-     *
-     * @return void
      */
     public function testInitializeContentTypeWithjQueryAccept()
     {
@@ -207,8 +191,6 @@ class RequestHandlerComponentTest extends CakeTestCase
 
     /**
      * Test that RequestHandler does not set extension to csv for text/plain mimetype
-     *
-     * @return void
      */
     public function testInitializeContentTypeWithjQueryTextPlainAccept()
     {
@@ -223,8 +205,6 @@ class RequestHandlerComponentTest extends CakeTestCase
     /**
      * Test that RequestHandler sets $this->ext when jQuery sends its wonky-ish headers
      * and the application is configured to handle multiple extensions
-     *
-     * @return void
      */
     public function testInitializeContentTypeWithjQueryAcceptAndMultiplesExtensions()
     {
@@ -238,8 +218,6 @@ class RequestHandlerComponentTest extends CakeTestCase
 
     /**
      * Test that RequestHandler does not set $this->ext when multiple accepts are sent.
-     *
-     * @return void
      */
     public function testInitializeNoContentTypeWithSingleAccept()
     {
@@ -256,8 +234,6 @@ class RequestHandlerComponentTest extends CakeTestCase
      * content types.
      * Having multiple types accepted with same weight, means the client lets the
      * server choose the returned content type.
-     *
-     * @return void
      */
     public function testInitializeNoContentTypeWithMultipleAcceptedTypes()
     {
@@ -277,8 +253,6 @@ class RequestHandlerComponentTest extends CakeTestCase
 
     /**
      * Test that ext is set to type with highest weight
-     *
-     * @return void
      */
     public function testInitializeContentTypeWithMultipleAcceptedTypes()
     {
@@ -292,8 +266,6 @@ class RequestHandlerComponentTest extends CakeTestCase
 
     /**
      * Test that ext is not set with confusing android accepts headers.
-     *
-     * @return void
      */
     public function testInitializeAmbiguousAndroidAccepts()
     {
@@ -307,8 +279,6 @@ class RequestHandlerComponentTest extends CakeTestCase
 
     /**
      * Test that the headers sent by firefox are not treated as XML requests.
-     *
-     * @return void
      */
     public function testInititalizeFirefoxHeaderNotXml()
     {
@@ -321,8 +291,6 @@ class RequestHandlerComponentTest extends CakeTestCase
 
     /**
      * Test that a type mismatch doesn't incorrectly set the ext
-     *
-     * @return void
      */
     public function testInitializeContentTypeAndExtensionMismatch()
     {
@@ -343,8 +311,6 @@ class RequestHandlerComponentTest extends CakeTestCase
 
     /**
      * testViewClassMap method
-     *
-     * @return void
      */
     public function testViewClassMap()
     {
@@ -371,8 +337,6 @@ class RequestHandlerComponentTest extends CakeTestCase
 
     /**
      * testDisabling method
-     *
-     * @return void
      */
     public function testDisabling()
     {
@@ -386,8 +350,6 @@ class RequestHandlerComponentTest extends CakeTestCase
 
     /**
      * testAutoAjaxLayout method
-     *
-     * @return void
      */
     public function testAutoAjaxLayout()
     {
@@ -406,8 +368,6 @@ class RequestHandlerComponentTest extends CakeTestCase
 
     /**
      * testStartupCallback method
-     *
-     * @return void
      */
     public function testStartupCallback()
     {
@@ -421,8 +381,6 @@ class RequestHandlerComponentTest extends CakeTestCase
 
     /**
      * testStartupCallbackJson method
-     *
-     * @return void
      */
     public function testStartupCallbackJson()
     {
@@ -436,8 +394,6 @@ class RequestHandlerComponentTest extends CakeTestCase
 
     /**
      * testStartupCallback with charset.
-     *
-     * @return void
      */
     public function testStartupCallbackCharset()
     {
@@ -451,8 +407,6 @@ class RequestHandlerComponentTest extends CakeTestCase
 
     /**
      * Test mapping a new type and having startup process it.
-     *
-     * @return void
      */
     public function testStartupCustomTypeProcess()
     {
@@ -475,8 +429,6 @@ class RequestHandlerComponentTest extends CakeTestCase
 
     /**
      * testNonAjaxRedirect method
-     *
-     * @return void
      */
     public function testNonAjaxRedirect()
     {
@@ -487,8 +439,6 @@ class RequestHandlerComponentTest extends CakeTestCase
 
     /**
      * test that redirects with ajax and no URL don't do anything.
-     *
-     * @return void
      */
     public function testAjaxRedirectWithNoUrl()
     {
@@ -505,8 +455,6 @@ class RequestHandlerComponentTest extends CakeTestCase
 
     /**
      * testRenderAs method
-     *
-     * @return void
      */
     public function testRenderAs()
     {
@@ -521,8 +469,6 @@ class RequestHandlerComponentTest extends CakeTestCase
 
     /**
      * test that attachment headers work with renderAs
-     *
-     * @return void
      */
     public function testRenderAsWithAttachment()
     {
@@ -549,8 +495,6 @@ class RequestHandlerComponentTest extends CakeTestCase
 
     /**
      * test that respondAs works as expected.
-     *
-     * @return void
      */
     public function testRespondAs()
     {
@@ -568,8 +512,6 @@ class RequestHandlerComponentTest extends CakeTestCase
 
     /**
      * test that attachment headers work with respondAs
-     *
-     * @return void
      */
     public function testRespondAsWithAttachment()
     {
@@ -598,7 +540,6 @@ class RequestHandlerComponentTest extends CakeTestCase
      * test that calling renderAs() more than once continues to work.
      *
      * @link #6466
-     * @return void
      */
     public function testRenderAsCalledTwice()
     {
@@ -614,8 +555,6 @@ class RequestHandlerComponentTest extends CakeTestCase
 
     /**
      * testRequestClientTypes method
-     *
-     * @return void
      */
     public function testRequestClientTypes()
     {
@@ -628,8 +567,6 @@ class RequestHandlerComponentTest extends CakeTestCase
 
     /**
      * Tests the detection of various Flash versions
-     *
-     * @return void
      */
     public function testFlashDetection()
     {
@@ -644,8 +581,6 @@ class RequestHandlerComponentTest extends CakeTestCase
 
     /**
      * testRequestContentTypes method
-     *
-     * @return void
      */
     public function testRequestContentTypes()
     {
@@ -700,8 +635,6 @@ class RequestHandlerComponentTest extends CakeTestCase
 
     /**
      * testResponseContentType method
-     *
-     * @return void
      */
     public function testResponseContentType()
     {
@@ -712,8 +645,6 @@ class RequestHandlerComponentTest extends CakeTestCase
 
     /**
      * testMobileDeviceDetection method
-     *
-     * @return void
      */
     public function testMobileDeviceDetection()
     {
@@ -728,8 +659,6 @@ class RequestHandlerComponentTest extends CakeTestCase
 
     /**
      * testRequestProperties method
-     *
-     * @return void
      */
     public function testRequestProperties()
     {
@@ -744,8 +673,6 @@ class RequestHandlerComponentTest extends CakeTestCase
 
     /**
      * testRequestMethod method
-     *
-     * @return void
      */
     public function testRequestMethod()
     {
@@ -775,8 +702,6 @@ class RequestHandlerComponentTest extends CakeTestCase
 
     /**
      * test that map alias converts aliases to content types.
-     *
-     * @return void
      */
     public function testMapAlias()
     {
@@ -796,8 +721,6 @@ class RequestHandlerComponentTest extends CakeTestCase
 
     /**
      * test accepts() on the component
-     *
-     * @return void
      */
     public function testAccepts()
     {
@@ -811,8 +734,6 @@ class RequestHandlerComponentTest extends CakeTestCase
 
     /**
      * test accepts and prefers methods.
-     *
-     * @return void
      */
     public function testPrefers()
     {
@@ -838,8 +759,6 @@ class RequestHandlerComponentTest extends CakeTestCase
 
     /**
      * testCustomContent method
-     *
-     * @return void
      */
     public function testCustomContent()
     {
@@ -851,8 +770,6 @@ class RequestHandlerComponentTest extends CakeTestCase
 
     /**
      * testClientProperties method
-     *
-     * @return void
      */
     public function testClientProperties()
     {
@@ -868,8 +785,6 @@ class RequestHandlerComponentTest extends CakeTestCase
 
     /**
      * test that ajax requests involving redirects trigger requestAction instead.
-     *
-     * @return void
      */
     public function testAjaxRedirectAsRequestAction()
     {
@@ -899,8 +814,6 @@ class RequestHandlerComponentTest extends CakeTestCase
     /**
      * test that ajax requests involving redirects don't force no layout
      * this would cause the ajax layout to not be rendered.
-     *
-     * @return void
      */
     public function testAjaxRedirectAsRequestActionStillRenderingLayout()
     {
@@ -932,8 +845,6 @@ class RequestHandlerComponentTest extends CakeTestCase
      * test that the beforeRedirect callback properly converts
      * array URLs into their correct string ones, and adds base => false so
      * the correct URLs are generated.
-     *
-     * @return void
      */
     public function testBeforeRedirectCallbackWithArrayUrl()
     {
@@ -960,8 +871,6 @@ class RequestHandlerComponentTest extends CakeTestCase
 
     /**
      * assure that beforeRedirect with a status code will correctly set the status header
-     *
-     * @return void
      */
     public function testBeforeRedirectCallingHeader()
     {
@@ -984,7 +893,6 @@ class RequestHandlerComponentTest extends CakeTestCase
 
     /**
      * @expectedException CakeException
-     * @return void
      */
     public function testAddInputTypeException()
     {
@@ -993,8 +901,6 @@ class RequestHandlerComponentTest extends CakeTestCase
 
     /**
      * Test checkNotModified method
-     *
-     * @return void
      */
     public function testCheckNotModifiedByEtagStar()
     {
@@ -1008,8 +914,6 @@ class RequestHandlerComponentTest extends CakeTestCase
 
     /**
      * Test checkNotModified method
-     *
-     * @return void
      */
     public function testCheckNotModifiedByEtagExact()
     {
@@ -1023,8 +927,6 @@ class RequestHandlerComponentTest extends CakeTestCase
 
     /**
      * Test checkNotModified method
-     *
-     * @return void
      */
     public function testCheckNotModifiedByEtagAndTime()
     {
@@ -1040,8 +942,6 @@ class RequestHandlerComponentTest extends CakeTestCase
 
     /**
      * Test checkNotModified method
-     *
-     * @return void
      */
     public function testCheckNotModifiedNoInfo()
     {

@@ -12,9 +12,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Model.Validator
+ *
  * @since         CakePHP(tm) v 2.2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Validation', 'Utility');
@@ -24,6 +28,7 @@ App::uses('Validation', 'Utility');
  * rules for applying such method to a field.
  *
  * @package       Cake.Model.Validator
+ *
  * @link          https://book.cakephp.org/2.0/en/data-validation.html
  */
 class CakeValidationRule
@@ -162,6 +167,7 @@ class CakeValidationRule
      *
      * @param string $field Field name
      * @param array &$data Data to check rule against
+     *
      * @return bool
      */
     public function checkRequired($field, &$data)
@@ -180,6 +186,7 @@ class CakeValidationRule
      *
      * @param string $field Field name
      * @param array &$data data to check rule against
+     *
      * @return bool
      */
     public function checkEmpty($field, &$data)
@@ -259,6 +266,7 @@ class CakeValidationRule
      * is configured for update operations or not.
      *
      * @param bool $exists Boolean to indicate if records exists
+     *
      * @return bool
      */
     public function isUpdate($exists = null)
@@ -276,6 +284,7 @@ class CakeValidationRule
      * @param string $field Field name
      * @param array &$data Data array
      * @param array &$methods Methods list
+     *
      * @return bool True if the rule could be dispatched, false otherwise
      */
     public function process($field, &$data, &$methods)
@@ -305,8 +314,6 @@ class CakeValidationRule
     /**
      * Resets internal state for this rule, by default it will become valid
      * and it will set isUpdate() to false
-     *
-     * @return void
      */
     public function reset()
     {
@@ -318,6 +325,7 @@ class CakeValidationRule
      * Returns passed options for this rule
      *
      * @param string|int $key Array index
+     *
      * @return array|null
      */
     public function getOptions($key)
@@ -333,7 +341,6 @@ class CakeValidationRule
      * Sets the rule properties from the rule entry in validate
      *
      * @param array $validator [optional]
-     * @return void
      */
     protected function _addValidatorProps($validator = [])
     {
@@ -356,7 +363,6 @@ class CakeValidationRule
      *
      * @param string $field Field name
      * @param array &$data Data array
-     * @return void
      */
     protected function _parseRule($field, &$data)
     {

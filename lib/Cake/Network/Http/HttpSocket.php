@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Network.Http
+ *
  * @since         CakePHP(tm) v 1.2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('CakeSocket', 'Network');
@@ -192,7 +196,6 @@ class HttpSocket extends CakeSocket
      * @param string $method Authentication method (ie. Basic, Digest). If empty, disable authentication
      * @param string|array $user Username for authentication. Can be an array with settings to authentication class
      * @param string $pass Password for authentication
-     * @return void
      */
     public function configAuth($method, $user = null, $pass = null)
     {
@@ -217,7 +220,6 @@ class HttpSocket extends CakeSocket
      * @param string $method Proxy method (ie, Basic, Digest). If empty, disable proxy authentication
      * @param string $user Username if your proxy need authentication
      * @param string $pass Password to proxy authentication
-     * @return void
      */
     public function configProxy($host, $port = 3128, $method = null, $user = null, $pass = null)
     {
@@ -238,7 +240,7 @@ class HttpSocket extends CakeSocket
      * Set the resource to receive the request content. This resource must support fwrite.
      *
      * @param resource|bool $resource Resource or false to disable the resource use
-     * @return void
+     *
      * @throws SocketException
      */
     public function setContentResource($resource)
@@ -259,8 +261,10 @@ class HttpSocket extends CakeSocket
      * method and provide a more granular interface.
      *
      * @param string|array $request Either an URI string, or an array defining host/uri
-     * @return false|HttpSocketResponse false on error, HttpSocketResponse on success
+     *
      * @throws SocketException
+     *
+     * @return false|HttpSocketResponse false on error, HttpSocketResponse on success
      */
     public function request($request = [])
     {
@@ -458,6 +462,7 @@ class HttpSocket extends CakeSocket
      * @param string|array $uri URI to request. Either a string uri, or a uri array, see HttpSocket::_parseUri()
      * @param array $query Querystring parameters to append to URI
      * @param array $request An indexed array with indexes such as 'method' or uri
+     *
      * @return false|HttpSocketResponse Result of request, either false on failure or the response to the request.
      */
     public function get($uri = null, $query = [], $request = [])
@@ -484,6 +489,7 @@ class HttpSocket extends CakeSocket
      * @param string|array $uri URI to request. Either a string URI, or a URI array, see HttpSocket::_parseUri()
      * @param array $query Querystring parameters to append to URI
      * @param array $request An indexed array with indexes such as 'method' or uri
+     *
      * @return false|HttpSocketResponse Result of request, either false on failure or the response to the request.
      */
     public function head($uri = null, $query = [], $request = [])
@@ -516,6 +522,7 @@ class HttpSocket extends CakeSocket
      * @param string|array $uri URI to request. See HttpSocket::_parseUri()
      * @param array $data Array of request body data keys and values.
      * @param array $request An indexed array with indexes such as 'method' or uri
+     *
      * @return false|HttpSocketResponse Result of request, either false on failure or the response to the request.
      */
     public function post($uri = null, $data = [], $request = [])
@@ -531,6 +538,7 @@ class HttpSocket extends CakeSocket
      * @param string|array $uri URI to request, See HttpSocket::_parseUri()
      * @param array $data Array of request body data keys and values.
      * @param array $request An indexed array with indexes such as 'method' or uri
+     *
      * @return false|HttpSocketResponse Result of request
      */
     public function put($uri = null, $data = [], $request = [])
@@ -546,6 +554,7 @@ class HttpSocket extends CakeSocket
      * @param string|array $uri URI to request, See HttpSocket::_parseUri()
      * @param array $data Array of request body data keys and values.
      * @param array $request An indexed array with indexes such as 'method' or uri
+     *
      * @return false|HttpSocketResponse Result of request
      */
     public function patch($uri = null, $data = [], $request = [])
@@ -561,6 +570,7 @@ class HttpSocket extends CakeSocket
      * @param string|array $uri URI to request (see {@link _parseUri()})
      * @param array $data Array of request body data keys and values.
      * @param array $request An indexed array with indexes such as 'method' or uri
+     *
      * @return false|HttpSocketResponse Result of request
      */
     public function delete($uri = null, $data = [], $request = [])
@@ -595,6 +605,7 @@ class HttpSocket extends CakeSocket
      *
      * @param string|array $url Either a string or array of URL options to create a URL with.
      * @param string $uriTemplate A template string to use for URL formatting.
+     *
      * @return mixed Either false on failure or a string containing the composed URL.
      */
     public function url($url = null, $uriTemplate = null)
@@ -638,7 +649,6 @@ class HttpSocket extends CakeSocket
     /**
      * Set authentication in request
      *
-     * @return void
      * @throws SocketException
      */
     protected function _setAuth()
@@ -663,7 +673,6 @@ class HttpSocket extends CakeSocket
     /**
      * Set the proxy configuration and authentication
      *
-     * @return void
      * @throws SocketException
      */
     protected function _setProxy()
@@ -702,6 +711,7 @@ class HttpSocket extends CakeSocket
      * Parses and sets the specified URI into current request configuration.
      *
      * @param string|array $uri URI, See HttpSocket::_parseUri()
+     *
      * @return bool If uri has merged in config
      */
     protected function _configUri($uri = null)
@@ -735,6 +745,7 @@ class HttpSocket extends CakeSocket
      *
      * @param string|array $uri Either A $uri array, or a request string. Will use $this->config if left empty.
      * @param string $uriTemplate The Uri template/format to use.
+     *
      * @return mixed A fully qualified URL formatted according to $uriTemplate, or false on failure
      */
     protected function _buildUri($uri = [], $uriTemplate = '%scheme://%user:%pass@%host:%port/%path?%query#%fragment')
@@ -785,6 +796,7 @@ class HttpSocket extends CakeSocket
      *
      * @param string|array $uri URI to parse
      * @param bool|array $base If true use default URI config, otherwise indexed array to set 'scheme', 'host', 'port', etc.
+     *
      * @return array|bool Parsed URI
      */
     protected function _parseUri($uri = null, $base = [])
@@ -851,6 +863,7 @@ class HttpSocket extends CakeSocket
      * For the complete capabilities of this implementation take a look at HttpSocketTest::testparseQuery()
      *
      * @param string|array $query A query string to parse into an array or an array to return directly "as is"
+     *
      * @return array The $query parsed into a possibly multi-level array. If an empty $query is
      *     given, an empty array is returned.
      */
@@ -917,8 +930,10 @@ class HttpSocket extends CakeSocket
      * Builds a request line according to HTTP/1.1 specs. Activate quirks mode to work outside specs.
      *
      * @param array $request Needs to contain a 'uri' key. Should also contain a 'method' key, otherwise defaults to GET.
-     * @return string Request line
+     *
      * @throws SocketException
+     *
+     * @return string Request line
      */
     protected function _buildRequestLine($request = [])
     {
@@ -958,6 +973,7 @@ class HttpSocket extends CakeSocket
      *
      * @param array $header Header to build
      * @param string $mode Mode
+     *
      * @return string Header built from array
      */
     protected function _buildHeader($header, $mode = 'standard')
@@ -1002,6 +1018,7 @@ class HttpSocket extends CakeSocket
      * a simple key => value pair.
      *
      * @param array $cookies Array of cookies to send with the request.
+     *
      * @return string Cookie header string to be sent with the request.
      */
     public function buildCookies($cookies)
@@ -1024,6 +1041,7 @@ class HttpSocket extends CakeSocket
      *
      * @param string $token Token to escape
      * @param array $chars Characters to escape
+     *
      * @return string Escaped token
      */
     protected function _escapeToken($token, $chars = null)
@@ -1039,6 +1057,7 @@ class HttpSocket extends CakeSocket
      *
      * @param bool $hex true to get them as HEX values, false otherwise
      * @param array $chars Characters to escape
+     *
      * @return array Escape chars
      */
     protected function _tokenEscapeChars($hex = true, $chars = null)
@@ -1068,6 +1087,7 @@ class HttpSocket extends CakeSocket
      * the same thing partially for the request and the response property only.
      *
      * @param bool $full If set to false only HttpSocket::response and HttpSocket::request are reset
+     *
      * @return bool True on success
      */
     public function reset($full = true)

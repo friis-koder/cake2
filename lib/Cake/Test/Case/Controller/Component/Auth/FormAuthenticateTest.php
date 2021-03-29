@@ -8,9 +8,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Test.Case.Controller.Component.Auth
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('AuthComponent', 'Controller/Component');
@@ -37,8 +41,6 @@ class FormAuthenticateTest extends CakeTestCase
 
     /**
      * setup
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -56,8 +58,6 @@ class FormAuthenticateTest extends CakeTestCase
 
     /**
      * test applying settings in the constructor
-     *
-     * @return void
      */
     public function testConstructor()
     {
@@ -71,8 +71,6 @@ class FormAuthenticateTest extends CakeTestCase
 
     /**
      * test the authenticate method
-     *
-     * @return void
      */
     public function testAuthenticateNoData()
     {
@@ -83,8 +81,6 @@ class FormAuthenticateTest extends CakeTestCase
 
     /**
      * test the authenticate method
-     *
-     * @return void
      */
     public function testAuthenticateNoUsername()
     {
@@ -95,8 +91,6 @@ class FormAuthenticateTest extends CakeTestCase
 
     /**
      * test the authenticate method
-     *
-     * @return void
      */
     public function testAuthenticateNoPassword()
     {
@@ -107,8 +101,6 @@ class FormAuthenticateTest extends CakeTestCase
 
     /**
      * test authenticate password is false method
-     *
-     * @return void
      */
     public function testAuthenticatePasswordIsFalse()
     {
@@ -124,8 +116,6 @@ class FormAuthenticateTest extends CakeTestCase
     /**
      * Test for password as empty string with _checkFields() call skipped
      * Refs https://github.com/cakephp/cakephp/pull/2441
-     *
-     * @return void
      */
     public function testAuthenticatePasswordIsEmptyString()
     {
@@ -158,8 +148,6 @@ class FormAuthenticateTest extends CakeTestCase
 
     /**
      * test authenticate field is not string
-     *
-     * @return void
      */
     public function testAuthenticateFieldsAreNotString()
     {
@@ -188,8 +176,6 @@ class FormAuthenticateTest extends CakeTestCase
 
     /**
      * test the authenticate method
-     *
-     * @return void
      */
     public function testAuthenticateInjection()
     {
@@ -204,8 +190,6 @@ class FormAuthenticateTest extends CakeTestCase
 
     /**
      * test authenticate success
-     *
-     * @return void
      */
     public function testAuthenticateSuccess()
     {
@@ -226,8 +210,6 @@ class FormAuthenticateTest extends CakeTestCase
 
     /**
      * test scope failure.
-     *
-     * @return void
      */
     public function testAuthenticateScopeFail()
     {
@@ -243,8 +225,6 @@ class FormAuthenticateTest extends CakeTestCase
 
     /**
      * Test that username of 0 works.
-     *
-     * @return void
      */
     public function testAuthenticateUsernameZero()
     {
@@ -268,8 +248,6 @@ class FormAuthenticateTest extends CakeTestCase
 
     /**
      * test a model in a plugin.
-     *
-     * @return void
      */
     public function testPluginModel()
     {
@@ -308,8 +286,6 @@ class FormAuthenticateTest extends CakeTestCase
 
     /**
      * test password hasher settings
-     *
-     * @return void
      */
     public function testPasswordHasherSettings()
     {

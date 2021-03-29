@@ -10,8 +10,10 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
  * @since         CakePHP(tm) v 1.2.0.5012
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('TaskCollection', 'Console');
@@ -111,6 +113,7 @@ class Shell extends CakeObject
      * Contains tasks to load and instantiate
      *
      * @var array
+     *
      * @link https://book.cakephp.org/2.0/en/console-and-shells.html#Shell::$tasks
      */
     public $tasks = [];
@@ -126,6 +129,7 @@ class Shell extends CakeObject
      * Contains models to load and instantiate
      *
      * @var array
+     *
      * @link https://book.cakephp.org/2.0/en/console-and-shells.html#Shell::$uses
      */
     public $uses = [];
@@ -193,6 +197,7 @@ class Shell extends CakeObject
      * @param ConsoleOutput $stdout A ConsoleOutput object for stdout.
      * @param ConsoleOutput $stderr A ConsoleOutput object for stderr.
      * @param ConsoleInput $stdin A ConsoleInput object for stdin.
+     *
      * @link https://book.cakephp.org/2.0/en/console-and-shells.html#Shell
      */
     public function __construct($stdout = null, $stderr = null, $stdin = null)
@@ -221,7 +226,6 @@ class Shell extends CakeObject
      * acts as constructor for subclasses
      * allows configuration of tasks prior to shell execution
      *
-     * @return void
      * @link https://book.cakephp.org/2.0/en/console-and-shells.html#Shell::initialize
      */
     public function initialize()
@@ -237,7 +241,6 @@ class Shell extends CakeObject
      * Override this method if you want to remove the welcome information,
      * or otherwise modify the pre-command flow.
      *
-     * @return void
      * @link https://book.cakephp.org/2.0/en/console-and-shells.html#Shell::startup
      */
     public function startup()
@@ -247,8 +250,6 @@ class Shell extends CakeObject
 
     /**
      * Displays a header for the shell
-     *
-     * @return void
      */
     protected function _welcome()
     {
@@ -281,7 +282,6 @@ class Shell extends CakeObject
      * Lazy loads models using the loadModel() method if declared in $uses
      *
      * @param string $name The name of the model to look for.
-     * @return void
      */
     public function __isset($name)
     {
@@ -300,8 +300,10 @@ class Shell extends CakeObject
      *
      * @param string $modelClass Name of model class to load
      * @param mixed $id Initial ID the instanced model class should have
-     * @return mixed true when single model found and instance created, error returned if model not found.
+     *
      * @throws MissingModelException if the model class cannot be found.
+     *
+     * @return mixed true when single model found and instance created, error returned if model not found.
      */
     public function loadModel($modelClass = null, $id = null)
     {
@@ -349,7 +351,9 @@ class Shell extends CakeObject
      * Check to see if this shell has a task with the provided name.
      *
      * @param string $task The task name to check.
+     *
      * @return bool Success
+     *
      * @link https://book.cakephp.org/2.0/en/console-and-shells.html#Shell::hasTask
      */
     public function hasTask($task)
@@ -361,7 +365,9 @@ class Shell extends CakeObject
      * Check to see if this shell has a callable method by the given name.
      *
      * @param string $name The method name to check.
+     *
      * @return bool
+     *
      * @link https://book.cakephp.org/2.0/en/console-and-shells.html#Shell::hasMethod
      */
     public function hasMethod($name)
@@ -400,6 +406,7 @@ class Shell extends CakeObject
      * `return $this->dispatchShell('schema', 'create', 'i18n', '--dry');`
      *
      * @return mixed The return of the other shell.
+     *
      * @link https://book.cakephp.org/2.0/en/console-and-shells.html#Shell::dispatchShell
      */
     public function dispatchShell()
@@ -430,7 +437,9 @@ class Shell extends CakeObject
      * @param string $command The command name to run on this shell. If this argument is empty,
      *   and the shell has a `main()` method, that will be called instead.
      * @param array $argv Array of arguments to run the shell with. This array should be missing the shell name.
+     *
      * @return int|bool
+     *
      * @link https://book.cakephp.org/2.0/en/console-and-shells.html#Shell::runCommand
      */
     public function runCommand($command, $argv)
@@ -489,6 +498,7 @@ class Shell extends CakeObject
      * Display the help in the correct format
      *
      * @param string $command The command to get help for.
+     *
      * @return int|bool
      */
     protected function _displayHelp($command)
@@ -510,6 +520,7 @@ class Shell extends CakeObject
      * By overriding this method you can configure the ConsoleOptionParser before returning it.
      *
      * @return ConsoleOptionParser
+     *
      * @link https://book.cakephp.org/2.0/en/console-and-shells.html#Shell::getOptionParser
      */
     public function getOptionParser()
@@ -524,6 +535,7 @@ class Shell extends CakeObject
      * Overload get for lazy building of tasks
      *
      * @param string $name The property name to access.
+     *
      * @return Shell Object of Task
      */
     public function __get($name)
@@ -544,6 +556,7 @@ class Shell extends CakeObject
      * Safely access the values in $this->params.
      *
      * @param string $name The name of the parameter to get.
+     *
      * @return string|bool|null Value. Will return null if it doesn't exist.
      */
     public function param($name)
@@ -561,7 +574,9 @@ class Shell extends CakeObject
      * @param string $prompt Prompt text.
      * @param string|array $options Array or string of options.
      * @param string $default Default input value.
+     *
      * @return mixed Either the default value, or the user-provided input.
+     *
      * @link https://book.cakephp.org/2.0/en/console-and-shells.html#Shell::in
      */
     public function in($prompt, $options = null, $default = null)
@@ -601,6 +616,7 @@ class Shell extends CakeObject
      * @param string $prompt Prompt text.
      * @param string|array $options Array or string of options.
      * @param string $default Default input value.
+     *
      * @return string|int the default value, or the user-provided input.
      */
     protected function _getInput($prompt, $options, $default)
@@ -644,7 +660,9 @@ class Shell extends CakeObject
      *
      * @param string $text Text the text to format.
      * @param string|int|array $options Array of options to use, or an integer to wrap the text to.
+     *
      * @return string Wrapped / indented text
+     *
      * @see CakeText::wrap()
      * @link https://book.cakephp.org/2.0/en/console-and-shells.html#Shell::wrapText
      */
@@ -667,7 +685,9 @@ class Shell extends CakeObject
      * @param string|array $message A string or an array of strings to output
      * @param int $newlines Number of newlines to append
      * @param int $level The message's output level, see above.
+     *
      * @return int|bool Returns the number of bytes returned from writing to stdout.
+     *
      * @link https://book.cakephp.org/2.0/en/console-and-shells.html#Shell::out
      */
     public function out($message = null, $newlines = 1, $level = Shell::NORMAL)
@@ -699,6 +719,7 @@ class Shell extends CakeObject
      * @param array|string $message The message to output.
      * @param int $newlines Number of newlines to append.
      * @param int $size The number of bytes to overwrite. Defaults to the length of the last message output.
+     *
      * @return int|bool Returns the number of bytes returned from writing to stdout.
      */
     public function overwrite($message, $newlines = 1, $size = null)
@@ -726,7 +747,7 @@ class Shell extends CakeObject
      *
      * @param string|array $message A string or an array of strings to output
      * @param int $newlines Number of newlines to append
-     * @return void
+     *
      * @link https://book.cakephp.org/2.0/en/console-and-shells.html#Shell::err
      */
     public function err($message = null, $newlines = 1)
@@ -738,7 +759,9 @@ class Shell extends CakeObject
      * Returns a single or multiple linefeeds sequences.
      *
      * @param int $multiplier Number of times the linefeed sequence should be repeated
+     *
      * @return string
+     *
      * @link https://book.cakephp.org/2.0/en/console-and-shells.html#Shell::nl
      */
     public function nl($multiplier = 1)
@@ -751,7 +774,7 @@ class Shell extends CakeObject
      *
      * @param int $newlines Number of newlines to pre- and append
      * @param int $width Width of the line, defaults to 63
-     * @return void
+     *
      * @link https://book.cakephp.org/2.0/en/console-and-shells.html#Shell::hr
      */
     public function hr($newlines = 0, $width = 63)
@@ -767,7 +790,9 @@ class Shell extends CakeObject
      *
      * @param string $title Title of the error
      * @param string $message An optional error message
+     *
      * @return int
+     *
      * @link https://book.cakephp.org/2.0/en/console-and-shells.html#Shell::error
      */
     public function error($title, $message = null)
@@ -785,7 +810,6 @@ class Shell extends CakeObject
     /**
      * Clear the console
      *
-     * @return void
      * @link https://book.cakephp.org/2.0/en/console-and-shells.html#Shell::clear
      */
     public function clear()
@@ -804,7 +828,9 @@ class Shell extends CakeObject
      *
      * @param string $path Where to put the file.
      * @param string $contents Content to put in the file.
+     *
      * @return bool Success
+     *
      * @link https://book.cakephp.org/2.0/en/console-and-shells.html#Shell::createFile
      */
     public function createFile($path, $contents)
@@ -847,8 +873,10 @@ class Shell extends CakeObject
      * Load given shell helper class
      *
      * @param string $name Name of the helper class. Supports plugin syntax.
-     * @return BaseShellHelper Instance of helper class
+     *
      * @throws RuntimeException If invalid class name is provided
+     *
+     * @return BaseShellHelper Instance of helper class
      */
     public function helper($name)
     {
@@ -900,7 +928,9 @@ class Shell extends CakeObject
      * Makes absolute file path easier to read
      *
      * @param string $file Absolute file path
+     *
      * @return string short path
+     *
      * @link https://book.cakephp.org/2.0/en/console-and-shells.html#Shell::shortPath
      */
     public function shortPath($file)
@@ -915,6 +945,7 @@ class Shell extends CakeObject
      * Creates the proper controller path for the specified controller class name
      *
      * @param string $name Controller class name
+     *
      * @return string Path to controller
      */
     protected function _controllerPath($name)
@@ -926,6 +957,7 @@ class Shell extends CakeObject
      * Creates the proper controller plural name for the specified controller class name
      *
      * @param string $name Controller class name
+     *
      * @return string Controller plural name
      */
     protected function _controllerName($name)
@@ -937,6 +969,7 @@ class Shell extends CakeObject
      * Creates the proper model camelized name (singularized) for the specified name
      *
      * @param string $name Name
+     *
      * @return string Camelized and singularized model name
      */
     protected function _modelName($name)
@@ -948,6 +981,7 @@ class Shell extends CakeObject
      * Creates the proper underscored model key for associations
      *
      * @param string $name Model class name
+     *
      * @return string Singular model key
      */
     protected function _modelKey($name)
@@ -959,6 +993,7 @@ class Shell extends CakeObject
      * Creates the proper model name from a foreign key
      *
      * @param string $key Foreign key
+     *
      * @return string Model name
      */
     protected function _modelNameFromKey($key)
@@ -970,6 +1005,7 @@ class Shell extends CakeObject
      * creates the singular name for use in views.
      *
      * @param string $name The plural underscored value.
+     *
      * @return string name
      */
     protected function _singularName($name)
@@ -981,6 +1017,7 @@ class Shell extends CakeObject
      * Creates the plural name for views
      *
      * @param string $name Name to use
+     *
      * @return string Plural name for views
      */
     protected function _pluralName($name)
@@ -992,6 +1029,7 @@ class Shell extends CakeObject
      * Creates the singular human name used in views
      *
      * @param string $name Controller name
+     *
      * @return string Singular human name
      */
     protected function _singularHumanName($name)
@@ -1003,6 +1041,7 @@ class Shell extends CakeObject
      * Creates the plural human name used in views
      *
      * @param string $name Controller name
+     *
      * @return string Plural human name
      */
     protected function _pluralHumanName($name)
@@ -1014,6 +1053,7 @@ class Shell extends CakeObject
      * Find the correct path for a plugin. Scans $pluginPaths for the plugin you want.
      *
      * @param string $pluginName Name of the plugin you want ie. DebugKit
+     *
      * @return string path path to the correct plugin.
      */
     protected function _pluginPath($pluginName)
@@ -1031,7 +1071,6 @@ class Shell extends CakeObject
      * through CakeLog, call this function with first param as false
      *
      * @param bool $enable whether to enable CakeLog output or not
-     * @return void
      */
     protected function _useLogger($enable = true)
     {
@@ -1051,8 +1090,6 @@ class Shell extends CakeObject
 
     /**
      * Configure the stdout logger
-     *
-     * @return void
      */
     protected function _configureStdOutLogger()
     {
@@ -1065,8 +1102,6 @@ class Shell extends CakeObject
 
     /**
      * Configure the stderr logger
-     *
-     * @return void
      */
     protected function _configureStdErrLogger()
     {
@@ -1081,6 +1116,7 @@ class Shell extends CakeObject
      * Checks if the given logger is configured
      *
      * @param string $logger The name of the logger to check
+     *
      * @return bool
      */
     protected function _loggerIsConfigured($logger)

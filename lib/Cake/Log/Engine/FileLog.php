@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          http://www.cakefoundation.org/projects/info/cakephp CakePHP(tm) Project
+ *
  * @package       Cake.Log.Engine
+ *
  * @since         CakePHP(tm) v 1.3
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('BaseLog', 'Log/Engine');
@@ -31,6 +35,7 @@ class FileLog extends BaseLog
      * Default configuration values
      *
      * @var array
+     *
      * @see FileLog::__construct()
      */
     protected $_defaults = [
@@ -94,6 +99,7 @@ class FileLog extends BaseLog
      * Sets protected properties based on config provided
      *
      * @param array $config Engine configuration
+     *
      * @return array
      */
     public function config($config = [])
@@ -129,6 +135,7 @@ class FileLog extends BaseLog
      *
      * @param string $type The type of log you are making.
      * @param string $message The message you want to log.
+     *
      * @return bool success of write.
      */
     public function write($type, $message)
@@ -164,6 +171,7 @@ class FileLog extends BaseLog
      * Get filename
      *
      * @param string $type The type of log.
+     *
      * @return string File name
      */
     protected function _getFilename($type)
@@ -188,6 +196,7 @@ class FileLog extends BaseLog
      * Also if `rotate` count is reached oldest file is removed.
      *
      * @param string $filename Log file name
+     *
      * @return mixed True if rotated successfully or false in case of error, otherwise null.
      *   Void if file doesn't need to be rotated.
      */

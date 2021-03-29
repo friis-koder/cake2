@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Controller.Component
+ *
  * @since         CakePHP(tm) v 0.10.8.2156
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Component', 'Controller');
@@ -31,6 +35,7 @@ App::uses('Security', 'Utility');
  * - Limiting cross controller communication.
  *
  * @package       Cake.Controller.Component
+ *
  * @link https://book.cakephp.org/2.0/en/core-libraries/components/security-component.html
  */
 class SecurityComponent extends Component
@@ -51,6 +56,7 @@ class SecurityComponent extends Component
      * List of controller actions for which a POST request is required
      *
      * @var array
+     *
      * @deprecated 3.0.0 Use CakeRequest::allowMethod() instead.
      * @see SecurityComponent::requirePost()
      */
@@ -60,6 +66,7 @@ class SecurityComponent extends Component
      * List of controller actions for which a GET request is required
      *
      * @var array
+     *
      * @deprecated 3.0.0 Use CakeRequest::allowMethod() instead.
      * @see SecurityComponent::requireGet()
      */
@@ -69,6 +76,7 @@ class SecurityComponent extends Component
      * List of controller actions for which a PUT request is required
      *
      * @var array
+     *
      * @deprecated 3.0.0 Use CakeRequest::allowMethod() instead.
      * @see SecurityComponent::requirePut()
      */
@@ -78,6 +86,7 @@ class SecurityComponent extends Component
      * List of controller actions for which a DELETE request is required
      *
      * @var array
+     *
      * @deprecated 3.0.0 Use CakeRequest::allowMethod() instead.
      * @see SecurityComponent::requireDelete()
      */
@@ -87,6 +96,7 @@ class SecurityComponent extends Component
      * List of actions that require an SSL-secured connection
      *
      * @var array
+     *
      * @see SecurityComponent::requireSecure()
      */
     public $requireSecure = [];
@@ -95,6 +105,7 @@ class SecurityComponent extends Component
      * List of actions that require a valid authentication key
      *
      * @var array
+     *
      * @see SecurityComponent::requireAuth()
      * @deprecated 2.8.1 This feature is confusing and not useful.
      */
@@ -105,6 +116,7 @@ class SecurityComponent extends Component
      * requests.
      *
      * @var array
+     *
      * @see SecurityComponent::requireAuth()
      */
     public $allowedControllers = [];
@@ -114,6 +126,7 @@ class SecurityComponent extends Component
      * requests.
      *
      * @var array
+     *
      * @see SecurityComponent::requireAuth()
      */
     public $allowedActions = [];
@@ -122,6 +135,7 @@ class SecurityComponent extends Component
      * Deprecated property, superseded by unlockedFields.
      *
      * @var array
+     *
      * @deprecated 3.0.0 Superseded by unlockedFields.
      * @see SecurityComponent::$unlockedFields
      */
@@ -158,6 +172,7 @@ class SecurityComponent extends Component
      * Whether to use CSRF protected forms. Set to false to disable CSRF protection on forms.
      *
      * @var bool
+     *
      * @see http://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)
      * @see SecurityComponent::$csrfExpires
      */
@@ -220,8 +235,8 @@ class SecurityComponent extends Component
      * Component startup. All security checking happens here.
      *
      * @param Controller $controller Instantiating controller
+     *
      * @throws AuthSecurityException
-     * @return void
      */
     public function startup(Controller $controller)
     {
@@ -264,7 +279,6 @@ class SecurityComponent extends Component
     /**
      * Sets the actions that require a POST request, or empty for all actions
      *
-     * @return void
      * @deprecated 3.0.0 Use CakeRequest::onlyAllow() instead.
      * @link https://book.cakephp.org/2.0/en/core-libraries/components/security-component.html#SecurityComponent::requirePost
      */
@@ -278,7 +292,6 @@ class SecurityComponent extends Component
      * Sets the actions that require a GET request, or empty for all actions
      *
      * @deprecated 3.0.0 Use CakeRequest::onlyAllow() instead.
-     * @return void
      */
     public function requireGet()
     {
@@ -290,7 +303,6 @@ class SecurityComponent extends Component
      * Sets the actions that require a PUT request, or empty for all actions
      *
      * @deprecated 3.0.0 Use CakeRequest::onlyAllow() instead.
-     * @return void
      */
     public function requirePut()
     {
@@ -302,7 +314,6 @@ class SecurityComponent extends Component
      * Sets the actions that require a DELETE request, or empty for all actions
      *
      * @deprecated 3.0.0 Use CakeRequest::onlyAllow() instead.
-     * @return void
      */
     public function requireDelete()
     {
@@ -313,7 +324,6 @@ class SecurityComponent extends Component
     /**
      * Sets the actions that require a request that is SSL-secured, or empty for all actions
      *
-     * @return void
      * @link https://book.cakephp.org/2.0/en/core-libraries/components/security-component.html#SecurityComponent::requireSecure
      */
     public function requireSecure()
@@ -329,7 +339,6 @@ class SecurityComponent extends Component
      * set in SecurityComponent::$allowedControllers and
      * SecurityComponent::$allowedActions.
      *
-     * @return void
      * @link https://book.cakephp.org/2.0/en/core-libraries/components/security-component.html#SecurityComponent::requireAuth
      */
     public function requireAuth()
@@ -345,10 +354,13 @@ class SecurityComponent extends Component
      * @param Controller $controller Instantiating controller
      * @param string $error Error method
      * @param SecurityException|null $exception Additional debug info describing the cause
+     *
+     * @throws BadRequestException
+     *
      * @return mixed If specified, controller blackHoleCallback's response, or no return otherwise
+     *
      * @see SecurityComponent::$blackHoleCallback
      * @link https://book.cakephp.org/2.0/en/core-libraries/components/security-component.html#handling-blackhole-callbacks
-     * @throws BadRequestException
      */
     public function blackHole(Controller $controller, $error = '', SecurityException $exception = null)
     {
@@ -363,8 +375,8 @@ class SecurityComponent extends Component
      * Check debug status and throw an Exception based on the existing one
      *
      * @param SecurityException|null $exception Additional debug info describing the cause
+     *
      * @throws BadRequestException
-     * @return void
      */
     protected function _throwException($exception = null)
     {
@@ -385,7 +397,6 @@ class SecurityComponent extends Component
      *
      * @param string $method The HTTP method to assign controller actions to
      * @param array $actions Controller actions to set the required HTTP method to.
-     * @return void
      */
     protected function _requireMethod($method, $actions = [])
     {
@@ -399,7 +410,9 @@ class SecurityComponent extends Component
      * Check if HTTP methods are required
      *
      * @param Controller $controller Instantiating controller
+     *
      * @throws SecurityException
+     *
      * @return bool True if $method is required
      */
     protected function _methodsRequired(Controller $controller)
@@ -425,7 +438,9 @@ class SecurityComponent extends Component
      * Check if access requires secure connection
      *
      * @param Controller $controller Instantiating controller
+     *
      * @throws SecurityException
+     *
      * @return bool True if secure connection required
      */
     protected function _secureRequired(Controller $controller)
@@ -449,8 +464,11 @@ class SecurityComponent extends Component
      * Check if authentication is required
      *
      * @param Controller $controller Instantiating controller
-     * @return bool|null True if authentication required
+     *
      * @throws AuthSecurityException
+     *
+     * @return bool|null True if authentication required
+     *
      * @deprecated 2.8.1 This feature is confusing and not useful.
      */
     protected function _authRequired(Controller $controller)
@@ -501,7 +519,9 @@ class SecurityComponent extends Component
      * Validate submitted form
      *
      * @param Controller $controller Instantiating controller
+     *
      * @throws AuthSecurityException
+     *
      * @return bool true if submitted form is valid
      */
     protected function _validatePost(Controller $controller)
@@ -529,8 +549,10 @@ class SecurityComponent extends Component
      * Check if token is valid
      *
      * @param Controller $controller Instantiating controller
+     *
      * @throws AuthSecurityException
      * @throws SecurityException
+     *
      * @return string fields token
      */
     protected function _validToken(Controller $controller)
@@ -566,6 +588,7 @@ class SecurityComponent extends Component
      * Return hash parts for the Token generation
      *
      * @param Controller $controller Instantiating controller
+     *
      * @return array
      */
     protected function _hashParts(Controller $controller)
@@ -585,6 +608,7 @@ class SecurityComponent extends Component
      * Return the fields list for the hash calculation
      *
      * @param array $check Data array
+     *
      * @return array
      */
     protected function _fieldsList(array $check)
@@ -654,6 +678,7 @@ class SecurityComponent extends Component
      * Get the unlocked string
      *
      * @param array $data Data array
+     *
      * @return string
      */
     protected function _unlocked(array $data)
@@ -665,6 +690,7 @@ class SecurityComponent extends Component
      * Get the sorted unlocked string
      *
      * @param array $data Data array
+     *
      * @return string
      */
     protected function _sortedUnlocked($data)
@@ -681,6 +707,7 @@ class SecurityComponent extends Component
      *
      * @param Controller $controller Instantiating controller
      * @param array $hashParts Elements used to generate the Token hash
+     *
      * @return string Message explaining why the tokens are not matching
      */
     protected function _debugPostTokenNotMatching(Controller $controller, $hashParts)
@@ -733,6 +760,7 @@ class SecurityComponent extends Component
      * @param string $intKeyMessage Message string if unexpected found in data fields indexed by int (not protected)
      * @param string $stringKeyMessage Message string if tampered found in data fields indexed by string (protected)
      * @param string $missingMessage Message string if missing field
+     *
      * @return array Messages
      */
     protected function _debugCheckFields($dataFields, $expectedFields = [], $intKeyMessage = '', $stringKeyMessage = '', $missingMessage = '')
@@ -750,6 +778,7 @@ class SecurityComponent extends Component
      * Manually add CSRF token information into the provided request object.
      *
      * @param CakeRequest $request The request object to add into.
+     *
      * @return bool
      */
     public function generateToken(CakeRequest $request)
@@ -801,7 +830,9 @@ class SecurityComponent extends Component
      * it will be removed from the list of valid tokens.
      *
      * @param Controller $controller A controller to check
+     *
      * @throws SecurityException
+     *
      * @return bool Valid csrf token.
      */
     protected function _validateCsrf(Controller $controller)
@@ -833,6 +864,7 @@ class SecurityComponent extends Component
      * Uses a simple timeout to expire the tokens.
      *
      * @param array $tokens An array of nonce => expires.
+     *
      * @return array An array of nonce => expires.
      */
     protected function _expireTokens($tokens)
@@ -857,8 +889,10 @@ class SecurityComponent extends Component
      * @param Controller $controller Controller to run callback on
      * @param string $method Method to execute
      * @param array $params Parameters to send to method
-     * @return mixed Controller callback method's response
+     *
      * @throws BadRequestException When a the blackholeCallback is not callable.
+     *
+     * @return mixed Controller callback method's response
      */
     protected function _callback(Controller $controller, $method, $params = [])
     {
@@ -877,6 +911,7 @@ class SecurityComponent extends Component
      * @param array &$expectedFields Fields array, containing the expected fields we should have in POST
      * @param string $intKeyMessage Message string if unexpected found in data fields indexed by int (not protected)
      * @param string $stringKeyMessage Message string if tampered found in data fields indexed by string (protected)
+     *
      * @return array Error messages
      */
     protected function _matchExistingFields($dataFields, &$expectedFields, $intKeyMessage, $stringKeyMessage)
@@ -906,6 +941,7 @@ class SecurityComponent extends Component
      *
      * @param array $expectedFields Expected fields
      * @param string $missingMessage Message template
+     *
      * @return string Error message about expected fields
      */
     protected function _debugExpectedFields($expectedFields = [], $missingMessage = '')

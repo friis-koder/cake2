@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.View
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('HelperCollection', 'View');
@@ -35,8 +39,6 @@ class HelperCollectionTest extends CakeTestCase
 {
     /**
      * setUp
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -47,8 +49,6 @@ class HelperCollectionTest extends CakeTestCase
 
     /**
      * tearDown
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -59,8 +59,6 @@ class HelperCollectionTest extends CakeTestCase
 
     /**
      * test triggering callbacks on loaded helpers
-     *
-     * @return void
      */
     public function testLoad()
     {
@@ -76,8 +74,6 @@ class HelperCollectionTest extends CakeTestCase
 
     /**
      * test lazy loading of helpers
-     *
-     * @return void
      */
     public function testLazyLoad()
     {
@@ -98,7 +94,6 @@ class HelperCollectionTest extends CakeTestCase
      * test lazy loading of helpers
      *
      * @expectedException MissingHelperException
-     * @return void
      */
     public function testLazyLoadException()
     {
@@ -107,8 +102,6 @@ class HelperCollectionTest extends CakeTestCase
 
     /**
      * Tests loading as an alias
-     *
-     * @return void
      */
     public function testLoadWithAlias()
     {
@@ -137,8 +130,6 @@ class HelperCollectionTest extends CakeTestCase
 
     /**
      * test that the enabled setting disables the helper.
-     *
-     * @return void
      */
     public function testLoadWithEnabledFalse()
     {
@@ -153,7 +144,6 @@ class HelperCollectionTest extends CakeTestCase
      * test missinghelper exception
      *
      * @expectedException MissingHelperException
-     * @return void
      */
     public function testLoadMissingHelper()
     {
@@ -162,8 +152,6 @@ class HelperCollectionTest extends CakeTestCase
 
     /**
      * test loading a plugin helper.
-     *
-     * @return void
      */
     public function testLoadPluginHelper()
     {
@@ -180,8 +168,6 @@ class HelperCollectionTest extends CakeTestCase
 
     /**
      * test unload()
-     *
-     * @return void
      */
     public function testUnload()
     {

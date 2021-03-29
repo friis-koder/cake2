@@ -12,9 +12,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Model
+ *
  * @since         CakePHP(tm) v 0.10.x.1402
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('DataSource', 'Model/Datasource');
@@ -59,8 +63,6 @@ class ConnectionManager
 
     /**
      * Loads connections configuration.
-     *
-     * @return void
      */
     protected static function _init()
     {
@@ -75,8 +77,10 @@ class ConnectionManager
      * Gets a reference to a DataSource object
      *
      * @param string $name The name of the DataSource, as defined in app/Config/database.php
-     * @return DataSource Instance
+     *
      * @throws MissingDatasourceException
+     *
+     * @return DataSource Instance
      */
     public static function getDataSource($name)
     {
@@ -129,6 +133,7 @@ class ConnectionManager
      * Gets a DataSource name from an object reference.
      *
      * @param DataSource $source DataSource object
+     *
      * @return string|null Datasource name, or null if source is not present
      *    in the ConnectionManager.
      */
@@ -152,8 +157,10 @@ class ConnectionManager
      * @param string|array $connName A string name of the connection, as defined in app/Config/database.php,
      *    or an array containing the filename (without extension) and class name of the object,
      *    to be found in app/Model/Datasource/ or lib/Cake/Model/Datasource/.
-     * @return bool True on success, null on failure or false if the class is already loaded
+     *
      * @throws MissingDatasourceException
+     *
+     * @return bool True on success, null on failure or false if the class is already loaded
      */
     public static function loadDataSource($connName)
     {
@@ -210,6 +217,7 @@ class ConnectionManager
      *
      * @param string $name The DataSource name
      * @param array $config The DataSource configuration settings
+     *
      * @return DataSource|null A reference to the DataSource object, or null if creation failed
      */
     public static function create($name = '', $config = [])
@@ -232,6 +240,7 @@ class ConnectionManager
      * Removes a connection configuration at runtime given its name
      *
      * @param string $name the connection name as it was created
+     *
      * @return bool success if connection was removed, false if it does not exist
      */
     public static function drop($name)
@@ -252,7 +261,7 @@ class ConnectionManager
      * Gets a list of class and file names associated with the user-defined DataSource connections
      *
      * @param string $name Connection name
-     * @return void
+     *
      * @throws MissingDatasourceConfigException
      */
     protected static function _getConnectionObject($name)
@@ -268,6 +277,7 @@ class ConnectionManager
      * Returns the file, class name, and parent for the given driver.
      *
      * @param array $config Array with connection configuration. Key 'datasource' is required
+     *
      * @return array An indexed array with: filename, classname, plugin and parent
      */
     protected static function _connectionData($config)

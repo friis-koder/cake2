@@ -8,9 +8,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Model.Behavior
+ *
  * @since         CakePHP(tm) v 1.2.0.4525
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('ModelBehavior', 'Model');
@@ -21,6 +25,7 @@ App::uses('I18nModel', 'Model');
  * Translate behavior
  *
  * @package       Cake.Model.Behavior
+ *
  * @link https://book.cakephp.org/2.0/en/core-libraries/behaviors/translate.html
  */
 class TranslateBehavior extends ModelBehavior
@@ -80,6 +85,7 @@ class TranslateBehavior extends ModelBehavior
      *
      * @param Model $Model Model the behavior is being attached to.
      * @param array $config Array of configuration information.
+     *
      * @return mixed
      */
     public function setup(Model $Model, $config = [])
@@ -112,7 +118,6 @@ class TranslateBehavior extends ModelBehavior
      * Cleanup Callback unbinds bound translations and deletes setting information.
      *
      * @param Model $Model Model being detached.
-     * @return void
      */
     public function cleanup(Model $Model)
     {
@@ -126,6 +131,7 @@ class TranslateBehavior extends ModelBehavior
      *
      * @param Model $Model Model find is being run on.
      * @param array $query Array of Query parameters.
+     *
      * @return array Modified query
      */
     public function beforeFind(Model $Model, $query)
@@ -189,6 +195,7 @@ class TranslateBehavior extends ModelBehavior
      *
      * @param Model $Model The model being worked on.
      * @param array $query The query array to take fields from.
+     *
      * @return array The fields.
      */
     protected function _getFields(Model $Model, $query)
@@ -225,6 +232,7 @@ class TranslateBehavior extends ModelBehavior
      * @param Model $Model The model being worked on.
      * @param array $query The query array to append joins to.
      * @param array $addFields The fields being joined.
+     *
      * @return array The modified query
      */
     protected function _addAllJoins(Model $Model, $query, $addFields)
@@ -252,6 +260,7 @@ class TranslateBehavior extends ModelBehavior
      *
      * @param Model $Model The model being read.
      * @param array $query The query array.
+     *
      * @return array The list of translated fields that are in the conditions.
      */
     protected function _checkConditions(Model $Model, $query)
@@ -268,6 +277,7 @@ class TranslateBehavior extends ModelBehavior
      *
      * @param Model $Model The model being read.
      * @param array $conditions The conditions array.
+     *
      * @return array The list of condition fields.
      */
     protected function _getConditionFields(Model $Model, $conditions)
@@ -299,6 +309,7 @@ class TranslateBehavior extends ModelBehavior
      * @param string $field The field name being joined.
      * @param string $aliasField The aliased field name being joined.
      * @param string|array $locale The locale(s) having joins added.
+     *
      * @return array The modified query
      */
     protected function _addJoin(Model $Model, $query, $field, $aliasField, $locale)
@@ -355,6 +366,7 @@ class TranslateBehavior extends ModelBehavior
      * @param Model $Model Model find was run on
      * @param array $results Array of model results.
      * @param bool $primary Did the find originate on $model.
+     *
      * @return array Modified results
      */
     public function afterFind(Model $Model, $results, $primary = false)
@@ -411,7 +423,9 @@ class TranslateBehavior extends ModelBehavior
      *
      * @param Model $Model Model invalidFields was called on.
      * @param array $options Options passed from Model::save().
+     *
      * @return bool
+     *
      * @see Model::save()
      */
     public function beforeValidate(Model $Model, $options = [])
@@ -430,7 +444,9 @@ class TranslateBehavior extends ModelBehavior
      *
      * @param Model $Model Model save was called on.
      * @param array $options Options passed from Model::save().
+     *
      * @return bool true.
+     *
      * @see Model::save()
      */
     public function beforeSave(Model $Model, $options = [])
@@ -454,6 +470,7 @@ class TranslateBehavior extends ModelBehavior
      * is disabled.
      *
      * @param Model $Model Model using this behavior.
+     *
      * @return bool true.
      */
     protected function _setRuntimeData(Model $Model)
@@ -488,6 +505,7 @@ class TranslateBehavior extends ModelBehavior
      * This solves issues with saveAssociated and validate = first.
      *
      * @param Model $Model Model using this behavior.
+     *
      * @return bool true.
      */
     public function afterValidate(Model $Model)
@@ -506,6 +524,7 @@ class TranslateBehavior extends ModelBehavior
      * @param Model $Model Model the callback is called on
      * @param bool $created Whether or not the save created a record.
      * @param array $options Options passed from Model::save().
+     *
      * @return bool true.
      */
     public function afterSave(Model $Model, $created, $options = [])
@@ -577,6 +596,7 @@ class TranslateBehavior extends ModelBehavior
      *
      * @param Model $Model Model using this behavior
      * @param array $data The sparse data that was provided.
+     *
      * @return array The fully populated data to save.
      */
     protected function _prepareTranslations(Model $Model, $data)
@@ -609,7 +629,6 @@ class TranslateBehavior extends ModelBehavior
      * afterDelete Callback
      *
      * @param Model $Model Model the callback was run on.
-     * @return void
      */
     public function afterDelete(Model $Model)
     {
@@ -622,6 +641,7 @@ class TranslateBehavior extends ModelBehavior
      * Get selected locale for model
      *
      * @param Model $Model Model the locale needs to be set/get on.
+     *
      * @return mixed string or false
      */
     protected function _getLocale(Model $Model)
@@ -642,6 +662,7 @@ class TranslateBehavior extends ModelBehavior
      * name to find/use. If no translateModel property is found 'I18nModel' will be used.
      *
      * @param Model $Model Model to get a translatemodel for.
+     *
      * @return Model
      */
     public function translateModel(Model $Model)
@@ -675,9 +696,11 @@ class TranslateBehavior extends ModelBehavior
      * @param string|array $fields string with field or array(field1, field2=>AssocName, field3)
      * @param bool $reset Leave true to have the fields only modified for the next operation.
      *   if false the field will be added for all future queries.
-     * @return bool
+     *
      * @throws CakeException when attempting to bind a translating called name. This is not allowed
      *   as it shadows Model::$name.
+     *
+     * @return bool
      */
     public function bindTranslation(Model $Model, $fields, $reset = true)
     {
@@ -750,7 +773,6 @@ class TranslateBehavior extends ModelBehavior
      *
      * @param Model $Model Model using this behavior
      * @param string $field The field to update.
-     * @return void
      */
     protected function _removeField(Model $Model, $field)
     {
@@ -774,6 +796,7 @@ class TranslateBehavior extends ModelBehavior
      * @param Model $Model using this behavior of model
      * @param string|array $fields string with field, or array(field1, field2=>AssocName, field3), or null for
      *    unbind all original translations
+     *
      * @return bool
      */
     public function unbindTranslation(Model $Model, $fields = null)

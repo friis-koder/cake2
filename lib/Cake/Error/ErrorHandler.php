@@ -12,9 +12,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Error
+ *
  * @since         CakePHP(tm) v 0.10.5.1732
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Debugger', 'Utility');
@@ -90,6 +94,7 @@ App::uses('Router', 'Routing');
  * Would enable handling for all non Notice errors.
  *
  * @package       Cake.Error
+ *
  * @see ExceptionRenderer for more information on how to customize exception rendering.
  */
 class ErrorHandler
@@ -109,7 +114,7 @@ class ErrorHandler
      * or use the default ExceptionRenderer.
      *
      * @param Exception|ParseError $exception The exception to render.
-     * @return void
+     *
      * @see http://php.net/manual/en/function.set-exception-handler.php
      */
     public static function handleException($exception)
@@ -145,6 +150,7 @@ class ErrorHandler
      * Generates a formatted error message
      *
      * @param Exception $exception Exception instance
+     *
      * @return string Formatted message
      */
     protected static function _getMessage($exception)
@@ -176,6 +182,7 @@ class ErrorHandler
      *
      * @param Exception|ParseError $exception The exception to render.
      * @param array $config An array of configuration for logging.
+     *
      * @return bool
      */
     protected static function _log($exception, $config)
@@ -208,6 +215,7 @@ class ErrorHandler
      * @param string $file File on which error occurred
      * @param int $line Line that triggered the error
      * @param array $context Context
+     *
      * @return bool true if error was handled
      */
     public static function handleError($code, $description, $file = null, $line = null, $context = null)
@@ -248,9 +256,11 @@ class ErrorHandler
      * @param string $description Error description
      * @param string $file File on which error occurred
      * @param int $line Line that triggered the error
-     * @return bool
+     *
      * @throws FatalErrorException If the Exception renderer threw an exception during rendering, and debug > 0.
      * @throws InternalErrorException If the Exception renderer threw an exception during rendering, and debug is 0.
+     *
+     * @return bool
      */
     public static function handleFatalError($code, $description, $file, $line)
     {
@@ -287,6 +297,7 @@ class ErrorHandler
      * Map an error code into an Error word, and log location.
      *
      * @param int $code Error code to map
+     *
      * @return array Array of error word, and log location.
      */
     public static function mapErrorCode($code)
@@ -340,6 +351,7 @@ class ErrorHandler
      * @param string $description Error description
      * @param string $file File on which error occurred
      * @param int $line Line that triggered the error
+     *
      * @return string
      */
     protected static function _getErrorMessage($error, $code, $description, $file, $line)

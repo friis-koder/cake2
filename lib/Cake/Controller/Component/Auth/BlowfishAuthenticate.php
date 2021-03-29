@@ -8,7 +8,9 @@
  * Redistributions of the files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('FormAuthenticate', 'Controller/Component/Auth');
@@ -32,6 +34,7 @@ App::uses('FormAuthenticate', 'Controller/Component/Auth');
  * BlowfishAuthenticate works exactly the same way as FormAuthenticate.
  *
  * @package	Cake.Controller.Component.Auth
+ *
  * @since CakePHP(tm) v 2.3
  * @see	AuthComponent::$authenticate
  * @deprecated 3.0.0 Since 2.4. Just use FormAuthenticate with 'passwordHasher' setting set to 'Blowfish'

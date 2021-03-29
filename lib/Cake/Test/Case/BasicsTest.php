@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case
+ *
  * @since         CakePHP(tm) v 1.2.0.4206
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 require_once CAKE . 'basics.php';
@@ -30,8 +34,6 @@ class BasicsTest extends CakeTestCase
 {
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -43,8 +45,6 @@ class BasicsTest extends CakeTestCase
 
     /**
      * test the array_diff_key compatibility function.
-     *
-     * @return void
      */
     public function testArrayDiffKey()
     {
@@ -74,8 +74,6 @@ class BasicsTest extends CakeTestCase
 
     /**
      * testHttpBase method
-     *
-     * @return void
      */
     public function testEnv()
     {
@@ -180,8 +178,6 @@ class BasicsTest extends CakeTestCase
 
     /**
      * Test h()
-     *
-     * @return void
      */
     public function testH()
     {
@@ -250,8 +246,6 @@ class BasicsTest extends CakeTestCase
 
     /**
      * Test am()
-     *
-     * @return void
      */
     public function testAm()
     {
@@ -266,8 +260,6 @@ class BasicsTest extends CakeTestCase
 
     /**
      * test cache()
-     *
-     * @return void
      */
     public function testCache()
     {
@@ -302,8 +294,6 @@ class BasicsTest extends CakeTestCase
 
     /**
      * test clearCache()
-     *
-     * @return void
      */
     public function testClearCache()
     {
@@ -365,8 +355,6 @@ class BasicsTest extends CakeTestCase
 
     /**
      * test __()
-     *
-     * @return void
      */
     public function testTranslate()
     {
@@ -415,8 +403,6 @@ class BasicsTest extends CakeTestCase
 
     /**
      * testTranslatePercent
-     *
-     * @return void
      */
     public function testTranslatePercent()
     {
@@ -451,8 +437,6 @@ class BasicsTest extends CakeTestCase
 
     /**
      * testTranslateWithFormatSpecifiers
-     *
-     * @return void
      */
     public function testTranslateWithFormatSpecifiers()
     {
@@ -495,8 +479,6 @@ class BasicsTest extends CakeTestCase
 
     /**
      * testTranslateDomainPluralWithFormatSpecifiers
-     *
-     * @return void
      */
     public function testTranslateDomainPluralWithFormatSpecifiers()
     {
@@ -523,8 +505,6 @@ class BasicsTest extends CakeTestCase
 
     /**
      * test testTranslatePluralWithFormatSpecifiers
-     *
-     * @return void
      */
     public function testTranslatePluralWithFormatSpecifiers()
     {
@@ -537,8 +517,6 @@ class BasicsTest extends CakeTestCase
 
     /**
      * test testTranslateDomainCategoryWithFormatSpecifiers
-     *
-     * @return void
      */
     public function testTranslateDomainCategoryWithFormatSpecifiers()
     {
@@ -559,8 +537,6 @@ class BasicsTest extends CakeTestCase
 
     /**
      * test testTranslateDomainCategoryPluralWithFormatSpecifiers
-     *
-     * @return void
      */
     public function testTranslateDomainCategoryPluralWithFormatSpecifiers()
     {
@@ -577,8 +553,6 @@ class BasicsTest extends CakeTestCase
 
     /**
      * test testTranslateCategoryWithFormatSpecifiers
-     *
-     * @return void
      */
     public function testTranslateCategoryWithFormatSpecifiers()
     {
@@ -597,8 +571,6 @@ class BasicsTest extends CakeTestCase
 
     /**
      * test __n()
-     *
-     * @return void
      */
     public function testTranslatePlural()
     {
@@ -631,8 +603,6 @@ class BasicsTest extends CakeTestCase
 
     /**
      * test __d()
-     *
-     * @return void
      */
     public function testTranslateDomain()
     {
@@ -665,8 +635,6 @@ class BasicsTest extends CakeTestCase
 
     /**
      * test __dn()
-     *
-     * @return void
      */
     public function testTranslateDomainPlural()
     {
@@ -703,8 +671,6 @@ class BasicsTest extends CakeTestCase
 
     /**
      * test __c()
-     *
-     * @return void
      */
     public function testTranslateCategory()
     {
@@ -733,8 +699,6 @@ class BasicsTest extends CakeTestCase
 
     /**
      * test __dc()
-     *
-     * @return void
      */
     public function testTranslateDomainCategory()
     {
@@ -771,8 +735,6 @@ class BasicsTest extends CakeTestCase
 
     /**
      * test __dcn()
-     *
-     * @return void
      */
     public function testTranslateDomainCategoryPlural()
     {
@@ -805,8 +767,6 @@ class BasicsTest extends CakeTestCase
 
     /**
      * test LogError()
-     *
-     * @return void
      */
     public function testLogError()
     {
@@ -834,8 +794,6 @@ class BasicsTest extends CakeTestCase
 
     /**
      * test fileExistsInPath()
-     *
-     * @return void
      */
     public function testFileExistsInPath()
     {
@@ -881,8 +839,6 @@ class BasicsTest extends CakeTestCase
 
     /**
      * test convertSlash()
-     *
-     * @return void
      */
     public function testConvertSlash()
     {
@@ -897,8 +853,6 @@ class BasicsTest extends CakeTestCase
 
     /**
      * test debug()
-     *
-     * @return void
      */
     public function testDebug()
     {
@@ -1063,8 +1017,6 @@ EXPECTED;
 
     /**
      * test pr()
-     *
-     * @return void
      */
     public function testPr()
     {
@@ -1084,8 +1036,6 @@ EXPECTED;
 
     /**
      * test pr()
-     *
-     * @return void
      */
     public function testPrCli()
     {
@@ -1105,8 +1055,6 @@ EXPECTED;
 
     /**
      * test stripslashes_deep()
-     *
-     * @return void
      */
     public function testStripslashesDeep()
     {
@@ -1143,8 +1091,6 @@ EXPECTED;
 
     /**
      * test stripslashes_deep() with magic_quotes_sybase on
-     *
-     * @return void
      */
     public function testStripslashesDeepSybase()
     {
@@ -1179,8 +1125,6 @@ EXPECTED;
 
     /**
      * Tests that the stackTrace() method is a shortcut for Debugger::trace()
-     *
-     * @return void
      */
     public function testStackTrace()
     {
@@ -1198,8 +1142,6 @@ EXPECTED;
 
     /**
      * test pluginSplit
-     *
-     * @return void
      */
     public function testPluginSplit()
     {

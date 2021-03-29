@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Model.Datasource.Database
+ *
  * @since         CakePHP(tm) v 0.10.5.1790
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('DboSource', 'Model/Datasource');
@@ -83,6 +87,7 @@ class Sqlserver extends DboSource
      * MS SQL column definition
      *
      * @var array
+     *
      * @link https://msdn.microsoft.com/en-us/library/ms187752.aspx SQL Server Data Types
      */
     public $columns = [
@@ -121,9 +126,10 @@ class Sqlserver extends DboSource
      * persistent config option when connecting to a SQL Server  (for more
      * information see: https://github.com/Microsoft/msphpsql/issues/65).
      *
-     * @return bool True if the database could be connected, else false
      * @throws InvalidArgumentException if an unsupported setting is in the database config
      * @throws MissingConnectionException
+     *
+     * @return bool True if the database could be connected, else false
      */
     public function connect()
     {
@@ -179,6 +185,7 @@ class Sqlserver extends DboSource
      * Returns an array of sources (tables) in the database.
      *
      * @param mixed $data The names
+     *
      * @return array Array of table names in the database
      */
     public function listSources($data = null)
@@ -210,8 +217,10 @@ class Sqlserver extends DboSource
      * Returns an array of the fields in given table name.
      *
      * @param Model|string $model Model object to describe, or a string table name.
-     * @return array Fields in table. Keys are name and type
+     *
      * @throws CakeException
+     *
+     * @return array Fields in table. Keys are name and type
      */
     public function describe($model)
     {
@@ -290,6 +299,7 @@ class Sqlserver extends DboSource
      * @param string $alias Alias table name
      * @param array $fields The fields so far.
      * @param bool $quote Whether or not to quote identfiers.
+     *
      * @return array
      */
     public function fields(Model $model, $alias = null, $fields = [], $quote = true)
@@ -366,6 +376,7 @@ class Sqlserver extends DboSource
      * @param Model $model The model to insert into.
      * @param array $fields The fields to set.
      * @param array $values The values to set.
+     *
      * @return array
      */
     public function create(Model $model, $fields = null, $values = null)
@@ -398,6 +409,7 @@ class Sqlserver extends DboSource
      * @param array $fields The fields to set.
      * @param array $values The values to set.
      * @param mixed $conditions The conditions to use.
+     *
      * @return array
      */
     public function update(Model $model, $fields = [], $values = null, $conditions = null)
@@ -420,6 +432,7 @@ class Sqlserver extends DboSource
      *
      * @param int $limit Limit of results returned
      * @param int $offset Offset from which to start results
+     *
      * @return string SQL limit/offset statement
      */
     public function limit($limit, $offset = null)
@@ -445,6 +458,7 @@ class Sqlserver extends DboSource
      *
      * @param mixed $real Either the string value of the fields type.
      *    or the Result object from Sqlserver::describe()
+     *
      * @return string Abstract column type (i.e. "string")
      */
     public function column($real)
@@ -504,6 +518,7 @@ class Sqlserver extends DboSource
      * SQLServer handles text types as nvarchar/varchar with a length of -1.
      *
      * @param mixed $length Either the length as a string, or a Column descriptor object.
+     *
      * @return mixed null|integer with length of column.
      */
     public function length($length)
@@ -529,7 +544,6 @@ class Sqlserver extends DboSource
      * Builds a map of the columns contained in a result
      *
      * @param PDOStatement $results The result to modify.
-     * @return void
      */
     public function resultSet($results)
     {
@@ -562,6 +576,7 @@ class Sqlserver extends DboSource
      *
      * @param string $type Query type
      * @param array $data Query data
+     *
      * @return string
      */
     public function renderStatement($type, $data)
@@ -637,6 +652,7 @@ class Sqlserver extends DboSource
      * @param string $data String to be prepared for use in an SQL statement
      * @param string $column The column into which this data will be inserted
      * @param bool $null Column allows NULL values
+     *
      * @return string Quoted and escaped data
      */
     public function value($data, $column = null, $null = true)
@@ -668,6 +684,7 @@ class Sqlserver extends DboSource
      * @param Model $model The model to read from
      * @param array $queryData The query data
      * @param int $recursive How many layers to go.
+     *
      * @return array|false Array of resultset rows, or false if no rows matched
      */
     public function read(Model $model, $queryData = [], $recursive = null)
@@ -712,7 +729,6 @@ class Sqlserver extends DboSource
      * @param string $table The table to insert into.
      * @param string $fields The fields to set.
      * @param array $values The values to set.
-     * @return void
      */
     public function insertMulti($table, $fields, $values)
     {
@@ -739,6 +755,7 @@ class Sqlserver extends DboSource
      * @param array $column An array structured like the
      *   following: array('name'=>'value', 'type'=>'value'[, options]),
      *   where options can be 'default', 'length', or 'key'.
+     *
      * @return string
      */
     public function buildColumn($column)
@@ -766,6 +783,7 @@ class Sqlserver extends DboSource
      *
      * @param array $indexes The indexes to build
      * @param string $table The table to make indexes for.
+     *
      * @return string
      */
     public function buildIndex($indexes, $table = null)
@@ -795,6 +813,7 @@ class Sqlserver extends DboSource
      * Makes sure it will return the primary key
      *
      * @param Model|string $model Model instance of table name
+     *
      * @return string
      */
     protected function _getPrimaryKey($model)
@@ -814,6 +833,7 @@ class Sqlserver extends DboSource
      * this returns false.
      *
      * @param mixed $source Unused
+     *
      * @return int Number of affected rows
      */
     public function lastAffected($source = null)
@@ -832,9 +852,11 @@ class Sqlserver extends DboSource
      * @param string $sql SQL statement
      * @param array $params list of params to be bound to query (supported only in select)
      * @param array $prepareOptions Options to be used in the prepare statement
+     *
+     * @throws PDOException
+     *
      * @return mixed PDOStatement if query executes with no problem, true as the result of a successful, false on error
      * query returning no rows, such as a CREATE statement, false otherwise
-     * @throws PDOException
      */
     protected function _execute($sql, $params = [], $prepareOptions = [])
     {
@@ -872,6 +894,7 @@ class Sqlserver extends DboSource
      * Generate a "drop table" statement for the given table
      *
      * @param type $table Name of the table to drop
+     *
      * @return string Drop table SQL statement
      */
     protected function _dropTable($table)
@@ -895,6 +918,7 @@ class Sqlserver extends DboSource
      * Currently, this method only returns WITH (UPDLOCK) when the mode is set to true.
      *
      * @param mixed $mode Lock mode
+     *
      * @return string|null WITH (UPDLOCK) clause or null
      */
     public function getLockingHint($mode)

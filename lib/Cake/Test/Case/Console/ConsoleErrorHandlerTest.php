@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Test.Case.Console
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('ConsoleErrorHandler', 'Console');
@@ -38,8 +42,6 @@ class ConsoleErrorHandlerTest extends CakeTestCase
 
     /**
      * tearDown
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -49,8 +51,6 @@ class ConsoleErrorHandlerTest extends CakeTestCase
 
     /**
      * test that the console error handler can deal with CakeExceptions.
-     *
-     * @return void
      */
     public function testHandleError()
     {
@@ -63,8 +63,6 @@ class ConsoleErrorHandlerTest extends CakeTestCase
 
     /**
      * test that the console error handler can deal with fatal errors.
-     *
-     * @return void
      */
     public function testHandleFatalError()
     {
@@ -81,8 +79,6 @@ class ConsoleErrorHandlerTest extends CakeTestCase
 
     /**
      * test that the console error handler can deal with CakeExceptions.
-     *
-     * @return void
      */
     public function testCakeErrors()
     {
@@ -99,8 +95,6 @@ class ConsoleErrorHandlerTest extends CakeTestCase
 
     /**
      * test a non CakeException exception.
-     *
-     * @return void
      */
     public function testNonCakeExceptions()
     {
@@ -118,8 +112,6 @@ class ConsoleErrorHandlerTest extends CakeTestCase
 
     /**
      * test a Error404 exception.
-     *
-     * @return void
      */
     public function testError404Exception()
     {
@@ -137,8 +129,6 @@ class ConsoleErrorHandlerTest extends CakeTestCase
 
     /**
      * test a Error500 exception.
-     *
-     * @return void
      */
     public function testError500Exception()
     {
@@ -156,8 +146,6 @@ class ConsoleErrorHandlerTest extends CakeTestCase
 
     /**
      * test a exception with non-integer code
-     *
-     * @return void
      */
     public function testNonIntegerExceptionCode()
     {

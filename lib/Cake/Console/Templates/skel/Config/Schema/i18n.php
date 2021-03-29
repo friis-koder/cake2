@@ -12,9 +12,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       app.Config.Schema
+ *
  * @since         CakePHP(tm) v 0.2.9
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -38,6 +42,7 @@ class I18nSchema extends CakeSchema
      * Before callback.
      *
      * @param array $event Schema object properties
+     *
      * @return bool Should process continue
      */
     public function before($event = [])
@@ -49,7 +54,6 @@ class I18nSchema extends CakeSchema
      * After callback.
      *
      * @param array $event Schema object properties
-     * @return void
      */
     public function after($event = [])
     {

@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Console.Command
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('AppShell', 'Console/Command');
@@ -63,8 +67,6 @@ class UpgradeShell extends AppShell
 
     /**
      * Shell startup, prints info message about dry run.
-     *
-     * @return void
      */
     public function startup()
     {
@@ -79,8 +81,6 @@ class UpgradeShell extends AppShell
 
     /**
      * Run all upgrade steps one at a time
-     *
-     * @return void
      */
     public function all()
     {
@@ -98,8 +98,6 @@ class UpgradeShell extends AppShell
      * Update tests.
      *
      * - Update tests class names to FooTest rather than FooTestCase.
-     *
-     * @return void
      */
     public function tests()
     {
@@ -124,8 +122,6 @@ class UpgradeShell extends AppShell
      * Moves folders containing files which cannot necessarily be auto-detected (libs and templates)
      * and then looks for all php files except vendors, and moves them to where Cake 2.0 expects
      * to find them.
-     *
-     * @return void
      */
     public function locations()
     {
@@ -212,8 +208,6 @@ class UpgradeShell extends AppShell
      * Update helpers.
      *
      * - Converts helpers usage to new format.
-     *
-     * @return void
      */
     public function helpers()
     {
@@ -257,8 +251,6 @@ class UpgradeShell extends AppShell
      *
      * - Removes extra true param.
      * - Add the echo to __*() calls that didn't need them before.
-     *
-     * @return void
      */
     public function i18n()
     {
@@ -297,8 +289,6 @@ class UpgradeShell extends AppShell
      * - up(*) -> strtoupper(*)
      * - low(*, *, *) -> strtolower(*)
      * - getMicrotime() -> microtime(true)
-     *
-     * @return void
      */
     public function basics()
     {
@@ -350,8 +340,6 @@ class UpgradeShell extends AppShell
 
     /**
      * Update the properties moved to CakeRequest.
-     *
-     * @return void
      */
     public function request()
     {
@@ -411,8 +399,6 @@ class UpgradeShell extends AppShell
 
     /**
      * Update Configure::read() calls with no params.
-     *
-     * @return void
      */
     public function configure()
     {
@@ -434,8 +420,6 @@ class UpgradeShell extends AppShell
 
     /**
      * constants
-     *
-     * @return void
      */
     public function constants()
     {
@@ -519,8 +503,6 @@ class UpgradeShell extends AppShell
      * Update controller redirects.
      *
      * - Make redirect statements return early.
-     *
-     * @return void
      */
     public function controller_redirects()
     {
@@ -543,8 +525,6 @@ class UpgradeShell extends AppShell
      * Update components.
      *
      * - Make components that extend CakeObject to extend Component.
-     *
-     * @return void
      */
     public function components()
     {
@@ -571,8 +551,6 @@ class UpgradeShell extends AppShell
     /**
      * Replace cakeError with built-in exceptions.
      * NOTE: this ignores calls where you've passed your own secondary parameters to cakeError().
-     *
-     * @return void
      */
     public function exceptions()
     {
@@ -612,8 +590,6 @@ class UpgradeShell extends AppShell
      * Move application views files to where they now should be
      *
      * Find all view files in the folder and determine where cake expects the file to be
-     *
-     * @return void
      */
     protected function _moveViewFiles()
     {
@@ -648,8 +624,6 @@ class UpgradeShell extends AppShell
 
     /**
      * Move the AppController, and AppModel classes.
-     *
-     * @return void
      */
     protected function _moveAppClasses()
     {
@@ -684,7 +658,6 @@ class UpgradeShell extends AppShell
      *
      * @param string $path The path to move files in.
      * @param array $options array(recursive, checkFolder)
-     * @return void
      */
     protected function _movePhpFiles($path, $options)
     {
@@ -772,7 +745,6 @@ class UpgradeShell extends AppShell
      * Updates files based on regular expressions.
      *
      * @param array $patterns Array of search and replacement patterns.
-     * @return void
      */
     protected function _filesRegexpUpdate($patterns)
     {
@@ -787,7 +759,6 @@ class UpgradeShell extends AppShell
      * Searches the paths and finds files based on extension.
      *
      * @param string $extensions The extensions to include. Defaults to none.
-     * @return void
      */
     protected function _findFiles($extensions = '')
     {
@@ -814,7 +785,6 @@ class UpgradeShell extends AppShell
      *
      * @param string $file The file to update
      * @param array $patterns The replacement patterns to run.
-     * @return void
      */
     protected function _updateFile($file, $patterns)
     {

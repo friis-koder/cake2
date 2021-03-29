@@ -11,8 +11,10 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('ObjectCollection', 'Utility');
@@ -64,8 +66,10 @@ class TaskCollection extends ObjectCollection
      *
      * @param string $task Task name to load
      * @param array $settings Settings for the task.
-     * @return AppShell A task object, Either the existing loaded task or a new one.
+     *
      * @throws MissingTaskException when the task could not be found
+     *
+     * @return AppShell A task object, Either the existing loaded task or a new one.
      */
     public function load($task, $settings = [])
     {

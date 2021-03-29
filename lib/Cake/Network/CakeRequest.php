@@ -10,8 +10,10 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Hash', 'Utility');
@@ -29,6 +31,7 @@ App::uses('Hash', 'Utility');
  * @property string $action     The action handling the current request.
  * @property array $named       Array of named parameters parsed from the URL.
  * @property array $pass        Array of passed arguments parsed from the URL.
+ *
  * @package       Cake.Network
  */
 class CakeRequest implements ArrayAccess
@@ -164,8 +167,6 @@ class CakeRequest implements ArrayAccess
      * If you have mixed POST values be careful not to make any top level keys numeric
      * containing arrays. Hash::merge() is used to merge data, and it has possibly
      * unexpected behavior in this situation.
-     *
-     * @return void
      */
     protected function _processPost()
     {
@@ -215,8 +216,6 @@ class CakeRequest implements ArrayAccess
 
     /**
      * Process the GET parameters and move things into the object.
-     *
-     * @return void
      */
     protected function _processGet()
     {
@@ -368,8 +367,6 @@ class CakeRequest implements ArrayAccess
 
     /**
      * Process $_FILES and move things into the object.
-     *
-     * @return void
      */
     protected function _processFiles()
     {
@@ -395,7 +392,6 @@ class CakeRequest implements ArrayAccess
      * @param string $path The dot separated path to insert $data into.
      * @param array $data The data to traverse/insert.
      * @param string $field The terminal field name, which is the top level key in $_FILES.
-     * @return void
      */
     protected function _processFileData($path, $data, $field)
     {
@@ -433,6 +429,7 @@ class CakeRequest implements ArrayAccess
      *
      * @param bool $safe Use safe = false when you think the user might manipulate their HTTP_CLIENT_IP
      *   header. Setting $safe = false will also look at HTTP_X_FORWARDED_FOR
+     *
      * @return string The client IP.
      */
     public function clientIp($safe = true)
@@ -452,6 +449,7 @@ class CakeRequest implements ArrayAccess
      * Returns the referer that referred this request.
      *
      * @param bool $local Attempt to return a local address. Local addresses do not contain hostnames.
+     *
      * @return string The referring address for this request.
      */
     public function referer($local = false)
@@ -483,8 +481,10 @@ class CakeRequest implements ArrayAccess
      *
      * @param string $name The method called
      * @param array $params Array of parameters for the method call
-     * @return mixed
+     *
      * @throws CakeException when an invalid method is called.
+     *
+     * @return mixed
      */
     public function __call($name, $params)
     {
@@ -503,6 +503,7 @@ class CakeRequest implements ArrayAccess
      * Allows access to `$this->params['controller']` via `$this->controller`
      *
      * @param string $name The property being accessed.
+     *
      * @return mixed Either the value of the parameter or null.
      */
     public function __get($name)
@@ -519,6 +520,7 @@ class CakeRequest implements ArrayAccess
      * on routing parameters.
      *
      * @param string $name The property being accessed.
+     *
      * @return bool Existence
      */
     public function __isset($name)
@@ -535,6 +537,7 @@ class CakeRequest implements ArrayAccess
      *
      * @param string|string[] $type The type of request you want to check. If an array
      *   this method will return true if the request matches any type.
+     *
      * @return bool Whether or not the request is the type you are checking.
      */
     public function is($type)
@@ -576,6 +579,7 @@ class CakeRequest implements ArrayAccess
      * Detects if a URL extension is present.
      *
      * @param array $detect Detector options array.
+     *
      * @return bool Whether or not the request is the type you are checking.
      */
     protected function _extensionDetector($detect)
@@ -594,6 +598,7 @@ class CakeRequest implements ArrayAccess
      * Detects if a specific accept header is present.
      *
      * @param array $detect Detector options array.
+     *
      * @return bool Whether or not the request is the type you are checking.
      */
     protected function _acceptHeaderDetector($detect)
@@ -612,6 +617,7 @@ class CakeRequest implements ArrayAccess
      * Detects if a specific header is present.
      *
      * @param array $detect Detector options array.
+     *
      * @return bool Whether or not the request is the type you are checking.
      */
     protected function _headerDetector($detect)
@@ -634,6 +640,7 @@ class CakeRequest implements ArrayAccess
      * Detects if a specific request parameter is present.
      *
      * @param array $detect Detector options array.
+     *
      * @return bool Whether or not the request is the type you are checking.
      */
     protected function _paramDetector($detect)
@@ -655,6 +662,7 @@ class CakeRequest implements ArrayAccess
      * Detects if a specific environment variable is present.
      *
      * @param array $detect Detector options array.
+     *
      * @return bool Whether or not the request is the type you are checking.
      */
     protected function _environmentDetector($detect)
@@ -684,7 +692,9 @@ class CakeRequest implements ArrayAccess
      * built-in types.
      *
      * @param array $types The types to check.
+     *
      * @return bool Success.
+     *
      * @see CakeRequest::is()
      */
     public function isAll(array $types)
@@ -743,7 +753,6 @@ class CakeRequest implements ArrayAccess
      *
      * @param string $name The name of the detector.
      * @param array $options The options for the detector definition. See above.
-     * @return void
      */
     public function addDetector($name, $options)
     {
@@ -759,6 +768,7 @@ class CakeRequest implements ArrayAccess
      * This modifies the parameters available through `$request->params`.
      *
      * @param array $params Array of parameters to merge in
+     *
      * @return self
      */
     public function addParams($params)
@@ -773,6 +783,7 @@ class CakeRequest implements ArrayAccess
      * Provides an easy way to modify, here, webroot and base.
      *
      * @param array $paths Array of paths to merge in
+     *
      * @return self
      */
     public function addPaths($paths)
@@ -790,6 +801,7 @@ class CakeRequest implements ArrayAccess
      * Get the value of the current requests URL. Will include named parameters and querystring arguments.
      *
      * @param bool $base Include the base path, set to false to trim the base path off.
+     *
      * @return string the current request URL including query string args.
      */
     public function here($base = true)
@@ -809,6 +821,7 @@ class CakeRequest implements ArrayAccess
      * Read an HTTP header from the Request information.
      *
      * @param string $name Name of the header you want.
+     *
      * @return mixed Either false on no header being set or the value of the header.
      */
     public static function header($name)
@@ -848,6 +861,7 @@ class CakeRequest implements ArrayAccess
      * Get the host that the request was handled on.
      *
      * @param bool $trustProxy Whether or not to trust the proxy host.
+     *
      * @return string
      */
     public function host($trustProxy = false)
@@ -864,6 +878,7 @@ class CakeRequest implements ArrayAccess
      *
      * @param int $tldLength Number of segments your tld contains. For example: `example.com` contains 1 tld.
      *   While `example.co.uk` contains 2.
+     *
      * @return string Domain name without subdomains.
      */
     public function domain($tldLength = 1)
@@ -879,6 +894,7 @@ class CakeRequest implements ArrayAccess
      *
      * @param int $tldLength Number of segments your tld contains. For example: `example.com` contains 1 tld.
      *   While `example.co.uk` contains 2.
+     *
      * @return array An array of subdomains.
      */
     public function subdomains($tldLength = 1)
@@ -904,6 +920,7 @@ class CakeRequest implements ArrayAccess
      * by the client.
      *
      * @param string $type The content type to check for. Leave null to get all types a client accepts.
+     *
      * @return mixed Either an array of all the types the client accepts or a boolean if they accept the
      *   provided type.
      */
@@ -947,6 +964,7 @@ class CakeRequest implements ArrayAccess
      * ``` CakeRequest::acceptLanguage('es-es'); ```
      *
      * @param string $language The language to test.
+     *
      * @return mixed If a $language is provided, a boolean. Otherwise the array of accepted languages.
      */
     public static function acceptLanguage($language = null)
@@ -976,6 +994,7 @@ class CakeRequest implements ArrayAccess
      * discarded as they are not frequently used.
      *
      * @param string $header Header to parse.
+     *
      * @return array
      */
     protected static function _parseAcceptWithQualifier($header)
@@ -1015,6 +1034,7 @@ class CakeRequest implements ArrayAccess
      * to use a syntax similar to `CakeSession` for reading URL query data.
      *
      * @param string $name Query string variable name
+     *
      * @return mixed The value being read
      */
     public function query($name)
@@ -1040,6 +1060,7 @@ class CakeRequest implements ArrayAccess
      * will be created for you.
      *
      * @param string $name Dot separated name of the value to read/write, one or more args.
+     *
      * @return mixed|self Either the value being read, or $this so you can chain consecutive writes.
      */
     public function data($name)
@@ -1058,6 +1079,7 @@ class CakeRequest implements ArrayAccess
      * Safely access the values in $this->params.
      *
      * @param string $name The name of the parameter to get.
+     *
      * @return mixed The value of the provided parameter. Will
      *   return false if the parameter doesn't exist or is falsey.
      */
@@ -1093,6 +1115,7 @@ class CakeRequest implements ArrayAccess
      * @param string $callback A decoding callback that will convert the string data to another
      *     representation. Leave empty to access the raw input data. You can also
      *     supply additional parameters for the decoding callback using var args, see above.
+     *
      * @return mixed The decoded/processed request data.
      */
     public function input($callback = null)
@@ -1114,7 +1137,6 @@ class CakeRequest implements ArrayAccess
      * in middleware or DispatcherFilters before it gets to RequestHandlerComponent
      *
      * @param string $input A string to replace original parsed data from input()
-     * @return void
      */
     public function setInput($input)
     {
@@ -1135,8 +1157,10 @@ class CakeRequest implements ArrayAccess
      * and a 405 error will be returned.
      *
      * @param string|array $methods Allowed HTTP request methods.
-     * @return bool true
+     *
      * @throws MethodNotAllowedException
+     *
+     * @return bool true
      */
     public function allowMethod($methods)
     {
@@ -1159,8 +1183,11 @@ class CakeRequest implements ArrayAccess
      * Alias of CakeRequest::allowMethod() for backwards compatibility.
      *
      * @param string|array $methods Allowed HTTP request methods.
-     * @return bool true
+     *
      * @throws MethodNotAllowedException
+     *
+     * @return bool true
+     *
      * @see CakeRequest::allowMethod()
      * @deprecated 3.0.0 Since 2.5, use CakeRequest::allowMethod() instead.
      */
@@ -1194,6 +1221,7 @@ class CakeRequest implements ArrayAccess
      * Array access read implementation
      *
      * @param string $name Name of the key being accessed.
+     *
      * @return mixed
      */
     public function offsetGet($name)
@@ -1216,7 +1244,6 @@ class CakeRequest implements ArrayAccess
      *
      * @param string $name Name of the key being written
      * @param mixed $value The value being written.
-     * @return void
      */
     public function offsetSet($name, $value)
     {
@@ -1227,6 +1254,7 @@ class CakeRequest implements ArrayAccess
      * Array access isset() implementation
      *
      * @param string $name thing to check.
+     *
      * @return bool
      */
     public function offsetExists($name)
@@ -1242,7 +1270,6 @@ class CakeRequest implements ArrayAccess
      * Array access unset() implementation
      *
      * @param string $name Name to unset.
-     * @return void
      */
     public function offsetUnset($name)
     {

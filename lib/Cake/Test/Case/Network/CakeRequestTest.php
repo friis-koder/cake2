@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Test.Case.Network
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Dispatcher', 'Routing');
@@ -31,7 +35,6 @@ class TestCakeRequest extends CakeRequest
      *
      * @param string $url
      * @param bool $parseEnvironment
-     * @return void
      */
     public function reConstruct($url = 'some/path', $parseEnvironment = true)
     {
@@ -60,8 +63,6 @@ class CakeRequestTest extends CakeTestCase
 {
     /**
      * Setup callback
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -78,8 +79,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * TearDown
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -92,8 +91,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test the header detector.
-     *
-     * @return void
      */
     public function testHeaderDetector()
     {
@@ -109,8 +106,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test the accept header detector.
-     *
-     * @return void
      */
     public function testExtensionDetector()
     {
@@ -124,8 +119,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test the accept header detector.
-     *
-     * @return void
      */
     public function testAcceptHeaderDetector()
     {
@@ -139,8 +132,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test that the autoparse = false constructor works.
-     *
-     * @return void
      */
     public function testNoAutoParseConstruction()
     {
@@ -153,8 +144,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test the content type method.
-     *
-     * @return void
      */
     public function testContentType()
     {
@@ -169,8 +158,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test construction
-     *
-     * @return void
      */
     public function testConstructionGetParsing()
     {
@@ -192,8 +179,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test that querystring args provided in the URL string are parsed.
-     *
-     * @return void
      */
     public function testQueryStringParsingFromInputUrl()
     {
@@ -207,8 +192,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test that named arguments + querystrings are handled correctly.
-     *
-     * @return void
      */
     public function testQueryStringAndNamedParams()
     {
@@ -236,8 +219,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test addParams() method
-     *
-     * @return void
      */
     public function testAddParams()
     {
@@ -254,8 +235,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test splicing in paths.
-     *
-     * @return void
      */
     public function testAddPaths()
     {
@@ -275,8 +254,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test parsing POST data into the object.
-     *
-     * @return void
      */
     public function testPostParsing()
     {
@@ -327,8 +304,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test parsing PUT data into the object.
-     *
-     * @return void
      */
     public function testPutParsing()
     {
@@ -396,8 +371,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test parsing json PUT data into the object.
-     *
-     * @return void
      */
     public function testPutParsingJSON()
     {
@@ -414,8 +387,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test parsing of FILES array
-     *
-     * @return void
      */
     public function testFilesParsing()
     {
@@ -686,8 +657,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test that files in the 0th index work.
-     *
-     * @return void
      */
     public function testFilesZeroithIndex()
     {
@@ -707,8 +676,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test method overrides coming in from POST data.
-     *
-     * @return void
      */
     public function testMethodOverrides()
     {
@@ -727,8 +694,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test the clientIp method.
-     *
-     * @return void
      */
     public function testclientIp()
     {
@@ -751,8 +716,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test the referrer function.
-     *
-     * @return void
      */
     public function testReferer()
     {
@@ -802,8 +765,6 @@ class CakeRequestTest extends CakeTestCase
     /**
      * Test referer() with a base path that duplicates the
      * first segment.
-     *
-     * @return void
      */
     public function testRefererBasePath()
     {
@@ -821,8 +782,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * test the simple uses of is()
-     *
-     * @return void
      */
     public function testIsHttpMethods()
     {
@@ -850,8 +809,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test is() with json and xml.
-     *
-     * @return void
      */
     public function testIsJsonAndXml()
     {
@@ -869,8 +826,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test is() with multiple types.
-     *
-     * @return void
      */
     public function testIsMultiple()
     {
@@ -888,8 +843,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test isAll()
-     *
-     * @return void
      */
     public function testIsAll()
     {
@@ -905,8 +858,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test the method() method.
-     *
-     * @return void
      */
     public function testMethod()
     {
@@ -918,8 +869,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test host retrieval.
-     *
-     * @return void
      */
     public function testHost()
     {
@@ -933,8 +882,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test domain retrieval.
-     *
-     * @return void
      */
     public function testDomain()
     {
@@ -949,8 +896,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test getting subdomains for a host.
-     *
-     * @return void
      */
     public function testSubdomain()
     {
@@ -971,8 +916,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test ajax, flash and friends
-     *
-     * @return void
      */
     public function testisAjaxFlashAndFriends()
     {
@@ -1008,7 +951,6 @@ class CakeRequestTest extends CakeTestCase
      * Test __call exceptions
      *
      * @expectedException CakeException
-     * @return void
      */
     public function testMagicCallExceptionOnUnknownMethod()
     {
@@ -1018,8 +960,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test is(ssl)
-     *
-     * @return void
      */
     public function testIsSsl()
     {
@@ -1052,8 +992,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test getting request params with object properties.
-     *
-     * @return void
      */
     public function testMagicget()
     {
@@ -1068,8 +1006,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test isset()/empty() with overloaded properties.
-     *
-     * @return void
      */
     public function testMagicisset()
     {
@@ -1089,8 +1025,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test the array access implementation
-     *
-     * @return void
      */
     public function testArrayAccess()
     {
@@ -1121,8 +1055,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test adding detectors and having them work.
-     *
-     * @return void
      */
     public function testAddDetector()
     {
@@ -1188,6 +1120,7 @@ class CakeRequestTest extends CakeTestCase
      * Helper function for testing callbacks.
      *
      * @param $request
+     *
      * @return bool
      */
     public function detectCallback($request)
@@ -1197,8 +1130,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test getting headers
-     *
-     * @return void
      */
     public function testHeader()
     {
@@ -1217,8 +1148,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test accepts() with and without parameters
-     *
-     * @return void
      */
     public function testAccepts()
     {
@@ -1240,8 +1169,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test that accept header types are trimmed for comparisons.
-     *
-     * @return void
      */
     public function testAcceptWithWhitespace()
     {
@@ -1258,8 +1185,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Content types from accepts() should respect the client's q preference values.
-     *
-     * @return void
      */
     public function testAcceptWithQvalueSorting()
     {
@@ -1272,8 +1197,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test the raw parsing of accept headers into the q value formatting.
-     *
-     * @return void
      */
     public function testParseAcceptWithQValue()
     {
@@ -1290,8 +1213,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test parsing accept with a confusing accept value.
-     *
-     * @return void
      */
     public function testParseAcceptNoQValues()
     {
@@ -1307,8 +1228,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test parsing accept ignores index param
-     *
-     * @return void
      */
     public function testParseAcceptIgnoreAcceptExtensions()
     {
@@ -1326,8 +1245,6 @@ class CakeRequestTest extends CakeTestCase
      * Test that parsing accept headers with invalid syntax works.
      *
      * The header used is missing a q value for application/xml.
-     *
-     * @return void
      */
     public function testParseAcceptInvalidSyntax()
     {
@@ -1344,8 +1261,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test baseUrl and webroot with ModRewrite
-     *
-     * @return void
      */
     public function testBaseUrlAndWebrootWithModRewrite()
     {
@@ -1414,8 +1329,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test baseUrl with ModRewrite alias
-     *
-     * @return void
      */
     public function testBaseUrlwithModRewriteAlias()
     {
@@ -1450,8 +1363,6 @@ class CakeRequestTest extends CakeTestCase
      * - index.php/
      * - index.php/apples/
      * - index.php/bananas/eat/tasty_banana
-     *
-     * @return void
      */
     public function testBaseUrlWithModRewriteAndIndexPhp()
     {
@@ -1509,8 +1420,6 @@ class CakeRequestTest extends CakeTestCase
     /**
      * Test that even if mod_rewrite is on, and the url contains index.php
      * and there are numerous //s that the base/webroot is calculated correctly.
-     *
-     * @return void
      */
     public function testBaseUrlWithModRewriteAndExtraSlashes()
     {
@@ -1527,8 +1436,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test base, webroot, and URL parsing when there is no URL rewriting
-     *
-     * @return void
      */
     public function testBaseUrlWithNoModRewrite()
     {
@@ -1552,8 +1459,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test baseUrl and webroot with baseUrl
-     *
-     * @return void
      */
     public function testBaseUrlAndWebrootWithBaseUrl()
     {
@@ -1602,8 +1507,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test baseUrl with no rewrite and using the top level index.php.
-     *
-     * @return void
      */
     public function testBaseUrlNoRewriteTopLevelIndex()
     {
@@ -1618,8 +1521,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Check that a sub-directory containing app|webroot doesn't get mishandled when re-writing is off.
-     *
-     * @return void
      */
     public function testBaseUrlWithAppAndWebrootInDirname()
     {
@@ -1642,8 +1543,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test baseUrl with no rewrite, and using the app/webroot/index.php file as is normal with virtual hosts.
-     *
-     * @return void
      */
     public function testBaseUrlNoRewriteWebrootIndex()
     {
@@ -1659,8 +1558,6 @@ class CakeRequestTest extends CakeTestCase
     /**
      * Test that a request with a . in the main GET parameter is filtered out.
      * PHP changes GET parameter keys containing dots to _.
-     *
-     * @return void
      */
     public function testGetParamsWithDot()
     {
@@ -1683,8 +1580,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test that a request with urlencoded bits in the main GET parameter are filtered out.
-     *
-     * @return void
      */
     public function testGetParamWithUrlencodedElement()
     {
@@ -2112,10 +2007,10 @@ class CakeRequestTest extends CakeTestCase
      * Test environment detection
      *
      * @dataProvider environmentGenerator
+     *
      * @param $name
      * @param $env
      * @param $expected
-     * @return void
      */
     public function testEnvironmentDetection($name, $env, $expected)
     {
@@ -2133,8 +2028,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test the query() method
-     *
-     * @return void
      */
     public function testQuery()
     {
@@ -2152,8 +2045,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test the query() method with arrays passed via $_GET
-     *
-     * @return void
      */
     public function testQueryWithArray()
     {
@@ -2174,8 +2065,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test the data() method reading
-     *
-     * @return void
      */
     public function testDataReading()
     {
@@ -2194,8 +2083,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test writing with data()
-     *
-     * @return void
      */
     public function testDataWriting()
     {
@@ -2217,8 +2104,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test writing falsey values.
-     *
-     * @return void
      */
     public function testDataWritingFalsey()
     {
@@ -2305,8 +2190,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * test writing request params with param()
-     *
-     * @return void
      */
     public function testParamWriting()
     {
@@ -2336,8 +2219,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test accept language
-     *
-     * @return void
      */
     public function testAcceptLanguage()
     {
@@ -2380,8 +2261,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test the here() method
-     *
-     * @return void
      */
     public function testHere()
     {
@@ -2405,8 +2284,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test the here() with space in URL
-     *
-     * @return void
      */
     public function testHereWithSpaceInUrl()
     {
@@ -2420,8 +2297,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test the input() method.
-     *
-     * @return void
      */
     public function testSetInput()
     {
@@ -2437,8 +2312,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test the input() method.
-     *
-     * @return void
      */
     public function testInput()
     {
@@ -2452,8 +2325,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test input() decoding.
-     *
-     * @return void
      */
     public function testInputDecode()
     {
@@ -2467,8 +2338,6 @@ class CakeRequestTest extends CakeTestCase
 
     /**
      * Test input() decoding with additional arguments.
-     *
-     * @return void
      */
     public function testInputDecodeExtraParams()
     {
@@ -2493,8 +2362,6 @@ XML;
 
     /**
      * Test is('requested') and isRequested()
-     *
-     * @return void
      */
     public function testIsRequested()
     {
@@ -2520,8 +2387,6 @@ XML;
 
     /**
      * Test allowMethod method
-     *
-     * @return void
      */
     public function testAllowMethod()
     {
@@ -2542,8 +2407,6 @@ XML;
 
     /**
      * Test allowMethod throwing exception
-     *
-     * @return void
      */
     public function testAllowMethodException()
     {
@@ -2564,8 +2427,6 @@ XML;
     /**
      * Tests that overriding the method to GET will clean all request
      * data, to better simulate a GET request.
-     *
-     * @return void
      */
     public function testMethodOverrideEmptyData()
     {
@@ -2584,7 +2445,6 @@ XML;
      * loadEnvironment method
      *
      * @param array $env
-     * @return void
      */
     protected function _loadEnvironment($env)
     {

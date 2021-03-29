@@ -8,8 +8,10 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
  * @since         CakePHP(tm) v 2.4.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -42,6 +44,7 @@ abstract class AbstractPasswordHasher
      * Get/Set the config
      *
      * @param array $config Sets config, if null returns existing config
+     *
      * @return array Returns configs
      */
     public function config($config = null)
@@ -58,6 +61,7 @@ abstract class AbstractPasswordHasher
      *
      * @param string|array $password Plain text password to hash or array of data
      *   required to generate password hash.
+     *
      * @return string Password hash
      */
     abstract public function hash($password);
@@ -68,6 +72,7 @@ abstract class AbstractPasswordHasher
      *
      * @param string|array $password Plain text password to hash or data array.
      * @param string $hashedPassword Existing hashed password.
+     *
      * @return bool True if hashes match else false.
      */
     abstract public function check($password, $hashedPassword);

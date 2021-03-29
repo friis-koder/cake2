@@ -10,8 +10,10 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
  * @since         CakePHP(tm) v 2.3.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('AppShell', 'Console/Command');
@@ -60,8 +62,6 @@ class ServerShell extends AppShell
 
     /**
      * Override initialize of the Shell
-     *
-     * @return void
      */
     public function initialize()
     {
@@ -77,7 +77,6 @@ class ServerShell extends AppShell
      * Override this method if you want to remove the welcome information,
      * or otherwise modify the pre-command flow.
      *
-     * @return void
      * @link https://book.cakephp.org/2.0/en/console-and-shells.html#Shell::startup
      */
     public function startup()
@@ -105,8 +104,6 @@ class ServerShell extends AppShell
 
     /**
      * Displays a header for the shell
-     *
-     * @return void
      */
     protected function _welcome()
     {
@@ -121,8 +118,6 @@ class ServerShell extends AppShell
 
     /**
      * Override main() to handle action
-     *
-     * @return void
      */
     public function main()
     {

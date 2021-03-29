@@ -10,8 +10,10 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 if (class_exists('SebastianBergmann\CodeCoverage\CodeCoverage')) {
@@ -51,7 +53,6 @@ class CakeTestRunner extends PHPUnit_TextUI_TestRunner
      * @param array $arguments The CLI arguments
      * @param bool $exit Exits by default or returns the results
      * This argument is ignored if >PHPUnit5.2.0
-     * @return void
      */
     public function doRun(PHPUnit_Framework_Test $suite, array $arguments = [], $exit = true)
     {
@@ -105,8 +106,10 @@ class CakeTestRunner extends PHPUnit_TextUI_TestRunner
      * Get the fixture manager class specified or use the default one.
      *
      * @param array $arguments The CLI arguments.
-     * @return mixed instance of a fixture manager.
+     *
      * @throws RuntimeException When fixture manager class cannot be loaded.
+     *
+     * @return mixed instance of a fixture manager.
      */
     protected function _getFixtureManager($arguments)
     {

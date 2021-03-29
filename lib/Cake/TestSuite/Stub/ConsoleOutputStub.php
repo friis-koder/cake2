@@ -8,8 +8,10 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
  * @since         2.8
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('ConsoleOutput', 'Console');
@@ -47,7 +49,6 @@ class ConsoleOutputStub extends ConsoleOutput
      *
      * @param string|array $message A string or an array of strings to output
      * @param int $newlines Number of newlines to append
-     * @return void
      */
     public function write($message, $newlines = 1)
     {
@@ -70,7 +71,6 @@ class ConsoleOutputStub extends ConsoleOutput
      * @param int $newlines Number of newlines to append.
      * @param int $size The number of bytes to overwrite. Defaults to the
      *    length of the last message output.
-     * @return void
      */
     public function overwrite($message, $newlines = 1, $size = null)
     {

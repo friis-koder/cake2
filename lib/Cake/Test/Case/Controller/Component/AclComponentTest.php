@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Controller.Component
+ *
  * @since         CakePHP(tm) v 1.2.0.5435
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('AclComponent', 'Controller/Component');
@@ -27,8 +31,6 @@ class AclComponentTest extends CakeTestCase
 {
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -43,8 +45,6 @@ class AclComponentTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -57,7 +57,6 @@ class AclComponentTest extends CakeTestCase
      * non-existent class
      *
      * @expectedException CakeException
-     * @return void
      */
     public function testConstrutorException()
     {
@@ -68,8 +67,6 @@ class AclComponentTest extends CakeTestCase
 
     /**
      * test that adapter() allows control of the internal implementation AclComponent uses.
-     *
-     * @return void
      */
     public function testAdapter()
     {
@@ -84,7 +81,6 @@ class AclComponentTest extends CakeTestCase
      * test that adapter() whines when the class does not implement AclInterface
      *
      * @expectedException CakeException
-     * @return void
      */
     public function testAdapterException()
     {

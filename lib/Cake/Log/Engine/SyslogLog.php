@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          http://www.cakefoundation.org/projects/info/cakephp CakePHP(tm) Project
+ *
  * @package       Cake.Log.Engine
+ *
  * @since         CakePHP(tm) v 2.4
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('BaseLog', 'Log/Engine');
@@ -100,6 +104,7 @@ class SyslogLog extends BaseLog
      *
      * @param string $type The type of log you are making.
      * @param string $message The message you want to log.
+     *
      * @return bool success of write.
      */
     public function write($type, $message)
@@ -131,7 +136,6 @@ class SyslogLog extends BaseLog
      * @param string $ident the prefix to add to all messages logged
      * @param int $options the options flags to be used for logged messages
      * @param int $facility the stream or facility to log to
-     * @return void
      */
     protected function _open($ident, $options, $facility)
     {
@@ -144,6 +148,7 @@ class SyslogLog extends BaseLog
      *
      * @param int $priority Message priority.
      * @param string $message Message to log.
+     *
      * @return bool
      */
     protected function _write($priority, $message)

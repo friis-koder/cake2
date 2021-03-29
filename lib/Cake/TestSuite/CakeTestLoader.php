@@ -12,9 +12,12 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
+ *
  * @package Cake.TestSuite
  */
 
@@ -32,6 +35,7 @@ class CakeTestLoader extends PHPUnit_Runner_StandardTestSuiteLoader
      *
      * @param string $filePath The file path to load
      * @param string $params Additional parameters
+     *
      * @return ReflectionClass
      */
     public function load($filePath, $params = '')
@@ -46,6 +50,7 @@ class CakeTestLoader extends PHPUnit_Runner_StandardTestSuiteLoader
      *
      * @param string $filePath The file path to load.
      * @param string $params Additional parameters.
+     *
      * @return string Converted path fragments.
      */
     protected function _resolveTestFile($filePath, $params)
@@ -60,6 +65,7 @@ class CakeTestLoader extends PHPUnit_Runner_StandardTestSuiteLoader
      * Generates the base path to a set of tests based on the parameters.
      *
      * @param array $params The path parameters.
+     *
      * @return string The base path.
      */
     protected static function _basePath($params)
@@ -88,6 +94,7 @@ class CakeTestLoader extends PHPUnit_Runner_StandardTestSuiteLoader
      * Get the list of files for the test listing.
      *
      * @param string $params Path parameters
+     *
      * @return array
      */
     public static function generateTestList($params)
@@ -111,6 +118,7 @@ class CakeTestLoader extends PHPUnit_Runner_StandardTestSuiteLoader
      * a given fileTestFunction, like isTestCaseFile()
      *
      * @param string $directory The directory to scan for files.
+     *
      * @return array
      */
     protected static function _getRecursiveFileList($directory = '.')

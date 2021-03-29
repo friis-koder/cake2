@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Network.Http
+ *
  * @since         CakePHP(tm) v 2.0.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('HttpSocket', 'Network/Http');
@@ -27,8 +31,6 @@ class TestSslHttpSocket extends HttpSocket
 {
     /**
      * testSetProxy method
-     *
-     * @return void
      */
     public function testSetProxy($proxy = null)
     {
@@ -46,8 +48,6 @@ class BasicAuthenticationTest extends CakeTestCase
 {
     /**
      * testAuthentication method
-     *
-     * @return void
      */
     public function testAuthentication()
     {
@@ -64,8 +64,6 @@ class BasicAuthenticationTest extends CakeTestCase
 
     /**
      * testProxyAuthentication method
-     *
-     * @return void
      */
     public function testProxyAuthentication()
     {
@@ -82,8 +80,6 @@ class BasicAuthenticationTest extends CakeTestCase
 
     /**
      * testProxyAuthenticationSsl method
-     *
-     * @return void
      */
     public function testProxyAuthenticationSsl()
     {

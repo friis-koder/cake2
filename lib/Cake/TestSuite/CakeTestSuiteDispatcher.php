@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.TestSuite
+ *
  * @since         CakePHP(tm) v 1.3
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -102,8 +106,6 @@ class CakeTestSuiteDispatcher
 
     /**
      * Runs the actions required by the URL parameters.
-     *
-     * @return void
      */
     public function dispatch()
     {
@@ -124,8 +126,6 @@ class CakeTestSuiteDispatcher
 
     /**
      * Static method to initialize the test runner, keeps global space clean
-     *
-     * @return void
      */
     public static function run()
     {
@@ -135,8 +135,6 @@ class CakeTestSuiteDispatcher
 
     /**
      * Checks that PHPUnit is installed. Will exit if it doesn't
-     *
-     * @return void
      */
     protected function _checkPHPUnit()
     {
@@ -166,8 +164,6 @@ class CakeTestSuiteDispatcher
     /**
      * Checks for the xdebug extension required to do code coverage. Displays an error
      * if xdebug isn't installed.
-     *
-     * @return void
      */
     protected function _checkXdebug()
     {
@@ -180,8 +176,6 @@ class CakeTestSuiteDispatcher
 
     /**
      * Generates a page containing the a list of test cases that could be run.
-     *
-     * @return void
      */
     protected function _testCaseList()
     {
@@ -197,7 +191,6 @@ class CakeTestSuiteDispatcher
      * Sets the params, calling this will bypass the auto parameter parsing.
      *
      * @param array $params Array of parameters for the dispatcher
-     * @return void
      */
     public function setParams($params)
     {
@@ -207,8 +200,6 @@ class CakeTestSuiteDispatcher
 
     /**
      * Parse URL params into a 'request'
-     *
-     * @return void
      */
     protected function _parseParams()
     {
@@ -235,8 +226,6 @@ class CakeTestSuiteDispatcher
 
     /**
      * Runs a test case file.
-     *
-     * @return void
      */
     protected function _runTestCase()
     {
@@ -274,6 +263,7 @@ class CakeTestSuiteDispatcher
      * Sets a static timestamp
      *
      * @param bool $reset to set new static timestamp.
+     *
      * @return int timestamp
      */
     public static function time($reset = false)
@@ -291,6 +281,7 @@ class CakeTestSuiteDispatcher
      * This method is being used as formatter for created, modified and updated fields in Model::save()
      *
      * @param string $format format to be used.
+     *
      * @return string formatted date
      */
     public static function date($format)

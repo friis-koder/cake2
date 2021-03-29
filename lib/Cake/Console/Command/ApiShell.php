@@ -12,8 +12,10 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
  * @since         CakePHP(tm) v 1.2.0.5012
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('AppShell', 'Console/Command');
@@ -37,8 +39,6 @@ class ApiShell extends AppShell
 
     /**
      * Override initialize of the Shell
-     *
-     * @return void
      */
     public function initialize()
     {
@@ -56,8 +56,6 @@ class ApiShell extends AppShell
 
     /**
      * Override main() to handle action
-     *
-     * @return void
      */
     public function main()
     {
@@ -163,8 +161,6 @@ class ApiShell extends AppShell
 
     /**
      * Show help for this shell.
-     *
-     * @return void
      */
     public function help()
     {
@@ -205,6 +201,7 @@ class ApiShell extends AppShell
      *
      * @param string $path File path
      * @param string $class Class name
+     *
      * @return array Methods and signatures indexed by method name
      */
     protected function _parseClass($path, $class)

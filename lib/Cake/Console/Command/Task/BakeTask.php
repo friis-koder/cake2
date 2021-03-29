@@ -10,8 +10,10 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
  * @since         CakePHP(tm) v 1.3
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('AppShell', 'Console/Command');
@@ -47,8 +49,6 @@ class BakeTask extends AppShell
     /**
      * Disable caching and enable debug for baking.
      * This forces the most current database schema to be used.
-     *
-     * @return void
      */
     public function startup()
     {
@@ -76,8 +76,6 @@ class BakeTask extends AppShell
     /**
      * Base execute method parses some parameters and sets some properties on the bake tasks.
      * call when overriding execute()
-     *
-     * @return void
      */
     public function execute()
     {

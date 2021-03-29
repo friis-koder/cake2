@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Network.Http
+ *
  * @since         CakePHP(tm) v 1.2.0.4206
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('HttpResponse', 'Network/Http');
@@ -28,6 +32,7 @@ class TestHttpResponse extends HttpResponse
      * Convenience method for testing protected method
      *
      * @param array $header Header as an indexed array (field => value)
+     *
      * @return array Parsed header
      */
     public function parseHeader($header)
@@ -40,6 +45,7 @@ class TestHttpResponse extends HttpResponse
      *
      * @param string $body A string containing the body to decode
      * @param bool|string $encoding Can be false in case no encoding is being used, or a string representing the encoding
+     *
      * @return mixed Array or false
      */
     public function decodeBody($body, $encoding = 'chunked')
@@ -51,6 +57,7 @@ class TestHttpResponse extends HttpResponse
      * Convenience method for testing protected method
      *
      * @param string $body A string containing the chunked body to decode
+     *
      * @return mixed Array or false
      */
     public function decodeChunkedBody($body)
@@ -62,6 +69,7 @@ class TestHttpResponse extends HttpResponse
      * Convenience method for testing protected method
      *
      * @param string $token Token to unescape
+     *
      * @return string Unescaped token
      */
     public function unescapeToken($token, $chars = null)
@@ -73,6 +81,7 @@ class TestHttpResponse extends HttpResponse
      * Convenience method for testing protected method
      *
      * @param bool $hex true to get them as HEX values, false otherwise
+     *
      * @return array Escape chars
      */
     public function tokenEscapeChars($hex = true, $chars = null)
@@ -90,8 +99,6 @@ class HttpResponseTest extends CakeTestCase
 {
     /**
      * This function sets up a HttpResponse
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -101,8 +108,6 @@ class HttpResponseTest extends CakeTestCase
 
     /**
      * testBody
-     *
-     * @return void
      */
     public function testBody()
     {
@@ -115,8 +120,6 @@ class HttpResponseTest extends CakeTestCase
 
     /**
      * testToString
-     *
-     * @return void
      */
     public function testToString()
     {
@@ -131,8 +134,6 @@ class HttpResponseTest extends CakeTestCase
 
     /**
      * testGetHeader
-     *
-     * @return void
      */
     public function testGetHeader()
     {
@@ -156,8 +157,6 @@ class HttpResponseTest extends CakeTestCase
 
     /**
      * testIsOk
-     *
-     * @return void
      */
     public function testIsOk()
     {
@@ -199,8 +198,6 @@ class HttpResponseTest extends CakeTestCase
 
     /**
      * testIsRedirect
-     *
-     * @return void
      */
     public function testIsRedirect()
     {
@@ -236,8 +233,6 @@ class HttpResponseTest extends CakeTestCase
 
     /**
      * Test that HttpSocket::parseHeader can take apart a given (and valid) $header string and turn it into an array.
-     *
-     * @return void
      */
     public function testParseHeader()
     {
@@ -305,8 +300,6 @@ class HttpResponseTest extends CakeTestCase
 
     /**
      * testParseResponse method
-     *
-     * @return void
      */
     public function testParseResponse()
     {
@@ -376,7 +369,6 @@ class HttpResponseTest extends CakeTestCase
      *
      * @dataProvider invalidParseResponseDataProvider
      * @expectedException SocketException
-     * @return void
      */
     public function testInvalidParseResponseData($value)
     {
@@ -385,8 +377,6 @@ class HttpResponseTest extends CakeTestCase
 
     /**
      * testDecodeBody method
-     *
-     * @return void
      */
     public function testDecodeBody()
     {
@@ -417,8 +407,6 @@ class HttpResponseTest extends CakeTestCase
 
     /**
      * testDecodeFooCoded
-     *
-     * @return void
      */
     public function testDecodeFooCoded()
     {
@@ -440,8 +428,6 @@ class HttpResponseTest extends CakeTestCase
 
     /**
      * testDecodeChunkedBody method
-     *
-     * @return void
      */
     public function testDecodeChunkedBody()
     {
@@ -477,8 +463,6 @@ class HttpResponseTest extends CakeTestCase
 
     /**
      * testDecodeChunkedBodyError method
-     *
-     * @return void
      */
     public function testDecodeChunkedBodyError()
     {
@@ -490,8 +474,6 @@ class HttpResponseTest extends CakeTestCase
 
     /**
      * testParseCookies method
-     *
-     * @return void
      */
     public function testParseCookies()
     {
@@ -541,8 +523,6 @@ class HttpResponseTest extends CakeTestCase
 
     /**
      * Test that escaped token strings are properly unescaped by HttpSocket::unescapeToken
-     *
-     * @return void
      */
     public function testUnescapeToken()
     {
@@ -565,8 +545,6 @@ class HttpResponseTest extends CakeTestCase
 
     /**
      * testArrayAccess
-     *
-     * @return void
      */
     public function testArrayAccess()
     {

@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.View.Helper
+ *
  * @since         CakePHP(tm) v 1.2
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('AppHelper', 'View/Helper');
@@ -26,6 +30,7 @@ App::uses('Multibyte', 'I18n');
  * given client-side library.
  *
  * @package       Cake.View.Helper
+ *
  * @property      HtmlHelper $Html
  * @property      FormHelper $Form
  */
@@ -49,6 +54,7 @@ class JsHelper extends AppHelper
      * Variables to pass to Javascript.
      *
      * @var array
+     *
      * @see JsHelper::set()
      */
     protected $_jsVars = [];
@@ -57,6 +63,7 @@ class JsHelper extends AppHelper
      * Scripts that are queued for output
      *
      * @var array
+     *
      * @see JsHelper::buffer()
      */
     protected $_bufferedScripts = [];
@@ -115,6 +122,7 @@ class JsHelper extends AppHelper
      *
      * @param string $method Method to be called
      * @param array $params Parameters for the method being called.
+     *
      * @return mixed Depends on the return of the dispatched method, or it could be an instance of the EngineHelper
      */
     public function __call($method, $params)
@@ -162,7 +170,9 @@ class JsHelper extends AppHelper
      * @param mixed $val A PHP variable to be converted to JSON
      * @param bool $quoteString If false, leaves string values unquoted
      * @param string $key Key name.
+     *
      * @return string a JavaScript-safe/JSON representation of $val
+     *
      * @link https://book.cakephp.org/2.0/en/core-libraries/helpers/js.html#JsHelper::value
      */
     public function value($val = [], $quoteString = null, $key = 'value')
@@ -190,8 +200,10 @@ class JsHelper extends AppHelper
      * - `safe` - if an inline block is generated should it be wrapped in <![CDATA[ ... ]]> (default true)
      *
      * @param array $options options for the code block
+     *
      * @return mixed Completed javascript tag if there are scripts, if there are no buffered
      *   scripts null will be returned.
+     *
      * @link https://book.cakephp.org/2.0/en/core-libraries/helpers/js.html#JsHelper::writeBuffer
      */
     public function writeBuffer($options = [])
@@ -238,7 +250,7 @@ class JsHelper extends AppHelper
      * @param string $script Script string to add to the buffer.
      * @param bool $top If true the script will be added to the top of the
      *   buffered scripts array. If false the bottom.
-     * @return void
+     *
      * @link https://book.cakephp.org/2.0/en/core-libraries/helpers/js.html#JsHelper::buffer
      */
     public function buffer($script, $top = false)
@@ -254,7 +266,9 @@ class JsHelper extends AppHelper
      * Get all the buffered scripts
      *
      * @param bool $clear Whether or not to clear the script caches (default true)
+     *
      * @return array Array of scripts added to the request.
+     *
      * @link https://book.cakephp.org/2.0/en/core-libraries/helpers/js.html#JsHelper::getBuffer
      */
     public function getBuffer($clear = true)
@@ -271,8 +285,6 @@ class JsHelper extends AppHelper
 
     /**
      * Generates the object string for variables passed to javascript and adds to buffer
-     *
-     * @return void
      */
     protected function _createVars()
     {
@@ -298,7 +310,9 @@ class JsHelper extends AppHelper
      * @param string $title Title for the link.
      * @param string|array $url Mixed either a string URL or a CakePHP URL array.
      * @param array $options Options for both the HTML element and Js::request()
+     *
      * @return string Completed link. If buffering is disabled a script tag will be returned as well.
+     *
      * @link https://book.cakephp.org/2.0/en/core-libraries/helpers/js.html#JsHelper::link
      */
     public function link($title, $url = null, $options = [])
@@ -338,7 +352,7 @@ class JsHelper extends AppHelper
      *
      * @param string|array $one Either an array of variables to set, or the name of the variable to set.
      * @param string|array $two If $one is a string, $two is the value for that key.
-     * @return void
+     *
      * @link https://book.cakephp.org/2.0/en/core-libraries/helpers/js.html#JsHelper::set
      */
     public function set($one, $two = null)
@@ -377,7 +391,9 @@ class JsHelper extends AppHelper
      *
      * @param string $caption The display text of the submit button.
      * @param array $options Array of options to use. See the options for the above mentioned methods.
+     *
      * @return string Completed submit button.
+     *
      * @link https://book.cakephp.org/2.0/en/core-libraries/helpers/js.html#JsHelper::submit
      */
     public function submit($caption = null, $options = [])
@@ -428,6 +444,7 @@ class JsHelper extends AppHelper
      *
      * @param array $options Options to filter.
      * @param array $additional Array of additional keys to extract and include in the return options array.
+     *
      * @return array Array of js options and Htmloptions
      */
     protected function _getHtmlOptions($options, $additional = [])

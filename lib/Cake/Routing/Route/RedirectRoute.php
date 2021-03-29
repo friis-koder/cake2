@@ -8,9 +8,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Routing.Route
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('CakeResponse', 'Network');
@@ -64,6 +68,7 @@ class RedirectRoute extends CakeRoute
      * redirection
      *
      * @param string $url The URL to parse
+     *
      * @return bool False on failure
      */
     public function parse($url)
@@ -104,6 +109,7 @@ class RedirectRoute extends CakeRoute
      * There is no reverse routing redirection routes
      *
      * @param array $url Array of parameters to convert to a string.
+     *
      * @return mixed either false or a string URL.
      */
     public function match($url)
@@ -116,7 +122,6 @@ class RedirectRoute extends CakeRoute
      * testing easier.
      *
      * @param int|string $code See http://php.net/exit for values
-     * @return void
      */
     protected function _stop($code = 0)
     {

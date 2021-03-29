@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Controller
+ *
  * @since         CakePHP(tm) v 1.2.0.5436
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Router', 'Routing');
@@ -64,6 +68,7 @@ class ScaffoldMockControllerWithFields extends Controller
      * function beforeScaffold
      *
      * @param string $method Method name.
+     *
      * @return bool true
      */
     public function beforeScaffold($method)
@@ -99,6 +104,7 @@ class ScaffoldMockControllerWithError extends Controller
      * function beforeScaffold
      *
      * @param string $method Method name.
+     *
      * @return bool false
      */
     public function beforeScaffold($method)
@@ -118,7 +124,6 @@ class TestScaffoldMock extends Scaffold
      * Overload _scaffold
      *
      * @param CakeRequest $request Request object for scaffolding
-     * @return void
      */
     protected function _scaffold(CakeRequest $request)
     {
@@ -159,8 +164,6 @@ class ScaffoldTest extends CakeTestCase
 
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -173,8 +176,6 @@ class ScaffoldTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -186,8 +187,6 @@ class ScaffoldTest extends CakeTestCase
     /**
      * Test the correct Generation of Scaffold Params.
      * This ensures that the correct action and view will be generated
-     *
-     * @return void
      */
     public function testScaffoldParams()
     {
@@ -217,8 +216,6 @@ class ScaffoldTest extends CakeTestCase
 
     /**
      * test that the proper names and variable values are set by Scaffold
-     *
-     * @return void
      */
     public function testScaffoldVariableSetting()
     {
@@ -258,8 +255,6 @@ class ScaffoldTest extends CakeTestCase
 
     /**
      * test that Scaffold overrides the view property even if its set to 'Theme'
-     *
-     * @return void
      */
     public function testScaffoldChangingViewProperty()
     {
@@ -274,8 +269,6 @@ class ScaffoldTest extends CakeTestCase
 
     /**
      * test that scaffold outputs flash messages when sessions are unset.
-     *
-     * @return void
      */
     public function testScaffoldFlashMessages()
     {
@@ -315,8 +308,6 @@ class ScaffoldTest extends CakeTestCase
 
     /**
      * test that habtm relationship keys get added to scaffoldFields.
-     *
-     * @return void
      */
     public function testHabtmFieldAdditionWithScaffoldForm()
     {
@@ -352,8 +343,6 @@ class ScaffoldTest extends CakeTestCase
 
     /**
      * test that the proper names and variable values are set by Scaffold
-     *
-     * @return void
      */
     public function testEditScaffoldWithScaffoldFields()
     {
@@ -390,8 +379,6 @@ class ScaffoldTest extends CakeTestCase
 
     /**
      * test in case of scaffold error
-     *
-     * @return void
      */
     public function testScaffoldError()
     {

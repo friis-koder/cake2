@@ -9,9 +9,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Model
+ *
  * @since         CakePHP(tm) v 1.2.0.5550
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('ConnectionManager', 'Model');
@@ -25,8 +29,6 @@ class ConnectionManagerTest extends CakeTestCase
 {
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -36,8 +38,6 @@ class ConnectionManagerTest extends CakeTestCase
 
     /**
      * testEnumConnectionObjects method
-     *
-     * @return void
      */
     public function testEnumConnectionObjects()
     {
@@ -50,8 +50,6 @@ class ConnectionManagerTest extends CakeTestCase
 
     /**
      * testGetDataSource method
-     *
-     * @return void
      */
     public function testGetDataSource()
     {
@@ -76,7 +74,6 @@ class ConnectionManagerTest extends CakeTestCase
     /**
      * testGetDataSourceException() method
      *
-     * @return void
      * @expectedException MissingDatasourceConfigException
      */
     public function testGetDataSourceException()
@@ -86,8 +83,6 @@ class ConnectionManagerTest extends CakeTestCase
 
     /**
      * testGetPluginDataSource method
-     *
-     * @return void
      */
     public function testGetPluginDataSource()
     {
@@ -108,8 +103,6 @@ class ConnectionManagerTest extends CakeTestCase
 
     /**
      * testGetPluginDataSourceAndPluginDriver method
-     *
-     * @return void
      */
     public function testGetPluginDataSourceAndPluginDriver()
     {
@@ -132,8 +125,6 @@ class ConnectionManagerTest extends CakeTestCase
 
     /**
      * testGetLocalDataSourceAndPluginDriver method
-     *
-     * @return void
      */
     public function testGetLocalDataSourceAndPluginDriver()
     {
@@ -155,8 +146,6 @@ class ConnectionManagerTest extends CakeTestCase
 
     /**
      * testGetPluginDataSourceAndLocalDriver method
-     *
-     * @return void
      */
     public function testGetPluginDataSourceAndLocalDriver()
     {
@@ -181,8 +170,6 @@ class ConnectionManagerTest extends CakeTestCase
 
     /**
      * testSourceList method
-     *
-     * @return void
      */
     public function testSourceList()
     {
@@ -194,8 +181,6 @@ class ConnectionManagerTest extends CakeTestCase
 
     /**
      * testGetSourceName method
-     *
-     * @return void
      */
     public function testGetSourceName()
     {
@@ -211,8 +196,6 @@ class ConnectionManagerTest extends CakeTestCase
 
     /**
      * testLoadDataSource method
-     *
-     * @return void
      */
     public function testLoadDataSource()
     {
@@ -232,7 +215,6 @@ class ConnectionManagerTest extends CakeTestCase
     /**
      * testLoadDataSourceException() method
      *
-     * @return void
      * @expectedException MissingDatasourceException
      */
     public function testLoadDataSourceException()
@@ -243,8 +225,6 @@ class ConnectionManagerTest extends CakeTestCase
 
     /**
      * testCreateDataSource method
-     *
-     * @return void
      */
     public function testCreateDataSourceWithIntegrationTests()
     {
@@ -276,8 +256,6 @@ class ConnectionManagerTest extends CakeTestCase
 
     /**
      * testConnectionData method
-     *
-     * @return void
      */
     public function testConnectionData()
     {
@@ -338,8 +316,6 @@ class ConnectionManagerTest extends CakeTestCase
 
     /**
      * Tests that a connection configuration can be deleted in runtime
-     *
-     * @return void
      */
     public function testDrop()
     {

@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Model.Datasource
+ *
  * @since         CakePHP(tm) v 1.2.0.4206
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('CakeSession', 'Model/Datasource');
@@ -81,8 +85,6 @@ class CakeSessionTest extends CakeTestCase
 
     /**
      * setup before class.
-     *
-     * @return void
      */
     public static function setupBeforeClass()
     {
@@ -93,8 +95,6 @@ class CakeSessionTest extends CakeTestCase
 
     /**
      * teardown after class
-     *
-     * @return void
      */
     public static function teardownAfterClass()
     {
@@ -104,8 +104,6 @@ class CakeSessionTest extends CakeTestCase
 
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -121,8 +119,6 @@ class CakeSessionTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -135,8 +131,6 @@ class CakeSessionTest extends CakeTestCase
 
     /**
      * test setting ini properties with Session configuration.
-     *
-     * @return void
      */
     public function testSessionConfigIniSetting()
     {
@@ -159,8 +153,6 @@ class CakeSessionTest extends CakeTestCase
 
     /**
      * testSessionPath
-     *
-     * @return void
      */
     public function testSessionPath()
     {
@@ -173,8 +165,6 @@ class CakeSessionTest extends CakeTestCase
 
     /**
      * testCakeSessionPathEmpty
-     *
-     * @return void
      */
     public function testCakeSessionPathEmpty()
     {
@@ -184,8 +174,6 @@ class CakeSessionTest extends CakeTestCase
 
     /**
      * testCakeSessionPathContainsParams
-     *
-     * @return void
      */
     public function testCakeSessionPathContainsQuestion()
     {
@@ -195,8 +183,6 @@ class CakeSessionTest extends CakeTestCase
 
     /**
      * testSetHost
-     *
-     * @return void
      */
     public function testSetHost()
     {
@@ -207,8 +193,6 @@ class CakeSessionTest extends CakeTestCase
 
     /**
      * testSetHostWithPort
-     *
-     * @return void
      */
     public function testSetHostWithPort()
     {
@@ -219,8 +203,6 @@ class CakeSessionTest extends CakeTestCase
 
     /**
      * test valid with bogus user agent.
-     *
-     * @return void
      */
     public function testValidBogusUserAgent()
     {
@@ -234,8 +216,6 @@ class CakeSessionTest extends CakeTestCase
 
     /**
      * test valid with bogus user agent.
-     *
-     * @return void
      */
     public function testValidTimeExpiry()
     {
@@ -249,8 +229,6 @@ class CakeSessionTest extends CakeTestCase
 
     /**
      * testCheck method
-     *
-     * @return void
      */
     public function testCheck()
     {
@@ -262,8 +240,6 @@ class CakeSessionTest extends CakeTestCase
 
     /**
      * testSimpleRead method
-     *
-     * @return void
      */
     public function testSimpleRead()
     {
@@ -290,8 +266,6 @@ class CakeSessionTest extends CakeTestCase
 
     /**
      * testReadyEmpty
-     *
-     * @return void
      */
     public function testReadyEmpty()
     {
@@ -300,8 +274,6 @@ class CakeSessionTest extends CakeTestCase
 
     /**
      * test writing a hash of values/
-     *
-     * @return void
      */
     public function testWriteArray()
     {
@@ -319,8 +291,6 @@ class CakeSessionTest extends CakeTestCase
 
     /**
      * testWriteEmptyKey
-     *
-     * @return void
      */
     public function testWriteEmptyKey()
     {
@@ -331,8 +301,6 @@ class CakeSessionTest extends CakeTestCase
 
     /**
      * Test overwriting a string value as if it were an array.
-     *
-     * @return void
      */
     public function testWriteOverwriteStringValue()
     {
@@ -348,8 +316,6 @@ class CakeSessionTest extends CakeTestCase
 
     /**
      * Test consuming session data.
-     *
-     * @return void
      */
     public function testConsume()
     {
@@ -371,8 +337,6 @@ class CakeSessionTest extends CakeTestCase
 
     /**
      * testId method
-     *
-     * @return void
      */
     public function testId()
     {
@@ -389,8 +353,6 @@ class CakeSessionTest extends CakeTestCase
 
     /**
      * testStarted method
-     *
-     * @return void
      */
     public function testStarted()
     {
@@ -404,8 +366,6 @@ class CakeSessionTest extends CakeTestCase
 
     /**
      * testDel method
-     *
-     * @return void
      */
     public function testDelete()
     {
@@ -427,8 +387,6 @@ class CakeSessionTest extends CakeTestCase
 
     /**
      * test delete
-     *
-     * @return void
      */
     public function testDeleteEmptyString()
     {
@@ -439,8 +397,6 @@ class CakeSessionTest extends CakeTestCase
 
     /**
      * testClear method
-     *
-     * @return void
      */
     public function testClear()
     {
@@ -460,8 +416,6 @@ class CakeSessionTest extends CakeTestCase
 
     /**
      * testDestroy method
-     *
-     * @return void
      */
     public function testDestroy()
     {
@@ -475,8 +429,6 @@ class CakeSessionTest extends CakeTestCase
 
     /**
      * testCheckingSavedEmpty method
-     *
-     * @return void
      */
     public function testCheckingSavedEmpty()
     {
@@ -495,8 +447,6 @@ class CakeSessionTest extends CakeTestCase
 
     /**
      * testCheckKeyWithSpaces method
-     *
-     * @return void
      */
     public function testCheckKeyWithSpaces()
     {
@@ -510,8 +460,6 @@ class CakeSessionTest extends CakeTestCase
 
     /**
      * testCheckEmpty
-     *
-     * @return void
      */
     public function testCheckEmpty()
     {
@@ -521,8 +469,6 @@ class CakeSessionTest extends CakeTestCase
 
     /**
      * test key exploitation
-     *
-     * @return void
      */
     public function testKeyExploit()
     {
@@ -536,8 +482,6 @@ class CakeSessionTest extends CakeTestCase
 
     /**
      * testReadingSavedEmpty method
-     *
-     * @return void
      */
     public function testReadingSavedEmpty()
     {
@@ -561,8 +505,6 @@ class CakeSessionTest extends CakeTestCase
 
     /**
      * Test te cacheLimiter settings.
-     *
-     * @return void
      */
     public function testCacheLimiter()
     {
@@ -578,8 +520,6 @@ class CakeSessionTest extends CakeTestCase
 
     /**
      * testCheckUserAgentFalse method
-     *
-     * @return void
      */
     public function testCheckUserAgentFalse()
     {
@@ -590,8 +530,6 @@ class CakeSessionTest extends CakeTestCase
 
     /**
      * testCheckUserAgentTrue method
-     *
-     * @return void
      */
     public function testCheckUserAgentTrue()
     {
@@ -606,8 +544,6 @@ class CakeSessionTest extends CakeTestCase
 
     /**
      * testReadAndWriteWithCakeStorage method
-     *
-     * @return void
      */
     public function testReadAndWriteWithCakeStorage()
     {
@@ -642,8 +578,6 @@ class CakeSessionTest extends CakeTestCase
 
     /**
      * test using a handler from app/Model/Datasource/Session.
-     *
-     * @return void
      */
     public function testUsingAppLibsHandler()
     {
@@ -671,8 +605,6 @@ class CakeSessionTest extends CakeTestCase
 
     /**
      * test using a handler from a plugin.
-     *
-     * @return void
      */
     public function testUsingPluginHandler()
     {
@@ -699,8 +631,6 @@ class CakeSessionTest extends CakeTestCase
 
     /**
      * testReadAndWriteWithCacheStorage method
-     *
-     * @return void
      */
     public function testReadAndWriteWithCacheStorage()
     {
@@ -736,8 +666,6 @@ class CakeSessionTest extends CakeTestCase
 
     /**
      * test that changing the config name of the cache config works.
-     *
-     * @return void
      */
     public function testReadAndWriteWithCustomCacheConfig()
     {
@@ -762,8 +690,6 @@ class CakeSessionTest extends CakeTestCase
 
     /**
      * testReadAndWriteWithDatabaseStorage method
-     *
-     * @return void
      */
     public function testReadAndWriteWithDatabaseStorage()
     {
@@ -816,8 +742,6 @@ class CakeSessionTest extends CakeTestCase
 
     /**
      * testSessionTimeout method
-     *
-     * @return void
      */
     public function testSessionTimeout()
     {
@@ -849,8 +773,6 @@ class CakeSessionTest extends CakeTestCase
 
     /**
      * Test that cookieTimeout matches timeout when unspecified.
-     *
-     * @return void
      */
     public function testCookieTimeoutFallback()
     {
@@ -879,8 +801,6 @@ class CakeSessionTest extends CakeTestCase
     /**
      * Proves that invalid sessions will be destroyed and re-created
      * if invalid
-     *
-     * @return void
      */
     public function testInvalidSessionRenew()
     {

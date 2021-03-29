@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Utility
+ *
  * @since         CakePHP(tm) v 1.2.0.5551
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -27,6 +31,7 @@ class CakeText
      * Generate a random UUID
      *
      * @see http://www.ietf.org/rfc/rfc4122.txt
+     *
      * @return string RFC 4122 UUID
      */
     public static function uuid()
@@ -61,6 +66,7 @@ class CakeText
      * @param string $separator The token to split the data on.
      * @param string $leftBound The left boundary to ignore separators in.
      * @param string $rightBound The right boundary to ignore separators in.
+     *
      * @return mixed Array of tokens in $data or original input if empty.
      */
     public static function tokenize($data, $separator = ',', $leftBound = '(', $rightBound = ')')
@@ -150,6 +156,7 @@ class CakeText
      * @param array $data A key => val array where each key stands for a placeholder variable name
      *     to be replaced with val
      * @param array $options An array of options, see description above
+     *
      * @return string
      */
     public static function insert($str, $data, $options = [])
@@ -216,7 +223,9 @@ class CakeText
      *
      * @param string $str CakeText to clean.
      * @param array $options Options list.
+     *
      * @return string
+     *
      * @see CakeText::insert()
      */
     public static function cleanInsert($str, $options)
@@ -289,6 +298,7 @@ class CakeText
      *
      * @param string $text The text to format.
      * @param array|int $options Array of options to use, or an integer to wrap the text to.
+     *
      * @return string Formatted text.
      */
     public static function wrap($text, $options = [])
@@ -320,6 +330,7 @@ class CakeText
      * @param int $width The width to wrap to. Defaults to 72.
      * @param string $break The line is broken using the optional break parameter. Defaults to '\n'.
      * @param bool $cut If the cut is set to true, the string is always wrapped at the specified width.
+     *
      * @return string Formatted text.
      */
     public static function wordWrap($text, $width = 72, $break = "\n", $cut = false)
@@ -339,6 +350,7 @@ class CakeText
      * @param int $width The width to wrap to. Defaults to 72.
      * @param string $break The line is broken using the optional break parameter. Defaults to '\n'.
      * @param bool $cut If the cut is set to true, the string is always wrapped at the specified width.
+     *
      * @return string Formatted text.
      */
     protected static function _wordWrap($text, $width = 72, $break = "\n", $cut = false)
@@ -398,7 +410,9 @@ class CakeText
      * @param string $text Text to search the phrase in.
      * @param string|array $phrase The phrase or phrases that will be searched.
      * @param array $options An array of html attributes and options.
+     *
      * @return string The highlighted text
+     *
      * @link https://book.cakephp.org/2.0/en/core-libraries/helpers/text.html#TextHelper::highlight
      */
     public static function highlight($text, $phrase, $options = [])
@@ -444,7 +458,9 @@ class CakeText
      * Strips given text of all links (<a href=....).
      *
      * @param string $text Text
+     *
      * @return string The text without links
+     *
      * @link https://book.cakephp.org/2.0/en/core-libraries/helpers/text.html#TextHelper::stripLinks
      */
     public static function stripLinks($text)
@@ -466,6 +482,7 @@ class CakeText
      * @param string $text CakeText to truncate.
      * @param int $length Length of returned string, including ellipsis.
      * @param array $options An array of options.
+     *
      * @return string Trimmed string.
      */
     public static function tail($text, $length = 100, $options = [])
@@ -508,7 +525,9 @@ class CakeText
      * @param string $text CakeText to truncate.
      * @param int $length Length of returned string, including ellipsis.
      * @param array $options An array of html attributes and options.
+     *
      * @return string Trimmed string.
+     *
      * @link https://book.cakephp.org/2.0/en/core-libraries/helpers/text.html#TextHelper::truncate
      */
     public static function truncate($text, $length = 100, $options = [])
@@ -630,7 +649,9 @@ class CakeText
      * @param string $phrase Phrase that will be searched for
      * @param int $radius The amount of characters that will be returned on each side of the founded phrase
      * @param string $ellipsis Ending that will be appended
+     *
      * @return string Modified string
+     *
      * @link https://book.cakephp.org/2.0/en/core-libraries/helpers/text.html#TextHelper::excerpt
      */
     public static function excerpt($text, $phrase, $radius = 100, $ellipsis = '...')
@@ -673,7 +694,9 @@ class CakeText
      * @param array $list The list to be joined.
      * @param string $and The word used to join the last and second last items together with. Defaults to 'and'.
      * @param string $separator The separator used to join all the other items together. Defaults to ', '.
+     *
      * @return string The glued together string.
+     *
      * @link https://book.cakephp.org/2.0/en/core-libraries/helpers/text.html#TextHelper::toList
      */
     public static function toList($list, $and = null, $separator = ', ')

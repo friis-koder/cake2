@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Cache.Engine
+ *
  * @since         CakePHP(tm) v 1.2.0.5434
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Cache', 'Cache');
@@ -26,8 +30,6 @@ class WincacheEngineTest extends CakeTestCase
 {
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -40,8 +42,6 @@ class WincacheEngineTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -54,8 +54,6 @@ class WincacheEngineTest extends CakeTestCase
 
     /**
      * testReadAndWriteCache method
-     *
-     * @return void
      */
     public function testReadAndWriteCache()
     {
@@ -78,8 +76,6 @@ class WincacheEngineTest extends CakeTestCase
 
     /**
      * testExpiry method
-     *
-     * @return void
      */
     public function testExpiry()
     {
@@ -113,8 +109,6 @@ class WincacheEngineTest extends CakeTestCase
 
     /**
      * testDeleteCache method
-     *
-     * @return void
      */
     public function testDeleteCache()
     {
@@ -128,8 +122,6 @@ class WincacheEngineTest extends CakeTestCase
 
     /**
      * testDecrement method
-     *
-     * @return void
      */
     public function testDecrement()
     {
@@ -156,8 +148,6 @@ class WincacheEngineTest extends CakeTestCase
 
     /**
      * testIncrement method
-     *
-     * @return void
      */
     public function testIncrement()
     {
@@ -184,8 +174,6 @@ class WincacheEngineTest extends CakeTestCase
 
     /**
      * test the clearing of cache keys
-     *
-     * @return void
      */
     public function testClear()
     {
@@ -202,8 +190,6 @@ class WincacheEngineTest extends CakeTestCase
      * Tests that configuring groups for stored keys return the correct values when read/written
      * Shows that altering the group value is equivalent to deleting all keys under the same
      * group
-     *
-     * @return void
      */
     public function testGroupsReadWrite()
     {
@@ -229,8 +215,6 @@ class WincacheEngineTest extends CakeTestCase
 
     /**
      * Tests that deleteing from a groups-enabled config is possible
-     *
-     * @return void
      */
     public function testGroupDelete()
     {
@@ -249,8 +233,6 @@ class WincacheEngineTest extends CakeTestCase
 
     /**
      * Test clearing a cache group
-     *
-     * @return void
      */
     public function testGroupClear()
     {
@@ -272,8 +254,6 @@ class WincacheEngineTest extends CakeTestCase
 
     /**
      * Test that failed add write return false.
-     *
-     * @return void
      */
     public function testAdd()
     {

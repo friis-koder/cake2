@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright	  Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link		  https://cakephp.org CakePHP(tm) Project
+ *
  * @package		  Cake.Network
+ *
  * @since		  CakePHP(tm) v 1.2.0
+ *
  * @license		  https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Validation', 'Utility');
@@ -112,6 +116,7 @@ class CakeSocket
      * Constructor.
      *
      * @param array $config Socket configuration, which will be merged with the base configuration
+     *
      * @see CakeSocket::$_baseConfig
      */
     public function __construct($config = [])
@@ -132,7 +137,6 @@ class CakeSocket
      *
      * @see https://bugs.php.net/bug.php?id=69195
      * @see https://github.com/php/php-src/commit/10bc5fd4c4c8e1dd57bd911b086e9872a56300a0
-     * @return void
      */
     protected function _addTlsVersions()
     {
@@ -175,8 +179,9 @@ class CakeSocket
     /**
      * Connects the socket to the given host and port.
      *
-     * @return bool Success
      * @throws SocketException
+     *
+     * @return bool Success
      */
     public function connect()
     {
@@ -273,7 +278,6 @@ class CakeSocket
      * Configure the SSL context options.
      *
      * @param string $host The host name being connected to.
-     * @return void
      */
     protected function _setSslContext($host)
     {
@@ -318,7 +322,6 @@ class CakeSocket
      *
      * @param int $code Code.
      * @param string $message Message.
-     * @return void
      */
     protected function _connectionErrorHandler($code, $message)
     {
@@ -400,7 +403,6 @@ class CakeSocket
      *
      * @param int $errNum Error code
      * @param string $errStr Error string
-     * @return void
      */
     public function setLastError($errNum, $errStr)
     {
@@ -411,6 +413,7 @@ class CakeSocket
      * Writes data to the socket.
      *
      * @param string $data The data to write to the socket
+     *
      * @return bool Success
      */
     public function write($data)
@@ -436,6 +439,7 @@ class CakeSocket
      * established.
      *
      * @param int $length Optional buffer length to read; defaults to 1024
+     *
      * @return mixed Socket data
      */
     public function read($length = 1024)
@@ -494,6 +498,7 @@ class CakeSocket
      * Resets the state of this Socket instance to it's initial state (before CakeObject::__construct got executed)
      *
      * @param array $state Array with key and values to reset
+     *
      * @return bool True on success
      */
     public function reset($state = null)
@@ -519,9 +524,12 @@ class CakeSocket
      * @param string $type Type which can be one of 'sslv2', 'sslv3', 'sslv23', 'tls', 'tlsv1_1' or 'tlsv1_2'.
      * @param string $clientOrServer Can be one of 'client', 'server'. Default is 'client'.
      * @param bool $enable Enable or disable encryption. Default is true (enable)
-     * @return bool True on success
+     *
      * @throws InvalidArgumentException When an invalid encryption scheme is chosen.
      * @throws SocketException When attempting to enable SSL/TLS fails.
+     *
+     * @return bool True on success
+     *
      * @see stream_socket_enable_crypto
      */
     public function enableCrypto($type, $clientOrServer = 'client', $enable = true)

@@ -8,9 +8,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Utility
+ *
  * @since         CakePHP(tm) v 0.2.9
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -60,6 +64,7 @@ class Folder
      * Path to Folder.
      *
      * @var string
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/file-folder.html#Folder::$path
      */
     public $path = null;
@@ -69,6 +74,7 @@ class Folder
      * should be sorted by name.
      *
      * @var bool
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/file-folder.html#Folder::$sort
      */
     public $sort = false;
@@ -123,6 +129,7 @@ class Folder
      * @param string $path Path to folder
      * @param bool $create Create folder if not found
      * @param int|bool $mode Mode (CHMOD) to apply to created folder, false to ignore
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/file-folder.html#Folder
      */
     public function __construct($path = false, $create = false, $mode = false)
@@ -149,6 +156,7 @@ class Folder
      * Return current path.
      *
      * @return string Current path
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/file-folder.html#Folder::pwd
      */
     public function pwd()
@@ -160,7 +168,9 @@ class Folder
      * Change directory to $path.
      *
      * @param string $path Path to the directory to change to
+     *
      * @return string The new path. Returns false on failure
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/file-folder.html#Folder::cd
      */
     public function cd($path)
@@ -181,7 +191,9 @@ class Folder
      *   to false to get unsorted results.
      * @param array|bool $exceptions Either an array or boolean true will not grab dot files
      * @param bool $fullPath True returns the full path
+     *
      * @return mixed Contents of current directory as an array, an empty array on failure
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/file-folder.html#Folder::read
      */
     public function read($sort = self::SORT_NAME, $exceptions = false, $fullPath = false)
@@ -246,7 +258,9 @@ class Folder
      *
      * @param string $regexpPattern Preg_match pattern (Defaults to: .*)
      * @param bool $sort Whether results should be sorted.
+     *
      * @return array Files that match given pattern
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/file-folder.html#Folder::find
      */
     public function find($regexpPattern = '.*', $sort = false)
@@ -261,7 +275,9 @@ class Folder
      *
      * @param string $pattern Preg_match pattern (Defaults to: .*)
      * @param bool $sort Whether results should be sorted.
+     *
      * @return array Files matching $pattern
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/file-folder.html#Folder::findRecursive
      */
     public function findRecursive($pattern = '.*', $sort = false)
@@ -281,6 +297,7 @@ class Folder
      *
      * @param string $pattern Pattern to match against
      * @param bool $sort Whether results should be sorted.
+     *
      * @return array Files matching pattern
      */
     protected function _findRecursive($pattern, $sort = false)
@@ -307,7 +324,9 @@ class Folder
      * Returns true if given $path is a Windows path.
      *
      * @param string $path Path to check
+     *
      * @return bool true if Windows path, false otherwise
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/file-folder.html#Folder::isWindowsPath
      */
     public static function isWindowsPath($path)
@@ -319,7 +338,9 @@ class Folder
      * Returns true if given $path is an absolute path.
      *
      * @param string $path Path to check
+     *
      * @return bool true if path is absolute.
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/file-folder.html#Folder::isAbsolute
      */
     public static function isAbsolute($path)
@@ -338,6 +359,7 @@ class Folder
      * Returns true if given $path is a registered stream wrapper.
      *
      * @param string $path Path to check
+     *
      * @return bool true If path is registered stream wrapper.
      */
     public static function isRegisteredStreamWrapper($path)
@@ -355,7 +377,9 @@ class Folder
      * Returns a correct set of slashes for given $path. (\\ for Windows paths and / for other paths.)
      *
      * @param string $path Path to check
+     *
      * @return string Set of slashes ("\\" or "/")
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/file-folder.html#Folder::normalizePath
      */
     public static function normalizePath($path)
@@ -367,7 +391,9 @@ class Folder
      * Returns a correct set of slashes for given $path. (\\ for Windows paths and / for other paths.)
      *
      * @param string $path Path to check
+     *
      * @return string Set of slashes ("\\" or "/")
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/file-folder.html#Folder::correctSlashFor
      */
     public static function correctSlashFor($path)
@@ -379,7 +405,9 @@ class Folder
      * Returns $path with added terminating slash (corrected for Windows or other OS).
      *
      * @param string $path Path to check
+     *
      * @return string Path with ending slash
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/file-folder.html#Folder::slashTerm
      */
     public static function slashTerm($path)
@@ -396,7 +424,9 @@ class Folder
      *
      * @param string $path Path
      * @param string|array $element Element to add at end of path
+     *
      * @return string Combined path
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/file-folder.html#Folder::addPathElement
      */
     public static function addPathElement($path, $element)
@@ -411,7 +441,9 @@ class Folder
      * Returns true if the Folder is in the given Cake path.
      *
      * @param string $path The path to check.
+     *
      * @return bool
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/file-folder.html#Folder::inCakePath
      */
     public function inCakePath($path = '')
@@ -427,8 +459,11 @@ class Folder
      *
      * @param string $path The absolute path to check that the current `pwd()` resides within.
      * @param bool $reverse Reverse the search, check if the given `$path` resides within the current `pwd()`.
-     * @return bool
+     *
      * @throws \InvalidArgumentException When the given `$path` argument is not an absolute path.
+     *
+     * @return bool
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/file-folder.html#Folder::inPath
      */
     public function inPath($path = '', $reverse = false)
@@ -456,7 +491,9 @@ class Folder
      * @param int $mode Octal value, e.g. 0755.
      * @param bool $recursive Chmod recursively, set to false to only change the current directory.
      * @param array $exceptions Array of files, directories to skip.
+     *
      * @return bool Success.
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/file-folder.html#Folder::chmod
      */
     public function chmod($path, $mode = false, $recursive = true, $exceptions = [])
@@ -516,7 +553,9 @@ class Folder
      * @param array|bool $exceptions Either an array of files/folder to exclude
      *   or boolean true to not grab dot files/folders
      * @param string $type either 'file' or 'dir'. null returns both files and directories
+     *
      * @return mixed array of nested directories and files in each directory
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/file-folder.html#Folder::tree
      */
     public function tree($path = null, $exceptions = false, $type = null)
@@ -586,7 +625,9 @@ class Folder
      *   path. If the path is relative and exists in the process' cwd it will not be created.
      *   Otherwise relative paths will be prefixed with the current pwd().
      * @param int $mode octal value 0755
+     *
      * @return bool Returns TRUE on success, FALSE on failure
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/file-folder.html#Folder::create
      */
     public function create($pathname, $mode = false)
@@ -634,6 +675,7 @@ class Folder
      * Returns the size in bytes of this Folder and its contents.
      *
      * @return int size in bytes of current folder
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/file-folder.html#Folder::dirsize
      */
     public function dirsize()
@@ -672,7 +714,9 @@ class Folder
      * Recursively Remove directories if the system allows.
      *
      * @param string $path Path of directory to delete
+     *
      * @return bool Success
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/file-folder.html#Folder::delete
      */
     public function delete($path = null)
@@ -742,7 +786,9 @@ class Folder
      * - `scheme` Folder::MERGE, Folder::OVERWRITE, Folder::SKIP
      *
      * @param array|string $options Either an array of options (see above) or a string of the destination directory.
+     *
      * @return bool Success.
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/file-folder.html#Folder::copy
      */
     public function copy($options)
@@ -848,7 +894,9 @@ class Folder
      * - `scheme` Folder::MERGE, Folder::OVERWRITE, Folder::SKIP
      *
      * @param array $options (to, from, chmod, skip, scheme)
+     *
      * @return bool Success
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/file-folder.html#Folder::move
      */
     public function move($options)
@@ -873,7 +921,9 @@ class Folder
      * get messages from latest method
      *
      * @param bool $reset Reset message stack after reading
+     *
      * @return array
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/file-folder.html#Folder::messages
      */
     public function messages($reset = true)
@@ -890,7 +940,9 @@ class Folder
      * get error from latest method
      *
      * @param bool $reset Reset error stack after reading
+     *
      * @return array
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/file-folder.html#Folder::errors
      */
     public function errors($reset = true)
@@ -907,7 +959,9 @@ class Folder
      * Get the real path (taking ".." and such into account)
      *
      * @param string $path Path to resolve
+     *
      * @return string The resolved path
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/file-folder.html#Folder::realpath
      */
     public function realpath($path)
@@ -951,7 +1005,9 @@ class Folder
      * Returns true if given $path ends in a slash (i.e. is slash-terminated).
      *
      * @param string $path Path to check
+     *
      * @return bool true if path ends with slash, false otherwise
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/file-folder.html#Folder::isSlashTerm
      */
     public static function isSlashTerm($path)

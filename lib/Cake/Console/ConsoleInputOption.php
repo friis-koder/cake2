@@ -10,8 +10,10 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -20,6 +22,7 @@
  * ConsoleOptionParser creates these when you use addOption()
  *
  * @see ConsoleOptionParser::addOption()
+ *
  * @package       Cake.Console
  */
 class ConsoleInputOption
@@ -75,6 +78,7 @@ class ConsoleInputOption
      * @param bool $boolean Whether this option is a boolean option. Boolean options don't consume extra tokens
      * @param string $default The default value for this option.
      * @param array $choices Valid choices for this option.
+     *
      * @throws ConsoleException
      */
     public function __construct($name, $short = null, $help = '', $boolean = false, $default = '', $choices = [])
@@ -122,6 +126,7 @@ class ConsoleInputOption
      * Generate the help for this this option.
      *
      * @param int $width The width to make the name of the option.
+     *
      * @return string
      */
     public function help($width = 0)
@@ -187,8 +192,10 @@ class ConsoleInputOption
      * Check that a value is a valid choice for this option.
      *
      * @param string $value The choice to validate.
-     * @return bool
+     *
      * @throws ConsoleException
+     *
+     * @return bool
      */
     public function validChoice($value)
     {
@@ -214,6 +221,7 @@ class ConsoleInputOption
      * Append the option's xml into the parent.
      *
      * @param SimpleXmlElement $parent The parent element.
+     *
      * @return SimpleXmlElement The parent with this option appended.
      */
     public function xml(SimpleXmlElement $parent)

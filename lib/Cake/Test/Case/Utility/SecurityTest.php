@@ -8,8 +8,10 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
  * @since         CakePHP(tm) v 1.2.0.5432
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Security', 'Utility');
@@ -30,8 +32,6 @@ class SecurityTest extends CakeTestCase
 
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -41,8 +41,6 @@ class SecurityTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -52,8 +50,6 @@ class SecurityTest extends CakeTestCase
 
     /**
      * testInactiveMins method
-     *
-     * @return void
      */
     public function testInactiveMins()
     {
@@ -69,8 +65,6 @@ class SecurityTest extends CakeTestCase
 
     /**
      * testGenerateAuthkey method
-     *
-     * @return void
      */
     public function testGenerateAuthkey()
     {
@@ -79,8 +73,6 @@ class SecurityTest extends CakeTestCase
 
     /**
      * testValidateAuthKey method
-     *
-     * @return void
      */
     public function testValidateAuthKey()
     {
@@ -92,7 +84,6 @@ class SecurityTest extends CakeTestCase
      * testHashInvalidSalt method
      *
      * @expectedException PHPUnit_Framework_Error
-     * @return void
      */
     public function testHashInvalidSalt()
     {
@@ -103,7 +94,6 @@ class SecurityTest extends CakeTestCase
      * testHashAnotherInvalidSalt
      *
      * @expectedException PHPUnit_Framework_Error
-     * @return void
      */
     public function testHashAnotherInvalidSalt()
     {
@@ -114,7 +104,6 @@ class SecurityTest extends CakeTestCase
      * testHashYetAnotherInvalidSalt
      *
      * @expectedException PHPUnit_Framework_Error
-     * @return void
      */
     public function testHashYetAnotherInvalidSalt()
     {
@@ -125,7 +114,6 @@ class SecurityTest extends CakeTestCase
      * testHashInvalidCost method
      *
      * @expectedException PHPUnit_Framework_Error
-     * @return void
      */
     public function testHashInvalidCost()
     {
@@ -134,8 +122,6 @@ class SecurityTest extends CakeTestCase
 
     /**
      * testHash method
-     *
-     * @return void
      */
     public function testHash()
     {
@@ -183,8 +169,6 @@ class SecurityTest extends CakeTestCase
 
     /**
      * Test that blowfish doesn't return '' when the salt is ''
-     *
-     * @return void
      */
     public function testHashBlowfishEmptySalt()
     {
@@ -204,8 +188,6 @@ class SecurityTest extends CakeTestCase
 
     /**
      * Test that hash() works with blowfish.
-     *
-     * @return void
      */
     public function testHashBlowfish()
     {
@@ -249,8 +231,6 @@ class SecurityTest extends CakeTestCase
 
     /**
      * testCipher method
-     *
-     * @return void
      */
     public function testCipher()
     {
@@ -283,7 +263,6 @@ class SecurityTest extends CakeTestCase
      * testCipherEmptyKey method
      *
      * @expectedException PHPUnit_Framework_Error
-     * @return void
      */
     public function testCipherEmptyKey()
     {
@@ -294,8 +273,6 @@ class SecurityTest extends CakeTestCase
 
     /**
      * testRijndael method
-     *
-     * @return void
      */
     public function testRijndael()
     {
@@ -319,8 +296,6 @@ class SecurityTest extends CakeTestCase
 
     /**
      * Test that rijndael() can still decrypt values with a fixed iv.
-     *
-     * @return void
      */
     public function testRijndaelBackwardCompatibility()
     {
@@ -338,7 +313,6 @@ class SecurityTest extends CakeTestCase
      * testRijndaelInvalidOperation method
      *
      * @expectedException PHPUnit_Framework_Error
-     * @return void
      */
     public function testRijndaelInvalidOperation()
     {
@@ -351,7 +325,6 @@ class SecurityTest extends CakeTestCase
      * testRijndaelInvalidKey method
      *
      * @expectedException PHPUnit_Framework_Error
-     * @return void
      */
     public function testRijndaelInvalidKey()
     {
@@ -362,8 +335,6 @@ class SecurityTest extends CakeTestCase
 
     /**
      * Test encrypt/decrypt.
-     *
-     * @return void
      */
     public function testEncryptDecrypt()
     {
@@ -380,8 +351,8 @@ class SecurityTest extends CakeTestCase
      * Tests that encrypted strings are compatible between the mcrypt and openssl engine.
      *
      * @dataProvider plainTextProvider
+     *
      * @param string $txt Plain text to be encrypted.
-     * @return void
      */
     public function testEncryptDecryptCompatibility($txt)
     {
@@ -428,8 +399,6 @@ class SecurityTest extends CakeTestCase
 
     /**
      * Test that changing the key causes decryption to fail.
-     *
-     * @return void
      */
     public function testDecryptKeyFailure()
     {
@@ -444,8 +413,6 @@ class SecurityTest extends CakeTestCase
 
     /**
      * Test that decrypt fails when there is an hmac error.
-     *
-     * @return void
      */
     public function testDecryptHmacFailure()
     {
@@ -462,8 +429,6 @@ class SecurityTest extends CakeTestCase
 
     /**
      * Test that changing the hmac salt will cause failures.
-     *
-     * @return void
      */
     public function testDecryptHmacSaltFailure()
     {
@@ -482,7 +447,6 @@ class SecurityTest extends CakeTestCase
      *
      * @expectedException CakeException
      * @expectedExceptionMessage Invalid key for encrypt(), key must be at least 256 bits (32 bytes) long.
-     * @return void
      */
     public function testEncryptInvalidKey()
     {
@@ -493,8 +457,6 @@ class SecurityTest extends CakeTestCase
 
     /**
      * Test encrypting falsey data
-     *
-     * @return void
      */
     public function testEncryptDecryptFalseyData()
     {
@@ -522,7 +484,6 @@ class SecurityTest extends CakeTestCase
      *
      * @expectedException CakeException
      * @expectedExceptionMessage Invalid key for decrypt(), key must be at least 256 bits (32 bytes) long.
-     * @return void
      */
     public function testDecryptInvalidKey()
     {
@@ -536,7 +497,6 @@ class SecurityTest extends CakeTestCase
      *
      * @expectedException CakeException
      * @expectedExceptionMessage The data to decrypt cannot be empty.
-     * @return void
      */
     public function testDecryptInvalidData()
     {
@@ -547,8 +507,6 @@ class SecurityTest extends CakeTestCase
 
     /**
      * Test the random method.
-     *
-     * @return void
      */
     public function testRandomBytes()
     {

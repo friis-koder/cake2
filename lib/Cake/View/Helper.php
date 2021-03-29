@@ -8,9 +8,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.View
+ *
  * @since         CakePHP(tm) v 0.2.9
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Router', 'Routing');
@@ -118,6 +122,7 @@ class Helper extends CakeObject
      * The name of the current model entities are in scope of.
      *
      * @see Helper::setEntity()
+     *
      * @var string
      */
     protected $_modelScope;
@@ -126,6 +131,7 @@ class Helper extends CakeObject
      * The name of the current model association entities are in scope of.
      *
      * @see Helper::setEntity()
+     *
      * @var string
      */
     protected $_association;
@@ -134,6 +140,7 @@ class Helper extends CakeObject
      * The dot separated list of elements the current field entity is for.
      *
      * @see Helper::setEntity()
+     *
      * @var string
      */
     protected $_entityPath;
@@ -225,7 +232,6 @@ class Helper extends CakeObject
      *
      * @param string $method Method to invoke
      * @param array $params Array of params for the method.
-     * @return void
      */
     public function __call($method, $params)
     {
@@ -236,7 +242,9 @@ class Helper extends CakeObject
      * Lazy loads helpers. Provides access to deprecated request properties as well.
      *
      * @param string $name Name of the property being accessed.
+     *
      * @return mixed Helper or property found at $name
+     *
      * @deprecated 3.0.0 Accessing request properties through this method is deprecated and will be removed in 3.0.
      */
     public function __get($name)
@@ -266,7 +274,7 @@ class Helper extends CakeObject
      *
      * @param string $name Name of the property being accessed.
      * @param mixed $value Value to set.
-     * @return void
+     *
      * @deprecated 3.0.0 This method will be removed in 3.0
      */
     public function __set($name, $value)
@@ -296,7 +304,9 @@ class Helper extends CakeObject
      *    an array of URL parameters. Using an array for URLs will allow you to leverage
      *    the reverse routing features of CakePHP.
      * @param bool $full If true, the full base URL will be prepended to the result
+     *
      * @return string Full translated URL with base path.
+     *
      * @link https://book.cakephp.org/2.0/en/views/helpers.html
      */
     public function url($url = null, $full = false)
@@ -308,6 +318,7 @@ class Helper extends CakeObject
      * Checks if a file exists when theme is used, if no file is found default location is returned
      *
      * @param string $file The file to create a webroot path to.
+     *
      * @return string Web accessible path to file.
      */
     public function webroot($file)
@@ -352,6 +363,7 @@ class Helper extends CakeObject
      *   `pathPrefix` Path prefix for relative URLs
      *   `ext` Asset extension to append
      *   `plugin` False value will prevent parsing path as a plugin
+     *
      * @return string Generated URL
      */
     public function assetUrl($path, $options = [])
@@ -393,6 +405,7 @@ class Helper extends CakeObject
      * Encodes a URL for use in HTML attributes.
      *
      * @param string $url The URL to encode.
+     *
      * @return string The URL encoded for both URL & HTML contexts.
      */
     protected function _encodeUrl($url)
@@ -411,6 +424,7 @@ class Helper extends CakeObject
      * a timestamp will be added.
      *
      * @param string $path The file path to timestamp, the path must be inside WWW_ROOT
+     *
      * @return string Path with a timestamp added, or not.
      */
     public function assetTimestamp($path)
@@ -458,7 +472,9 @@ class Helper extends CakeObject
      * content is the best way to prevent all possible attacks.
      *
      * @param string|array $output Either an array of strings to clean or a single string to clean.
+     *
      * @return string|array|null Cleaned content for output
+     *
      * @deprecated 3.0.0 This method will be removed in 3.0
      */
     public function clean($output)
@@ -503,7 +519,9 @@ class Helper extends CakeObject
      * @param array $exclude Array of options to be excluded, the options here will not be part of the return.
      * @param string $insertBefore String to be inserted before options.
      * @param string $insertAfter String to be inserted after options.
+     *
      * @return string Composed attributes.
+     *
      * @deprecated 3.0.0 This method will be moved to HtmlHelper in 3.0
      */
     protected function _parseAttributes($options, $exclude = null, $insertBefore = ' ', $insertAfter = null)
@@ -539,7 +557,9 @@ class Helper extends CakeObject
      * @param string $key The name of the attribute to create
      * @param string $value The value of the attribute to create.
      * @param bool $escape Define if the value must be escaped
+     *
      * @return string The composed attribute.
+     *
      * @deprecated 3.0.0 This method will be moved to HtmlHelper in 3.0
      */
     protected function _formatAttribute($key, $value, $escape = true)
@@ -569,6 +589,7 @@ class Helper extends CakeObject
      * @param string $okCode Code to be executed after user chose 'OK'
      * @param string $cancelCode Code to be executed after user chose 'Cancel', also executed when okCode doesn't return
      * @param array $options Array of options
+     *
      * @return string onclick JS code
      */
     protected function _confirm($message, $okCode, $cancelCode = '', $options = [])
@@ -587,7 +608,6 @@ class Helper extends CakeObject
      *
      * @param string $entity A field name, like "ModelName.fieldName" or "ModelName.ID.fieldName"
      * @param bool $setScope Sets the view scope to the model specified in $tagValue
-     * @return void
      */
     public function setEntity($entity, $setScope = false)
     {
@@ -701,6 +721,7 @@ class Helper extends CakeObject
      * @param array|string $options Either an array of html attributes to add $id into, or a string
      *   with a view entity path to get a domId for.
      * @param string $id The name of the 'id' attribute.
+     *
      * @return mixed If $options was an array, an array will be returned with $id set. If a string
      *   was supplied, a string will be returned.
      */
@@ -737,6 +758,7 @@ class Helper extends CakeObject
      *   If a string or null, will be used as the View entity.
      * @param string $field Field name.
      * @param string $key The name of the attribute to be set, defaults to 'name'
+     *
      * @return mixed If an array was given for $options, an array with $key set will be returned.
      *   If a string was supplied a string will be returned.
      */
@@ -782,6 +804,7 @@ class Helper extends CakeObject
      *   If a string or null, will be used as the View entity.
      * @param string $field Field name.
      * @param string $key The name of the attribute to be set, defaults to 'value'
+     *
      * @return mixed If an array was given for $options, an array with $key set will be returned.
      *   If a string was supplied a string will be returned.
      */
@@ -841,6 +864,7 @@ class Helper extends CakeObject
      *
      * @param string $field The field name to initialize.
      * @param array $options Array of options to use while initializing an input field.
+     *
      * @return array Array options for the form input.
      */
     protected function _initInputField($field, $options = [])
@@ -862,6 +886,7 @@ class Helper extends CakeObject
      * @param array $options Array options/attributes to add a class to
      * @param string $class The class name being added.
      * @param string $key the key to use for class.
+     *
      * @return array Array of options with $key set.
      */
     public function addClass($options = [], $class = null, $key = 'class')
@@ -881,7 +906,9 @@ class Helper extends CakeObject
      * This method can be overridden in subclasses to do generalized output post-processing
      *
      * @param string $str String to be output.
+     *
      * @return string
+     *
      * @deprecated 3.0.0 This method will be removed in future versions.
      */
     public function output($str)
@@ -895,7 +922,6 @@ class Helper extends CakeObject
      * Overridden in subclasses.
      *
      * @param string $viewFile The view file that is going to be rendered
-     * @return void
      */
     public function beforeRender($viewFile)
     {
@@ -908,7 +934,6 @@ class Helper extends CakeObject
      * Overridden in subclasses.
      *
      * @param string $viewFile The view file that was rendered.
-     * @return void
      */
     public function afterRender($viewFile)
     {
@@ -920,7 +945,6 @@ class Helper extends CakeObject
      * Overridden in subclasses.
      *
      * @param string $layoutFile The layout about to be rendered.
-     * @return void
      */
     public function beforeLayout($layoutFile)
     {
@@ -932,7 +956,6 @@ class Helper extends CakeObject
      * Overridden in subclasses.
      *
      * @param string $layoutFile The layout file that was rendered.
-     * @return void
      */
     public function afterLayout($layoutFile)
     {
@@ -945,7 +968,6 @@ class Helper extends CakeObject
      * Overridden in subclasses.
      *
      * @param string $viewFile The file about to be rendered.
-     * @return void
      */
     public function beforeRenderFile($viewFile)
     {
@@ -959,7 +981,6 @@ class Helper extends CakeObject
      *
      * @param string $viewFile The file just be rendered.
      * @param string $content The content that was rendered.
-     * @return void
      */
     public function afterRenderFile($viewFile, $content)
     {
@@ -971,6 +992,7 @@ class Helper extends CakeObject
      *
      * @param string|array $data Data array or model name.
      * @param string $key Field name.
+     *
      * @return array
      */
     protected function _selectedArray($data, $key = 'id')
@@ -998,8 +1020,6 @@ class Helper extends CakeObject
 
     /**
      * Resets the vars used by Helper::clean() to null
-     *
-     * @return void
      */
     protected function _reset()
     {
@@ -1009,8 +1029,6 @@ class Helper extends CakeObject
 
     /**
      * Removes harmful content from output
-     *
-     * @return void
      */
     protected function _clean()
     {

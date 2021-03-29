@@ -8,9 +8,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP Project
+ *
  * @package       Cake.Test.Case.Controller
+ *
  * @since         CakePHP(tm) v 1.2.0.5436
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Controller', 'Controller');
@@ -81,7 +85,6 @@ class ControllerPost extends CakeTestModel
      * beforeFind method
      *
      * @param mixed $query
-     * @return void
      */
     public function beforeFind($query)
     {
@@ -93,7 +96,6 @@ class ControllerPost extends CakeTestModel
      *
      * @param string $type
      * @param array $options
-     * @return void
      */
     public function find($type = 'first', $options = [])
     {
@@ -185,12 +187,14 @@ class NameTest extends CakeTestModel
 {
     /**
      * name property
+     *
      * @var string
      */
     public $name = 'Name';
 
     /**
      * useTable property
+     *
      * @var string
      */
     public $useTable = 'comments';
@@ -238,7 +242,6 @@ class TestController extends ControllerTestAppController
      *
      * @param mixed $testId
      * @param mixed $test2Id
-     * @return void
      */
     public function index($testId, $testTwoId)
     {
@@ -253,7 +256,6 @@ class TestController extends ControllerTestAppController
      *
      * @param mixed $testId
      * @param mixed $test2Id
-     * @return void
      */
     public function view($testId, $testTwoId)
     {
@@ -297,8 +299,6 @@ class TestComponent extends CakeObject
 {
     /**
      * beforeRedirect method
-     *
-     * @return void
      */
     public function beforeRedirect()
     {
@@ -306,8 +306,6 @@ class TestComponent extends CakeObject
 
     /**
      * initialize method
-     *
-     * @return void
      */
     public function initialize(Controller $controller)
     {
@@ -315,8 +313,6 @@ class TestComponent extends CakeObject
 
     /**
      * startup method
-     *
-     * @return void
      */
     public function startup(Controller $controller)
     {
@@ -324,8 +320,6 @@ class TestComponent extends CakeObject
 
     /**
      * shutdown method
-     *
-     * @return void
      */
     public function shutdown(Controller $controller)
     {
@@ -333,8 +327,6 @@ class TestComponent extends CakeObject
 
     /**
      * beforeRender callback
-     *
-     * @return void
      */
     public function beforeRender(Controller $controller)
     {
@@ -401,8 +393,6 @@ class ControllerTest extends CakeTestCase
 
     /**
      * reset environment.
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -414,8 +404,6 @@ class ControllerTest extends CakeTestCase
 
     /**
      * tearDown
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -425,8 +413,6 @@ class ControllerTest extends CakeTestCase
 
     /**
      * testLoadModel method
-     *
-     * @return void
      */
     public function testLoadModel()
     {
@@ -444,8 +430,6 @@ class ControllerTest extends CakeTestCase
 
     /**
      * Test loadModel() when uses = true.
-     *
-     * @return void
      */
     public function testLoadModelUsesTrue()
     {
@@ -461,8 +445,6 @@ class ControllerTest extends CakeTestCase
 
     /**
      * testLoadModel method from a plugin controller
-     *
-     * @return void
      */
     public function testLoadModelInPlugins()
     {
@@ -492,8 +474,6 @@ class ControllerTest extends CakeTestCase
 
     /**
      * testConstructClasses method
-     *
-     * @return void
      */
     public function testConstructClasses()
     {
@@ -522,8 +502,6 @@ class ControllerTest extends CakeTestCase
 
     /**
      * testConstructClassesWithComponents method
-     *
-     * @return void
      */
     public function testConstructClassesWithComponents()
     {
@@ -539,8 +517,6 @@ class ControllerTest extends CakeTestCase
 
     /**
      * testAliasName method
-     *
-     * @return void
      */
     public function testAliasName()
     {
@@ -557,8 +533,6 @@ class ControllerTest extends CakeTestCase
 
     /**
      * testFlash method
-     *
-     * @return void
      */
     public function testFlash()
     {
@@ -602,8 +576,6 @@ class ControllerTest extends CakeTestCase
 
     /**
      * testControllerSet method
-     *
-     * @return void
      */
     public function testControllerSet()
     {
@@ -644,8 +616,6 @@ class ControllerTest extends CakeTestCase
 
     /**
      * testRender method
-     *
-     * @return void
      */
     public function testRender()
     {
@@ -696,8 +666,6 @@ class ControllerTest extends CakeTestCase
 
     /**
      * test that a component beforeRender can change the controller view class.
-     *
-     * @return void
      */
     public function testComponentBeforeRenderChangingViewClass()
     {
@@ -720,8 +688,6 @@ class ControllerTest extends CakeTestCase
 
     /**
      * test that a component beforeRender can change the controller view class.
-     *
-     * @return void
      */
     public function testComponentCancelRender()
     {
@@ -735,8 +701,6 @@ class ControllerTest extends CakeTestCase
 
     /**
      * testToBeInheritedGuardmethods method
-     *
-     * @return void
      */
     public function testToBeInheritedGuardmethods()
     {
@@ -751,8 +715,6 @@ class ControllerTest extends CakeTestCase
 
     /**
      * Generates status codes for redirect test.
-     *
-     * @return void
      */
     public static function statusCodeProvider()
     {
@@ -772,7 +734,6 @@ class ControllerTest extends CakeTestCase
      * testRedirect method
      *
      * @dataProvider statusCodeProvider
-     * @return void
      */
     public function testRedirectByCode($code, $msg)
     {
@@ -794,7 +755,6 @@ class ControllerTest extends CakeTestCase
      * test redirecting by message
      *
      * @dataProvider statusCodeProvider
-     * @return void
      */
     public function testRedirectByMessage($code, $msg)
     {
@@ -815,8 +775,6 @@ class ControllerTest extends CakeTestCase
 
     /**
      * test that redirect triggers methods on the components.
-     *
-     * @return void
      */
     public function testRedirectTriggeringComponentsReturnNull()
     {
@@ -838,8 +796,6 @@ class ControllerTest extends CakeTestCase
 
     /**
      * test that beforeRedirect callback returning null doesn't affect things.
-     *
-     * @return void
      */
     public function testRedirectBeforeRedirectModifyingParams()
     {
@@ -861,8 +817,6 @@ class ControllerTest extends CakeTestCase
 
     /**
      * test that beforeRedirect callback returning null doesn't affect things.
-     *
-     * @return void
      */
     public function testRedirectBeforeRedirectModifyingParamsArrayReturn()
     {
@@ -895,8 +849,6 @@ class ControllerTest extends CakeTestCase
 
     /**
      * test that beforeRedirect callback returning false in controller
-     *
-     * @return void
      */
     public function testRedirectBeforeRedirectInController()
     {
@@ -914,8 +866,6 @@ class ControllerTest extends CakeTestCase
 
     /**
      * Test that beforeRedirect works with returning an array from the controller method.
-     *
-     * @return void
      */
     public function testRedirectBeforeRedirectInControllerWithArray()
     {
@@ -942,8 +892,6 @@ class ControllerTest extends CakeTestCase
 
     /**
      * testMergeVars method
-     *
-     * @return void
      */
     public function testMergeVars()
     {
@@ -1001,8 +949,6 @@ class ControllerTest extends CakeTestCase
 
     /**
      * test that options from child classes replace those in the parent classes.
-     *
-     * @return void
      */
     public function testChildComponentOptionsSupercedeParents()
     {
@@ -1019,8 +965,6 @@ class ControllerTest extends CakeTestCase
     /**
      * Ensure that _mergeControllerVars is not being greedy and merging with
      * ControllerTestAppController when you make an instance of Controller
-     *
-     * @return void
      */
     public function testMergeVarsNotGreedy()
     {
@@ -1037,8 +981,6 @@ class ControllerTest extends CakeTestCase
 
     /**
      * testReferer method
-     *
-     * @return void
      */
     public function testReferer()
     {
@@ -1076,8 +1018,6 @@ class ControllerTest extends CakeTestCase
      * Test that the referer is not absolute if it is '/'.
      *
      * This avoids the base path being applied twice on string urls.
-     *
-     * @return void
      */
     public function testRefererSlash()
     {
@@ -1099,8 +1039,6 @@ class ControllerTest extends CakeTestCase
 
     /**
      * testSetAction method
-     *
-     * @return void
      */
     public function testSetAction()
     {
@@ -1116,8 +1054,6 @@ class ControllerTest extends CakeTestCase
 
     /**
      * testValidateErrors method
-     *
-     * @return void
      */
     public function testValidateErrors()
     {
@@ -1142,8 +1078,6 @@ class ControllerTest extends CakeTestCase
 
     /**
      * test that validateErrors works with any old model.
-     *
-     * @return void
      */
     public function testValidateErrorsOnArbitraryModels()
     {
@@ -1161,8 +1095,6 @@ class ControllerTest extends CakeTestCase
 
     /**
      * testPostConditions method
-     *
-     * @return void
      */
     public function testPostConditions()
     {
@@ -1256,7 +1188,6 @@ class ControllerTest extends CakeTestCase
      *
      * @expectedException RuntimeException
      * @dataProvider dangerousPostConditionsProvider
-     * @return void
      */
     public function testPostConditionsDangerous($data)
     {
@@ -1268,8 +1199,6 @@ class ControllerTest extends CakeTestCase
 
     /**
      * testControllerHttpCodes method
-     *
-     * @return void
      */
     public function testControllerHttpCodes()
     {
@@ -1283,8 +1212,6 @@ class ControllerTest extends CakeTestCase
 
     /**
      * Tests that the startup process calls the correct functions
-     *
-     * @return void
      */
     public function testStartupProcess()
     {
@@ -1314,8 +1241,6 @@ class ControllerTest extends CakeTestCase
 
     /**
      * Tests that the shutdown process calls the correct functions
-     *
-     * @return void
      */
     public function testStartupProcessIndirect()
     {
@@ -1332,8 +1257,6 @@ class ControllerTest extends CakeTestCase
 
     /**
      * Tests that the shutdown process calls the correct functions
-     *
-     * @return void
      */
     public function testShutdownProcess()
     {
@@ -1355,8 +1278,6 @@ class ControllerTest extends CakeTestCase
 
     /**
      * Tests that the shutdown process calls the correct functions
-     *
-     * @return void
      */
     public function testShutdownProcessIndirect()
     {
@@ -1373,8 +1294,6 @@ class ControllerTest extends CakeTestCase
 
     /**
      * test that BC works for attributes on the request object.
-     *
-     * @return void
      */
     public function testPropertyBackwardsCompatibility()
     {
@@ -1401,8 +1320,6 @@ class ControllerTest extends CakeTestCase
 
     /**
      * test that the BC wrapper doesn't interfere with models and components.
-     *
-     * @return void
      */
     public function testPropertyCompatibilityAndModelsComponents()
     {
@@ -1416,8 +1333,6 @@ class ControllerTest extends CakeTestCase
 
     /**
      * test that using Controller::paginate() falls back to PaginatorComponent
-     *
-     * @return void
      */
     public function testPaginateBackwardsCompatibility()
     {
@@ -1463,7 +1378,6 @@ class ControllerTest extends CakeTestCase
      *
      * @expectedException MissingActionException
      * @expectedExceptionMessage Action TestController::missing() could not be found.
-     * @return void
      */
     public function testInvokeActionMissingAction()
     {
@@ -1480,7 +1394,6 @@ class ControllerTest extends CakeTestCase
      *
      * @expectedException PrivateActionException
      * @expectedExceptionMessage Private Action TestController::private_m() is not directly accessible.
-     * @return void
      */
     public function testInvokeActionPrivate()
     {
@@ -1497,7 +1410,6 @@ class ControllerTest extends CakeTestCase
      *
      * @expectedException PrivateActionException
      * @expectedExceptionMessage Private Action TestController::protected_m() is not directly accessible.
-     * @return void
      */
     public function testInvokeActionProtected()
     {
@@ -1514,7 +1426,6 @@ class ControllerTest extends CakeTestCase
      *
      * @expectedException PrivateActionException
      * @expectedExceptionMessage Private Action TestController::_hidden() is not directly accessible.
-     * @return void
      */
     public function testInvokeActionHidden()
     {
@@ -1531,7 +1442,6 @@ class ControllerTest extends CakeTestCase
      *
      * @expectedException PrivateActionException
      * @expectedExceptionMessage Private Action TestController::redirect() is not directly accessible.
-     * @return void
      */
     public function testInvokeActionBaseMethods()
     {
@@ -1548,7 +1458,6 @@ class ControllerTest extends CakeTestCase
      *
      * @expectedException PrivateActionException
      * @expectedExceptionMessage Private Action TestController::admin_add() is not directly accessible.
-     * @return void
      */
     public function testInvokeActionPrefixProtection()
     {
@@ -1568,7 +1477,6 @@ class ControllerTest extends CakeTestCase
      *
      * @expectedException PrivateActionException
      * @expectedExceptionMessage Private Action TestController::Admin_add() is not directly accessible.
-     * @return void
      */
     public function testInvokeActionPrefixProtectionCasing()
     {
@@ -1585,8 +1493,6 @@ class ControllerTest extends CakeTestCase
 
     /**
      * test invoking controller methods.
-     *
-     * @return void
      */
     public function testInvokeActionReturnValue()
     {

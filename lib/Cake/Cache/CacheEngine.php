@@ -8,9 +8,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Cache
+ *
  * @since         CakePHP(tm) v 1.2.0.4933
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -42,6 +46,7 @@ abstract class CacheEngine
      * Called automatically by the cache frontend
      *
      * @param array $settings Associative array of parameters for the engine
+     *
      * @return bool True if the engine has been successfully initialized, false if not
      */
     public function init($settings = [])
@@ -70,7 +75,6 @@ abstract class CacheEngine
      * Permanently remove all expired and deleted data
      *
      * @param int $expires [optional] An expires timestamp, invalidating all data before.
-     * @return void
      */
     public function gc($expires = null)
     {
@@ -82,6 +86,7 @@ abstract class CacheEngine
      * @param string $key Identifier for the data
      * @param mixed $value Data to be cached
      * @param int $duration How long to cache for.
+     *
      * @return bool True if the data was successfully cached, false on failure
      */
     abstract public function write($key, $value, $duration);
@@ -92,6 +97,7 @@ abstract class CacheEngine
      * @param string $key Identifier for the data
      * @param mixed $value Data to be cached
      * @param int $duration How long to cache for.
+     *
      * @return bool True if the data was successfully cached, false on failure
      */
     public function add($key, $value, $duration)
@@ -102,6 +108,7 @@ abstract class CacheEngine
      * Read a key from the cache
      *
      * @param string $key Identifier for the data
+     *
      * @return mixed The cached data, or false if the data doesn't exist, has expired, or if there was an error fetching it
      */
     abstract public function read($key);
@@ -111,6 +118,7 @@ abstract class CacheEngine
      *
      * @param string $key Identifier for the data
      * @param int $offset How much to add
+     *
      * @return New incremented value, false otherwise
      */
     abstract public function increment($key, $offset = 1);
@@ -120,6 +128,7 @@ abstract class CacheEngine
      *
      * @param string $key Identifier for the data
      * @param int $offset How much to subtract
+     *
      * @return New incremented value, false otherwise
      */
     abstract public function decrement($key, $offset = 1);
@@ -128,6 +137,7 @@ abstract class CacheEngine
      * Delete a key from the cache
      *
      * @param string $key Identifier for the data
+     *
      * @return bool True if the value was successfully deleted, false if it didn't exist or couldn't be removed
      */
     abstract public function delete($key);
@@ -136,6 +146,7 @@ abstract class CacheEngine
      * Delete all keys from the cache
      *
      * @param bool $check if true will check expiration, otherwise delete all
+     *
      * @return bool True if the cache was successfully cleared, false otherwise
      */
     abstract public function clear($check);
@@ -146,6 +157,7 @@ abstract class CacheEngine
      * the same result.
      *
      * @param string $group name of the group to be cleared
+     *
      * @return bool
      */
     public function clearGroup($group)
@@ -179,6 +191,7 @@ abstract class CacheEngine
      * Generates a safe key for use with cache engine storage engines.
      *
      * @param string $key the key passed over
+     *
      * @return mixed string $key or false
      */
     public function key($key)

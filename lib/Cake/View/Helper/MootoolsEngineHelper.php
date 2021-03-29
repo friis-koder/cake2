@@ -8,9 +8,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.View.Helper
+ *
  * @since         CakePHP(tm) v 1.3
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('JsBaseEngineHelper', 'View/Helper');
@@ -117,6 +121,7 @@ class MootoolsEngineHelper extends JsBaseEngineHelper
      * Create javascript selector for a CSS rule
      *
      * @param string $selector The selector that is targeted
+     *
      * @return self
      */
     public function get($selector)
@@ -149,6 +154,7 @@ class MootoolsEngineHelper extends JsBaseEngineHelper
      * @param string $type Type of event to bind to the current dom id
      * @param string $callback The JavaScript function you wish to trigger or the function literal
      * @param array $options Options for the event.
+     *
      * @return string completed event handler
      */
     public function event($type, $callback, $options = [])
@@ -172,6 +178,7 @@ class MootoolsEngineHelper extends JsBaseEngineHelper
      * Create a domReady event. This is a special event in many libraries
      *
      * @param string $functionBody The code to run on domReady
+     *
      * @return string completed domReady method
      */
     public function domReady($functionBody)
@@ -185,6 +192,7 @@ class MootoolsEngineHelper extends JsBaseEngineHelper
      * Create an iteration over the current selection result.
      *
      * @param string $callback The function body you wish to apply during the iteration.
+     *
      * @return string completed iteration
      */
     public function each($callback)
@@ -197,7 +205,9 @@ class MootoolsEngineHelper extends JsBaseEngineHelper
      *
      * @param string $name The name of the effect to trigger.
      * @param array $options Array of options for the effect.
+     *
      * @return string completed string with effect.
+     *
      * @see JsBaseEngineHelper::effect()
      */
     public function effect($name, $options = [])
@@ -245,6 +255,7 @@ class MootoolsEngineHelper extends JsBaseEngineHelper
      *
      * @param string|array $url URL
      * @param array $options Options list.
+     *
      * @return string The completed ajax call.
      */
     public function request($url, $options = [])
@@ -284,7 +295,9 @@ class MootoolsEngineHelper extends JsBaseEngineHelper
      * Requires the `Sortables` plugin from MootoolsMore
      *
      * @param array $options Array of options for the sortable.
+     *
      * @return string Completed sortable script.
+     *
      * @see JsBaseEngineHelper::sortable() for options list.
      */
     public function sortable($options = [])
@@ -300,7 +313,9 @@ class MootoolsEngineHelper extends JsBaseEngineHelper
      * Requires the `Drag` plugin from MootoolsMore
      *
      * @param array $options Array of options for the draggable.
+     *
      * @return string Completed draggable script.
+     *
      * @see JsHelper::drag() for options list.
      */
     public function drag($options = [])
@@ -321,7 +336,9 @@ class MootoolsEngineHelper extends JsBaseEngineHelper
      * Mootools droppables inherit all options from Drag.
      *
      * @param array $options Array of options for the droppable.
+     *
      * @return string Completed droppable script.
+     *
      * @see JsBaseEngineHelper::drop() for options list.
      */
     public function drop($options = [])
@@ -356,7 +373,9 @@ class MootoolsEngineHelper extends JsBaseEngineHelper
      * Requires `Slider` from MootoolsMore
      *
      * @param array $options Array of options for the slider.
+     *
      * @return string Completed slider script.
+     *
      * @see JsBaseEngineHelper::slider() for options list.
      */
     public function slider($options = [])
@@ -383,7 +402,9 @@ class MootoolsEngineHelper extends JsBaseEngineHelper
      * Serialize the form attached to $selector.
      *
      * @param array $options Array of options.
+     *
      * @return string Completed serializeForm() snippet
+     *
      * @see JsBaseEngineHelper::serializeForm()
      */
     public function serializeForm($options = [])

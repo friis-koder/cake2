@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Network.Email
+ *
  * @since         CakePHP(tm) v 2.0.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('CakeEmail', 'Network/Email');
@@ -28,7 +32,6 @@ class SmtpTestTransport extends SmtpTransport
      * Helper to change the socket
      *
      * @param CakeSocket $socket A socket.
-     * @return void
      */
     public function setSocket(CakeSocket $socket)
     {
@@ -37,8 +40,6 @@ class SmtpTestTransport extends SmtpTransport
 
     /**
      * Disabled the socket change
-     *
-     * @return void
      */
     protected function _generateSocket()
     {
@@ -49,6 +50,7 @@ class SmtpTestTransport extends SmtpTransport
      *
      * @param string $method The method to call.
      * @param string $args The arguments.
+     *
      * @return mixed
      */
     public function __call($method, $args)
@@ -66,8 +68,6 @@ class SmtpTransportTest extends CakeTestCase
 {
     /**
      * Setup
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -81,8 +81,6 @@ class SmtpTransportTest extends CakeTestCase
 
     /**
      * testConnectEhlo method
-     *
-     * @return void
      */
     public function testConnectEhlo()
     {
@@ -99,8 +97,6 @@ class SmtpTransportTest extends CakeTestCase
 
     /**
      * testConnectEhloTls method
-     *
-     * @return void
      */
     public function testConnectEhloTls()
     {
@@ -122,7 +118,6 @@ class SmtpTransportTest extends CakeTestCase
      *
      * @expectedException SocketException
      * @expectedExceptionMessage SMTP server did not accept the connection or trying to connect to non TLS SMTP server using TLS.
-     * @return void
      */
     public function testConnectEhloTlsOnNonTlsServer()
     {
@@ -141,7 +136,6 @@ class SmtpTransportTest extends CakeTestCase
      *
      * @expectedException SocketException
      * @expectedExceptionMessage SMTP authentication method not allowed, check if SMTP server requires TLS.
-     * @return void
      */
     public function testConnectEhloNoTlsOnRequiredTlsServer()
     {
@@ -158,8 +152,6 @@ class SmtpTransportTest extends CakeTestCase
 
     /**
      * testConnectHelo method
-     *
-     * @return void
      */
     public function testConnectHelo()
     {
@@ -177,7 +169,6 @@ class SmtpTransportTest extends CakeTestCase
      *
      * @expectedException SocketException
      * @expectedExceptionMessage SMTP server did not accept the connection.
-     * @return void
      */
     public function testConnectFail()
     {
@@ -192,8 +183,6 @@ class SmtpTransportTest extends CakeTestCase
 
     /**
      * testAuth method
-     *
-     * @return void
      */
     public function testAuth()
     {
@@ -212,7 +201,6 @@ class SmtpTransportTest extends CakeTestCase
      *
      * @expectedException SocketException
      * @expectedExceptionMessage AUTH command not recognized or not implemented, SMTP server may not require authentication.
-     * @return void
      */
     public function testAuthNotRecognized()
     {
@@ -227,7 +215,6 @@ class SmtpTransportTest extends CakeTestCase
      *
      * @expectedException SocketException
      * @expectedExceptionMessage AUTH command not recognized or not implemented, SMTP server may not require authentication.
-     * @return void
      */
     public function testAuthNotImplemented()
     {
@@ -243,7 +230,6 @@ class SmtpTransportTest extends CakeTestCase
      *
      * @expectedException SocketException
      * @expectedExceptionMessage SMTP Error: 503 5.5.1 Already authenticated
-     * @return void
      */
     public function testAuthBadSequence()
     {
@@ -259,7 +245,6 @@ class SmtpTransportTest extends CakeTestCase
      *
      * @expectedException SocketException
      * @expectedExceptionMessage SMTP server did not accept the username.
-     * @return void
      */
     public function testAuthBadUsername()
     {
@@ -276,7 +261,6 @@ class SmtpTransportTest extends CakeTestCase
      *
      * @expectedException SocketException
      * @expectedExceptionMessage SMTP server did not accept the password.
-     * @return void
      */
     public function testAuthBadPassword()
     {
@@ -292,8 +276,6 @@ class SmtpTransportTest extends CakeTestCase
 
     /**
      * testAuthNoAuth method
-     *
-     * @return void
      */
     public function testAuthNoAuth()
     {
@@ -305,8 +287,6 @@ class SmtpTransportTest extends CakeTestCase
 
     /**
      * testRcpt method
-     *
-     * @return void
      */
     public function testRcpt()
     {
@@ -332,8 +312,6 @@ class SmtpTransportTest extends CakeTestCase
 
     /**
      * testRcptWithReturnPath method
-     *
-     * @return void
      */
     public function testRcptWithReturnPath()
     {
@@ -352,8 +330,6 @@ class SmtpTransportTest extends CakeTestCase
 
     /**
      * testSendData method
-     *
-     * @return void
      */
     public function testSendData()
     {
@@ -396,8 +372,6 @@ class SmtpTransportTest extends CakeTestCase
 
     /**
      * testQuit method
-     *
-     * @return void
      */
     public function testQuit()
     {
@@ -407,8 +381,6 @@ class SmtpTransportTest extends CakeTestCase
 
     /**
      * testEmptyConfigArray method
-     *
-     * @return void
      */
     public function testEmptyConfigArray()
     {
@@ -425,8 +397,6 @@ class SmtpTransportTest extends CakeTestCase
 
     /**
      * testGetLastResponse method
-     *
-     * @return void
      */
     public function testGetLastResponse()
     {
@@ -482,8 +452,6 @@ class SmtpTransportTest extends CakeTestCase
 
     /**
      * testBufferResponseLines method
-     *
-     * @return void
      */
     public function testBufferResponseLines()
     {

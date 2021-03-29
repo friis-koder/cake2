@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Network.Email
+ *
  * @since         CakePHP(tm) v 2.0.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('AbstractTransport', 'Network/Email');
@@ -80,8 +84,10 @@ class SmtpTransport extends AbstractTransport
      * Send mail
      *
      * @param CakeEmail $email CakeEmail
-     * @return array
+     *
      * @throws SocketException
+     *
+     * @return array
      */
     public function send(CakeEmail $email)
     {
@@ -98,6 +104,7 @@ class SmtpTransport extends AbstractTransport
      * Set the configuration
      *
      * @param array $config Configuration options.
+     *
      * @return array Returns configs
      */
     public function config($config = null)
@@ -124,7 +131,6 @@ class SmtpTransport extends AbstractTransport
      * Parses and stores the reponse lines in `'code' => 'message'` format.
      *
      * @param array $responseLines Response lines to parse.
-     * @return void
      */
     protected function _bufferResponseLines(array $responseLines)
     {
@@ -143,7 +149,6 @@ class SmtpTransport extends AbstractTransport
     /**
      * Connect to SMTP Server
      *
-     * @return void
      * @throws SocketException
      */
     protected function _connect()
@@ -185,7 +190,6 @@ class SmtpTransport extends AbstractTransport
     /**
      * Send authentication
      *
-     * @return void
      * @throws SocketException
      */
     protected function _auth()
@@ -216,6 +220,7 @@ class SmtpTransport extends AbstractTransport
      * Prepares the `MAIL FROM` SMTP command.
      *
      * @param string $email The email address to send with the command.
+     *
      * @return string
      */
     protected function _prepareFromCmd($email)
@@ -227,6 +232,7 @@ class SmtpTransport extends AbstractTransport
      * Prepares the `RCPT TO` SMTP command.
      *
      * @param string $email The email address to send with the command.
+     *
      * @return string
      */
     protected function _prepareRcptCmd($email)
@@ -238,6 +244,7 @@ class SmtpTransport extends AbstractTransport
      * Prepares the `from` email address.
      *
      * @param CakeEmail $email CakeEmail
+     *
      * @return array
      */
     protected function _prepareFromAddress(CakeEmail $email)
@@ -254,6 +261,7 @@ class SmtpTransport extends AbstractTransport
      * Prepares the recipient email addresses.
      *
      * @param CakeEmail $email CakeEmail
+     *
      * @return array
      */
     protected function _prepareRecipientAddresses(CakeEmail $email)
@@ -269,6 +277,7 @@ class SmtpTransport extends AbstractTransport
      * Prepares the message headers.
      *
      * @param CakeEmail $email CakeEmail
+     *
      * @return array
      */
     protected function _prepareMessageHeaders(CakeEmail $email)
@@ -280,6 +289,7 @@ class SmtpTransport extends AbstractTransport
      * Prepares the message body.
      *
      * @param CakeEmail $email CakeEmail
+     *
      * @return string
      */
     protected function _prepareMessage(CakeEmail $email)
@@ -301,7 +311,7 @@ class SmtpTransport extends AbstractTransport
      * Send emails
      *
      * @param CakeEmail $email CakeEmail
-     * @return void
+     *
      * @throws SocketException
      */
     protected function _sendRcpt(CakeEmail $email)
@@ -319,7 +329,7 @@ class SmtpTransport extends AbstractTransport
      * Send Data
      *
      * @param CakeEmail $email CakeEmail
-     * @return void
+     *
      * @throws SocketException
      */
     protected function _sendData(CakeEmail $email)
@@ -336,7 +346,6 @@ class SmtpTransport extends AbstractTransport
     /**
      * Disconnect
      *
-     * @return void
      * @throws SocketException
      */
     protected function _disconnect()
@@ -348,7 +357,6 @@ class SmtpTransport extends AbstractTransport
     /**
      * Helper method to generate socket
      *
-     * @return void
      * @throws SocketException
      */
     protected function _generateSocket()
@@ -361,8 +369,10 @@ class SmtpTransport extends AbstractTransport
      *
      * @param string|null $data Data to be sent to SMTP server
      * @param string|bool $checkCode Code to check for in server response, false to skip
-     * @return string|null The matched code, or null if nothing matched
+     *
      * @throws SocketException
+     *
+     * @return string|null The matched code, or null if nothing matched
      */
     protected function _smtpSend($data, $checkCode = '250')
     {

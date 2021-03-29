@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP Project
+ *
  * @package       Cake.Test.Case.TestSuite.Fixture
+ *
  * @since         CakePHP v 2.5
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('DboSource', 'Model/Datasource');
@@ -28,8 +32,6 @@ class CakeFixtureManagerTest extends CakeTestCase
 {
     /**
      * reset environment.
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -39,8 +41,6 @@ class CakeFixtureManagerTest extends CakeTestCase
 
     /**
      * tearDown
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -50,8 +50,6 @@ class CakeFixtureManagerTest extends CakeTestCase
 
     /**
      * testLoadTruncatesTable
-     *
-     * @return void
      */
     public function testLoadTruncatesTable()
     {
@@ -78,8 +76,6 @@ class CakeFixtureManagerTest extends CakeTestCase
 
     /**
      * testLoadSingleTruncatesTable
-     *
-     * @return void
      */
     public function testLoadSingleTruncatesTable()
     {

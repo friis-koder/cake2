@@ -10,8 +10,10 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
  * @since         CakePHP(tm) v 1.3
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('AppShell', 'Console/Command');
@@ -42,8 +44,6 @@ class TemplateTask extends AppShell
 
     /**
      * Initialize callback. Setup paths for the template task.
-     *
-     * @return void
      */
     public function initialize()
     {
@@ -110,7 +110,6 @@ class TemplateTask extends AppShell
      * @param string|array $one A string or an array of data.
      * @param string|array $two Value in case $one is a string (which then works as the key).
      *   Unused if $one is an associative array, otherwise serves as the values to $one's keys.
-     * @return void
      */
     public function set($one, $two = null)
     {
@@ -136,6 +135,7 @@ class TemplateTask extends AppShell
      * @param string $directory directory / type of thing you want
      * @param string $filename template name
      * @param array $vars Additional vars to set to template scope.
+     *
      * @return string contents of generated code template
      */
     public function generate($directory, $filename, $vars = null)
@@ -206,6 +206,7 @@ class TemplateTask extends AppShell
      * @param string $path The initial path to look for the file on. If it is not found fallbacks will be used.
      * @param string $directory Subdirectory to look for ie. 'views', 'objects'
      * @param string $filename lower_case_underscored filename you want.
+     *
      * @return string filename will exit program if template is not found.
      */
     protected function _findTemplate($path, $directory, $filename)

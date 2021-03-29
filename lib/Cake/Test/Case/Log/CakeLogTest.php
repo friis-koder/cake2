@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Log
+ *
  * @since         CakePHP(tm) v 1.2.0.5432
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('CakeLog', 'Log');
@@ -27,8 +31,6 @@ class CakeLogTest extends CakeTestCase
 {
     /**
      * Start test callback, clears all streams enabled.
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -41,8 +43,6 @@ class CakeLogTest extends CakeTestCase
 
     /**
      * test importing loggers from app/libs and plugins.
-     *
-     * @return void
      */
     public function testImportingLoggers()
     {
@@ -74,7 +74,6 @@ class CakeLogTest extends CakeTestCase
      * test all the errors from failed logger imports
      *
      * @expectedException CakeLogException
-     * @return void
      */
     public function testImportingLoggerFailure()
     {
@@ -83,8 +82,6 @@ class CakeLogTest extends CakeTestCase
 
     /**
      * test config() with valid key name
-     *
-     * @return void
      */
     public function testValidKeyName()
     {
@@ -96,8 +93,6 @@ class CakeLogTest extends CakeTestCase
 
     /**
      * test config() with valid key name including the deprecated Log suffix
-     *
-     * @return void
      */
     public function testValidKeyNameLogSuffix()
     {
@@ -111,7 +106,6 @@ class CakeLogTest extends CakeTestCase
      * test config() with invalid key name
      *
      * @expectedException CakeLogException
-     * @return void
      */
     public function testInvalidKeyName()
     {
@@ -122,7 +116,6 @@ class CakeLogTest extends CakeTestCase
      * test that loggers have to implement the correct interface.
      *
      * @expectedException CakeLogException
-     * @return void
      */
     public function testNotImplementingInterface()
     {
@@ -131,8 +124,6 @@ class CakeLogTest extends CakeTestCase
 
     /**
      * Test that CakeLog does not auto create logs when no streams are there to listen.
-     *
-     * @return void
      */
     public function testNoStreamListenting()
     {
@@ -149,8 +140,6 @@ class CakeLogTest extends CakeTestCase
 
     /**
      * test configuring log streams
-     *
-     * @return void
      */
     public function testConfig()
     {
@@ -174,8 +163,6 @@ class CakeLogTest extends CakeTestCase
 
     /**
      * explicit tests for drop()
-     *
-     * @return void
      */
     public function testDrop()
     {
@@ -193,8 +180,6 @@ class CakeLogTest extends CakeTestCase
 
     /**
      * testLogFileWriting method
-     *
-     * @return void
      */
     public function testLogFileWriting()
     {
@@ -220,8 +205,6 @@ class CakeLogTest extends CakeTestCase
 
     /**
      * test selective logging by level/type
-     *
-     * @return void
      */
     public function testSelectiveLoggingByLevel()
     {
@@ -268,7 +251,6 @@ class CakeLogTest extends CakeTestCase
      * test enable
      *
      * @expectedException CakeLogException
-     * @return void
      */
     public function testStreamEnable()
     {
@@ -285,7 +267,6 @@ class CakeLogTest extends CakeTestCase
      * test disable
      *
      * @expectedException CakeLogException
-     * @return void
      */
     public function testStreamDisable()
     {
@@ -304,7 +285,6 @@ class CakeLogTest extends CakeTestCase
      * test enabled() invalid stream
      *
      * @expectedException CakeLogException
-     * @return void
      */
     public function testStreamEnabledInvalid()
     {
@@ -315,7 +295,6 @@ class CakeLogTest extends CakeTestCase
      * test disable invalid stream
      *
      * @expectedException CakeLogException
-     * @return void
      */
     public function testStreamDisableInvalid()
     {
@@ -324,8 +303,6 @@ class CakeLogTest extends CakeTestCase
 
     /**
      * resets log config
-     *
-     * @return void
      */
     protected function _resetLogConfig()
     {
@@ -343,8 +320,6 @@ class CakeLogTest extends CakeTestCase
 
     /**
      * delete logs
-     *
-     * @return void
      */
     protected function _deleteLogs()
     {
@@ -370,8 +345,6 @@ class CakeLogTest extends CakeTestCase
 
     /**
      * test backward compatible scoped logging
-     *
-     * @return void
      */
     public function testScopedLoggingBC()
     {
@@ -425,8 +398,6 @@ class CakeLogTest extends CakeTestCase
 
     /**
      * Test that scopes are exclusive and don't bleed.
-     *
-     * @return void
      */
     public function testScopedLoggingExclusive()
     {
@@ -458,8 +429,6 @@ class CakeLogTest extends CakeTestCase
 
     /**
      * test scoped logging
-     *
-     * @return void
      */
     public function testScopedLogging()
     {
@@ -526,8 +495,6 @@ class CakeLogTest extends CakeTestCase
 
     /**
      * test bogus type and scope
-     *
-     * @return void
      */
     public function testBogusTypeAndScope()
     {
@@ -560,8 +527,6 @@ class CakeLogTest extends CakeTestCase
 
     /**
      * test scoped logging with convenience methods
-     *
-     * @return void
      */
     public function testConvenienceScopedLogging()
     {
@@ -609,8 +574,6 @@ class CakeLogTest extends CakeTestCase
 
     /**
      * test convenience methods
-     *
-     * @return void
      */
     public function testConvenienceMethods()
     {
@@ -686,8 +649,6 @@ class CakeLogTest extends CakeTestCase
 
     /**
      * test convenience methods
-     *
-     * @return void
      */
     public function testConvenienceMethodsForThrowables()
     {
@@ -758,8 +719,6 @@ class CakeLogTest extends CakeTestCase
 
     /**
      * test levels customization
-     *
-     * @return void
      */
     public function testLevelCustomization()
     {
@@ -791,8 +750,6 @@ class CakeLogTest extends CakeTestCase
 
     /**
      * Test writing log files with custom levels
-     *
-     * @return void
      */
     public function testCustomLevelWrites()
     {

@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.I18n
+ *
  * @since         CakePHP(tm) v 1.2.0.4116
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('CakePlugin', 'Core');
@@ -192,8 +196,10 @@ class I18n
      * @param string $language Language to translate string to.
      *    If null it checks for language in session followed by Config.language configuration variable.
      * @param string $context Context The context of the translation, e.g a verb or a noun.
-     * @return string translated string.
+     *
      * @throws CakeException When '' is provided as a domain.
+     *
+     * @return string translated string.
      */
     public static function translate(
         $singular,
@@ -303,8 +309,6 @@ class I18n
 
     /**
      * Clears the domains internal data array. Useful for testing i18n.
-     *
-     * @return void
      */
     public static function clear()
     {
@@ -329,7 +333,9 @@ class I18n
      *
      * @param string $header Type
      * @param int $n Number
+     *
      * @return int plural match
+     *
      * @link http://localization-guide.readthedocs.org/en/latest/l10n/pluralforms.html
      * @link https://developer.mozilla.org/en-US/docs/Mozilla/Localization/Localization_and_Plurals#List_of_Plural_Rules
      */
@@ -390,6 +396,7 @@ class I18n
      * Binds the given domain to a file in the specified directory.
      *
      * @param string $domain Domain to bind
+     *
      * @return string Domain binded
      */
     protected function _bindTextDomain($domain)
@@ -499,7 +506,9 @@ class I18n
      * Loads the binary .mo file and returns array of translations
      *
      * @param string $filename Binary .mo file to load
+     *
      * @return mixed Array of translations on success or false on failure
+     *
      * @link https://www.gnu.org/software/gettext/manual/html_node/MO-Files.html
      */
     public static function loadMo($filename)
@@ -555,6 +564,7 @@ class I18n
      * Loads the text .po file and returns array of translations
      *
      * @param string $filename Text .po file to load
+     *
      * @return mixed Array of translations on success or false on failure
      */
     public static function loadPo($filename)
@@ -637,6 +647,7 @@ class I18n
      * Parses a locale definition file following the POSIX standard
      *
      * @param string $filename Locale definition filename
+     *
      * @return mixed Array of definitions on success or false on failure
      */
     public static function loadLocaleDefinition($filename)
@@ -710,6 +721,7 @@ class I18n
      *
      * @param string $translated The raw translated string
      * @param array $args The arguments to put in the translation
+     *
      * @return string Translated string with arguments
      */
     public static function insertArgs($translated, array $args)
@@ -750,6 +762,7 @@ class I18n
      * Auxiliary function to parse a symbol from a locale definition file
      *
      * @param string $string Symbol to be parsed
+     *
      * @return string parsed symbol
      */
     protected function _parseLiteralValue($string)
@@ -787,6 +800,7 @@ class I18n
      *
      * @param string $format Format to be translated
      * @param string $domain Domain where format is stored
+     *
      * @return mixed translated format string if only value or array of translated strings for corresponding format.
      */
     protected function _translateTime($format, $domain)

@@ -12,9 +12,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Model.Behavior
+ *
  * @since         CakePHP(tm) v 1.2.0.5669
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('ModelBehavior', 'Model');
@@ -25,6 +29,7 @@ App::uses('ModelBehavior', 'Model');
  * data returned.
  *
  * @package       Cake.Model.Behavior
+ *
  * @link https://book.cakephp.org/2.0/en/core-libraries/behaviors/containable.html
  */
 class ContainableBehavior extends ModelBehavior
@@ -59,7 +64,6 @@ class ContainableBehavior extends ModelBehavior
      *
      * @param Model $Model Model using the behavior
      * @param array $settings Settings to override for model.
-     * @return void
      */
     public function setup(Model $Model, $settings = [])
     {
@@ -88,6 +92,7 @@ class ContainableBehavior extends ModelBehavior
      *
      * @param Model $Model Model using the behavior
      * @param array $query Query parameters as set by cake
+     *
      * @return array
      */
     public function beforeFind(Model $Model, $query)
@@ -228,7 +233,7 @@ class ContainableBehavior extends ModelBehavior
      * parameters unbinds all related models.
      *
      * @param Model $Model Model on which binding restriction is being applied
-     * @return void
+     *
      * @link https://book.cakephp.org/2.0/en/core-libraries/behaviors/containable.html#using-containable
      */
     public function contain(Model $Model)
@@ -244,7 +249,6 @@ class ContainableBehavior extends ModelBehavior
      * contain call.
      *
      * @param Model $Model Model on which to reset bindings
-     * @return void
      */
     public function resetBindings(Model $Model)
     {
@@ -269,6 +273,7 @@ class ContainableBehavior extends ModelBehavior
      * @param array $contain Parameters to use for restricting this model
      * @param array $containments Current set of containments
      * @param bool $throwErrors Whether non-existent bindings show throw errors
+     *
      * @return array Containments
      */
     public function containments(Model $Model, $contain, $containments = [], $throwErrors = null)
@@ -374,6 +379,7 @@ class ContainableBehavior extends ModelBehavior
      * @param Model $Model Model
      * @param array $map Map of relations for given model
      * @param array|bool $fields If array, fields to initially load, if false use $Model as primary model
+     *
      * @return array Fields
      */
     public function fieldDependencies(Model $Model, $map, $fields = [])
@@ -424,6 +430,7 @@ class ContainableBehavior extends ModelBehavior
      * Build the map of containments
      *
      * @param array $containments Containments
+     *
      * @return array Built containments
      */
     public function containmentsMap($containments)

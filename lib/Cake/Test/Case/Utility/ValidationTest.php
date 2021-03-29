@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Utility
+ *
  * @since         CakePHP(tm) v 1.2.0.4206
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Validation', 'Utility');
@@ -28,6 +32,7 @@ class CustomValidator
      * Makes sure that a given $email address is valid and unique
      *
      * @param string $check Email to check.
+     *
      * @return bool
      */
     public static function customValidate($check)
@@ -49,7 +54,6 @@ class TestNlValidation
      * postal function, for testing postal pass through.
      *
      * @param string $check
-     * @return void
      */
     public static function postal($check)
     {
@@ -58,8 +62,6 @@ class TestNlValidation
 
     /**
      * ssn function for testing ssn pass through
-     *
-     * @return void
      */
     public static function ssn($check)
     {
@@ -80,7 +82,6 @@ class TestDeValidation
      * phone function, for testing phone pass through.
      *
      * @param string $check
-     * @return void
      */
     public static function phone($check)
     {
@@ -99,7 +100,6 @@ class ValidationStub extends Validation
      * Stub out is_uploaded_file check
      *
      * @param string $path
-     * @return void
      */
     protected static function _isUploadedFile($path)
     {
@@ -116,8 +116,6 @@ class ValidationTest extends CakeTestCase
 {
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -132,8 +130,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -146,8 +142,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * Test notBlank method
-     *
-     * @return void
      */
     public function testNotBlank()
     {
@@ -168,8 +162,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * Test notBlank method with ISO88591 encoding
-     *
-     * @return void
      */
     public function testNotBlankISO88591AppEncoding()
     {
@@ -186,8 +178,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testAlphaNumeric method
-     *
-     * @return void
      */
     public function testAlphaNumeric()
     {
@@ -213,8 +203,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testLengthBetween method
-     *
-     * @return void
      */
     public function testLengthBetween()
     {
@@ -228,8 +216,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testBlank method
-     *
-     * @return void
      */
     public function testBlank()
     {
@@ -244,8 +230,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testcc method
-     *
-     * @return void
      */
     public function testCc()
     {
@@ -695,8 +679,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testLuhn method
-     *
-     * @return void
      */
     public function testLuhn()
     {
@@ -750,8 +732,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testCustomRegexForCc method
-     *
-     * @return void
      */
     public function testCustomRegexForCc()
     {
@@ -762,8 +742,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testCustomRegexForCcWithLuhnCheck method
-     *
-     * @return void
      */
     public function testCustomRegexForCcWithLuhnCheck()
     {
@@ -775,8 +753,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testFastCc method
-     *
-     * @return void
      */
     public function testFastCc()
     {
@@ -804,8 +780,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testAllCc method
-     *
-     * @return void
      */
     public function testAllCc()
     {
@@ -855,8 +829,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testAllCcDeep method
-     *
-     * @return void
      */
     public function testAllCcDeep()
     {
@@ -906,8 +878,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testComparison method
-     *
-     * @return void
      */
     public function testComparison()
     {
@@ -947,8 +917,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * Test comparison casting values before comparisons.
-     *
-     * @return void
      */
     public function testComparisonTypeChecks()
     {
@@ -964,8 +932,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testCustom method
-     *
-     * @return void
      */
     public function testCustom()
     {
@@ -977,8 +943,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testDateDdmmyyyy method
-     *
-     * @return void
      */
     public function testDateDdmmyyyy()
     {
@@ -998,8 +962,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testDateDdmmyyyyLeapYear method
-     *
-     * @return void
      */
     public function testDateDdmmyyyyLeapYear()
     {
@@ -1015,8 +977,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testDateDdmmyy method
-     *
-     * @return void
      */
     public function testDateDdmmyy()
     {
@@ -1036,8 +996,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testDateDdmmyyLeapYear method
-     *
-     * @return void
      */
     public function testDateDdmmyyLeapYear()
     {
@@ -1053,8 +1011,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testDateDmyy method
-     *
-     * @return void
      */
     public function testDateDmyy()
     {
@@ -1074,8 +1030,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testDateDmyyLeapYear method
-     *
-     * @return void
      */
     public function testDateDmyyLeapYear()
     {
@@ -1091,8 +1045,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testDateDmyyyy method
-     *
-     * @return void
      */
     public function testDateDmyyyy()
     {
@@ -1112,8 +1064,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testDateDmyyyyLeapYear method
-     *
-     * @return void
      */
     public function testDateDmyyyyLeapYear()
     {
@@ -1129,8 +1079,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testDateMmddyyyy method
-     *
-     * @return void
      */
     public function testDateMmddyyyy()
     {
@@ -1150,8 +1098,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testDateMmddyyyyLeapYear method
-     *
-     * @return void
      */
     public function testDateMmddyyyyLeapYear()
     {
@@ -1167,8 +1113,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testDateMmddyy method
-     *
-     * @return void
      */
     public function testDateMmddyy()
     {
@@ -1188,8 +1132,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testDateMmddyyLeapYear method
-     *
-     * @return void
      */
     public function testDateMmddyyLeapYear()
     {
@@ -1205,8 +1147,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testDateMdyy method
-     *
-     * @return void
      */
     public function testDateMdyy()
     {
@@ -1226,8 +1166,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testDateMdyyLeapYear method
-     *
-     * @return void
      */
     public function testDateMdyyLeapYear()
     {
@@ -1243,8 +1181,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testDateMdyyyy method
-     *
-     * @return void
      */
     public function testDateMdyyyy()
     {
@@ -1264,8 +1200,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testDateMdyyyyLeapYear method
-     *
-     * @return void
      */
     public function testDateMdyyyyLeapYear()
     {
@@ -1281,8 +1215,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testDateYyyymmdd method
-     *
-     * @return void
      */
     public function testDateYyyymmdd()
     {
@@ -1298,8 +1230,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testDateYyyymmddLeapYear method
-     *
-     * @return void
      */
     public function testDateYyyymmddLeapYear()
     {
@@ -1315,8 +1245,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testDateYymmdd method
-     *
-     * @return void
      */
     public function testDateYymmdd()
     {
@@ -1336,8 +1264,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testDateYymmddLeapYear method
-     *
-     * @return void
      */
     public function testDateYymmddLeapYear()
     {
@@ -1353,8 +1279,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testDateDdMMMMyyyy method
-     *
-     * @return void
      */
     public function testDateDdMMMMyyyy()
     {
@@ -1366,8 +1290,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testDateDdMMMMyyyyLeapYear method
-     *
-     * @return void
      */
     public function testDateDdMMMMyyyyLeapYear()
     {
@@ -1377,8 +1299,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testDateMmmmDdyyyy method
-     *
-     * @return void
      */
     public function testDateMmmmDdyyyy()
     {
@@ -1393,8 +1313,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testDateMmmmDdyyyyLeapYear method
-     *
-     * @return void
      */
     public function testDateMmmmDdyyyyLeapYear()
     {
@@ -1407,8 +1325,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testDateMy method
-     *
-     * @return void
      */
     public function testDateMy()
     {
@@ -1420,8 +1336,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testDateMyNumeric method
-     *
-     * @return void
      */
     public function testDateMyNumeric()
     {
@@ -1439,8 +1353,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testDateYmNumeric method
-     *
-     * @return void
      */
     public function testDateYmNumeric()
     {
@@ -1463,8 +1375,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testDateY method
-     *
-     * @return void
      */
     public function testDateY()
     {
@@ -1483,8 +1393,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * Test validating dates with multiple formats
-     *
-     * @return void
      */
     public function testDateMultiple()
     {
@@ -1494,8 +1402,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testTime method
-     *
-     * @return void
      */
     public function testTime()
     {
@@ -1518,8 +1424,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testBoolean method
-     *
-     * @return void
      */
     public function testBoolean()
     {
@@ -1538,8 +1442,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testDateCustomRegx method
-     *
-     * @return void
      */
     public function testDateCustomRegx()
     {
@@ -1549,8 +1451,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * Test numbers with any number of decimal places, including none.
-     *
-     * @return void
      */
     public function testDecimalWithPlacesNull()
     {
@@ -1583,8 +1483,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * Test numbers with any number of decimal places greater than 0, or a float|double.
-     *
-     * @return void
      */
     public function testDecimalWithPlacesTrue()
     {
@@ -1617,8 +1515,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * Test numbers with exactly that many number of decimal places.
-     *
-     * @return void
      */
     public function testDecimalWithPlacesNumeric()
     {
@@ -1655,8 +1551,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * Test decimal() with invalid places parameter.
-     *
-     * @return void
      */
     public function testDecimalWithInvalidPlaces()
     {
@@ -1667,8 +1561,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testDecimalCustomRegex method
-     *
-     * @return void
      */
     public function testDecimalCustomRegex()
     {
@@ -1678,8 +1570,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * Test localized floats with decimal.
-     *
-     * @return void
      */
     public function testDecimalLocaleSet()
     {
@@ -1698,8 +1588,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testEmail method
-     *
-     * @return void
      */
     public function testEmail()
     {
@@ -1782,8 +1670,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testEmailDeep method
-     *
-     * @return void
      */
     public function testEmailDeep()
     {
@@ -1795,8 +1681,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testEmailCustomRegex method
-     *
-     * @return void
      */
     public function testEmailCustomRegex()
     {
@@ -1806,8 +1690,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testEqualTo method
-     *
-     * @return void
      */
     public function testEqualTo()
     {
@@ -1821,8 +1703,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testIpV4 method
-     *
-     * @return void
      */
     public function testIpV4()
     {
@@ -1837,8 +1717,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testIp v6
-     *
-     * @return void
      */
     public function testIpv6()
     {
@@ -1878,8 +1756,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testMaxLength method
-     *
-     * @return void
      */
     public function testMaxLength()
     {
@@ -1893,8 +1769,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * maxLengthBytes method
-     *
-     * @return void
      */
     public function testMaxLengthBytes()
     {
@@ -1908,8 +1782,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testMinLength method
-     *
-     * @return void
      */
     public function testMinLength()
     {
@@ -1923,8 +1795,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * minLengthBytes method
-     *
-     * @return void
      */
     public function testMinLengthBytes()
     {
@@ -1938,8 +1808,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testUrl method
-     *
-     * @return void
      */
     public function testUrl()
     {
@@ -2027,8 +1895,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testInList method
-     *
-     * @return void
      */
     public function testInList()
     {
@@ -2054,8 +1920,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testRange method
-     *
-     * @return void
      */
     public function testRange()
     {
@@ -2070,8 +1934,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * Test range type checks
-     *
-     * @return void
      */
     public function testRangeTypeChecks()
     {
@@ -2087,8 +1949,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testExtension method
-     *
-     * @return void
      */
     public function testExtension()
     {
@@ -2117,8 +1977,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testMoney method
-     *
-     * @return void
      */
     public function testMoney()
     {
@@ -2158,8 +2016,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * Test Multiple Select Validation
-     *
-     * @return void
      */
     public function testMultiple()
     {
@@ -2213,8 +2069,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testNumeric method
-     *
-     * @return void
      */
     public function testNumeric()
     {
@@ -2230,8 +2084,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testNaturalNumber method
-     *
-     * @return void
      */
     public function testNaturalNumber()
     {
@@ -2252,8 +2104,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testPhone method
-     *
-     * @return void
      */
     public function testPhone()
     {
@@ -2302,8 +2152,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testPostal method
-     *
-     * @return void
      */
     public function testPostal()
     {
@@ -2359,8 +2207,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * test that phone and postal pass to other classes.
-     *
-     * @return void
      */
     public function testPhonePostalSsnPass()
     {
@@ -2373,7 +2219,6 @@ class ValidationTest extends CakeTestCase
      * test pass through failure on postal
      *
      * @expectedException PHPUnit_Framework_Error
-     * @return void
      */
     public function testPassThroughMethodFailure()
     {
@@ -2384,7 +2229,6 @@ class ValidationTest extends CakeTestCase
      * test the pass through calling of an alternate locale with postal()
      *
      * @expectedException PHPUnit_Framework_Error
-     * @return void
      */
     public function testPassThroughClassFailure()
     {
@@ -2393,8 +2237,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * test pass through method
-     *
-     * @return void
      */
     public function testPassThroughMethod()
     {
@@ -2403,8 +2245,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testSsn method
-     *
-     * @return void
      */
     public function testSsn()
     {
@@ -2425,8 +2265,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testUserDefined method
-     *
-     * @return void
      */
     public function testUserDefined()
     {
@@ -2438,8 +2276,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testDatetime method
-     *
-     * @return void
      */
     public function testDatetime()
     {
@@ -2468,8 +2304,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testMimeType method
-     *
-     * @return void
      */
     public function testMimeType()
     {
@@ -2491,7 +2325,6 @@ class ValidationTest extends CakeTestCase
      * testMimeTypeFalse method
      *
      * @expectedException CakeException
-     * @return void
      */
     public function testMimeTypeFalse()
     {
@@ -2503,8 +2336,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testUploadError method
-     *
-     * @return void
      */
     public function testUploadError()
     {
@@ -2525,8 +2356,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * testFileSize method
-     *
-     * @return void
      */
     public function testFileSize()
     {
@@ -2544,8 +2373,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * Test uploaded file validation.
-     *
-     * @return void
      */
     public function testUploadedFileErrorCode()
     {
@@ -2568,8 +2395,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * Test uploaded file validation.
-     *
-     * @return void
      */
     public function testUploadedFileMimeType()
     {
@@ -2592,8 +2417,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * Test uploaded file validation.
-     *
-     * @return void
      */
     public function testUploadedFileSize()
     {
@@ -2629,8 +2452,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * Test uploaded file validation.
-     *
-     * @return void
      */
     public function testUploadedFileNoFile()
     {
@@ -2655,8 +2476,6 @@ class ValidationTest extends CakeTestCase
 
     /**
      * Test uploaded file validation.
-     *
-     * @return void
      */
     public function testUploadedFileWithDifferentFileParametersOrder()
     {

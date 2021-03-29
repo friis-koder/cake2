@@ -8,8 +8,6 @@ class AssertTagsTestCase extends CakeTestCase
 {
     /**
      * test that assertTags knows how to handle correct quoting.
-     *
-     * @return void
      */
     public function testAssertTagsQuotes()
     {
@@ -40,8 +38,6 @@ class AssertTagsTestCase extends CakeTestCase
 
     /**
      * testNumericValuesInExpectationForAssertTags
-     *
-     * @return void
      */
     public function testNumericValuesInExpectationForAssertTags()
     {
@@ -90,8 +86,6 @@ class AssertTagsTestCase extends CakeTestCase
 
     /**
      * testBadAssertTags
-     *
-     * @return void
      */
     public function testBadAssertTags()
     {
@@ -106,8 +100,6 @@ class AssertTagsTestCase extends CakeTestCase
 
     /**
      * testBadAssertTags
-     *
-     * @return void
      */
     public function testBadAssertTags2()
     {

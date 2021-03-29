@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.View.Helper
+ *
  * @since         CakePHP(tm) v 1.2.0.4206
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Controller', 'Controller');
@@ -28,8 +32,6 @@ class SessionHelperTest extends CakeTestCase
 {
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -81,8 +83,6 @@ class SessionHelperTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -95,8 +95,6 @@ class SessionHelperTest extends CakeTestCase
 
     /**
      * testRead method
-     *
-     * @return void
      */
     public function testRead()
     {
@@ -109,8 +107,6 @@ class SessionHelperTest extends CakeTestCase
 
     /**
      * testCheck method
-     *
-     * @return void
      */
     public function testCheck()
     {
@@ -125,8 +121,6 @@ class SessionHelperTest extends CakeTestCase
 
     /**
      * testFlash method
-     *
-     * @return void
      */
     public function testFlash()
     {
@@ -156,8 +150,6 @@ class SessionHelperTest extends CakeTestCase
 
     /**
      * Test the flash method works without any params being passed
-     *
-     * @return void
      */
     public function testFlashWithNoParams()
     {
@@ -169,8 +161,6 @@ class SessionHelperTest extends CakeTestCase
 
     /**
      * test flash() with the attributes.
-     *
-     * @return void
      */
     public function testFlashAttributes()
     {
@@ -182,8 +172,6 @@ class SessionHelperTest extends CakeTestCase
 
     /**
      * test setting the element from the attrs.
-     *
-     * @return void
      */
     public function testFlashElementInAttrs()
     {
@@ -200,8 +188,6 @@ class SessionHelperTest extends CakeTestCase
 
     /**
      * test using elements in plugins.
-     *
-     * @return void
      */
     public function testFlashWithPluginElement()
     {

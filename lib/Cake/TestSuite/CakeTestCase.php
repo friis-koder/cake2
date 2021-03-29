@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.TestSuite
+ *
  * @since         CakePHP(tm) v 1.2.0.4667
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('CakeFixtureManager', 'TestSuite/Fixture');
@@ -71,8 +75,10 @@ abstract class CakeTestCase extends PHPUnit_Framework_TestCase
      * This method is run for each test method in this class
      *
      * @param PHPUnit_Framework_TestResult $result The test result object
-     * @return PHPUnit_Framework_TestResult
+     *
      * @throws InvalidArgumentException
+     *
+     * @return PHPUnit_Framework_TestResult
      */
     public function run(PHPUnit_Framework_TestResult $result = null)
     {
@@ -98,7 +104,6 @@ abstract class CakeTestCase extends PHPUnit_Framework_TestCase
      * Called when a test case method is about to start (to be overridden when needed.)
      *
      * @param string $method Test method about to get executed.
-     * @return void
      */
     public function startTest($method)
     {
@@ -108,7 +113,6 @@ abstract class CakeTestCase extends PHPUnit_Framework_TestCase
      * Called when a test case method has been executed (to be overridden when needed.)
      *
      * @param string $method Test method about that was executed.
-     * @return void
      */
     public function endTest($method)
     {
@@ -119,6 +123,7 @@ abstract class CakeTestCase extends PHPUnit_Framework_TestCase
      *
      * @param bool $shouldSkip Whether or not the test should be skipped.
      * @param string $message The message to display.
+     *
      * @return bool
      */
     public function skipIf($shouldSkip, $message = '')
@@ -134,8 +139,6 @@ abstract class CakeTestCase extends PHPUnit_Framework_TestCase
      * Setup the test case, backup the static object values so they can be restored.
      * Specifically backs up the contents of Configure and paths in App if they have
      * not already been backed up.
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -154,8 +157,6 @@ abstract class CakeTestCase extends PHPUnit_Framework_TestCase
 
     /**
      * teardown any static object changes and restore them.
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -178,6 +179,7 @@ abstract class CakeTestCase extends PHPUnit_Framework_TestCase
      * See CakeTestSuiteDispatcher::date()
      *
      * @param string $format format to be used.
+     *
      * @return string
      */
     public static function date($format = 'Y-m-d H:i:s')
@@ -189,8 +191,6 @@ abstract class CakeTestCase extends PHPUnit_Framework_TestCase
 
     /**
      * Announces the start of a test.
-     *
-     * @return void
      */
     protected function assertPreConditions()
     {
@@ -200,8 +200,6 @@ abstract class CakeTestCase extends PHPUnit_Framework_TestCase
 
     /**
      * Announces the end of a test.
-     *
-     * @return void
      */
     protected function assertPostConditions()
     {
@@ -216,8 +214,8 @@ abstract class CakeTestCase extends PHPUnit_Framework_TestCase
      *
      * Each parameter is a model name that corresponds to a fixture, i.e. 'Post', 'Author', etc.
      *
-     * @return void
      * @see CakeTestCase::$autoFixtures
+     *
      * @throws Exception when no fixture manager is available.
      */
     public function loadFixtures()
@@ -238,6 +236,7 @@ abstract class CakeTestCase extends PHPUnit_Framework_TestCase
      * @param string $expected The expected value.
      * @param string $result The actual value.
      * @param string $message The message to use for failure.
+     *
      * @return bool
      */
     public function assertTextNotEquals($expected, $result, $message = '')
@@ -255,6 +254,7 @@ abstract class CakeTestCase extends PHPUnit_Framework_TestCase
      * @param string $expected The expected value.
      * @param string $result The actual value.
      * @param string $message message The message to use for failure.
+     *
      * @return bool
      */
     public function assertTextEquals($expected, $result, $message = '')
@@ -272,6 +272,7 @@ abstract class CakeTestCase extends PHPUnit_Framework_TestCase
      * @param string $prefix The prefix to check for.
      * @param string $string The string to search in.
      * @param string $message The message to use for failure.
+     *
      * @return bool
      */
     public function assertTextStartsWith($prefix, $string, $message = '')
@@ -289,6 +290,7 @@ abstract class CakeTestCase extends PHPUnit_Framework_TestCase
      * @param string $prefix The prefix to not find.
      * @param string $string The string to search.
      * @param string $message The message to use for failure.
+     *
      * @return bool
      */
     public function assertTextStartsNotWith($prefix, $string, $message = '')
@@ -306,6 +308,7 @@ abstract class CakeTestCase extends PHPUnit_Framework_TestCase
      * @param string $suffix The suffix to find.
      * @param string $string The string to search.
      * @param string $message The message to use for failure.
+     *
      * @return bool
      */
     public function assertTextEndsWith($suffix, $string, $message = '')
@@ -323,6 +326,7 @@ abstract class CakeTestCase extends PHPUnit_Framework_TestCase
      * @param string $suffix The suffix to not find.
      * @param string $string The string to search.
      * @param string $message The message to use for failure.
+     *
      * @return bool
      */
     public function assertTextEndsNotWith($suffix, $string, $message = '')
@@ -341,6 +345,7 @@ abstract class CakeTestCase extends PHPUnit_Framework_TestCase
      * @param string $haystack The string to search through.
      * @param string $message The message to display on failure.
      * @param bool $ignoreCase Whether or not the search should be case-sensitive.
+     *
      * @return bool
      */
     public function assertTextContains($needle, $haystack, $message = '', $ignoreCase = false)
@@ -359,6 +364,7 @@ abstract class CakeTestCase extends PHPUnit_Framework_TestCase
      * @param string $haystack The string to search through.
      * @param string $message The message to display on failure.
      * @param bool $ignoreCase Whether or not the search should be case-sensitive.
+     *
      * @return bool
      */
     public function assertTextNotContains($needle, $haystack, $message = '', $ignoreCase = false)
@@ -409,6 +415,7 @@ abstract class CakeTestCase extends PHPUnit_Framework_TestCase
      * @param string $string An HTML/XHTML/XML string
      * @param array $expected An array, see above
      * @param string $fullDebug Whether or not more verbose output should be used.
+     *
      * @return bool
      */
     public function assertTags($string, $expected, $fullDebug = false)
@@ -554,7 +561,6 @@ abstract class CakeTestCase extends PHPUnit_Framework_TestCase
      *
      * @param array $assertions Assertions to run.
      * @param string $string The HTML string to check.
-     * @return void
      */
     protected function _assertAttributes($assertions, $string)
     {
@@ -590,8 +596,8 @@ abstract class CakeTestCase extends PHPUnit_Framework_TestCase
      * @param mixed $result
      * @param mixed $expected
      * @param string $message the text to display if the assertion is not correct
+     *
      * @deprecated 3.0.0 This is a compatibility wrapper for 1.x. It will be removed in 3.0
-     * @return void
      */
     protected static function assertEqual($result, $expected, $message = '')
     {
@@ -604,8 +610,8 @@ abstract class CakeTestCase extends PHPUnit_Framework_TestCase
      * @param mixed $result
      * @param mixed $expected
      * @param string $message the text to display if the assertion is not correct
+     *
      * @deprecated 3.0.0 This is a compatibility wrapper for 1.x. It will be removed in 3.0
-     * @return void
      */
     protected static function assertNotEqual($result, $expected, $message = '')
     {
@@ -618,8 +624,8 @@ abstract class CakeTestCase extends PHPUnit_Framework_TestCase
      * @param mixed $pattern a regular expression
      * @param string $string the text to be matched
      * @param string $message the text to display if the assertion is not correct
+     *
      * @deprecated 3.0.0 This is a compatibility wrapper for 1.x. It will be removed in 3.0
-     * @return void
      */
     protected static function assertPattern($pattern, $string, $message = '')
     {
@@ -632,8 +638,8 @@ abstract class CakeTestCase extends PHPUnit_Framework_TestCase
      * @param mixed $actual
      * @param mixed $expected
      * @param string $message the text to display if the assertion is not correct
+     *
      * @deprecated 3.0.0 This is a compatibility wrapper for 1.x. It will be removed in 3.0
-     * @return void
      */
     protected static function assertIdentical($actual, $expected, $message = '')
     {
@@ -646,8 +652,8 @@ abstract class CakeTestCase extends PHPUnit_Framework_TestCase
      * @param mixed $actual
      * @param mixed $expected
      * @param string $message the text to display if the assertion is not correct
+     *
      * @deprecated 3.0.0 This is a compatibility wrapper for 1.x. It will be removed in 3.0
-     * @return void
      */
     protected static function assertNotIdentical($actual, $expected, $message = '')
     {
@@ -660,8 +666,8 @@ abstract class CakeTestCase extends PHPUnit_Framework_TestCase
      * @param mixed $pattern a regular expression
      * @param string $string the text to be matched
      * @param string $message the text to display if the assertion is not correct
+     *
      * @deprecated 3.0.0 This is a compatibility wrapper for 1.x. It will be removed in 3.0
-     * @return void
      */
     protected static function assertNoPattern($pattern, $string, $message = '')
     {
@@ -672,7 +678,6 @@ abstract class CakeTestCase extends PHPUnit_Framework_TestCase
      * assert no errors
      *
      * @deprecated 3.0.0 This is a compatibility wrapper for 1.x. It will be removed in 3.0
-     * @return void
      */
     protected function assertNoErrors()
     {
@@ -683,8 +688,8 @@ abstract class CakeTestCase extends PHPUnit_Framework_TestCase
      *
      * @param mixed $expected the name of the Exception or error
      * @param string $message the text to display if the assertion is not correct
+     *
      * @deprecated 3.0.0 This is a compatibility wrapper for 1.x. It will be removed in 3.0
-     * @return void
      */
     protected function expectError($expected = false, $message = '')
     {
@@ -699,8 +704,8 @@ abstract class CakeTestCase extends PHPUnit_Framework_TestCase
      *
      * @param mixed $name The name of the expected Exception.
      * @param string $message the text to display if the assertion is not correct
+     *
      * @deprecated 3.0.0 This is a compatibility wrapper for 1.x. It will be removed in 3.0.
-     * @return void
      */
     public function expectException($name = 'Exception', $message = '')
     {
@@ -713,8 +718,8 @@ abstract class CakeTestCase extends PHPUnit_Framework_TestCase
      * @param mixed $first
      * @param mixed $second
      * @param string $message the text to display if the assertion is not correct
+     *
      * @deprecated 3.0.0 This is a compatibility wrapper for 1.x. It will be removed in 3.0
-     * @return void
      */
     protected static function assertReference(&$first, &$second, $message = '')
     {
@@ -727,8 +732,8 @@ abstract class CakeTestCase extends PHPUnit_Framework_TestCase
      * @param string $object
      * @param string $type
      * @param string $message
+     *
      * @deprecated 3.0.0 This is a compatibility wrapper for 1.x. It will be removed in 3.0
-     * @return void
      */
     protected static function assertIsA($object, $type, $message = '')
     {
@@ -742,7 +747,6 @@ abstract class CakeTestCase extends PHPUnit_Framework_TestCase
      * @param mixed $expected
      * @param mixed $margin the rage of acceptation
      * @param string $message the text to display if the assertion is not correct
-     * @return void
      */
     protected static function assertWithinMargin($result, $expected, $margin, $message = '')
     {
@@ -757,6 +761,7 @@ abstract class CakeTestCase extends PHPUnit_Framework_TestCase
      *
      * @param bool $condition Condition to trigger skipping
      * @param string $message Message for skip
+     *
      * @return bool
      */
     protected function skipUnless($condition, $message = '')
@@ -792,7 +797,9 @@ abstract class CakeTestCase extends PHPUnit_Framework_TestCase
      *   to disable the call to the original class' clone constructor.
      * @param bool $callAutoload The seventh (optional) parameter can be used to
      *   disable __autoload() during the generation of the test double class.
+     *
      * @return object
+     *
      * @deprecated Use `getMockBuilder()` or `createMock()` in new unit tests.
      * @see https://phpunit.de/manual/current/en/test-doubles.html
      */
@@ -853,8 +860,11 @@ abstract class CakeTestCase extends PHPUnit_Framework_TestCase
      * @param bool $cloneArguments Not supported.
      * @param bool $callOriginalMethods Not supported.
      * @param string $proxyTarget Not supported.
-     * @return object
+     *
      * @throws InvalidArgumentException When not supported parameters are set.
+     *
+     * @return object
+     *
      * @deprecated Use `getMockBuilder()` or `createMock()` in new unit tests.
      * @see https://phpunit.de/manual/current/en/test-doubles.html
      */
@@ -912,7 +922,9 @@ abstract class CakeTestCase extends PHPUnit_Framework_TestCase
      * @param string $model The model to get a mock for.
      * @param mixed $methods The list of methods to mock
      * @param array $config The config data for the mock's constructor.
+     *
      * @throws MissingModelException
+     *
      * @return Model
      */
     public function getMockForModel($model, $methods = [], $config = [])

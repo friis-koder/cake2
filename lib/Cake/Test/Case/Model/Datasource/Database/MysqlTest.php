@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Test.Case.Model.Datasource.Database
+ *
  * @since         CakePHP(tm) v 1.2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Model', 'Model');
@@ -56,8 +60,6 @@ class MysqlTest extends CakeTestCase
 
     /**
      * Sets up a Dbo class instance for testing
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -73,8 +75,6 @@ class MysqlTest extends CakeTestCase
 
     /**
      * Sets up a Dbo class instance for testing
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -88,7 +88,6 @@ class MysqlTest extends CakeTestCase
      * Test Dbo value method
      *
      * @group quoting
-     * @return void
      */
     public function testQuoting()
     {
@@ -149,7 +148,6 @@ class MysqlTest extends CakeTestCase
      * test that localized floats don't cause trouble.
      *
      * @group quoting
-     * @return void
      */
     public function testLocalizedFloats()
     {
@@ -185,8 +183,6 @@ class MysqlTest extends CakeTestCase
 
     /**
      * test that scientific notations are working correctly
-     *
-     * @return void
      */
     public function testScientificNotation()
     {
@@ -199,8 +195,6 @@ class MysqlTest extends CakeTestCase
 
     /**
      * testTinyintCasting method
-     *
-     * @return void
      */
     public function testTinyintCasting()
     {
@@ -239,8 +233,6 @@ class MysqlTest extends CakeTestCase
 
     /**
      * testLastAffected method
-     *
-     * @return void
      */
     public function testLastAffected()
     {
@@ -266,7 +258,6 @@ class MysqlTest extends CakeTestCase
      * testIndexDetection method
      *
      * @group indices
-     * @return void
      */
     public function testIndexDetection()
     {
@@ -368,7 +359,6 @@ class MysqlTest extends CakeTestCase
      * Using a mock ensure that MySQL 4.x output is properly parsed.
      *
      * @group indices
-     * @return void
      */
     public function testIndexOnMySQL4Output()
     {
@@ -471,8 +461,6 @@ class MysqlTest extends CakeTestCase
 
     /**
      * testColumn method
-     *
-     * @return void
      */
     public function testColumn()
     {
@@ -545,7 +533,6 @@ class MysqlTest extends CakeTestCase
      * testAlterSchemaIndexes method
      *
      * @group indices
-     * @return void
      */
     public function testAlterSchemaIndexes()
     {
@@ -645,8 +632,6 @@ class MysqlTest extends CakeTestCase
 
     /**
      * test saving and retrieval of blobs
-     *
-     * @return void
      */
     public function testBlobSaving()
     {
@@ -663,8 +648,6 @@ class MysqlTest extends CakeTestCase
 
     /**
      * test altering the table settings with schema.
-     *
-     * @return void
      */
     public function testAlteringTableParameters()
     {
@@ -715,8 +698,6 @@ class MysqlTest extends CakeTestCase
 
     /**
      * test alterSchema on two tables.
-     *
-     * @return void
      */
     public function testAlteringTwoTables()
     {
@@ -750,8 +731,6 @@ class MysqlTest extends CakeTestCase
 
     /**
      * testReadTableParameters method
-     *
-     * @return void
      */
     public function testReadTableParameters()
     {
@@ -782,8 +761,6 @@ class MysqlTest extends CakeTestCase
 
     /**
      * testBuildTableParameters method
-     *
-     * @return void
      */
     public function testBuildTableParameters()
     {
@@ -802,8 +779,6 @@ class MysqlTest extends CakeTestCase
 
     /**
      * testGetCharsetName method
-     *
-     * @return void
      */
     public function testGetCharsetName()
     {
@@ -816,8 +791,6 @@ class MysqlTest extends CakeTestCase
 
     /**
      * testGetCharsetNameCaching method
-     *
-     * @return void
      */
     public function testGetCharsetNameCaching()
     {
@@ -845,8 +818,6 @@ class MysqlTest extends CakeTestCase
 
     /**
      * test that changing the virtualFieldSeparator allows for __ fields.
-     *
-     * @return void
      */
     public function testVirtualFieldSeparators()
     {
@@ -865,8 +836,6 @@ class MysqlTest extends CakeTestCase
 
     /**
      * Test describe() on a fixture.
-     *
-     * @return void
      */
     public function testDescribe()
     {
@@ -886,8 +855,6 @@ class MysqlTest extends CakeTestCase
 
     /**
      * Test that describe() ignores `default current_timestamp` in timestamp columns.
-     *
-     * @return void
      */
     public function testDescribeHandleCurrentTimestamp()
     {
@@ -922,8 +889,6 @@ SQL;
     /**
      * Test that describe() ignores `default current_timestamp` in datetime columns.
      * This is for MySQL >= 5.6.
-     *
-     * @return void
      */
     public function testDescribeHandleCurrentTimestampDatetime()
     {
@@ -960,8 +925,6 @@ SQL;
 
     /**
      * test that a describe() gets additional fieldParameters
-     *
-     * @return void
      */
     public function testDescribeGettingFieldParameters()
     {
@@ -996,8 +959,6 @@ SQL;
 
     /**
      * Test that two columns with key => primary doesn't create invalid sql.
-     *
-     * @return void
      */
     public function testTwoColumnsWithPrimaryKey()
     {
@@ -1036,8 +997,6 @@ SQL;
 
     /**
      * Test that the primary flag is handled correctly.
-     *
-     * @return void
      */
     public function testCreateSchemaAutoPrimaryKey()
     {
@@ -1083,7 +1042,6 @@ SQL;
 
     /**
      * Tests that listSources method sends the correct query and parses the result accordingly
-     * @return void
      */
     public function testListSources()
     {
@@ -1109,8 +1067,6 @@ SQL;
 
     /**
      * test that listDetailedSources with a named table that doesn't exist.
-     *
-     * @return void
      */
     public function testListDetailedSourcesNamed()
     {
@@ -1126,7 +1082,6 @@ SQL;
 
     /**
      * Tests that getVersion method sends the correct query for getting the mysql version
-     * @return void
      */
     public function testGetVersion()
     {
@@ -1136,7 +1091,6 @@ SQL;
 
     /**
      * Tests that getVersion method sends the correct query for getting the client encoding
-     * @return void
      */
     public function testGetEncoding()
     {
@@ -1159,8 +1113,6 @@ SQL;
 
     /**
      * testFieldDoubleEscaping method
-     *
-     * @return void
      */
     public function testFieldDoubleEscaping()
     {
@@ -1205,8 +1157,6 @@ SQL;
 
     /**
      * testGenerateAssociationQuerySelfJoin method
-     *
-     * @return void
      */
     public function testGenerateAssociationQuerySelfJoin()
     {
@@ -1304,7 +1254,6 @@ SQL;
      * buildRelatedModels method
      *
      * @param Model $model
-     * @return void
      */
     protected function _buildRelatedModels(Model $model)
     {
@@ -1327,6 +1276,7 @@ SQL;
      * @param Model $model
      * @param array $queryData
      * @param array $binding
+     *
      * @return array The prepared association query
      */
     protected function &_prepareAssociationQuery(Model $model, &$queryData, $binding)
@@ -1349,6 +1299,7 @@ SQL;
      * Helper method copied from DboSource::_scrubQueryData()
      *
      * @param array $data
+     *
      * @return array
      */
     protected function _scrubQueryData($data)
@@ -1364,8 +1315,6 @@ SQL;
 
     /**
      * test that read() places provided joins after the generated ones.
-     *
-     * @return void
      */
     public function testReadCustomJoinsAfterGeneratedJoins()
     {
@@ -1408,8 +1357,6 @@ SQL;
 
     /**
      * testGenerateInnerJoinAssociationQuery method
-     *
-     * @return void
      */
     public function testGenerateInnerJoinAssociationQuery()
     {
@@ -1442,8 +1389,6 @@ SQL;
 
     /**
      * testGenerateAssociationQuerySelfJoinWithConditionsInHasOneBinding method
-     *
-     * @return void
      */
     public function testGenerateAssociationQuerySelfJoinWithConditionsInHasOneBinding()
     {
@@ -1467,8 +1412,6 @@ SQL;
 
     /**
      * testGenerateAssociationQuerySelfJoinWithConditionsInBelongsToBinding method
-     *
-     * @return void
      */
     public function testGenerateAssociationQuerySelfJoinWithConditionsInBelongsToBinding()
     {
@@ -1492,8 +1435,6 @@ SQL;
 
     /**
      * testGenerateAssociationQuerySelfJoinWithConditions method
-     *
-     * @return void
      */
     public function testGenerateAssociationQuerySelfJoinWithConditions()
     {
@@ -1550,8 +1491,6 @@ SQL;
 
     /**
      * testGenerateAssociationQueryHasOne method
-     *
-     * @return void
      */
     public function testGenerateAssociationQueryHasOne()
     {
@@ -1582,8 +1521,6 @@ SQL;
 
     /**
      * testGenerateAssociationQueryHasOneWithConditions method
-     *
-     * @return void
      */
     public function testGenerateAssociationQueryHasOneWithConditions()
     {
@@ -1610,8 +1547,6 @@ SQL;
 
     /**
      * testGenerateAssociationQueryBelongsTo method
-     *
-     * @return void
      */
     public function testGenerateAssociationQueryBelongsTo()
     {
@@ -1641,8 +1576,6 @@ SQL;
 
     /**
      * testGenerateAssociationQueryBelongsToWithConditions method
-     *
-     * @return void
      */
     public function testGenerateAssociationQueryBelongsToWithConditions()
     {
@@ -1672,8 +1605,6 @@ SQL;
 
     /**
      * testGenerateAssociationQueryHasMany method
-     *
-     * @return void
      */
     public function testGenerateAssociationQueryHasMany()
     {
@@ -1700,8 +1631,6 @@ SQL;
 
     /**
      * testGenerateAssociationQueryHasManyWithLimit method
-     *
-     * @return void
      */
     public function testGenerateAssociationQueryHasManyWithLimit()
     {
@@ -1740,8 +1669,6 @@ SQL;
 
     /**
      * testGenerateAssociationQueryHasManyWithConditions method
-     *
-     * @return void
      */
     public function testGenerateAssociationQueryHasManyWithConditions()
     {
@@ -1767,8 +1694,6 @@ SQL;
 
     /**
      * testGenerateAssociationQueryHasManyWithOffsetAndLimit method
-     *
-     * @return void
      */
     public function testGenerateAssociationQueryHasManyWithOffsetAndLimit()
     {
@@ -1803,8 +1728,6 @@ SQL;
 
     /**
      * testGenerateAssociationQueryHasManyWithPageAndLimit method
-     *
-     * @return void
      */
     public function testGenerateAssociationQueryHasManyWithPageAndLimit()
     {
@@ -1837,8 +1760,6 @@ SQL;
 
     /**
      * testGenerateAssociationQueryHasManyWithFields method
-     *
-     * @return void
      */
     public function testGenerateAssociationQueryHasManyWithFields()
     {
@@ -1951,8 +1872,6 @@ SQL;
 
     /**
      * test generateAssociationQuery with a hasMany and an aggregate function.
-     *
-     * @return void
      */
     public function testGenerateAssociationQueryHasManyAndAggregateFunction()
     {
@@ -1971,8 +1890,6 @@ SQL;
 
     /**
      * testGenerateAssociationQueryHasAndBelongsToMany method
-     *
-     * @return void
      */
     public function testGenerateAssociationQueryHasAndBelongsToMany()
     {
@@ -2001,8 +1918,6 @@ SQL;
 
     /**
      * testGenerateAssociationQueryHasAndBelongsToManyWithConditions method
-     *
-     * @return void
      */
     public function testGenerateAssociationQueryHasAndBelongsToManyWithConditions()
     {
@@ -2028,8 +1943,6 @@ SQL;
 
     /**
      * testGenerateAssociationQueryHasAndBelongsToManyWithOffsetAndLimit method
-     *
-     * @return void
      */
     public function testGenerateAssociationQueryHasAndBelongsToManyWithOffsetAndLimit()
     {
@@ -2063,8 +1976,6 @@ SQL;
 
     /**
      * testGenerateAssociationQueryHasAndBelongsToManyWithPageAndLimit method
-     *
-     * @return void
      */
     public function testGenerateAssociationQueryHasAndBelongsToManyWithPageAndLimit()
     {
@@ -2098,8 +2009,6 @@ SQL;
 
     /**
      * testSelectDistict method
-     *
-     * @return void
      */
     public function testSelectDistict()
     {
@@ -2111,8 +2020,6 @@ SQL;
 
     /**
      * testStringConditionsParsing method
-     *
-     * @return void
      */
     public function testStringConditionsParsing()
     {
@@ -2235,8 +2142,6 @@ SQL;
 
     /**
      * testQuotesInStringConditions method
-     *
-     * @return void
      */
     public function testQuotesInStringConditions()
     {
@@ -2259,8 +2164,6 @@ SQL;
 
     /**
      * test that - in conditions and field names works
-     *
-     * @return void
      */
     public function testHypenInStringConditionsAndFieldNames()
     {
@@ -2279,8 +2182,6 @@ SQL;
 
     /**
      * testParenthesisInStringConditions method
-     *
-     * @return void
      */
     public function testParenthesisInStringConditions()
     {
@@ -2329,8 +2230,6 @@ SQL;
 
     /**
      * testParenthesisInArrayConditions method
-     *
-     * @return void
      */
     public function testParenthesisInArrayConditions()
     {
@@ -2379,8 +2278,6 @@ SQL;
 
     /**
      * testArrayConditionsParsing method
-     *
-     * @return void
      */
     public function testArrayConditionsParsing()
     {
@@ -2637,8 +2534,6 @@ SQL;
 
     /**
      * test conditions() with replacements.
-     *
-     * @return void
      */
     public function testConditionsWithReplacements()
     {
@@ -2657,8 +2552,6 @@ SQL;
 
     /**
      * Test that array conditions with only one element work.
-     *
-     * @return void
      */
     public function testArrayConditionsOneElement()
     {
@@ -2675,8 +2568,6 @@ SQL;
 
     /**
      * testArrayConditionsParsingComplexKeys method
-     *
-     * @return void
      */
     public function testArrayConditionsParsingComplexKeys()
     {
@@ -2701,8 +2592,6 @@ SQL;
 
     /**
      * testMixedConditionsParsing method
-     *
-     * @return void
      */
     public function testMixedConditionsParsing()
     {
@@ -2723,8 +2612,6 @@ SQL;
 
     /**
      * testConditionsOptionalArguments method
-     *
-     * @return void
      */
     public function testConditionsOptionalArguments()
     {
@@ -2737,8 +2624,6 @@ SQL;
 
     /**
      * testConditionsWithModel
-     *
-     * @return void
      */
     public function testConditionsWithModel()
     {
@@ -2771,8 +2656,6 @@ SQL;
 
     /**
      * testFieldParsing method
-     *
-     * @return void
      */
     public function testFieldParsing()
     {
@@ -2899,8 +2782,6 @@ SQL;
 
     /**
      * test that fields() will accept objects made from DboSource::expression
-     *
-     * @return void
      */
     public function testFieldsWithExpression()
     {
@@ -2916,8 +2797,6 @@ SQL;
 
     /**
      * testRenderStatement method
-     *
-     * @return void
      */
     public function testRenderStatement()
     {
@@ -2942,8 +2821,6 @@ SQL;
 
     /**
      * testSchema method
-     *
-     * @return void
      */
     public function testSchema()
     {
@@ -2961,7 +2838,7 @@ SQL;
      * testDropSchemaNoSchema method
      *
      * @expectedException PHPUnit_Framework_Error
-     * @return void
+     *
      * @throws PHPUnit_Framework_Error
      */
     public function testDropSchemaNoSchema()
@@ -2976,8 +2853,6 @@ SQL;
 
     /**
      * testOrderParsing method
-     *
-     * @return void
      */
     public function testOrderParsing()
     {
@@ -3052,8 +2927,6 @@ SQL;
 
     /**
      * testComplexSortExpression method
-     *
-     * @return void
      */
     public function testComplexSortExpression()
     {
@@ -3063,8 +2936,6 @@ SQL;
 
     /**
      * testCalculations method
-     *
-     * @return void
      */
     public function testCalculations()
     {
@@ -3106,8 +2977,6 @@ SQL;
 
     /**
      * testLength method
-     *
-     * @return void
      */
     public function testLength()
     {
@@ -3141,8 +3010,6 @@ SQL;
 
     /**
      * Tests the length of enum column.
-     *
-     * @return void
      */
     public function testLengthEnum()
     {
@@ -3152,8 +3019,6 @@ SQL;
 
     /**
      * Tests the length of set column.
-     *
-     * @return void
      */
     public function testLengthSet()
     {
@@ -3163,8 +3028,6 @@ SQL;
 
     /**
      * testBuildIndex method
-     *
-     * @return void
      */
     public function testBuildIndex()
     {
@@ -3213,8 +3076,6 @@ SQL;
 
     /**
      * testBuildColumn method
-     *
-     * @return void
      */
     public function testBuildColumn()
     {
@@ -3319,7 +3180,6 @@ SQL;
      * testBuildColumnBadType method
      *
      * @expectedException PHPUnit_Framework_Error
-     * @return void
      */
     public function testBuildColumnBadType()
     {
@@ -3339,7 +3199,6 @@ SQL;
      * @param array $data Column data
      * @param string $expected Expected sql part
      *
-     * @return void
      *
      * @dataProvider buildColumnUnsignedProvider
      */
@@ -3468,8 +3327,6 @@ SQL;
 
     /**
      * Test getting `unsigned` field parameter from DB
-     *
-     * @return void
      */
     public function testSchemaUnsigned()
     {
@@ -3489,8 +3346,6 @@ SQL;
 
     /**
      * test hasAny()
-     *
-     * @return void
      */
     public function testHasAny()
     {
@@ -3519,8 +3374,6 @@ SQL;
 
     /**
      * test fields generating usable virtual fields to use in query
-     *
-     * @return void
      */
     public function testVirtualFields()
     {
@@ -3592,8 +3445,6 @@ SQL;
 
     /**
      * test find() generating usable virtual fields to use in query without modifying custom subqueries.
-     *
-     * @return void
      */
     public function testVirtualFieldsWithSubquery()
     {
@@ -3622,8 +3473,6 @@ SQL;
 
     /**
      * test conditions to generate query conditions for virtual fields
-     *
-     * @return void
      */
     public function testVirtualFieldsInConditions()
     {
@@ -3659,8 +3508,6 @@ SQL;
 
     /**
      * test that virtualFields with complex functions and aliases work.
-     *
-     * @return void
      */
     public function testConditionsWithComplexVirtualFields()
     {
@@ -3683,8 +3530,6 @@ SQL;
 
     /**
      * test calculate to generate claculate statements on virtual fields
-     *
-     * @return void
      */
     public function testVirtualFieldsInCalculate()
     {
@@ -3708,8 +3553,6 @@ SQL;
 
     /**
      * test reading virtual fields containing newlines when recursive > 0
-     *
-     * @return void
      */
     public function testReadVirtualFieldsWithNewLines()
     {
@@ -3727,8 +3570,6 @@ SQL;
 
     /**
      * test group to generate GROUP BY statements on virtual fields
-     *
-     * @return void
      */
     public function testVirtualFieldsInGroup()
     {
@@ -3745,8 +3586,6 @@ SQL;
 
     /**
      * test that virtualFields with complex functions and aliases work.
-     *
-     * @return void
      */
     public function testFieldsWithComplexVirtualFields()
     {
@@ -3773,8 +3612,6 @@ SQL;
 
     /**
      * test that execute runs queries.
-     *
-     * @return void
      */
     public function testExecute()
     {
@@ -3794,8 +3631,6 @@ SQL;
 
     /**
      * test a full example of using virtual fields
-     *
-     * @return void
      */
     public function testVirtualFieldsFetch()
     {
@@ -3819,8 +3654,6 @@ SQL;
 
     /**
      * test reading complex virtualFields with subqueries.
-     *
-     * @return void
      */
     public function testVirtualFieldsComplexRead()
     {
@@ -3853,8 +3686,6 @@ SQL;
 
     /**
      * testIntrospectType method
-     *
-     * @return void
      */
     public function testIntrospectType()
     {
@@ -4012,8 +3843,6 @@ SQL;
 
     /**
      * testRealQueries method
-     *
-     * @return void
      */
     public function testRealQueries()
     {
@@ -4082,7 +3911,6 @@ SQL;
 
     /**
      * @expectedException MissingConnectionException
-     * @return void
      */
     public function testExceptionOnBrokenConnection()
     {
@@ -4097,8 +3925,6 @@ SQL;
 
     /**
      * testStatements method
-     *
-     * @return void
      */
     public function testUpdateStatements()
     {
@@ -4130,8 +3956,6 @@ SQL;
 
     /**
      * Test deletes with a mock.
-     *
-     * @return void
      */
     public function testDeleteStatements()
     {
@@ -4162,8 +3986,6 @@ SQL;
 
     /**
      * Test deletes without complex conditions.
-     *
-     * @return void
      */
     public function testDeleteNoComplexCondition()
     {
@@ -4189,8 +4011,6 @@ SQL;
 
     /**
      * Test truncate with a mock.
-     *
-     * @return void
      */
     public function testTruncateStatements()
     {
@@ -4223,8 +4043,6 @@ SQL;
 
     /**
      * Test nested transaction
-     *
-     * @return void
      */
     public function testNestedTransaction()
     {
@@ -4264,8 +4082,6 @@ SQL;
 
     /**
      * Test that value() quotes set values even when numeric.
-     *
-     * @return void
      */
     public function testSetValue()
     {
@@ -4282,8 +4098,6 @@ SQL;
 
     /**
      * Test isConnected
-     *
-     * @return void
      */
     public function testIsConnected()
     {
@@ -4296,8 +4110,6 @@ SQL;
 
     /**
      * Test insertMulti with id position.
-     *
-     * @return void
      */
     public function testInsertMultiId()
     {

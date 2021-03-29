@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Test.Case.Console.Command
+ *
  * @since         CakePHP(tm) v 1.3
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('ConsoleOutput', 'Console');
@@ -42,8 +46,6 @@ class BakeShellTest extends CakeTestCase
 
     /**
      * setup test
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -60,8 +62,6 @@ class BakeShellTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -71,8 +71,6 @@ class BakeShellTest extends CakeTestCase
 
     /**
      * test bake all
-     *
-     * @return void
      */
     public function testAllWithModelName()
     {

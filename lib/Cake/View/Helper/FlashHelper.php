@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.View.Helper
+ *
  * @since         CakePHP(tm) v 2.7.0-dev
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('AppHelper', 'View/Helper');
@@ -63,9 +67,11 @@ class FlashHelper extends AppHelper
      * @param string $key The [Message.]key you are rendering in the view.
      * @param array $options Additional options to use for the creation of this flash message.
      *    Supports the 'params', and 'element' keys that are used in the helper.
+     *
+     * @throws UnexpectedValueException If value for flash settings key is not an array.
+     *
      * @return string|null Rendered flash message or null if flash key does not exist
      *   in session.
-     * @throws UnexpectedValueException If value for flash settings key is not an array.
      */
     public function render($key = 'flash', $options = [])
     {

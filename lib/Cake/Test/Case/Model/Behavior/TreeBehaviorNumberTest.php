@@ -12,9 +12,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Model.Behavior
+ *
  * @since         CakePHP(tm) v 1.2.0.5330
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Model', 'Model');
@@ -58,8 +62,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * testInitialize method
-     *
-     * @return void
      */
     public function testInitialize()
     {
@@ -76,8 +78,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * testDetectInvalidLeft method
-     *
-     * @return void
      */
     public function testDetectInvalidLeft()
     {
@@ -104,8 +104,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * testDetectInvalidRight method
-     *
-     * @return void
      */
     public function testDetectInvalidRight()
     {
@@ -132,8 +130,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * testDetectInvalidParent method
-     *
-     * @return void
      */
     public function testDetectInvalidParent()
     {
@@ -158,8 +154,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * testDetectNoneExistentParent method
-     *
-     * @return void
      */
     public function testDetectNoneExistentParent()
     {
@@ -182,8 +176,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * testRecoverUsingParentMode method
-     *
-     * @return void
      */
     public function testRecoverUsingParentMode()
     {
@@ -238,8 +230,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * testRecoverUsingParentModeAndDelete method
-     *
-     * @return void
      */
     public function testRecoverUsingParentModeAndDelete()
     {
@@ -312,8 +302,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * testRecoverFromMissingParent method
-     *
-     * @return void
      */
     public function testRecoverFromMissingParent()
     {
@@ -336,8 +324,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * testDetectInvalidParents method
-     *
-     * @return void
      */
     public function testDetectInvalidParents()
     {
@@ -359,8 +345,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * testDetectInvalidLftsRghts method
-     *
-     * @return void
      */
     public function testDetectInvalidLftsRghts()
     {
@@ -381,8 +365,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * Reproduces a situation where a single node has lft= rght, and all other lft and rght fields follow sequentially
-     *
-     * @return void
      */
     public function testDetectEqualLftsRghts()
     {
@@ -413,8 +395,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * testAddOrphan method
-     *
-     * @return void
      */
     public function testAddOrphan()
     {
@@ -434,8 +414,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * testAddMiddle method
-     *
-     * @return void
      */
     public function testAddMiddle()
     {
@@ -466,8 +444,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * testAddWithPreSpecifiedId method
-     *
-     * @return void
      */
     public function testAddWithPreSpecifiedId()
     {
@@ -497,8 +473,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * testAddInvalid method
-     *
-     * @return void
      */
     public function testAddInvalid()
     {
@@ -523,8 +497,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * testAddNotIndexedByModel method
-     *
-     * @return void
      */
     public function testAddNotIndexedByModel()
     {
@@ -544,8 +516,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * testMovePromote method
-     *
-     * @return void
      */
     public function testMovePromote()
     {
@@ -571,8 +541,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * testGetLevel method
-     *
-     * @return void
      */
     public function testGetLevel()
     {
@@ -592,8 +560,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * testMoveWithWhitelist method
-     *
-     * @return void
      */
     public function testMoveWithWhitelist()
     {
@@ -620,8 +586,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * testInsertWithWhitelist method
-     *
-     * @return void
      */
     public function testInsertWithWhitelist()
     {
@@ -640,8 +604,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * testMoveBefore method
-     *
-     * @return void
      */
     public function testMoveBefore()
     {
@@ -669,8 +631,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * testMoveAfter method
-     *
-     * @return void
      */
     public function testMoveAfter()
     {
@@ -698,8 +658,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * testMoveDemoteInvalid method
-     *
-     * @return void
      */
     public function testMoveDemoteInvalid()
     {
@@ -731,8 +689,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * testMoveInvalid method
-     *
-     * @return void
      */
     public function testMoveInvalid()
     {
@@ -756,8 +712,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * testMoveSelfInvalid method
-     *
-     * @return void
      */
     public function testMoveSelfInvalid()
     {
@@ -782,8 +736,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * testMoveUpSuccess method
-     *
-     * @return void
      */
     public function testMoveUpSuccess()
     {
@@ -804,8 +756,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * testMoveUpFail method
-     *
-     * @return void
      */
     public function testMoveUpFail()
     {
@@ -827,8 +777,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * testMoveUp2 method
-     *
-     * @return void
      */
     public function testMoveUp2()
     {
@@ -858,8 +806,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * testMoveUpFirst method
-     *
-     * @return void
      */
     public function testMoveUpFirst()
     {
@@ -889,8 +835,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * testMoveDownSuccess method
-     *
-     * @return void
      */
     public function testMoveDownSuccess()
     {
@@ -911,8 +855,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * testMoveDownFail method
-     *
-     * @return void
      */
     public function testMoveDownFail()
     {
@@ -933,8 +875,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * testMoveDownLast method
-     *
-     * @return void
      */
     public function testMoveDownLast()
     {
@@ -964,8 +904,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * testMoveDown2 method
-     *
-     * @return void
      */
     public function testMoveDown2()
     {
@@ -995,8 +933,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * testSaveNoMove method
-     *
-     * @return void
      */
     public function testSaveNoMove()
     {
@@ -1026,8 +962,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * testMoveToRootAndMoveUp method
-     *
-     * @return void
      */
     public function testMoveToRootAndMoveUp()
     {
@@ -1051,8 +985,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * testDelete method
-     *
-     * @return void
      */
     public function testDelete()
     {
@@ -1087,8 +1019,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * Test deleting a record that doesn't exist.
-     *
-     * @return void
      */
     public function testDeleteDoesNotExist()
     {
@@ -1100,8 +1030,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * testRemove method
-     *
-     * @return void
      */
     public function testRemove()
     {
@@ -1133,8 +1061,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * testRemoveLastTopParent method
-     *
-     * @return void
      */
     public function testRemoveLastTopParent()
     {
@@ -1167,8 +1093,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * testRemoveNoChildren method
-     *
-     * @return void
      */
     public function testRemoveNoChildren()
     {
@@ -1202,8 +1126,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * testRemoveAndDelete method
-     *
-     * @return void
      */
     public function testRemoveAndDelete()
     {
@@ -1237,8 +1159,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * testRemoveAndDeleteNoChildren method
-     *
-     * @return void
      */
     public function testRemoveAndDeleteNoChildren()
     {
@@ -1270,8 +1190,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * testChildren method
-     *
-     * @return void
      */
     public function testChildren()
     {
@@ -1301,8 +1219,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * testCountChildren method
-     *
-     * @return void
      */
     public function testCountChildren()
     {
@@ -1327,8 +1243,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * testGetParentNode method
-     *
-     * @return void
      */
     public function testGetParentNode()
     {
@@ -1346,8 +1260,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * testGetPath method
-     *
-     * @return void
      */
     public function testGetPath()
     {
@@ -1367,8 +1279,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * testNoAmbiguousColumn method
-     *
-     * @return void
      */
     public function testNoAmbiguousColumn()
     {
@@ -1400,8 +1310,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * testReorderTree method
-     *
-     * @return void
      */
     public function testReorderTree()
     {
@@ -1432,8 +1340,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
      * test reordering large-ish trees with cacheQueries = true.
      * This caused infinite loops when moving down elements as stale data is returned
      * from the memory cache
-     *
-     * @return void
      */
     public function testReorderBigTreeWithQueryCaching()
     {
@@ -1450,8 +1356,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * testGenerateTreeListWithSelfJoin method
-     *
-     * @return void
      */
     public function testGenerateTreeListWithSelfJoin()
     {
@@ -1468,8 +1372,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * Test the formatting options of generateTreeList()
-     *
-     * @return void
      */
     public function testGenerateTreeListFormatting()
     {
@@ -1489,8 +1391,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * Test the formatting options of formatTreeList()
-     *
-     * @return void
      */
     public function testFormatTreeList()
     {
@@ -1513,8 +1413,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * testArraySyntax method
-     *
-     * @return void
      */
     public function testArraySyntax()
     {
@@ -1528,8 +1426,6 @@ class TreeBehaviorNumberTest extends CakeTestCase
 
     /**
      * testFindThreaded method
-     *
-     * @return void
      */
     public function testFindThreaded()
     {

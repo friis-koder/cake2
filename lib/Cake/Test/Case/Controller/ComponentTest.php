@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Controller
+ *
  * @since         CakePHP(tm) v 1.2.0.5436
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Controller', 'Controller');
@@ -76,7 +80,6 @@ class AppleComponent extends Component
      * startup method
      *
      * @param Controller $controller
-     * @return void
      */
     public function startup(Controller $controller)
     {
@@ -102,7 +105,6 @@ class OrangeComponent extends Component
      * initialize method
      *
      * @param Controller $controller
-     * @return void
      */
     public function initialize(Controller $controller)
     {
@@ -114,6 +116,7 @@ class OrangeComponent extends Component
      * startup method
      *
      * @param Controller $controller
+     *
      * @return string
      */
     public function startup(Controller $controller)
@@ -140,6 +143,7 @@ class BananaComponent extends Component
      * startup method
      *
      * @param Controller $controller
+     *
      * @return string
      */
     public function startup(Controller $controller)
@@ -202,8 +206,6 @@ class ComponentTest extends CakeTestCase
 {
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -216,8 +218,6 @@ class ComponentTest extends CakeTestCase
 
     /**
      * test accessing inner components.
-     *
-     * @return void
      */
     public function testInnerComponentConstruction()
     {
@@ -229,8 +229,6 @@ class ComponentTest extends CakeTestCase
 
     /**
      * test component loading
-     *
-     * @return void
      */
     public function testNestedComponentLoading()
     {
@@ -245,8 +243,6 @@ class ComponentTest extends CakeTestCase
 
     /**
      * test that component components are not enabled in the collection.
-     *
-     * @return void
      */
     public function testInnerComponentsAreNotEnabled()
     {
@@ -260,8 +256,6 @@ class ComponentTest extends CakeTestCase
 
     /**
      * test a component being used more than once.
-     *
-     * @return void
      */
     public function testMultipleComponentInitialize()
     {
@@ -277,8 +271,6 @@ class ComponentTest extends CakeTestCase
 
     /**
      * Test mutually referencing components.
-     *
-     * @return void
      */
     public function testSomethingReferencingEmailComponent()
     {
@@ -297,8 +289,6 @@ class ComponentTest extends CakeTestCase
     /**
      * Test lazy loading of components inside components and both explicit and
      * implicit 'enabled' setting.
-     *
-     * @return void
      */
     public function testGet()
     {

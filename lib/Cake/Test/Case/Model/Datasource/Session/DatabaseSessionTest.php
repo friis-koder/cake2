@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Test.Case.Model.Datasource.Session
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Model', 'Model');
@@ -48,8 +52,6 @@ class DatabaseSessionTest extends CakeTestCase
 
     /**
      * test case startup
-     *
-     * @return void
      */
     public static function setupBeforeClass()
     {
@@ -62,8 +64,6 @@ class DatabaseSessionTest extends CakeTestCase
 
     /**
      * cleanup after test case.
-     *
-     * @return void
      */
     public static function teardownAfterClass()
     {
@@ -72,8 +72,6 @@ class DatabaseSessionTest extends CakeTestCase
 
     /**
      * setUp
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -83,8 +81,6 @@ class DatabaseSessionTest extends CakeTestCase
 
     /**
      * tearDown
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -95,8 +91,6 @@ class DatabaseSessionTest extends CakeTestCase
 
     /**
      * test that constructor sets the right things up.
-     *
-     * @return void
      */
     public function testConstructionSettings()
     {
@@ -112,8 +106,6 @@ class DatabaseSessionTest extends CakeTestCase
 
     /**
      * test opening the session
-     *
-     * @return void
      */
     public function testOpen()
     {
@@ -122,8 +114,6 @@ class DatabaseSessionTest extends CakeTestCase
 
     /**
      * test write()
-     *
-     * @return void
      */
     public function testWrite()
     {
@@ -133,8 +123,6 @@ class DatabaseSessionTest extends CakeTestCase
 
     /**
      * testReadAndWriteWithDatabaseStorage method
-     *
-     * @return void
      */
     public function testWriteEmptySessionId()
     {
@@ -144,8 +132,6 @@ class DatabaseSessionTest extends CakeTestCase
 
     /**
      * test read()
-     *
-     * @return void
      */
     public function testRead()
     {
@@ -158,8 +144,6 @@ class DatabaseSessionTest extends CakeTestCase
 
     /**
      * test blowing up the session.
-     *
-     * @return void
      */
     public function testDestroy()
     {
@@ -171,8 +155,6 @@ class DatabaseSessionTest extends CakeTestCase
 
     /**
      * test the garbage collector
-     *
-     * @return void
      */
     public function testGc()
     {
@@ -189,8 +171,6 @@ class DatabaseSessionTest extends CakeTestCase
 
     /**
      * testConcurrentInsert
-     *
-     * @return void
      */
     public function testConcurrentInsert()
     {

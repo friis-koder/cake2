@@ -12,9 +12,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Core
+ *
  * @since         CakePHP(tm) v 1.2.0.5432
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('PhpReader', 'Configure');
@@ -28,8 +32,6 @@ class ConfigureTest extends CakeTestCase
 {
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -41,8 +43,6 @@ class ConfigureTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -70,8 +70,6 @@ class ConfigureTest extends CakeTestCase
 
     /**
      * Test to ensure bootrapping doesn't overwrite prior configs set under 'App' key
-     *
-     * @return void
      */
     public function testBootstrap()
     {
@@ -89,8 +87,6 @@ class ConfigureTest extends CakeTestCase
 
     /**
      * testRead method
-     *
-     * @return void
      */
     public function testRead()
     {
@@ -117,8 +113,6 @@ class ConfigureTest extends CakeTestCase
 
     /**
      * testWrite method
-     *
-     * @return void
      */
     public function testWrite()
     {
@@ -155,8 +149,6 @@ class ConfigureTest extends CakeTestCase
 
     /**
      * Test the consume method.
-     *
-     * @return void
      */
     public function testConsume()
     {
@@ -176,8 +168,6 @@ class ConfigureTest extends CakeTestCase
 
     /**
      * testConsumeEmpty
-     *
-     * @return void
      */
     public function testConsumeEmpty()
     {
@@ -190,8 +180,6 @@ class ConfigureTest extends CakeTestCase
 
     /**
      * test setting display_errors with debug.
-     *
-     * @return void
      */
     public function testDebugSettingDisplayErrors()
     {
@@ -206,8 +194,6 @@ class ConfigureTest extends CakeTestCase
 
     /**
      * testDelete method
-     *
-     * @return void
      */
     public function testDelete()
     {
@@ -238,8 +224,6 @@ class ConfigureTest extends CakeTestCase
 
     /**
      * testCheck method
-     *
-     * @return void
      */
     public function testCheck()
     {
@@ -251,8 +235,6 @@ class ConfigureTest extends CakeTestCase
 
     /**
      * testCheckingSavedEmpty method
-     *
-     * @return void
      */
     public function testCheckingSavedEmpty()
     {
@@ -271,8 +253,6 @@ class ConfigureTest extends CakeTestCase
 
     /**
      * testCheckKeyWithSpaces method
-     *
-     * @return void
      */
     public function testCheckKeyWithSpaces()
     {
@@ -286,8 +266,6 @@ class ConfigureTest extends CakeTestCase
 
     /**
      * testCheckEmpty
-     *
-     * @return void
      */
     public function testCheckEmpty()
     {
@@ -299,7 +277,6 @@ class ConfigureTest extends CakeTestCase
      * testLoad method
      *
      * @expectedException RuntimeException
-     * @return void
      */
     public function testLoadExceptionOnNonExistantFile()
     {
@@ -309,8 +286,6 @@ class ConfigureTest extends CakeTestCase
 
     /**
      * test load method for default config creation
-     *
-     * @return void
      */
     public function testLoadDefaultConfig()
     {
@@ -324,8 +299,6 @@ class ConfigureTest extends CakeTestCase
 
     /**
      * test load with merging
-     *
-     * @return void
      */
     public function testLoadWithMerge()
     {
@@ -348,8 +321,6 @@ class ConfigureTest extends CakeTestCase
 
     /**
      * test loading with overwrite
-     *
-     * @return void
      */
     public function testLoadNoMerge()
     {
@@ -370,8 +341,6 @@ class ConfigureTest extends CakeTestCase
 
     /**
      * testLoad method
-     *
-     * @return void
      */
     public function testLoadPlugin()
     {
@@ -396,8 +365,6 @@ class ConfigureTest extends CakeTestCase
 
     /**
      * testStore method
-     *
-     * @return void
      */
     public function testStoreAndRestore()
     {
@@ -417,8 +384,6 @@ class ConfigureTest extends CakeTestCase
 
     /**
      * test that store and restore only store/restore the provided data.
-     *
-     * @return void
      */
     public function testStoreAndRestoreWithData()
     {
@@ -438,8 +403,6 @@ class ConfigureTest extends CakeTestCase
 
     /**
      * testVersion method
-     *
-     * @return void
      */
     public function testVersion()
     {
@@ -449,8 +412,6 @@ class ConfigureTest extends CakeTestCase
 
     /**
      * test adding new readers.
-     *
-     * @return void
      */
     public function testReaderSetup()
     {
@@ -471,7 +432,7 @@ class ConfigureTest extends CakeTestCase
      * test reader() throwing exceptions on missing interface.
      *
      * @expectedException PHPUnit_Framework_Error
-     * @return void
+     *
      * @throws PHPUnit_Framework_Error
      */
     public function testReaderExceptionOnIncorrectClass()
@@ -487,8 +448,6 @@ class ConfigureTest extends CakeTestCase
 
     /**
      * Test that clear wipes all values.
-     *
-     * @return void
      */
     public function testClear()
     {
@@ -502,7 +461,6 @@ class ConfigureTest extends CakeTestCase
      * testDumpNoAdapter
      *
      * @expectedException ConfigureException
-     * @return void
      */
     public function testDumpNoAdapter()
     {
@@ -511,8 +469,6 @@ class ConfigureTest extends CakeTestCase
 
     /**
      * test dump integrated with the PhpReader.
-     *
-     * @return void
      */
     public function testDump()
     {
@@ -530,8 +486,6 @@ class ConfigureTest extends CakeTestCase
 
     /**
      * Test dumping only some of the data.
-     *
-     * @return void
      */
     public function testDumpPartial()
     {

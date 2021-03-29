@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Utility
+ *
  * @since         CakePHP(tm) v 1.2.0.5432
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Xml', 'Utility');
@@ -87,6 +91,7 @@ class XmlTest extends CakeTestCase
 
     /**
      * fixtures property
+     *
      * @var array
      */
     public $fixtures = [
@@ -95,8 +100,6 @@ class XmlTest extends CakeTestCase
 
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -107,8 +110,6 @@ class XmlTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -118,8 +119,6 @@ class XmlTest extends CakeTestCase
 
     /**
      * testBuild method
-     *
-     * @return void
      */
     public function testBuild()
     {
@@ -171,8 +170,6 @@ class XmlTest extends CakeTestCase
 
     /**
      * test build() method with huge option
-     *
-     * @return void
      */
     public function testBuildHuge()
     {
@@ -186,7 +183,6 @@ class XmlTest extends CakeTestCase
      * Test that the readFile option disables local file parsing.
      *
      * @expectedException XmlException
-     * @return void
      */
     public function testBuildFromFileWhenDisabled()
     {
@@ -198,7 +194,6 @@ class XmlTest extends CakeTestCase
      * Test that the readFile option disables local file parsing.
      *
      * @expectedException XmlException
-     * @return void
      */
     public function testBuildFromUrlWhenDisabled()
     {
@@ -226,7 +221,6 @@ class XmlTest extends CakeTestCase
      *
      * @dataProvider invalidDataProvider
      * @expectedException XmlException
-     * @return void
      */
     public function testBuildInvalidData($value)
     {
@@ -237,7 +231,6 @@ class XmlTest extends CakeTestCase
      * Test that building SimpleXmlElement with invalid XML causes the right exception.
      *
      * @expectedException XmlException
-     * @return void
      */
     public function testBuildInvalidDataSimpleXml()
     {
@@ -247,8 +240,6 @@ class XmlTest extends CakeTestCase
 
     /**
      * test build with a single empty tag
-     *
-     * @return void
      */
     public function testBuildEmptyTag()
     {
@@ -262,8 +253,6 @@ class XmlTest extends CakeTestCase
 
     /**
      * testFromArray method
-     *
-     * @return void
      */
     public function testFromArray()
     {
@@ -421,8 +410,6 @@ XML;
 
     /**
      * Test fromArray() with zero values.
-     *
-     * @return void
      */
     public function testFromArrayZeroValue()
     {
@@ -452,8 +439,6 @@ XML;
 
     /**
      * Test non-sequential keys in list types.
-     *
-     * @return void
      */
     public function testFromArrayNonSequentialKeys()
     {
@@ -490,8 +475,6 @@ XML;
 
     /**
      * testFromArrayPretty method
-     *
-     * @return void
      */
     public function testFromArrayPretty()
     {
@@ -618,7 +601,6 @@ XML;
      * testFromArrayFail method
      *
      * @dataProvider invalidArrayDataProvider
-     * @return void
      */
     public function testFromArrayFail($value)
     {
@@ -632,8 +614,6 @@ XML;
 
     /**
      * Test that there are not unterminated errors when building xml
-     *
-     * @return void
      */
     public function testFromArrayUnterminatedError()
     {
@@ -668,8 +648,6 @@ XML;
 
     /**
      * testToArray method
-     *
-     * @return void
      */
     public function testToArray()
     {
@@ -831,8 +809,6 @@ XML;
 
     /**
      * testRss
-     *
-     * @return void
      */
     public function testRss()
     {
@@ -907,8 +883,6 @@ XML;
 
     /**
      * testXmlRpc
-     *
-     * @return void
      */
     public function testXmlRpc()
     {
@@ -993,8 +967,6 @@ XML;
 
     /**
      * testSoap
-     *
-     * @return void
      */
     public function testSoap()
     {
@@ -1050,8 +1022,6 @@ XML;
 
     /**
      * testNamespace
-     *
-     * @return void
      */
     public function testNamespace()
     {
@@ -1168,8 +1138,6 @@ XML;
 
     /**
      * test that CDATA blocks don't get screwed up by SimpleXml
-     *
-     * @return void
      */
     public function testCdata()
     {
@@ -1198,7 +1166,6 @@ XML;
      *
      * @dataProvider invalidToArrayDataProvider
      * @expectedException XmlException
-     * @return void
      */
     public function testToArrayFail($value)
     {
@@ -1207,8 +1174,6 @@ XML;
 
     /**
      * testWithModel method
-     *
-     * @return void
      */
     public function testWithModel()
     {
@@ -1254,8 +1219,6 @@ XML;
 
     /**
      * Test ampersand in text elements.
-     *
-     * @return void
      */
     public function testAmpInText()
     {
@@ -1271,8 +1234,6 @@ XML;
 
     /**
      * Test that entity loading is disabled by default.
-     *
-     * @return void
      */
     public function testNoEntityLoading()
     {

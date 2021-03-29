@@ -8,8 +8,10 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
  * @since         2.8
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('TableShellHelper', 'Console/Helper');
@@ -17,6 +19,7 @@ App::uses('ConsoleOutputStub', 'TestSuite/Stub');
 
 /**
  * ProgressHelper test.
+ *
  * @property ConsoleOutputStub $consoleOutput
  * @property TableShellHelper $helper
  */
@@ -24,8 +27,6 @@ class TableShellHelperTest extends CakeTestCase
 {
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -37,8 +38,6 @@ class TableShellHelperTest extends CakeTestCase
 
     /**
      * Test output
-     *
-     * @return void
      */
     public function testDefaultOutput()
     {
@@ -61,8 +60,6 @@ class TableShellHelperTest extends CakeTestCase
 
     /**
      * Test output with multibyte characters
-     *
-     * @return void
      */
     public function testOutputUtf8()
     {
@@ -85,8 +82,6 @@ class TableShellHelperTest extends CakeTestCase
 
     /**
      * Test output without headers
-     *
-     * @return void
      */
     public function testOutputWithoutHeaderStyle()
     {
@@ -110,8 +105,6 @@ class TableShellHelperTest extends CakeTestCase
 
     /**
      * Test output with different header style
-     *
-     * @return void
      */
     public function testOutputWithDifferentHeaderStyle()
     {
@@ -135,8 +128,6 @@ class TableShellHelperTest extends CakeTestCase
 
     /**
      * Test output without table headers
-     *
-     * @return void
      */
     public function testOutputWithoutHeaders()
     {
@@ -157,8 +148,6 @@ class TableShellHelperTest extends CakeTestCase
 
     /**
      * Test output with row separator
-     *
-     * @return void
      */
     public function testOutputWithRowSeparator()
     {
@@ -183,8 +172,6 @@ class TableShellHelperTest extends CakeTestCase
 
     /**
      * Test output with row separator and no headers
-     *
-     * @return void
      */
     public function testOutputWithRowSeparatorAndHeaders()
     {

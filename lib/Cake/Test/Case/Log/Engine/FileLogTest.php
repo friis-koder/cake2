@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Log.Engine
+ *
  * @since         CakePHP(tm) v 1.3
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('FileLog', 'Log/Engine');
@@ -26,8 +30,6 @@ class FileLogTest extends CakeTestCase
 {
     /**
      * testLogFileWriting method
-     *
-     * @return void
      */
     public function testLogFileWriting()
     {
@@ -55,8 +57,6 @@ class FileLogTest extends CakeTestCase
 
     /**
      * test using the path setting to write logs in other places.
-     *
-     * @return void
      */
     public function testPathSetting()
     {
@@ -70,8 +70,6 @@ class FileLogTest extends CakeTestCase
 
     /**
      * test log rotation
-     *
-     * @return void
      */
     public function testRotation()
     {
@@ -185,8 +183,6 @@ class FileLogTest extends CakeTestCase
 
     /**
      * helper function to clears all log files in specified directory
-     *
-     * @return void
      */
     protected function _deleteLogs($dir)
     {

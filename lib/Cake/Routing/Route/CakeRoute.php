@@ -8,8 +8,10 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
  * @since         CakePHP(tm) v 1.3
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Hash', 'Utility');
@@ -127,8 +129,6 @@ class CakeRoute
      *
      * Uses the template, defaults and options properties to compile a
      * regular expression that can be used to parse request strings.
-     *
-     * @return void
      */
     protected function _writeRoute()
     {
@@ -191,6 +191,7 @@ class CakeRoute
      * false will be returned. String URLs are parsed if they match a routes regular expression.
      *
      * @param string $url The URL to attempt to parse.
+     *
      * @return mixed Boolean false on failure, otherwise an array or parameters
      */
     public function parse($url)
@@ -275,6 +276,7 @@ class CakeRoute
      *
      * @param string $args A string with the passed & named params. eg. /1/page:2
      * @param string $context The current route context, which should contain controller/action keys.
+     *
      * @return array Array of ($pass, $named)
      */
     protected function _parseArgs($args, $context)
@@ -345,6 +347,7 @@ class CakeRoute
      * @param string $val The value of the named parameter
      * @param array $rule The rule(s) to apply, can also be a match string
      * @param string $context An array with additional context information (controller / action)
+     *
      * @return bool
      */
     protected function _matchNamed($val, $rule, $context)
@@ -384,6 +387,7 @@ class CakeRoute
      *
      * @param array $url The array to apply persistent parameters to.
      * @param array $params An array of persistent values to replace persistent ones.
+     *
      * @return array An array with persistent parameters applied.
      */
     public function persistParams($url, $params)
@@ -408,6 +412,7 @@ class CakeRoute
      * This method handles the reverse routing or conversion of URL arrays into string URLs.
      *
      * @param array $url An array of parameters to check matching with.
+     *
      * @return mixed Either a string URL for the parameters if they match or false.
      */
     public function match($url)
@@ -504,6 +509,7 @@ class CakeRoute
      * used to create the route.
      *
      * @param array $params The params to convert to a string URL.
+     *
      * @return string Composed route string.
      */
     protected function _writeUrl($params)
@@ -573,6 +579,7 @@ class CakeRoute
      * router caching.
      *
      * @param array $fields Key/Value of object attributes
+     *
      * @return CakeRoute A new instance of the route
      */
     public static function __set_state($fields)

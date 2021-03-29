@@ -12,9 +12,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP Project
+ *
  * @package       Cake.Test.Case.TestSuite
+ *
  * @since         CakePHP v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Controller', 'Controller');
@@ -62,11 +66,11 @@ if (!class_exists('AppController', false)) {
  */
 if (!class_exists('PostsController')) {
 
-/**
- * PostsController
- *
- * @package       Cake.Test.Case.TestSuite
- */
+    /**
+     * PostsController
+     *
+     * @package       Cake.Test.Case.TestSuite
+     */
     class PostsController extends AppController
     {
         /**
@@ -119,8 +123,6 @@ class ControllerTestCaseTest extends CakeTestCase
 
     /**
      * reset environment.
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -138,8 +140,6 @@ class ControllerTestCaseTest extends CakeTestCase
 
     /**
      * tearDown
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -150,8 +150,6 @@ class ControllerTestCaseTest extends CakeTestCase
 
     /**
      * Test that ControllerTestCase::generate() creates mock objects correctly
-     *
-     * @return void
      */
     public function testGenerate()
     {
@@ -218,8 +216,6 @@ class ControllerTestCaseTest extends CakeTestCase
 
     /**
      * testGenerateWithComponentConfig
-     *
-     * @return void
      */
     public function testGenerateWithComponentConfig()
     {
@@ -243,8 +239,6 @@ class ControllerTestCaseTest extends CakeTestCase
 
     /**
      * Tests ControllerTestCase::generate() using classes from plugins
-     *
-     * @return void
      */
     public function testGenerateWithPlugin()
     {
@@ -280,8 +274,6 @@ class ControllerTestCaseTest extends CakeTestCase
 
     /**
      * Tests ControllerTestCase::generate() using aliased component
-     *
-     * @return void
      */
     public function testGenerateWithMockedAliasedComponent()
     {
@@ -300,8 +292,6 @@ class ControllerTestCaseTest extends CakeTestCase
 
     /**
      * Tests ControllerTestCase::generate() using aliased plugin component
-     *
-     * @return void
      */
     public function testGenerateWithMockedAliasedPluginComponent()
     {
@@ -320,8 +310,6 @@ class ControllerTestCaseTest extends CakeTestCase
 
     /**
      * Tests testAction
-     *
-     * @return void
      */
     public function testTestAction()
     {
@@ -351,8 +339,6 @@ class ControllerTestCaseTest extends CakeTestCase
 
     /**
      * Test array URLs with testAction()
-     *
-     * @return void
      */
     public function testTestActionArrayUrls()
     {
@@ -363,8 +349,6 @@ class ControllerTestCaseTest extends CakeTestCase
 
     /**
      * Test that file responses don't trigger errors.
-     *
-     * @return void
      */
     public function testActionWithFile()
     {
@@ -376,8 +360,6 @@ class ControllerTestCaseTest extends CakeTestCase
 
     /**
      * Make sure testAction() can hit plugin controllers.
-     *
-     * @return void
      */
     public function testTestActionWithPlugin()
     {
@@ -388,8 +370,6 @@ class ControllerTestCaseTest extends CakeTestCase
 
     /**
      * Tests using loaded routes during tests
-     *
-     * @return void
      */
     public function testUseRoutes()
     {
@@ -412,7 +392,6 @@ class ControllerTestCaseTest extends CakeTestCase
      * Tests not using loaded routes during tests
      *
      * @expectedException MissingActionException
-     * @return void
      */
     public function testSkipRoutes()
     {
@@ -425,8 +404,6 @@ class ControllerTestCaseTest extends CakeTestCase
 
     /**
      * Tests backwards compatibility with setting the return type
-     *
-     * @return void
      */
     public function testBCSetReturn()
     {
@@ -457,8 +434,6 @@ class ControllerTestCaseTest extends CakeTestCase
 
     /**
      * Tests sending POST data to testAction
-     *
-     * @return void
      */
     public function testTestActionPostData()
     {
@@ -502,8 +477,6 @@ class ControllerTestCaseTest extends CakeTestCase
 
     /**
      * Tests sending GET data to testAction
-     *
-     * @return void
      */
     public function testTestActionGetData()
     {
@@ -546,8 +519,6 @@ class ControllerTestCaseTest extends CakeTestCase
 
     /**
      * Test that REST actions with XML/JSON input work.
-     *
-     * @return void
      */
     public function testTestActionJsonData()
     {
@@ -562,8 +533,6 @@ class ControllerTestCaseTest extends CakeTestCase
 
     /**
      * Tests autoMock ability
-     *
-     * @return void
      */
     public function testAutoMock()
     {
@@ -578,8 +547,6 @@ class ControllerTestCaseTest extends CakeTestCase
 
     /**
      * Test using testAction and not mocking
-     *
-     * @return void
      */
     public function testNoMocking()
     {
@@ -608,8 +575,6 @@ class ControllerTestCaseTest extends CakeTestCase
 
     /**
      * Test that controllers don't get reused.
-     *
-     * @return void
      */
     public function testNoControllerReuse()
     {
@@ -641,8 +606,6 @@ class ControllerTestCaseTest extends CakeTestCase
 
     /**
      * Test that multiple calls to redirect in the same test method don't cause issues.
-     *
-     * @return void
      */
     public function testTestActionWithMultipleRedirect()
     {
@@ -656,8 +619,6 @@ class ControllerTestCaseTest extends CakeTestCase
     /**
      * Tests that Components storing response or request objects internally during construct
      * will always have a fresh reference to those object available
-     *
-     * @return void
      */
     public function testComponentsSameRequestAndResponse()
     {
@@ -670,8 +631,6 @@ class ControllerTestCaseTest extends CakeTestCase
 
     /**
      * Test that testAction() doesn't destroy data in GET & POST
-     *
-     * @return void
      */
     public function testRestoreGetPost()
     {
@@ -691,8 +650,6 @@ class ControllerTestCaseTest extends CakeTestCase
     /**
      * Tests that the `App.base` path is properly stripped from the URL generated from the
      * given URL array, and that consequently the correct controller/action is being matched.
-     *
-     * @return void
      */
     public function testAppBaseConfigCompatibilityWithArrayUrls()
     {
@@ -719,8 +676,6 @@ class ControllerTestCaseTest extends CakeTestCase
     /**
      * Tests that query string data from URL arrays properly makes it into the request object
      * on GET requests.
-     *
-     * @return void
      */
     public function testTestActionWithArrayUrlQueryStringDataViaGetRequest()
     {
@@ -745,8 +700,6 @@ class ControllerTestCaseTest extends CakeTestCase
     /**
      * Tests that query string data from URL arrays properly makes it into the request object
      * on POST requests.
-     *
-     * @return void
      */
     public function testTestActionWithArrayUrlQueryStringDataViaPostRequest()
     {
@@ -771,8 +724,6 @@ class ControllerTestCaseTest extends CakeTestCase
     /**
      * Tests that query string data from both, URL arrays as well as the `data` option,
      * properly makes it into the request object.
-     *
-     * @return void
      */
     public function testTestActionWithArrayUrlQueryStringDataAndDataOptionViaGetRequest()
     {

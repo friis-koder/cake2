@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.View
+ *
  * @since         CakePHP(tm) v 1.2.0.4206
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('View', 'View');
@@ -47,8 +51,6 @@ class ViewPostsController extends Controller
 
     /**
      * index method
-     *
-     * @return void
      */
     public function index()
     {
@@ -61,8 +63,6 @@ class ViewPostsController extends Controller
 
     /**
      * nocache_tags_with_element method
-     *
-     * @return void
      */
     public function nocache_multiple_element()
     {
@@ -82,8 +82,6 @@ class ThemePostsController extends Controller
 
     /**
      * index method
-     *
-     * @return void
      */
     public function index()
     {
@@ -106,6 +104,7 @@ class TestThemeView extends View
      *
      * @param string $name
      * @param array $params
+     *
      * @return string The given name
      */
     public function renderElement($name, $params = [])
@@ -117,6 +116,7 @@ class TestThemeView extends View
      * getViewFileName method
      *
      * @param string $name Controller action to find template filename for
+     *
      * @return string Template filename
      */
     public function getViewFileName($name = null)
@@ -128,6 +128,7 @@ class TestThemeView extends View
      * getLayoutFileName method
      *
      * @param string $name The name of the layout to find.
+     *
      * @return string Filename for layout file (.ctp).
      */
     public function getLayoutFileName($name = null)
@@ -147,6 +148,7 @@ class TestView extends View
      * getViewFileName method
      *
      * @param string $name Controller action to find template filename for
+     *
      * @return string Template filename
      */
     public function getViewFileName($name = null)
@@ -158,6 +160,7 @@ class TestView extends View
      * getLayoutFileName method
      *
      * @param string $name The name of the layout to find.
+     *
      * @return string Filename for layout file (.ctp).
      */
     public function getLayoutFileName($name = null)
@@ -170,6 +173,7 @@ class TestView extends View
      *
      * @param string $plugin Optional plugin name to scan for view files.
      * @param bool $cached Set to true to force a refresh of view paths.
+     *
      * @return array paths
      */
     public function paths($plugin = null, $cached = true)
@@ -206,7 +210,6 @@ class TestBeforeAfterHelper extends Helper
      * beforeLayout method
      *
      * @param string $viewFile
-     * @return void
      */
     public function beforeLayout($viewFile)
     {
@@ -217,7 +220,6 @@ class TestBeforeAfterHelper extends Helper
      * afterLayout method
      *
      * @param string $layoutFile
-     * @return void
      */
     public function afterLayout($layoutFile)
     {
@@ -285,7 +287,6 @@ class TestViewEventListener implements CakeEventListener
      * beforeRender method
      *
      * @param CakeEvent $event the event being sent
-     * @return void
      */
     public function beforeRender($event)
     {
@@ -296,7 +297,6 @@ class TestViewEventListener implements CakeEventListener
      * afterRender method
      *
      * @param CakeEvent $event the event being sent
-     * @return void
      */
     public function afterRender($event)
     {
@@ -320,8 +320,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -353,8 +351,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -370,8 +366,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * Test getViewFileName method
-     *
-     * @return void
      */
     public function testGetTemplate()
     {
@@ -412,7 +406,6 @@ class ViewTest extends CakeTestCase
      * to the plugin and do now allow any file path.
      *
      * @expectedException MissingViewException
-     * @return void
      */
     public function testPluginGetTemplateAbsoluteFail()
     {
@@ -430,8 +423,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * Test getLayoutFileName method on plugin
-     *
-     * @return void
      */
     public function testPluginGetTemplate()
     {
@@ -453,8 +444,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * Test getViewFileName method on plugin
-     *
-     * @return void
      */
     public function testPluginThemedGetTemplate()
     {
@@ -480,8 +469,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * Test that plugin/$plugin_name is only appended to the paths it should be.
-     *
-     * @return void
      */
     public function testPluginPathGeneration()
     {
@@ -509,8 +496,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * Test that CamelCase'd plugins still find their view files.
-     *
-     * @return void
      */
     public function testCamelCasePluginGetTemplate()
     {
@@ -537,8 +522,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * Test getViewFileName method
-     *
-     * @return void
      */
     public function testGetViewFileNames()
     {
@@ -579,8 +562,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * Test getting layout filenames
-     *
-     * @return void
      */
     public function testGetLayoutFileName()
     {
@@ -608,8 +589,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * Test getting layout filenames for plugins.
-     *
-     * @return void
      */
     public function testGetLayoutFileNamePlugin()
     {
@@ -635,7 +614,6 @@ class ViewTest extends CakeTestCase
      * Test for missing views
      *
      * @expectedException MissingViewException
-     * @return void
      */
     public function testMissingView()
     {
@@ -653,7 +631,6 @@ class ViewTest extends CakeTestCase
      * Test for missing theme views
      *
      * @expectedException MissingViewException
-     * @return void
      */
     public function testMissingThemeView()
     {
@@ -673,7 +650,6 @@ class ViewTest extends CakeTestCase
      * Test for missing layouts
      *
      * @expectedException MissingLayoutException
-     * @return void
      */
     public function testMissingLayout()
     {
@@ -690,7 +666,6 @@ class ViewTest extends CakeTestCase
      * Test for missing theme layouts
      *
      * @expectedException MissingLayoutException
-     * @return void
      */
     public function testMissingThemeLayout()
     {
@@ -706,8 +681,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * Test viewVars method
-     *
-     * @return void
      */
     public function testViewVars()
     {
@@ -716,8 +689,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * Test generation of UUIDs method
-     *
-     * @return void
      */
     public function testUUIDGeneration()
     {
@@ -731,8 +702,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * Test addInlineScripts method
-     *
-     * @return void
      */
     public function testAddInlineScripts()
     {
@@ -747,8 +716,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * Test elementExists method
-     *
-     * @return void
      */
     public function testElementExists()
     {
@@ -771,8 +738,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * Test element method
-     *
-     * @return void
      */
     public function testElement()
     {
@@ -797,7 +762,6 @@ class ViewTest extends CakeTestCase
      * Test elementInexistent method
      *
      * @expectedException PHPUnit_Framework_Error_Notice
-     * @return void
      */
     public function testElementInexistent()
     {
@@ -808,7 +772,6 @@ class ViewTest extends CakeTestCase
      * Test elementInexistent2 method
      *
      * @expectedException PHPUnit_Framework_Error_Notice
-     * @return void
      */
     public function testElementInexistent2()
     {
@@ -819,7 +782,6 @@ class ViewTest extends CakeTestCase
      * Test elementInexistent3 method
      *
      * @expectedException PHPUnit_Framework_Error_Notice
-     * @return void
      */
     public function testElementInexistent3()
     {
@@ -828,8 +790,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * Test that elements can have callbacks
-     *
-     * @return void
      */
     public function testElementCallbacks()
     {
@@ -848,8 +808,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * Test that additional element viewVars don't get overwritten with helpers.
-     *
-     * @return void
      */
     public function testElementParamsDontOverwriteHelpers()
     {
@@ -867,8 +825,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * Test elementCacheHelperNoCache method
-     *
-     * @return void
      */
     public function testElementCacheHelperNoCache()
     {
@@ -881,8 +837,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * Test elementCache method
-     *
-     * @return void
      */
     public function testElementCache()
     {
@@ -936,8 +890,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * Test element events
-     *
-     * @return void
      */
     public function testViewEvent()
     {
@@ -961,8 +913,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * Test __get allowing access to helpers.
-     *
-     * @return void
      */
     public function testMagicGet()
     {
@@ -973,8 +923,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * Test that ctp is used as a fallback file extension for elements
-     *
-     * @return void
      */
     public function testElementCtpFallback()
     {
@@ -989,8 +937,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * Test loadHelpers method
-     *
-     * @return void
      */
     public function testLoadHelpers()
     {
@@ -1005,8 +951,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * Test lazy loading helpers
-     *
-     * @return void
      */
     public function testLazyLoadHelpers()
     {
@@ -1019,8 +963,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * Test the correct triggering of helper callbacks
-     *
-     * @return void
      */
     public function testHelperCallbackTriggering()
     {
@@ -1103,8 +1045,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * Test beforeLayout method
-     *
-     * @return void
      */
     public function testBeforeLayout()
     {
@@ -1116,8 +1056,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * Test afterLayout method
-     *
-     * @return void
      */
     public function testAfterLayout()
     {
@@ -1135,8 +1073,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * Test renderLoadHelper method
-     *
-     * @return void
      */
     public function testRenderLoadHelper()
     {
@@ -1162,8 +1098,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * Test render method
-     *
-     * @return void
      */
     public function testRender()
     {
@@ -1206,8 +1140,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * Test that View::$view works
-     *
-     * @return void
      */
     public function testRenderUsingViewProperty()
     {
@@ -1222,8 +1154,6 @@ class ViewTest extends CakeTestCase
     /**
      * Test render()ing a file in a subdir from a custom viewPath
      * in a plugin.
-     *
-     * @return void
      */
     public function testGetViewFileNameSubdirWithPluginAndViewPath()
     {
@@ -1240,8 +1170,6 @@ class ViewTest extends CakeTestCase
     /**
      * Test that view vars can replace the local helper variables
      * and not overwrite the $this->Helper references
-     *
-     * @return void
      */
     public function testViewVarOverwritingLocalHelperVar()
     {
@@ -1257,8 +1185,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * Test getViewFileName method
-     *
-     * @return void
      */
     public function testViewFileName()
     {
@@ -1286,8 +1212,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * Test renderCache method
-     *
-     * @return void
      */
     public function testRenderCache()
     {
@@ -1323,8 +1247,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * Test that render() will remove the cake:nocache tags when only the cachehelper is present.
-     *
-     * @return void
      */
     public function testRenderStrippingNoCacheTagsOnlyCacheHelper()
     {
@@ -1339,8 +1261,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * Test that render() will remove the cake:nocache tags when only the Cache.check is true.
-     *
-     * @return void
      */
     public function testRenderStrippingNoCacheTagsOnlyCacheCheck()
     {
@@ -1355,8 +1275,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * testSet method
-     *
-     * @return void
      */
     public function testSet()
     {
@@ -1389,7 +1307,6 @@ class ViewTest extends CakeTestCase
      * testBadExt method
      *
      * @expectedException MissingViewException
-     * @return void
      */
     public function testBadExt()
     {
@@ -1402,8 +1319,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * testAltExt method
-     *
-     * @return void
      */
     public function testAltExt()
     {
@@ -1417,7 +1332,6 @@ class ViewTest extends CakeTestCase
      * testAltBadExt method
      *
      * @expectedException MissingViewException
-     * @return void
      */
     public function testAltBadExt()
     {
@@ -1427,8 +1341,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * Test creating a block with capturing output.
-     *
-     * @return void
      */
     public function testBlockCapture()
     {
@@ -1442,8 +1354,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * Test block with startIfEmpty
-     *
-     * @return void
      */
     public function testBlockCaptureStartIfEmpty()
     {
@@ -1461,8 +1371,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * Test block with startIfEmpty
-     *
-     * @return void
      */
     public function testBlockCaptureStartStartIfEmpty()
     {
@@ -1480,8 +1388,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * Test appending to a block with capturing output.
-     *
-     * @return void
      */
     public function testBlockCaptureAppend()
     {
@@ -1499,8 +1405,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * Test setting a block's content.
-     *
-     * @return void
      */
     public function testBlockSet()
     {
@@ -1511,8 +1415,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * Test resetting a block's content.
-     *
-     * @return void
      */
     public function testBlockReset()
     {
@@ -1523,8 +1425,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * Test checking a block's existance.
-     *
-     * @return void
      */
     public function testBlockExist()
     {
@@ -1535,8 +1435,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * Test setting a block's content to null
-     *
-     * @return void
      */
     public function testBlockSetNull()
     {
@@ -1547,8 +1445,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * Test setting a block's content to an object with __toString magic method
-     *
-     * @return void
      */
     public function testBlockSetObjectWithToString()
     {
@@ -1560,8 +1456,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * Test setting a block's content to an object without __toString magic method
-     *
-     * @return void
      */
     public function testBlockSetObjectWithoutToString()
     {
@@ -1575,8 +1469,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * Test setting a block's content to a decimal
-     *
-     * @return void
      */
     public function testBlockSetDecimal()
     {
@@ -1603,7 +1495,6 @@ class ViewTest extends CakeTestCase
      * Test appending to a block with append.
      *
      * @dataProvider blockValueProvider
-     * @return void
      */
     public function testBlockAppend($value)
     {
@@ -1616,8 +1507,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * Test appending an object without __toString magic method to a block with append.
-     *
-     * @return void
      */
     public function testBlockAppendObjectWithoutToString()
     {
@@ -1634,7 +1523,6 @@ class ViewTest extends CakeTestCase
      * Test prepending to a block with prepend.
      *
      * @dataProvider blockValueProvider
-     * @return void
      */
     public function testBlockPrepend($value)
     {
@@ -1647,8 +1535,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * Test prepending an object without __toString magic method to a block with prepend.
-     *
-     * @return void
      */
     public function testBlockPrependObjectWithoutToString()
     {
@@ -1663,8 +1549,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * You should be able to append to undefined blocks.
-     *
-     * @return void
      */
     public function testBlockAppendUndefined()
     {
@@ -1675,8 +1559,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * You should be able to prepend to undefined blocks.
-     *
-     * @return void
      */
     public function testBlockPrependUndefined()
     {
@@ -1687,8 +1569,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * Test getting block names
-     *
-     * @return void
      */
     public function testBlocks()
     {
@@ -1700,8 +1580,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * Test that blocks can be nested.
-     *
-     * @return void
      */
     public function testNestedBlocks()
     {
@@ -1719,8 +1597,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * Test that starting the same block twice throws an exception
-     *
-     * @return void
      */
     public function testStartBlocksTwice()
     {
@@ -1737,8 +1613,6 @@ class ViewTest extends CakeTestCase
     /**
      * Test that an exception gets thrown when you leave a block open at the end
      * of a view.
-     *
-     * @return void
      */
     public function testExceptionOnOpenBlock()
     {
@@ -1753,8 +1627,6 @@ class ViewTest extends CakeTestCase
 
     /**
      * Test nested extended views.
-     *
-     * @return void
      */
     public function testExtendNested()
     {
@@ -1771,8 +1643,6 @@ TEXT;
 
     /**
      * Make sure that extending the current view with itself causes an exception
-     *
-     * @return void
      */
     public function testExtendSelf()
     {
@@ -1788,8 +1658,6 @@ TEXT;
 
     /**
      * Make sure that extending in a loop causes an exception
-     *
-     * @return void
      */
     public function testExtendLoop()
     {
@@ -1805,8 +1673,6 @@ TEXT;
 
     /**
      * Test extend() in an element and a view.
-     *
-     * @return void
      */
     public function testExtendElement()
     {
@@ -1824,8 +1690,6 @@ TEXT;
 
     /**
      * Extending an element which doesn't exist should throw a missing view exception
-     *
-     * @return void
      */
     public function testExtendMissingElement()
     {
@@ -1842,8 +1706,6 @@ TEXT;
 
     /**
      * Test extend() preceeded by an element()
-     *
-     * @return void
      */
     public function testExtendWithElementBeforeExtend()
     {
@@ -1859,8 +1721,6 @@ TEXT;
 
     /**
      * Test that setting arbitrary properties still works.
-     *
-     * @return void
      */
     public function testPropertySettingMagicGet()
     {
@@ -1873,8 +1733,6 @@ TEXT;
 
     /**
      * Test memory leaks that existed in _paths at one point.
-     *
-     * @return void
      */
     public function testMemoryLeakInPaths()
     {
@@ -1897,8 +1755,6 @@ TEXT;
 
     /**
      * Tests that a view block uses default value when not assigned and uses assigned value when it is
-     *
-     * @return void
      */
     public function testBlockDefaultValue()
     {
@@ -1914,8 +1770,6 @@ TEXT;
 
     /**
      * Tests that a view variable uses default value when not assigned and uses assigned value when it is
-     *
-     * @return void
      */
     public function testViewVarDefaultValue()
     {

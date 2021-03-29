@@ -56,8 +56,6 @@ class ApplicationControllerTest extends ControllerTestCase
 {
     /**
      * setupDown method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -67,8 +65,6 @@ class ApplicationControllerTest extends ControllerTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -78,8 +74,6 @@ class ApplicationControllerTest extends ControllerTestCase
 
     /**
      * Tests the redirect and session config with use_trans_sid=1.
-     *
-     * @return void
      */
     public function testRedirect()
     {

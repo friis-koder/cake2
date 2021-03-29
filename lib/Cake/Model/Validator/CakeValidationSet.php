@@ -12,9 +12,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Model.Validator
+ *
  * @since         CakePHP(tm) v 2.2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('CakeValidationRule', 'Model/Validator');
@@ -24,6 +28,7 @@ App::uses('CakeValidationRule', 'Model/Validator');
  * methods to dynamically add or remove validation rules
  *
  * @package       Cake.Model.Validator
+ *
  * @link          https://book.cakephp.org/2.0/en/data-validation.html
  */
 class CakeValidationSet implements ArrayAccess, IteratorAggregate, Countable
@@ -94,7 +99,6 @@ class CakeValidationSet implements ArrayAccess, IteratorAggregate, Countable
      * Sets the list of methods to use for validation
      *
      * @param array &$methods Methods list
-     * @return void
      */
     public function setMethods(&$methods)
     {
@@ -105,7 +109,6 @@ class CakeValidationSet implements ArrayAccess, IteratorAggregate, Countable
      * Sets the I18n domain for validation messages.
      *
      * @param string $validationDomain The validation domain to be used.
-     * @return void
      */
     public function setValidationDomain($validationDomain)
     {
@@ -118,6 +121,7 @@ class CakeValidationSet implements ArrayAccess, IteratorAggregate, Countable
      *
      * @param array $data Data array
      * @param bool $isUpdate Is record being updated or created
+     *
      * @return array list of validation errors for this field
      */
     public function validate($data, $isUpdate = false)
@@ -151,8 +155,6 @@ class CakeValidationSet implements ArrayAccess, IteratorAggregate, Countable
 
     /**
      * Resets internal state for all validation rules in this set
-     *
-     * @return void
      */
     public function reset()
     {
@@ -165,6 +167,7 @@ class CakeValidationSet implements ArrayAccess, IteratorAggregate, Countable
      * Gets a rule for a given name if exists
      *
      * @param string $name Field name.
+     *
      * @return CakeValidationRule
      */
     public function getRule($name)
@@ -197,6 +200,7 @@ class CakeValidationSet implements ArrayAccess, IteratorAggregate, Countable
      *
      * @param string $name The name under which the rule should be set
      * @param CakeValidationRule|array $rule The validation rule to be set
+     *
      * @return self
      */
     public function setRule($name, $rule)
@@ -221,6 +225,7 @@ class CakeValidationSet implements ArrayAccess, IteratorAggregate, Countable
      * ```
      *
      * @param string $name The name under which the rule should be unset
+     *
      * @return self
      */
     public function removeRule($name)
@@ -244,6 +249,7 @@ class CakeValidationSet implements ArrayAccess, IteratorAggregate, Countable
      *
      * @param array $rules The rules to be set
      * @param bool $mergeVars [optional] If true, merges vars instead of replace. Defaults to true.
+     *
      * @return self
      */
     public function setRules($rules = [], $mergeVars = true)
@@ -263,6 +269,7 @@ class CakeValidationSet implements ArrayAccess, IteratorAggregate, Countable
      *
      * @param string $name the name of the rule as it was configured
      * @param CakeValidationRule $rule the object containing validation information
+     *
      * @return string
      */
     protected function _processValidationResponse($name, $rule)
@@ -306,6 +313,7 @@ class CakeValidationSet implements ArrayAccess, IteratorAggregate, Countable
      * Applies translations to validator arguments.
      *
      * @param array $args The args to translate
+     *
      * @return array Translated args.
      */
     protected function _translateArgs($args)
@@ -323,6 +331,7 @@ class CakeValidationSet implements ArrayAccess, IteratorAggregate, Countable
      * Returns whether an index exists in the rule set
      *
      * @param string $index name of the rule
+     *
      * @return bool
      */
     public function offsetExists($index)
@@ -334,6 +343,7 @@ class CakeValidationSet implements ArrayAccess, IteratorAggregate, Countable
      * Returns a rule object by its index
      *
      * @param string $index name of the rule
+     *
      * @return CakeValidationRule
      */
     public function offsetGet($index)
@@ -349,7 +359,7 @@ class CakeValidationSet implements ArrayAccess, IteratorAggregate, Countable
      *
      * @param string $index Name of the rule.
      * @param CakeValidationRule|array $rule Rule to add to $index.
-     * @return void
+     *
      * @see http://www.php.net/manual/en/arrayobject.offsetset.php
      */
     public function offsetSet($index, $rule)
@@ -361,7 +371,6 @@ class CakeValidationSet implements ArrayAccess, IteratorAggregate, Countable
      * Unsets a validation rule
      *
      * @param string $index name of the rule
-     * @return void
      */
     public function offsetUnset($index)
     {

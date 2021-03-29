@@ -10,8 +10,10 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
  * @since         CakePHP(tm) v 1.2.0.5012
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('AppShell', 'Console/Command');
@@ -112,8 +114,6 @@ class ExtractTask extends AppShell
 
     /**
      * Method to interact with the User and get path selections.
-     *
-     * @return void
      */
     protected function _getPaths()
     {
@@ -148,8 +148,6 @@ class ExtractTask extends AppShell
 
     /**
      * Execution method always used for tasks
-     *
-     * @return void
      */
     public function execute()
     {
@@ -252,7 +250,6 @@ class ExtractTask extends AppShell
      * @param string $domain The domain
      * @param string $msgid The message string
      * @param array $details The file and line references
-     * @return void
      */
     protected function _addTranslation($category, $domain, $msgid, $details = [])
     {
@@ -281,8 +278,6 @@ class ExtractTask extends AppShell
 
     /**
      * Extract text
-     *
-     * @return void
      */
     protected function _extract()
     {
@@ -370,8 +365,6 @@ class ExtractTask extends AppShell
 
     /**
      * Extract tokens out of all files to be processed
-     *
-     * @return void
      */
     protected function _extractTokens()
     {
@@ -412,7 +405,6 @@ class ExtractTask extends AppShell
      *
      * @param string $functionName Function name that indicates translatable string (e.g: '__')
      * @param array $map Array containing what variables it will find (e.g: category, domain, singular, plural)
-     * @return void
      */
     protected function _parse($functionName, $map)
     {
@@ -478,8 +470,6 @@ class ExtractTask extends AppShell
     /**
      * Looks for models in the application and extracts the validation messages
      * to be added to the translation map
-     *
-     * @return void
      */
     protected function _extractValidationMessages()
     {
@@ -500,7 +490,6 @@ class ExtractTask extends AppShell
      * Extract validation messages from application or plugin models
      *
      * @param string $plugin Plugin name or `null` to process application models
-     * @return void
      */
     protected function _extractPluginValidationMessages($plugin = null)
     {
@@ -546,7 +535,6 @@ class ExtractTask extends AppShell
      * @param string $file the file name where this validation rule was found
      * @param string $domain default domain to bind the validations to
      * @param string $category the translation category
-     * @return void
      */
     protected function _processValidationRules($field, $rules, $file, $domain, $category = 'LC_MESSAGES')
     {
@@ -583,8 +571,6 @@ class ExtractTask extends AppShell
 
     /**
      * Build the translate template file contents out of obtained strings
-     *
-     * @return void
      */
     protected function _buildFiles()
     {
@@ -643,7 +629,6 @@ class ExtractTask extends AppShell
      * @param string $domain The domain
      * @param string $header The header content.
      * @param string $sentence The sentence to store.
-     * @return void
      */
     protected function _store($category, $domain, $header, $sentence)
     {
@@ -662,8 +647,6 @@ class ExtractTask extends AppShell
 
     /**
      * Write the files that need to be stored
-     *
-     * @return void
      */
     protected function _writeFiles()
     {
@@ -740,6 +723,7 @@ class ExtractTask extends AppShell
      *
      * @param int &$position Actual position on tokens array
      * @param int $target Number of strings to extract
+     *
      * @return array Strings extracted
      */
     protected function _getStrings(&$position, $target)
@@ -772,6 +756,7 @@ class ExtractTask extends AppShell
      * Format a string to be added as a translatable string
      *
      * @param string $string String to format
+     *
      * @return string Formatted string
      */
     protected function _formatString($string)
@@ -795,7 +780,6 @@ class ExtractTask extends AppShell
      * @param int $line Line number
      * @param string $marker Marker found
      * @param int $count Count
-     * @return void
      */
     protected function _markerError($file, $line, $marker, $count)
     {
@@ -824,8 +808,6 @@ class ExtractTask extends AppShell
 
     /**
      * Search files that may contain translatable strings
-     *
-     * @return void
      */
     protected function _searchFiles()
     {
@@ -868,6 +850,7 @@ class ExtractTask extends AppShell
      * Checks whether or not a given path is usable for writing.
      *
      * @param string $path Path to folder
+     *
      * @return bool true if it exists and is writable, false otherwise
      */
     protected function _isPathUsable($path)

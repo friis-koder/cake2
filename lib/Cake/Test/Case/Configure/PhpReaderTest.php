@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Configure
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('PhpReader', 'Configure');
@@ -46,8 +50,6 @@ class PhpReaderTest extends CakeTestCase
 
     /**
      * Setup.
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -57,8 +59,6 @@ class PhpReaderTest extends CakeTestCase
 
     /**
      * Test reading files.
-     *
-     * @return void
      */
     public function testRead()
     {
@@ -75,7 +75,6 @@ class PhpReaderTest extends CakeTestCase
      * Test an exception is thrown by reading files that exist without .php extension.
      *
      * @expectedException ConfigureException
-     * @return void
      */
     public function testReadWithExistentFileWithoutExtension()
     {
@@ -87,7 +86,6 @@ class PhpReaderTest extends CakeTestCase
      * Test an exception is thrown by reading files that don't exist.
      *
      * @expectedException ConfigureException
-     * @return void
      */
     public function testReadWithNonExistentFile()
     {
@@ -99,7 +97,6 @@ class PhpReaderTest extends CakeTestCase
      * Test reading an empty file.
      *
      * @expectedException ConfigureException
-     * @return void
      */
     public function testReadEmptyFile()
     {
@@ -111,7 +108,6 @@ class PhpReaderTest extends CakeTestCase
      * Test reading keys with ../ doesn't work.
      *
      * @expectedException ConfigureException
-     * @return void
      */
     public function testReadWithDots()
     {
@@ -121,8 +117,6 @@ class PhpReaderTest extends CakeTestCase
 
     /**
      * Test reading from plugins.
-     *
-     * @return void
      */
     public function testReadPluginValue()
     {
@@ -141,8 +135,6 @@ class PhpReaderTest extends CakeTestCase
 
     /**
      * Test dumping data to PHP format.
-     *
-     * @return void
      */
     public function testDump()
     {
@@ -185,8 +177,6 @@ PHP;
 
     /**
      * Test that dump() makes files read() can read.
-     *
-     * @return void
      */
     public function testDumpRead()
     {

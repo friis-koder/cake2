@@ -12,9 +12,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP Project
+ *
  * @package       Cake.Test.Case.Console.Command.Task
+ *
  * @since         CakePHP v 1.2.0.7726
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('ShellDispatcher', 'Console');
@@ -81,8 +85,6 @@ class ViewTaskCommentsController extends Controller
 {
     /**
      * Testing public controller action
-     *
-     * @return void
      */
     public function index()
     {
@@ -90,8 +92,6 @@ class ViewTaskCommentsController extends Controller
 
     /**
      * Testing public controller action
-     *
-     * @return void
      */
     public function add()
     {
@@ -107,8 +107,6 @@ class ViewTaskArticlesController extends Controller
 {
     /**
      * Test public controller action
-     *
-     * @return void
      */
     public function index()
     {
@@ -116,8 +114,6 @@ class ViewTaskArticlesController extends Controller
 
     /**
      * Test public controller action
-     *
-     * @return void
      */
     public function add()
     {
@@ -125,8 +121,6 @@ class ViewTaskArticlesController extends Controller
 
     /**
      * Test admin prefixed controller action
-     *
-     * @return void
      */
     public function admin_index()
     {
@@ -134,8 +128,6 @@ class ViewTaskArticlesController extends Controller
 
     /**
      * Test admin prefixed controller action
-     *
-     * @return void
      */
     public function admin_add()
     {
@@ -143,8 +135,6 @@ class ViewTaskArticlesController extends Controller
 
     /**
      * Test admin prefixed controller action
-     *
-     * @return void
      */
     public function admin_view()
     {
@@ -152,8 +142,6 @@ class ViewTaskArticlesController extends Controller
 
     /**
      * Test admin prefixed controller action
-     *
-     * @return void
      */
     public function admin_edit()
     {
@@ -161,8 +149,6 @@ class ViewTaskArticlesController extends Controller
 
     /**
      * Test admin prefixed controller action
-     *
-     * @return void
      */
     public function admin_delete()
     {
@@ -187,8 +173,6 @@ class ViewTaskTest extends CakeTestCase
      * setUp method
      *
      * Ensure that the default theme is used
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -213,8 +197,6 @@ class ViewTaskTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -224,8 +206,6 @@ class ViewTaskTest extends CakeTestCase
 
     /**
      * Test getContent and parsing of Templates.
-     *
-     * @return void
      */
     public function testGetContent()
     {
@@ -255,8 +235,6 @@ class ViewTaskTest extends CakeTestCase
 
     /**
      * test getContent() using an admin_prefixed action.
-     *
-     * @return void
      */
     public function testGetContentWithAdminAction()
     {
@@ -295,8 +273,6 @@ class ViewTaskTest extends CakeTestCase
 
     /**
      * test Bake method
-     *
-     * @return void
      */
     public function testBakeView()
     {
@@ -313,8 +289,6 @@ class ViewTaskTest extends CakeTestCase
 
     /**
      * test baking an edit file
-     *
-     * @return void
      */
     public function testBakeEdit()
     {
@@ -330,8 +304,6 @@ class ViewTaskTest extends CakeTestCase
 
     /**
      * test baking an index
-     *
-     * @return void
      */
     public function testBakeIndex()
     {
@@ -348,8 +320,6 @@ class ViewTaskTest extends CakeTestCase
 
     /**
      * test that baking a view with no template doesn't make a file.
-     *
-     * @return void
      */
     public function testBakeWithNoTemplate()
     {
@@ -361,8 +331,6 @@ class ViewTaskTest extends CakeTestCase
 
     /**
      * test bake() with a -plugin param
-     *
-     * @return void
      */
     public function testBakeWithPlugin()
     {
@@ -387,8 +355,6 @@ class ViewTaskTest extends CakeTestCase
 
     /**
      * test bake actions baking multiple actions.
-     *
-     * @return void
      */
     public function testBakeActions()
     {
@@ -415,8 +381,6 @@ class ViewTaskTest extends CakeTestCase
 
     /**
      * test baking a customAction (non crud)
-     *
-     * @return void
      */
     public function testCustomAction()
     {
@@ -436,8 +400,6 @@ class ViewTaskTest extends CakeTestCase
 
     /**
      * Test all()
-     *
-     * @return void
      */
     public function testExecuteIntoAll()
     {
@@ -463,8 +425,6 @@ class ViewTaskTest extends CakeTestCase
 
     /**
      * Test all() with action parameter
-     *
-     * @return void
      */
     public function testExecuteIntoAllWithActionName()
     {
@@ -484,8 +444,6 @@ class ViewTaskTest extends CakeTestCase
 
     /**
      * test `cake bake view $controller view`
-     *
-     * @return void
      */
     public function testExecuteWithActionParam()
     {
@@ -503,8 +461,6 @@ class ViewTaskTest extends CakeTestCase
     /**
      * test `cake bake view $controller`
      * Ensure that views are only baked for actions that exist in the controller.
-     *
-     * @return void
      */
     public function testExecuteWithController()
     {
@@ -527,8 +483,6 @@ class ViewTaskTest extends CakeTestCase
 
     /**
      * static dataprovider for test cases
-     *
-     * @return void
      */
     public static function nameVariations()
     {
@@ -539,7 +493,6 @@ class ViewTaskTest extends CakeTestCase
      * test that both plural and singular forms can be used for baking views.
      *
      * @dataProvider nameVariations
-     * @return void
      */
     public function testExecuteWithControllerVariations($name)
     {
@@ -561,8 +514,6 @@ class ViewTaskTest extends CakeTestCase
     /**
      * test `cake bake view $controller --admin`
      * Which only bakes admin methods, not non-admin methods.
-     *
-     * @return void
      */
     public function testExecuteWithControllerAndAdminFlag()
     {
@@ -589,8 +540,6 @@ class ViewTaskTest extends CakeTestCase
 
     /**
      * test execute into interactive.
-     *
-     * @return void
      */
     public function testExecuteInteractive()
     {
@@ -634,8 +583,6 @@ class ViewTaskTest extends CakeTestCase
 
     /**
      * test `cake bake view posts index list`
-     *
-     * @return void
      */
     public function testExecuteWithAlternateTemplates()
     {
@@ -653,8 +600,6 @@ class ViewTaskTest extends CakeTestCase
 
     /**
      * test execute into interactive() with admin methods.
-     *
-     * @return void
      */
     public function testExecuteInteractiveWithAdmin()
     {
@@ -701,8 +646,6 @@ class ViewTaskTest extends CakeTestCase
 
     /**
      * test getting templates, make sure noTemplateActions works and prefixed template is used before generic one.
-     *
-     * @return void
      */
     public function testGetTemplate()
     {

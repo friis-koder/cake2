@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.View
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Controller', 'Controller');
@@ -33,7 +37,6 @@ class TestScaffoldView extends ScaffoldView
      * testGetFilename method
      *
      * @param string $action
-     * @return void
      */
     public function testGetFilename($action)
     {
@@ -79,8 +82,6 @@ class ScaffoldViewTest extends CakeTestCase
 
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -98,8 +99,6 @@ class ScaffoldViewTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -109,8 +108,6 @@ class ScaffoldViewTest extends CakeTestCase
 
     /**
      * testGetViewFilename method
-     *
-     * @return void
      */
     public function testGetViewFilename()
     {
@@ -195,8 +192,6 @@ class ScaffoldViewTest extends CakeTestCase
 
     /**
      * test getting the view file name for themed scaffolds.
-     *
-     * @return void
      */
     public function testGetViewFileNameWithTheme()
     {
@@ -213,8 +208,6 @@ class ScaffoldViewTest extends CakeTestCase
 
     /**
      * test default index scaffold generation
-     *
-     * @return void
      */
     public function testIndexScaffold()
     {
@@ -253,8 +246,6 @@ class ScaffoldViewTest extends CakeTestCase
 
     /**
      * test default view scaffold generation
-     *
-     * @return void
      */
     public function testViewScaffold()
     {
@@ -296,8 +287,6 @@ class ScaffoldViewTest extends CakeTestCase
 
     /**
      * test default view scaffold generation
-     *
-     * @return void
      */
     public function testEditScaffold()
     {
@@ -339,8 +328,6 @@ class ScaffoldViewTest extends CakeTestCase
 
     /**
      * Test Admin Index Scaffolding.
-     *
-     * @return void
      */
     public function testAdminIndexScaffold()
     {
@@ -385,8 +372,6 @@ class ScaffoldViewTest extends CakeTestCase
 
     /**
      * Test Admin Index Scaffolding.
-     *
-     * @return void
      */
     public function testAdminEditScaffold()
     {
@@ -425,8 +410,6 @@ class ScaffoldViewTest extends CakeTestCase
 
     /**
      * Test Admin Index Scaffolding.
-     *
-     * @return void
      */
     public function testMultiplePrefixScaffold()
     {

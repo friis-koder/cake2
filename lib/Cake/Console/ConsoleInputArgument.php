@@ -10,8 +10,10 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -20,6 +22,7 @@
  * ConsoleOptionParser creates these when you use addArgument()
  *
  * @see ConsoleOptionParser::addArgument()
+ *
  * @package       Cake.Console
  */
 class ConsoleInputArgument
@@ -88,6 +91,7 @@ class ConsoleInputArgument
      * Generate the help for this argument.
      *
      * @param int $width The width to make the name of the option.
+     *
      * @return string
      */
     public function help($width = 0)
@@ -140,8 +144,10 @@ class ConsoleInputArgument
      * Check that $value is a valid choice for this argument.
      *
      * @param string $value The choice to validate.
-     * @return bool
+     *
      * @throws ConsoleException
+     *
+     * @return bool
      */
     public function validChoice($value)
     {
@@ -167,6 +173,7 @@ class ConsoleInputArgument
      * Append this arguments XML representation to the passed in SimpleXml object.
      *
      * @param SimpleXmlElement $parent The parent element.
+     *
      * @return SimpleXmlElement The parent with this argument appended.
      */
     public function xml(SimpleXmlElement $parent)

@@ -8,9 +8,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Core
+ *
  * @since         CakePHP(tm) v 0.2.9
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('CakeLog', 'Log');
@@ -65,6 +69,7 @@ class CakeObject
      *    URL will not automatically handle passed and named arguments in the $url parameter.
      * @param array $extra if array includes the key "return" it sets the AutoRender to true. Can
      *    also be used to submit GET/POST data, and named/passed arguments.
+     *
      * @return mixed Boolean true or false on success/failure, or contents
      *    of rendered action if 'return' is set in $extra.
      */
@@ -116,6 +121,7 @@ class CakeObject
      *
      * @param string $method Name of the method to call
      * @param array $params Parameter list to use when calling $method
+     *
      * @return mixed Returns the result of the method call
      */
     public function dispatchMethod($method, $params = [])
@@ -143,7 +149,6 @@ class CakeObject
      * testing easier.
      *
      * @param int|string $status see http://php.net/exit for values
-     * @return void
      */
     protected function _stop($status = 0)
     {
@@ -158,6 +163,7 @@ class CakeObject
      * @param int $type Error type constant. Defined in app/Config/core.php.
      * @param null|string|array $scope The scope(s) a log message is being created in.
      *    See CakeLog::config() for more information on logging scopes.
+     *
      * @return bool Success of log write
      */
     public function log($msg, $type = LOG_ERR, $scope = null)
@@ -174,7 +180,6 @@ class CakeObject
      * properties that are part of a class declaration.
      *
      * @param array $properties An associative array containing properties and corresponding values.
-     * @return void
      */
     protected function _set($properties = [])
     {
@@ -198,7 +203,6 @@ class CakeObject
      * @param array $properties The name of the properties to merge.
      * @param string $class The class to merge the property with.
      * @param bool $normalize Set to true to run the properties through Hash::normalize() before merging.
-     * @return void
      */
     protected function _mergeVars($properties, $class, $normalize = true)
     {

@@ -8,9 +8,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Controller.Component.Acl
+ *
  * @since         CakePHP(tm) v 0.10.0.1076
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('AclInterface', 'Controller/Component/Acl');
@@ -43,7 +47,6 @@ class IniAcl extends CakeObject implements AclInterface
      * Initialize method
      *
      * @param Component $component The AclComponent instance.
-     * @return void
      */
     public function initialize(Component $component)
     {
@@ -55,6 +58,7 @@ class IniAcl extends CakeObject implements AclInterface
      * @param string $aro ARO The requesting object identifier.
      * @param string $aco ACO The controlled object identifier.
      * @param string $action Action (defaults to *)
+     *
      * @return bool Success
      */
     public function allow($aro, $aco, $action = '*')
@@ -67,6 +71,7 @@ class IniAcl extends CakeObject implements AclInterface
      * @param string $aro ARO The requesting object identifier.
      * @param string $aco ACO The controlled object identifier.
      * @param string $action Action (defaults to *)
+     *
      * @return bool Success
      */
     public function deny($aro, $aco, $action = '*')
@@ -79,6 +84,7 @@ class IniAcl extends CakeObject implements AclInterface
      * @param string $aro ARO The requesting object identifier.
      * @param string $aco ACO The controlled object identifier.
      * @param string $action Action (defaults to *)
+     *
      * @return bool Success
      */
     public function inherit($aro, $aco, $action = '*')
@@ -93,6 +99,7 @@ class IniAcl extends CakeObject implements AclInterface
      * @param string $aro ARO
      * @param string $aco ACO
      * @param string $action Action
+     *
      * @return bool Success
      */
     public function check($aro, $aco, $action = null)
@@ -154,6 +161,7 @@ class IniAcl extends CakeObject implements AclInterface
      * INI file's section structure. Double-quote friendly.
      *
      * @param string $filename File
+     *
      * @return array INI section structure
      */
     public function readConfigFile($filename)
@@ -168,6 +176,7 @@ class IniAcl extends CakeObject implements AclInterface
      * Removes trailing spaces on all array elements (to prepare for searching)
      *
      * @param array $array Array to trim
+     *
      * @return array Trimmed array
      */
     public function arrayTrim($array)

@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Controller
+ *
  * @since         CakePHP(tm) v 1.2.0.5436
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('PagesController', 'Controller');
@@ -26,8 +30,6 @@ class PagesControllerTest extends CakeTestCase
 {
     /**
      * testDisplay method
-     *
-     * @return void
      */
     public function testDisplay()
     {
@@ -55,7 +57,6 @@ class PagesControllerTest extends CakeTestCase
      *
      * @expectedException NotFoundException
      * @expectedExceptionCode 404
-     * @return void
      */
     public function testMissingView()
     {
@@ -69,7 +70,6 @@ class PagesControllerTest extends CakeTestCase
      *
      * @expectedException MissingViewException
      * @expectedExceptionCode 500
-     * @return void
      */
     public function testMissingViewInDebug()
     {
@@ -83,7 +83,6 @@ class PagesControllerTest extends CakeTestCase
      *
      * @expectedException ForbiddenException
      * @expectedExceptionCode 403
-     * @return void
      */
     public function testDirectoryTraversalProtection()
     {

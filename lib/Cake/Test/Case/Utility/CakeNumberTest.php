@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.View.Helper
+ *
  * @since         CakePHP(tm) v 1.2.0.4206
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('View', 'View');
@@ -27,8 +31,6 @@ class CakeNumberTest extends CakeTestCase
 {
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -38,8 +40,6 @@ class CakeNumberTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -49,8 +49,6 @@ class CakeNumberTest extends CakeTestCase
 
     /**
      * testFormatAndCurrency method
-     *
-     * @return void
      */
     public function testFormat()
     {
@@ -91,8 +89,6 @@ class CakeNumberTest extends CakeTestCase
 
     /**
      * testFormatDelta method
-     *
-     * @return void
      */
     public function testFormatDelta()
     {
@@ -136,8 +132,6 @@ class CakeNumberTest extends CakeTestCase
 
     /**
      * testMultibyteFormat
-     *
-     * @return void
      */
     public function testMultibyteFormat()
     {
@@ -185,8 +179,6 @@ class CakeNumberTest extends CakeTestCase
 
     /**
      * Test currency method.
-     *
-     * @return void
      */
     public function testCurrency()
     {
@@ -307,8 +299,6 @@ class CakeNumberTest extends CakeTestCase
     /**
      * Test currency format with places and fraction exponents.
      * Places should only matter for non fraction values and vice versa.
-     *
-     * @return void
      */
     public function testCurrencyWithFractionAndPlaces()
     {
@@ -341,8 +331,6 @@ class CakeNumberTest extends CakeTestCase
 
     /**
      * Test that the default fraction handling does not cause issues.
-     *
-     * @return void
      */
     public function testCurrencyFractionSymbol()
     {
@@ -355,8 +343,6 @@ class CakeNumberTest extends CakeTestCase
 
     /**
      * Test adding currency format options to the number helper
-     *
-     * @return void
      */
     public function testCurrencyAddFormat()
     {
@@ -382,8 +368,6 @@ class CakeNumberTest extends CakeTestCase
 
     /**
      * Test default currency
-     *
-     * @return void
      */
     public function testDefaultCurrency()
     {
@@ -416,8 +400,6 @@ class CakeNumberTest extends CakeTestCase
 
     /**
      * testCurrencyPositive method
-     *
-     * @return void
      */
     public function testCurrencyPositive()
     {
@@ -450,8 +432,6 @@ class CakeNumberTest extends CakeTestCase
 
     /**
      * testCurrencyNegative method
-     *
-     * @return void
      */
     public function testCurrencyNegative()
     {
@@ -484,8 +464,6 @@ class CakeNumberTest extends CakeTestCase
 
     /**
      * testCurrencyCentsPositive method
-     *
-     * @return void
      */
     public function testCurrencyCentsPositive()
     {
@@ -506,8 +484,6 @@ class CakeNumberTest extends CakeTestCase
 
     /**
      * testCurrencyCentsNegative method
-     *
-     * @return void
      */
     public function testCurrencyCentsNegative()
     {
@@ -540,8 +516,6 @@ class CakeNumberTest extends CakeTestCase
 
     /**
      * testCurrencyZero method
-     *
-     * @return void
      */
     public function testCurrencyZero()
     {
@@ -566,8 +540,6 @@ class CakeNumberTest extends CakeTestCase
 
     /**
      * testCurrencyOptions method
-     *
-     * @return void
      */
     public function testCurrencyOptions()
     {
@@ -612,8 +584,6 @@ class CakeNumberTest extends CakeTestCase
 
     /**
      * testToReadableSize method
-     *
-     * @return void
      */
     public function testToReadableSize()
     {
@@ -676,8 +646,6 @@ class CakeNumberTest extends CakeTestCase
 
     /**
      * test toReadableSize() with locales
-     *
-     * @return void
      */
     public function testReadableSizeLocalized()
     {
@@ -695,8 +663,6 @@ class CakeNumberTest extends CakeTestCase
 
     /**
      * test precision() with locales
-     *
-     * @return void
      */
     public function testPrecisionLocalized()
     {
@@ -711,8 +677,6 @@ class CakeNumberTest extends CakeTestCase
 
     /**
      * testToPercentage method
-     *
-     * @return void
      */
     public function testToPercentage()
     {
@@ -761,7 +725,6 @@ class CakeNumberTest extends CakeTestCase
      * testFromReadableSize
      *
      * @dataProvider filesizes
-     * @return void
      */
     public function testFromReadableSize($params, $expected)
     {
@@ -773,7 +736,6 @@ class CakeNumberTest extends CakeTestCase
      * testFromReadableSize
      *
      * @expectedException CakeException
-     * @return void
      */
     public function testFromReadableSizeException()
     {

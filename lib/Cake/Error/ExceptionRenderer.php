@@ -13,9 +13,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Error
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Sanitize', 'Utility');
@@ -139,6 +143,7 @@ class ExceptionRenderer
      * a bare controller will be used.
      *
      * @param Exception $exception The exception to get a controller for.
+     *
      * @return Controller
      */
     protected function _getController($exception)
@@ -185,8 +190,6 @@ class ExceptionRenderer
 
     /**
      * Renders the response for the exception.
-     *
-     * @return void
      */
     public function render()
     {
@@ -199,7 +202,6 @@ class ExceptionRenderer
      * Generic handler for the internal framework errors CakePHP can generate.
      *
      * @param CakeException $error The exception to render.
-     * @return void
      */
     protected function _cakeError(CakeException $error)
     {
@@ -222,7 +224,6 @@ class ExceptionRenderer
      * Convenience method to display a 400 series page.
      *
      * @param Exception $error The exception to render.
-     * @return void
      */
     public function error400($error)
     {
@@ -246,7 +247,6 @@ class ExceptionRenderer
      * Convenience method to display a 500 page.
      *
      * @param Exception $error The exception to render.
-     * @return void
      */
     public function error500($error)
     {
@@ -271,7 +271,6 @@ class ExceptionRenderer
      * Convenience method to display a PDOException.
      *
      * @param PDOException $error The exception to render.
-     * @return void
      */
     public function pdoError(PDOException $error)
     {
@@ -293,7 +292,6 @@ class ExceptionRenderer
      * Generate the response using the controller object.
      *
      * @param string $template The template to render.
-     * @return void
      */
     protected function _outputMessage($template)
     {
@@ -324,7 +322,6 @@ class ExceptionRenderer
      * and doesn't call component methods.
      *
      * @param string $template The template to render
-     * @return void
      */
     protected function _outputMessageSafe($template)
     {
@@ -344,8 +341,6 @@ class ExceptionRenderer
      * Run the shutdown events.
      *
      * Triggers the afterFilter and afterDispatch events.
-     *
-     * @return void
      */
     protected function _shutdown()
     {

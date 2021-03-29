@@ -5,7 +5,9 @@
  * Use it to configure database for ACL
  *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       app.Config.Schema
+ *
  * @since         CakePHP(tm) v 0.2.9
  */
 
@@ -19,6 +21,7 @@ class DbAclSchema extends CakeSchema
      * Before event.
      *
      * @param array $event The event data.
+     *
      * @return bool success
      */
     public function before($event = [])
@@ -30,7 +33,6 @@ class DbAclSchema extends CakeSchema
      * After event.
      *
      * @param array $event The event data.
-     * @return void
      */
     public function after($event = [])
     {

@@ -8,9 +8,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Core
+ *
  * @since         CakePHP(tm) v 1.0.0.2363
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -27,6 +31,7 @@ interface ConfigReaderInterface
      * a database, or other datasource.
      *
      * @param string $key Key to read.
+     *
      * @return array An array of data to merge into the runtime configuration
      */
     public function read($key);
@@ -36,6 +41,7 @@ interface ConfigReaderInterface
      *
      * @param string $key The identifier to write to.
      * @param array $data The data to dump.
+     *
      * @return bool True on success or false on failure.
      */
     public function dump($key, $data);

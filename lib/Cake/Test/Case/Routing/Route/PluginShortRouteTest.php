@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Test.Case.Routing.Route
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('PluginShortRoute', 'Routing/Route');
@@ -27,8 +31,6 @@ class PluginShortRouteTest extends CakeTestCase
 {
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -39,8 +41,6 @@ class PluginShortRouteTest extends CakeTestCase
 
     /**
      * test the parsing of routes.
-     *
-     * @return void
      */
     public function testParsing()
     {
@@ -57,8 +57,6 @@ class PluginShortRouteTest extends CakeTestCase
 
     /**
      * test the reverse routing of the plugin shortcut URLs.
-     *
-     * @return void
      */
     public function testMatch()
     {

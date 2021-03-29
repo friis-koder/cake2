@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Model.Datasource
+ *
  * @since         CakePHP(tm) v 0.10.0.1076
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('DataSource', 'Model/Datasource');
@@ -258,6 +262,7 @@ class DboSource extends DataSource
      *
      * @param array $config Array of configuration information for the Datasource.
      * @param bool $autoConnect Whether or not the datasource should automatically connect.
+     *
      * @throws MissingConnectionException when a connection cannot be made.
      */
     public function __construct($config = null, $autoConnect = true)
@@ -294,6 +299,7 @@ class DboSource extends DataSource
      * Reconnects to database server with optional new settings
      *
      * @param array $config An array defining the new configuration settings
+     *
      * @return bool True on success, false on failure
      */
     public function reconnect($config = [])
@@ -347,6 +353,7 @@ class DboSource extends DataSource
      * @param string $data String to be prepared for use in an SQL statement
      * @param string $column The column datatype into which this data will be inserted.
      * @param bool $null Column allows NULL values
+     *
      * @return string Quoted and escaped data
      */
     public function value($data, $column = null, $null = true)
@@ -423,6 +430,7 @@ class DboSource extends DataSource
      * are not sanitized or escaped.
      *
      * @param string $identifier A SQL expression to be used as an identifier
+     *
      * @return stdClass An object representing a database identifier to be used in a query
      */
     public function identifier($identifier)
@@ -439,6 +447,7 @@ class DboSource extends DataSource
      * are not sanitized or escaped.
      *
      * @param string $expression An arbitrary SQL expression to be inserted into a query.
+     *
      * @return stdClass An object representing a database expression to be used in a query
      */
     public function expression($expression)
@@ -455,6 +464,7 @@ class DboSource extends DataSource
      *
      * @param string $sql SQL statement
      * @param array $params Additional options for the query.
+     *
      * @return mixed Resource or object representing the result set, or false on failure
      */
     public function rawQuery($sql, $params = [])
@@ -476,6 +486,7 @@ class DboSource extends DataSource
      * @param string $sql SQL statement
      * @param array $options The options for executing the query.
      * @param array $params values to be bound to the query.
+     *
      * @return mixed Resource or object representing the result set, or false on failure
      */
     public function execute($sql, $options = [], $params = [])
@@ -500,9 +511,11 @@ class DboSource extends DataSource
      * @param string $sql SQL statement
      * @param array $params list of params to be bound to query
      * @param array $prepareOptions Options to be used in the prepare statement
+     *
+     * @throws PDOException
+     *
      * @return mixed PDOStatement if query executes with no problem, true as the result of a successful, false on error
      * query returning no rows, such as a CREATE statement, false otherwise
-     * @throws PDOException
      */
     protected function _execute($sql, $params = [], $prepareOptions = [])
     {
@@ -548,6 +561,7 @@ class DboSource extends DataSource
      * Returns a formatted error message from previous database operation.
      *
      * @param PDOStatement $query the query to extract the error from if any
+     *
      * @return string Error message with error number
      */
     public function lastError(PDOStatement $query = null)
@@ -569,6 +583,7 @@ class DboSource extends DataSource
      * this returns false.
      *
      * @param mixed $source The source to check.
+     *
      * @return int Number of affected rows
      */
     public function lastAffected($source = null)
@@ -585,6 +600,7 @@ class DboSource extends DataSource
      * this returns false.
      *
      * @param mixed $source Not used
+     *
      * @return int Number of rows in resultset
      */
     public function lastNumRows($source = null)
@@ -685,7 +701,6 @@ class DboSource extends DataSource
      * Builds a map of the columns contained in a result
      *
      * @param PDOStatement $results The results to format.
-     * @return void
      */
     public function resultSet($results)
     {
@@ -696,6 +711,7 @@ class DboSource extends DataSource
      * Returns a row from current resultset as an array
      *
      * @param string $sql Some SQL to be executed.
+     *
      * @return array The fetched row as an array
      */
     public function fetchRow($sql = null)
@@ -733,6 +749,7 @@ class DboSource extends DataSource
      * @param array|bool $params Either parameters to be bound as values for the SQL statement,
      *  or a boolean to control query caching.
      * @param array $options additional options for the query.
+     *
      * @return bool|array Array of resultset rows, or false if no rows matched
      */
     public function fetchAll($sql, $params = [], $options = [])
@@ -794,7 +811,6 @@ class DboSource extends DataSource
      * Modifies $result array to place virtual fields in model entry where they belongs to
      *
      * @param array &$result Reference to the fetched row
-     * @return void
      */
     public function fetchVirtualField(&$result)
     {
@@ -828,6 +844,7 @@ class DboSource extends DataSource
      *
      * @param string $name The name of the field to get.
      * @param string $sql The SQL query.
+     *
      * @return mixed Value of field read, or false if not found.
      */
     public function field($name, $sql)
@@ -843,8 +860,6 @@ class DboSource extends DataSource
     /**
      * Empties the method caches.
      * These caches are used by DboSource::name() and DboSource::conditions()
-     *
-     * @return void
      */
     public function flushMethodCache()
     {
@@ -862,6 +877,7 @@ class DboSource extends DataSource
      * @param string $method Name of the method being cached.
      * @param string $key The key name for the cache operation.
      * @param mixed $value The value to cache into memory.
+     *
      * @return mixed Either null on failure, or the value if its set.
      */
     public function cacheMethod($method, $key, $value = null)
@@ -921,6 +937,7 @@ class DboSource extends DataSource
      * @param string $method Name of the method being cached.
      * @param string $key The key name for the cache operation.
      * @param mixed $value The value to cache into memory.
+     *
      * @return bool Whether or not to cache
      */
     public function cacheMethodFilter($method, $key, $value)
@@ -935,7 +952,9 @@ class DboSource extends DataSource
      * try a different hashing algorithm or set DboSource::$cacheMethods to false.
      *
      * @param string $value Value to hash
+     *
      * @return string Hashed value
+     *
      * @see http://php.net/manual/en/function.hash-algos.php
      * @see http://softwareengineering.stackexchange.com/questions/49550/which-hashing-algorithm-is-best-for-uniqueness-and-speed
      */
@@ -954,6 +973,7 @@ class DboSource extends DataSource
      *
      * @param mixed $data Either a string with a column to quote. An array of columns to quote or an
      *   object from DboSource::expression() or DboSource::identifier()
+     *
      * @return string SQL field
      */
     public function name($data)
@@ -1056,6 +1076,7 @@ class DboSource extends DataSource
      *
      * @param bool $sorted Get the queries sorted by time taken, defaults to false.
      * @param bool $clear If True the existing log will cleared.
+     *
      * @return array Array of queries run as an array
      */
     public function getLog($sorted = false, $clear = true)
@@ -1077,7 +1098,6 @@ class DboSource extends DataSource
      * will be rendered and output. If in a CLI environment, a plain text log is generated.
      *
      * @param bool $sorted Get the queries sorted by time taken, defaults to false.
-     * @return void
      */
     public function showLog($sorted = false)
     {
@@ -1102,7 +1122,6 @@ class DboSource extends DataSource
      *
      * @param string $sql SQL statement
      * @param array $params Values binded to the query (prepared statements)
-     * @return void
      */
     public function logQuery($sql, $params = [])
     {
@@ -1126,6 +1145,7 @@ class DboSource extends DataSource
      * @param Model|string $model Either a Model object or a string table name.
      * @param bool $quote Whether you want the table name quoted.
      * @param bool $schema Whether you want the schema name included.
+     *
      * @return string Full quoted table name
      */
     public function fullTableName($model, $quote = true, $schema = true)
@@ -1172,6 +1192,7 @@ class DboSource extends DataSource
      *   used to generate field names.
      * @param array $values An array of values with keys matching the fields. If null, $Model->data will
      *   be used to generate values.
+     *
      * @return bool Success
      */
     public function create(Model $Model, $fields = null, $values = null)
@@ -1223,6 +1244,7 @@ class DboSource extends DataSource
      * @param Model $Model A Model object that the query is for.
      * @param array $queryData An array of queryData information containing keys similar to Model::find().
      * @param int $recursive Number of levels of association
+     *
      * @return mixed boolean false on error/failure. An array of results on success.
      */
     public function read(Model $Model, $queryData = [], $recursive = null)
@@ -1358,6 +1380,7 @@ class DboSource extends DataSource
      * @param array &$resultSet Reference of resultset to be filtered.
      * @param Model $Model Instance of model to operate against.
      * @param array $filtered List of classes already filtered, to be skipped.
+     *
      * @return array Array of results that have been filtered through $Model->afterFind.
      */
     protected function _filterResults(&$resultSet, Model $Model, $filtered = [])
@@ -1404,6 +1427,7 @@ class DboSource extends DataSource
      * @param array &$resultSet Reference of resultset to be filtered.
      * @param Model $Model Instance of model to operate against.
      * @param array $toBeFiltered List of classes to be filtered.
+     *
      * @return array Array of results that have been filtered through $Model->afterFind.
      */
     protected function _filterResultsInclusive(&$resultSet, Model $Model, $toBeFiltered = [])
@@ -1441,8 +1465,10 @@ class DboSource extends DataSource
      * @param array &$resultSet Existing results.
      * @param int $recursive Number of levels of association.
      * @param array $stack A list with joined models.
-     * @return mixed
+     *
      * @throws CakeException when results cannot be created.
+     *
+     * @return mixed
      */
     public function queryAssociation(Model $Model, Model $LinkModel, $type, $association, $assocData, &$queryData, $external, &$resultSet, $recursive, $stack)
     {
@@ -1614,7 +1640,9 @@ class DboSource extends DataSource
      * @param Model $Model Primary model object.
      * @param string $query Association query template.
      * @param array $ids Array of IDs of associated records.
+     *
      * @return array Association results.
+     *
      * @see DboSource::_fetchHasMany()
      */
     public function fetchAssociated(Model $Model, $query, $ids)
@@ -1628,6 +1656,7 @@ class DboSource extends DataSource
      * @param Model $Model Primary model object.
      * @param string $query Association query template.
      * @param array $ids Array of IDs of associated records.
+     *
      * @return array Association results.
      */
     protected function _fetchHasMany(Model $Model, $query, $ids)
@@ -1649,6 +1678,7 @@ class DboSource extends DataSource
      * @param string $query Association query.
      * @param array $ids Array of IDs of associated records.
      * @param string $association Association name.
+     *
      * @return array Association results.
      */
     protected function _fetchHasAndBelongsToMany(Model $Model, $query, $ids, $association)
@@ -1675,7 +1705,6 @@ class DboSource extends DataSource
      * @param array $assocResultSet Data to merge.
      * @param string $association Name of Model being merged.
      * @param Model $Model Model being merged onto.
-     * @return void
      */
     protected function _mergeHasMany(&$resultSet, $assocResultSet, $association, Model $Model)
     {
@@ -1729,7 +1758,6 @@ class DboSource extends DataSource
      * @param string $association The association name to merge.
      * @param string $type The type of association
      * @param bool $selfJoin Whether or not this is a self join.
-     * @return void
      */
     protected function _mergeAssociation(&$data, &$merge, $association, $type, $selfJoin = false)
     {
@@ -1813,6 +1841,7 @@ class DboSource extends DataSource
      *
      * @param Model $Model The model to prepare.
      * @param array $queryData An array of queryData information containing keys similar to Model::find().
+     *
      * @return array Array containing SQL fields.
      */
     public function prepareFields(Model $Model, $queryData)
@@ -1841,7 +1870,9 @@ class DboSource extends DataSource
      *
      * @param Model $Model The model to build an association query for.
      * @param array $queryData An array of queryData information containing keys similar to Model::find().
+     *
      * @return string String containing an SQL statement.
+     *
      * @see DboSource::buildStatement()
      */
     public function buildAssociationQuery(Model $Model, $queryData)
@@ -1878,6 +1909,7 @@ class DboSource extends DataSource
      * @param array $assocData Association data.
      * @param array &$queryData An array of queryData information containing keys similar to Model::find().
      * @param bool $external Whether or not the association query is on an external datasource.
+     *
      * @return mixed
      *   String representing a query.
      *   True, when $external is false and association $type is 'hasOne' or 'belongsTo'.
@@ -2041,6 +2073,7 @@ class DboSource extends DataSource
      * @param string $association Association name.
      * @param array $assocData Association data.
      * @param string $association2 HABTM association name.
+     *
      * @return array Conditions array defining the constraint between $Model and $LinkModel.
      */
     public function getConstraint($type, Model $Model, Model $LinkModel, $association, $assocData, $association2 = null)
@@ -2094,7 +2127,9 @@ class DboSource extends DataSource
      * Builds and generates a JOIN condition from an array. Handles final clean-up before conversion.
      *
      * @param array $join An array defining a JOIN condition in a query.
+     *
      * @return string An SQL JOIN condition to be used in a query.
+     *
      * @see DboSource::renderJoinStatement()
      * @see DboSource::buildStatement()
      */
@@ -2125,7 +2160,9 @@ class DboSource extends DataSource
      *
      * @param array $query An array defining an SQL query.
      * @param Model $Model The model object which initiated the query.
+     *
      * @return string An executable SQL statement.
+     *
      * @see DboSource::renderStatement()
      */
     public function buildStatement($query, Model $Model)
@@ -2159,6 +2196,7 @@ class DboSource extends DataSource
      * Renders a final SQL JOIN statement
      *
      * @param array $data The data to generate a join statement for.
+     *
      * @return string
      */
     public function renderJoinStatement($data)
@@ -2175,6 +2213,7 @@ class DboSource extends DataSource
      *
      * @param string $type type of query being run. e.g select, create, update, delete, schema, alter.
      * @param array $data Array of data to insert into the query.
+     *
      * @return string|null Rendered SQL expression to be run, otherwise null.
      */
     public function renderStatement($type, $data)
@@ -2225,6 +2264,7 @@ class DboSource extends DataSource
      *
      * @param mixed $query The query to merge conditions for.
      * @param mixed $assoc The association names.
+     *
      * @return array
      */
     protected function _mergeConditions($query, $assoc)
@@ -2259,6 +2299,7 @@ class DboSource extends DataSource
      * @param array $fields The fields to update
      * @param array $values The values fo the fields.
      * @param mixed $conditions The conditions for the update. When non-empty $values will not be quoted.
+     *
      * @return bool Success
      */
     public function update(Model $Model, $fields = [], $values = null, $conditions = null)
@@ -2296,6 +2337,7 @@ class DboSource extends DataSource
      * @param array $fields The fields to update.
      * @param bool $quoteValues If values should be quoted, or treated as SQL snippets
      * @param bool $alias Include the model alias in the field name
+     *
      * @return array Fields and values, quoted and prepared
      */
     protected function _prepareUpdateFields(Model $Model, $fields, $quoteValues = true, $alias = false)
@@ -2349,6 +2391,7 @@ class DboSource extends DataSource
      *
      * @param Model $Model The model to delete from
      * @param mixed $conditions The conditions to use. If empty the model's primary key will be used.
+     *
      * @return bool Success
      */
     public function delete(Model $Model, $conditions = null)
@@ -2376,6 +2419,7 @@ class DboSource extends DataSource
      *
      * @param Model $Model The model to find matching records for.
      * @param mixed $conditions The conditions to match against.
+     *
      * @return array List of record IDs
      */
     protected function _matchRecords(Model $Model, $conditions = null)
@@ -2427,6 +2471,7 @@ class DboSource extends DataSource
      * Returns an array of SQL JOIN conditions from a model's associations.
      *
      * @param Model $Model The model to get joins for.2
+     *
      * @return array
      */
     protected function _getJoins(Model $Model)
@@ -2469,6 +2514,7 @@ class DboSource extends DataSource
      * @param Model $Model The model to get a calculated field for.
      * @param string $func Lowercase name of SQL function, i.e. 'count' or 'max'
      * @param array $params Function parameters (any values must be quoted manually)
+     *
      * @return string An SQL calculation function
      */
     public function calculate(Model $Model, $func, $params = [])
@@ -2510,6 +2556,7 @@ class DboSource extends DataSource
      * primary key, where applicable.
      *
      * @param Model|string $table A string or model class representing the table to be truncated
+     *
      * @return bool SQL TRUNCATE TABLE statement, false if not applicable.
      */
     public function truncate($table)
@@ -2673,6 +2720,7 @@ class DboSource extends DataSource
      * Returns the ID generated from the previous INSERT operation.
      *
      * @param mixed $source The source to get an id for.
+     *
      * @return mixed
      */
     public function lastInsertId($source = null)
@@ -2690,7 +2738,9 @@ class DboSource extends DataSource
      *   or string conditions those conditions will be returned. With other values the model's existence will be checked.
      *   If the model doesn't exist a null or false will be returned depending on the input value.
      * @param bool $useAlias Use model aliases rather than table names when generating conditions
+     *
      * @return mixed Either null, false, $conditions or an array of default conditions to use.
+     *
      * @see DboSource::update()
      * @see DboSource::conditions()
      */
@@ -2720,6 +2770,7 @@ class DboSource extends DataSource
      * @param Model $Model The model to get a key for.
      * @param string $key The key field.
      * @param string $assoc The association name.
+     *
      * @return string
      */
     public function resolveKey(Model $Model, $key, $assoc = null)
@@ -2735,6 +2786,7 @@ class DboSource extends DataSource
      * Private helper method to remove query metadata in given data array.
      *
      * @param array $data The data to scrub.
+     *
      * @return array
      */
     protected function _scrubQueryData($data)
@@ -2756,6 +2808,7 @@ class DboSource extends DataSource
      * @param Model $Model The model to get virtual fields for.
      * @param string $alias Alias table name
      * @param array $fields virtual fields to be used on query
+     *
      * @return array
      */
     protected function _constructVirtualFields(Model $Model, $alias, $fields)
@@ -2782,6 +2835,7 @@ class DboSource extends DataSource
      * @param string $alias Alias table name
      * @param mixed $fields The provided list of fields.
      * @param bool $quote If false, returns fields array unquoted
+     *
      * @return array
      */
     public function fields(Model $Model, $alias = null, $fields = [], $quote = true)
@@ -2908,6 +2962,7 @@ class DboSource extends DataSource
      * @param bool $quoteValues If true, values should be quoted
      * @param bool $where If true, "WHERE " will be prepended to the return value
      * @param Model $Model A reference to the Model instance making the query
+     *
      * @return string SQL fragment
      */
     public function conditions($conditions, $quoteValues = true, $where = true, Model $Model = null)
@@ -2953,6 +3008,7 @@ class DboSource extends DataSource
      * @param array $conditions Array or string of conditions
      * @param bool $quoteValues If true, values should be quoted
      * @param Model $Model A reference to the Model instance making the query
+     *
      * @return string SQL fragment
      */
     public function conditionKeysToString($conditions, $quoteValues = true, Model $Model = null)
@@ -3060,6 +3116,7 @@ class DboSource extends DataSource
      * @param string $key An SQL key snippet containing a field and optional SQL operator
      * @param mixed $value The value(s) to be inserted in the string
      * @param Model $Model Model object initiating the query
+     *
      * @return string
      */
     protected function _parseKey($key, $value, Model $Model = null)
@@ -3171,6 +3228,7 @@ class DboSource extends DataSource
      * Quotes Model.fields
      *
      * @param string $conditions The conditions to quote.
+     *
      * @return string or false if no match
      */
     protected function _quoteFields($conditions)
@@ -3209,6 +3267,7 @@ class DboSource extends DataSource
      * Auxiliary function to quote matches `Model.fields` from a preg_replace_callback call
      *
      * @param string $match matched string
+     *
      * @return string quoted string
      */
     protected function _quoteMatchedField($match)
@@ -3225,6 +3284,7 @@ class DboSource extends DataSource
      *
      * @param int $limit Limit of results returned
      * @param int $offset Offset from which to start results
+     *
      * @return string SQL limit/offset statement
      */
     public function limit($limit, $offset = null)
@@ -3250,6 +3310,7 @@ class DboSource extends DataSource
      * @param array|string $keys Field reference, as a key (i.e. Post.title)
      * @param string $direction Direction (ASC or DESC)
      * @param Model $Model Model reference (used to look for virtual field)
+     *
      * @return string ORDER BY clause
      */
     public function order($keys, $direction = 'ASC', Model $Model = null)
@@ -3336,6 +3397,7 @@ class DboSource extends DataSource
      *
      * @param string|array $fields Group By fields
      * @param Model $Model The model to get group by fields for.
+     *
      * @return string Group By clause or null.
      */
     public function group($fields, Model $Model = null)
@@ -3367,6 +3429,7 @@ class DboSource extends DataSource
      * @param mixed $fields Array or string of conditions
      * @param bool $quoteValues If true, values should be quoted
      * @param Model $Model A reference to the Model instance making the query
+     *
      * @return string|null HAVING clause or null
      */
     public function having($fields, $quoteValues = true, Model $Model = null)
@@ -3384,6 +3447,7 @@ class DboSource extends DataSource
      * Currently, this method only returns FOR UPDATE when the mode is set to true.
      *
      * @param mixed $mode Lock mode
+     *
      * @return string|null FOR UPDATE clause or null
      */
     public function getLockingHint($mode)
@@ -3397,8 +3461,6 @@ class DboSource extends DataSource
 
     /**
      * Disconnects database, kills the connection and says the connection is closed.
-     *
-     * @return void
      */
     public function close()
     {
@@ -3410,6 +3472,7 @@ class DboSource extends DataSource
      *
      * @param Model $Model Model to search
      * @param string $sql SQL WHERE clause (condition only, not the "WHERE" part)
+     *
      * @return bool True if the table has a matching record, else false
      */
     public function hasAny(Model $Model, $sql)
@@ -3433,6 +3496,7 @@ class DboSource extends DataSource
      * Gets the length of a database-native column description, or null if no length
      *
      * @param string $real Real database-layer column type (i.e. "varchar(255)")
+     *
      * @return mixed An integer or string representing the length of the column, or null for unknown length.
      */
     public function length($real)
@@ -3475,6 +3539,7 @@ class DboSource extends DataSource
      *
      * @param mixed $data Value to be translated
      * @param bool $quote Whether or not the field should be cast to a string.
+     *
      * @return string|bool Converted boolean value
      */
     public function boolean($data, $quote = false)
@@ -3494,6 +3559,7 @@ class DboSource extends DataSource
      * @param array $values The array of values to insert. The values should
      *   be an array of rows. Each row should have values keyed by the column name.
      *   Each row must have the values in the same order as $fields.
+     *
      * @return bool
      */
     public function insertMulti($table, $fields, $values)
@@ -3548,6 +3614,7 @@ class DboSource extends DataSource
      *
      * @param string $table The name of the table to update.
      * @param string $column The column to use when resetting the sequence value.
+     *
      * @return bool Success.
      */
     public function resetSequence($table, $column)
@@ -3558,6 +3625,7 @@ class DboSource extends DataSource
      * Returns an array of the indexes in given datasource name.
      *
      * @param string $model Name of model to inspect
+     *
      * @return array Fields in table. Keys are column and unique
      */
     public function index($model)
@@ -3571,6 +3639,7 @@ class DboSource extends DataSource
      * @param CakeSchema $schema An instance of a subclass of CakeSchema
      * @param string $tableName Optional. If specified only the table name given will be generated.
      *   Otherwise, all tables defined in the schema are generated.
+     *
      * @return string
      */
     public function createSchema($schema, $tableName = null)
@@ -3637,6 +3706,7 @@ class DboSource extends DataSource
      *
      * @param mixed $compare The comparison data.
      * @param string $table The table name.
+     *
      * @return bool
      */
     public function alterSchema($compare, $table = null)
@@ -3650,6 +3720,7 @@ class DboSource extends DataSource
      * @param CakeSchema $schema An instance of a subclass of CakeSchema
      * @param string $table Optional. If specified only the table name given will be generated.
      *   Otherwise, all tables defined in the schema are generated.
+     *
      * @return string
      */
     public function dropSchema(CakeSchema $schema, $table = null)
@@ -3673,6 +3744,7 @@ class DboSource extends DataSource
      * Generate a "drop table" statement for a single table
      *
      * @param type $table Name of the table to drop
+     *
      * @return string Drop table SQL statement
      */
     protected function _dropTable($table)
@@ -3685,6 +3757,7 @@ class DboSource extends DataSource
      *
      * @param array $column An array structured like the following: array('name' => 'value', 'type' => 'value'[, options]),
      *   where options can be 'default', 'length', or 'key'.
+     *
      * @return string
      */
     public function buildColumn($column)
@@ -3756,6 +3829,7 @@ class DboSource extends DataSource
      * @param string $columnString The partially built column string
      * @param array $columnData The array of column data.
      * @param string $position The position type to use. 'beforeDefault' or 'afterDefault' are common
+     *
      * @return string a built column with the field parameters added.
      */
     protected function _buildFieldParameters($columnString, $columnData, $position)
@@ -3784,6 +3858,7 @@ class DboSource extends DataSource
      *
      * @param array $indexes The indexes to build
      * @param string $table The table name.
+     *
      * @return array
      */
     public function buildIndex($indexes, $table = null)
@@ -3815,6 +3890,7 @@ class DboSource extends DataSource
      * Read additional table parameters
      *
      * @param string $name The table name to read.
+     *
      * @return array
      */
     public function readTableParameters($name)
@@ -3837,6 +3913,7 @@ class DboSource extends DataSource
      *
      * @param array $parameters The parameters to create SQL for.
      * @param string $table The table name.
+     *
      * @return array
      */
     public function buildTableParameters($parameters, $table = null)
@@ -3858,6 +3935,7 @@ class DboSource extends DataSource
      * Guesses the data type of an array
      *
      * @param string $value The value to introspect for type data.
+     *
      * @return string
      */
     public function introspectType($value)
@@ -3914,8 +3992,6 @@ class DboSource extends DataSource
 
     /**
      * Empties the query caches.
-     *
-     * @return void
      */
     public function flushQueryCache()
     {
@@ -3928,7 +4004,6 @@ class DboSource extends DataSource
      * @param string $sql SQL query
      * @param mixed $data result of $sql query
      * @param array $params query params bound as values
-     * @return void
      */
     protected function _writeQueryCache($sql, $data, $params = [])
     {
@@ -3942,6 +4017,7 @@ class DboSource extends DataSource
      *
      * @param string $sql SQL query
      * @param array $params query params bound as values
+     *
      * @return mixed results for query if it is cached, false otherwise
      */
     public function getQueryCache($sql, $params = [])

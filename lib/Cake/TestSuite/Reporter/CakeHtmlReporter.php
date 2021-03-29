@@ -10,8 +10,10 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
  * @since         CakePHP(tm) v 1.2.0.4433
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('CakeBaseReporter', 'TestSuite/Reporter');
@@ -34,8 +36,6 @@ class CakeHtmlReporter extends CakeBaseReporter
     /**
      * Paints the top of the web page setting the
      * title to the name of the starting test.
-     *
-     * @return void
      */
     public function paintHeader()
     {
@@ -51,8 +51,6 @@ class CakeHtmlReporter extends CakeBaseReporter
 
     /**
      * Set the content-type header so it is in the correct encoding.
-     *
-     * @return void
      */
     public function sendContentType()
     {
@@ -63,8 +61,6 @@ class CakeHtmlReporter extends CakeBaseReporter
 
     /**
      * Paints the document start content contained in header.php
-     *
-     * @return void
      */
     public function paintDocumentStart()
     {
@@ -75,8 +71,6 @@ class CakeHtmlReporter extends CakeBaseReporter
     /**
      * Paints the menu on the left side of the test suite interface.
      * Contains all of the various plugin, core, and app buttons.
-     *
-     * @return void
      */
     public function paintTestMenu()
     {
@@ -88,8 +82,6 @@ class CakeHtmlReporter extends CakeBaseReporter
 
     /**
      * Retrieves and paints the list of tests cases in an HTML format.
-     *
-     * @return void
      */
     public function testCaseList()
     {
@@ -125,8 +117,6 @@ class CakeHtmlReporter extends CakeBaseReporter
      * Send the headers necessary to ensure the page is
      * reloaded on every request. Otherwise you could be
      * scratching your head over out of date test data.
-     *
-     * @return void
      */
     public function sendNoCacheHeaders()
     {
@@ -144,7 +134,6 @@ class CakeHtmlReporter extends CakeBaseReporter
      * the passes and failures.
      *
      * @param PHPUnit_Framework_TestResult $result Result object
-     * @return void
      */
     public function paintFooter($result)
     {
@@ -186,7 +175,6 @@ class CakeHtmlReporter extends CakeBaseReporter
      * Paints a code coverage report.
      *
      * @param array $coverage The coverage data
-     * @return void
      */
     public function paintCoverage(array $coverage)
     {
@@ -198,8 +186,6 @@ class CakeHtmlReporter extends CakeBaseReporter
 
     /**
      * Renders the links that for accessing things in the test suite.
-     *
-     * @return void
      */
     protected function _paintLinks()
     {
@@ -229,6 +215,7 @@ class CakeHtmlReporter extends CakeBaseReporter
      * Convert an array of parameters into a query string url
      *
      * @param array $url Url hash to be converted
+     *
      * @return string Converted url query string
      */
     protected function _queryString($url)
@@ -245,8 +232,6 @@ class CakeHtmlReporter extends CakeBaseReporter
 
     /**
      * Paints the end of the document html.
-     *
-     * @return void
      */
     public function paintDocumentEnd()
     {
@@ -265,7 +250,6 @@ class CakeHtmlReporter extends CakeBaseReporter
      * @param PHPUnit_Framework_AssertionFailedError $message Failure object displayed in
      *   the context of the other tests.
      * @param mixed $test The test case to paint a failure for.
-     * @return void
      */
     public function paintFail($message, $test)
     {
@@ -317,7 +301,6 @@ class CakeHtmlReporter extends CakeBaseReporter
      *
      * @param PHPUnit_Framework_Test $test Test method that just passed
      * @param float $time time spent to run the test method
-     * @return void
      */
     public function paintPass(PHPUnit_Framework_Test $test, $time = null)
     {
@@ -337,7 +320,6 @@ class CakeHtmlReporter extends CakeBaseReporter
      *
      * @param Exception $message Exception to display.
      * @param mixed $test The test that failed.
-     * @return void
      */
     public function paintException($message, $test)
     {
@@ -360,7 +342,6 @@ class CakeHtmlReporter extends CakeBaseReporter
      *
      * @param string $message Text of skip condition.
      * @param PHPUnit_Framework_TestCase $test the test method skipped
-     * @return void
      */
     public function paintSkip($message, $test)
     {
@@ -376,7 +357,6 @@ class CakeHtmlReporter extends CakeBaseReporter
      * Paints formatted text such as dumped variables.
      *
      * @param string $message Text to show.
-     * @return void
      */
     public function paintFormattedMessage($message)
     {
@@ -387,6 +367,7 @@ class CakeHtmlReporter extends CakeBaseReporter
      * Character set adjusted entity conversion.
      *
      * @param string $message Plain text or Unicode message.
+     *
      * @return string Browser readable message.
      */
     protected function _htmlEntities($message)
@@ -398,6 +379,7 @@ class CakeHtmlReporter extends CakeBaseReporter
      * Gets a formatted stack trace.
      *
      * @param Exception $e Exception to get a stack trace for.
+     *
      * @return string Generated stack trace.
      */
     protected function _getStackTrace(Exception $e)
@@ -421,7 +403,6 @@ class CakeHtmlReporter extends CakeBaseReporter
      * A test suite started.
      *
      * @param PHPUnit_Framework_TestSuite $suite The test suite to start.
-     * @return void
      */
     public function startTestSuite(PHPUnit_Framework_TestSuite $suite)
     {

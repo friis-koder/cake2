@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Test.Case.Core
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -25,8 +29,6 @@ class AppTest extends CakeTestCase
 {
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -36,8 +38,6 @@ class AppTest extends CakeTestCase
 
     /**
      * testBuild method
-     *
-     * @return void
      */
     public function testBuild()
     {
@@ -98,8 +98,6 @@ class AppTest extends CakeTestCase
 
     /**
      * tests that it is possible to set up paths using the CakePHP 1.3 notation for them (models, behaviors, controllers...)
-     *
-     * @return void
      */
     public function testCompatibleBuild()
     {
@@ -190,8 +188,6 @@ class AppTest extends CakeTestCase
 
     /**
      * test package build() with App::REGISTER.
-     *
-     * @return void
      */
     public function testBuildPackage()
     {
@@ -234,8 +230,6 @@ class AppTest extends CakeTestCase
 
     /**
      * test path() with a plugin.
-     *
-     * @return void
      */
     public function testPathWithPlugins()
     {
@@ -251,8 +245,6 @@ class AppTest extends CakeTestCase
 
     /**
      * testBuildWithReset method
-     *
-     * @return void
      */
     public function testBuildWithReset()
     {
@@ -278,8 +270,6 @@ class AppTest extends CakeTestCase
 
     /**
      * testCore method
-     *
-     * @return void
      */
     public function testCore()
     {
@@ -304,8 +294,6 @@ class AppTest extends CakeTestCase
 
     /**
      * testListObjects method
-     *
-     * @return void
      */
     public function testListObjects()
     {
@@ -370,8 +358,6 @@ class AppTest extends CakeTestCase
 
     /**
      * Make sure that .svn and friends are excluded from App::objects('plugin')
-     *
-     * @return void
      */
     public function testListObjectsIgnoreDotDirectories()
     {
@@ -391,8 +377,6 @@ class AppTest extends CakeTestCase
 
     /**
      * Tests listing objects within a plugin
-     *
-     * @return void
      */
     public function testListObjectsInPlugin()
     {
@@ -442,8 +426,6 @@ class AppTest extends CakeTestCase
 
     /**
      * test that themePath can find paths for themes.
-     *
-     * @return void
      */
     public function testThemePath()
     {
@@ -463,8 +445,6 @@ class AppTest extends CakeTestCase
 
     /**
      * testClassLoading method
-     *
-     * @return void
      */
     public function testClassLoading()
     {
@@ -543,8 +523,6 @@ class AppTest extends CakeTestCase
 
     /**
      * test import() with plugins
-     *
-     * @return void
      */
     public function testPluginImporting()
     {
@@ -587,8 +565,6 @@ class AppTest extends CakeTestCase
 
     /**
      * test that building helper paths actually works.
-     *
-     * @return void
      */
     public function testImportingHelpersFromAlternatePaths()
     {
@@ -607,8 +583,6 @@ class AppTest extends CakeTestCase
 
     /**
      * testFileLoading method
-     *
-     * @return void
      */
     public function testFileLoading()
     {
@@ -621,8 +595,6 @@ class AppTest extends CakeTestCase
 
     /**
      * testFileLoadingWithArray method
-     *
-     * @return void
      */
     public function testFileLoadingWithArray()
     {
@@ -647,8 +619,6 @@ class AppTest extends CakeTestCase
 
     /**
      * testFileLoadingReturnValue method
-     *
-     * @return void
      */
     public function testFileLoadingReturnValue()
     {
@@ -671,8 +641,6 @@ class AppTest extends CakeTestCase
 
     /**
      * testLoadingWithSearch method
-     *
-     * @return void
      */
     public function testLoadingWithSearch()
     {
@@ -685,8 +653,6 @@ class AppTest extends CakeTestCase
 
     /**
      * testLoadingWithSearchArray method
-     *
-     * @return void
      */
     public function testLoadingWithSearchArray()
     {
@@ -713,8 +679,6 @@ class AppTest extends CakeTestCase
 
     /**
      * testMultipleLoading method
-     *
-     * @return void
      */
     public function testMultipleLoading()
     {
@@ -793,8 +757,6 @@ class AppTest extends CakeTestCase
     /**
      * Tests that the automatic class loader will also find in "libs" folder for both
      * app and plugins if it does not find the class in other configured paths
-     *
-     * @return void
      */
     public function testLoadClassInLibs()
     {
@@ -815,8 +777,6 @@ class AppTest extends CakeTestCase
 
     /**
      * Tests that App::location() returns the defined path for a class
-     *
-     * @return void
      */
     public function testClassLocation()
     {
@@ -826,8 +786,6 @@ class AppTest extends CakeTestCase
 
     /**
      * Test that paths() works.
-     *
-     * @return void
      */
     public function testPaths()
     {
@@ -840,8 +798,6 @@ class AppTest extends CakeTestCase
     /**
      * Proves that it is possible to load plugin libraries in top
      * level Lib dir for plugins
-     *
-     * @return void
      */
     public function testPluginLibClasses()
     {
@@ -858,7 +814,6 @@ class AppTest extends CakeTestCase
      * Test that increaseMemoryLimit increases the maximum amount of memory actually
      *
      * @dataProvider memoryVariationProvider
-     * @return void
      */
     public function testIncreaseMemoryLimit($memoryLimit, $additionalKb, $expected)
     {
@@ -875,8 +830,6 @@ class AppTest extends CakeTestCase
 
     /**
      * Data provider function for testIncreaseMemoryLimit
-     *
-     * @return void
      */
     public function memoryVariationProvider()
     {

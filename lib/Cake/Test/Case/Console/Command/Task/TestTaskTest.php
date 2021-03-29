@@ -12,9 +12,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP Project
+ *
  * @package       Cake.Test.Case.Console.Command.Task
+ *
  * @since         CakePHP v 1.2.0.7726
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('ShellDispatcher', 'Console');
@@ -68,8 +72,6 @@ class TestTaskArticle extends Model
 
     /**
      * Example public method
-     *
-     * @return void
      */
     public function doSomething()
     {
@@ -77,8 +79,6 @@ class TestTaskArticle extends Model
 
     /**
      * Example Secondary public method
-     *
-     * @return void
      */
     public function doSomethingElse()
     {
@@ -86,8 +86,6 @@ class TestTaskArticle extends Model
 
     /**
      * Example protected method
-     *
-     * @return void
      */
     protected function _innerMethod()
     {
@@ -190,8 +188,6 @@ class TestTaskTest extends CakeTestCase
 
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -210,8 +206,6 @@ class TestTaskTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -222,8 +216,6 @@ class TestTaskTest extends CakeTestCase
 
     /**
      * Test that file path generation doesn't continuously append paths.
-     *
-     * @return void
      */
     public function testFilePathGenerationModelRepeated()
     {
@@ -250,8 +242,6 @@ class TestTaskTest extends CakeTestCase
     /**
      * Test that method introspection pulls all relevant non parent class
      * methods into the test case.
-     *
-     * @return void
      */
     public function testMethodIntrospection()
     {
@@ -262,8 +252,6 @@ class TestTaskTest extends CakeTestCase
 
     /**
      * test that the generation of fixtures works correctly.
-     *
-     * @return void
      */
     public function testFixtureArrayGenerationFromModel()
     {
@@ -277,8 +265,6 @@ class TestTaskTest extends CakeTestCase
 
     /**
      * test that the generation of fixtures works correctly.
-     *
-     * @return void
      */
     public function testFixtureArrayGenerationFromController()
     {
@@ -292,8 +278,6 @@ class TestTaskTest extends CakeTestCase
 
     /**
      * test user interaction to get object type
-     *
-     * @return void
      */
     public function testGetObjectType()
     {
@@ -309,8 +293,6 @@ class TestTaskTest extends CakeTestCase
 
     /**
      * creating test subjects should clear the registry so the registry is always fresh
-     *
-     * @return void
      */
     public function testRegistryClearWhenBuildingTestObjects()
     {
@@ -334,8 +316,6 @@ class TestTaskTest extends CakeTestCase
 
     /**
      * test that getClassName returns the user choice as a class name.
-     *
-     * @return void
      */
     public function testGetClassName()
     {
@@ -355,8 +335,6 @@ class TestTaskTest extends CakeTestCase
 
     /**
      * Test the user interaction for defining additional fixtures.
-     *
-     * @return void
      */
     public function testGetUserFixtures()
     {
@@ -371,8 +349,6 @@ class TestTaskTest extends CakeTestCase
 
     /**
      * test that resolving class names works
-     *
-     * @return void
      */
     public function testGetRealClassname()
     {
@@ -407,8 +383,6 @@ class TestTaskTest extends CakeTestCase
     /**
      * test baking files. The conditionally run tests are known to fail in PHP4
      * as PHP4 class names are all lower case, breaking the plugin path inflection.
-     *
-     * @return void
      */
     public function testBakeModelTest()
     {
@@ -439,8 +413,6 @@ class TestTaskTest extends CakeTestCase
 
     /**
      * test baking controller test files
-     *
-     * @return void
      */
     public function testBakeControllerTest()
     {
@@ -467,8 +439,6 @@ class TestTaskTest extends CakeTestCase
 
     /**
      * test baking component test files,
-     *
-     * @return void
      */
     public function testBakeComponentTest()
     {
@@ -491,8 +461,6 @@ class TestTaskTest extends CakeTestCase
 
     /**
      * test baking behavior test files,
-     *
-     * @return void
      */
     public function testBakeBehaviorTest()
     {
@@ -512,8 +480,6 @@ class TestTaskTest extends CakeTestCase
 
     /**
      * test baking helper test files,
-     *
-     * @return void
      */
     public function testBakeHelperTest()
     {
@@ -534,8 +500,6 @@ class TestTaskTest extends CakeTestCase
 
     /**
      * test Constructor generation ensure that constructClasses is called for controllers
-     *
-     * @return void
      */
     public function testGenerateConstructor()
     {
@@ -554,8 +518,6 @@ class TestTaskTest extends CakeTestCase
 
     /**
      * Test generateUses()
-     *
-     * @return void
      */
     public function testGenerateUses()
     {
@@ -590,8 +552,6 @@ class TestTaskTest extends CakeTestCase
 
     /**
      * Test that mock class generation works for the appropriate classes
-     *
-     * @return void
      */
     public function testMockClassGeneration()
     {
@@ -601,8 +561,6 @@ class TestTaskTest extends CakeTestCase
 
     /**
      * test bake() with a -plugin param
-     *
-     * @return void
      */
     public function testBakeWithPlugin()
     {
@@ -620,8 +578,6 @@ class TestTaskTest extends CakeTestCase
 
     /**
      * test interactive with plugins lists from the plugin
-     *
-     * @return void
      */
     public function testInteractiveWithPlugin()
     {
@@ -671,7 +627,6 @@ class TestTaskTest extends CakeTestCase
      * Test filename generation for each type + plugins
      *
      * @dataProvider caseFileNameProvider
-     * @return void
      */
     public function testTestCaseFileName($type, $class, $expected)
     {
@@ -684,8 +639,6 @@ class TestTaskTest extends CakeTestCase
 
     /**
      * Test filename generation for plugins.
-     *
-     * @return void
      */
     public function testTestCaseFileNamePlugin()
     {
@@ -700,8 +653,6 @@ class TestTaskTest extends CakeTestCase
 
     /**
      * test execute with a type defined
-     *
-     * @return void
      */
     public function testExecuteWithOneArg()
     {
@@ -718,8 +669,6 @@ class TestTaskTest extends CakeTestCase
 
     /**
      * test execute with type and class name defined
-     *
-     * @return void
      */
     public function testExecuteWithTwoArgs()
     {
@@ -736,8 +685,6 @@ class TestTaskTest extends CakeTestCase
 
     /**
      * test execute with type and class name defined and lower case.
-     *
-     * @return void
      */
     public function testExecuteWithTwoArgsLowerCase()
     {
@@ -778,7 +725,6 @@ class TestTaskTest extends CakeTestCase
      * Test that mapType returns the correct package names.
      *
      * @dataProvider mapTypeProvider
-     * @return void
      */
     public function testMapType($original, $plugin, $expected)
     {

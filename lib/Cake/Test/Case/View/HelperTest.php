@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.View
+ *
  * @since         CakePHP(tm) v 1.2.0.4206
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('View', 'View');
@@ -36,8 +40,6 @@ class HelperTestPost extends Model
 
     /**
      * schema method
-     *
-     * @return void
      */
     public function schema($field = false)
     {
@@ -78,8 +80,6 @@ class HelperTestComment extends Model
 
     /**
      * schema method
-     *
-     * @return void
      */
     public function schema($field = false)
     {
@@ -113,8 +113,6 @@ class HelperTestTag extends Model
 
     /**
      * schema method
-     *
-     * @return void
      */
     public function schema($field = false)
     {
@@ -145,8 +143,6 @@ class HelperTestPostsTag extends Model
 
     /**
      * schema method
-     *
-     * @return void
      */
     public function schema($field = false)
     {
@@ -185,7 +181,6 @@ class TestHelper extends Helper
      * @param string $exclude
      * @param string $insertBefore
      * @param string $insertAfter
-     * @return void
      */
     public function parseAttributes($options, $exclude = null, $insertBefore = ' ', $insertAfter = null)
     {
@@ -202,8 +197,6 @@ class HelperTest extends CakeTestCase
 {
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -227,8 +220,6 @@ class HelperTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -282,8 +273,6 @@ class HelperTest extends CakeTestCase
 
     /**
      * Test settings merging
-     *
-     * @return void
      */
     public function testSettingsMerging()
     {
@@ -303,7 +292,6 @@ class HelperTest extends CakeTestCase
      * Test setting an entity and retrieving the entity, model and field.
      *
      * @dataProvider entityProvider
-     * @return void
      */
     public function testSetEntity($entity, $expected, $modelKey, $fieldKey)
     {
@@ -315,8 +303,6 @@ class HelperTest extends CakeTestCase
 
     /**
      * test setEntity with setting a scope.
-     *
-     * @return void
      */
     public function testSetEntityScoped()
     {
@@ -363,8 +349,6 @@ class HelperTest extends CakeTestCase
 
     /**
      * Test that setEntity() and model()/field() work with associated models.
-     *
-     * @return void
      */
     public function testSetEntityAssociated()
     {
@@ -379,8 +363,6 @@ class HelperTest extends CakeTestCase
 
     /**
      * Test creating saveMany() compatible entities
-     *
-     * @return void
      */
     public function testSetEntitySaveMany()
     {
@@ -394,8 +376,6 @@ class HelperTest extends CakeTestCase
     /**
      * Test that setEntity doesn't make CamelCase fields that are not associations an
      * associated model.
-     *
-     * @return void
      */
     public function testSetEntityAssociatedCamelCaseField()
     {
@@ -413,8 +393,6 @@ class HelperTest extends CakeTestCase
 
     /**
      * Test that multiple fields work when they are camelcase and in fieldset
-     *
-     * @return void
      */
     public function testSetEntityAssociatedCamelCaseFieldHabtmMultiple()
     {
@@ -433,8 +411,6 @@ class HelperTest extends CakeTestCase
 
     /**
      * Test that habtm associations can have property fields created.
-     *
-     * @return void
      */
     public function testSetEntityHabtmPropertyFieldNames()
     {
@@ -453,8 +429,6 @@ class HelperTest extends CakeTestCase
 
     /**
      * test that 'view' doesn't break things.
-     *
-     * @return void
      */
     public function testSetEntityWithView()
     {
@@ -465,8 +439,6 @@ class HelperTest extends CakeTestCase
 
     /**
      * test getting values from Helper
-     *
-     * @return void
      */
     public function testValue()
     {
@@ -510,8 +482,6 @@ class HelperTest extends CakeTestCase
 
     /**
      * Test default values with value()
-     *
-     * @return void
      */
     public function testValueWithDefault()
     {
@@ -531,8 +501,6 @@ class HelperTest extends CakeTestCase
 
     /**
      * Test habtm data fetching and ensure no pollution happens.
-     *
-     * @return void
      */
     public function testValueHabtmKeys()
     {
@@ -575,8 +543,6 @@ class HelperTest extends CakeTestCase
 
     /**
      * Ensure HTML escaping of URL params. So link addresses are valid and not exploited
-     *
-     * @return void
      */
     public function testUrlConversion()
     {
@@ -612,8 +578,6 @@ class HelperTest extends CakeTestCase
 
     /**
      * test assetTimestamp application
-     *
-     * @return void
      */
     public function testAssetTimestamp()
     {
@@ -651,8 +615,6 @@ class HelperTest extends CakeTestCase
 
     /**
      * test assetUrl application
-     *
-     * @return void
      */
     public function testAssetUrl()
     {
@@ -688,8 +650,6 @@ class HelperTest extends CakeTestCase
 
     /**
      * Test assetUrl with no rewriting.
-     *
-     * @return void
      */
     public function testAssetUrlNoRewrite()
     {
@@ -705,8 +665,6 @@ class HelperTest extends CakeTestCase
 
     /**
      * Test assetUrl with plugins.
-     *
-     * @return void
      */
     public function testAssetUrlPlugin()
     {
@@ -724,8 +682,6 @@ class HelperTest extends CakeTestCase
 
     /**
      * test assetUrl and Asset.timestamp = force
-     *
-     * @return void
      */
     public function testAssetUrlTimestampForce()
     {
@@ -738,8 +694,6 @@ class HelperTest extends CakeTestCase
 
     /**
      * test assetTimestamp with plugins and themes
-     *
-     * @return void
      */
     public function testAssetTimestampPluginsAndThemes()
     {
@@ -764,8 +718,6 @@ class HelperTest extends CakeTestCase
 
     /**
      * testFieldsWithSameName method
-     *
-     * @return void
      */
     public function testFieldsWithSameName()
     {
@@ -786,8 +738,6 @@ class HelperTest extends CakeTestCase
 
     /**
      * testFieldSameAsModel method
-     *
-     * @return void
      */
     public function testFieldSameAsModel()
     {
@@ -804,8 +754,6 @@ class HelperTest extends CakeTestCase
 
     /**
      * testFieldSuffixForDate method
-     *
-     * @return void
      */
     public function testFieldSuffixForDate()
     {
@@ -822,8 +770,6 @@ class HelperTest extends CakeTestCase
 
     /**
      * testMulitDimensionValue method
-     *
-     * @return void
      */
     public function testMultiDimensionValue()
     {
@@ -856,8 +802,6 @@ class HelperTest extends CakeTestCase
 
     /**
      * testClean method
-     *
-     * @return void
      */
     public function testClean()
     {
@@ -885,8 +829,6 @@ class HelperTest extends CakeTestCase
 
     /**
      * testDomId method
-     *
-     * @return void
      */
     public function testDomId()
     {
@@ -896,8 +838,6 @@ class HelperTest extends CakeTestCase
 
     /**
      * testMultiDimensionalField method
-     *
-     * @return void
      */
     public function testMultiDimensionalField()
     {
@@ -994,8 +934,6 @@ class HelperTest extends CakeTestCase
 
     /**
      * test lazy loading helpers is seamless
-     *
-     * @return void
      */
     public function testLazyLoadingHelpers()
     {
@@ -1011,8 +949,6 @@ class HelperTest extends CakeTestCase
 
     /**
      * test that a helpers Helper is not 'attached' to the collection
-     *
-     * @return void
      */
     public function testThatHelperHelpersAreNotAttached()
     {
@@ -1025,8 +961,6 @@ class HelperTest extends CakeTestCase
 
     /**
      * test that the lazy loader doesn't duplicate objects on each access.
-     *
-     * @return void
      */
     public function testLazyLoadingUsesReferences()
     {

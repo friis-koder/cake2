@@ -8,14 +8,13 @@ class FixturizedTestCase extends CakeTestCase
 {
     /**
      * Fixtures to use in this thes
+     *
      * @var array
      */
     public $fixtures = ['core.category'];
 
     /**
      * test that the shared fixture is correctly set
-     *
-     * @return void
      */
     public function testFixturePresent()
     {
@@ -24,8 +23,6 @@ class FixturizedTestCase extends CakeTestCase
 
     /**
      * test that it is possible to load fixtures on demand
-     *
-     * @return void
      */
     public function testFixtureLoadOnDemand()
     {
@@ -34,8 +31,6 @@ class FixturizedTestCase extends CakeTestCase
 
     /**
      * test that a test is marked as skipped using skipIf and its first parameter evaluates to true
-     *
-     * @return void
      */
     public function testSkipIfTrue()
     {
@@ -44,8 +39,6 @@ class FixturizedTestCase extends CakeTestCase
 
     /**
      * test that a test is not marked as skipped using skipIf and its first parameter evaluates to false
-     *
-     * @return void
      */
     public function testSkipIfFalse()
     {
@@ -55,7 +48,6 @@ class FixturizedTestCase extends CakeTestCase
     /**
      * test that a fixtures are unoaded even if the test throws exceptions
      *
-     * @return void
      * @throws Exception
      */
     public function testThrowException()

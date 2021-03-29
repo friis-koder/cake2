@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.View
+ *
  * @since         CakePHP(tm) v 1.2.0.4206
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('View', 'View');
@@ -37,8 +41,6 @@ class ThemePosts2Controller extends Controller
 
     /**
      * index method
-     *
-     * @return void
      */
     public function index()
     {
@@ -62,7 +64,6 @@ class TestTheme2View extends ThemeView
      *
      * @param string $name
      * @param array $params
-     * @return void
      */
     public function renderElement($name, $params = [])
     {
@@ -73,7 +74,6 @@ class TestTheme2View extends ThemeView
      * getViewFileName method
      *
      * @param string $name
-     * @return void
      */
     public function getViewFileName($name = null)
     {
@@ -84,7 +84,6 @@ class TestTheme2View extends ThemeView
      * getLayoutFileName method
      *
      * @param string $name
-     * @return void
      */
     public function getLayoutFileName($name = null)
     {
@@ -101,8 +100,6 @@ class ThemeViewTest extends CakeTestCase
 {
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -123,8 +120,6 @@ class ThemeViewTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -137,8 +132,6 @@ class ThemeViewTest extends CakeTestCase
 
     /**
      * testPluginGetTemplate method
-     *
-     * @return void
      */
     public function testPluginThemedGetTemplate()
     {
@@ -164,8 +157,6 @@ class ThemeViewTest extends CakeTestCase
 
     /**
      * testGetTemplate method
-     *
-     * @return void
      */
     public function testGetTemplate()
     {
@@ -202,8 +193,6 @@ class ThemeViewTest extends CakeTestCase
 
     /**
      * testMissingView method
-     *
-     * @return void
      */
     public function testMissingView()
     {
@@ -227,8 +216,6 @@ class ThemeViewTest extends CakeTestCase
 
     /**
      * testMissingLayout method
-     *
-     * @return void
      */
     public function testMissingLayout()
     {
@@ -250,8 +237,6 @@ class ThemeViewTest extends CakeTestCase
 
     /**
      * test memory leaks that existed in _paths at one point.
-     *
-     * @return void
      */
     public function testMemoryLeakInPaths()
     {

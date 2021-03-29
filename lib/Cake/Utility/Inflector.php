@@ -8,9 +8,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Utility
+ *
  * @since         CakePHP(tm) v 0.2.9
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -21,6 +25,7 @@
  * Used by CakePHP's naming conventions throughout the framework.
  *
  * @package       Cake.Utility
+ *
  * @link          https://book.cakephp.org/2.0/en/core-utility-libraries/inflector.html
  */
 class Inflector
@@ -268,6 +273,7 @@ class Inflector
      * @param string $type Inflection type
      * @param string $key Original value
      * @param string $value Inflected value
+     *
      * @return string Inflected value, from cache
      */
     protected static function _cache($type, $key, $value = false)
@@ -289,8 +295,6 @@ class Inflector
     /**
      * Clears Inflectors inflected value caches. And resets the inflection
      * rules to the initial values.
-     *
-     * @return void
      */
     public static function reset()
     {
@@ -325,7 +329,6 @@ class Inflector
      * @param array $rules Array of rules to be added.
      * @param bool $reset If true, will unset default inflections for all
      *        new rules that are being defined in $rules.
-     * @return void
      */
     public static function rules($type, $rules, $reset = false)
     {
@@ -372,7 +375,9 @@ class Inflector
      * Return $word in plural form.
      *
      * @param string $word Word in singular
+     *
      * @return string Word in plural
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/inflector.html#Inflector::pluralize
      */
     public static function pluralize($word)
@@ -421,7 +426,9 @@ class Inflector
      * Return $word in singular form.
      *
      * @param string $word Word in plural
+     *
      * @return string Word in singular
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/inflector.html#Inflector::singularize
      */
     public static function singularize($word)
@@ -479,7 +486,9 @@ class Inflector
      * Returns the given lower_case_and_underscored_word as a CamelCased word.
      *
      * @param string $lowerCaseAndUnderscoredWord Word to camelize
+     *
      * @return string Camelized word. LikeThis.
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/inflector.html#Inflector::camelize
      */
     public static function camelize($lowerCaseAndUnderscoredWord)
@@ -496,7 +505,9 @@ class Inflector
      * Returns the given camelCasedWord as an underscored_word.
      *
      * @param string $camelCasedWord Camel-cased word to be "underscorized"
+     *
      * @return string Underscore-syntaxed version of the $camelCasedWord
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/inflector.html#Inflector::underscore
      */
     public static function underscore($camelCasedWord)
@@ -515,7 +526,9 @@ class Inflector
      * (Underscores are replaced by spaces and capitalized following words.)
      *
      * @param string $lowerCaseAndUnderscoredWord String to be made more readable
+     *
      * @return string Human-readable string
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/inflector.html#Inflector::humanize
      */
     public static function humanize($lowerCaseAndUnderscoredWord)
@@ -536,7 +549,9 @@ class Inflector
      * Returns corresponding table name for given model $className. ("people" for the model class "Person").
      *
      * @param string $className Name of class to get database table name for
+     *
      * @return string Name of the database table for given class
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/inflector.html#Inflector::tableize
      */
     public static function tableize($className)
@@ -553,7 +568,9 @@ class Inflector
      * Returns Cake model class name ("Person" for the database table "people".) for given database table.
      *
      * @param string $tableName Name of database table to get class name for
+     *
      * @return string Class name
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/inflector.html#Inflector::classify
      */
     public static function classify($tableName)
@@ -570,7 +587,9 @@ class Inflector
      * Returns camelBacked version of an underscored string.
      *
      * @param string $string String to convert.
+     *
      * @return string in variable form
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/inflector.html#Inflector::variable
      */
     public static function variable($string)
@@ -591,7 +610,9 @@ class Inflector
      *
      * @param string $string the string you want to slug
      * @param string $replacement will replace keys in map
+     *
      * @return string
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/inflector.html#Inflector::slug
      */
     public static function slug($string, $replacement = '_')

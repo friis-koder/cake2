@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.View.Helper
+ *
  * @since         CakePHP(tm) v 1.2.0.4206
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('TimeHelper', 'View/Helper');
@@ -59,8 +63,6 @@ class TimeHelperTest extends CakeTestCase
 
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -70,8 +72,6 @@ class TimeHelperTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -81,8 +81,6 @@ class TimeHelperTest extends CakeTestCase
 
     /**
      * test CakeTime class methods are called correctly
-     *
-     * @return void
      */
     public function testTimeHelperProxyMethodCalls()
     {
@@ -110,8 +108,6 @@ class TimeHelperTest extends CakeTestCase
 
     /**
      * test engine override
-     *
-     * @return void
      */
     public function testEngineOverride()
     {
@@ -132,8 +128,6 @@ class TimeHelperTest extends CakeTestCase
 
     /**
      * Test element wrapping in timeAgoInWords
-     *
-     * @return void
      */
     public function testTimeAgoInWords()
     {

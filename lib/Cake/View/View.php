@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.View
+ *
  * @since         CakePHP(tm) v 0.10.0.1076
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('HelperCollection', 'View');
@@ -40,6 +44,7 @@ App::uses('CakeResponse', 'Network');
  * Example of theme path with `$this->theme = 'SuperHot';` Would be `app/View/Themed/SuperHot/Posts`
  *
  * @package       Cake.View
+ *
  * @property      CacheHelper $Cache
  * @property      FormHelper $Form
  * @property      HtmlHelper $Html
@@ -72,6 +77,7 @@ class View extends CakeObject
      * Name of the plugin.
      *
      * @link http://manual.cakephp.org/chapter/plugins
+     *
      * @var string
      */
     public $plugin = null;
@@ -166,6 +172,7 @@ class View extends CakeObject
      * Used to define methods a controller that will be cached.
      *
      * @see Controller::$cacheAction
+     *
      * @var mixed
      */
     public $cacheAction = false;
@@ -213,6 +220,7 @@ class View extends CakeObject
      * per element.
      *
      * @var string
+     *
      * @see View::element()
      */
     public $elementCache = 'default';
@@ -221,6 +229,7 @@ class View extends CakeObject
      * Element cache settings
      *
      * @var array
+     *
      * @see View::_elementCache();
      * @see View::_renderElement
      */
@@ -395,6 +404,7 @@ class View extends CakeObject
      * - `callbacks` - Set to true to fire beforeRender and afterRender helper callbacks for this element.
      *   Defaults to false.
      * - `ignoreMissing` - Used to allow missing elements. Set to true to not trigger notices.
+     *
      * @return string Rendered Element
      */
     public function element($name, $data = [], $options = [])
@@ -435,6 +445,7 @@ class View extends CakeObject
      * @param string $name Name of template file in the /app/View/Elements/ folder,
      *   or `MyPlugin.template` to check the template element from MyPlugin. If the element
      *   is not found in the plugin, the normal view path cascade will be searched.
+     *
      * @return bool Success
      */
     public function elementExists($name)
@@ -461,10 +472,12 @@ class View extends CakeObject
      *
      * @param false|string $view Name of view file to use.
      * @param string $layout Layout to use.
+     *
+     * @throws CakeException If there is an error in the view.
+     *
      * @return string|null Rendered content or null if content already rendered and returned earlier.
      * @triggers View.beforeRender $this, array($viewFileName)
      * @triggers View.afterRender $this, array($viewFileName)
-     * @throws CakeException If there is an error in the view.
      */
     public function render($view = null, $layout = null)
     {
@@ -511,10 +524,12 @@ class View extends CakeObject
      *
      * @param string $content Content to render in a view, wrapped by the surrounding layout.
      * @param string $layout Layout name
+     *
+     * @throws CakeException if there is an error in the view.
+     *
      * @return mixed Rendered output, or false on error
      * @triggers View.beforeLayout $this, array($layoutFileName)
      * @triggers View.afterLayout $this, array($layoutFileName)
-     * @throws CakeException if there is an error in the view.
      */
     public function renderLayout($content, $layout = null)
     {
@@ -563,6 +578,7 @@ class View extends CakeObject
      *
      * @param string $filename the cache file to include
      * @param string $timeStart the page render start time
+     *
      * @return bool Success of rendering the cached file.
      */
     public function renderCache($filename, $timeStart)
@@ -605,7 +621,9 @@ class View extends CakeObject
      * Returns the contents of the given View variable(s)
      *
      * @param string $var The view var you want the contents of.
+     *
      * @return mixed The content of the named var if its set, otherwise null.
+     *
      * @deprecated 3.0.0 Will be removed in 3.0. Use View::get() instead.
      */
     public function getVar($var)
@@ -618,6 +636,7 @@ class View extends CakeObject
      *
      * @param string $var The view var you want the contents of.
      * @param mixed $default The default/fallback content of $var.
+     *
      * @return mixed The content of the named var if its set, otherwise $default.
      */
     public function get($var, $default = null)
@@ -633,6 +652,7 @@ class View extends CakeObject
      * Get the names of all the existing blocks.
      *
      * @return array An array containing the blocks.
+     *
      * @see ViewBlock::keys()
      */
     public function blocks()
@@ -644,7 +664,7 @@ class View extends CakeObject
      * Start capturing output for a 'block'
      *
      * @param string $name The name of the block to capture for.
-     * @return void
+     *
      * @see ViewBlock::start()
      */
     public function start($name)
@@ -656,7 +676,7 @@ class View extends CakeObject
      * Start capturing output for a 'block' if it has no content
      *
      * @param string $name The name of the block to capture for.
-     * @return void
+     *
      * @see ViewBlock::startIfEmpty()
      */
     public function startIfEmpty($name)
@@ -670,7 +690,7 @@ class View extends CakeObject
      *
      * @param string $name Name of the block
      * @param mixed $value The content for the block.
-     * @return void
+     *
      * @see ViewBlock::concat()
      */
     public function append($name, $value = null)
@@ -684,7 +704,7 @@ class View extends CakeObject
      *
      * @param string $name Name of the block
      * @param mixed $value The content for the block.
-     * @return void
+     *
      * @see ViewBlock::concat()
      */
     public function prepend($name, $value = null)
@@ -698,7 +718,7 @@ class View extends CakeObject
      *
      * @param string $name Name of the block
      * @param mixed $value The content for the block.
-     * @return void
+     *
      * @see ViewBlock::set()
      */
     public function assign($name, $value)
@@ -712,7 +732,9 @@ class View extends CakeObject
      *
      * @param string $name Name of the block
      * @param string $default Default text
+     *
      * @return string default The block content or $default if the block does not exist.
+     *
      * @see ViewBlock::get()
      */
     public function fetch($name, $default = '')
@@ -724,6 +746,7 @@ class View extends CakeObject
      * Check if a block exists
      *
      * @param string $name Name of the block
+     *
      * @return bool
      */
     public function exists($name)
@@ -734,7 +757,6 @@ class View extends CakeObject
     /**
      * End a capturing block. The compliment to View::start()
      *
-     * @return void
      * @see ViewBlock::end()
      */
     public function end()
@@ -747,7 +769,7 @@ class View extends CakeObject
      * parent view and populate blocks in the parent template.
      *
      * @param string $name The view or element to 'extend' the current one with.
-     * @return void
+     *
      * @throws LogicException when you extend a view with itself or make extend loops.
      * @throws LogicException when you extend an element which doesn't exist
      */
@@ -797,7 +819,7 @@ class View extends CakeObject
      * @param string $name Either the key name for the script, or the script content. Name can be used to
      *   update/replace a script element.
      * @param string $content The content of the script being added, optional.
-     * @return void
+     *
      * @deprecated 3.0.0 Will be removed in 3.0. Superseded by blocks functionality.
      * @see View::start()
      */
@@ -817,6 +839,7 @@ class View extends CakeObject
      *
      * @param string $object Type of object, i.e. 'form' or 'link'
      * @param string $url The object's target URL
+     *
      * @return string
      */
     public function uuid($object, $url)
@@ -840,7 +863,6 @@ class View extends CakeObject
      * @param string|array $one A string or an array of data.
      * @param mixed $two Value in case $one is a string (which then works as the key).
      *    Unused if $one is an associative array, otherwise serves as the values to $one's keys.
-     * @return void
      */
     public function set($one, $two = null)
     {
@@ -874,6 +896,7 @@ class View extends CakeObject
      * Magic accessor for helpers. Provides access to attributes that were deprecated.
      *
      * @param string $name Name of the attribute to get.
+     *
      * @return mixed
      */
     public function __get($name)
@@ -905,6 +928,7 @@ class View extends CakeObject
      *
      * @param string $name Name of the attribute to set.
      * @param mixed $value Value of the attribute to set.
+     *
      * @return mixed
      */
     public function __set($name, $value)
@@ -921,6 +945,7 @@ class View extends CakeObject
      * Magic isset check for deprecated attributes.
      *
      * @param string $name Name of the attribute to check.
+     *
      * @return bool
      */
     public function __isset($name)
@@ -938,8 +963,6 @@ class View extends CakeObject
 
     /**
      * Interact with the HelperCollection to load all the helpers.
-     *
-     * @return void
      */
     public function loadHelpers()
     {
@@ -956,10 +979,12 @@ class View extends CakeObject
      *
      * @param string $viewFile Filename of the view
      * @param array $data Data to include in rendered view. If empty the current View::$viewVars will be used.
+     *
+     * @throws CakeException when a block is left open.
+     *
      * @return string Rendered output
      * @triggers View.beforeRenderFile $this, array($viewFile)
      * @triggers View.afterRenderFile $this, array($viewFile, $content)
-     * @throws CakeException when a block is left open.
      */
     protected function _render($viewFile, $data = [])
     {
@@ -1004,6 +1029,7 @@ class View extends CakeObject
      * @param string $viewFile Filename of the view
      * @param array $dataForView Data to include in rendered view.
      *    If empty the current View::$viewVars will be used.
+     *
      * @return string Rendered output
      */
     protected function _evaluate($viewFile, $dataForView)
@@ -1024,7 +1050,9 @@ class View extends CakeObject
      *
      * @param string $helperName Name of the helper to load.
      * @param array $settings Settings for the helper
+     *
      * @return Helper a constructed helper object.
+     *
      * @see HelperCollection::load()
      */
     public function loadHelper($helperName, $settings = [])
@@ -1038,8 +1066,10 @@ class View extends CakeObject
      * LongActionNames that refer to long_action_names.ctp views.
      *
      * @param string $name Controller action to find template filename for
-     * @return string Template filename
+     *
      * @throws MissingViewException when a view file could not be found.
+     *
+     * @return string Template filename
      */
     protected function _getViewFileName($name = null)
     {
@@ -1086,6 +1116,7 @@ class View extends CakeObject
      *
      * @param string $name The name you want to plugin split.
      * @param bool $fallback If true uses the plugin set in the current CakeRequest when parsed plugin is not loaded
+     *
      * @return array Array with 2 indexes. 0 => plugin name, 1 => filename
      */
     public function pluginSplit($name, $fallback = true)
@@ -1107,8 +1138,10 @@ class View extends CakeObject
      * Returns layout filename for this template as a string.
      *
      * @param string $name The name of the layout to find.
-     * @return string Filename for layout file (.ctp).
+     *
      * @throws MissingLayoutException when a layout cannot be located
+     *
+     * @return string Filename for layout file (.ctp).
      */
     protected function _getLayoutFileName($name = null)
     {
@@ -1155,6 +1188,7 @@ class View extends CakeObject
      * Finds an element filename, returns false on failure.
      *
      * @param string $name The name of the element to find.
+     *
      * @return mixed Either a string to the element filename or false when one can't be found.
      */
     protected function _getElementFileName($name)
@@ -1179,6 +1213,7 @@ class View extends CakeObject
      *
      * @param string $plugin Optional plugin name to scan for view files.
      * @param bool $cached Set to false to force a refresh of view paths. Default true.
+     *
      * @return array paths
      */
     protected function _paths($plugin = null, $cached = true)
@@ -1233,6 +1268,7 @@ class View extends CakeObject
      * @param string $name Element name
      * @param string $data Data
      * @param array $options Element options
+     *
      * @return string|null
      */
     protected function _elementCache($name, $data, $options)
@@ -1268,6 +1304,7 @@ class View extends CakeObject
      * @param string $file Element file path
      * @param array $data Data to render
      * @param array $options Element options
+     *
      * @return string
      * @triggers View.beforeRender $this, array($file)
      * @triggers View.afterRender $this, array($file, $element)

@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Test.Case.Controller.Component.Auth
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('DigestAuthenticate', 'Controller/Component/Auth');
@@ -38,8 +42,6 @@ class DigestAuthenticateTest extends CakeTestCase
 
     /**
      * setup
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -64,8 +66,6 @@ class DigestAuthenticateTest extends CakeTestCase
 
     /**
      * tearDown
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -75,8 +75,6 @@ class DigestAuthenticateTest extends CakeTestCase
 
     /**
      * test applying settings in the constructor
-     *
-     * @return void
      */
     public function testConstructor()
     {
@@ -93,8 +91,6 @@ class DigestAuthenticateTest extends CakeTestCase
 
     /**
      * test the authenticate method
-     *
-     * @return void
      */
     public function testAuthenticateNoData()
     {
@@ -111,7 +107,6 @@ class DigestAuthenticateTest extends CakeTestCase
      *
      * @expectedException UnauthorizedException
      * @expectedExceptionCode 401
-     * @return void
      */
     public function testAuthenticateWrongUsername()
     {
@@ -135,8 +130,6 @@ DIGEST;
 
     /**
      * test that challenge headers are sent when no credentials are found.
-     *
-     * @return void
      */
     public function testAuthenticateChallenge()
     {
@@ -156,8 +149,6 @@ DIGEST;
 
     /**
      * test authenticate success
-     *
-     * @return void
      */
     public function testAuthenticateSuccess()
     {
@@ -191,7 +182,6 @@ DIGEST;
      *
      * @expectedException UnauthorizedException
      * @expectedExceptionCode 401
-     * @return void
      */
     public function testAuthenticateFailReChallenge()
     {
@@ -216,8 +206,6 @@ DIGEST;
 
     /**
      * testParseDigestAuthData method
-     *
-     * @return void
      */
     public function testParseAuthData()
     {
@@ -252,8 +240,6 @@ DIGEST;
 
     /**
      * Test parsing a full URI. While not part of the spec some mobile clients will do it wrong.
-     *
-     * @return void
      */
     public function testParseAuthDataFullUri()
     {
@@ -276,8 +262,6 @@ DIGEST;
 
     /**
      * test parsing digest information with email addresses
-     *
-     * @return void
      */
     public function testParseAuthEmailAddress()
     {
@@ -309,8 +293,6 @@ DIGEST;
 
     /**
      * test password hashing
-     *
-     * @return void
      */
     public function testPassword()
     {

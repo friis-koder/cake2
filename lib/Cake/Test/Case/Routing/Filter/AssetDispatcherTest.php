@@ -8,9 +8,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/view/1196/Testing CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Routing.Filter
+ *
  * @since         CakePHP(tm) v 2.2
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('AssetDispatcher', 'Routing/Filter');
@@ -26,8 +30,6 @@ class AssetDispatcherTest extends CakeTestCase
 {
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -38,7 +40,6 @@ class AssetDispatcherTest extends CakeTestCase
     /**
      * test that asset filters work for theme and plugin assets
      *
-     * @return void
      * @triggers DispatcherTest $this, compact('request', 'response')
      * @triggers DispatcherTest $this, compact('request', 'response')
      * @triggers DispatcherTest $this, compact('request', 'response')
@@ -94,7 +95,6 @@ class AssetDispatcherTest extends CakeTestCase
      * AssetDispatcher should not 404 extensions that could be handled
      * by Routing.
      *
-     * @return void
      * @triggers DispatcherTest $this, compact('request', 'response')
      */
     public function testNoHandleRoutedExtension()
@@ -123,7 +123,6 @@ class AssetDispatcherTest extends CakeTestCase
      * Tests that $response->checkNotModified() is called and bypasses
      * file dispatching
      *
-     * @return void
      * @triggers DispatcherTest $this, compact('request', 'response')
      * @triggers DispatcherTest $this, compact('request', 'response')
      */
@@ -168,7 +167,6 @@ class AssetDispatcherTest extends CakeTestCase
     /**
      * Test that no exceptions are thrown for //index.php type URLs.
      *
-     * @return void
      * @triggers Dispatcher.beforeRequest $this, compact('request', 'response')
      */
     public function test404OnDoubleSlash()
@@ -186,7 +184,6 @@ class AssetDispatcherTest extends CakeTestCase
     /**
      * Test that attempts to traverse directories are prevented.
      *
-     * @return void
      * @triggers Dispatcher.beforeRequest $this, compact('request', 'response')
      */
     public function test404OnDoubleDot()
@@ -206,7 +203,6 @@ class AssetDispatcherTest extends CakeTestCase
     /**
      * Test that attempts to traverse directories with urlencoded paths fail.
      *
-     * @return void
      * @triggers Dispatcher.beforeRequest $this, compact('request', 'response')
      */
     public function test404OnDoubleDotEncoded()
@@ -233,7 +229,6 @@ class AssetDispatcherTest extends CakeTestCase
      * If content length is unset, then the webserver can figure it out.
      *
      * @outputBuffering enabled
-     * @return void
      */
     public function testAssetContentLength()
     {

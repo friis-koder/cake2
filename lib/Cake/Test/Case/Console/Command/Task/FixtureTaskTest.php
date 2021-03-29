@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Test.Case.Console.Command.Task
+ *
  * @since         CakePHP(tm) v 1.3
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('ShellDispatcher', 'Console');
@@ -47,8 +51,6 @@ class FixtureTaskTest extends CakeTestCase
 
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -73,8 +75,6 @@ class FixtureTaskTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -84,8 +84,6 @@ class FixtureTaskTest extends CakeTestCase
 
     /**
      * test that initialize sets the path
-     *
-     * @return void
      */
     public function testConstruct()
     {
@@ -98,8 +96,6 @@ class FixtureTaskTest extends CakeTestCase
 
     /**
      * test import option array generation
-     *
-     * @return void
      */
     public function testImportOptionsSchemaRecords()
     {
@@ -114,8 +110,6 @@ class FixtureTaskTest extends CakeTestCase
 
     /**
      * test importOptions choosing nothing.
-     *
-     * @return void
      */
     public function testImportOptionsNothing()
     {
@@ -131,8 +125,6 @@ class FixtureTaskTest extends CakeTestCase
 
     /**
      * test importOptions with overwriting command line options.
-     *
-     * @return void
      */
     public function testImportOptionsWithCommandLineOptions()
     {
@@ -145,8 +137,6 @@ class FixtureTaskTest extends CakeTestCase
 
     /**
      * test importOptions with overwriting CLI options
-     *
-     * @return void
      */
     public function testImportOptionsWithCommandLineOptionsPlugin()
     {
@@ -159,8 +149,6 @@ class FixtureTaskTest extends CakeTestCase
 
     /**
      * test importOptions with schema.
-     *
-     * @return void
      */
     public function testImportOptionsWithSchema()
     {
@@ -176,8 +164,6 @@ class FixtureTaskTest extends CakeTestCase
 
     /**
      * test importOptions with records.
-     *
-     * @return void
      */
     public function testImportOptionsWithRecords()
     {
@@ -192,8 +178,6 @@ class FixtureTaskTest extends CakeTestCase
 
     /**
      * test importOptions choosing from Table.
-     *
-     * @return void
      */
     public function testImportOptionsTable()
     {
@@ -208,8 +192,6 @@ class FixtureTaskTest extends CakeTestCase
 
     /**
      * test generating a fixture with database conditions.
-     *
-     * @return void
      */
     public function testImportRecordsFromDatabaseWithConditionsPoo()
     {
@@ -236,8 +218,6 @@ class FixtureTaskTest extends CakeTestCase
 
     /**
      * test that connection gets set to the import options when a different connection is used.
-     *
-     * @return void
      */
     public function testImportOptionsAlternateConnection()
     {
@@ -248,8 +228,6 @@ class FixtureTaskTest extends CakeTestCase
 
     /**
      * Ensure that fixture data doesn't get overly escaped.
-     *
-     * @return void
      */
     public function testImportRecordsNoEscaping()
     {
@@ -278,8 +256,6 @@ class FixtureTaskTest extends CakeTestCase
 
     /**
      * test that execute includes import options
-     *
-     * @return void
      */
     public function testExecuteWithImportSchema()
     {
@@ -307,8 +283,6 @@ class FixtureTaskTest extends CakeTestCase
 
     /**
      * test that execute includes import options
-     *
-     * @return void
      */
     public function testExecuteWithImportRecords()
     {
@@ -336,8 +310,6 @@ class FixtureTaskTest extends CakeTestCase
 
     /**
      * test that execute passes runs bake depending with named model.
-     *
-     * @return void
      */
     public function testExecuteWithNamedModel()
     {
@@ -354,8 +326,6 @@ class FixtureTaskTest extends CakeTestCase
 
     /**
      * test that execute runs all() when args[0] = all
-     *
-     * @return void
      */
     public function testExecuteIntoAll()
     {
@@ -381,8 +351,6 @@ class FixtureTaskTest extends CakeTestCase
 
     /**
      * test using all() with -count and -records
-     *
-     * @return void
      */
     public function testAllWithCountAndRecordsFlags()
     {
@@ -408,8 +376,6 @@ class FixtureTaskTest extends CakeTestCase
 
     /**
      * test using all() with -schema
-     *
-     * @return void
      */
     public function testAllWithSchemaImport()
     {
@@ -435,8 +401,6 @@ class FixtureTaskTest extends CakeTestCase
 
     /**
      * test interactive mode of execute
-     *
-     * @return void
      */
     public function testExecuteInteractive()
     {
@@ -458,8 +422,6 @@ class FixtureTaskTest extends CakeTestCase
 
     /**
      * Test that bake works
-     *
-     * @return void
      */
     public function testBake()
     {
@@ -493,8 +455,6 @@ class FixtureTaskTest extends CakeTestCase
 
     /**
      * test record generation with various integer, float and binary types
-     *
-     * @return void
      */
     public function testRecordGenerationForBinaryFloatAndIntegerTypes()
     {
@@ -514,8 +474,6 @@ class FixtureTaskTest extends CakeTestCase
 
     /**
      * Test that file generation includes headers and correct path for plugins.
-     *
-     * @return void
      */
     public function testGenerateFixtureFile()
     {
@@ -535,8 +493,6 @@ class FixtureTaskTest extends CakeTestCase
 
     /**
      * test generating files into plugins.
-     *
-     * @return void
      */
     public function testGeneratePluginFixtureFile()
     {

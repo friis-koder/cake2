@@ -12,9 +12,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Utility
+ *
  * @since         CakePHP(tm) v 0.10.0.1076
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('ConnectionManager', 'Model');
@@ -26,6 +30,7 @@ App::uses('ConnectionManager', 'Model');
  * and all of the above on arrays.
  *
  * @package       Cake.Utility
+ *
  * @deprecated    3.0.0 Deprecated since version 2.4
  */
 class Sanitize
@@ -35,6 +40,7 @@ class Sanitize
      *
      * @param string|array $string String to sanitize
      * @param array $allowed An array of additional characters that are not to be removed.
+     *
      * @return string|array Sanitized string
      */
     public static function paranoid($string, $allowed = [])
@@ -63,6 +69,7 @@ class Sanitize
      *
      * @param string $string String to sanitize
      * @param string $connection Database connection being used
+     *
      * @return string SQL safe string
      */
     public static function escape($string, $connection = 'default')
@@ -95,6 +102,7 @@ class Sanitize
      *
      * @param string $string String from where to strip tags
      * @param array $options Array of options to use.
+     *
      * @return string Sanitized string
      */
     public static function html($string, $options = [])
@@ -126,6 +134,7 @@ class Sanitize
      * Strips extra whitespace from output
      *
      * @param string $str String to sanitize
+     *
      * @return string whitespace sanitized string
      */
     public static function stripWhitespace($str)
@@ -137,6 +146,7 @@ class Sanitize
      * Strips image tags from output
      *
      * @param string $str String to sanitize
+     *
      * @return string Sting with images stripped.
      */
     public static function stripImages($str)
@@ -154,6 +164,7 @@ class Sanitize
      * Strips scripts and stylesheets from output
      *
      * @param string $str String to sanitize
+     *
      * @return string String with <link>, <img>, <script>, <style> elements and html comments removed.
      */
     public static function stripScripts($str)
@@ -172,6 +183,7 @@ class Sanitize
      * Strips extra whitespace, images, scripts and stylesheets from output
      *
      * @param string $str String to sanitize
+     *
      * @return string sanitized string
      */
     public static function stripAll($str)
@@ -192,6 +204,7 @@ class Sanitize
      * Will remove all `<b>`, `<p>`, and `<div>` tags from the $dirty string.
      *
      * @param string $str String to sanitize.
+     *
      * @return string sanitized String
      */
     public static function stripTags($str)
@@ -222,6 +235,7 @@ class Sanitize
      *
      * @param string|array $data Data to sanitize
      * @param string|array $options If string, DB connection being used, otherwise set of options
+     *
      * @return mixed Sanitized data
      */
     public static function clean($data, $options = [])

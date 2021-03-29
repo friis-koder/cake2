@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.View.Helper
+ *
  * @since         CakePHP(tm) v 1.1.7.3328
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('AppHelper', 'View/Helper');
@@ -24,6 +28,7 @@ App::uses('CakeSession', 'Model/Datasource');
  * Session reading from the view.
  *
  * @package       Cake.View.Helper
+ *
  * @link https://book.cakephp.org/2.0/en/core-libraries/helpers/session.html
  */
 class SessionHelper extends AppHelper
@@ -35,7 +40,9 @@ class SessionHelper extends AppHelper
      * Calling the method without a param will return all session vars
      *
      * @param string $name the name of the session key you want to read
+     *
      * @return mixed values from the session vars
+     *
      * @link https://book.cakephp.org/2.0/en/core-libraries/helpers/session.html#SessionHelper::read
      */
     public function read($name = null)
@@ -49,6 +56,7 @@ class SessionHelper extends AppHelper
      * In your view: `$this->Session->consume('Controller.sessKey');`
      *
      * @param string $name the name of the session key you want to read
+     *
      * @return mixed values from the session vars
      */
     public function consume($name)
@@ -62,7 +70,9 @@ class SessionHelper extends AppHelper
      * In your view: `$this->Session->check('Controller.sessKey');`
      *
      * @param string $name Session key to check.
+     *
      * @return bool
+     *
      * @link https://book.cakephp.org/2.0/en/core-libraries/helpers/session.html#SessionHelper::check
      */
     public function check($name)
@@ -76,6 +86,7 @@ class SessionHelper extends AppHelper
      * In your view: `$this->Session->error();`
      *
      * @return string last error
+     *
      * @link https://book.cakephp.org/2.0/en/core-libraries/helpers/session.html#displaying-notifications-or-flash-messages
      */
     public function error()
@@ -127,7 +138,9 @@ class SessionHelper extends AppHelper
      * @param string $key The [Message.]key you are rendering in the view.
      * @param array $attrs Additional attributes to use for the creation of this flash message.
      *    Supports the 'params', and 'element' keys that are used in the helper.
+     *
      * @return string
+     *
      * @link https://book.cakephp.org/2.0/en/core-libraries/helpers/session.html#SessionHelper::flash
      * @deprecated 3.0.0 Since 2.7, use FlashHelper::render() instead.
      */
@@ -156,6 +169,7 @@ class SessionHelper extends AppHelper
      * Used to check is a session is valid in a view
      *
      * @return bool
+     *
      * @link https://book.cakephp.org/2.0/en/core-libraries/helpers/session.html#SessionHelper::valid
      */
     public function valid()
@@ -167,6 +181,7 @@ class SessionHelper extends AppHelper
      * Renders a flash message
      *
      * @param array $flash Flash message array
+     *
      * @return string
      */
     protected function _render($flash)

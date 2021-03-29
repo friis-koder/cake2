@@ -10,8 +10,10 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
  * @since         CakePHP(tm) v 1.2.0.5669
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('AppShell', 'Console/Command');
@@ -60,8 +62,6 @@ class I18nShell extends AppShell
 
     /**
      * Override main() for help message hook
-     *
-     * @return void
      */
     public function main()
     {
@@ -97,8 +97,6 @@ class I18nShell extends AppShell
 
     /**
      * Initialize I18N database.
-     *
-     * @return void
      */
     public function initdb()
     {

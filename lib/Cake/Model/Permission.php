@@ -8,9 +8,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Model
+ *
  * @since         CakePHP(tm) v 0.2.9
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('AppModel', 'Model');
@@ -69,6 +73,7 @@ class Permission extends AppModel
      * @param string $aro ARO The requesting object identifier.
      * @param string $aco ACO The controlled object identifier.
      * @param string $action Action (defaults to *)
+     *
      * @return bool Success (true if ARO has access to action in ACO, false otherwise)
      */
     public function check($aro, $aco, $action = '*')
@@ -178,8 +183,10 @@ class Permission extends AppModel
      * @param string $aco ACO The controlled object identifier.
      * @param string $actions Action (defaults to *) Invalid permissions will result in an exception
      * @param int $value Value to indicate access type (1 to give access, -1 to deny, 0 to inherit)
-     * @return bool Success
+     *
      * @throws AclException on Invalid permission key.
+     *
+     * @return bool Success
      */
     public function allow($aro, $aco, $actions = '*', $value = 1)
     {
@@ -229,6 +236,7 @@ class Permission extends AppModel
      *
      * @param string $aro ARO The requesting object identifier.
      * @param string $aco ACO The controlled object identifier.
+     *
      * @return array Indexed array with: 'aro', 'aco' and 'link'
      */
     public function getAclLink($aro, $aco)
@@ -259,6 +267,7 @@ class Permission extends AppModel
      * Get the crud type keys
      *
      * @param array $keys Permission schema
+     *
      * @return array permission keys
      */
     public function getAcoKeys($keys)

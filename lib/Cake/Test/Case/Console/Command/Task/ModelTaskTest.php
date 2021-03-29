@@ -12,9 +12,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP Project
+ *
  * @package       Cake.Test.Case.Console.Command.Task
+ *
  * @since         CakePHP v 1.2.6
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('ShellDispatcher', 'Console');
@@ -29,6 +33,7 @@ App::uses('ModelTask', 'Console/Command/Task');
  * ModelTaskTest class
  *
  * @package	   Cake.Test.Case.Console.Command.Task
+ *
  * @property   ModelTask $Task
  */
 class ModelTaskTest extends CakeTestCase
@@ -45,8 +50,6 @@ class ModelTaskTest extends CakeTestCase
 
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -64,8 +67,6 @@ class ModelTaskTest extends CakeTestCase
 
     /**
      * Setup a mock that has out mocked. Normally this is not used as it makes $this->at() really tricky.
-     *
-     * @return void
      */
     protected function _useMockedOut()
     {
@@ -82,8 +83,6 @@ class ModelTaskTest extends CakeTestCase
 
     /**
      * sets up the rest of the dependencies for Model Task
-     *
-     * @return void
      */
     protected function _setupOtherMocks()
     {
@@ -100,8 +99,6 @@ class ModelTaskTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -111,8 +108,6 @@ class ModelTaskTest extends CakeTestCase
 
     /**
      * Test that listAll scans the database connection and lists all the tables in it.s
-     *
-     * @return void
      */
     public function testListAllArgument()
     {
@@ -128,8 +123,6 @@ class ModelTaskTest extends CakeTestCase
 
     /**
      * Test that listAll uses the connection property
-     *
-     * @return void
      */
     public function testListAllConnection()
     {
@@ -146,8 +139,6 @@ class ModelTaskTest extends CakeTestCase
 
     /**
      * Test that getName interacts with the user and returns the model name.
-     *
-     * @return void
      */
     public function testGetNameQuit()
     {
@@ -158,8 +149,6 @@ class ModelTaskTest extends CakeTestCase
 
     /**
      * test getName with a valid option.
-     *
-     * @return void
      */
     public function testGetNameValidOption()
     {
@@ -175,8 +164,6 @@ class ModelTaskTest extends CakeTestCase
 
     /**
      * test that an out of bounds option causes an error.
-     *
-     * @return void
      */
     public function testGetNameWithOutOfBoundsOption()
     {
@@ -188,8 +175,6 @@ class ModelTaskTest extends CakeTestCase
 
     /**
      * Test table name interactions
-     *
-     * @return void
      */
     public function testGetTableName()
     {
@@ -201,8 +186,6 @@ class ModelTaskTest extends CakeTestCase
 
     /**
      * test getting a custom table name.
-     *
-     * @return void
      */
     public function testGetTableNameCustom()
     {
@@ -214,8 +197,6 @@ class ModelTaskTest extends CakeTestCase
 
     /**
      * test getTable with non-conventional tablenames
-     *
-     * @return void
      */
     public function testGetTableOddTableInteractive()
     {
@@ -249,8 +230,6 @@ class ModelTaskTest extends CakeTestCase
 
     /**
      * test getTable with non-conventional tablenames
-     *
-     * @return void
      */
     public function testGetTableOddTable()
     {
@@ -279,8 +258,6 @@ class ModelTaskTest extends CakeTestCase
 
     /**
      * test that initializing the validations works.
-     *
-     * @return void
      */
     public function testInitValidations()
     {
@@ -291,8 +268,6 @@ class ModelTaskTest extends CakeTestCase
     /**
      * test that individual field validation works, with interactive = false
      * tests the guessing features of validation
-     *
-     * @return void
      */
     public function testFieldValidationGuessing()
     {
@@ -326,8 +301,6 @@ class ModelTaskTest extends CakeTestCase
 
     /**
      * test that interactive field validation works and returns multiple validators.
-     *
-     * @return void
      */
     public function testInteractiveFieldValidation()
     {
@@ -343,8 +316,6 @@ class ModelTaskTest extends CakeTestCase
 
     /**
      * test that a bogus response doesn't cause errors to bubble up.
-     *
-     * @return void
      */
     public function testInteractiveFieldValidationWithBogusResponse()
     {
@@ -365,8 +336,6 @@ class ModelTaskTest extends CakeTestCase
 
     /**
      * test that a regular expression can be used for validation.
-     *
-     * @return void
      */
     public function testInteractiveFieldValidationWithRegexp()
     {
@@ -382,8 +351,6 @@ class ModelTaskTest extends CakeTestCase
 
     /**
      * Test that skipping fields during rule choice works when doing interactive field validation.
-     *
-     * @return void
      */
     public function testSkippingChoiceInteractiveFieldValidation()
     {
@@ -399,8 +366,6 @@ class ModelTaskTest extends CakeTestCase
 
     /**
      * Test that skipping fields after rule choice works when doing interactive field validation.
-     *
-     * @return void
      */
     public function testSkippingAnotherInteractiveFieldValidation()
     {
@@ -417,8 +382,6 @@ class ModelTaskTest extends CakeTestCase
     /**
      * Test the validation generation routine with skipping the rest of the fields
      * when doing interactive field validation.
-     *
-     * @return void
      */
     public function testInteractiveDoValidationWithSkipping()
     {
@@ -480,8 +443,6 @@ class ModelTaskTest extends CakeTestCase
 
     /**
      * test the validation Generation routine
-     *
-     * @return void
      */
     public function testNonInteractiveDoValidation()
     {
@@ -546,8 +507,6 @@ class ModelTaskTest extends CakeTestCase
 
     /**
      * test that finding primary key works
-     *
-     * @return void
      */
     public function testFindPrimaryKey()
     {
@@ -568,8 +527,6 @@ class ModelTaskTest extends CakeTestCase
 
     /**
      * test finding Display field
-     *
-     * @return void
      */
     public function testFindDisplayFieldNone()
     {
@@ -584,8 +541,6 @@ class ModelTaskTest extends CakeTestCase
 
     /**
      * Test finding a displayname from user input
-     *
-     * @return void
      */
     public function testFindDisplayName()
     {
@@ -602,8 +557,6 @@ class ModelTaskTest extends CakeTestCase
 
     /**
      * test that belongsTo generation works.
-     *
-     * @return void
      */
     public function testBelongsToGeneration()
     {
@@ -641,8 +594,6 @@ class ModelTaskTest extends CakeTestCase
 
     /**
      * test that hasOne and/or hasMany relations are generated properly.
-     *
-     * @return void
      */
     public function testHasManyHasOneGeneration()
     {
@@ -691,8 +642,6 @@ class ModelTaskTest extends CakeTestCase
 
     /**
      * Test that HABTM generation works
-     *
-     * @return void
      */
     public function testHasAndBelongsToManyGeneration()
     {
@@ -716,8 +665,6 @@ class ModelTaskTest extends CakeTestCase
 
     /**
      * test non interactive doAssociations
-     *
-     * @return void
      */
     public function testDoAssociationsNonInteractive()
     {
@@ -755,8 +702,6 @@ class ModelTaskTest extends CakeTestCase
 
     /**
      * test non interactive doActsAs
-     *
-     * @return void
      */
     public function testDoActsAs()
     {
@@ -770,8 +715,6 @@ class ModelTaskTest extends CakeTestCase
 
     /**
      * Ensure that the fixture object is correctly called.
-     *
-     * @return void
      */
     public function testBakeFixture()
     {
@@ -787,8 +730,6 @@ class ModelTaskTest extends CakeTestCase
 
     /**
      * Ensure that the test object is correctly called.
-     *
-     * @return void
      */
     public function testBakeTest()
     {
@@ -805,8 +746,6 @@ class ModelTaskTest extends CakeTestCase
     /**
      * test confirming of associations, and that when an association is hasMany
      * a question for the hasOne is also not asked.
-     *
-     * @return void
      */
     public function testConfirmAssociations()
     {
@@ -848,8 +787,6 @@ class ModelTaskTest extends CakeTestCase
 
     /**
      * test that inOptions generates questions and only accepts a valid answer
-     *
-     * @return void
      */
     public function testInOptions()
     {
@@ -871,8 +808,6 @@ class ModelTaskTest extends CakeTestCase
 
     /**
      * test baking validation
-     *
-     * @return void
      */
     public function testBakeValidation()
     {
@@ -909,8 +844,6 @@ STRINGEND;
 
     /**
      * test baking relations
-     *
-     * @return void
      */
     public function testBakeRelations()
     {
@@ -968,8 +901,6 @@ STRINGEND;
 
     /**
      * test bake() with a -plugin param
-     *
-     * @return void
      */
     public function testBakeWithPlugin()
     {
@@ -990,8 +921,6 @@ STRINGEND;
 
     /**
      * test bake() for models with behaviors
-     *
-     * @return void
      */
     public function testBakeWithBehaviors()
     {
@@ -1012,8 +941,6 @@ TEXT;
 
     /**
      * test that execute passes runs bake depending with named model.
-     *
-     * @return void
      */
     public function testExecuteWithNamedModel()
     {
@@ -1034,8 +961,6 @@ TEXT;
 
     /**
      * data provider for testExecuteWithNamedModelVariations
-     *
-     * @return void
      */
     public static function nameVariations()
     {
@@ -1048,7 +973,6 @@ TEXT;
      * test that execute passes with different inflections of the same name.
      *
      * @dataProvider nameVariations
-     * @return void
      */
     public function testExecuteWithNamedModelVariations($name)
     {
@@ -1066,8 +990,6 @@ TEXT;
 
     /**
      * test that execute with a model name picks up hasMany associations.
-     *
-     * @return void
      */
     public function testExecuteWithNamedModelHasManyCreated()
     {
@@ -1085,8 +1007,6 @@ TEXT;
 
     /**
      * test that execute runs all() when args[0] = all
-     *
-     * @return void
      */
     public function testExecuteIntoAll()
     {
@@ -1143,8 +1063,6 @@ TEXT;
 
     /**
      * test that odd tablenames aren't inflected back from modelname
-     *
-     * @return void
      */
     public function testExecuteIntoAllOddTables()
     {
@@ -1202,8 +1120,6 @@ TEXT;
 
     /**
      * test that odd tablenames aren't inflected back from modelname
-     *
-     * @return void
      */
     public function testExecuteIntoBakeOddTables()
     {
@@ -1261,8 +1177,6 @@ TEXT;
 
     /**
      * test that skipTables changes how all() works.
-     *
-     * @return void
      */
     public function testSkipTablesAndAll()
     {
@@ -1301,8 +1215,6 @@ TEXT;
 
     /**
      * test the interactive side of bake.
-     *
-     * @return void
      */
     public function testExecuteIntoInteractive()
     {
@@ -1342,8 +1254,6 @@ TEXT;
 
     /**
      * test using bake interactively with a table that does not exist.
-     *
-     * @return void
      */
     public function testExecuteWithNonExistantTableName()
     {
@@ -1362,8 +1272,6 @@ TEXT;
 
     /**
      * test using bake interactively with a table that does not exist.
-     *
-     * @return void
      */
     public function testForcedExecuteWithNonExistantTableName()
     {

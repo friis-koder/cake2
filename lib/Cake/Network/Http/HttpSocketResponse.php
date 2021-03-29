@@ -10,8 +10,10 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
  * @since         CakePHP(tm) v 2.0.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -106,6 +108,7 @@ class HttpSocketResponse implements ArrayAccess
      *
      * @param string $name Header name.
      * @param array $headers Headers to format.
+     *
      * @return mixed String if header exists or null
      */
     public function getHeader($name, $headers = null)
@@ -149,7 +152,7 @@ class HttpSocketResponse implements ArrayAccess
      * Parses the given message and breaks it down in parts.
      *
      * @param string $message Message to parse
-     * @return void
+     *
      * @throws SocketException
      */
     public function parseResponse($message)
@@ -194,6 +197,7 @@ class HttpSocketResponse implements ArrayAccess
      *
      * @param string $body A string containing the body to decode.
      * @param string|bool $encoding Can be false in case no encoding is being used, or a string representing the encoding.
+     *
      * @return mixed Array of response headers and body or false.
      */
     protected function _decodeBody($body, $encoding = 'chunked')
@@ -218,8 +222,10 @@ class HttpSocketResponse implements ArrayAccess
      * a result.
      *
      * @param string $body A string containing the chunked body to decode.
-     * @return mixed Array of response headers and body or false.
+     *
      * @throws SocketException
+     *
+     * @return mixed Array of response headers and body or false.
      */
     protected function _decodeChunkedBody($body)
     {
@@ -270,6 +276,7 @@ class HttpSocketResponse implements ArrayAccess
      * Parses an array based header.
      *
      * @param array $header Header as an indexed array (field => value)
+     *
      * @return array|bool Parsed header
      */
     protected function _parseHeader($header)
@@ -315,6 +322,7 @@ class HttpSocketResponse implements ArrayAccess
      * Parses cookies in response headers.
      *
      * @param array $header Header array containing one ore more 'Set-Cookie' headers.
+     *
      * @return mixed Either false on no cookies, or an array of cookies received.
      */
     public function parseCookies($header)
@@ -363,6 +371,7 @@ class HttpSocketResponse implements ArrayAccess
      *
      * @param string $token Token to unescape.
      * @param array $chars Characters to unescape.
+     *
      * @return string Unescaped token
      */
     protected function _unescapeToken($token, $chars = null)
@@ -378,6 +387,7 @@ class HttpSocketResponse implements ArrayAccess
      *
      * @param bool $hex True to get them as HEX values, false otherwise.
      * @param array $chars Characters to uescape.
+     *
      * @return array Escape chars
      */
     protected function _tokenEscapeChars($hex = true, $chars = null)
@@ -406,6 +416,7 @@ class HttpSocketResponse implements ArrayAccess
      * ArrayAccess - Offset Exists
      *
      * @param string $offset Offset to check.
+     *
      * @return bool
      */
     public function offsetExists($offset)
@@ -417,6 +428,7 @@ class HttpSocketResponse implements ArrayAccess
      * ArrayAccess - Offset Get
      *
      * @param string $offset Offset to get.
+     *
      * @return mixed
      */
     public function offsetGet($offset)
@@ -458,7 +470,6 @@ class HttpSocketResponse implements ArrayAccess
      *
      * @param string $offset Offset to set.
      * @param mixed $value Value.
-     * @return void
      */
     public function offsetSet($offset, $value)
     {
@@ -468,7 +479,6 @@ class HttpSocketResponse implements ArrayAccess
      * ArrayAccess - Offset Unset
      *
      * @param string $offset Offset to unset.
-     * @return void
      */
     public function offsetUnset($offset)
     {

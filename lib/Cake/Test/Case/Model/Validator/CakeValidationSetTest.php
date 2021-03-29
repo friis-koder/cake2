@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/view/1196/Testing CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Model.Validator
+ *
  * @since         CakePHP(tm) v 2.2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('CakeValidationSet', 'Model/Validator');
@@ -26,8 +30,6 @@ class CakeValidationSetTest extends CakeTestCase
 {
     /**
      * override locale to the default (eng).
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -37,8 +39,6 @@ class CakeValidationSetTest extends CakeTestCase
 
     /**
      * testValidate method
-     *
-     * @return void
      */
     public function testValidate()
     {
@@ -80,8 +80,6 @@ class CakeValidationSetTest extends CakeTestCase
 
     /**
      * testGetRule method
-     *
-     * @return void
      */
     public function testGetRule()
     {
@@ -99,8 +97,6 @@ class CakeValidationSetTest extends CakeTestCase
 
     /**
      * testGetRules method
-     *
-     * @return void
      */
     public function testGetRules()
     {
@@ -114,8 +110,6 @@ class CakeValidationSetTest extends CakeTestCase
 
     /**
      * testSetRule method
-     *
-     * @return void
      */
     public function testSetRule()
     {
@@ -148,8 +142,6 @@ class CakeValidationSetTest extends CakeTestCase
 
     /**
      * testSetRules method
-     *
-     * @return void
      */
     public function testSetRules()
     {
@@ -185,8 +177,6 @@ class CakeValidationSetTest extends CakeTestCase
 
     /**
      * Tests getting a rule from the set using array access
-     *
-     * @return void
      */
     public function testArrayAccessGet()
     {
@@ -211,8 +201,6 @@ class CakeValidationSetTest extends CakeTestCase
 
     /**
      * Tests checking a rule from the set using array access
-     *
-     * @return void
      */
     public function testArrayAccessExists()
     {
@@ -230,8 +218,6 @@ class CakeValidationSetTest extends CakeTestCase
 
     /**
      * Tests setting a rule in the set using array access
-     *
-     * @return void
      */
     public function testArrayAccessSet()
     {
@@ -254,8 +240,6 @@ class CakeValidationSetTest extends CakeTestCase
 
     /**
      * Tests unseting a rule from the set using array access
-     *
-     * @return void
      */
     public function testArrayAccessUnset()
     {
@@ -277,8 +261,6 @@ class CakeValidationSetTest extends CakeTestCase
 
     /**
      * Tests it is possible to iterate a validation set object
-     *
-     * @return void
      */
     public function testIterator()
     {
@@ -307,8 +289,6 @@ class CakeValidationSetTest extends CakeTestCase
 
     /**
      * Tests countable interface
-     *
-     * @return void
      */
     public function testCount()
     {
@@ -325,8 +305,6 @@ class CakeValidationSetTest extends CakeTestCase
 
     /**
      * Test removeRule method
-     *
-     * @return void
      */
     public function testRemoveRule()
     {

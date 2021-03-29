@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Controller.Component.Acl
+ *
  * @since         CakePHP(tm) v 2.1
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -78,7 +82,6 @@ class PhpAcl extends CakeObject implements AclInterface
      * Initialize method
      *
      * @param AclComponent $Component Component instance
-     * @return void
      */
     public function initialize(Component $Component)
     {
@@ -98,7 +101,7 @@ class PhpAcl extends CakeObject implements AclInterface
      * build and setup internal ACL representation
      *
      * @param array $config configuration array, see docs
-     * @return void
+     *
      * @throws AclException When required keys are missing.
      */
     public function build(array $config)
@@ -127,6 +130,7 @@ class PhpAcl extends CakeObject implements AclInterface
      * @param string $aro ARO The requesting object identifier.
      * @param string $aco ACO The controlled object identifier.
      * @param string $action Action (defaults to *)
+     *
      * @return bool Success
      */
     public function allow($aro, $aco, $action = '*')
@@ -140,6 +144,7 @@ class PhpAcl extends CakeObject implements AclInterface
      * @param string $aro ARO The requesting object identifier.
      * @param string $aco ACO The controlled object identifier.
      * @param string $action Action (defaults to *)
+     *
      * @return bool Success
      */
     public function deny($aro, $aco, $action = '*')
@@ -153,6 +158,7 @@ class PhpAcl extends CakeObject implements AclInterface
      * @param string $aro ARO The requesting object identifier.
      * @param string $aco ACO The controlled object identifier.
      * @param string $action Action (defaults to *)
+     *
      * @return bool Success
      */
     public function inherit($aro, $aco, $action = '*')
@@ -167,6 +173,7 @@ class PhpAcl extends CakeObject implements AclInterface
      * @param string $aro ARO
      * @param string $aco ACO
      * @param string $action Action
+     *
      * @return bool true if access is granted, false otherwise
      */
     public function check($aro, $aco, $action = '*')
@@ -241,6 +248,7 @@ class PhpAco
      * return path to the requested ACO with allow and deny rules attached on each level
      *
      * @param string $aco ACO string
+     *
      * @return array
      */
     public function path($aco)
@@ -290,7 +298,6 @@ class PhpAco
      * @param string $aco ACO string
      * @param string $action Action string
      * @param string $type access type
-     * @return void
      */
     public function access($aro, $aco, $action, $type = 'deny')
     {
@@ -324,6 +331,7 @@ class PhpAco
      * resolve given ACO string to a path
      *
      * @param string $aco ACO string
+     *
      * @return array path
      */
     public function resolve($aco)
@@ -345,7 +353,6 @@ class PhpAco
      *
      * @param array $allow ACO allow rules
      * @param array $deny ACO deny rules
-     * @return void
      */
     public function build(array $allow, array $deny = [])
     {
@@ -392,6 +399,7 @@ class PhpAro
      * configuration file.
      *
      * @var array
+     *
      * @see app/Config/acl.php
      */
     public $map = [
@@ -438,6 +446,7 @@ class PhpAro
      * the most distant AROs to the requested one itself.
      *
      * @param string|array $aro An ARO identifier
+     *
      * @return array prioritized AROs
      */
     public function roles($aro)
@@ -465,6 +474,7 @@ class PhpAro
      * the internal mapping information.
      *
      * @param string|array $aro ARO identifier (User.jeff, array('User' => ...), etc)
+     *
      * @return string internal aro string (e.g. User/jeff, Role/default)
      */
     public function resolve($aro)
@@ -514,7 +524,6 @@ class PhpAro
      * adds a new ARO to the tree
      *
      * @param array $aro one or more ARO records
-     * @return void
      */
     public function addRole(array $aro)
     {
@@ -558,7 +567,6 @@ class PhpAro
      * adds one or more aliases to the internal map. Overwrites existing entries.
      *
      * @param array $alias alias from => to (e.g. Role/13 -> Role/editor)
-     * @return void
      */
     public function addAlias(array $alias)
     {
@@ -569,7 +577,6 @@ class PhpAro
      * build an ARO tree structure for internal processing
      *
      * @param array $aros array of AROs as key and their inherited AROs as values
-     * @return void
      */
     public function build(array $aros)
     {

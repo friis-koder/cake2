@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Console
+ *
  * @since         CakePHP(tm) v 1.2.0.5432
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('ShellDispatcher', 'Console');
@@ -47,8 +51,6 @@ class TestShellDispatcher extends ShellDispatcher
 
     /**
      * _initEnvironment method
-     *
-     * @return void
      */
     protected function _initEnvironment()
     {
@@ -56,8 +58,6 @@ class TestShellDispatcher extends ShellDispatcher
 
     /**
      * clear method
-     *
-     * @return void
      */
     public function clear()
     {
@@ -65,8 +65,6 @@ class TestShellDispatcher extends ShellDispatcher
 
     /**
      * _stop method
-     *
-     * @return void
      */
     protected function _stop($status = 0)
     {
@@ -79,6 +77,7 @@ class TestShellDispatcher extends ShellDispatcher
      * getShell
      *
      * @param string $shell
+     *
      * @return mixed
      */
     public function getShell($shell)
@@ -90,6 +89,7 @@ class TestShellDispatcher extends ShellDispatcher
      * _getShell
      *
      * @param string $plugin
+     *
      * @return mixed
      */
     protected function _getShell($shell)
@@ -111,8 +111,6 @@ class ShellDispatcherTest extends CakeTestCase
 {
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -130,8 +128,6 @@ class ShellDispatcherTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -141,8 +137,6 @@ class ShellDispatcherTest extends CakeTestCase
 
     /**
      * testParseParams method
-     *
-     * @return void
      */
     public function testParseParamsAppWorkingAbsolute()
     {
@@ -167,8 +161,6 @@ class ShellDispatcherTest extends CakeTestCase
 
     /**
      * testParseParams method
-     *
-     * @return void
      */
     public function testParseParamsNone()
     {
@@ -187,8 +179,6 @@ class ShellDispatcherTest extends CakeTestCase
 
     /**
      * testParseParams method
-     *
-     * @return void
      */
     public function testParseParamsApp()
     {
@@ -211,8 +201,6 @@ class ShellDispatcherTest extends CakeTestCase
 
     /**
      * testParseParams method
-     *
-     * @return void
      */
     public function testParseParamsAppWorkingRelative()
     {
@@ -238,8 +226,6 @@ class ShellDispatcherTest extends CakeTestCase
 
     /**
      * testParseParams method
-     *
-     * @return void
      */
     public function testParseParams()
     {
@@ -448,8 +434,6 @@ class ShellDispatcherTest extends CakeTestCase
 
     /**
      * Verify loading of (plugin-) shells
-     *
-     * @return void
      */
     public function testGetShell()
     {
@@ -482,8 +466,6 @@ class ShellDispatcherTest extends CakeTestCase
 
     /**
      * Verify correct dispatch of Shell subclasses with a main method
-     *
-     * @return void
      */
     public function testDispatchShellWithMain()
     {
@@ -505,8 +487,6 @@ class ShellDispatcherTest extends CakeTestCase
 
     /**
      * Verify correct dispatch of Shell subclasses without a main method
-     *
-     * @return void
      */
     public function testDispatchShellWithoutMain()
     {
@@ -527,8 +507,6 @@ class ShellDispatcherTest extends CakeTestCase
 
     /**
      * Verify correct dispatch of custom classes with a main method
-     *
-     * @return void
      */
     public function testDispatchNotAShellWithMain()
     {
@@ -559,8 +537,6 @@ class ShellDispatcherTest extends CakeTestCase
 
     /**
      * Verify correct dispatch of custom classes without a main method
-     *
-     * @return void
      */
     public function testDispatchNotAShellWithoutMain()
     {
@@ -591,8 +567,6 @@ class ShellDispatcherTest extends CakeTestCase
 
     /**
      * Verify shifting of arguments
-     *
-     * @return void
      */
     public function testShiftArgs()
     {

@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.TestSuite
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Dispatcher', 'Routing');
@@ -49,6 +53,7 @@ class ControllerTestDispatcher extends Dispatcher
      *
      * @param CakeRequest $request The request instance.
      * @param CakeResponse $response The response instance.
+     *
      * @return Controller
      */
     protected function _getController($request, $response)
@@ -74,8 +79,6 @@ class ControllerTestDispatcher extends Dispatcher
 
     /**
      * Loads routes and resets if the test case dictates it should
-     *
-     * @return void
      */
     protected function _loadRoutes()
     {
@@ -97,7 +100,6 @@ class InterceptContentHelper extends Helper
      * Intercepts and stores the contents of the view before the layout is rendered
      *
      * @param string $viewFile The view file
-     * @return void
      */
     public function afterRender($viewFile)
     {
@@ -110,6 +112,7 @@ class InterceptContentHelper extends Helper
  * ControllerTestCase class
  *
  * @package       Cake.TestSuite
+ *
  * @method        mixed testAction() testAction($url, $options = array())  Lets you do functional tests of a controller action.
  */
 abstract class ControllerTestCase extends CakeTestCase
@@ -192,8 +195,10 @@ abstract class ControllerTestCase extends CakeTestCase
      *
      * @param string $name The name of the function
      * @param array $arguments Array of arguments
-     * @return mixed The return of _testAction.
+     *
      * @throws BadMethodCallException when you call methods that don't exist.
+     *
+     * @return mixed The return of _testAction.
      */
     public function __call($name, $arguments)
     {
@@ -223,6 +228,7 @@ abstract class ControllerTestCase extends CakeTestCase
      *
      * @param string|array $url The URL to test.
      * @param array $options See options
+     *
      * @return mixed The specified return type.
      * @triggers ControllerTestCase $Dispatch, array('request' => $request)
      */
@@ -347,9 +353,11 @@ abstract class ControllerTestCase extends CakeTestCase
      *
      * @param string $controller Controller name
      * @param array $mocks List of classes and methods to mock
-     * @return Controller Mocked controller
+     *
      * @throws MissingControllerException When controllers could not be created.
      * @throws MissingComponentException When components could not be created.
+     *
+     * @return Controller Mocked controller
      */
     public function generate($controller, $mocks = [])
     {
@@ -437,8 +445,6 @@ abstract class ControllerTestCase extends CakeTestCase
 
     /**
      * Unsets some properties to free memory.
-     *
-     * @return void
      */
     public function tearDown()
     {

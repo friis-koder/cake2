@@ -12,9 +12,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.TestSuite.Coverage
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('BaseCoverageReport', 'TestSuite/Coverage');
@@ -54,6 +58,7 @@ class TextCoverageReport extends BaseCoverageReport
      * @param string $filename Name of the file having coverage generated
      * @param array $fileLines File data as an array. See file() for how to get one of these.
      * @param array $coverageData Array of coverage data to use to generate HTML diffs with
+     *
      * @return string
      */
     public function generateDiff($filename, $fileLines, $coverageData)

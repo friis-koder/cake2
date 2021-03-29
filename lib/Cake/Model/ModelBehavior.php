@@ -12,9 +12,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Model
+ *
  * @since         CakePHP(tm) v 1.2.0.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -58,6 +62,7 @@
  * you to munge the method name for additional information, much like Model::findAllByXX.
  *
  * @package       Cake.Model
+ *
  * @see Model::$actsAs
  * @see BehaviorCollection::load()
  */
@@ -70,6 +75,7 @@ class ModelBehavior extends CakeObject
      * associative array, keyed off of the model name.
      *
      * @var array
+     *
      * @see Model::$alias
      */
     public $settings = [];
@@ -89,7 +95,6 @@ class ModelBehavior extends CakeObject
      *
      * @param Model $model Model using this behavior
      * @param array $config Configuration settings for $model
-     * @return void
      */
     public function setup(Model $model, $config = [])
     {
@@ -100,7 +105,7 @@ class ModelBehavior extends CakeObject
      * detached from a model using Model::detach().
      *
      * @param Model $model Model using this behavior
-     * @return void
+     *
      * @see BehaviorCollection::detach()
      */
     public function cleanup(Model $model)
@@ -117,6 +122,7 @@ class ModelBehavior extends CakeObject
      *
      * @param Model $model Model using this behavior
      * @param array $query Data used to execute this query, i.e. conditions, order, etc.
+     *
      * @return bool|array False or null will abort the operation. You can return an array to replace the
      *   $query that will be eventually run.
      */
@@ -131,6 +137,7 @@ class ModelBehavior extends CakeObject
      * @param Model $model Model using this behavior
      * @param mixed $results The results of the find operation
      * @param bool $primary Whether this model is being queried directly (vs. being queried as an association)
+     *
      * @return mixed An array value will replace the value of $results - any other value will be ignored.
      */
     public function afterFind(Model $model, $results, $primary = false)
@@ -144,7 +151,9 @@ class ModelBehavior extends CakeObject
      *
      * @param Model $model Model using this behavior
      * @param array $options Options passed from Model::save().
+     *
      * @return mixed False or null will abort the operation. Any other result will continue.
+     *
      * @see Model::save()
      */
     public function beforeValidate(Model $model, $options = [])
@@ -157,6 +166,7 @@ class ModelBehavior extends CakeObject
      * to perform any data cleanup or preparation if needed
      *
      * @param Model $model Model using this behavior
+     *
      * @return mixed False will stop this event from being passed to other behaviors
      */
     public function afterValidate(Model $model)
@@ -170,7 +180,9 @@ class ModelBehavior extends CakeObject
      *
      * @param Model $model Model using this behavior
      * @param array $options Options passed from Model::save().
+     *
      * @return mixed False if the operation should abort. Any other result will continue.
+     *
      * @see Model::save()
      */
     public function beforeSave(Model $model, $options = [])
@@ -184,7 +196,9 @@ class ModelBehavior extends CakeObject
      * @param Model $model Model using this behavior
      * @param bool $created True if this save created a new record
      * @param array $options Options passed from Model::save().
+     *
      * @return bool
+     *
      * @see Model::save()
      */
     public function afterSave(Model $model, $created, $options = [])
@@ -198,6 +212,7 @@ class ModelBehavior extends CakeObject
      *
      * @param Model $model Model using this behavior
      * @param bool $cascade If true records that depend on this record will also be deleted
+     *
      * @return mixed False if the operation should abort. Any other result will continue.
      */
     public function beforeDelete(Model $model, $cascade = true)
@@ -209,7 +224,6 @@ class ModelBehavior extends CakeObject
      * After delete is called after any delete occurs on the attached model.
      *
      * @param Model $model Model using this behavior
-     * @return void
      */
     public function afterDelete(Model $model)
     {
@@ -220,7 +234,6 @@ class ModelBehavior extends CakeObject
      *
      * @param Model $model Model using this behavior
      * @param string $error Error generated in DataSource
-     * @return void
      */
     public function onError(Model $model, $error)
     {
@@ -234,7 +247,6 @@ class ModelBehavior extends CakeObject
      *
      * @param Model $model Model using this behavior
      * @param string $field Field to be added to $model's whitelist
-     * @return void
      */
     protected function _addToWhitelist(Model $model, $field)
     {

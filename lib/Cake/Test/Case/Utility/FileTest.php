@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Utility
+ *
  * @since         CakePHP(tm) v 1.2.0.4206
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('File', 'Utility');
@@ -35,8 +39,6 @@ class FileTest extends CakeTestCase
 
     /**
      * setup the test case
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -47,8 +49,6 @@ class FileTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -63,7 +63,6 @@ class FileTest extends CakeTestCase
     /**
      * testBasic method
      *
-     * @return void
      * @covers ::__construct
      * @covers ::info
      * @covers ::ext
@@ -137,7 +136,6 @@ class FileTest extends CakeTestCase
     /**
      * testPermission method
      *
-     * @return void
      * @covers ::perms
      */
     public function testPermission()
@@ -185,7 +183,6 @@ class FileTest extends CakeTestCase
     /**
      * testRead method
      *
-     * @return void
      * @covers ::read
      */
     public function testRead()
@@ -218,7 +215,6 @@ class FileTest extends CakeTestCase
     /**
      * testOffset method
      *
-     * @return void
      * @covers ::offset
      */
     public function testOffset()
@@ -252,7 +248,6 @@ class FileTest extends CakeTestCase
     /**
      * testOpen method
      *
-     * @return void
      * @covers ::open
      */
     public function testOpen()
@@ -278,7 +273,6 @@ class FileTest extends CakeTestCase
     /**
      * testClose method
      *
-     * @return void
      * @covers ::close
      */
     public function testClose()
@@ -297,7 +291,6 @@ class FileTest extends CakeTestCase
     /**
      * testCreate method
      *
-     * @return void
      * @covers ::create
      * @covers ::exists
      * @covers ::clearStatCache
@@ -311,8 +304,6 @@ class FileTest extends CakeTestCase
 
     /**
      * Tests the exists() method.
-     *
-     * @return void
      */
     public function testExists()
     {
@@ -330,7 +321,6 @@ class FileTest extends CakeTestCase
     /**
      * testOpeningNonExistentFileCreatesIt method
      *
-     * @return void
      * @covers ::open
      * @covers ::create
      */
@@ -346,7 +336,6 @@ class FileTest extends CakeTestCase
     /**
      * testPrepare method
      *
-     * @return void
      * @covers ::prepare
      */
     public function testPrepare()
@@ -368,7 +357,6 @@ class FileTest extends CakeTestCase
     /**
      * testReadable method
      *
-     * @return void
      * @covers ::readable
      */
     public function testReadable()
@@ -383,7 +371,6 @@ class FileTest extends CakeTestCase
     /**
      * testWritable method
      *
-     * @return void
      * @covers ::writable
      */
     public function testWritable()
@@ -398,7 +385,6 @@ class FileTest extends CakeTestCase
     /**
      * testExecutable method
      *
-     * @return void
      * @covers ::executable
      */
     public function testExecutable()
@@ -413,7 +399,6 @@ class FileTest extends CakeTestCase
     /**
      * testLastAccess method
      *
-     * @return void
      * @covers ::lastAccess
      */
     public function testLastAccess()
@@ -429,7 +414,6 @@ class FileTest extends CakeTestCase
     /**
      * testLastChange method
      *
-     * @return void
      * @covers ::lastChange
      */
     public function testLastChange()
@@ -449,7 +433,6 @@ class FileTest extends CakeTestCase
     /**
      * testWrite method
      *
-     * @return void
      * @covers ::write
      */
     public function testWrite()
@@ -480,7 +463,6 @@ class FileTest extends CakeTestCase
     /**
      * testAppend method
      *
-     * @return void
      * @covers ::append
      */
     public function testAppend()
@@ -518,7 +500,6 @@ class FileTest extends CakeTestCase
     /**
      * testDelete method
      *
-     * @return void
      * @covers ::delete
      */
     public function testDelete()
@@ -545,7 +526,6 @@ class FileTest extends CakeTestCase
      * Windows has issues unlinking files if there are
      * active filehandles open.
      *
-     * @return void
      * @covers ::delete
      */
     public function testDeleteAfterRead()
@@ -564,7 +544,6 @@ class FileTest extends CakeTestCase
     /**
      * testCopy method
      *
-     * @return void
      * @covers ::copy
      */
     public function testCopy()
@@ -594,7 +573,6 @@ class FileTest extends CakeTestCase
     /**
      * Test mime()
      *
-     * @return void
      * @covers ::mime
      */
     public function testMime()
@@ -613,7 +591,6 @@ class FileTest extends CakeTestCase
      * getTmpFile method
      *
      * @param bool $paintSkip
-     * @return void
      */
     protected function _getTmpFile($paintSkip = true)
     {
@@ -637,7 +614,6 @@ class FileTest extends CakeTestCase
     /**
      * testReplaceText method
      *
-     * @return void
      * @covers ::replaceText
      */
     public function testReplaceText()
@@ -676,7 +652,6 @@ class FileTest extends CakeTestCase
      * Tests that no path is being set for passed file paths that
      * do not exist.
      *
-     * @return void
      * @covers ::pwd
      */
     public function testNoPartialPathBeingSetForNonExistentPath()

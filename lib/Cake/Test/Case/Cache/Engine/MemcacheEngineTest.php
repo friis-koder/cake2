@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Cache.Engine
+ *
  * @since         CakePHP(tm) v 1.2.0.5434
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Cache', 'Cache');
@@ -29,6 +33,7 @@ class TestMemcacheEngine extends MemcacheEngine
      * public accessor to _parseServerString
      *
      * @param string $server
+     *
      * @return array
      */
     public function parseServerString($server)
@@ -51,8 +56,6 @@ class MemcacheEngineTest extends CakeTestCase
 {
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -70,8 +73,6 @@ class MemcacheEngineTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -85,8 +86,6 @@ class MemcacheEngineTest extends CakeTestCase
 
     /**
      * testSettings method
-     *
-     * @return void
      */
     public function testSettings()
     {
@@ -107,8 +106,6 @@ class MemcacheEngineTest extends CakeTestCase
 
     /**
      * testSettings method
-     *
-     * @return void
      */
     public function testMultipleServers()
     {
@@ -137,8 +134,6 @@ class MemcacheEngineTest extends CakeTestCase
 
     /**
      * testConnect method
-     *
-     * @return void
      */
     public function testConnect()
     {
@@ -150,8 +145,6 @@ class MemcacheEngineTest extends CakeTestCase
 
     /**
      * test connecting to an ipv6 server.
-     *
-     * @return void
      */
     public function testConnectIpv6()
     {
@@ -169,8 +162,6 @@ class MemcacheEngineTest extends CakeTestCase
 
     /**
      * test domain starts with u
-     *
-     * @return void
      */
     public function testParseServerStringWithU()
     {
@@ -181,8 +172,6 @@ class MemcacheEngineTest extends CakeTestCase
 
     /**
      * test non latin domains.
-     *
-     * @return void
      */
     public function testParseServerStringNonLatin()
     {
@@ -196,8 +185,6 @@ class MemcacheEngineTest extends CakeTestCase
 
     /**
      * test unix sockets.
-     *
-     * @return void
      */
     public function testParseServerStringUnix()
     {
@@ -208,8 +195,6 @@ class MemcacheEngineTest extends CakeTestCase
 
     /**
      * testReadAndWriteCache method
-     *
-     * @return void
      */
     public function testReadAndWriteCache()
     {
@@ -232,8 +217,6 @@ class MemcacheEngineTest extends CakeTestCase
 
     /**
      * testExpiry method
-     *
-     * @return void
      */
     public function testExpiry()
     {
@@ -280,8 +263,6 @@ class MemcacheEngineTest extends CakeTestCase
 
     /**
      * testDeleteCache method
-     *
-     * @return void
      */
     public function testDeleteCache()
     {
@@ -295,8 +276,6 @@ class MemcacheEngineTest extends CakeTestCase
 
     /**
      * testDecrement method
-     *
-     * @return void
      */
     public function testDecrement()
     {
@@ -318,8 +297,6 @@ class MemcacheEngineTest extends CakeTestCase
 
     /**
      * testIncrement method
-     *
-     * @return void
      */
     public function testIncrement()
     {
@@ -341,8 +318,6 @@ class MemcacheEngineTest extends CakeTestCase
 
     /**
      * test that configurations don't conflict, when a file engine is declared after a memcache one.
-     *
-     * @return void
      */
     public function testConfigurationConflict()
     {
@@ -377,8 +352,6 @@ class MemcacheEngineTest extends CakeTestCase
 
     /**
      * test clearing memcache.
-     *
-     * @return void
      */
     public function testClear()
     {
@@ -404,8 +377,6 @@ class MemcacheEngineTest extends CakeTestCase
 
     /**
      * test that a 0 duration can successfully write.
-     *
-     * @return void
      */
     public function testZeroDuration()
     {
@@ -419,8 +390,6 @@ class MemcacheEngineTest extends CakeTestCase
 
     /**
      * test that durations greater than 30 days never expire
-     *
-     * @return void
      */
     public function testLongDurationEqualToZero()
     {
@@ -441,8 +410,6 @@ class MemcacheEngineTest extends CakeTestCase
      * Tests that configuring groups for stored keys return the correct values when read/written
      * Shows that altering the group value is equivalent to deleting all keys under the same
      * group
-     *
-     * @return void
      */
     public function testGroupReadWrite()
     {
@@ -473,8 +440,6 @@ class MemcacheEngineTest extends CakeTestCase
 
     /**
      * Tests that deleteing from a groups-enabled config is possible
-     *
-     * @return void
      */
     public function testGroupDelete()
     {
@@ -492,8 +457,6 @@ class MemcacheEngineTest extends CakeTestCase
 
     /**
      * Test clearing a cache group
-     *
-     * @return void
      */
     public function testGroupClear()
     {
@@ -514,8 +477,6 @@ class MemcacheEngineTest extends CakeTestCase
 
     /**
      * Test that failed add write return false.
-     *
-     * @return void
      */
     public function testAdd()
     {

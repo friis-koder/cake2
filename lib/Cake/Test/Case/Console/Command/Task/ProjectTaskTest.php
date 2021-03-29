@@ -12,9 +12,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP Project
+ *
  * @package       Cake.Test.Case.Console.Command.Task
+ *
  * @since         CakePHP v 1.3.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('ShellDispatcher', 'Console');
@@ -34,8 +38,6 @@ class ProjectTaskTest extends CakeTestCase
 {
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -53,8 +55,6 @@ class ProjectTaskTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -67,8 +67,6 @@ class ProjectTaskTest extends CakeTestCase
 
     /**
      * creates a test project that is used for testing project task.
-     *
-     * @return void
      */
     protected function _setupTestProject()
     {
@@ -79,8 +77,6 @@ class ProjectTaskTest extends CakeTestCase
 
     /**
      * test bake() method and directory creation.
-     *
-     * @return void
      */
     public function testBake()
     {
@@ -134,8 +130,6 @@ class ProjectTaskTest extends CakeTestCase
 
     /**
      * test bake with an absolute path.
-     *
-     * @return void
      */
     public function testExecuteWithAbsolutePath()
     {
@@ -155,8 +149,6 @@ class ProjectTaskTest extends CakeTestCase
 
     /**
      * test bake with CakePHP on the include path. The constants should remain commented out.
-     *
-     * @return void
      */
     public function testExecuteWithCakeOnIncludePath()
     {
@@ -183,8 +175,6 @@ class ProjectTaskTest extends CakeTestCase
 
     /**
      * test bake() method with -empty flag,  directory creation and empty files.
-     *
-     * @return void
      */
     public function testBakeEmptyFlag()
     {
@@ -222,8 +212,6 @@ class ProjectTaskTest extends CakeTestCase
 
     /**
      * test generation of Security.salt
-     *
-     * @return void
      */
     public function testSecuritySaltGeneration()
     {
@@ -240,8 +228,6 @@ class ProjectTaskTest extends CakeTestCase
 
     /**
      * test generation of Security.cipherSeed
-     *
-     * @return void
      */
     public function testSecurityCipherSeedGeneration()
     {
@@ -258,8 +244,6 @@ class ProjectTaskTest extends CakeTestCase
 
     /**
      * test generation of cache prefix
-     *
-     * @return void
      */
     public function testCachePrefixGeneration()
     {
@@ -277,8 +261,6 @@ class ProjectTaskTest extends CakeTestCase
 
     /**
      * Test that index.php is generated correctly.
-     *
-     * @return void
      */
     public function testIndexPhpGeneration()
     {
@@ -297,8 +279,6 @@ class ProjectTaskTest extends CakeTestCase
 
     /**
      * test getPrefix method, and that it returns Routing.prefix or writes to config file.
-     *
-     * @return void
      */
     public function testGetPrefix()
     {
@@ -320,8 +300,6 @@ class ProjectTaskTest extends CakeTestCase
 
     /**
      * test cakeAdmin() writing core.php
-     *
-     * @return void
      */
     public function testCakeAdmin()
     {
@@ -341,8 +319,6 @@ class ProjectTaskTest extends CakeTestCase
 
     /**
      * test getting the prefix with more than one prefix setup
-     *
-     * @return void
      */
     public function testGetPrefixWithMultiplePrefixes()
     {
@@ -357,8 +333,6 @@ class ProjectTaskTest extends CakeTestCase
 
     /**
      * Test execute method with one param to destination folder.
-     *
-     * @return void
      */
     public function testExecute()
     {
@@ -383,8 +357,6 @@ class ProjectTaskTest extends CakeTestCase
 
     /**
      * test console path
-     *
-     * @return void
      */
     public function testConsolePath()
     {

@@ -12,9 +12,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP Project
+ *
  * @package       Cake.Test.Case.Console.Command.Task
+ *
  * @since         CakePHP v 1.3.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('ShellDispatcher', 'Console');
@@ -35,8 +39,6 @@ class PluginTaskTest extends CakeTestCase
 {
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -65,8 +67,6 @@ class PluginTaskTest extends CakeTestCase
 
     /**
      * tearDown()
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -78,8 +78,6 @@ class PluginTaskTest extends CakeTestCase
 
     /**
      * test bake()
-     *
-     * @return void
      */
     public function testBakeFoldersAndFiles()
     {
@@ -139,8 +137,6 @@ class PluginTaskTest extends CakeTestCase
 
     /**
      * test execute with no args, flowing into interactive,
-     *
-     * @return void
      */
     public function testExecuteWithNoArgs()
     {
@@ -167,8 +163,6 @@ class PluginTaskTest extends CakeTestCase
 
     /**
      * Test Execute
-     *
-     * @return void
      */
     public function testExecuteWithOneArg()
     {
@@ -197,8 +191,6 @@ class PluginTaskTest extends CakeTestCase
 
     /**
      * Test that findPath ignores paths that don't exist.
-     *
-     * @return void
      */
     public function testFindPathNonExistant()
     {

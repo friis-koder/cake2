@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Core
+ *
  * @since         CakePHP(tm) v 1.2.0.6001
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Inflector', 'Utility');
@@ -59,6 +63,7 @@ App::uses('CakePlugin', 'Core');
  * which application controllers App knows about.
  *
  * @link          https://book.cakephp.org/2.0/en/core-utility-libraries/app.html
+ *
  * @package       Cake.Core
  */
 class App
@@ -213,7 +218,9 @@ class App
      *
      * @param string $type type of path
      * @param string $plugin name of plugin
+     *
      * @return array
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/app.html#App::path
      */
     public static function path($type, $plugin = null)
@@ -248,6 +255,7 @@ class App
      * use App::path()
      *
      * @return array An array of packages and their associated paths.
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/app.html#App::paths
      */
     public static function paths()
@@ -275,7 +283,7 @@ class App
      * @param array $paths associative array with package names as keys and a list of directories for new search paths
      * @param bool|string $mode App::RESET will set paths, App::APPEND with append paths, App::PREPEND will prepend paths (default)
      * 	App::REGISTER will register new packages and their paths, %s in path will be replaced by APP path
-     * @return void
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/app.html#App::build
      */
     public static function build($paths = [], $mode = App::PREPEND)
@@ -365,7 +373,9 @@ class App
      * `App::pluginPath('MyPlugin'); will return the full path to 'MyPlugin' plugin'`
      *
      * @param string $plugin CamelCased/lower_cased plugin name to find the path of.
+     *
      * @return string full path to the plugin.
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/app.html#App::pluginPath
      * @deprecated 3.0.0 Use `CakePlugin::path()` instead.
      */
@@ -382,7 +392,9 @@ class App
      * `App::themePath('MyTheme'); will return the full path to the 'MyTheme' theme`
      *
      * @param string $theme theme name to find the path of.
+     *
      * @return string full path to the theme.
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/app.html#App::themePath
      */
     public static function themePath($theme)
@@ -405,7 +417,9 @@ class App
      * `App::core('Cache/Engine'); will return the full path to the cache engines package`
      *
      * @param string $type Package type.
+     *
      * @return array full path to package
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/app.html#App::core
      */
     public static function core($type)
@@ -433,7 +447,9 @@ class App
      * @param string $type Type of object, i.e. 'Model', 'Controller', 'View/Helper', 'file', 'class' or 'plugin'
      * @param string|array $path Optional Scan only the path given. If null, paths for the chosen type will be used.
      * @param bool $cache Set to false to rescan objects of the chosen type. Defaults to true.
+     *
      * @return mixed Either false on incorrect / miss. Or an array of found objects.
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/app.html#App::objects
      */
     public static function objects($type, $path = null, $cache = true)
@@ -526,7 +542,7 @@ class App
      *
      * @param string $className the name of the class to configure package for
      * @param string $location the package name
-     * @return void
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/app.html#App::uses
      */
     public static function uses($className, $location)
@@ -541,6 +557,7 @@ class App
      * if a class is name `MyCustomClass` the file name should be `MyCustomClass.php`
      *
      * @param string $className the name of the class to load
+     *
      * @return bool
      */
     public static function load($className)
@@ -589,7 +606,9 @@ class App
      * Returns the package name where a class was defined to be located at
      *
      * @param string $className name of the class to obtain the package name from
+     *
      * @return string|null Package name, or null if not declared
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/app.html#App::location
      */
     public static function location($className)
@@ -616,7 +635,9 @@ class App
      * @param string $file full name of the file to search for including extension
      * @param bool $return Return the loaded file, the file must have a return
      *   statement in it to work: return $variable;
+     *
      * @return bool true if Class is already in memory or if file is found and loaded, false if not
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/app.html#including-files-with-app-import
      */
     public static function import($type = null, $name = null, $parent = true, $search = [], $file = null, $return = false)
@@ -681,6 +702,7 @@ class App
      * @param string $type name of the packed where the class is located
      * @param string $originalType type name as supplied initially by the user
      * @param bool $parent whether to load the class parent or not
+     *
      * @return bool true indicating the successful load and existence of the class
      */
     protected static function _loadClass($name, $plugin, $type, $originalType, $parent)
@@ -721,6 +743,7 @@ class App
      * @param array $search list of paths to search the file into
      * @param string $file filename if known, the $name param will be used otherwise
      * @param bool $return whether this function should return the contents of the file after being parsed by php or just a success notice
+     *
      * @return mixed if $return contents of the file after php parses it, boolean indicating success otherwise
      */
     protected static function _loadFile($name, $plugin, $search, $file, $return)
@@ -762,6 +785,7 @@ class App
      * @param string $plugin camel cased plugin name if any
      * @param string $file file name if known
      * @param string $ext file extension if known
+     *
      * @return bool true if the file was loaded successfully, false otherwise
      */
     protected static function _loadVendor($name, $plugin, $file, $ext)
@@ -796,8 +820,6 @@ class App
 
     /**
      * Initializes the cache for App, registers a shutdown function.
-     *
-     * @return void
      */
     public static function init()
     {
@@ -811,7 +833,6 @@ class App
      * @param string $file full path to file
      * @param string $name unique name for this map
      * @param string $plugin camelized if object is from a plugin, the name of the plugin
-     * @return void
      */
     protected static function _map($file, $name, $plugin = null)
     {
@@ -835,6 +856,7 @@ class App
      *
      * @param string $name unique name
      * @param string $plugin camelized if object is from a plugin, the name of the plugin
+     *
      * @return mixed file path if found, false otherwise
      */
     protected static function _mapped($name, $plugin = null)
@@ -925,7 +947,6 @@ class App
      * in kilobytes
      *
      * @param string $additionalKb Number in kilobytes
-     * @return void
      */
     public static function increaseMemoryLimit($additionalKb)
     {
@@ -955,8 +976,6 @@ class App
      *
      * Writes cache file if changes have been made to the $_map. Also, check if a fatal
      * error happened and call the handler.
-     *
-     * @return void
      */
     public static function shutdown()
     {
@@ -979,8 +998,6 @@ class App
 
     /**
      * Check if a fatal error happened and trigger the configured handler if configured
-     *
-     * @return void
      */
     protected static function _checkFatalError()
     {

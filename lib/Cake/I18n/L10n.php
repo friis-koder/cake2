@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.I18n
+ *
  * @since         CakePHP(tm) v 1.2.0.4116
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('CakeRequest', 'Network');
@@ -361,6 +365,7 @@ class L10n
      * the method will get the settings from L10n::_setLanguage();
      *
      * @param string $language Language (if null will use DEFAULT_LANGUAGE if defined)
+     *
      * @return mixed
      */
     public function get($language = null)
@@ -381,6 +386,7 @@ class L10n
      * If $language is null it will use the L10n::$default if defined
      *
      * @param string $language Language (if null will use L10n::$default if defined)
+     *
      * @return mixed
      */
     protected function _setLanguage($language = null)
@@ -458,6 +464,7 @@ class L10n
      * Attempts to find locale for language, or language for locale
      *
      * @param string|array $mixed 2/3 char string (language/locale), array of those strings, or null
+     *
      * @return string|array|bool string language/locale, array of those values, whole map as an array,
      *    or false when language/locale doesn't exist
      */
@@ -491,6 +498,7 @@ class L10n
      * Attempts to find catalog record for requested language
      *
      * @param string|array $language string requested language, array of requested languages, or null for whole catalog
+     *
      * @return array|bool array catalog record for requested language, array of catalog records, whole catalog,
      *    or false when language doesn't exist
      */

@@ -8,8 +8,10 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
  * @since         2.8
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('BaseShellHelper', 'Console/Helper');
@@ -51,7 +53,7 @@ class ProgressShellHelper extends BaseShellHelper
      * - `callback` The callback that will be called in a loop to advance the progress bar.
      *
      * @param array $args The arguments/options to use when outputing the progress bar.
-     * @return void
+     *
      * @throws RuntimeException
      */
     public function output($args)
@@ -80,7 +82,6 @@ class ProgressShellHelper extends BaseShellHelper
      * - `width` The width of the progress bar. Defaults to 80.
      *
      * @param array $args The initialization data.
-     * @return void
      */
     public function init(array $args = [])
     {
@@ -94,7 +95,6 @@ class ProgressShellHelper extends BaseShellHelper
      * Increment the progress bar.
      *
      * @param int $num The amount of progress to advance by.
-     * @return void
      */
     public function increment($num = 1)
     {
@@ -103,8 +103,6 @@ class ProgressShellHelper extends BaseShellHelper
 
     /**
      * Render the progress bar based on the current state.
-     *
-     * @return void
      */
     public function draw()
     {

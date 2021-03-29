@@ -10,8 +10,10 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
  * @since         CakePHP(tm) v 1.2.0.5012
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('AppShell', 'Console/Command');
@@ -59,8 +61,6 @@ class AclShell extends AppShell
 
     /**
      * Override startup of the Shell
-     *
-     * @return void
      */
     public function startup()
     {
@@ -104,8 +104,6 @@ class AclShell extends AppShell
 
     /**
      * Override main() for help message hook
-     *
-     * @return void
      */
     public function main()
     {
@@ -114,8 +112,6 @@ class AclShell extends AppShell
 
     /**
      * Creates an ARO/ACO node
-     *
-     * @return void
      */
     public function create()
     {
@@ -149,8 +145,6 @@ class AclShell extends AppShell
     /**
      * Delete an ARO/ACO node. Note there may be (as a result of poor configuration)
      * multiple records with the same logical identifier. All are deleted.
-     *
-     * @return void
      */
     public function delete()
     {
@@ -173,8 +167,6 @@ class AclShell extends AppShell
 
     /**
      * Set parent for an ARO/ACO node.
-     *
-     * @return void
      */
     public function setParent()
     {
@@ -198,8 +190,6 @@ class AclShell extends AppShell
 
     /**
      * Get path to specified ARO/ACO node.
-     *
-     * @return void
      */
     public function getPath()
     {
@@ -228,7 +218,6 @@ class AclShell extends AppShell
      * @param string $class Class name that is being used.
      * @param array $node Array of node information.
      * @param int $indent indent level.
-     * @return void
      */
     protected function _outputNode($class, $node, $indent)
     {
@@ -243,8 +232,6 @@ class AclShell extends AppShell
 
     /**
      * Check permission for a given ARO to a given ACO.
-     *
-     * @return void
      */
     public function check()
     {
@@ -259,8 +246,6 @@ class AclShell extends AppShell
 
     /**
      * Grant permission for a given ARO to a given ACO.
-     *
-     * @return void
      */
     public function grant()
     {
@@ -275,8 +260,6 @@ class AclShell extends AppShell
 
     /**
      * Deny access for an ARO to an ACO.
-     *
-     * @return void
      */
     public function deny()
     {
@@ -291,8 +274,6 @@ class AclShell extends AppShell
 
     /**
      * Set an ARO to inherit permission to an ACO.
-     *
-     * @return void
      */
     public function inherit()
     {
@@ -307,8 +288,6 @@ class AclShell extends AppShell
 
     /**
      * Show a specific ARO/ACO node.
-     *
-     * @return void
      */
     public function view()
     {
@@ -558,6 +537,7 @@ class AclShell extends AppShell
      * Takes an identifier determines its type and returns the result as used by other methods.
      *
      * @param string $identifier Identifier to parse
+     *
      * @return mixed a string for aliases, and an array for model.foreignKey
      */
     public function parseIdentifier($identifier)
@@ -578,6 +558,7 @@ class AclShell extends AppShell
      *
      * @param string $class Class type you want (Aro/Aco)
      * @param string|array|null $identifier A mixed identifier for finding the node, otherwise null.
+     *
      * @return int Integer of NodeId. Will trigger an error if nothing is found.
      */
     protected function _getNodeId($class, $identifier)
@@ -625,6 +606,7 @@ class AclShell extends AppShell
      * Build data parameters based on node type
      *
      * @param string $type Node type  (ARO/ACO)
+     *
      * @return array Variables
      */
     protected function _dataVars($type = null)

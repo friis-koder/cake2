@@ -12,9 +12,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Controller
+ *
  * @since         CakePHP(tm) v 0.2.9
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('AppController', 'Controller');
@@ -25,6 +29,7 @@ App::uses('AppController', 'Controller');
  * Override this controller by placing a copy in controllers directory of an application
  *
  * @package       Cake.Controller
+ *
  * @link https://book.cakephp.org/2.0/en/controllers/pages-controller.html
  */
 class PagesController extends AppController
@@ -47,7 +52,7 @@ class PagesController extends AppController
      * Displays a view
      *
      * @param mixed What page to display
-     * @return void
+     *
      * @throws NotFoundException When the view file could not be found
      *	or MissingViewException in debug mode.
      */

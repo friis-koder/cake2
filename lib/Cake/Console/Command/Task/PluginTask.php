@@ -8,8 +8,10 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
  * @since         CakePHP(tm) v 1.2
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('AppShell', 'Console/Command');
@@ -39,8 +41,6 @@ class PluginTask extends AppShell
 
     /**
      * initialize
-     *
-     * @return void
      */
     public function initialize()
     {
@@ -50,8 +50,6 @@ class PluginTask extends AppShell
 
     /**
      * Execution method always used for tasks
-     *
-     * @return void
      */
     public function execute()
     {
@@ -74,7 +72,6 @@ class PluginTask extends AppShell
      * Interactive interface
      *
      * @param string $plugin The plugin name.
-     * @return void
      */
     protected function _interactive($plugin = null)
     {
@@ -91,6 +88,7 @@ class PluginTask extends AppShell
      * Bake the plugin, create directories and files
      *
      * @param string $plugin Name of the plugin in CamelCased format
+     *
      * @return bool
      */
     public function bake($plugin)
@@ -179,7 +177,6 @@ class PluginTask extends AppShell
      * Update the app's bootstrap.php file.
      *
      * @param string $plugin Name of plugin
-     * @return void
      */
     protected function _modifyBootstrap($plugin)
     {
@@ -196,7 +193,6 @@ class PluginTask extends AppShell
      * find and change $this->path to the user selection
      *
      * @param array $pathOptions The list of paths to look in.
-     * @return void
      */
     public function findPath($pathOptions)
     {

@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.View
+ *
  * @since         CakePHP(tm) v 1.2.0.5714
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('View', 'View');
@@ -52,6 +56,7 @@ App::uses('CakeRequest', 'Network');
  * ```
  *
  * @package       Cake.View
+ *
  * @deprecated 3.0.0 Deprecated since version 2.3, use CakeResponse::file() instead
  */
 class MediaView extends View
@@ -61,7 +66,6 @@ class MediaView extends View
      *
      * @param string $view Not used
      * @param string $layout Not used
-     * @return void
      */
     public function render($view = null, $layout = null)
     {

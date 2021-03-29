@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright	  Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package	      Cake.Test.Case.Controller.Component.Auth
+ *
  * @since	      CakePHP(tm) v 2.3
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('AuthComponent', 'Controller/Component');
@@ -35,8 +39,6 @@ class BlowfishAuthenticateTest extends CakeTestCase
 
     /**
      * setup
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -57,8 +59,6 @@ class BlowfishAuthenticateTest extends CakeTestCase
 
     /**
      * test applying settings in the constructor
-     *
-     * @return void
      */
     public function testConstructor()
     {
@@ -72,8 +72,6 @@ class BlowfishAuthenticateTest extends CakeTestCase
 
     /**
      * testAuthenticateNoData method
-     *
-     * @return void
      */
     public function testAuthenticateNoData()
     {
@@ -84,8 +82,6 @@ class BlowfishAuthenticateTest extends CakeTestCase
 
     /**
      * testAuthenticateNoUsername method
-     *
-     * @return void
      */
     public function testAuthenticateNoUsername()
     {
@@ -96,8 +92,6 @@ class BlowfishAuthenticateTest extends CakeTestCase
 
     /**
      * testAuthenticateNoPassword method
-     *
-     * @return void
      */
     public function testAuthenticateNoPassword()
     {
@@ -108,8 +102,6 @@ class BlowfishAuthenticateTest extends CakeTestCase
 
     /**
      * testAuthenticatePasswordIsFalse method
-     *
-     * @return void
      */
     public function testAuthenticatePasswordIsFalse()
     {
@@ -124,8 +116,6 @@ class BlowfishAuthenticateTest extends CakeTestCase
 
     /**
      * testAuthenticateInjection method
-     *
-     * @return void
      */
     public function testAuthenticateInjection()
     {
@@ -139,8 +129,6 @@ class BlowfishAuthenticateTest extends CakeTestCase
 
     /**
      * testAuthenticateSuccess method
-     *
-     * @return void
      */
     public function testAuthenticateSuccess()
     {
@@ -161,8 +149,6 @@ class BlowfishAuthenticateTest extends CakeTestCase
 
     /**
      * testAuthenticateScopeFail method
-     *
-     * @return void
      */
     public function testAuthenticateScopeFail()
     {
@@ -177,8 +163,6 @@ class BlowfishAuthenticateTest extends CakeTestCase
 
     /**
      * testPluginModel method
-     *
-     * @return void
      */
     public function testPluginModel()
     {

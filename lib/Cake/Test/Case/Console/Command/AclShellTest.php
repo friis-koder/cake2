@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP Project
+ *
  * @package       Cake.Test.Case.Console.Command
+ *
  * @since         CakePHP v 1.2.0.7726
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('ConsoleOutput', 'Console');
@@ -38,8 +42,6 @@ class AclShellTest extends CakeTestCase
 
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -62,8 +64,6 @@ class AclShellTest extends CakeTestCase
 
     /**
      * test that model.foreign_key output works when looking at acl rows
-     *
-     * @return void
      */
     public function testViewWithModelForeignKeyOutput()
     {
@@ -93,8 +93,6 @@ class AclShellTest extends CakeTestCase
 
     /**
      * test view with an argument
-     *
-     * @return void
      */
     public function testViewWithArgument()
     {
@@ -110,8 +108,6 @@ class AclShellTest extends CakeTestCase
 
     /**
      * test the method that splits model.foreign key. and that it returns an array.
-     *
-     * @return void
      */
     public function testParsingModelAndForeignKey()
     {
@@ -128,8 +124,6 @@ class AclShellTest extends CakeTestCase
 
     /**
      * test creating aro/aco nodes
-     *
-     * @return void
      */
     public function testCreate()
     {
@@ -170,8 +164,6 @@ class AclShellTest extends CakeTestCase
 
     /**
      * test the delete method with different node types.
-     *
-     * @return void
      */
     public function testDelete()
     {
@@ -187,8 +179,6 @@ class AclShellTest extends CakeTestCase
 
     /**
      * test setParent method.
-     *
-     * @return void
      */
     public function testSetParent()
     {
@@ -202,8 +192,6 @@ class AclShellTest extends CakeTestCase
 
     /**
      * test grant
-     *
-     * @return void
      */
     public function testGrant()
     {
@@ -220,8 +208,6 @@ class AclShellTest extends CakeTestCase
 
     /**
      * test deny
-     *
-     * @return void
      */
     public function testDeny()
     {
@@ -239,8 +225,6 @@ class AclShellTest extends CakeTestCase
 
     /**
      * test checking allowed and denied perms
-     *
-     * @return void
      */
     public function testCheck()
     {
@@ -268,8 +252,6 @@ class AclShellTest extends CakeTestCase
 
     /**
      * test inherit and that it 0's the permission fields.
-     *
-     * @return void
      */
     public function testInherit()
     {
@@ -292,8 +274,6 @@ class AclShellTest extends CakeTestCase
 
     /**
      * test getting the path for an aro/aco
-     *
-     * @return void
      */
     public function testGetPath()
     {
@@ -310,8 +290,6 @@ class AclShellTest extends CakeTestCase
 
     /**
      * test that initdb makes the correct call.
-     *
-     * @return void
      */
     public function testInitDb()
     {

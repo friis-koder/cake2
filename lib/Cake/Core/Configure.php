@@ -8,9 +8,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Core
+ *
  * @since         CakePHP(tm) v 1.0.0.2363
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Hash', 'Utility');
@@ -29,6 +33,7 @@ App::uses('Set', 'Utility');
  * for future use.
  *
  * @package       Cake.Core
+ *
  * @link          https://book.cakephp.org/2.0/en/development/configuration.html#configure-class
  */
 class Configure
@@ -46,6 +51,7 @@ class Configure
      * Configured reader classes, used to load config files from resources
      *
      * @var array
+     *
      * @see Configure::load()
      */
     protected static $_readers = [];
@@ -62,7 +68,6 @@ class Configure
      * - Setup error/exception handlers.
      *
      * @param bool $boot Whether to do bootstrapping.
-     * @return void
      */
     public static function bootstrap($boot = true)
     {
@@ -128,8 +133,6 @@ class Configure
 
     /**
      * Set app's default configs
-     *
-     * @return void
      */
     protected static function _appDefaults()
     {
@@ -163,7 +166,9 @@ class Configure
      * @param string|array $config The key to write, can be a dot notation value.
      * Alternatively can be an array containing key(s) and value(s).
      * @param mixed $value Value to set for var
+     *
      * @return bool True if write was successful
+     *
      * @link https://book.cakephp.org/2.0/en/development/configuration.html#Configure::write
      */
     public static function write($config, $value = null)
@@ -198,7 +203,9 @@ class Configure
      * ```
      *
      * @param string|null $var Variable to obtain. Use '.' to access array elements.
+     *
      * @return mixed value stored in configure, or null.
+     *
      * @link https://book.cakephp.org/2.0/en/development/configuration.html#Configure::read
      */
     public static function read($var = null)
@@ -217,6 +224,7 @@ class Configure
      * out of configure into the various other classes in CakePHP.
      *
      * @param string $var The key to read and remove.
+     *
      * @return array|null
      */
     public static function consume($var)
@@ -241,6 +249,7 @@ class Configure
      * Returns true if given variable is set in Configure.
      *
      * @param string $var Variable name to check for
+     *
      * @return bool True if variable is there
      */
     public static function check($var)
@@ -262,7 +271,7 @@ class Configure
      * ```
      *
      * @param string $var the var to be deleted
-     * @return void
+     *
      * @link https://book.cakephp.org/2.0/en/development/configuration.html#Configure::delete
      */
     public static function delete($var)
@@ -282,7 +291,6 @@ class Configure
      * @param string $name The name of the reader being configured. This alias is used later to
      *   read values from a specific reader.
      * @param ConfigReaderInterface $reader The reader to append.
-     * @return void
      */
     public static function config($name, ConfigReaderInterface $reader)
     {
@@ -293,6 +301,7 @@ class Configure
      * Gets the names of the configured reader objects.
      *
      * @param string|null $name Name to check. If null returns all configured reader names.
+     *
      * @return array Array of the configured reader objects.
      */
     public static function configured($name = null)
@@ -309,6 +318,7 @@ class Configure
      * and make any future attempts to use it cause an Exception.
      *
      * @param string $name Name of the reader to drop.
+     *
      * @return bool Success
      */
     public static function drop($name)
@@ -342,8 +352,11 @@ class Configure
      * @param string $key name of configuration resource to load.
      * @param string $config Name of the configured reader to use to read the resource identified by $key.
      * @param bool $merge if config files should be merged instead of simply overridden
-     * @return bool False if file not found, true if load successful.
+     *
      * @throws ConfigureException Will throw any exceptions the reader raises.
+     *
+     * @return bool False if file not found, true if load successful.
+     *
      * @link https://book.cakephp.org/2.0/en/development/configuration.html#Configure::load
      */
     public static function load($key, $config = 'default', $merge = true)
@@ -388,8 +401,10 @@ class Configure
      * @param string $config The name of the configured adapter to dump data with.
      * @param array $keys The name of the top-level keys you want to dump.
      *   This allows you save only some data stored in Configure.
-     * @return bool success
+     *
      * @throws ConfigureException if the adapter does not implement a `dump` method.
+     *
+     * @return bool success
      */
     public static function dump($key, $config = 'default', $keys = [])
     {
@@ -413,6 +428,7 @@ class Configure
      * Will create new PhpReader for default if not configured yet.
      *
      * @param string $config The name of the configured adapter
+     *
      * @return mixed Reader instance or false
      */
     protected static function _getReader($config)
@@ -453,6 +469,7 @@ class Configure
      * @param string $name The storage name for the saved configuration.
      * @param string $cacheConfig The cache configuration to save into. Defaults to 'default'
      * @param array $data Either an array of data to store, or leave empty to store all values.
+     *
      * @return bool Success
      */
     public static function store($name, $cacheConfig = 'default', $data = null)
@@ -470,6 +487,7 @@ class Configure
      *
      * @param string $name Name of the stored config file to load.
      * @param string $cacheConfig Name of the Cache configuration to read from.
+     *
      * @return bool Success.
      */
     public static function restore($name, $cacheConfig = 'default')
@@ -499,7 +517,6 @@ class Configure
      *
      * @param array $error The Error handling configuration.
      * @param array $exception The exception handling configuration.
-     * @return void
      */
     protected static function _setErrorHandlers($error, $exception)
     {

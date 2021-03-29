@@ -8,8 +8,10 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
  * @since         2.8
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('ProgressShellHelper', 'Console/Helper');
@@ -17,6 +19,7 @@ App::uses('ConsoleOutputStub', 'TestSuite/Stub');
 
 /**
  * ProgressHelper test.
+ *
  * @property ConsoleOutputStub $consoleOutput
  * @property ProgressShellHelper $helper
  */
@@ -24,8 +27,6 @@ class ProgressShellHelperTest extends CakeTestCase
 {
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -39,7 +40,6 @@ class ProgressShellHelperTest extends CakeTestCase
      * Test that a callback is required.*
      *
      * @expectedException \RuntimeException
-     * @return void
      */
     public function testOutputFailure()
     {
@@ -48,8 +48,6 @@ class ProgressShellHelperTest extends CakeTestCase
 
     /**
      * Test that the callback is invoked until 100 is reached.
-     *
-     * @return void
      */
     public function testOutputSuccess()
     {
@@ -74,8 +72,6 @@ class ProgressShellHelperTest extends CakeTestCase
 
     /**
      * Test output with options
-     *
-     * @return void
      */
     public function testOutputSuccessOptions()
     {
@@ -104,8 +100,6 @@ class ProgressShellHelperTest extends CakeTestCase
 
     /**
      * Test using the helper manually.
-     *
-     * @return void
      */
     public function testIncrementAndRender()
     {
@@ -129,8 +123,6 @@ class ProgressShellHelperTest extends CakeTestCase
 
     /**
      * Test negative numbers
-     *
-     * @return void
      */
     public function testIncrementWithNegatives()
     {
@@ -154,8 +146,6 @@ class ProgressShellHelperTest extends CakeTestCase
 
     /**
      * Test increment and draw with options
-     *
-     * @return void
      */
     public function testIncrementWithOptions()
     {
@@ -184,8 +174,6 @@ class ProgressShellHelperTest extends CakeTestCase
     /**
      * Test increment and draw with value that makes the pad
      * be a float
-     *
-     * @return void
      */
     public function testIncrementFloatPad()
     {

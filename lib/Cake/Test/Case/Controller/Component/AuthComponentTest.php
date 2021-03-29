@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Controller.Component
+ *
  * @since         CakePHP(tm) v 1.2.0.5347
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Controller', 'Controller');
@@ -45,8 +49,6 @@ class TestBaseAuthenticate extends BaseAuthenticate
 
     /**
      * Test function to be used in event dispatching
-     *
-     * @return void
      */
     public function afterIdentify($event)
     {
@@ -58,6 +60,7 @@ class TestBaseAuthenticate extends BaseAuthenticate
      *
      * @param CakeRequest $request Request to get authentication information from.
      * @param CakeResponse $response A response object that can have headers added.
+     *
      * @return mixed Either false on failure, or an array of user data on success.
      */
     public function authenticate(CakeRequest $request, CakeResponse $response)
@@ -88,7 +91,6 @@ class TestAuthComponent extends AuthComponent
      *
      * @param int $index The index at which to add/set the object
      * @param CakeObject $object The object to add/set
-     * @return void
      */
     public function setAuthenticateObject($index, $object)
     {
@@ -99,6 +101,7 @@ class TestAuthComponent extends AuthComponent
      * Helper method to get an authenticate object instance
      *
      * @param int $index The index at which to get the object
+     *
      * @return CakeObject $object
      */
     public function getAuthenticateObject($index)
@@ -113,7 +116,6 @@ class TestAuthComponent extends AuthComponent
      *
      * @param int $index The index at which to add/set the object
      * @param CakeObject $object The object to add/set
-     * @return void
      */
     public function setAuthorizeObject($index, $object)
     {
@@ -124,7 +126,6 @@ class TestAuthComponent extends AuthComponent
      * stop method
      *
      * @param int $status
-     * @return void
      */
     protected function _stop($status = 0)
     {
@@ -194,8 +195,6 @@ class AuthTestController extends Controller
 
     /**
      * login method
-     *
-     * @return void
      */
     public function login()
     {
@@ -203,8 +202,6 @@ class AuthTestController extends Controller
 
     /**
      * admin_login method
-     *
-     * @return void
      */
     public function admin_login()
     {
@@ -212,8 +209,6 @@ class AuthTestController extends Controller
 
     /**
      * admin_add method
-     *
-     * @return void
      */
     public function admin_add()
     {
@@ -221,8 +216,6 @@ class AuthTestController extends Controller
 
     /**
      * logout method
-     *
-     * @return void
      */
     public function logout()
     {
@@ -230,8 +223,6 @@ class AuthTestController extends Controller
 
     /**
      * add method
-     *
-     * @return void
      */
     public function add()
     {
@@ -240,8 +231,6 @@ class AuthTestController extends Controller
 
     /**
      * add method
-     *
-     * @return void
      */
     public function camelCase()
     {
@@ -254,7 +243,6 @@ class AuthTestController extends Controller
      * @param string|array $url
      * @param mixed $status
      * @param mixed $exit
-     * @return void
      */
     public function redirect($url, $status = null, $exit = true)
     {
@@ -265,8 +253,6 @@ class AuthTestController extends Controller
 
     /**
      * isAuthorized method
-     *
-     * @return void
      */
     public function isAuthorized()
     {
@@ -303,8 +289,6 @@ class AjaxAuthController extends Controller
 
     /**
      * beforeFilter method
-     *
-     * @return void
      */
     public function beforeFilter()
     {
@@ -315,8 +299,6 @@ class AjaxAuthController extends Controller
 
     /**
      * add method
-     *
-     * @return void
      */
     public function add()
     {
@@ -331,7 +313,6 @@ class AjaxAuthController extends Controller
      * @param string|array $url
      * @param mixed $status
      * @param mixed $exit
-     * @return void
      */
     public function redirect($url, $status = null, $exit = true)
     {
@@ -352,8 +333,6 @@ class AuthEventTestListener
 
     /**
      * Test function to be used in event dispatching
-     *
-     * @return void
      */
     public function listenerFunction()
     {
@@ -391,8 +370,6 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -423,8 +400,6 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -439,8 +414,6 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * testNoAuth method
-     *
-     * @return void
      */
     public function testNoAuth()
     {
@@ -449,8 +422,6 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * testIsErrorOrTests
-     *
-     * @return void
      */
     public function testIsErrorOrTests()
     {
@@ -470,8 +441,6 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * testLogin method
-     *
-     * @return void
      */
     public function testLogin()
     {
@@ -514,8 +483,6 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * testLogin afterIdentify event method
-     *
-     * @return void
      */
     public function testLoginAfterIdentify()
     {
@@ -542,8 +509,6 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * testRedirectVarClearing method
-     *
-     * @return void
      */
     public function testRedirectVarClearing()
     {
@@ -563,8 +528,6 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * testAuthorizeFalse method
-     *
-     * @return void
      */
     public function testAuthorizeFalse()
     {
@@ -590,7 +553,6 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * @expectedException CakeException
-     * @return void
      */
     public function testIsAuthorizedMissingFile()
     {
@@ -600,8 +562,6 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * test that isAuthorized calls methods correctly
-     *
-     * @return void
      */
     public function testIsAuthorizedDelegation()
     {
@@ -632,8 +592,6 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * test that isAuthorized will use the session user if none is given.
-     *
-     * @return void
      */
     public function testIsAuthorizedUsingUserInSession()
     {
@@ -655,8 +613,6 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * test that loadAuthorize resets the loaded objects each time.
-     *
-     * @return void
      */
     public function testLoadAuthorizeResets()
     {
@@ -672,7 +628,6 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * @expectedException CakeException
-     * @return void
      */
     public function testLoadAuthenticateNoFile()
     {
@@ -682,8 +637,6 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * test the * key with authenticate
-     *
-     * @return void
      */
     public function testAllConfigWithAuthorize()
     {
@@ -698,8 +651,6 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * test that loadAuthorize resets the loaded objects each time.
-     *
-     * @return void
      */
     public function testLoadAuthenticateResets()
     {
@@ -715,8 +666,6 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * test the * key with authenticate
-     *
-     * @return void
      */
     public function testAllConfigWithAuthenticate()
     {
@@ -731,8 +680,6 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * test defining the same Authenticate object but with different password hashers
-     *
-     * @return void
      */
     public function testSameAuthenticateWithDifferentHashers()
     {
@@ -753,8 +700,6 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * Tests that deny always takes precedence over allow
-     *
-     * @return void
      */
     public function testAllowDenyAll()
     {
@@ -814,8 +759,6 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * test that deny() converts camel case inputs to lowercase.
-     *
-     * @return void
      */
     public function testDenyWithCamelCaseMethods()
     {
@@ -837,8 +780,6 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * test that allow() and allowedActions work with camelCase method names.
-     *
-     * @return void
      */
     public function testAllowedActionsWithCamelCaseMethods()
     {
@@ -890,8 +831,6 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * testLoginRedirect method
-     *
-     * @return void
      */
     public function testLoginRedirect()
     {
@@ -1060,8 +999,6 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * testNoLoginRedirectForAuthenticatedUser method
-     *
-     * @return void
      */
     public function testNoLoginRedirectForAuthenticatedUser()
     {
@@ -1083,8 +1020,6 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * Default to loginRedirect, if set, on authError.
-     *
-     * @return void
      */
     public function testDefaultToLoginRedirect()
     {
@@ -1117,8 +1052,6 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * testRedirectToUnauthorizedRedirect
-     *
-     * @return void
      */
     public function testRedirectToUnauthorizedRedirect()
     {
@@ -1156,8 +1089,6 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * testRedirectToUnauthorizedRedirectSuppressedAuthError
-     *
-     * @return void
      */
     public function testRedirectToUnauthorizedRedirectSuppressedAuthError()
     {
@@ -1196,8 +1127,8 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * Throw ForbiddenException if AuthComponent::$unauthorizedRedirect set to false
+     *
      * @expectedException ForbiddenException
-     * @return void
      */
     public function testForbiddenException()
     {
@@ -1221,8 +1152,6 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * Test that no redirects or authorization tests occur on the loginAction
-     *
-     * @return void
      */
     public function testNoRedirectOnLoginAction()
     {
@@ -1244,8 +1173,6 @@ class AuthComponentTest extends CakeTestCase
     /**
      * Ensure that no redirect is performed when a 404 is reached
      * And the user doesn't have a session.
-     *
-     * @return void
      */
     public function testNoRedirectOn404()
     {
@@ -1258,8 +1185,6 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * testAdminRoute method
-     *
-     * @return void
      */
     public function testAdminRoute()
     {
@@ -1288,8 +1213,6 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * testAjaxLogin method
-     *
-     * @return void
      */
     public function testAjaxLogin()
     {
@@ -1313,8 +1236,6 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * testAjaxLoginResponseCode
-     *
-     * @return void
      */
     public function testAjaxLoginResponseCode()
     {
@@ -1350,8 +1271,6 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * test ajax login with no element
-     *
-     * @return void
      */
     public function testAjaxLoginResponseCodeNoElement()
     {
@@ -1380,8 +1299,6 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * testLoginActionRedirect method
-     *
-     * @return void
      */
     public function testLoginActionRedirect()
     {
@@ -1416,8 +1333,6 @@ class AuthComponentTest extends CakeTestCase
     /**
      * Stateless auth methods like Basic should populate data that can be
      * accessed by $this->user().
-     *
-     * @return void
      */
     public function testStatelessAuthWorksWithUser()
     {
@@ -1440,8 +1355,6 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * test $settings in Controller::$components
-     *
-     * @return void
      */
     public function testComponentSettings()
     {
@@ -1469,8 +1382,6 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * test that logout deletes the session variables. and returns the correct URL
-     *
-     * @return void
      */
     public function testLogout()
     {
@@ -1486,8 +1397,6 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * test that logout removes the active user data as well for stateless auth
-     *
-     * @return void
      */
     public function testLogoutRemoveUser()
     {
@@ -1504,8 +1413,6 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * Logout should trigger a logout method on authentication objects.
-     *
-     * @return void
      */
     public function testLogoutTrigger()
     {
@@ -1521,8 +1428,6 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * Test mapActions as a getter
-     *
-     * @return void
      */
     public function testMapActions()
     {
@@ -1561,8 +1466,6 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * test mapActions loading and delegating to authorize objects.
-     *
-     * @return void
      */
     public function testMapActionsDelegation()
     {
@@ -1579,8 +1482,6 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * test logging in with a request.
-     *
-     * @return void
      */
     public function testLoginWithRequestData()
     {
@@ -1602,8 +1503,6 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * test login() with user data
-     *
-     * @return void
      */
     public function testLoginWithUserData()
     {
@@ -1622,8 +1521,6 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * test flash settings.
-     *
-     * @return void
      */
     public function testFlashSettings()
     {
@@ -1642,8 +1539,6 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * test the various states of Auth::redirect()
-     *
-     * @return void
      */
     public function testRedirectSet()
     {
@@ -1655,8 +1550,6 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * test redirect using Auth.redirect from the session.
-     *
-     * @return void
      */
     public function testRedirectSessionRead()
     {
@@ -1670,8 +1563,6 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * test redirectUrl with duplicate base.
-     *
-     * @return void
      */
     public function testRedirectSessionReadDuplicateBase()
     {
@@ -1689,8 +1580,6 @@ class AuthComponentTest extends CakeTestCase
     /**
      * test that redirect does not return loginAction if that is what's stored in Auth.redirect.
      * instead loginRedirect should be used.
-     *
-     * @return void
      */
     public function testRedirectSessionReadEqualToLoginAction()
     {
@@ -1705,8 +1594,6 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * test that the returned URL doesn't contain the base URL.
-     *
-     * @return void This test method doesn't return anything.
      */
     public function testRedirectUrlWithBaseSet()
     {
@@ -1740,8 +1627,6 @@ class AuthComponentTest extends CakeTestCase
     /**
      * Test that redirectUrl() returns '/' if loginRedirect is empty
      * and Auth.redirect is the login page.
-     *
-     * @return void
      */
     public function testRedirectUrlWithoutLoginRedirect()
     {
@@ -1754,8 +1639,6 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * test password hashing
-     *
-     * @return void
      */
     public function testPassword()
     {
@@ -1766,8 +1649,6 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * testUser method
-     *
-     * @return void
      */
     public function testUser()
     {
@@ -1808,7 +1689,6 @@ class AuthComponentTest extends CakeTestCase
      *
      * @expectedException UnauthorizedException
      * @expectedExceptionCode 401
-     * @return void
      */
     public function testStatelessAuthNoRedirect()
     {
@@ -1827,8 +1707,6 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * testStatelessLoginSetUserNoSessionStart method
-     *
-     * @return void
      */
     public function testStatelessLoginSetUserNoSessionStart()
     {
@@ -1849,8 +1727,6 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * testStatelessAuthNoSessionStart method
-     *
-     * @return void
      */
     public function testStatelessAuthNoSessionStart()
     {
@@ -1877,8 +1753,6 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * testStatelessAuthRedirect method
-     *
-     * @return void
      */
     public function testStatelessFollowedByStatefulAuth()
     {
@@ -1896,8 +1770,6 @@ class AuthComponentTest extends CakeTestCase
 
     /**
      * testStatelessAuthAllowedActionsRetrieveUser method
-     *
-     * @return void
      */
     public function testStatelessAuthAllowedActionsRetrieveUser()
     {

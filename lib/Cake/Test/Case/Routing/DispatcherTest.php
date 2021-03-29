@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Routing
+ *
  * @since         CakePHP(tm) v 1.2.0.4206
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Dispatcher', 'Routing');
@@ -56,6 +60,7 @@ class TestDispatcher extends Dispatcher
      *
      * @param Controller $controller
      * @param CakeRequest $request
+     *
      * @return CakeResponse
      */
     protected function _invoke(Controller $controller, CakeRequest $request)
@@ -69,7 +74,6 @@ class TestDispatcher extends Dispatcher
      * Helper function to test single method attaching for dispatcher filters
      *
      * @param CakeEvent $event
-     * @return void
      */
     public function filterTest($event)
     {
@@ -80,7 +84,6 @@ class TestDispatcher extends Dispatcher
      * Helper function to test single method attaching for dispatcher filters
      *
      * @param CakeEvent
-     * @return void
      */
     public function filterTest2($event)
     {
@@ -131,8 +134,6 @@ class MyPluginController extends MyPluginAppController
 
     /**
      * index method
-     *
-     * @return void
      */
     public function index()
     {
@@ -141,8 +142,6 @@ class MyPluginController extends MyPluginAppController
 
     /**
      * add method
-     *
-     * @return void
      */
     public function add()
     {
@@ -153,7 +152,6 @@ class MyPluginController extends MyPluginAppController
      * admin_add method
      *
      * @param mixed $id
-     * @return void
      */
     public function admin_add($id = null)
     {
@@ -179,7 +177,6 @@ class SomePagesController extends AppController
      * display method
      *
      * @param string $page
-     * @return void
      */
     public function display($page = null)
     {
@@ -188,8 +185,6 @@ class SomePagesController extends AppController
 
     /**
      * index method
-     *
-     * @return void
      */
     public function index()
     {
@@ -237,7 +232,6 @@ class OtherPagesController extends MyPluginAppController
      * display method
      *
      * @param string $page
-     * @return void
      */
     public function display($page = null)
     {
@@ -246,8 +240,6 @@ class OtherPagesController extends MyPluginAppController
 
     /**
      * index method
-     *
-     * @return void
      */
     public function index()
     {
@@ -271,8 +263,6 @@ class TestDispatchPagesController extends AppController
 
     /**
      * admin_index method
-     *
-     * @return void
      */
     public function admin_index()
     {
@@ -281,8 +271,6 @@ class TestDispatchPagesController extends AppController
 
     /**
      * camelCased method
-     *
-     * @return void
      */
     public function camelCased()
     {
@@ -315,8 +303,6 @@ class ArticlesTestController extends ArticlesTestAppController
 
     /**
      * admin_index method
-     *
-     * @return void
      */
     public function admin_index()
     {
@@ -325,8 +311,6 @@ class ArticlesTestController extends ArticlesTestAppController
 
     /**
      * fake index method.
-     *
-     * @return void
      */
     public function index()
     {
@@ -357,8 +341,6 @@ class SomePostsController extends AppController
 
     /**
      * beforeFilter method
-     *
-     * @return void
      */
     public function beforeFilter()
     {
@@ -372,8 +354,6 @@ class SomePostsController extends AppController
 
     /**
      * index method
-     *
-     * @return void
      */
     public function index()
     {
@@ -382,8 +362,6 @@ class SomePostsController extends AppController
 
     /**
      * change method
-     *
-     * @return void
      */
     public function change()
     {
@@ -439,8 +417,6 @@ class TestCachedPagesController extends Controller
 
     /**
      * index method
-     *
-     * @return void
      */
     public function index()
     {
@@ -449,8 +425,6 @@ class TestCachedPagesController extends Controller
 
     /**
      * test_nocache_tags method
-     *
-     * @return void
      */
     public function test_nocache_tags()
     {
@@ -459,8 +433,6 @@ class TestCachedPagesController extends Controller
 
     /**
      * view method
-     *
-     * @return void
      */
     public function view($id = null)
     {
@@ -469,8 +441,6 @@ class TestCachedPagesController extends Controller
 
     /**
      * test cached forms / tests view object being registered
-     *
-     * @return void
      */
     public function cache_form()
     {
@@ -480,8 +450,6 @@ class TestCachedPagesController extends Controller
 
     /**
      * Test cached views with themes.
-     *
-     * @return void
      */
     public function themed()
     {
@@ -507,8 +475,6 @@ class TimesheetsController extends Controller
 
     /**
      * index method
-     *
-     * @return void
      */
     public function index()
     {
@@ -529,6 +495,7 @@ class TestFilterDispatcher extends DispatcherFilter
      * TestFilterDispatcher::beforeDispatch()
      *
      * @param mixed $event
+     *
      * @return CakeResponse|bool
      */
     public function beforeDispatch(CakeEvent $event)
@@ -544,6 +511,7 @@ class TestFilterDispatcher extends DispatcherFilter
      * TestFilterDispatcher::afterDispatch()
      *
      * @param mixed $event
+     *
      * @return mixed boolean to stop the event dispatching or null to continue
      */
     public function afterDispatch(CakeEvent $event)
@@ -560,8 +528,6 @@ class DispatcherTest extends CakeTestCase
 {
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -589,8 +555,6 @@ class DispatcherTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -610,7 +574,6 @@ class DispatcherTest extends CakeTestCase
     /**
      * testParseParamsWithoutZerosAndEmptyPost method
      *
-     * @return void
      * @triggers DispatcherTest $Dispatcher, array('request' => $request)
      */
     public function testParseParamsWithoutZerosAndEmptyPost()
@@ -630,7 +593,6 @@ class DispatcherTest extends CakeTestCase
     /**
      * testParseParamsReturnsPostedData method
      *
-     * @return void
      * @triggers DispatcherTest $Dispatcher, array('request' => $request)
      */
     public function testParseParamsReturnsPostedData()
@@ -647,7 +609,6 @@ class DispatcherTest extends CakeTestCase
     /**
      * testParseParamsWithSingleZero method
      *
-     * @return void
      * @triggers DispatcherTest $Dispatcher, array('request' => $test)
      */
     public function testParseParamsWithSingleZero()
@@ -667,7 +628,6 @@ class DispatcherTest extends CakeTestCase
     /**
      * testParseParamsWithManySingleZeros method
      *
-     * @return void
      * @triggers DispatcherTest $Dispatcher, array('request' => $test)
      */
     public function testParseParamsWithManySingleZeros()
@@ -688,7 +648,6 @@ class DispatcherTest extends CakeTestCase
     /**
      * testParseParamsWithManyZerosInEachSectionOfUrl method
      *
-     * @return void
      * @triggers DispatcherTest $Dispatcher, array('request' => $test)
      */
     public function testParseParamsWithManyZerosInEachSectionOfUrl()
@@ -709,7 +668,6 @@ class DispatcherTest extends CakeTestCase
     /**
      * testParseParamsWithMixedOneToManyZerosInEachSectionOfUrl method
      *
-     * @return void
      * @triggers DispatcherTest $Dispatcher, array('request' => $test)
      */
     public function testParseParamsWithMixedOneToManyZerosInEachSectionOfUrl()
@@ -730,7 +688,6 @@ class DispatcherTest extends CakeTestCase
     /**
      * testQueryStringOnRoot method
      *
-     * @return void
      * @triggers DispatcherTest $Dispatcher, array('request' => $request)
      * @triggers DispatcherTest $Dispatcher, array('request' => $request)
      */
@@ -769,7 +726,6 @@ class DispatcherTest extends CakeTestCase
      *
      * @expectedException MissingControllerException
      * @expectedExceptionMessage Controller class SomeControllerController could not be found.
-     * @return void
      */
     public function testMissingController()
     {
@@ -788,7 +744,6 @@ class DispatcherTest extends CakeTestCase
      *
      * @expectedException MissingControllerException
      * @expectedExceptionMessage Controller class DispatcherTestInterfaceController could not be found.
-     * @return void
      */
     public function testMissingControllerInterface()
     {
@@ -807,7 +762,6 @@ class DispatcherTest extends CakeTestCase
      *
      * @expectedException MissingControllerException
      * @expectedExceptionMessage Controller class DispatcherTestAbstractController could not be found.
-     * @return void
      */
     public function testMissingControllerAbstract()
     {
@@ -823,8 +777,6 @@ class DispatcherTest extends CakeTestCase
 
     /**
      * testDispatch method
-     *
-     * @return void
      */
     public function testDispatchBasic()
     {
@@ -887,8 +839,6 @@ class DispatcherTest extends CakeTestCase
 
     /**
      * Test that Dispatcher handles actions that return response objects.
-     *
-     * @return void
      */
     public function testDispatchActionReturnsResponse()
     {
@@ -906,8 +856,6 @@ class DispatcherTest extends CakeTestCase
 
     /**
      * testDispatchActionSendsFile
-     *
-     * @return void
      */
     public function testDispatchActionSendsFile()
     {
@@ -935,8 +883,6 @@ class DispatcherTest extends CakeTestCase
 
     /**
      * testAdminDispatch method
-     *
-     * @return void
      */
     public function testAdminDispatch()
     {
@@ -965,7 +911,6 @@ class DispatcherTest extends CakeTestCase
     /**
      * testPluginDispatch method
      *
-     * @return void
      * @triggers DispatcherTest $Dispatcher, array('request' => $url)
      */
     public function testPluginDispatch()
@@ -1002,8 +947,6 @@ class DispatcherTest extends CakeTestCase
 
     /**
      * testAutomaticPluginDispatch method
-     *
-     * @return void
      */
     public function testAutomaticPluginDispatch()
     {
@@ -1037,8 +980,6 @@ class DispatcherTest extends CakeTestCase
 
     /**
      * testAutomaticPluginControllerDispatch method
-     *
-     * @return void
      */
     public function testAutomaticPluginControllerDispatch()
     {
@@ -1135,8 +1076,6 @@ class DispatcherTest extends CakeTestCase
     /**
      * test Plugin dispatching without controller name and using
      * plugin short form instead.
-     *
-     * @return void
      */
     public function testAutomaticPluginDispatchWithShortAccess()
     {
@@ -1159,8 +1098,6 @@ class DispatcherTest extends CakeTestCase
     /**
      * test plugin shortcut URLs with controllers that need to be loaded,
      * the above test uses a controller that has already been included.
-     *
-     * @return void
      */
     public function testPluginShortCutUrlsWithControllerThatNeedsToBeLoaded()
     {
@@ -1207,7 +1144,6 @@ class DispatcherTest extends CakeTestCase
      *
      * @expectedException MissingActionException
      * @expectedExceptionMessage Action MyPluginController::not_here() could not be found.
-     * @return void
      */
     public function testAutomaticPluginControllerMissingActionDispatch()
     {
@@ -1225,7 +1161,6 @@ class DispatcherTest extends CakeTestCase
      *
      * @expectedException MissingActionException
      * @expectedExceptionMessage Action MyPluginController::param:value() could not be found.
-     * @return void
      */
     public function testAutomaticPluginControllerIndexMissingAction()
     {
@@ -1240,8 +1175,6 @@ class DispatcherTest extends CakeTestCase
 
     /**
      * Test dispatching into the TestPlugin in the test_app
-     *
-     * @return void
      */
     public function testTestPluginDispatch()
     {
@@ -1269,8 +1202,6 @@ class DispatcherTest extends CakeTestCase
 
     /**
      * Tests that it is possible to attach filter classes to the dispatch cycle
-     *
-     * @return void
      */
     public function testDispatcherFilterSubscriber()
     {
@@ -1309,8 +1240,6 @@ class DispatcherTest extends CakeTestCase
 
     /**
      * Tests that it is possible to attach filter with config classes to the dispatch cycle
-     *
-     * @return void
      */
     public function testDispatcherFilterSettings()
     {
@@ -1329,7 +1258,6 @@ class DispatcherTest extends CakeTestCase
      * Tests that attaching an inexistent class as filter will throw an exception
      *
      * @expectedException MissingDispatcherFilterException
-     * @return void
      */
     public function testDispatcherFilterSuscriberMissing()
     {
@@ -1349,8 +1277,6 @@ class DispatcherTest extends CakeTestCase
 
     /**
      * Tests it is possible to attach single callables as filters
-     *
-     * @return void
      */
     public function testDispatcherFilterCallable()
     {
@@ -1423,8 +1349,6 @@ class DispatcherTest extends CakeTestCase
 
     /**
      * testChangingParamsFromBeforeFilter method
-     *
-     * @return void
      */
     public function testChangingParamsFromBeforeFilter()
     {
@@ -1454,8 +1378,6 @@ class DispatcherTest extends CakeTestCase
 
     /**
      * testStaticAssets method
-     *
-     * @return void
      */
     public function testAssets()
     {
@@ -1576,7 +1498,6 @@ class DispatcherTest extends CakeTestCase
      *
      * @dataProvider assetProvider
      * @outputBuffering enabled
-     * @return void
      */
     public function testAsset($url, $file)
     {
@@ -1607,8 +1528,6 @@ class DispatcherTest extends CakeTestCase
 
     /**
      * test that missing asset processors trigger a 404 with no response body.
-     *
-     * @return void
      */
     public function testMissingAssetProcessor404()
     {
@@ -1655,7 +1574,6 @@ class DispatcherTest extends CakeTestCase
      * testFullPageCachingDispatch method
      *
      * @dataProvider cacheActionProvider
-     * @return void
      */
     public function testFullPageCachingDispatch($url)
     {
@@ -1696,7 +1614,6 @@ class DispatcherTest extends CakeTestCase
     /**
      * testHttpMethodOverrides method
      *
-     * @return void
      * @triggers DispatcherTest $dispatcher, array('request' => $request)
      * @triggers DispatcherTest $dispatcher, array('request' => $request)
      * @triggers DispatcherTest $dispatcher, array('request' => $request)
@@ -1782,6 +1699,7 @@ class DispatcherTest extends CakeTestCase
      * cachePath method
      *
      * @param string $here
+     *
      * @return string
      */
     protected function _cachePath($here)

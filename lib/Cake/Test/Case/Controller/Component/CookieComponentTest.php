@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Controller.Component
+ *
  * @since         CakePHP(tm) v 1.2.0.5435
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Component', 'Controller');
@@ -35,8 +39,6 @@ class CookieComponentTestController extends Controller
 
     /**
      * beforeFilter method
-     *
-     * @return void
      */
     public function beforeFilter()
     {
@@ -65,8 +67,6 @@ class CookieComponentTest extends CakeTestCase
 
     /**
      * start
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -88,8 +88,6 @@ class CookieComponentTest extends CakeTestCase
 
     /**
      * end
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -99,8 +97,6 @@ class CookieComponentTest extends CakeTestCase
 
     /**
      * sets up some default cookie data.
-     *
-     * @return void
      */
     protected function _setCookieData()
     {
@@ -117,8 +113,6 @@ class CookieComponentTest extends CakeTestCase
 
     /**
      * test that initialize sets settings from components array
-     *
-     * @return void
      */
     public function testSettings()
     {
@@ -133,8 +127,6 @@ class CookieComponentTest extends CakeTestCase
 
     /**
      * testCookieName
-     *
-     * @return void
      */
     public function testCookieName()
     {
@@ -143,8 +135,6 @@ class CookieComponentTest extends CakeTestCase
 
     /**
      * testReadEncryptedCookieData
-     *
-     * @return void
      */
     public function testReadEncryptedCookieData()
     {
@@ -160,8 +150,6 @@ class CookieComponentTest extends CakeTestCase
 
     /**
      * test read operations on corrupted cookie data.
-     *
-     * @return void
      */
     public function testReadCorruptedCookieData()
     {
@@ -179,8 +167,6 @@ class CookieComponentTest extends CakeTestCase
 
     /**
      * testReadPlainCookieData
-     *
-     * @return void
      */
     public function testReadPlainCookieData()
     {
@@ -196,8 +182,6 @@ class CookieComponentTest extends CakeTestCase
 
     /**
      * test read array keys from string data.
-     *
-     * @return void
      */
     public function testReadNestedDataFromStrings()
     {
@@ -210,8 +194,6 @@ class CookieComponentTest extends CakeTestCase
 
     /**
      * test read() after switching the cookie name.
-     *
-     * @return void
      */
     public function testReadWithNameSwitch()
     {
@@ -231,8 +213,6 @@ class CookieComponentTest extends CakeTestCase
 
     /**
      * test a simple write()
-     *
-     * @return void
      */
     public function testWriteSimple()
     {
@@ -244,8 +224,6 @@ class CookieComponentTest extends CakeTestCase
 
     /**
      * test write() encrypted data with falsey value
-     *
-     * @return void
      */
     public function testWriteWithFalseyValue()
     {
@@ -280,8 +258,6 @@ class CookieComponentTest extends CakeTestCase
 
     /**
      * test that two write() calls use the expiry.
-     *
-     * @return void
      */
     public function testWriteMultipleShareExpiry()
     {
@@ -299,8 +275,6 @@ class CookieComponentTest extends CakeTestCase
 
     /**
      * test write with distant future cookies
-     *
-     * @return void
      */
     public function testWriteFarFuture()
     {
@@ -325,8 +299,6 @@ class CookieComponentTest extends CakeTestCase
 
     /**
      * test write with httpOnly cookies
-     *
-     * @return void
      */
     public function testWriteHttpOnly()
     {
@@ -347,8 +319,6 @@ class CookieComponentTest extends CakeTestCase
 
     /**
      * test delete with httpOnly
-     *
-     * @return void
      */
     public function testDeleteHttpOnly()
     {
@@ -369,8 +339,6 @@ class CookieComponentTest extends CakeTestCase
 
     /**
      * testWritePlainCookieArray
-     *
-     * @return void
      */
     public function testWritePlainCookieArray()
     {
@@ -387,8 +355,6 @@ class CookieComponentTest extends CakeTestCase
 
     /**
      * test writing values that are not scalars
-     *
-     * @return void
      */
     public function testWriteArrayValues()
     {
@@ -410,8 +376,6 @@ class CookieComponentTest extends CakeTestCase
 
     /**
      * Test that writing mixed arrays results in the correct data.
-     *
-     * @return void
      */
     public function testWriteMixedArray()
     {
@@ -449,8 +413,6 @@ class CookieComponentTest extends CakeTestCase
 
     /**
      * Test that replacing scalar with array works.
-     *
-     * @return void
      */
     public function testReplaceScalarWithArray()
     {
@@ -468,8 +430,6 @@ class CookieComponentTest extends CakeTestCase
 
     /**
      * testReadingCookieValue
-     *
-     * @return void
      */
     public function testReadingCookieValue()
     {
@@ -497,8 +457,6 @@ class CookieComponentTest extends CakeTestCase
 
     /**
      * testDeleteCookieValue
-     *
-     * @return void
      */
     public function testDeleteCookieValue()
     {
@@ -524,8 +482,6 @@ class CookieComponentTest extends CakeTestCase
 
     /**
      * test delete() on corrupted/truncated cookie data.
-     *
-     * @return void
      */
     public function testDeleteCorruptedCookieData()
     {
@@ -544,8 +500,6 @@ class CookieComponentTest extends CakeTestCase
 
     /**
      * testReadingCookieArray
-     *
-     * @return void
      */
     public function testReadingCookieArray()
     {
@@ -602,8 +556,6 @@ class CookieComponentTest extends CakeTestCase
 
     /**
      * testReadingCookieDataOnStartup
-     *
-     * @return void
      */
     public function testReadingCookieDataOnStartup()
     {
@@ -654,8 +606,6 @@ class CookieComponentTest extends CakeTestCase
 
     /**
      * testReadingCookieDataWithoutStartup
-     *
-     * @return void
      */
     public function testReadingCookieDataWithoutStartup()
     {
@@ -708,8 +658,6 @@ class CookieComponentTest extends CakeTestCase
 
     /**
      * Test Reading legacy cookie values.
-     *
-     * @return void
      */
     public function testReadLegacyCookieValue()
     {
@@ -723,8 +671,6 @@ class CookieComponentTest extends CakeTestCase
 
     /**
      * Test reading empty values.
-     *
-     * @return void
      */
     public function testReadEmpty()
     {
@@ -743,8 +689,6 @@ class CookieComponentTest extends CakeTestCase
 
     /**
      * Test reading empty key
-     *
-     * @return void
      */
     public function testReadEmptyKey()
     {
@@ -758,8 +702,6 @@ class CookieComponentTest extends CakeTestCase
 
     /**
      * test that no error is issued for non array data.
-     *
-     * @return void
      */
     public function testNoErrorOnNonArrayData()
     {
@@ -771,8 +713,6 @@ class CookieComponentTest extends CakeTestCase
 
     /**
      * testCheck method
-     *
-     * @return void
      */
     public function testCheck()
     {
@@ -784,8 +724,6 @@ class CookieComponentTest extends CakeTestCase
 
     /**
      * testCheckingSavedEmpty method
-     *
-     * @return void
      */
     public function testCheckingSavedEmpty()
     {
@@ -804,8 +742,6 @@ class CookieComponentTest extends CakeTestCase
 
     /**
      * testCheckKeyWithSpaces method
-     *
-     * @return void
      */
     public function testCheckKeyWithSpaces()
     {
@@ -819,8 +755,6 @@ class CookieComponentTest extends CakeTestCase
 
     /**
      * testCheckEmpty
-     *
-     * @return void
      */
     public function testCheckEmpty()
     {
@@ -829,8 +763,6 @@ class CookieComponentTest extends CakeTestCase
 
     /**
      * test that deleting a top level keys kills the child elements too.
-     *
-     * @return void
      */
     public function testDeleteRemovesChildren()
     {
@@ -847,8 +779,6 @@ class CookieComponentTest extends CakeTestCase
 
     /**
      * Test deleting recursively with keys that don't exist.
-     *
-     * @return void
      */
     public function testDeleteChildrenNotExist()
     {
@@ -858,8 +788,6 @@ class CookieComponentTest extends CakeTestCase
 
     /**
      * Test deleting deep child elements sends correct cookies.
-     *
-     * @return void
      */
     public function testDeleteDeepChildren()
     {
@@ -896,8 +824,6 @@ class CookieComponentTest extends CakeTestCase
 
     /**
      * Test destroy works.
-     *
-     * @return void
      */
     public function testDestroy()
     {
@@ -960,6 +886,7 @@ class CookieComponentTest extends CakeTestCase
      * Implode method to keep keys are multidimensional arrays
      *
      * @param array $array Map of key and values
+     *
      * @return string String in the form key1|value1,key2|value2
      */
     protected function _implode(array $array)
@@ -971,6 +898,7 @@ class CookieComponentTest extends CakeTestCase
      * encrypt method
      *
      * @param array|string $value
+     *
      * @return string
      */
     protected function _encrypt($value)

@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Network.Email
+ *
  * @since         CakePHP(tm) v 2.0.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('CakeEmail', 'Network/Email');
@@ -148,8 +152,6 @@ class CakeEmailTest extends CakeTestCase
 {
     /**
      * setUp
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -171,8 +173,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -186,8 +186,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * Test if the EmailConfig::$default configuration is read when present
-     *
-     * @return void
      */
     public function testDefaultConfig()
     {
@@ -196,8 +194,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * testFrom method
-     *
-     * @return void
      */
     public function testFrom()
     {
@@ -224,8 +220,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * Test that from addresses using colons work.
-     *
-     * @return void
      */
     public function testFromWithColonsAndQuotes()
     {
@@ -244,8 +238,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * testSender method
-     *
-     * @return void
      */
     public function testSender()
     {
@@ -268,8 +260,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * testTo method
-     *
-     * @return void
      */
     public function testTo()
     {
@@ -346,7 +336,6 @@ class CakeEmailTest extends CakeTestCase
      *
      * @expectedException SocketException
      * @expectedExceptionMessage The email set for "_to" is empty.
-     * @return void
      */
     public function testInvalidEmail()
     {
@@ -358,7 +347,6 @@ class CakeEmailTest extends CakeTestCase
      *
      * @expectedException SocketException
      * @expectedExceptionMessage Invalid email set for "_from". You passed "cake.@"
-     * @return void
      */
     public function testInvalidFrom()
     {
@@ -370,7 +358,6 @@ class CakeEmailTest extends CakeTestCase
      *
      * @expectedException SocketException
      * @expectedExceptionMessage Invalid email set for "_to". You passed "1"
-     * @return void
      */
     public function testInvalidEmailAdd()
     {
@@ -379,8 +366,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * test emailPattern method
-     *
-     * @return void
      */
     public function testEmailPattern()
     {
@@ -390,8 +375,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * Tests that it is possible to set email regex configuration to a CakeEmail object
-     *
-     * @return void
      */
     public function testConfigEmailPattern()
     {
@@ -402,8 +385,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * Tests that it is possible set custom email validation
-     *
-     * @return void
      */
     public function testCustomEmailValidation()
     {
@@ -447,7 +428,6 @@ class CakeEmailTest extends CakeTestCase
     /**
      * Tests that it is possible to unset the email pattern and make use of filter_var() instead.
      *
-     * @return void
      *
      * @expectedException SocketException
      * @expectedExceptionMessage Invalid email set for "_to". You passed "fail.@example.com"
@@ -466,8 +446,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * testFormatAddress method
-     *
-     * @return void
      */
     public function testFormatAddress()
     {
@@ -503,8 +481,6 @@ class CakeEmailTest extends CakeTestCase
     /**
      * Test that addresses are quoted correctly when they contain unicode and
      * commas
-     *
-     * @return void
      */
     public function testFormatAddressEncodeAndEscape()
     {
@@ -529,8 +505,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * testFormatAddressJapanese
-     *
-     * @return void
      */
     public function testFormatAddressJapanese()
     {
@@ -553,8 +527,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * testAddresses method
-     *
-     * @return void
      */
     public function testAddresses()
     {
@@ -590,8 +562,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * testMessageId method
-     *
-     * @return void
      */
     public function testMessageId()
     {
@@ -615,7 +585,6 @@ class CakeEmailTest extends CakeTestCase
     /**
      * testMessageIdInvalid method
      *
-     * @return void
      * @expectedException SocketException
      */
     public function testMessageIdInvalid()
@@ -625,8 +594,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * testDomain method
-     *
-     * @return void
      */
     public function testDomain()
     {
@@ -642,8 +609,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * testMessageIdWithDomain method
-     *
-     * @return void
      */
     public function testMessageIdWithDomain()
     {
@@ -663,8 +628,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * testSubject method
-     *
-     * @return void
      */
     public function testSubject()
     {
@@ -683,8 +646,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * testSubjectJapanese
-     *
-     * @return void
      */
     public function testSubjectJapanese()
     {
@@ -705,8 +666,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * testHeaders method
-     *
-     * @return void
      */
     public function testHeaders()
     {
@@ -806,7 +765,6 @@ class CakeEmailTest extends CakeTestCase
      *
      * @dataProvider invalidHeaders
      * @expectedException SocketException
-     * @return void
      */
     public function testInvalidHeaders($value)
     {
@@ -818,7 +776,6 @@ class CakeEmailTest extends CakeTestCase
      *
      * @dataProvider invalidHeaders
      * @expectedException SocketException
-     * @return void
      */
     public function testInvalidAddHeaders($value)
     {
@@ -827,8 +784,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * testTemplate method
-     *
-     * @return void
      */
     public function testTemplate()
     {
@@ -851,8 +806,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * testTheme method
-     *
-     * @return void
      */
     public function testTheme()
     {
@@ -865,8 +818,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * testViewVars method
-     *
-     * @return void
      */
     public function testViewVars()
     {
@@ -884,8 +835,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * testAttachments method
-     *
-     * @return void
      */
     public function testAttachments()
     {
@@ -921,8 +870,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * testTransport method
-     *
-     * @return void
      */
     public function testTransport()
     {
@@ -940,8 +887,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * testExtendTransport method
-     *
-     * @return void
      */
     public function testExtendTransport()
     {
@@ -952,8 +897,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * testConfig method
-     *
-     * @return void
      */
     public function testConfig()
     {
@@ -977,8 +920,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * testConfigString method
-     *
-     * @return void
      */
     public function testConfigString()
     {
@@ -1009,8 +950,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * Test updating config doesn't reset transport's config.
-     *
-     * @return void
      */
     public function testConfigMerge()
     {
@@ -1040,8 +979,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * Calling send() with no parameters should not overwrite the view variables.
-     *
-     * @return void
      */
     public function testSendWithNoContentDoesNotOverwriteViewVar()
     {
@@ -1062,8 +999,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * testSendWithContent method
-     *
-     * @return void
      */
     public function testSendWithContent()
     {
@@ -1103,8 +1038,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * testSendWithoutFrom method
-     *
-     * @return void
      */
     public function testSendWithoutFrom()
     {
@@ -1118,8 +1051,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * testSendWithoutTo method
-     *
-     * @return void
      */
     public function testSendWithoutTo()
     {
@@ -1133,8 +1064,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * Test send() with no template.
-     *
-     * @return void
      */
     public function testSendNoTemplateWithAttachments()
     {
@@ -1165,8 +1094,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * Test send() with no template and data string attachment
-     *
-     * @return void
      */
     public function testSendNoTemplateWithDataStringAttachment()
     {
@@ -1202,8 +1129,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * Test send() with no template and data string attachment, no mimetype
-     *
-     * @return void
      */
     public function testSendNoTemplateWithDataStringAttachmentNoMime()
     {
@@ -1238,8 +1163,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * Test send() with no template as both
-     *
-     * @return void
      */
     public function testSendNoTemplateWithAttachmentsAsBoth()
     {
@@ -1283,8 +1206,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * Test setting inline attachments and messages.
-     *
-     * @return void
      */
     public function testSendWithInlineAttachments()
     {
@@ -1339,8 +1260,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * Test setting inline attachments and HTML only messages.
-     *
-     * @return void
      */
     public function testSendWithInlineAttachmentsHtmlOnly()
     {
@@ -1382,8 +1301,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * Test disabling content-disposition.
-     *
-     * @return void
      */
     public function testSendWithNoContentDispositionAttachments()
     {
@@ -1421,8 +1338,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * testSendWithLog method
-     *
-     * @return void
      */
     public function testSendWithLog()
     {
@@ -1449,8 +1364,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * testSendWithLogAndScope method
-     *
-     * @return void
      */
     public function testSendWithLogAndScope()
     {
@@ -1479,8 +1392,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * testSendRender method
-     *
-     * @return void
      */
     public function testSendRender()
     {
@@ -1501,8 +1412,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * test sending and rendering with no layout
-     *
-     * @return void
      */
     public function testSendRenderNoLayout()
     {
@@ -1522,8 +1431,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * testSendRender both method
-     *
-     * @return void
      */
     public function testSendRenderBoth()
     {
@@ -1569,8 +1476,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * testSendRender method for ISO-2022-JP
-     *
-     * @return void
      */
     public function testSendRenderJapanese()
     {
@@ -1595,8 +1500,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * testSendRenderThemed method
-     *
-     * @return void
      */
     public function testSendRenderThemed()
     {
@@ -1619,8 +1522,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * testSendRenderWithHTML method and assert line length is kept below the required limit
-     *
-     * @return void
      */
     public function testSendRenderWithHTML()
     {
@@ -1641,8 +1542,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * testSendRenderWithVars method
-     *
-     * @return void
      */
     public function testSendRenderWithVars()
     {
@@ -1662,8 +1561,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * testSendRenderWithVars method for ISO-2022-JP
-     *
-     * @return void
      */
     public function testSendRenderWithVarsJapanese()
     {
@@ -1686,8 +1583,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * testSendRenderWithHelpers method
-     *
-     * @return void
      */
     public function testSendRenderWithHelpers()
     {
@@ -1714,8 +1609,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * testSendRenderWithImage method
-     *
-     * @return void
      */
     public function testSendRenderWithImage()
     {
@@ -1741,8 +1634,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * testSendRenderPlugin method
-     *
-     * @return void
      */
     public function testSendRenderPlugin()
     {
@@ -1795,8 +1686,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * testSendMultipleMIME method
-     *
-     * @return void
      */
     public function testSendMultipleMIME()
     {
@@ -1832,8 +1721,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * testSendAttachment method
-     *
-     * @return void
      */
     public function testSendAttachment()
     {
@@ -1862,8 +1749,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * testDeliver method
-     *
-     * @return void
      */
     public function testDeliver()
     {
@@ -1898,8 +1783,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * testMessage method
-     *
-     * @return void
      */
     public function testMessage()
     {
@@ -1938,8 +1821,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * testReset method
-     *
-     * @return void
      */
     public function testReset()
     {
@@ -1956,8 +1837,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * testReset with charset
-     *
-     * @return void
      */
     public function testResetWithCharset()
     {
@@ -1970,8 +1849,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * testWrap method
-     *
-     * @return void
      */
     public function testWrap()
     {
@@ -2037,8 +1914,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * testRender method
-     *
-     * @return void
      */
     public function testRenderWithLayoutAndAttachment()
     {
@@ -2054,8 +1929,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * testConstructWithConfigArray method
-     *
-     * @return void
      */
     public function testConstructWithConfigArray()
     {
@@ -2090,8 +1963,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * testConfigArrayWithLayoutWithoutTemplate method
-     *
-     * @return void
      */
     public function testConfigArrayWithLayoutWithoutTemplate()
     {
@@ -2111,8 +1982,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * testConstructWithConfigString method
-     *
-     * @return void
      */
     public function testConstructWithConfigString()
     {
@@ -2142,8 +2011,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * testViewRender method
-     *
-     * @return void
      */
     public function testViewRender()
     {
@@ -2159,8 +2026,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * testEmailFormat method
-     *
-     * @return void
      */
     public function testEmailFormat()
     {
@@ -2179,8 +2044,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * Tests that it is possible to add charset configuration to a CakeEmail object
-     *
-     * @return void
      */
     public function testConfigCharset()
     {
@@ -2203,8 +2066,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * Tests that the header is encoded using the configured headerCharset
-     *
-     * @return void
      */
     public function testHeaderEncoding()
     {
@@ -2222,8 +2083,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * Tests that the body is encoded using the configured charset
-     *
-     * @return void
      */
     public function testBodyEncoding()
     {
@@ -2246,8 +2105,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * Tests that the body is encoded using the configured charset (Japanese standard encoding)
-     *
-     * @return void
      */
     public function testBodyEncodingIso2022Jp()
     {
@@ -2271,8 +2128,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * Tests that the body is encoded using the configured charset (Japanese irregular encoding, but sometime use this)
-     *
-     * @return void
      */
     public function testBodyEncodingIso2022JpMs()
     {
@@ -2325,8 +2180,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * Test CakeEmail::_encode function
-     *
-     * @return void
      */
     public function testEncode()
     {
@@ -2347,8 +2200,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * Tests charset setter/getter
-     *
-     * @return void
      */
     public function testCharset()
     {
@@ -2364,8 +2215,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * Tests headerCharset setter/getter
-     *
-     * @return void
      */
     public function testHeaderCharset()
     {
@@ -2383,8 +2232,6 @@ class CakeEmailTest extends CakeTestCase
      * Tests for compatible check.
      *          charset property and       charset() method.
      *    headerCharset property and headerCharset() method.
-     *
-     * @return void
      */
     public function testCharsetsCompatible()
     {
@@ -2440,6 +2287,7 @@ class CakeEmailTest extends CakeTestCase
     /**
      * @param mixed $charset
      * @param mixed $headerCharset
+     *
      * @return CakeEmail
      */
     protected function _getEmailByOldStyleCharset($charset, $headerCharset)
@@ -2465,6 +2313,7 @@ class CakeEmailTest extends CakeTestCase
     /**
      * @param mixed $charset
      * @param mixed $headerCharset
+     *
      * @return CakeEmail
      */
     protected function _getEmailByNewStyleCharset($charset, $headerCharset)
@@ -2489,8 +2338,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * testWrapLongLine()
-     *
-     * @return void
      */
     public function testWrapLongLine()
     {
@@ -2535,8 +2382,6 @@ class CakeEmailTest extends CakeTestCase
 
     /**
      * testWrapWithTagsAcrossLines()
-     *
-     * @return void
      */
     public function testWrapWithTagsAcrossLines()
     {
@@ -2564,8 +2409,6 @@ HTML;
 
     /**
      * CakeEmailTest::testWrapIncludeLessThanSign()
-     *
-     * @return void
      */
     public function testWrapIncludeLessThanSign()
     {
@@ -2588,8 +2431,6 @@ HTML;
 
     /**
      * CakeEmailTest::testWrapForJapaneseEncoding()
-     *
-     * @return void
      */
     public function testWrapForJapaneseEncoding()
     {
@@ -2612,8 +2453,6 @@ HTML;
 
     /**
      * testZeroOnlyLinesNotBeingEmptied()
-     *
-     * @return void
      */
     public function testZeroOnlyLinesNotBeingEmptied()
     {
@@ -2632,8 +2471,6 @@ HTML;
 
     /**
      * Test that really long lines don't cause errors.
-     *
-     * @return void
      */
     public function testReallyLongLine()
     {
@@ -2654,7 +2491,6 @@ HTML;
      * CakeEmailTest::assertLineLengths()
      *
      * @param string $message
-     * @return void
      */
     public function assertLineLengths($message)
     {

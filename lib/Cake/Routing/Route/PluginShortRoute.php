@@ -8,8 +8,10 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
  * @since         CakePHP(tm) v 1.3
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('CakeRoute', 'Routing/Route');
@@ -27,6 +29,7 @@ class PluginShortRoute extends CakeRoute
      * controller parameter
      *
      * @param string $url The URL to parse
+     *
      * @return mixed false on failure, or an array of request parameters
      */
     public function parse($url)
@@ -45,6 +48,7 @@ class PluginShortRoute extends CakeRoute
      * are not the same the match is an auto fail.
      *
      * @param array $url Array of parameters to convert to a string.
+     *
      * @return mixed either false or a string URL.
      */
     public function match($url)

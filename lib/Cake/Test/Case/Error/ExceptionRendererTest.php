@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Error
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('ExceptionRenderer', 'Error');
@@ -45,15 +49,11 @@ class BlueberryComponent extends Component
 {
     /**
      * testName property
-     *
-     * @return void
      */
     public $testName = null;
 
     /**
      * initialize method
-     *
-     * @return void
      */
     public function initialize(Controller $controller)
     {
@@ -77,15 +77,11 @@ class TestErrorController extends Controller
 
     /**
      * components property
-     *
-     * @return void
      */
     public $components = ['Blueberry'];
 
     /**
      * beforeRender method
-     *
-     * @return void
      */
     public function beforeRender()
     {
@@ -94,8 +90,6 @@ class TestErrorController extends Controller
 
     /**
      * index method
-     *
-     * @return void
      */
     public function index()
     {
@@ -114,8 +108,6 @@ class MyCustomExceptionRenderer extends ExceptionRenderer
 {
     /**
      * custom error message type.
-     *
-     * @return void
      */
     public function missingWidgetThing()
     {
@@ -143,8 +135,6 @@ class ExceptionRendererTest extends CakeTestCase
 
     /**
      * setup create a request object to get out of router later.
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -165,8 +155,6 @@ class ExceptionRendererTest extends CakeTestCase
 
     /**
      * tearDown
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -178,8 +166,6 @@ class ExceptionRendererTest extends CakeTestCase
 
     /**
      * Mocks out the response on the ExceptionRenderer object so headers aren't modified.
-     *
-     * @return void
      */
     protected function _mockResponse($error)
     {
@@ -191,8 +177,6 @@ class ExceptionRendererTest extends CakeTestCase
     /**
      * test that methods declared in an ExceptionRenderer subclass are not converted
      * into error400 when debug > 0
-     *
-     * @return void
      */
     public function testSubclassMethodsNotBeingConvertedToError()
     {
@@ -210,8 +194,6 @@ class ExceptionRendererTest extends CakeTestCase
 
     /**
      * test that subclass methods are not converted when debug = 0
-     *
-     * @return void
      */
     public function testSubclassMethodsNotBeingConvertedDebug0()
     {
@@ -230,8 +212,6 @@ class ExceptionRendererTest extends CakeTestCase
 
     /**
      * test that ExceptionRenderer subclasses properly convert framework errors.
-     *
-     * @return void
      */
     public function testSubclassConvertingFrameworkErrors()
     {
@@ -251,8 +231,6 @@ class ExceptionRendererTest extends CakeTestCase
 
     /**
      * test things in the constructor.
-     *
-     * @return void
      */
     public function testConstruction()
     {
@@ -266,8 +244,6 @@ class ExceptionRendererTest extends CakeTestCase
 
     /**
      * test that method gets coerced when debug = 0
-     *
-     * @return void
      */
     public function testErrorMethodCoercion()
     {
@@ -282,8 +258,6 @@ class ExceptionRendererTest extends CakeTestCase
 
     /**
      * test that helpers in custom CakeErrorController are not lost
-     *
-     * @return void
      */
     public function testCakeErrorHelpersNotLost()
     {
@@ -315,8 +289,6 @@ class ExceptionRendererTest extends CakeTestCase
 
     /**
      * test that unknown exception types with valid status codes are treated correctly.
-     *
-     * @return void
      */
     public function testUnknownExceptionTypeWithExceptionThatHasA400Code()
     {
@@ -336,8 +308,6 @@ class ExceptionRendererTest extends CakeTestCase
 
     /**
      * test that unknown exception types with valid status codes are treated correctly.
-     *
-     * @return void
      */
     public function testUnknownExceptionTypeWithNoCodeIsA500()
     {
@@ -358,8 +328,6 @@ class ExceptionRendererTest extends CakeTestCase
 
     /**
      * test that unknown exceptions have messages ignored.
-     *
-     * @return void
      */
     public function testUnknownExceptionInProduction()
     {
@@ -383,8 +351,6 @@ class ExceptionRendererTest extends CakeTestCase
 
     /**
      * test that unknown exception types with valid status codes are treated correctly.
-     *
-     * @return void
      */
     public function testUnknownExceptionTypeWithCodeHigherThan500()
     {
@@ -403,8 +369,6 @@ class ExceptionRendererTest extends CakeTestCase
 
     /**
      * testerror400 method
-     *
-     * @return void
      */
     public function testError400()
     {
@@ -428,8 +392,6 @@ class ExceptionRendererTest extends CakeTestCase
 
     /**
      * test that error400 only modifies the messages on CakeExceptions.
-     *
-     * @return void
      */
     public function testerror400OnlyChangingCakeException()
     {
@@ -454,8 +416,6 @@ class ExceptionRendererTest extends CakeTestCase
 
     /**
      * test that error400 doesn't expose XSS
-     *
-     * @return void
      */
     public function testError400NoInjection()
     {
@@ -477,8 +437,6 @@ class ExceptionRendererTest extends CakeTestCase
 
     /**
      * testError500 method
-     *
-     * @return void
      */
     public function testError500Message()
     {
@@ -496,8 +454,6 @@ class ExceptionRendererTest extends CakeTestCase
 
     /**
      * testExceptionResponseHeader method
-     *
-     * @return void
      */
     public function testExceptionResponseHeader()
     {
@@ -518,8 +474,6 @@ class ExceptionRendererTest extends CakeTestCase
 
     /**
      * testMissingController method
-     *
-     * @return void
      */
     public function testMissingController()
     {
@@ -536,8 +490,6 @@ class ExceptionRendererTest extends CakeTestCase
 
     /**
      * Returns an array of tests to run for the various CakeException classes.
-     *
-     * @return void
      */
     public static function testProvider()
     {
@@ -681,7 +633,6 @@ class ExceptionRendererTest extends CakeTestCase
      * Test the various CakeException sub classes
      *
      * @dataProvider testProvider
-     * @return void
      */
     public function testCakeExceptionHandling($exception, $patterns, $code)
     {
@@ -702,8 +653,6 @@ class ExceptionRendererTest extends CakeTestCase
 
     /**
      * Test exceptions being raised when helpers are missing.
-     *
-     * @return void
      */
     public function testMissingRenderSafe()
     {
@@ -731,8 +680,6 @@ class ExceptionRendererTest extends CakeTestCase
 
     /**
      * Test that exceptions in beforeRender() are handled by outputMessageSafe
-     *
-     * @return void
      */
     public function testRenderExceptionInBeforeRender()
     {
@@ -756,8 +703,6 @@ class ExceptionRendererTest extends CakeTestCase
 
     /**
      * Test that missing subDir/layoutPath don't cause other fatal errors.
-     *
-     * @return void
      */
     public function testMissingSubdirRenderSafe()
     {
@@ -794,8 +739,6 @@ class ExceptionRendererTest extends CakeTestCase
 
     /**
      * Test that missing plugin disables Controller::$plugin if the two are the same plugin.
-     *
-     * @return void
      */
     public function testMissingPluginRenderSafe()
     {
@@ -826,8 +769,6 @@ class ExceptionRendererTest extends CakeTestCase
 
     /**
      * Test that missing plugin doesn't disable Controller::$plugin if the two aren't the same plugin.
-     *
-     * @return void
      */
     public function testMissingPluginRenderSafeWithPlugin()
     {
@@ -864,8 +805,6 @@ class ExceptionRendererTest extends CakeTestCase
     /**
      * Test that exceptions can be rendered when an request hasn't been registered
      * with Router
-     *
-     * @return void
      */
     public function testRenderWithNoRequest()
     {
@@ -888,8 +827,6 @@ class ExceptionRendererTest extends CakeTestCase
 
     /**
      * Tests the output of rendering a PDOException
-     *
-     * @return void
      */
     public function testPDOException()
     {
@@ -912,8 +849,6 @@ class ExceptionRendererTest extends CakeTestCase
 
     /**
      * Test that rendering exceptions triggers shutdown events.
-     *
-     * @return void
      */
     public function testRenderShutdownEvents()
     {

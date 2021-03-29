@@ -10,8 +10,10 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
  * @since         CakePHP(tm) v 1.2
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('AppShell', 'Console/Command');
@@ -59,8 +61,6 @@ class DbConfigTask extends AppShell
 
     /**
      * initialization callback
-     *
-     * @return void
      */
     public function initialize()
     {
@@ -69,8 +69,6 @@ class DbConfigTask extends AppShell
 
     /**
      * Execution method always used for tasks
-     *
-     * @return void
      */
     public function execute()
     {
@@ -83,8 +81,6 @@ class DbConfigTask extends AppShell
 
     /**
      * Interactive interface
-     *
-     * @return void
      */
     protected function _interactive()
     {
@@ -204,6 +200,7 @@ class DbConfigTask extends AppShell
      * Output verification message and bake if it looks good
      *
      * @param array $config The config data.
+     *
      * @return bool True if user says it looks good, false otherwise
      */
     protected function _verify($config)
@@ -253,6 +250,7 @@ class DbConfigTask extends AppShell
      * Assembles and writes database.php
      *
      * @param array $configs Configuration settings to use
+     *
      * @return bool Success
      */
     public function bake($configs)
@@ -357,8 +355,6 @@ class DbConfigTask extends AppShell
 
     /**
      * Get a user specified Connection name
-     *
-     * @return void
      */
     public function getConfig()
     {

@@ -8,8 +8,10 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
  * @since         CakePHP(tm) v 2.5
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('AppShell', 'Console/Command');
@@ -56,7 +58,6 @@ class CommandTask extends AppShell
      * @param string $type The type of object.
      * @param array $shells The shell name.
      * @param array &$shellList List of shells.
-     * @return void
      */
     protected function _appendShells($type, $shells, &$shellList)
     {
@@ -93,6 +94,7 @@ class CommandTask extends AppShell
      * Return a list of subcommands for a given command
      *
      * @param string $commandName The command you want subcommands from.
+     *
      * @return array
      */
     public function subCommands($commandName)
@@ -131,6 +133,7 @@ class CommandTask extends AppShell
      * Get Shell instance for the given command
      *
      * @param mixed $commandName The command you want.
+     *
      * @return mixed
      */
     public function getShell($commandName)
@@ -162,6 +165,7 @@ class CommandTask extends AppShell
      * Get Shell instance for the given command
      *
      * @param mixed $commandName The command to get options for.
+     *
      * @return array
      */
     public function options($commandName)

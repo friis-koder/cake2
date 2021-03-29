@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Network.Http
+ *
  * @since         CakePHP(tm) v 2.0.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('HttpSocket', 'Network/Http');
@@ -36,7 +40,6 @@ class DigestHttpSocket extends HttpSocket
      * request method
      *
      * @param mixed $request
-     * @return void
      */
     public function request($request = [])
     {
@@ -67,8 +70,6 @@ class DigestAuthenticationTest extends CakeTestCase
 
     /**
      * This function sets up a HttpSocket instance we are going to use for testing
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -80,8 +81,6 @@ class DigestAuthenticationTest extends CakeTestCase
 
     /**
      * We use this function to clean up after the test case was executed
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -91,8 +90,6 @@ class DigestAuthenticationTest extends CakeTestCase
 
     /**
      * testBasic method
-     *
-     * @return void
      */
     public function testBasic()
     {
@@ -108,8 +105,6 @@ class DigestAuthenticationTest extends CakeTestCase
 
     /**
      * testQop method
-     *
-     * @return void
      */
     public function testQop()
     {
@@ -132,8 +127,6 @@ class DigestAuthenticationTest extends CakeTestCase
 
     /**
      * testOpaque method
-     *
-     * @return void
      */
     public function testOpaque()
     {
@@ -150,8 +143,6 @@ class DigestAuthenticationTest extends CakeTestCase
 
     /**
      * testMultipleRequest method
-     *
-     * @return void
      */
     public function testMultipleRequest()
     {
@@ -178,8 +169,6 @@ class DigestAuthenticationTest extends CakeTestCase
 
     /**
      * testPathChanged method
-     *
-     * @return void
      */
     public function testPathChanged()
     {
@@ -194,8 +183,6 @@ class DigestAuthenticationTest extends CakeTestCase
 
     /**
      * testNoDigestResponse method
-     *
-     * @return void
      */
     public function testNoDigestResponse()
     {

@@ -8,9 +8,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright	  Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link		  https://cakephp.org CakePHP Project
+ *
  * @package		  Cake.Test.Case.Event
+ *
  * @since		  CakePHP v 2.1
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('CakeEvent', 'Event');
@@ -28,8 +32,6 @@ class CakeEventTestListener
 
     /**
      * Test function to be used in event dispatching
-     *
-     * @return void
      */
     public function listenerFunction()
     {
@@ -38,8 +40,6 @@ class CakeEventTestListener
 
     /**
      * Test function to be used in event dispatching
-     *
-     * @return void
      */
     public function secondListenerFunction()
     {
@@ -50,7 +50,6 @@ class CakeEventTestListener
      * Auxiliary function to help in stopPropagation testing
      *
      * @param CakeEvent $event
-     * @return void
      */
     public function stopListener($event)
     {
@@ -79,8 +78,6 @@ class CustomTestEventListener extends CakeEventTestListener implements CakeEvent
 
     /**
      * Test function to be used in event dispatching
-     *
-     * @return void
      */
     public function thirdListenerFunction()
     {
@@ -95,8 +92,6 @@ class CakeEventManagerTest extends CakeTestCase
 {
     /**
      * Tests the attach() method for a single event key in multiple queues
-     *
-     * @return void
      */
     public function testAttachListeners()
     {
@@ -128,8 +123,6 @@ class CakeEventManagerTest extends CakeTestCase
 
     /**
      * Tests the attach() method for multiple event key in multiple queues
-     *
-     * @return void
      */
     public function testAttachMultipleEventKeys()
     {
@@ -151,8 +144,6 @@ class CakeEventManagerTest extends CakeTestCase
 
     /**
      * Tests detaching an event from a event key queue
-     *
-     * @return void
      */
     public function testDetach()
     {
@@ -176,8 +167,6 @@ class CakeEventManagerTest extends CakeTestCase
 
     /**
      * Tests detaching an event from all event queues
-     *
-     * @return void
      */
     public function testDetachFromAll()
     {
@@ -197,7 +186,6 @@ class CakeEventManagerTest extends CakeTestCase
     /**
      * Tests event dispatching
      *
-     * @return void
      * @triggers fake.event
      */
     public function testDispatch()
@@ -216,8 +204,6 @@ class CakeEventManagerTest extends CakeTestCase
 
     /**
      * Tests event dispatching using event key name
-     *
-     * @return void
      */
     public function testDispatchWithKeyName()
     {
@@ -234,7 +220,6 @@ class CakeEventManagerTest extends CakeTestCase
     /**
      * Tests event dispatching with a return value
      *
-     * @return void
      * @triggers fake.event
      */
     public function testDispatchReturnValue()
@@ -263,7 +248,6 @@ class CakeEventManagerTest extends CakeTestCase
     /**
      * Tests that returning false in a callback stops the event
      *
-     * @return void
      * @triggers fake.event
      */
     public function testDispatchFalseStopsEvent()
@@ -292,7 +276,6 @@ class CakeEventManagerTest extends CakeTestCase
     /**
      * Tests event dispatching using priorities
      *
-     * @return void
      * @triggers fake.event
      */
     public function testDispatchPrioritized()
@@ -311,7 +294,6 @@ class CakeEventManagerTest extends CakeTestCase
     /**
      * Tests event dispatching with passed params
      *
-     * @return void
      * @triggers fake.event $this, array('some' => 'data')
      */
     public function testDispatchPassingParams()
@@ -331,7 +313,6 @@ class CakeEventManagerTest extends CakeTestCase
     /**
      * Tests subscribing a listener object and firing the events it subscribed to
      *
-     * @return void
      * @triggers fake.event
      * @triggers another.event $this, array('some' => 'data')
      * @triggers multiple.handlers
@@ -363,8 +344,6 @@ class CakeEventManagerTest extends CakeTestCase
 
     /**
      * Tests subscribing a listener object and firing the events it subscribed to
-     *
-     * @return void
      */
     public function testDetachSubscriber()
     {
@@ -386,8 +365,6 @@ class CakeEventManagerTest extends CakeTestCase
 
     /**
      * Tests that it is possible to get/set the manager singleton
-     *
-     * @return void
      */
     public function testGlobalDispatcherGetter()
     {
@@ -401,7 +378,6 @@ class CakeEventManagerTest extends CakeTestCase
     /**
      * Tests that the global event manager gets the event too from any other manager
      *
-     * @return void
      * @triggers fake.event
      */
     public function testDispatchWithGlobal()
@@ -419,7 +395,6 @@ class CakeEventManagerTest extends CakeTestCase
     /**
      * Tests that stopping an event will not notify the rest of the listeners
      *
-     * @return void
      * @triggers fake.event
      */
     public function testStopPropagation()
@@ -448,7 +423,6 @@ class CakeEventManagerTest extends CakeTestCase
     /**
      * Tests event dispatching using priorities
      *
-     * @return void
      * @triggers fake.event
      */
     public function testDispatchPrioritizedWithGlobal()
@@ -481,7 +455,6 @@ class CakeEventManagerTest extends CakeTestCase
     /**
      * Tests event dispatching using priorities
      *
-     * @return void
      * @triggers fake.event
      */
     public function testDispatchGlobalBeforeLocal()
@@ -521,6 +494,7 @@ class CakeEventManagerTest extends CakeTestCase
     /**
      * Tests events dispatched by a local manager can be handled by
      * handler registered in the global event manager
+     *
      * @triggers my_event $manager
      */
     public function testDispatchLocalHandledByGlobal()
@@ -537,7 +511,6 @@ class CakeEventManagerTest extends CakeTestCase
      * Test that events are dispatched properly when there are global and local
      * listeners at the same priority.
      *
-     * @return void
      * @triggers fake.event $this
      */
     public function testDispatchWithGlobalAndLocalEvents()

@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Test.Case.Controller.Component.Auth
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('CrudAuthorize', 'Controller/Component/Auth');
@@ -30,8 +34,6 @@ class CrudAuthorizeTest extends CakeTestCase
 {
     /**
      * setup
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -47,8 +49,6 @@ class CrudAuthorizeTest extends CakeTestCase
 
     /**
      * setup the mock acl.
-     *
-     * @return void
      */
     protected function _mockAcl()
     {
@@ -62,7 +62,6 @@ class CrudAuthorizeTest extends CakeTestCase
      * test authorize() without a mapped action, ensure an error is generated.
      *
      * @expectedException PHPUnit_Framework_Error_Warning
-     * @return void
      */
     public function testAuthorizeNoMappedAction()
     {
@@ -78,8 +77,6 @@ class CrudAuthorizeTest extends CakeTestCase
 
     /**
      * test check() passing
-     *
-     * @return void
      */
     public function testAuthorizeCheckSuccess()
     {
@@ -101,8 +98,6 @@ class CrudAuthorizeTest extends CakeTestCase
 
     /**
      * test check() failing
-     *
-     * @return void
      */
     public function testAuthorizeCheckFailure()
     {
@@ -124,8 +119,6 @@ class CrudAuthorizeTest extends CakeTestCase
 
     /**
      * test getting actionMap
-     *
-     * @return void
      */
     public function testMapActionsGet()
     {
@@ -146,8 +139,6 @@ class CrudAuthorizeTest extends CakeTestCase
 
     /**
      * test adding into mapActions
-     *
-     * @return void
      */
     public function testMapActionsSet()
     {
@@ -181,8 +172,6 @@ class CrudAuthorizeTest extends CakeTestCase
 
     /**
      * test prefix routes getting auto mapped.
-     *
-     * @return void
      */
     public function testAutoPrefixMapActions()
     {

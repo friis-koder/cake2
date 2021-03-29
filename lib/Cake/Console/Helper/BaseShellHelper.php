@@ -8,8 +8,10 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
  * @since         2.8
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 abstract class BaseShellHelper
@@ -58,6 +60,7 @@ abstract class BaseShellHelper
      * Initialize config & store config values
      *
      * @param null $config Config values to set
+     *
      * @return array|void
      */
     public function config($config = null)
@@ -77,7 +80,6 @@ abstract class BaseShellHelper
      * This method should output content using `$this->_consoleOutput`.
      *
      * @param array $args The arguments for the helper.
-     * @return void
      */
     abstract public function output($args);
 }

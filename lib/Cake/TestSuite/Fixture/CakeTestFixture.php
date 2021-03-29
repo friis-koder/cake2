@@ -8,9 +8,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.TestSuite.Fixture
+ *
  * @since         CakePHP(tm) v 1.2.0.4667
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('CakeSchema', 'Model');
@@ -124,7 +128,6 @@ class CakeTestFixture
     /**
      * Initialize the fixture.
      *
-     * @return void
      * @throws MissingModelException Whe importing from a model that does not exist.
      */
     public function init()
@@ -202,6 +205,7 @@ class CakeTestFixture
      * Run before all tests execute, should return SQL statement to create table for this fixture could be executed successfully.
      *
      * @param DboSource $db An instance of the database object used to create the fixture table
+     *
      * @return bool True on success, false on failure
      */
     public function create($db)
@@ -257,6 +261,7 @@ class CakeTestFixture
      * Run after all tests executed, should return SQL statement to drop table for this fixture.
      *
      * @param DboSource $db An instance of the database object used to create the fixture table
+     *
      * @return bool True on success, false on failure
      */
     public function drop($db)
@@ -281,8 +286,10 @@ class CakeTestFixture
      * of this fixture could be executed successfully.
      *
      * @param DboSource $db An instance of the database into which the records will be inserted
-     * @return bool on success or if there are no records to insert, or false on failure
+     *
      * @throws CakeException if counts of values and fields do not match.
+     *
+     * @return bool on success or if there are no records to insert, or false on failure
      */
     public function insert($db)
     {
@@ -333,6 +340,7 @@ class CakeTestFixture
      * CakeFixture to trigger other events before / after truncate.
      *
      * @param DboSource $db A reference to a db instance
+     *
      * @return bool
      */
     public function truncate($db)

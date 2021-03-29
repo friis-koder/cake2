@@ -8,9 +8,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Model.Datasource
+ *
  * @since         CakePHP(tm) v 2.1
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -40,6 +44,7 @@ interface CakeSessionHandlerInterface
      * Method used to read from a session.
      *
      * @param string $id The key of the value to read
+     *
      * @return mixed The value of the key or false if it does not exist
      */
     public function read($id);
@@ -49,6 +54,7 @@ interface CakeSessionHandlerInterface
      *
      * @param int $id ID that uniquely identifies session in database
      * @param mixed $data The value of the data to be saved.
+     *
      * @return bool True for successful write, false otherwise.
      */
     public function write($id, $data);
@@ -57,6 +63,7 @@ interface CakeSessionHandlerInterface
      * Method called on the destruction of a session.
      *
      * @param int $id ID that uniquely identifies session in database
+     *
      * @return bool True for successful delete, false otherwise.
      */
     public function destroy($id);
@@ -66,6 +73,7 @@ interface CakeSessionHandlerInterface
      * expired or dead sessions.
      *
      * @param int $expires Timestamp (defaults to current time)
+     *
      * @return bool Success
      */
     public function gc($expires = null);

@@ -12,9 +12,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Model.Behavior
+ *
  * @since         CakePHP(tm) v 1.2.0.5330
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Model', 'Model');
@@ -58,8 +62,6 @@ class TreeBehaviorUuidTest extends CakeTestCase
 
     /**
      * testAddWithPreSpecifiedId method
-     *
-     * @return void
      */
     public function testAddWithPreSpecifiedId()
     {
@@ -91,8 +93,6 @@ class TreeBehaviorUuidTest extends CakeTestCase
 
     /**
      * testMovePromote method
-     *
-     * @return void
      */
     public function testMovePromote()
     {
@@ -119,8 +119,6 @@ class TreeBehaviorUuidTest extends CakeTestCase
 
     /**
      * testMoveWithWhitelist method
-     *
-     * @return void
      */
     public function testMoveWithWhitelist()
     {
@@ -148,8 +146,6 @@ class TreeBehaviorUuidTest extends CakeTestCase
 
     /**
      * testRemoveNoChildren method
-     *
-     * @return void
      */
     public function testRemoveNoChildren()
     {
@@ -184,8 +180,6 @@ class TreeBehaviorUuidTest extends CakeTestCase
 
     /**
      * testRemoveAndDeleteNoChildren method
-     *
-     * @return void
      */
     public function testRemoveAndDeleteNoChildren()
     {
@@ -218,8 +212,6 @@ class TreeBehaviorUuidTest extends CakeTestCase
 
     /**
      * testChildren method
-     *
-     * @return void
      */
     public function testChildren()
     {
@@ -248,8 +240,6 @@ class TreeBehaviorUuidTest extends CakeTestCase
 
     /**
      * testNoAmbiguousColumn method
-     *
-     * @return void
      */
     public function testNoAmbiguousColumn()
     {
@@ -286,8 +276,6 @@ class TreeBehaviorUuidTest extends CakeTestCase
 
     /**
      * testGenerateTreeListWithSelfJoin method
-     *
-     * @return void
      */
     public function testGenerateTreeListWithSelfJoin()
     {

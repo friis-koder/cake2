@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Controller.Component
+ *
  * @since         CakePHP(tm) v 1.2.0.5435
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('SecurityComponent', 'Controller/Component');
@@ -29,6 +33,7 @@ class TestSecurityComponent extends SecurityComponent
      * validatePost method
      *
      * @param Controller $controller
+     *
      * @return bool
      */
     public function validatePost(Controller $controller)
@@ -40,6 +45,7 @@ class TestSecurityComponent extends SecurityComponent
      * authRequired method
      *
      * @param Controller $controller
+     *
      * @return bool
      */
     public function authRequired(Controller $controller)
@@ -51,6 +57,7 @@ class TestSecurityComponent extends SecurityComponent
      * methodRequired method
      *
      * @param Controller $controller
+     *
      * @return bool
      */
     public function methodsRequired(Controller $controller)
@@ -89,8 +96,6 @@ class SecurityTestController extends Controller
 
     /**
      * fail method
-     *
-     * @return void
      */
     public function fail()
     {
@@ -103,7 +108,6 @@ class SecurityTestController extends Controller
      * @param string|array $url
      * @param mixed $code
      * @param mixed $exit
-     * @return void
      */
     public function redirect($url, $status = null, $exit = true)
     {
@@ -114,7 +118,6 @@ class SecurityTestController extends Controller
      * Convenience method for header()
      *
      * @param string $status
-     * @return void
      */
     public function header($status)
     {
@@ -160,8 +163,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -185,8 +186,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * Tear-down method. Resets environment state.
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -215,7 +214,6 @@ class SecurityComponentTest extends CakeTestCase
      * visibility keyword in the blackhole callback
      *
      * @expectedException BadRequestException
-     * @return void
      */
     public function testBlackholeWithBrokenCallback()
     {
@@ -235,8 +233,6 @@ class SecurityComponentTest extends CakeTestCase
     /**
      * Ensure that directly requesting the blackholeCallback as the controller
      * action results in an exception.
-     *
-     * @return void
      */
     public function testExceptionWhenActionIsBlackholeCallback()
     {
@@ -251,8 +247,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * test that initialize can set properties.
-     *
-     * @return void
      */
     public function testConstructorSettingProperties()
     {
@@ -272,8 +266,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * testStartup method
-     *
-     * @return void
      */
     public function testStartup()
     {
@@ -285,8 +277,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * testRequirePostFail method
-     *
-     * @return void
      */
     public function testRequirePostFail()
     {
@@ -300,8 +290,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * testRequirePostSucceed method
-     *
-     * @return void
      */
     public function testRequirePostSucceed()
     {
@@ -315,8 +303,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * testRequireSecureFail method
-     *
-     * @return void
      */
     public function testRequireSecureFail()
     {
@@ -331,8 +317,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * testRequireSecureSucceed method
-     *
-     * @return void
      */
     public function testRequireSecureSucceed()
     {
@@ -346,8 +330,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * testRequireAuthFail method
-     *
-     * @return void
      */
     public function testRequireAuthFail()
     {
@@ -377,8 +359,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * testRequireAuthSucceed method
-     *
-     * @return void
      */
     public function testRequireAuthSucceed()
     {
@@ -409,8 +389,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * testRequirePostSucceedWrongMethod method
-     *
-     * @return void
      */
     public function testRequirePostSucceedWrongMethod()
     {
@@ -424,8 +402,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * testRequireGetFail method
-     *
-     * @return void
      */
     public function testRequireGetFail()
     {
@@ -439,8 +415,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * testRequireGetSucceed method
-     *
-     * @return void
      */
     public function testRequireGetSucceed()
     {
@@ -454,8 +428,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * testRequireGetSucceedWrongMethod method
-     *
-     * @return void
      */
     public function testRequireGetSucceedWrongMethod()
     {
@@ -469,8 +441,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * testRequirePutFail method
-     *
-     * @return void
      */
     public function testRequirePutFail()
     {
@@ -484,8 +454,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * testRequirePutSucceed method
-     *
-     * @return void
      */
     public function testRequirePutSucceed()
     {
@@ -499,8 +467,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * testRequirePutSucceedWrongMethod method
-     *
-     * @return void
      */
     public function testRequirePutSucceedWrongMethod()
     {
@@ -514,8 +480,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * testRequireDeleteFail method
-     *
-     * @return void
      */
     public function testRequireDeleteFail()
     {
@@ -529,8 +493,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * testRequireDeleteSucceed method
-     *
-     * @return void
      */
     public function testRequireDeleteSucceed()
     {
@@ -544,8 +506,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * testRequireDeleteSucceedWrongMethod method
-     *
-     * @return void
      */
     public function testRequireDeleteSucceedWrongMethod()
     {
@@ -560,8 +520,6 @@ class SecurityComponentTest extends CakeTestCase
     /**
      * Test that validatePost fires on GET with request data.
      * This could happen when method overriding is used.
-     *
-     * @return void
      */
     public function testValidatePostOnGetWithData()
     {
@@ -588,8 +546,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * Simple hash validation test
-     *
-     * @return void
      */
     public function testValidatePost()
     {
@@ -609,8 +565,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * Test that validatePost fails if you are missing the session information.
-     *
-     * @return void
      */
     public function testValidatePostNoSession()
     {
@@ -635,8 +589,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * test that validatePost fails if any of its required fields are missing.
-     *
-     * @return void
      */
     public function testValidatePostFormHacking()
     {
@@ -656,8 +608,6 @@ class SecurityComponentTest extends CakeTestCase
      * testValidatePostEmptyForm method
      *
      * Test that validatePost fails if empty form is submitted.
-     *
-     * @return void
      */
     public function testValidatePostEmptyForm()
     {
@@ -671,8 +621,6 @@ class SecurityComponentTest extends CakeTestCase
     /**
      * Test that objects can't be passed into the serialized string. This was a vector for RFI and LFI
      * attacks. Thanks to Felix Wilhelm
-     *
-     * @return void
      */
     public function testValidatePostObjectDeserialize()
     {
@@ -700,8 +648,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * Tests validation of checkbox arrays
-     *
-     * @return void
      */
     public function testValidatePostArray()
     {
@@ -725,8 +671,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * testValidatePostNoModel method
-     *
-     * @return void
      */
     public function testValidatePostNoModel()
     {
@@ -748,8 +692,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * testValidatePostSimple method
-     *
-     * @return void
      */
     public function testValidatePostSimple()
     {
@@ -771,8 +713,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * Tests hash validation for multiple records, including locked fields
-     *
-     * @return void
      */
     public function testValidatePostComplex()
     {
@@ -802,8 +742,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * test ValidatePost with multiple select elements.
-     *
-     * @return void
      */
     public function testValidatePostMultipleSelect()
     {
@@ -850,8 +788,6 @@ class SecurityComponentTest extends CakeTestCase
      *
      * First block tests un-checked checkbox
      * Second block tests checked checkbox
-     *
-     * @return void
      */
     public function testValidatePostCheckbox()
     {
@@ -894,8 +830,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * testValidatePostHidden method
-     *
-     * @return void
      */
     public function testValidatePostHidden()
     {
@@ -918,8 +852,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * testValidatePostWithDisabledFields method
-     *
-     * @return void
      */
     public function testValidatePostWithDisabledFields()
     {
@@ -943,8 +875,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * test validating post data with posted unlocked fields.
-     *
-     * @return void
      */
     public function testValidatePostDisabledFieldsInData()
     {
@@ -977,8 +907,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * test that missing 'unlocked' input causes failure
-     *
-     * @return void
      */
     public function testValidatePostFailNoDisabled()
     {
@@ -1002,8 +930,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * test that missing 'debug' input causes failure
-     *
-     * @return void
      */
     public function testValidatePostFailNoDebug()
     {
@@ -1027,8 +953,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * test that missing 'debug' input is not the problem when debug mode disabled
-     *
-     * @return void
      */
     public function testValidatePostFailNoDebugMode()
     {
@@ -1051,8 +975,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * Test that validatePost fails when unlocked fields are changed.
-     *
-     * @return void
      */
     public function testValidatePostFailDisabledFieldTampering()
     {
@@ -1085,8 +1007,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * testValidateHiddenMultipleModel method
-     *
-     * @return void
      */
     public function testValidateHiddenMultipleModel()
     {
@@ -1108,8 +1028,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * testValidateHasManyModel method
-     *
-     * @return void
      */
     public function testValidateHasManyModel()
     {
@@ -1140,8 +1058,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * testValidateHasManyRecordsPass method
-     *
-     * @return void
      */
     public function testValidateHasManyRecordsPass()
     {
@@ -1184,8 +1100,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * Test that values like Foo.0.1
-     *
-     * @return void
      */
     public function testValidateNestedNumericSets()
     {
@@ -1219,8 +1133,6 @@ class SecurityComponentTest extends CakeTestCase
      * testValidateHasManyRecords method
      *
      * validatePost should fail, hidden fields have been changed.
-     *
-     * @return void
      */
     public function testValidateHasManyRecordsFail()
     {
@@ -1284,8 +1196,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * testFormDisabledFields method
-     *
-     * @return void
      */
     public function testFormDisabledFields()
     {
@@ -1321,8 +1231,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * testRadio method
-     *
-     * @return void
      */
     public function testValidatePostRadio()
     {
@@ -1366,8 +1274,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * test validatePost uses here() as a hash input.
-     *
-     * @return void
      */
     public function testValidatePostUrlAsHashInput()
     {
@@ -1405,8 +1311,6 @@ class SecurityComponentTest extends CakeTestCase
     /**
      * test that a requestAction's controller will have the _Token appended to
      * the params.
-     *
-     * @return void
      */
     public function testSettingTokenForRequestAction()
     {
@@ -1423,8 +1327,6 @@ class SecurityComponentTest extends CakeTestCase
     /**
      * test that blackhole doesn't delete the _Token session key so repeat data submissions
      * stay blackholed.
-     *
-     * @return void
      */
     public function testBlackHoleNotDeletingSessionInformation()
     {
@@ -1436,8 +1338,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * test that csrf checks are skipped for request action.
-     *
-     * @return void
      */
     public function testCsrfSkipRequestAction()
     {
@@ -1454,8 +1354,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * test setting
-     *
-     * @return void
      */
     public function testCsrfSettings()
     {
@@ -1472,8 +1370,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * Test setting multiple nonces, when startup() is called more than once, (ie more than one request.)
-     *
-     * @return void
      */
     public function testCsrfSettingMultipleNonces()
     {
@@ -1493,8 +1389,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * test that nonces are consumed by form submits.
-     *
-     * @return void
      */
     public function testCsrfNonceConsumption()
     {
@@ -1538,8 +1432,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * test that expired values in the csrfTokens are cleaned up.
-     *
-     * @return void
      */
     public function testCsrfNonceVacuum()
     {
@@ -1561,7 +1453,6 @@ class SecurityComponentTest extends CakeTestCase
     /**
      * test that blackhole throws an exception when the key is missing and balckHoleCallback is not set.
      *
-     * @return void
      * @expectedException SecurityException
      * @expectedExceptionMessage Missing CSRF token
      */
@@ -1582,8 +1473,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * test that when the keys are mismatched the request is blackHoled
-     *
-     * @return void
      */
     public function testCsrfBlackHoleOnKeyMismatch()
     {
@@ -1609,7 +1498,6 @@ class SecurityComponentTest extends CakeTestCase
     /**
      * test that blackhole throws an exception when the keys are mismatched and balckHoleCallback is not set.
      *
-     * @return void
      * @expectedException SecurityException
      * @expectedExceptionMessage CSRF token mismatch
      */
@@ -1636,8 +1524,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * test that when the key is expried the request is blackHoled
-     *
-     * @return void
      */
     public function testCsrfBlackHoleOnExpiredKey()
     {
@@ -1663,7 +1549,6 @@ class SecurityComponentTest extends CakeTestCase
     /**
      * test that blackhole throws an exception when the key is expired and balckHoleCallback is not set
      *
-     * @return void
      * @expectedException SecurityException
      * @expectedExceptionMessage CSRF token expired
      */
@@ -1690,8 +1575,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * test that csrfUseOnce = false works.
-     *
-     * @return void
      */
     public function testCsrfNotUseOnce()
     {
@@ -1716,8 +1599,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * ensure that longer session tokens are not consumed
-     *
-     * @return void
      */
     public function testCsrfNotUseOnceValidationLeavingToken()
     {
@@ -1745,8 +1626,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * Test generateToken()
-     *
-     * @return void
      */
     public function testGenerateToken()
     {
@@ -1760,8 +1639,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * Test the limiting of CSRF tokens.
-     *
-     * @return void
      */
     public function testCsrfLimit()
     {
@@ -1787,8 +1664,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * Test unlocked actions
-     *
-     * @return void
      */
     public function testUnlockedActions()
     {
@@ -1802,8 +1677,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * Test that debug token format is right
-     *
-     * @return void
      */
     public function testValidatePostDebugFormat()
     {
@@ -1840,7 +1713,6 @@ class SecurityComponentTest extends CakeTestCase
      *
      * @expectedException SecurityException
      * @expectedExceptionMessage error description
-     * @return void
      */
     public function testBlackholeThrowsException()
     {
@@ -1850,8 +1722,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * test blackhole will throw BadRequest if debug disabled
-     *
-     * @return void
      */
     public function testBlackholeThrowsBadRequest()
     {
@@ -1872,8 +1742,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * Test that validatePost fails with tampered fields and explanation
-     *
-     * @return void
      */
     public function testValidatePostFailTampering()
     {
@@ -1901,8 +1769,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * Test that validatePost fails with tampered fields and explanation
-     *
-     * @return void
      */
     public function testValidatePostFailTamperingMutatedIntoArray()
     {
@@ -1930,8 +1796,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * Test that debug token should not be sent if debug is disabled
-     *
-     * @return void
      */
     public function testValidatePostUnexpectedDebugToken()
     {
@@ -1960,7 +1824,6 @@ class SecurityComponentTest extends CakeTestCase
     /**
      * Auth required throws exception token not found
      *
-     * @return void
      * @expectedException AuthSecurityException
      * @expectedExceptionMessage '_Token' was not found in request data.
      */
@@ -1975,7 +1838,6 @@ class SecurityComponentTest extends CakeTestCase
     /**
      * Auth required throws exception token not found in Session
      *
-     * @return void
      * @expectedException AuthSecurityException
      * @expectedExceptionMessage '_Token' was not found in session.
      */
@@ -1990,7 +1852,6 @@ class SecurityComponentTest extends CakeTestCase
     /**
      * Auth required throws exception controller not allowed
      *
-     * @return void
      * @expectedException AuthSecurityException
      * @expectedExceptionMessage Controller 'NotAllowed' was not found in allowed controllers: 'Allowed, AnotherAllowed'.
      */
@@ -2009,7 +1870,6 @@ class SecurityComponentTest extends CakeTestCase
     /**
      * Auth required throws exception controller not allowed
      *
-     * @return void
      * @expectedException AuthSecurityException
      * @expectedExceptionMessage Action 'NotAllowed::protected' was not found in allowed actions: 'index, view'.
      */
@@ -2027,8 +1887,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * Auth required throws exception controller not allowed
-     *
-     * @return void
      */
     public function testAuthRequired()
     {
@@ -2046,7 +1904,6 @@ class SecurityComponentTest extends CakeTestCase
     /**
      * Auth required throws exception controller not allowed
      *
-     * @return void
      * @expectedException SecurityException
      * @expectedExceptionMessage The request method must be POST
      */
@@ -2062,8 +1919,6 @@ class SecurityComponentTest extends CakeTestCase
 
     /**
      * Auth required throws exception controller not allowed
-     *
-     * @return void
      */
     public function testMethodsRequired()
     {

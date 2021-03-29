@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.I18n
+ *
  * @since         CakePHP(tm) v 1.2.0.5432
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('I18n', 'I18n');
@@ -27,8 +31,6 @@ class I18nTest extends CakeTestCase
 {
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -44,8 +46,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -59,8 +59,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * testTranslationCaching method
-     *
-     * @return void
      */
     public function testTranslationCaching()
     {
@@ -106,8 +104,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * testDefaultStrings method
-     *
-     * @return void
      */
     public function testDefaultStrings()
     {
@@ -176,8 +172,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * testPoRulesZero method
-     *
-     * @return void
      */
     public function testPoRulesZero()
     {
@@ -187,8 +181,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * testMoRulesZero method
-     *
-     * @return void
      */
     public function testMoRulesZero()
     {
@@ -198,8 +190,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * Assertions for rules zero.
-     *
-     * @return void
      */
     public function assertRulesZero()
     {
@@ -268,8 +258,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * testPoRulesOne method
-     *
-     * @return void
      */
     public function testPoRulesOne()
     {
@@ -279,8 +267,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * testMoRulesOne method
-     *
-     * @return void
      */
     public function testMoRulesOne()
     {
@@ -290,8 +276,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * Assertions for plural rule one
-     *
-     * @return void
      */
     public function assertRulesOne()
     {
@@ -360,8 +344,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * testMoRulesTwo method
-     *
-     * @return void
      */
     public function testMoRulesTwo()
     {
@@ -371,8 +353,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * testPoRulesTwo method
-     *
-     * @return void
      */
     public function testPoRulesTwo()
     {
@@ -382,8 +362,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * Assertions for rules Two
-     *
-     * @return void
      */
     public function assertRulesTwo()
     {
@@ -452,8 +430,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * testPoRulesThree method
-     *
-     * @return void
      */
     public function testPoRulesThree()
     {
@@ -463,8 +439,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * testMoRulesThree method
-     *
-     * @return void
      */
     public function testMoRulesThree()
     {
@@ -474,8 +448,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * Assert rules for plural three.
-     *
-     * @return void
      */
     public function assertRulesThree()
     {
@@ -544,8 +516,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * testPoRulesFour method
-     *
-     * @return void
      */
     public function testPoRulesFour()
     {
@@ -555,8 +525,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * testMoRulesFour method
-     *
-     * @return void
      */
     public function testMoRulesFour()
     {
@@ -566,8 +534,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * Run the assertions for Rule 4 plurals.
-     *
-     * @return void
      */
     public function assertRulesFour()
     {
@@ -636,8 +602,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * testPoRulesFive method
-     *
-     * @return void
      */
     public function testPoRulesFive()
     {
@@ -647,8 +611,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * testMoRulesFive method
-     *
-     * @return void
      */
     public function testMoRulesFive()
     {
@@ -658,8 +620,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * Run the assertions for rule 5 plurals
-     *
-     * @return void
      */
     public function assertRulesFive()
     {
@@ -730,8 +690,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * testPoRulesSix method
-     *
-     * @return void
      */
     public function testPoRulesSix()
     {
@@ -741,8 +699,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * testMoRulesSix method
-     *
-     * @return void
      */
     public function testMoRulesSix()
     {
@@ -752,8 +708,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * Assertions for the sixth plural rules.
-     *
-     * @return void
      */
     public function assertRulesSix()
     {
@@ -822,8 +776,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * testPoRulesSeven method
-     *
-     * @return void
      */
     public function testPoRulesSeven()
     {
@@ -833,8 +785,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * testMoRulesSeven method
-     *
-     * @return void
      */
     public function testMoRulesSeven()
     {
@@ -844,8 +794,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * Run assertions for seventh plural rules
-     *
-     * @return void
      */
     public function assertRulesSeven()
     {
@@ -914,8 +862,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * testPoRulesEight method
-     *
-     * @return void
      */
     public function testPoRulesEight()
     {
@@ -925,8 +871,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * testMoRulesEight method
-     *
-     * @return void
      */
     public function testMoRulesEight()
     {
@@ -936,8 +880,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * Run assertions for the eighth plural rule.
-     *
-     * @return void
      */
     public function assertRulesEight()
     {
@@ -1006,8 +948,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * testPoRulesNine method
-     *
-     * @return void
      */
     public function testPoRulesNine()
     {
@@ -1017,8 +957,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * testMoRulesNine method
-     *
-     * @return void
      */
     public function testMoRulesNine()
     {
@@ -1028,8 +966,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * Assert plural rules nine
-     *
-     * @return void
      */
     public function assertRulesNine()
     {
@@ -1101,8 +1037,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * testPoRulesTen method
-     *
-     * @return void
      */
     public function testPoRulesTen()
     {
@@ -1112,8 +1046,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * testMoRulesTen method
-     *
-     * @return void
      */
     public function testMoRulesTen()
     {
@@ -1123,8 +1055,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * Assertions for plural rules 10
-     *
-     * @return void
      */
     public function assertRulesTen()
     {
@@ -1195,8 +1125,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * testPoRulesEleven method
-     *
-     * @return void
      */
     public function testPoRulesEleven()
     {
@@ -1206,8 +1134,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * testMoRulesEleven method
-     *
-     * @return void
      */
     public function testMoRulesEleven()
     {
@@ -1217,8 +1143,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * Assertions for plural rules eleven
-     *
-     * @return void
      */
     public function assertRulesEleven()
     {
@@ -1287,8 +1211,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * testPoRulesTwelve method
-     *
-     * @return void
      */
     public function testPoRulesTwelve()
     {
@@ -1298,8 +1220,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * testMoRulesTwelve method
-     *
-     * @return void
      */
     public function testMoRulesTwelve()
     {
@@ -1309,8 +1229,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * Assertions for plural rules twelve
-     *
-     * @return void
      */
     public function assertRulesTwelve()
     {
@@ -1379,8 +1297,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * testMoRulesThirteen method
-     *
-     * @return void
      */
     public function testmoRulesThirteen()
     {
@@ -1390,8 +1306,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * testPoRulesThirteen method
-     *
-     * @return void
      */
     public function testPoRulesThirteen()
     {
@@ -1401,8 +1315,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * Assertions for plural rules thirteen
-     *
-     * @return void
      */
     public function assertRulesThirteen()
     {
@@ -1471,8 +1383,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * testMoRulesFourteen method
-     *
-     * @return void
      */
     public function testMoRulesFourteen()
     {
@@ -1482,8 +1392,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * testPoRulesFourteen method
-     *
-     * @return void
      */
     public function testPoRulesFourteen()
     {
@@ -1493,8 +1401,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * Assertions for plural rules fourteen
-     *
-     * @return void
      */
     public function assertRulesFourteen()
     {
@@ -1563,8 +1469,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * testMoRulesFifteen method
-     *
-     * @return void
      */
     public function testMoRulesFifteen()
     {
@@ -1574,8 +1478,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * testPoRulesFifteen method
-     *
-     * @return void
      */
     public function testPoRulesFifteen()
     {
@@ -1585,8 +1487,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * Assertions for plural rules fifteen
-     *
-     * @return void
      */
     public function assertRulesFifteen()
     {
@@ -1687,8 +1587,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * testSetLanguageWithSession method
-     *
-     * @return void
      */
     public function testSetLanguageWithSession()
     {
@@ -1728,8 +1626,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * testNoCoreTranslation method
-     *
-     * @return void
      */
     public function testNoCoreTranslation()
     {
@@ -1771,8 +1667,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * testPluginTranslation method
-     *
-     * @return void
      */
     public function testPluginTranslation()
     {
@@ -1815,8 +1709,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * Test that Configure::read('I18n.preferApp') will prefer app.
-     *
-     * @return void
      */
     public function testPluginTranslationPreferApp()
     {
@@ -1840,8 +1732,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * testPoMultipleLineTranslation method
-     *
-     * @return void
      */
     public function testPoMultipleLineTranslation()
     {
@@ -1914,8 +1804,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * testPoNoTranslationNeeded method
-     *
-     * @return void
      */
     public function testPoNoTranslationNeeded()
     {
@@ -1926,8 +1814,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * testPoQuotedString method
-     *
-     * @return void
      */
     public function testPoQuotedString()
     {
@@ -1938,8 +1824,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * testFloatValue method
-     *
-     * @return void
      */
     public function testFloatValue()
     {
@@ -1960,8 +1844,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * testCategory method
-     *
-     * @return void
      */
     public function testCategory()
     {
@@ -1976,8 +1858,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * testPluginCategory method
-     *
-     * @return void
      */
     public function testPluginCategory()
     {
@@ -1993,8 +1873,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * testCategoryThenSingular method
-     *
-     * @return void
      */
     public function testCategoryThenSingular()
     {
@@ -2008,8 +1886,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * testTimeDefinition method
-     *
-     * @return void
      */
     public function testTimeDefinition()
     {
@@ -2029,8 +1905,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * testTimeDefinitionJapanese method
-     *
-     * @return void
      */
     public function testTimeDefinitionJapanese()
     {
@@ -2052,8 +1926,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * testTranslateLanguageParam method
-     *
-     * @return void
      */
     public function testTranslateLanguageParam()
     {
@@ -2072,7 +1944,6 @@ class I18nTest extends CakeTestCase
      * Test that the '' domain causes exceptions.
      *
      * @expectedException CakeException
-     * @return void
      */
     public function testTranslateEmptyDomain()
     {
@@ -2081,8 +1952,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * testLoadLocaleDefinition method
-     *
-     * @return void
      */
     public function testLoadLocaleDefinition()
     {
@@ -2094,8 +1963,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * Test basic context support
-     *
-     * @return void
      */
     public function testContext()
     {
@@ -2111,8 +1978,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * Test basic context support using mo files.
-     *
-     * @return void
      */
     public function testContextMoFile()
     {
@@ -2131,8 +1996,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * Singular method
-     *
-     * @return void
      */
     protected function _domainCategorySingular($domain = 'test_plugin', $category = 3)
     {
@@ -2143,8 +2006,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * Plural method
-     *
-     * @return void
      */
     protected function _domainCategoryPlural($domain = 'test_plugin', $category = 3)
     {
@@ -2158,8 +2019,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * Singular method
-     *
-     * @return void
      */
     protected function _domainSingular($domain = 'test_plugin')
     {
@@ -2170,8 +2029,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * Plural method
-     *
-     * @return void
      */
     protected function _domainPlural($domain = 'test_plugin')
     {
@@ -2185,8 +2042,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * category method
-     *
-     * @return void
      */
     protected function _category($category = I18n::LC_MONETARY)
     {
@@ -2197,8 +2052,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * Singular method
-     *
-     * @return void
      */
     protected function _singular()
     {
@@ -2211,7 +2064,6 @@ class I18nTest extends CakeTestCase
      * Plural method
      *
      * @param int $upTo For numbers upto (default to 25)
-     * @return void
      */
     protected function _plural($upTo = 25)
     {
@@ -2225,8 +2077,6 @@ class I18nTest extends CakeTestCase
 
     /**
      * singularFromCore method
-     *
-     * @return void
      */
     protected function _singularFromCore()
     {
@@ -2239,7 +2089,6 @@ class I18nTest extends CakeTestCase
      * pluralFromCore method
      *
      * @param int $upTo For numbers upto (default to 25)
-     * @return void
      */
     protected function _pluralFromCore($upTo = 25)
     {

@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Controller.Component
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Component', 'Controller');
@@ -65,6 +69,7 @@ App::uses('Hash', 'Utility');
  * Would paginate using the `find('popular')` method.
  *
  * @package       Cake.Controller.Component
+ *
  * @link https://book.cakephp.org/2.0/en/core-libraries/components/pagination.html
  */
 class PaginatorComponent extends Component
@@ -137,9 +142,11 @@ class PaginatorComponent extends Component
      * @param array $whitelist List of allowed fields for ordering. This allows you to prevent ordering
      *   on non-indexed, or undesirable columns. See PaginatorComponent::validateSort() for additional details
      *   on how the whitelisting and sort field validation works.
-     * @return array Model query results
+     *
      * @throws MissingModelException
      * @throws NotFoundException
+     *
+     * @return array Model query results
      */
     public function paginate($object = null, $scope = [], $whitelist = [])
     {
@@ -282,6 +289,7 @@ class PaginatorComponent extends Component
      * Get the object pagination will occur on.
      *
      * @param string|Model $object The object you are looking for.
+     *
      * @return mixed The model object to paginate on.
      */
     protected function _getObject($object)
@@ -337,6 +345,7 @@ class PaginatorComponent extends Component
      *
      * @param string $alias Model alias being paginated, if the general settings has a key with this value
      *   that key's settings will be used for pagination instead of the general ones.
+     *
      * @return array Array of merged options.
      */
     public function mergeOptions($alias)
@@ -365,6 +374,7 @@ class PaginatorComponent extends Component
      * will be used.
      *
      * @param string $alias Model name to get default settings for.
+     *
      * @return array An array of pagination defaults for a model, or the general settings.
      */
     public function getDefaults($alias)
@@ -398,6 +408,7 @@ class PaginatorComponent extends Component
      * @param Model $object The model being paginated.
      * @param array $options The pagination options being used for this request.
      * @param array $whitelist The list of columns that can be used for sorting. If empty all keys are allowed.
+     *
      * @return array An array of options with sort + direction removed and replaced with order if possible.
      */
     public function validateSort(Model $object, array $options, array $whitelist = [])
@@ -459,6 +470,7 @@ class PaginatorComponent extends Component
      * Check the limit parameter and ensure its within the maxLimit bounds.
      *
      * @param array $options An array of options with a limit key to be checked.
+     *
      * @return array An array of options for pagination
      */
     public function checkLimit(array $options)

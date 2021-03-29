@@ -8,9 +8,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP Project
+ *
  * @package       Cake.Console.Command
+ *
  * @since         CakePHP v 2.5
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('AppShell', 'Console/Command');
@@ -31,8 +35,6 @@ class CompletionShell extends AppShell
 
     /**
      * Echo no header by overriding the startup method
-     *
-     * @return void
      */
     public function startup()
     {
@@ -40,8 +42,6 @@ class CompletionShell extends AppShell
 
     /**
      * Not called by the autocomplete shell - this is for curious users
-     *
-     * @return void
      */
     public function main()
     {
@@ -50,8 +50,6 @@ class CompletionShell extends AppShell
 
     /**
      * list commands
-     *
-     * @return void
      */
     public function commands()
     {
@@ -62,8 +60,6 @@ class CompletionShell extends AppShell
 
     /**
      * list options for the named command
-     *
-     * @return void
      */
     public function options()
     {
@@ -78,8 +74,6 @@ class CompletionShell extends AppShell
 
     /**
      * list subcommands for the named command
-     *
-     * @return void
      */
     public function subCommands()
     {
@@ -94,8 +88,6 @@ class CompletionShell extends AppShell
 
     /**
      * Guess autocomplete from the whole argument string
-     *
-     * @return void
      */
     public function fuzzy()
     {
@@ -153,7 +145,6 @@ class CompletionShell extends AppShell
      * Emit results as a string, space delimited
      *
      * @param array $options The options to output
-     * @return void
      */
     protected function _output($options = [])
     {

@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.TestSuite
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('CakeTestRunner', 'TestSuite');
@@ -34,6 +38,7 @@ class CakeTestSuiteCommand extends PHPUnit_TextUI_Command
      *
      * @param mixed $loader The loader instance to use.
      * @param array $params list of options to be used for this run
+     *
      * @throws MissingTestLoaderException When a loader class could not be found.
      */
     public function __construct($loader, $params = [])
@@ -55,7 +60,6 @@ class CakeTestSuiteCommand extends PHPUnit_TextUI_Command
      *
      * @param array $argv The command arguments
      * @param bool $exit The exit mode.
-     * @return void
      */
     public function run(array $argv, $exit = true)
     {
@@ -114,6 +118,7 @@ class CakeTestSuiteCommand extends PHPUnit_TextUI_Command
      * Create a runner for the command.
      *
      * @param mixed $loader The loader to be used for the test run.
+     *
      * @return CakeTestRunner
      */
     public function getRunner($loader)
@@ -125,7 +130,6 @@ class CakeTestSuiteCommand extends PHPUnit_TextUI_Command
      * Handler for customizing the FixtureManager class/
      *
      * @param string $class Name of the class that will be the fixture manager
-     * @return void
      */
     public function handleFixture($class)
     {
@@ -136,7 +140,6 @@ class CakeTestSuiteCommand extends PHPUnit_TextUI_Command
      * Handles output flag used to change printing on webrunner.
      *
      * @param string $reporter The reporter class to use.
-     * @return void
      */
     public function handleReporter($reporter)
     {

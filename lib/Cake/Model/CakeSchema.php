@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Model
+ *
  * @since         CakePHP(tm) v 1.2.0.5550
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Model', 'Model');
@@ -101,7 +105,6 @@ class CakeSchema extends CakeObject
      * Builds schema object properties.
      *
      * @param array $data Loaded object properties.
-     * @return void
      */
     public function build($data)
     {
@@ -133,6 +136,7 @@ class CakeSchema extends CakeObject
      * Before callback to be implemented in subclasses.
      *
      * @param array $event Schema object properties.
+     *
      * @return bool Should process continue.
      */
     public function before($event = [])
@@ -144,7 +148,6 @@ class CakeSchema extends CakeObject
      * After callback to be implemented in subclasses.
      *
      * @param array $event Schema object properties.
-     * @return void
      */
     public function after($event = [])
     {
@@ -154,6 +157,7 @@ class CakeSchema extends CakeObject
      * Reads database and creates schema tables.
      *
      * @param array $options Schema object properties.
+     *
      * @return array|bool Set of name and tables.
      */
     public function load($options = [])
@@ -191,6 +195,7 @@ class CakeSchema extends CakeObject
      * - 'models' - a list of models to use, or false to ignore models
      *
      * @param array $options Schema object properties.
+     *
      * @return array Array indexed by name and tables.
      */
     public function read($options = [])
@@ -350,6 +355,7 @@ class CakeSchema extends CakeObject
      *
      * @param array|object $object Schema object or options array.
      * @param array $options Schema object properties to override object.
+     *
      * @return mixed False or string written to file.
      */
     public function write($object, $options = [])
@@ -413,8 +419,10 @@ class CakeSchema extends CakeObject
      *
      * @param string $table Table name you want returned.
      * @param array $fields Array of field information to generate the table with.
-     * @return string Variable declaration for a schema class.
+     *
      * @throws Exception
+     *
+     * @return string Variable declaration for a schema class.
      */
     public function generateTable($table, $fields)
     {
@@ -463,6 +471,7 @@ class CakeSchema extends CakeObject
      *
      * @param array|object $old Schema object or array.
      * @param array|object $new Schema object or array.
+     *
      * @return array Tables (that are added, dropped, or changed.)
      */
     public function compare($old, $new = null)
@@ -559,6 +568,7 @@ class CakeSchema extends CakeObject
      *
      * @param array $array1 Base array.
      * @param array $array2 Corresponding array checked for equality.
+     *
      * @return array Difference as array with array(keys => values) from input array
      *     where match was not found.
      */
@@ -598,6 +608,7 @@ class CakeSchema extends CakeObject
      * Formats Schema columns from Model Object.
      *
      * @param array $values Options keys(type, null, default, key, length, extra).
+     *
      * @return array Formatted values.
      */
     protected function _values($values)
@@ -628,6 +639,7 @@ class CakeSchema extends CakeObject
      * Formats Schema columns from Model Object.
      *
      * @param array &$Obj model object.
+     *
      * @return array Formatted columns.
      */
     protected function _columns(&$Obj)
@@ -685,6 +697,7 @@ class CakeSchema extends CakeObject
      *
      * @param array $new New indexes.
      * @param array $old Old indexes.
+     *
      * @return mixed False on failure, or an array of parameters to add & drop.
      */
     protected function _compareTableParameters($new, $old)
@@ -702,6 +715,7 @@ class CakeSchema extends CakeObject
      *
      * @param array $new New indexes.
      * @param array $old Old indexes.
+     *
      * @return mixed False on failure or array of indexes to add and drop.
      */
     protected function _compareIndexes($new, $old)
@@ -756,6 +770,7 @@ class CakeSchema extends CakeObject
      *
      * @param string $prefix Table prefix.
      * @param string $table Full table name.
+     *
      * @return string Prefix-less table name.
      */
     protected function _noPrefixTable($prefix, $table)
@@ -768,6 +783,7 @@ class CakeSchema extends CakeObject
      *
      * @param string $path Filesystem path to the file.
      * @param string $file Filesystem basename of the file.
+     *
      * @return bool True when a file was successfully included, false on failure.
      */
     protected function _requireFile($path, $file)

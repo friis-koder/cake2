@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Test.Case.Console.Command
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('ShellDispatcher', 'Console');
@@ -45,8 +49,6 @@ class TestShellTest extends CakeTestCase
 {
     /**
      * setUp test case
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -64,8 +66,6 @@ class TestShellTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -75,8 +75,6 @@ class TestShellTest extends CakeTestCase
 
     /**
      * testMapCoreFileToCategory
-     *
-     * @return void
      */
     public function testMapCoreFileToCategory()
     {
@@ -96,8 +94,6 @@ class TestShellTest extends CakeTestCase
      * testMapCoreFileToCase
      *
      * basics.php is a slightly special case - it's the only file in the core with a test that isn't Capitalized
-     *
-     * @return void
      */
     public function testMapCoreFileToCase()
     {
@@ -115,8 +111,6 @@ class TestShellTest extends CakeTestCase
 
     /**
      * testMapAppFileToCategory
-     *
-     * @return void
      */
     public function testMapAppFileToCategory()
     {
@@ -131,8 +125,6 @@ class TestShellTest extends CakeTestCase
 
     /**
      * testMapAppFileToCase
-     *
-     * @return void
      */
     public function testMapAppFileToCase()
     {
@@ -147,8 +139,6 @@ class TestShellTest extends CakeTestCase
 
     /**
      * testMapPluginFileToCategory
-     *
-     * @return void
      */
     public function testMapPluginFileToCategory()
     {
@@ -163,8 +153,6 @@ class TestShellTest extends CakeTestCase
 
     /**
      * testMapPluginFileToCase
-     *
-     * @return void
      */
     public function testMapPluginFileToCase()
     {
@@ -179,8 +167,6 @@ class TestShellTest extends CakeTestCase
 
     /**
      * testMapCoreTestToCategory
-     *
-     * @return void
      */
     public function testMapCoreTestToCategory()
     {
@@ -200,8 +186,6 @@ class TestShellTest extends CakeTestCase
      * testMapCoreTestToCase
      *
      * basics.php is a slightly special case - it's the only file in the core with a test that isn't Capitalized
-     *
-     * @return void
      */
     public function testMapCoreTestToCase()
     {
@@ -219,8 +203,6 @@ class TestShellTest extends CakeTestCase
 
     /**
      * testMapAppTestToCategory
-     *
-     * @return void
      */
     public function testMapAppTestToCategory()
     {
@@ -235,8 +217,6 @@ class TestShellTest extends CakeTestCase
 
     /**
      * testMapAppTestToCase
-     *
-     * @return void
      */
     public function testMapAppTestToCase()
     {
@@ -251,8 +231,6 @@ class TestShellTest extends CakeTestCase
 
     /**
      * testMapPluginTestToCategory
-     *
-     * @return void
      */
     public function testMapPluginTestToCategory()
     {
@@ -267,8 +245,6 @@ class TestShellTest extends CakeTestCase
 
     /**
      * testMapPluginTestToCase
-     *
-     * @return void
      */
     public function testMapPluginTestToCase()
     {
@@ -283,8 +259,6 @@ class TestShellTest extends CakeTestCase
 
     /**
      * testMapNotTestToNothing
-     *
-     * @return void
      */
     public function testMapNotTestToNothing()
     {
@@ -305,8 +279,6 @@ class TestShellTest extends CakeTestCase
 
     /**
      * test available list of test cases for an empty category
-     *
-     * @return void
      */
     public function testAvailableWithEmptyList()
     {
@@ -319,8 +291,6 @@ class TestShellTest extends CakeTestCase
 
     /**
      * test available list of test cases for core category
-     *
-     * @return void
      */
     public function testAvailableCoreCategory()
     {
@@ -343,8 +313,6 @@ class TestShellTest extends CakeTestCase
 
     /**
      * Tests that correct option for test runner are passed
-     *
-     * @return void
      */
     public function testRunnerOptions()
     {
@@ -362,8 +330,6 @@ class TestShellTest extends CakeTestCase
 
     /**
      * Tests that the 'quiet' parameter gets swallowed before calling PHPUnit
-     *
-     * @return void
      */
     public function testRunnerOptionsQuiet()
     {
@@ -381,8 +347,6 @@ class TestShellTest extends CakeTestCase
 
     /**
      * Tests that the '--directive' parameter change to '-d' before calling PHPUnit
-     *
-     * @return void
      */
     public function testRunnerOptionsDirective()
     {

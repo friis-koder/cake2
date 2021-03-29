@@ -10,8 +10,10 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
  * @since         CakePHP(tm) v 1.2
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('AppShell', 'Console/Command');
@@ -165,6 +167,7 @@ class ProjectTask extends AppShell
      * @param string $path Project path
      * @param string $skel Path to copy from
      * @param string $skip array of directories to skip when copying
+     *
      * @return mixed
      */
     public function bake($path, $skel = null, $skip = ['empty'])
@@ -238,6 +241,7 @@ class ProjectTask extends AppShell
      * and points app/console/cake.php to the right place
      *
      * @param string $path Project path.
+     *
      * @return bool success
      */
     public function consolePath($path)
@@ -262,6 +266,7 @@ class ProjectTask extends AppShell
      * Generates and writes 'Security.salt'
      *
      * @param string $path Project path
+     *
      * @return bool Success
      */
     public function securitySalt($path)
@@ -285,6 +290,7 @@ class ProjectTask extends AppShell
      * Generates and writes 'Security.cipherSeed'
      *
      * @param string $path Project path
+     *
      * @return bool Success
      */
     public function securityCipherSeed($path)
@@ -309,6 +315,7 @@ class ProjectTask extends AppShell
      * Writes cache prefix using app's name
      *
      * @param string $dir Path to project
+     *
      * @return bool Success
      */
     public function cachePrefix($dir)
@@ -330,6 +337,7 @@ class ProjectTask extends AppShell
      *
      * @param string $path Project path
      * @param bool $hardCode Whether or not define calls should be hardcoded.
+     *
      * @return bool Success
      */
     public function corePath($path, $hardCode = true)
@@ -353,6 +361,7 @@ class ProjectTask extends AppShell
      *
      * @param string $filename The filename to operate on.
      * @param bool $hardCode Whether or not the define should be uncommented.
+     *
      * @return bool Success
      */
     protected function _replaceCorePath($filename, $hardCode)
@@ -382,6 +391,7 @@ class ProjectTask extends AppShell
      * Enables Configure::read('Routing.prefixes') in /app/Config/core.php
      *
      * @param string $name Name to use as admin routing
+     *
      * @return bool Success
      */
     public function cakeAdmin($name)

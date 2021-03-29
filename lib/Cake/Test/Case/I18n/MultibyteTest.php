@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.I18n
+ *
  * @since         CakePHP(tm) v 1.2.0.6833
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Multibyte', 'I18n');
@@ -26,8 +30,6 @@ class MultibyteTest extends CakeTestCase
 {
     /**
      * testUtf8 method
-     *
-     * @return void
      */
     public function testUtf8()
     {
@@ -347,8 +349,6 @@ class MultibyteTest extends CakeTestCase
 
     /**
      * testAscii method
-     *
-     * @return void
      */
     public function testAscii()
     {
@@ -668,8 +668,6 @@ class MultibyteTest extends CakeTestCase
 
     /**
      * testUsingMbStripos method
-     *
-     * @return void
      */
     public function testUsingMbStripos()
     {
@@ -916,8 +914,6 @@ class MultibyteTest extends CakeTestCase
 
     /**
      * testMultibyteStripos method
-     *
-     * @return void
      */
     public function testMultibyteStripos()
     {
@@ -1164,8 +1160,6 @@ class MultibyteTest extends CakeTestCase
 
     /**
      * testUsingMbStristr method
-     *
-     * @return void
      */
     public function testUsingMbStristr()
     {
@@ -1555,8 +1549,6 @@ class MultibyteTest extends CakeTestCase
 
     /**
      * testMultibyteStristr method
-     *
-     * @return void
      */
     public function testMultibyteStristr()
     {
@@ -1946,8 +1938,6 @@ class MultibyteTest extends CakeTestCase
 
     /**
      * testUsingMbStrlen method
-     *
-     * @return void
      */
     public function testUsingMbStrlen()
     {
@@ -2094,8 +2084,6 @@ class MultibyteTest extends CakeTestCase
 
     /**
      * testMultibyteStrlen method
-     *
-     * @return void
      */
     public function testMultibyteStrlen()
     {
@@ -2242,8 +2230,6 @@ class MultibyteTest extends CakeTestCase
 
     /**
      * testUsingMbStrpos method
-     *
-     * @return void
      */
     public function testUsingMbStrpos()
     {
@@ -2490,8 +2476,6 @@ class MultibyteTest extends CakeTestCase
 
     /**
      * testMultibyteStrpos method
-     *
-     * @return void
      */
     public function testMultibyteStrpos()
     {
@@ -2738,8 +2722,6 @@ class MultibyteTest extends CakeTestCase
 
     /**
      * testUsingMbStrrchr method
-     *
-     * @return void
      */
     public function testUsingMbStrrchr()
     {
@@ -3123,8 +3105,6 @@ class MultibyteTest extends CakeTestCase
 
     /**
      * testMultibyteStrrchr method
-     *
-     * @return void
      */
     public function testMultibyteStrrchr()
     {
@@ -3508,8 +3488,6 @@ class MultibyteTest extends CakeTestCase
 
     /**
      * testUsingMbStrrichr method
-     *
-     * @return void
      */
     public function testUsingMbStrrichr()
     {
@@ -3893,8 +3871,6 @@ class MultibyteTest extends CakeTestCase
 
     /**
      * testMultibyteStrrichr method
-     *
-     * @return void
      */
     public function testMultibyteStrrichr()
     {
@@ -4278,8 +4254,6 @@ class MultibyteTest extends CakeTestCase
 
     /**
      * testUsingMbStrripos method
-     *
-     * @return void
      */
     public function testUsingMbStrripos()
     {
@@ -4531,8 +4505,6 @@ class MultibyteTest extends CakeTestCase
 
     /**
      * testMultibyteStrripos method
-     *
-     * @return void
      */
     public function testMultibyteStrripos()
     {
@@ -4785,8 +4757,6 @@ class MultibyteTest extends CakeTestCase
 
     /**
      * testUsingMbStrrpos method
-     *
-     * @return void
      */
     public function testUsingMbStrrpos()
     {
@@ -5041,8 +5011,6 @@ class MultibyteTest extends CakeTestCase
 
     /**
      * testMultibyteStrrpos method
-     *
-     * @return void
      */
     public function testMultibyteStrrpos()
     {
@@ -5295,8 +5263,6 @@ class MultibyteTest extends CakeTestCase
 
     /**
      * testUsingMbStrstr method
-     *
-     * @return void
      */
     public function testUsingMbStrstr()
     {
@@ -5692,8 +5658,6 @@ class MultibyteTest extends CakeTestCase
 
     /**
      * testMultibyteStrstr method
-     *
-     * @return void
      */
     public function testMultibyteStrstr()
     {
@@ -6089,8 +6053,6 @@ class MultibyteTest extends CakeTestCase
 
     /**
      * testUsingMbStrtolower method
-     *
-     * @return void
      */
     public function testUsingMbStrtolower()
     {
@@ -6592,8 +6554,6 @@ class MultibyteTest extends CakeTestCase
 
     /**
      * testMultibyteStrtolower method
-     *
-     * @return void
      */
     public function testMultibyteStrtolower()
     {
@@ -7150,8 +7110,6 @@ class MultibyteTest extends CakeTestCase
 
     /**
      * testUsingMbStrtoupper method
-     *
-     * @return void
      */
     public function testUsingMbStrtoupper()
     {
@@ -7658,8 +7616,6 @@ class MultibyteTest extends CakeTestCase
 
     /**
      * testUsingMbStrtoupperArmenian method
-     *
-     * @return void
      */
     public function testUsingMbStrtoupperArmenian()
     {
@@ -7675,8 +7631,6 @@ class MultibyteTest extends CakeTestCase
 
     /**
      * testUsingMbStrtoupperDiacritic method
-     *
-     * @return void
      */
     public function testUsingMbStrtoupperDiacritic()
     {
@@ -7692,8 +7646,6 @@ class MultibyteTest extends CakeTestCase
 
     /**
      * testUsingMbStrtoupperLigatures method
-     *
-     * @return void
      */
     public function testUsingMbStrtoupperLigatures()
     {
@@ -7709,8 +7661,6 @@ class MultibyteTest extends CakeTestCase
 
     /**
      * testMultibyteStrtoupper method
-     *
-     * @return void
      */
     public function testMultibyteStrtoupper()
     {
@@ -8262,8 +8212,6 @@ class MultibyteTest extends CakeTestCase
 
     /**
      * testUsingMbSubstrCount method
-     *
-     * @return void
      */
     public function testUsingMbSubstrCount()
     {
@@ -8516,8 +8464,6 @@ class MultibyteTest extends CakeTestCase
 
     /**
      * testMultibyteSubstrCount method
-     *
-     * @return void
      */
     public function testMultibyteSubstrCount()
     {
@@ -8770,8 +8716,6 @@ class MultibyteTest extends CakeTestCase
 
     /**
      * testUsingMbSubstr method
-     *
-     * @return void
      */
     public function testUsingMbSubstr()
     {
@@ -8928,8 +8872,6 @@ class MultibyteTest extends CakeTestCase
 
     /**
      * testMultibyteSubstr method
-     *
-     * @return void
      */
     public function testMultibyteSubstr()
     {
@@ -9086,8 +9028,6 @@ class MultibyteTest extends CakeTestCase
 
     /**
      * testMultibyteSubstr method
-     *
-     * @return void
      */
     public function testMultibyteMimeEncode()
     {

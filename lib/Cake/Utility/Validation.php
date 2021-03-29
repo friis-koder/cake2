@@ -8,8 +8,10 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
  * @since         CakePHP(tm) v 1.2.0.3830
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Multibyte', 'I18n');
@@ -51,7 +53,9 @@ class Validation
      * Backwards compatibility wrapper for Validation::notBlank().
      *
      * @param string|array $check Value to check.
+     *
      * @return bool Success.
+     *
      * @deprecated 2.7.0 Use Validation::notBlank() instead.
      * @see Validation::notBlank()
      */
@@ -68,6 +72,7 @@ class Validation
      * Returns true if string contains something other than whitespace
      *
      * @param string $check Value to check
+     *
      * @return bool Success
      */
     public static function notBlank($check)
@@ -88,6 +93,7 @@ class Validation
      * array('check' => 'valueToCheck');
      *
      * @param string|array $check Value to check
+     *
      * @return bool Success
      */
     public static function alphaNumeric($check)
@@ -107,6 +113,7 @@ class Validation
      * @param string $check Value to check for length
      * @param int $min Minimum value in range (inclusive)
      * @param int $max Maximum value in range (inclusive)
+     *
      * @return bool Success
      */
     public static function lengthBetween($check, $min, $max)
@@ -122,7 +129,9 @@ class Validation
      * @param string $check Value to check for length
      * @param int $min Minimum value in range (inclusive)
      * @param int $max Maximum value in range (inclusive)
+     *
      * @return bool Success
+     *
      * @see Validator::lengthBetween()
      * @deprecated Deprecated 2.6. Use Validator::lengthBetween() instead.
      */
@@ -139,6 +148,7 @@ class Validation
      * array('check' => 'valueToCheck');
      *
      * @param string|array $check Value to check
+     *
      * @return bool Success
      */
     public static function blank($check)
@@ -157,7 +167,9 @@ class Validation
      *    Example: array('amex', 'bankcard', 'maestro')
      * @param bool $deep set to true this will check the Luhn algorithm of the credit card.
      * @param string $regex A custom regex can also be passed, this will be used instead of the defined regex values
+     *
      * @return bool Success
+     *
      * @see Validation::luhn()
      */
     public static function cc($check, $type = 'fast', $deep = false, $regex = null)
@@ -233,6 +245,7 @@ class Validation
      *    is greater >, is less <, greater or equal >=
      *    less or equal <=, is less <, equal to ==, not equal !=
      * @param int $check2 only needed if $check1 is a string
+     *
      * @return bool Success
      */
     public static function comparison($check1, $operator = null, $check2 = null)
@@ -298,6 +311,7 @@ class Validation
      * @param string|array $check When used as a string, $regex must also be a valid regular expression.
      *    As and array: array('check' => value, 'regex' => 'valid regular expression')
      * @param string $regex If $check is passed as a string, $regex must also be set to valid regular expression
+     *
      * @return bool Success
      */
     public static function custom($check, $regex = null)
@@ -336,6 +350,7 @@ class Validation
      * @param string|array $format Use a string or an array of the keys above.
      *    Arrays should be passed as array('dmy', 'mdy', etc)
      * @param string $regex If a custom regular expression is used this is the only validation that will occur.
+     *
      * @return bool Success
      */
     public static function date($check, $format = 'ymd', $regex = null)
@@ -391,7 +406,9 @@ class Validation
      * @param string $check Value to check
      * @param string|array $dateFormat Format of the date part. See Validation::date for more information.
      * @param string $regex Regex for the date part. If a custom regular expression is used this is the only validation that will occur.
+     *
      * @return bool True if the value is valid, false otherwise
+     *
      * @see Validation::date
      * @see Validation::time
      */
@@ -414,6 +431,7 @@ class Validation
      * Does not allow/validate seconds.
      *
      * @param string $check a valid time string
+     *
      * @return bool Success
      */
     public static function time($check)
@@ -425,6 +443,7 @@ class Validation
      * Boolean validation, determines if value passed is a boolean integer or true/false.
      *
      * @param string $check a valid boolean
+     *
      * @return bool Success
      */
     public static function boolean($check)
@@ -446,6 +465,7 @@ class Validation
      * @param float $check The value the test for decimal.
      * @param int $places Decimal places.
      * @param string $regex If a custom regular expression is used, this is the only validation that will occur.
+     *
      * @return bool Success
      */
     public static function decimal($check, $places = null, $regex = null)
@@ -487,6 +507,7 @@ class Validation
      * @param string $check Value to check
      * @param bool $deep Perform a deeper validation (if true), by also checking availability of host
      * @param string $regex Regex to use (if none it will use built in regex)
+     *
      * @return bool Success
      */
     public static function email($check, $deep = false, $regex = null)
@@ -518,6 +539,7 @@ class Validation
      *
      * @param mixed $check Value to check
      * @param mixed $comparedTo Value to compare
+     *
      * @return bool Success
      */
     public static function equalTo($check, $comparedTo)
@@ -530,6 +552,7 @@ class Validation
      *
      * @param string|array $check Value to check
      * @param array $extensions file extensions to allow. By default extensions are 'gif', 'jpeg', 'png', 'jpg'
+     *
      * @return bool Success
      */
     public static function extension($check, $extensions = ['gif', 'jpeg', 'png', 'jpg'])
@@ -552,6 +575,7 @@ class Validation
      *
      * @param string $check The string to test.
      * @param string $type The IP Protocol version to validate against
+     *
      * @return bool Success
      */
     public static function ip($check, $type = 'both')
@@ -573,6 +597,7 @@ class Validation
      *
      * @param string $check The string to test
      * @param int $min The minimal string length
+     *
      * @return bool Success
      */
     public static function minLength($check, $min)
@@ -585,6 +610,7 @@ class Validation
      *
      * @param string $check The string to test
      * @param int $max The maximal string length
+     *
      * @return bool Success
      */
     public static function maxLength($check, $max)
@@ -597,6 +623,7 @@ class Validation
      *
      * @param string $check The string to test
      * @param int $min The minimal string length
+     *
      * @return bool Success
      */
     public static function minLengthBytes($check, $min)
@@ -609,6 +636,7 @@ class Validation
      *
      * @param string $check The string to test
      * @param int $max The maximal string length
+     *
      * @return bool Success
      */
     public static function maxLengthBytes($check, $max)
@@ -621,6 +649,7 @@ class Validation
      *
      * @param string $check Value to check
      * @param string $symbolPosition Where symbol is located (left/right)
+     *
      * @return bool Success
      */
     public static function money($check, $symbolPosition = 'left')
@@ -647,6 +676,7 @@ class Validation
      * @param array $check Value to check
      * @param array $options Options for the check.
      * @param bool $caseInsensitive Set to true for case insensitive comparison.
+     *
      * @return bool Success
      */
     public static function multiple($check, $options = [], $caseInsensitive = false)
@@ -686,6 +716,7 @@ class Validation
      * Checks if a value is numeric.
      *
      * @param string $check Value to check
+     *
      * @return bool Success
      */
     public static function numeric($check)
@@ -698,7 +729,9 @@ class Validation
      *
      * @param string $check Value to check
      * @param bool $allowZero Set true to allow zero, defaults to false
+     *
      * @return bool Success
+     *
      * @see http://en.wikipedia.org/wiki/Natural_number
      */
     public static function naturalNumber($check, $allowZero = false)
@@ -714,6 +747,7 @@ class Validation
      * @param string|array $check Value to check (string or array)
      * @param string $regex Regular expression to use
      * @param string $country Country code (defaults to 'all')
+     *
      * @return bool Success
      */
     public static function phone($check, $regex = null, $country = 'all')
@@ -758,6 +792,7 @@ class Validation
      * @param string|array $check Value to check
      * @param string $regex Regular expression to use
      * @param string $country Country to use for formatting
+     *
      * @return bool Success
      */
     public static function postal($check, $regex = null, $country = 'us')
@@ -804,6 +839,7 @@ class Validation
      * @param string $check Value to check
      * @param int|float $lower Lower limit
      * @param int|float $upper Upper limit
+     *
      * @return bool Success
      */
     public static function range($check, $lower = null, $upper = null)
@@ -827,7 +863,9 @@ class Validation
      * @param string|array $check Value to check
      * @param string $regex Regular expression to use
      * @param string $country Country
+     *
      * @return bool Success
+     *
      * @deprecated Deprecated 2.6. Will be removed in 3.0.
      */
     public static function ssn($check, $regex = null, $country = null)
@@ -870,6 +908,7 @@ class Validation
      *
      * @param string $check Value to check
      * @param bool $strict Require URL to be prefixed by a valid scheme (one of http(s)/ftp(s)/file/news/gopher)
+     *
      * @return bool Success
      */
     public static function url($check, $strict = false)
@@ -891,6 +930,7 @@ class Validation
      * @param string $check Value to check.
      * @param array $list List to check against.
      * @param bool $caseInsensitive Set to true for case insensitive comparison.
+     *
      * @return bool Success.
      */
     public static function inList($check, $list, $caseInsensitive = false)
@@ -912,6 +952,7 @@ class Validation
      * @param object $object class that holds validation method
      * @param string $method class method name for validation to run
      * @param array $args arguments to send to method
+     *
      * @return mixed user-defined class class method returns
      */
     public static function userDefined($check, $object, $method, $args = null)
@@ -923,6 +964,7 @@ class Validation
      * Checks that a value is a valid UUID - http://tools.ietf.org/html/rfc4122
      *
      * @param string $check Value to check
+     *
      * @return bool Success
      */
     public static function uuid($check)
@@ -940,6 +982,7 @@ class Validation
      * @param string $method The method to call on the other class.
      * @param mixed $check The value to check or an array of parameters for the method to be called.
      * @param string $classPrefix The prefix for the class to do the validation.
+     *
      * @return mixed Return of Passed method, false on failure
      */
     protected static function _pass($method, $check, $classPrefix)
@@ -965,6 +1008,7 @@ class Validation
      *
      * @param string $check Value to check against the $regex expression
      * @param string $regex Regular expression
+     *
      * @return bool Success of match
      */
     protected static function _check($check, $regex)
@@ -981,7 +1025,9 @@ class Validation
      *
      * @param string|array $check Value to check.
      * @param bool $deep If true performs deep check.
+     *
      * @return bool Success
+     *
      * @see http://en.wikipedia.org/wiki/Luhn_algorithm
      */
     public static function luhn($check, $deep = false)
@@ -1015,8 +1061,10 @@ class Validation
      *
      * @param string|array $check Value to check.
      * @param array|string $mimeTypes Array of mime types or regex pattern to check.
-     * @return bool Success
+     *
      * @throws CakeException when mime type can not be determined.
+     *
+     * @return bool Success
      */
     public static function mimeType($check, $mimeTypes = [])
     {
@@ -1048,6 +1096,7 @@ class Validation
      * @param string|array $check Value to check.
      * @param string $operator See `Validation::comparison()`.
      * @param int|string $size Size in bytes or human readable string like '5MB'.
+     *
      * @return bool Success
      */
     public static function fileSize($check, $operator = null, $size = null)
@@ -1069,7 +1118,9 @@ class Validation
      *
      * @param string|array $check Value to check.
      * @param bool $allowNoFile Set to true to allow UPLOAD_ERR_NO_FILE as a pass.
+     *
      * @return bool
+     *
      * @see http://www.php.net/manual/en/features.file-upload.errors.php
      */
     public static function uploadError($check, $allowNoFile = false)
@@ -1102,6 +1153,7 @@ class Validation
      *
      * @param array $file The uploaded file data from PHP.
      * @param array $options An array of options for the validation.
+     *
      * @return bool
      */
     public static function uploadedFile($file, $options = [])
@@ -1143,6 +1195,7 @@ class Validation
      * Helper method that can be stubbed in testing.
      *
      * @param string $path The path to check.
+     *
      * @return bool Whether or not the file is an uploaded file.
      */
     protected static function _isUploadedFile($path)
@@ -1152,8 +1205,6 @@ class Validation
 
     /**
      * Lazily populate the IP address patterns used for validations
-     *
-     * @return void
      */
     protected static function _populateIp()
     {
@@ -1183,8 +1234,6 @@ class Validation
 
     /**
      * Reset internal variables for another validation run.
-     *
-     * @return void
      */
     protected static function _reset()
     {

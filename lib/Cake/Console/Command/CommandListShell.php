@@ -8,9 +8,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP Project
+ *
  * @package       Cake.Console.Command
+ *
  * @since         CakePHP v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('AppShell', 'Console/Command');
@@ -32,8 +36,6 @@ class CommandListShell extends AppShell
 
     /**
      * startup
-     *
-     * @return void
      */
     public function startup()
     {
@@ -44,8 +46,6 @@ class CommandListShell extends AppShell
 
     /**
      * Main function Prints out the list of shells.
-     *
-     * @return void
      */
     public function main()
     {
@@ -80,7 +80,6 @@ class CommandListShell extends AppShell
      * Output text.
      *
      * @param array $shellList The shell list.
-     * @return void
      */
     protected function _asText($shellList)
     {
@@ -99,7 +98,6 @@ class CommandListShell extends AppShell
      * Output as XML
      *
      * @param array $shellList The shell list.
-     * @return void
      */
     protected function _asXml($shellList)
     {

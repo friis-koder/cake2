@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Model.Datasource.Session
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('CakeSessionHandlerInterface', 'Model/Datasource/Session');
@@ -87,6 +91,7 @@ class DatabaseSession implements CakeSessionHandlerInterface
      * Method used to read from a database session.
      *
      * @param int|string $id The key of the value to read
+     *
      * @return mixed The value of the key or false if it does not exist
      */
     public function read($id)
@@ -114,6 +119,7 @@ class DatabaseSession implements CakeSessionHandlerInterface
      *
      * @param int $id ID that uniquely identifies session in database
      * @param mixed $data The value of the data to be saved.
+     *
      * @return bool True for successful write, false otherwise.
      */
     public function write($id, $data)
@@ -142,6 +148,7 @@ class DatabaseSession implements CakeSessionHandlerInterface
      * Method called on the destruction of a database session.
      *
      * @param int $id ID that uniquely identifies session in database
+     *
      * @return bool True for successful delete, false otherwise.
      */
     public function destroy($id)
@@ -153,6 +160,7 @@ class DatabaseSession implements CakeSessionHandlerInterface
      * Helper function called on gc for database sessions.
      *
      * @param int $expires Timestamp (defaults to current time)
+     *
      * @return bool Success
      */
     public function gc($expires = null)

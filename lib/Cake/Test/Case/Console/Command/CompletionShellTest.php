@@ -12,9 +12,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP Project
+ *
  * @package       Cake.Test.Case.Console.Command
+ *
  * @since         CakePHP v 2.5
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('CompletionShell', 'Console/Command');
@@ -47,8 +51,6 @@ class CompletionShellTest extends CakeTestCase
 {
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -81,8 +83,6 @@ class CompletionShellTest extends CakeTestCase
 
     /**
      * tearDown
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -93,8 +93,6 @@ class CompletionShellTest extends CakeTestCase
 
     /**
      * test that the startup method supresses the shell header
-     *
-     * @return void
      */
     public function testStartup()
     {
@@ -107,8 +105,6 @@ class CompletionShellTest extends CakeTestCase
 
     /**
      * test that main displays a warning
-     *
-     * @return void
      */
     public function testMain()
     {
@@ -121,8 +117,6 @@ class CompletionShellTest extends CakeTestCase
 
     /**
      * test commands method that list all available commands
-     *
-     * @return void
      */
     public function testCommands()
     {
@@ -135,8 +129,6 @@ class CompletionShellTest extends CakeTestCase
 
     /**
      * test that options without argument returns the default options
-     *
-     * @return void
      */
     public function testOptionsNoArguments()
     {
@@ -149,8 +141,6 @@ class CompletionShellTest extends CakeTestCase
 
     /**
      * test that options with a nonexisting command returns the default options
-     *
-     * @return void
      */
     public function testOptionsNonExistingCommand()
     {
@@ -163,8 +153,6 @@ class CompletionShellTest extends CakeTestCase
 
     /**
      * test that options with a existing command returns the proper options
-     *
-     * @return void
      */
     public function testOptions()
     {
@@ -177,8 +165,6 @@ class CompletionShellTest extends CakeTestCase
 
     /**
      * test that subCommands with a existing CORE command returns the proper sub commands
-     *
-     * @return void
      */
     public function testSubCommandsCorePlugin()
     {
@@ -191,8 +177,6 @@ class CompletionShellTest extends CakeTestCase
 
     /**
      * test that subCommands with a existing APP command returns the proper sub commands (in this case none)
-     *
-     * @return void
      */
     public function testSubCommandsAppPlugin()
     {
@@ -205,8 +189,6 @@ class CompletionShellTest extends CakeTestCase
 
     /**
      * test that subCommands with a existing plugin command returns the proper sub commands
-     *
-     * @return void
      */
     public function testSubCommandsPlugin()
     {
@@ -219,8 +201,6 @@ class CompletionShellTest extends CakeTestCase
 
     /**
      * test that subcommands without arguments returns nothing
-     *
-     * @return void
      */
     public function testSubCommandsNoArguments()
     {
@@ -233,8 +213,6 @@ class CompletionShellTest extends CakeTestCase
 
     /**
      * test that subcommands with a nonexisting command returns nothing
-     *
-     * @return void
      */
     public function testSubCommandsNonExistingCommand()
     {
@@ -247,8 +225,6 @@ class CompletionShellTest extends CakeTestCase
 
     /**
      * test that subcommands returns the available subcommands for the given command
-     *
-     * @return void
      */
     public function testSubCommands()
     {
@@ -261,8 +237,6 @@ class CompletionShellTest extends CakeTestCase
 
     /**
      * test that fuzzy returns nothing
-     *
-     * @return void
      */
     public function testFuzzy()
     {

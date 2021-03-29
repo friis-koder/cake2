@@ -8,9 +8,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Controller.Component
+ *
  * @since         CakePHP(tm) v 0.10.0.1076
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Component', 'Controller');
@@ -24,6 +28,7 @@ App::uses('AclInterface', 'Controller/Component/Acl');
  * you specify must implement `AclInterface`
  *
  * @package       Cake.Controller.Component
+ *
  * @link https://book.cakephp.org/2.0/en/core-libraries/components/access-control-lists.html
  */
 class AclComponent extends Component
@@ -54,6 +59,7 @@ class AclComponent extends Component
      *
      * @param ComponentCollection $collection Collection instance.
      * @param array $settings Settings list.
+     *
      * @throws CakeException when Acl.classname could not be loaded.
      */
     public function __construct(ComponentCollection $collection, $settings = [])
@@ -79,8 +85,10 @@ class AclComponent extends Component
      * Will call the initialize method on the adapter if setting a new one.
      *
      * @param AclInterface|string $adapter Instance of AclInterface or a string name of the class to use. (optional)
-     * @return AclInterface|null Either null, or the adapter implementation.
+     *
      * @throws CakeException when the given class is not an instance of AclInterface
+     *
+     * @return AclInterface|null Either null, or the adapter implementation.
      */
     public function adapter($adapter = null)
     {
@@ -107,6 +115,7 @@ class AclComponent extends Component
      * @param array|string|Model $aro ARO The requesting object identifier. See `AclNode::node()` for possible formats
      * @param array|string|Model $aco ACO The controlled object identifier. See `AclNode::node()` for possible formats
      * @param string $action Action (defaults to *)
+     *
      * @return bool Success
      */
     public function check($aro, $aco, $action = '*')
@@ -121,6 +130,7 @@ class AclComponent extends Component
      * @param array|string|Model $aro ARO The requesting object identifier. See `AclNode::node()` for possible formats
      * @param array|string|Model $aco ACO The controlled object identifier. See `AclNode::node()` for possible formats
      * @param string $action Action (defaults to *)
+     *
      * @return bool Success
      */
     public function allow($aro, $aco, $action = '*')
@@ -135,6 +145,7 @@ class AclComponent extends Component
      * @param array|string|Model $aro ARO The requesting object identifier. See `AclNode::node()` for possible formats
      * @param array|string|Model $aco ACO The controlled object identifier. See `AclNode::node()` for possible formats
      * @param string $action Action (defaults to *)
+     *
      * @return bool Success
      */
     public function deny($aro, $aco, $action = '*')
@@ -149,6 +160,7 @@ class AclComponent extends Component
      * @param array|string|Model $aro ARO The requesting object identifier. See `AclNode::node()` for possible formats
      * @param array|string|Model $aco ACO The controlled object identifier. See `AclNode::node()` for possible formats
      * @param string $action Action (defaults to *)
+     *
      * @return bool Success
      */
     public function inherit($aro, $aco, $action = '*')
@@ -162,7 +174,9 @@ class AclComponent extends Component
      * @param array|string|Model $aro ARO The requesting object identifier. See `AclNode::node()` for possible formats
      * @param array|string|Model $aco ACO The controlled object identifier. See `AclNode::node()` for possible formats
      * @param string $action Action (defaults to *)
+     *
      * @return bool Success
+     *
      * @deprecated 3.0.0 Will be removed in 3.0.
      */
     public function grant($aro, $aco, $action = '*')
@@ -178,7 +192,9 @@ class AclComponent extends Component
      * @param array|string|Model $aro ARO The requesting object identifier. See `AclNode::node()` for possible formats
      * @param array|string|Model $aco ACO The controlled object identifier. See `AclNode::node()` for possible formats
      * @param string $action Action (defaults to *)
+     *
      * @return bool Success
+     *
      * @deprecated 3.0.0 Will be removed in 3.0.
      */
     public function revoke($aro, $aco, $action = '*')

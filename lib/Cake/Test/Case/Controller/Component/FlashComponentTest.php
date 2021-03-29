@@ -12,9 +12,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Controller.Component
+ *
  * @since         CakePHP(tm) v 2.7.0-dev
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('FlashComponent', 'Controller/Component');
@@ -29,8 +33,6 @@ class FlashComponentTest extends CakeTestCase
 {
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -41,8 +43,6 @@ class FlashComponentTest extends CakeTestCase
 
     /**
      * tearDown method
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -52,8 +52,6 @@ class FlashComponentTest extends CakeTestCase
 
     /**
      * testSet method
-     *
-     * @return void
      */
     public function testSet()
     {
@@ -151,8 +149,6 @@ class FlashComponentTest extends CakeTestCase
 
     /**
      * testSetWithException method
-     *
-     * @return void
      */
     public function testSetWithException()
     {
@@ -174,8 +170,6 @@ class FlashComponentTest extends CakeTestCase
 
     /**
      * testSetWithComponentConfiguration method
-     *
-     * @return void
      */
     public function testSetWithComponentConfiguration()
     {
@@ -198,8 +192,6 @@ class FlashComponentTest extends CakeTestCase
 
     /**
      * Test magic call method.
-     *
-     * @return void
      */
     public function testCall()
     {

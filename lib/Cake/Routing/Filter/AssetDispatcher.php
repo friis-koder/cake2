@@ -8,9 +8,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright	  Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link		  https://cakephp.org CakePHP(tm) Project
+ *
  * @package		  Cake.Routing
+ *
  * @since		  CakePHP(tm) v 2.2
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('DispatcherFilter', 'Routing');
@@ -35,8 +39,10 @@ class AssetDispatcher extends DispatcherFilter
      * Checks if a requested asset exists and sends it to the browser
      *
      * @param CakeEvent $event containing the request and response object
-     * @return mixed The resulting response.
+     *
      * @throws NotFoundException When asset not found
+     *
+     * @return mixed The resulting response.
      */
     public function beforeDispatch(CakeEvent $event)
     {
@@ -76,6 +82,7 @@ class AssetDispatcher extends DispatcherFilter
      * filter if any is configured
      *
      * @param CakeEvent $event containing the request and response object
+     *
      * @return CakeResponse if the client is requesting a recognized asset, null otherwise
      */
     protected function _filterAsset(CakeEvent $event)
@@ -115,6 +122,7 @@ class AssetDispatcher extends DispatcherFilter
      * Builds asset file path based off url
      *
      * @param string $url URL
+     *
      * @return string Absolute path for asset file
      */
     protected function _getAssetFile($url)
@@ -145,7 +153,6 @@ class AssetDispatcher extends DispatcherFilter
      * @param CakeResponse $response The response object to use.
      * @param string $assetFile Path to the asset file in the file system
      * @param string $ext The extension of the file to determine its mime type
-     * @return void
      */
     protected function _deliverAsset(CakeResponse $response, $assetFile, $ext)
     {

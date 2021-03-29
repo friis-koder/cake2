@@ -10,8 +10,10 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
  * @since         CakePHP(tm) v 1.2
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('AppShell', 'Console/Command');
@@ -71,8 +73,6 @@ class ModelTask extends BakeTask
 
     /**
      * Override initialize
-     *
-     * @return void
      */
     public function initialize()
     {
@@ -81,8 +81,6 @@ class ModelTask extends BakeTask
 
     /**
      * Execution method always used for tasks
-     *
-     * @return void
      */
     public function execute()
     {
@@ -115,8 +113,6 @@ class ModelTask extends BakeTask
 
     /**
      * Bake all models at once.
-     *
-     * @return void
      */
     public function all()
     {
@@ -141,6 +137,7 @@ class ModelTask extends BakeTask
      *
      * @param string $className Name of class you want model to be.
      * @param string $table Table name
+     *
      * @return Model Model instance
      */
     protected function _getModelObject($className, $table = null)
@@ -167,6 +164,7 @@ class ModelTask extends BakeTask
      * @param array $options Array of options to use for the selections. indexes must start at 0
      * @param string $prompt Prompt to use for options list.
      * @param int $default The default option for the given prompt.
+     *
      * @return int Result of user choice.
      */
     public function inOptions($options, $prompt = null, $default = null)
@@ -302,7 +300,6 @@ class ModelTask extends BakeTask
      * @param string $modelName Name of the model relations belong to.
      * @param string $type Name of association you want to see. i.e. 'belongsTo'
      * @param string $associations Collection of associations.
-     * @return void
      */
     protected function _printAssociation($modelName, $type, $associations)
     {
@@ -318,6 +315,7 @@ class ModelTask extends BakeTask
      * Finds a primary Key in a list of fields.
      *
      * @param array $fields Array of fields that might have a primary key.
+     *
      * @return string Name of field that is a primary key.
      */
     public function findPrimaryKey($fields)
@@ -336,6 +334,7 @@ class ModelTask extends BakeTask
      * interact with the user to find the displayField value for a model.
      *
      * @param array $fields Array of fields to look for and choose as a displayField
+     *
      * @return mixed Name of field to use for displayField or false if the user declines to choose
      */
     public function findDisplayField($fields)
@@ -356,6 +355,7 @@ class ModelTask extends BakeTask
      * Handles Generation and user interaction for creating validation.
      *
      * @param Model $model Model to have validations generated for.
+     *
      * @return array validate Array of user selected validations.
      */
     public function doValidation($model)
@@ -391,8 +391,6 @@ class ModelTask extends BakeTask
 
     /**
      * Populate the _validations array
-     *
-     * @return void
      */
     public function initValidations()
     {
@@ -422,6 +420,7 @@ class ModelTask extends BakeTask
      * @param string $fieldName Name of field to be validated.
      * @param array $metaData metadata for field
      * @param string $primaryKey The primary key field.
+     *
      * @return array Array of validation for the field.
      */
     public function fieldValidation($fieldName, $metaData, $primaryKey = 'id')
@@ -544,6 +543,7 @@ class ModelTask extends BakeTask
      * Handles associations
      *
      * @param Model $model The model object
+     *
      * @return array Associations
      */
     public function doAssociations($model)
@@ -598,6 +598,7 @@ class ModelTask extends BakeTask
      * Handles behaviors
      *
      * @param Model $model The model object.
+     *
      * @return array Behaviors
      */
     public function doActsAs($model)
@@ -625,6 +626,7 @@ class ModelTask extends BakeTask
      *
      * @param Model $model Model instance of model being generated.
      * @param array $associations Array of in progress associations
+     *
      * @return array Associations with belongsTo added in.
      */
     public function findBelongsTo(Model $model, $associations)
@@ -656,6 +658,7 @@ class ModelTask extends BakeTask
      *
      * @param Model $model Model instance being generated
      * @param array $associations Array of in progress associations
+     *
      * @return array Associations with hasOne and hasMany added in.
      */
     public function findHasOneAndMany(Model $model, $associations)
@@ -700,6 +703,7 @@ class ModelTask extends BakeTask
      *
      * @param Model $model Model instance being generated
      * @param array $associations Array of in-progress associations
+     *
      * @return array Associations with hasAndBelongsToMany added in.
      */
     public function findHasAndBelongsToMany(Model $model, $associations)
@@ -735,6 +739,7 @@ class ModelTask extends BakeTask
      *
      * @param array $model Temporary Model instance.
      * @param array $associations Array of associations to be confirmed.
+     *
      * @return array Array of confirmed associations
      */
     public function confirmAssociations(Model $model, $associations)
@@ -763,6 +768,7 @@ class ModelTask extends BakeTask
      *
      * @param Model $model Temporary model instance
      * @param array $associations Array of associations.
+     *
      * @return array Array of associations.
      */
     public function doMoreAssociations(Model $model, $associations)
@@ -861,6 +867,7 @@ class ModelTask extends BakeTask
      *
      * @param string|object $name Model name or object
      * @param array|bool $data if array and $name is not an object assume bake data, otherwise boolean.
+     *
      * @return string
      */
     public function bake($name, $data = [])
@@ -916,6 +923,7 @@ class ModelTask extends BakeTask
      * Assembles and writes a unit test file
      *
      * @param string $className Model class name
+     *
      * @return string
      */
     public function bakeTest($className)
@@ -931,6 +939,7 @@ class ModelTask extends BakeTask
      * outputs the a list of possible models or controllers from database
      *
      * @param string $useDbConfig Database configuration name
+     *
      * @return array
      */
     public function listAll($useDbConfig = null)
@@ -958,6 +967,7 @@ class ModelTask extends BakeTask
      *
      * @param string $modelName Name of the model you want a table for.
      * @param string $useDbConfig Name of the database config you want to get tables from.
+     *
      * @return string Table name
      */
     public function getTable($modelName, $useDbConfig = null)
@@ -993,6 +1003,7 @@ class ModelTask extends BakeTask
      * will halt the script if no tables are found.
      *
      * @param string $useDbConfig Connection name to scan.
+     *
      * @return array Array of tables in the database.
      */
     public function getAllTables($useDbConfig = null)
@@ -1028,6 +1039,7 @@ class ModelTask extends BakeTask
      * Forces the user to specify the model he wants to bake, and returns the selected model name.
      *
      * @param string $useDbConfig Database config name
+     *
      * @return string The model name
      */
     public function getName($useDbConfig = null)
@@ -1098,7 +1110,7 @@ class ModelTask extends BakeTask
      *
      * @param string $className Name of class to bake fixture for
      * @param string $useTable Optional table name for fixture to use.
-     * @return void
+     *
      * @see FixtureTask::bake
      */
     public function bakeFixture($className, $useTable = null)

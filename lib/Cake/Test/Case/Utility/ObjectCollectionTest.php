@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Utility
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('ObjectCollection', 'Utility');
@@ -43,8 +47,6 @@ class FirstGenericObject extends GenericObject
 {
     /**
      * A generic callback
-     *
-     * @return void
      */
     public function callback()
     {
@@ -56,9 +58,6 @@ class FirstGenericObject extends GenericObject
  */
 class SecondGenericObject extends GenericObject
 {
-    /**
-     * @return void
-     */
     public function callback()
     {
     }
@@ -69,9 +68,6 @@ class SecondGenericObject extends GenericObject
  */
 class ThirdGenericObject extends GenericObject
 {
-    /**
-     * @return void
-     */
     public function callback()
     {
     }
@@ -87,6 +83,7 @@ class GenericObjectCollection extends ObjectCollection
      *
      * @param string $object CakeObject name
      * @param array $settings Settings array
+     *
      * @return array List of loaded objects
      */
     public function load($object, $settings = [])
@@ -112,6 +109,7 @@ class GenericObjectCollection extends ObjectCollection
      * @param string $name Name of the object
      * @param CakeObject $object The object to use
      * @param array $settings Settings to apply for the object
+     *
      * @return array Loaded objects
      */
     public function setObject($name, $object, $settings = [])
@@ -133,8 +131,6 @@ class ObjectCollectionTest extends CakeTestCase
 {
     /**
      * setUp
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -144,8 +140,6 @@ class ObjectCollectionTest extends CakeTestCase
 
     /**
      * tearDown
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -155,8 +149,6 @@ class ObjectCollectionTest extends CakeTestCase
 
     /**
      * test triggering callbacks on loaded helpers
-     *
-     * @return void
      */
     public function testLoad()
     {
@@ -175,8 +167,6 @@ class ObjectCollectionTest extends CakeTestCase
 
     /**
      * test unload()
-     *
-     * @return void
      */
     public function testUnload()
     {
@@ -199,8 +189,6 @@ class ObjectCollectionTest extends CakeTestCase
 
     /**
      * Tests set()
-     *
-     * @return void
      */
     public function testSet()
     {
@@ -220,8 +208,6 @@ class ObjectCollectionTest extends CakeTestCase
 
     /**
      * creates mock classes for testing
-     *
-     * @return void
      */
     protected function _makeMockClasses()
     {
@@ -232,8 +218,6 @@ class ObjectCollectionTest extends CakeTestCase
 
     /**
      * test triggering callbacks.
-     *
-     * @return void
      */
     public function testTrigger()
     {
@@ -253,8 +237,6 @@ class ObjectCollectionTest extends CakeTestCase
 
     /**
      * test trigger and disabled objects
-     *
-     * @return void
      */
     public function testTriggerWithDisabledObjects()
     {
@@ -274,8 +256,6 @@ class ObjectCollectionTest extends CakeTestCase
 
     /**
      * test that the collectReturn option works.
-     *
-     * @return void
      */
     public function testTriggerWithCollectReturn()
     {
@@ -300,8 +280,6 @@ class ObjectCollectionTest extends CakeTestCase
 
     /**
      * test that trigger with break & breakOn works.
-     *
-     * @return void
      */
     public function testTriggerWithBreak()
     {
@@ -325,8 +303,6 @@ class ObjectCollectionTest extends CakeTestCase
 
     /**
      * test that trigger with modParams works.
-     *
-     * @return void
      */
     public function testTriggerWithModParams()
     {
@@ -356,7 +332,6 @@ class ObjectCollectionTest extends CakeTestCase
      * test that setting modParams to an index that doesn't exist doesn't cause errors.
      *
      * @expectedException CakeException
-     * @return void
      */
     public function testTriggerModParamsInvalidIndex()
     {
@@ -379,8 +354,6 @@ class ObjectCollectionTest extends CakeTestCase
 
     /**
      * test that returning null doesn't modify parameters.
-     *
-     * @return void
      */
     public function testTriggerModParamsNullIgnored()
     {
@@ -408,8 +381,6 @@ class ObjectCollectionTest extends CakeTestCase
 
     /**
      * test order of callbacks triggering based on priority.
-     *
-     * @return void
      */
     public function testTriggerPriority()
     {
@@ -517,8 +488,6 @@ class ObjectCollectionTest extends CakeTestCase
 
     /**
      * test normalizeObjectArray
-     *
-     * @return void
      */
     public function testnormalizeObjectArray()
     {
@@ -551,7 +520,6 @@ class ObjectCollectionTest extends CakeTestCase
     /**
      * tests that passing an instance of CakeEvent to trigger will prepend the subject to the list of arguments
      *
-     * @return void
      * @triggers callback $subjectClass, array('first argument')
      */
     public function testDispatchEventWithSubject()
@@ -578,7 +546,6 @@ class ObjectCollectionTest extends CakeTestCase
      * tests that passing an instance of CakeEvent to trigger with omitSubject property
      * will NOT prepend the subject to the list of arguments
      *
-     * @return void
      * @triggers callback $subjectClass, array('first argument')
      */
     public function testDispatchEventNoSubject()
@@ -608,8 +575,6 @@ class ObjectCollectionTest extends CakeTestCase
      * plugin prefixes should be removed consistently as load() will
      * remove them. Furthermore the __get() method does not support
      * names with '.' in them.
-     *
-     * @return void
      */
     public function testPluginPrefixes()
     {

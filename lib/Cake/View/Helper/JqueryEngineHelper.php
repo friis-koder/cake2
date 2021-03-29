@@ -16,9 +16,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.View.Helper
+ *
  * @since         CakePHP(tm) v 1.3
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('AppHelper', 'View/Helper');
@@ -127,6 +131,7 @@ class JqueryEngineHelper extends JsBaseEngineHelper
      * @param string $template The method template
      * @param array $options Array of options for method
      * @param array $extraSafeKeys Extra safe keys
+     *
      * @return string Composed method string
      */
     protected function _methodTemplate($method, $template, $options, $extraSafeKeys = [])
@@ -146,6 +151,7 @@ class JqueryEngineHelper extends JsBaseEngineHelper
      * Create javascript selector for a CSS rule
      *
      * @param string $selector The selector that is targeted
+     *
      * @return self
      */
     public function get($selector)
@@ -170,6 +176,7 @@ class JqueryEngineHelper extends JsBaseEngineHelper
      * @param string $type Type of event to bind to the current dom id
      * @param string $callback The JavaScript function you wish to trigger or the function literal
      * @param array $options Options for the event.
+     *
      * @return string completed event handler
      */
     public function event($type, $callback, $options = [])
@@ -197,6 +204,7 @@ class JqueryEngineHelper extends JsBaseEngineHelper
      * `$().ready()` is used.
      *
      * @param string $functionBody The code to run on domReady
+     *
      * @return string completed domReady method
      */
     public function domReady($functionBody)
@@ -208,6 +216,7 @@ class JqueryEngineHelper extends JsBaseEngineHelper
      * Create an iteration over the current selection result.
      *
      * @param string $callback The function body you wish to apply during the iteration.
+     *
      * @return string completed iteration
      */
     public function each($callback)
@@ -220,7 +229,9 @@ class JqueryEngineHelper extends JsBaseEngineHelper
      *
      * @param string $name The name of the effect to trigger.
      * @param array $options Array of options for the effect.
+     *
      * @return string completed string with effect.
+     *
      * @see JsBaseEngineHelper::effect()
      */
     public function effect($name, $options = [])
@@ -256,7 +267,9 @@ class JqueryEngineHelper extends JsBaseEngineHelper
      *
      * @param string|array $url URL
      * @param array $options See JsHelper::request() for options.
+     *
      * @return string The completed ajax call.
+     *
      * @see JsBaseEngineHelper::request() for options list.
      */
     public function request($url, $options = [])
@@ -298,7 +311,9 @@ class JqueryEngineHelper extends JsBaseEngineHelper
      * Requires both Ui.Core and Ui.Sortables to be loaded.
      *
      * @param array $options Array of options for the sortable.
+     *
      * @return string Completed sortable script.
+     *
      * @see JsBaseEngineHelper::sortable() for options list.
      */
     public function sortable($options = [])
@@ -314,7 +329,9 @@ class JqueryEngineHelper extends JsBaseEngineHelper
      * Requires both Ui.Core and Ui.Draggable to be loaded.
      *
      * @param array $options Array of options for the draggable element.
+     *
      * @return string Completed Draggable script.
+     *
      * @see JsBaseEngineHelper::drag() for options list.
      */
     public function drag($options = [])
@@ -330,7 +347,9 @@ class JqueryEngineHelper extends JsBaseEngineHelper
      * Requires both Ui.Core and Ui.Droppable to be loaded.
      *
      * @param array $options Array of options for the droppable element.
+     *
      * @return string Completed Droppable script.
+     *
      * @see JsBaseEngineHelper::drop() for options list.
      */
     public function drop($options = [])
@@ -346,7 +365,9 @@ class JqueryEngineHelper extends JsBaseEngineHelper
      * Requires both Ui.Core and Ui.Slider to be loaded.
      *
      * @param array $options Array of options for the droppable element.
+     *
      * @return string Completed Slider script.
+     *
      * @see JsBaseEngineHelper::slider() for options list.
      */
     public function slider($options = [])
@@ -362,7 +383,9 @@ class JqueryEngineHelper extends JsBaseEngineHelper
      * form, errors will be created in the JavaScript.
      *
      * @param array $options Options for the serialization
+     *
      * @return string completed form serialization script.
+     *
      * @see JsBaseEngineHelper::serializeForm() for option list.
      */
     public function serializeForm($options = [])

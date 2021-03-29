@@ -11,9 +11,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html
+ *
  * @package       Cake.Error
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -38,7 +42,9 @@ class CakeBaseException extends RuntimeException
      *  - an associative array of "header name" => "header value"
      *  - an array of string headers is also accepted
      * @param string $value The header value.
+     *
      * @return array
+     *
      * @see CakeResponse::header()
      */
     public function responseHeader($header = null, $value = null)
@@ -637,6 +643,7 @@ class SecurityException extends BadRequestException
 {
     /**
      * Security Exception type
+     *
      * @var string
      */
     protected $_type = 'secure';
@@ -662,7 +669,6 @@ class SecurityException extends BadRequestException
      * Set Message
      *
      * @param string $message Exception message
-     * @return void
      */
     public function setMessage($message)
     {
@@ -673,7 +679,6 @@ class SecurityException extends BadRequestException
      * Set Reason
      *
      * @param string|null $reason Reason details
-     * @return void
      */
     public function setReason($reason = null)
     {
@@ -700,6 +705,7 @@ class AuthSecurityException extends SecurityException
 {
     /**
      * Security Exception type
+     *
      * @var string
      */
     protected $_type = 'auth';

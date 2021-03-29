@@ -8,9 +8,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Model.Datasource.Database
+ *
  * @since         CakePHP(tm) v 0.9.1.114
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('DboSource', 'Model/Datasource');
@@ -51,6 +55,7 @@ class Postgres extends DboSource
      * Columns
      *
      * @var array
+     *
      * @link https://www.postgresql.org/docs/9.6/static/datatype.html PostgreSQL Data Types
      */
     public $columns = [
@@ -106,8 +111,9 @@ class Postgres extends DboSource
     /**
      * Connects to the database using options in the given configuration array.
      *
-     * @return bool True if successfully connected.
      * @throws MissingConnectionException
+     *
+     * @return bool True if successfully connected.
      */
     public function connect()
     {
@@ -163,6 +169,7 @@ class Postgres extends DboSource
      * Returns an array of tables in the database. If there are no tables, an error is raised and the application exits.
      *
      * @param mixed $data The sources to list.
+     *
      * @return array Array of table names in the database
      */
     public function listSources($data = null)
@@ -197,6 +204,7 @@ class Postgres extends DboSource
      * Returns an array of the fields in given table name.
      *
      * @param Model|string $model Name of database table to inspect
+     *
      * @return array Fields in table. Keys are name and type
      */
     public function describe($model)
@@ -320,6 +328,7 @@ class Postgres extends DboSource
      *
      * @param string $source Name of the database table
      * @param string $field Name of the ID database field. Defaults to "id"
+     *
      * @return int
      */
     public function lastInsertId($source = null, $field = 'id')
@@ -334,6 +343,7 @@ class Postgres extends DboSource
      *
      * @param string|Model $table Either a full table name (with prefix) as a string, or a model object
      * @param string $field Name of the ID database field. Defaults to "id"
+     *
      * @return string The associated sequence name from the sequence map, defaults to "{$table}_{$field}_seq"
      */
     public function getSequence($table, $field = 'id')
@@ -358,6 +368,7 @@ class Postgres extends DboSource
      * @param string $table The name of the table to update.
      * @param string $column The column to use when resetting the sequence value,
      *   the sequence name will be fetched using Postgres::getSequence();
+     *
      * @return bool success.
      */
     public function resetSequence($table, $column)
@@ -378,6 +389,7 @@ class Postgres extends DboSource
      * @param string|Model $table A string or model class representing the table to be truncated
      * @param bool $reset true for resetting the sequence, false to leave it as is.
      *    and if 1, sequences are not modified
+     *
      * @return bool SQL TRUNCATE TABLE statement, false if not applicable.
      */
     public function truncate($table, $reset = false)
@@ -407,6 +419,7 @@ class Postgres extends DboSource
      * Prepares field names to be quoted by parent
      *
      * @param string $data The name to format.
+     *
      * @return string SQL field
      */
     public function name($data)
@@ -425,6 +438,7 @@ class Postgres extends DboSource
      * @param string $alias Alias table name.
      * @param mixed $fields The list of fields to get.
      * @param bool $quote Whether or not to quote identifiers.
+     *
      * @return array
      */
     public function fields(Model $model, $alias = null, $fields = [], $quote = true)
@@ -486,6 +500,7 @@ class Postgres extends DboSource
      * Quotes the fields in a function call.
      *
      * @param string $match matched string
+     *
      * @return string quoted string
      */
     protected function _quoteFunctionField($match)
@@ -513,6 +528,7 @@ class Postgres extends DboSource
      * Returns an array of the indexes in given datasource name.
      *
      * @param string $model Name of model to inspect
+     *
      * @return array Fields in table. Keys are column and unique
      */
     public function index($model)
@@ -554,6 +570,7 @@ class Postgres extends DboSource
      *
      * @param array $compare Results of CakeSchema::compare()
      * @param string $table name of the table
+     *
      * @return array
      */
     public function alterSchema($compare, $table = null)
@@ -663,6 +680,7 @@ class Postgres extends DboSource
      *
      * @param string $table Table to alter indexes for
      * @param array $indexes Indexes to add and drop
+     *
      * @return array Index alteration statements
      */
     protected function _alterIndexes($table, $indexes)
@@ -707,6 +725,7 @@ class Postgres extends DboSource
      *
      * @param int $limit Limit of results returned
      * @param int $offset Offset from which to start results
+     *
      * @return string SQL limit/offset statement
      */
     public function limit($limit, $offset = null)
@@ -727,6 +746,7 @@ class Postgres extends DboSource
      * Converts database-layer column types to basic types
      *
      * @param string $real Real database-layer column type (i.e. "varchar(255)")
+     *
      * @return string Abstract column type (i.e. "string")
      */
     public function column($real)
@@ -784,6 +804,7 @@ class Postgres extends DboSource
      * Gets the length of a database-native column description, or null if no length
      *
      * @param string $real Real database-layer column type (i.e. "varchar(255)")
+     *
      * @return int An integer representing the length of the column
      */
     public function length($real)
@@ -803,7 +824,6 @@ class Postgres extends DboSource
      * resultSet method
      *
      * @param PDOStatement $results The results
-     * @return void
      */
     public function resultSet($results)
     {
@@ -864,6 +884,7 @@ class Postgres extends DboSource
      *
      * @param mixed $data Value to be translated
      * @param bool $quote true to quote a boolean to be used in a query, false to return the boolean value
+     *
      * @return bool Converted boolean value
      */
     public function boolean($data, $quote = false)
@@ -900,6 +921,7 @@ class Postgres extends DboSource
      * Sets the database encoding
      *
      * @param mixed $enc Database encoding
+     *
      * @return bool True on success, false on failure
      */
     public function setEncoding($enc)
@@ -928,6 +950,7 @@ class Postgres extends DboSource
      * @param array $column An array structured like the following:
      *                      array('name'=>'value', 'type'=>'value'[, options]),
      *                      where options can be 'default', 'length', or 'key'.
+     *
      * @return string
      */
     public function buildColumn($column)
@@ -976,6 +999,7 @@ class Postgres extends DboSource
      *
      * @param array $indexes The index to build
      * @param string $table The table name.
+     *
      * @return string
      */
     public function buildIndex($indexes, $table = null)
@@ -1023,6 +1047,7 @@ class Postgres extends DboSource
      *
      * @param string $type The query type.
      * @param array $data The array of data to render.
+     *
      * @return string
      */
     public function renderStatement($type, $data)

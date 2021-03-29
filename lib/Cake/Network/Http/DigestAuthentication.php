@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Network.Http
+ *
  * @since         CakePHP(tm) v 2.0.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -28,7 +32,7 @@ class DigestAuthentication
      *
      * @param HttpSocket $http Http socket instance.
      * @param array &$authInfo Authentication info.
-     * @return void
+     *
      * @link http://www.ietf.org/rfc/rfc2617.txt
      */
     public static function authentication(HttpSocket $http, &$authInfo)
@@ -46,6 +50,7 @@ class DigestAuthentication
      *
      * @param HttpSocket $http Http socket instance.
      * @param array &$authInfo Authentication info.
+     *
      * @return bool
      */
     protected static function _getServerInformation(HttpSocket $http, &$authInfo)
@@ -75,6 +80,7 @@ class DigestAuthentication
      *
      * @param HttpSocket $http Http socket instance.
      * @param array &$authInfo Authentication info.
+     *
      * @return string
      */
     protected static function _generateHeader(HttpSocket $http, &$authInfo)

@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Console
+ *
  * @since         CakePHP(tm) v 1.2.0.5432
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('ConsoleOutput', 'Console');
@@ -26,8 +30,6 @@ class ConsoleOutputTest extends CakeTestCase
 {
     /**
      * setup
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -38,8 +40,6 @@ class ConsoleOutputTest extends CakeTestCase
 
     /**
      * tearDown
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -49,8 +49,6 @@ class ConsoleOutputTest extends CakeTestCase
 
     /**
      * test writing with no new line
-     *
-     * @return void
      */
     public function testWriteNoNewLine()
     {
@@ -62,8 +60,6 @@ class ConsoleOutputTest extends CakeTestCase
 
     /**
      * test writing with no new line
-     *
-     * @return void
      */
     public function testWriteNewLine()
     {
@@ -75,8 +71,6 @@ class ConsoleOutputTest extends CakeTestCase
 
     /**
      * test write() with multiple new lines
-     *
-     * @return void
      */
     public function testWriteMultipleNewLines()
     {
@@ -88,8 +82,6 @@ class ConsoleOutputTest extends CakeTestCase
 
     /**
      * test writing an array of messages.
-     *
-     * @return void
      */
     public function testWriteArray()
     {
@@ -101,8 +93,6 @@ class ConsoleOutputTest extends CakeTestCase
 
     /**
      * test writing an array of messages.
-     *
-     * @return void
      */
     public function testOverwrite()
     {
@@ -123,8 +113,6 @@ class ConsoleOutputTest extends CakeTestCase
 
     /**
      * test getting a style.
-     *
-     * @return void
      */
     public function testStylesGet()
     {
@@ -141,8 +129,6 @@ class ConsoleOutputTest extends CakeTestCase
 
     /**
      * test adding a style.
-     *
-     * @return void
      */
     public function testStylesAdding()
     {
@@ -157,8 +143,6 @@ class ConsoleOutputTest extends CakeTestCase
 
     /**
      * test formatting text with styles.
-     *
-     * @return void
      */
     public function testFormattingSimple()
     {
@@ -170,8 +154,6 @@ class ConsoleOutputTest extends CakeTestCase
 
     /**
      * test that formatting doesn't eat tags it doesn't know about.
-     *
-     * @return void
      */
     public function testFormattingNotEatingTags()
     {
@@ -183,8 +165,6 @@ class ConsoleOutputTest extends CakeTestCase
 
     /**
      * test formatting with custom styles.
-     *
-     * @return void
      */
     public function testFormattingCustom()
     {
@@ -203,8 +183,6 @@ class ConsoleOutputTest extends CakeTestCase
 
     /**
      * test formatting text with missing styles.
-     *
-     * @return void
      */
     public function testFormattingMissingStyleName()
     {
@@ -216,8 +194,6 @@ class ConsoleOutputTest extends CakeTestCase
 
     /**
      * test formatting text with multiple styles.
-     *
-     * @return void
      */
     public function testFormattingMultipleStylesName()
     {
@@ -229,8 +205,6 @@ class ConsoleOutputTest extends CakeTestCase
 
     /**
      * test that multiple tags of the same name work in one string.
-     *
-     * @return void
      */
     public function testFormattingMultipleSameTags()
     {
@@ -242,8 +216,6 @@ class ConsoleOutputTest extends CakeTestCase
 
     /**
      * test raw output not getting tags replaced.
-     *
-     * @return void
      */
     public function testOutputAsRaw()
     {
@@ -256,8 +228,6 @@ class ConsoleOutputTest extends CakeTestCase
 
     /**
      * test plain output.
-     *
-     * @return void
      */
     public function testOutputAsPlain()
     {
@@ -271,8 +241,6 @@ class ConsoleOutputTest extends CakeTestCase
     /**
      * test plain output when php://output, as php://output is
      * not compatible with posix_ functions.
-     *
-     * @return void
      */
     public function testOutputAsPlainWhenOutputStream()
     {
@@ -282,8 +250,6 @@ class ConsoleOutputTest extends CakeTestCase
 
     /**
      * test plain output only strips tags used for formatting.
-     *
-     * @return void
      */
     public function testOutputAsPlainSelectiveTagRemoval()
     {

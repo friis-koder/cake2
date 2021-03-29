@@ -8,8 +8,10 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
  * @since         2.8
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('BaseShellHelper', 'Console/Helper');
@@ -35,6 +37,7 @@ class TableShellHelper extends BaseShellHelper
      * Calculate the column widths
      *
      * @param array $rows The rows on which the columns width will be calculated on.
+     *
      * @return array
      */
     protected function _calculateWidths($rows)
@@ -56,7 +59,6 @@ class TableShellHelper extends BaseShellHelper
      * Output a row separator.
      *
      * @param array $widths The widths of each column to output.
-     * @return void
      */
     protected function _rowSeparator($widths)
     {
@@ -74,7 +76,6 @@ class TableShellHelper extends BaseShellHelper
      * @param array $row The row to output.
      * @param array $widths The widths of each column to output.
      * @param array $options Options to be passed.
-     * @return void
      */
     protected function _render($row, $widths, $options = [])
     {
@@ -94,7 +95,6 @@ class TableShellHelper extends BaseShellHelper
      * Output a table.
      *
      * @param array $rows The data to render out.
-     * @return void
      */
     public function output($rows)
     {
@@ -121,6 +121,7 @@ class TableShellHelper extends BaseShellHelper
      *
      * @param string $text The text to be surrounded
      * @param string $style The style to be applied
+     *
      * @return string
      */
     protected function _addStyle($text, $style)

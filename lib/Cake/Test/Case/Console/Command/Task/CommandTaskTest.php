@@ -8,9 +8,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP Project
+ *
  * @package       Cake.Test.Case.Console.Command
+ *
  * @since         CakePHP v 2.5
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('CommandTask', 'Console/Command/Task');
@@ -24,8 +28,6 @@ class CommandTaskTest extends CakeTestCase
 {
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -52,8 +54,6 @@ class CommandTaskTest extends CakeTestCase
 
     /**
      * tearDown
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -64,8 +64,6 @@ class CommandTaskTest extends CakeTestCase
 
     /**
      * Test the resulting list of shells
-     *
-     * @return void
      */
     public function testGetShellList()
     {
@@ -103,8 +101,6 @@ class CommandTaskTest extends CakeTestCase
 
     /**
      * Test the resulting list of commands
-     *
-     * @return void
      */
     public function testCommands()
     {
@@ -134,8 +130,6 @@ class CommandTaskTest extends CakeTestCase
 
     /**
      * Test the resulting list of subcommands for the given command
-     *
-     * @return void
      */
     public function testSubCommands()
     {
@@ -161,8 +155,6 @@ class CommandTaskTest extends CakeTestCase
 
     /**
      * Test that unknown commands return an empty array
-     *
-     * @return void
      */
     public function testSubCommandsUnknownCommand()
     {
@@ -174,8 +166,6 @@ class CommandTaskTest extends CakeTestCase
 
     /**
      * Test that getting a existing shell returns the shell instance
-     *
-     * @return void
      */
     public function testGetShell()
     {
@@ -185,8 +175,6 @@ class CommandTaskTest extends CakeTestCase
 
     /**
      * Test that getting a non-existing shell returns false
-     *
-     * @return void
      */
     public function testGetShellNonExisting()
     {
@@ -196,8 +184,6 @@ class CommandTaskTest extends CakeTestCase
 
     /**
      * Test that getting a existing core shell with 'core.' prefix returns the correct shell instance
-     *
-     * @return void
      */
     public function testGetShellCore()
     {
@@ -207,8 +193,6 @@ class CommandTaskTest extends CakeTestCase
 
     /**
      * Test the options array for a known command
-     *
-     * @return void
      */
     public function testOptions()
     {
@@ -231,8 +215,6 @@ class CommandTaskTest extends CakeTestCase
 
     /**
      * Test the options array for an unknown command
-     *
-     * @return void
      */
     public function testOptionsUnknownCommand()
     {

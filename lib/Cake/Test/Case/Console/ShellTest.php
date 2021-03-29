@@ -12,9 +12,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP Project
+ *
  * @package       Cake.Test.Case.Console.Command
+ *
  * @since         CakePHP v 1.2.0.7726
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('ShellDispatcher', 'Console');
@@ -54,7 +58,6 @@ class ShellTestShell extends Shell
      * stop method
      *
      * @param int $status
-     * @return void
      */
     protected function _stop($status = 0)
     {
@@ -141,8 +144,6 @@ class ShellTest extends CakeTestCase
 
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -161,8 +162,6 @@ class ShellTest extends CakeTestCase
 
     /**
      * testConstruct method
-     *
-     * @return void
      */
     public function testConstruct()
     {
@@ -174,8 +173,6 @@ class ShellTest extends CakeTestCase
 
     /**
      * test merging vars
-     *
-     * @return void
      */
     public function testMergeVars()
     {
@@ -194,8 +191,6 @@ class ShellTest extends CakeTestCase
 
     /**
      * testInitialize method
-     *
-     * @return void
      */
     public function testInitialize()
     {
@@ -226,8 +221,6 @@ class ShellTest extends CakeTestCase
 
     /**
      * testLoadModel method
-     *
-     * @return void
      */
     public function testLoadModel()
     {
@@ -253,8 +246,6 @@ class ShellTest extends CakeTestCase
 
     /**
      * testIn method
-     *
-     * @return void
      */
     public function testIn()
     {
@@ -303,8 +294,6 @@ class ShellTest extends CakeTestCase
 
     /**
      * Test in() when not interactive.
-     *
-     * @return void
      */
     public function testInNonInteractive()
     {
@@ -316,8 +305,6 @@ class ShellTest extends CakeTestCase
 
     /**
      * testOut method
-     *
-     * @return void
      */
     public function testOut()
     {
@@ -348,8 +335,6 @@ class ShellTest extends CakeTestCase
 
     /**
      * test that verbose and quiet output levels work
-     *
-     * @return void
      */
     public function testVerboseOutput()
     {
@@ -370,8 +355,6 @@ class ShellTest extends CakeTestCase
 
     /**
      * test that verbose and quiet output levels work
-     *
-     * @return void
      */
     public function testQuietOutput()
     {
@@ -388,8 +371,6 @@ class ShellTest extends CakeTestCase
 
     /**
      * Test overwriting.
-     *
-     * @return void
      */
     public function testOverwrite()
     {
@@ -419,8 +400,6 @@ class ShellTest extends CakeTestCase
 
     /**
      * testErr method
-     *
-     * @return void
      */
     public function testErr()
     {
@@ -451,8 +430,6 @@ class ShellTest extends CakeTestCase
 
     /**
      * testNl
-     *
-     * @return void
      */
     public function testNl()
     {
@@ -469,8 +446,6 @@ class ShellTest extends CakeTestCase
 
     /**
      * testHr
-     *
-     * @return void
      */
     public function testHr()
     {
@@ -497,8 +472,6 @@ class ShellTest extends CakeTestCase
 
     /**
      * testError
-     *
-     * @return void
      */
     public function testError()
     {
@@ -525,8 +498,6 @@ class ShellTest extends CakeTestCase
 
     /**
      * testLoadTasks method
-     *
-     * @return void
      */
     public function testLoadTasks()
     {
@@ -563,8 +534,6 @@ class ShellTest extends CakeTestCase
 
     /**
      * test that __get() makes args and params references
-     *
-     * @return void
      */
     public function testMagicGetArgAndParamReferences()
     {
@@ -582,8 +551,6 @@ class ShellTest extends CakeTestCase
 
     /**
      * testShortPath method
-     *
-     * @return void
      */
     public function testShortPath()
     {
@@ -619,8 +586,6 @@ class ShellTest extends CakeTestCase
 
     /**
      * testCreateFile method
-     *
-     * @return void
      */
     public function testCreateFileNonInteractive()
     {
@@ -648,8 +613,6 @@ class ShellTest extends CakeTestCase
 
     /**
      * test createFile when the shell is interactive.
-     *
-     * @return void
      */
     public function testCreateFileInteractive()
     {
@@ -692,8 +655,6 @@ class ShellTest extends CakeTestCase
 
     /**
      * Test that you can't create files that aren't writable.
-     *
-     * @return void
      */
     public function testCreateFileNoPermissions()
     {
@@ -716,8 +677,6 @@ class ShellTest extends CakeTestCase
 
     /**
      * test hasTask method
-     *
-     * @return void
      */
     public function testHasTask()
     {
@@ -734,8 +693,6 @@ class ShellTest extends CakeTestCase
 
     /**
      * test the hasMethod
-     *
-     * @return void
      */
     public function testHasMethod()
     {
@@ -747,8 +704,6 @@ class ShellTest extends CakeTestCase
 
     /**
      * test run command calling main.
-     *
-     * @return void
      */
     public function testRunCommandMain()
     {
@@ -761,8 +716,6 @@ class ShellTest extends CakeTestCase
 
     /**
      * test run command calling a legit method.
-     *
-     * @return void
      */
     public function testRunCommandWithMethod()
     {
@@ -775,8 +728,6 @@ class ShellTest extends CakeTestCase
 
     /**
      * test run command causing exception on Shell method.
-     *
-     * @return void
      */
     public function testRunCommandBaseclassMethod()
     {
@@ -791,8 +742,6 @@ class ShellTest extends CakeTestCase
 
     /**
      * test run command causing exception on Shell method.
-     *
-     * @return void
      */
     public function testRunCommandMissingMethod()
     {
@@ -808,8 +757,6 @@ class ShellTest extends CakeTestCase
 
     /**
      * test unknown option causes display of error and help.
-     *
-     * @return void
      */
     public function testRunCommandUnknownOption()
     {
@@ -835,8 +782,6 @@ class ShellTest extends CakeTestCase
 
     /**
      * test that a --help causes help to show.
-     *
-     * @return void
      */
     public function testRunCommandTriggeringHelp()
     {
@@ -856,8 +801,6 @@ class ShellTest extends CakeTestCase
 
     /**
      * test that runCommand will call runCommand on the task.
-     *
-     * @return void
      */
     public function testRunCommandHittingTask()
     {
@@ -879,8 +822,6 @@ class ShellTest extends CakeTestCase
 
     /**
      * test wrapBlock wrapping text.
-     *
-     * @return void
      */
     public function testWrapText()
     {
@@ -904,8 +845,6 @@ TEXT;
 
     /**
      * Testing camel cased naming of tasks
-     *
-     * @return void
      */
     public function testShellNaming()
     {
@@ -964,8 +903,6 @@ TEXT;
 
     /**
      * Test that option parsers are created with the correct name/command.
-     *
-     * @return void
      */
     public function testGetOptionParser()
     {
@@ -978,8 +915,6 @@ TEXT;
 
     /**
      * Test file and console and logging
-     *
-     * @return void
      */
     public function testFileAndConsoleLogging()
     {
@@ -1016,8 +951,6 @@ TEXT;
 
     /**
      * Tests that _useLogger works properly
-     *
-     * @return void
      */
     public function testProtectedUseLogger()
     {
@@ -1033,8 +966,6 @@ TEXT;
 
     /**
      * Test file and console and logging quiet output
-     *
-     * @return void
      */
     public function testQuietLog()
     {
@@ -1048,8 +979,6 @@ TEXT;
 
     /**
      * Test getting an instance of a helper
-     *
-     * @return void
      */
     public function testGetInstanceOfHelper()
     {
@@ -1061,7 +990,6 @@ TEXT;
      * Test getting an invalid helper
      *
      * @expectedException RunTimeException
-     * @return void
      */
     public function testGetInvalidHelper()
     {
@@ -1070,8 +998,6 @@ TEXT;
 
     /**
      * Test that shell loggers do not get overridden in constructor if already configured
-     *
-     * @return void
      */
     public function testShellLoggersDoNotGetOverridden()
     {

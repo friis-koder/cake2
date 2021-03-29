@@ -13,9 +13,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.TestSuite.Coverage
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Inflector', 'Utility');
@@ -74,7 +78,6 @@ abstract class BaseCoverageReport
      * Pulls params out of the reporter.
      *
      * @param CakeBaseReporter $reporter Reporter to suck params out of.
-     * @return void
      */
     protected function _setParams(CakeBaseReporter $reporter)
     {
@@ -90,7 +93,6 @@ abstract class BaseCoverageReport
      * Set the coverage data array
      *
      * @param array $coverage Coverage data to use.
-     * @return void
      */
     public function setCoverage($coverage)
     {
@@ -120,6 +122,7 @@ abstract class BaseCoverageReport
      * Filters the coverage data by path. Files not in the provided path will be removed.
      *
      * @param string $path Path to filter files by.
+     *
      * @return array Array of coverage data for files that match the given path.
      */
     public function filterCoverageDataByPath($path)
@@ -145,6 +148,7 @@ abstract class BaseCoverageReport
      *
      * @param array $fileLines The lines in the file.
      * @param array $coverageData The raw coverage data.
+     *
      * @return array Array of covered, total lines.
      */
     protected function _calculateCoveredLines($fileLines, $coverageData)
@@ -183,6 +187,7 @@ abstract class BaseCoverageReport
      * @param string $filename Name of the file having coverage generated
      * @param array $fileLines File data as an array. See file() for how to get one of these.
      * @param array $coverageData Array of coverage data to use to generate HTML diffs with
+     *
      * @return string prepared report for a single file.
      */
     abstract public function generateDiff($filename, $fileLines, $coverageData);

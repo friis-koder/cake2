@@ -9,9 +9,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/configuration.html#loading-configuration-files CakePHP(tm) Configuration
+ *
  * @package       Cake.Configure
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('CakePlugin', 'Core');
@@ -55,9 +59,11 @@ class PhpReader implements ConfigReaderInterface
      *
      * @param string $key The identifier to read from. If the key has a . it will be treated
      *  as a plugin prefix.
-     * @return array Parsed configuration values.
+     *
      * @throws ConfigureException when files don't exist or they don't contain `$config`.
      *  Or when files contain '..' as this could lead to abusive reads.
+     *
+     * @return array Parsed configuration values.
      */
     public function read($key)
     {
@@ -85,6 +91,7 @@ class PhpReader implements ConfigReaderInterface
      * @param string $key The identifier to write to. If the key has a . it will be treated
      *  as a plugin prefix.
      * @param array $data Data to dump.
+     *
      * @return int Bytes saved.
      */
     public function dump($key, $data)
@@ -101,6 +108,7 @@ class PhpReader implements ConfigReaderInterface
      *
      * @param string $key The identifier to write to. If the key has a . it will be treated
      *  as a plugin prefix.
+     *
      * @return string Full file path
      */
     protected function _getFilePath($key)

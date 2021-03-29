@@ -8,9 +8,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Controller.Component.Acl
+ *
  * @since         CakePHP(tm) v 0.10.0.1076
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('AclInterface', 'Controller/Component/Acl');
@@ -53,7 +57,6 @@ class DbAcl extends CakeObject implements AclInterface
      * Initializes the containing component and sets the Aro/Aco objects to it.
      *
      * @param Component $component The AclComponent instance.
-     * @return void
      */
     public function initialize(Component $component)
     {
@@ -67,7 +70,9 @@ class DbAcl extends CakeObject implements AclInterface
      * @param string $aro ARO The requesting object identifier.
      * @param string $aco ACO The controlled object identifier.
      * @param string $action Action (defaults to *)
+     *
      * @return bool Success (true if ARO has access to action in ACO, false otherwise)
+     *
      * @link https://book.cakephp.org/2.0/en/core-libraries/components/access-control-lists.html#checking-permissions-the-acl-component
      */
     public function check($aro, $aco, $action = '*')
@@ -82,7 +87,9 @@ class DbAcl extends CakeObject implements AclInterface
      * @param string $aco ACO The controlled object identifier.
      * @param string $actions Action (defaults to *)
      * @param int $value Value to indicate access type (1 to give access, -1 to deny, 0 to inherit)
+     *
      * @return bool Success
+     *
      * @link https://book.cakephp.org/2.0/en/core-libraries/components/access-control-lists.html#assigning-permissions
      */
     public function allow($aro, $aco, $actions = '*', $value = 1)
@@ -96,7 +103,9 @@ class DbAcl extends CakeObject implements AclInterface
      * @param string $aro ARO The requesting object identifier.
      * @param string $aco ACO The controlled object identifier.
      * @param string $action Action (defaults to *)
+     *
      * @return bool Success
+     *
      * @link https://book.cakephp.org/2.0/en/core-libraries/components/access-control-lists.html#assigning-permissions
      */
     public function deny($aro, $aco, $action = '*')
@@ -110,6 +119,7 @@ class DbAcl extends CakeObject implements AclInterface
      * @param string $aro ARO The requesting object identifier.
      * @param string $aco ACO The controlled object identifier.
      * @param string $action Action (defaults to *)
+     *
      * @return bool Success
      */
     public function inherit($aro, $aco, $action = '*')
@@ -123,7 +133,9 @@ class DbAcl extends CakeObject implements AclInterface
      * @param string $aro ARO The requesting object identifier.
      * @param string $aco ACO The controlled object identifier.
      * @param string $action Action (defaults to *)
+     *
      * @return bool Success
+     *
      * @see allow()
      */
     public function grant($aro, $aco, $action = '*')
@@ -137,7 +149,9 @@ class DbAcl extends CakeObject implements AclInterface
      * @param string $aro ARO The requesting object identifier.
      * @param string $aco ACO The controlled object identifier.
      * @param string $action Action (defaults to *)
+     *
      * @return bool Success
+     *
      * @see deny()
      */
     public function revoke($aro, $aco, $action = '*')
@@ -150,6 +164,7 @@ class DbAcl extends CakeObject implements AclInterface
      *
      * @param string $aro ARO The requesting object identifier.
      * @param string $aco ACO The controlled object identifier.
+     *
      * @return array Indexed array with: 'aro', 'aco' and 'link'
      */
     public function getAclLink($aro, $aco)
@@ -161,6 +176,7 @@ class DbAcl extends CakeObject implements AclInterface
      * Get the keys used in an ACO
      *
      * @param array $keys Permission model info
+     *
      * @return array ACO keys
      */
     protected function _getAcoKeys($keys)

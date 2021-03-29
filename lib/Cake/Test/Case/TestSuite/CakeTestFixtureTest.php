@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.TestSuite
+ *
  * @since         CakePHP(tm) v 1.2.0.4667
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('DboSource', 'Model/Datasource');
@@ -223,8 +227,6 @@ class CakeTestFixtureTest extends CakeTestCase
 {
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -239,8 +241,6 @@ class CakeTestFixtureTest extends CakeTestCase
 
     /**
      * tearDown
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -251,8 +251,6 @@ class CakeTestFixtureTest extends CakeTestCase
 
     /**
      * testInit
-     *
-     * @return void
      */
     public function testInit()
     {
@@ -271,8 +269,6 @@ class CakeTestFixtureTest extends CakeTestCase
     /**
      * test that init() correctly sets the fixture table when the connection
      * or model have prefixes defined.
-     *
-     * @return void
      */
     public function testInitDbPrefix()
     {
@@ -313,8 +309,6 @@ class CakeTestFixtureTest extends CakeTestCase
 
     /**
      * test that fixtures don't duplicate the test db prefix.
-     *
-     * @return void
      */
     public function testInitDbPrefixDuplication()
     {
@@ -344,8 +338,6 @@ class CakeTestFixtureTest extends CakeTestCase
 
     /**
      * test init with a model that has a tablePrefix declared.
-     *
-     * @return void
      */
     public function testInitModelTablePrefix()
     {
@@ -371,8 +363,6 @@ class CakeTestFixtureTest extends CakeTestCase
 
     /**
      * testImport
-     *
-     * @return void
      */
     public function testImport()
     {
@@ -400,8 +390,6 @@ class CakeTestFixtureTest extends CakeTestCase
     /**
      * test that importing with records works. Make sure to try with postgres as its
      * handling of aliases is a workaround at best.
-     *
-     * @return void
      */
     public function testImportWithRecords()
     {
@@ -429,8 +417,6 @@ class CakeTestFixtureTest extends CakeTestCase
 
     /**
      * test create method
-     *
-     * @return void
      */
     public function testCreate()
     {
@@ -448,8 +434,6 @@ class CakeTestFixtureTest extends CakeTestCase
 
     /**
      * test the insert method
-     *
-     * @return void
      */
     public function testInsert()
     {
@@ -478,6 +462,7 @@ class CakeTestFixtureTest extends CakeTestCase
      * @param string $table
      * @param string $fields
      * @param string $values
+     *
      * @return bool true
      */
     public function insertCallback($table, $fields, $values)
@@ -495,8 +480,6 @@ class CakeTestFixtureTest extends CakeTestCase
 
     /**
      * test the insert method
-     *
-     * @return void
      */
     public function testInsertStrings()
     {
@@ -540,7 +523,6 @@ class CakeTestFixtureTest extends CakeTestCase
      * test the insert method with invalid fixture
      *
      * @expectedException CakeException
-     * @return void
      */
     public function testInsertInvalid()
     {
@@ -550,8 +532,6 @@ class CakeTestFixtureTest extends CakeTestCase
 
     /**
      * Test the drop method
-     *
-     * @return void
      */
     public function testDrop()
     {
@@ -574,8 +554,6 @@ class CakeTestFixtureTest extends CakeTestCase
 
     /**
      * Test the truncate method.
-     *
-     * @return void
      */
     public function testTruncate()
     {

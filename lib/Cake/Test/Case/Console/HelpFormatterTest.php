@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Console
+ *
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('ConsoleOptionParser', 'Console');
@@ -27,8 +31,6 @@ class HelpFormatterTest extends CakeTestCase
 {
     /**
      * test that the console max width is respected when generating help.
-     *
-     * @return void
      */
     public function testWidthFormatting()
     {
@@ -72,8 +74,6 @@ TEXT;
 
     /**
      * test help() with options and arguments that have choices.
-     *
-     * @return void
      */
     public function testHelpWithChoices()
     {
@@ -108,8 +108,6 @@ TEXT;
 
     /**
      * test description and epilog in the help
-     *
-     * @return void
      */
     public function testHelpDescriptionAndEpilog()
     {
@@ -144,8 +142,6 @@ TEXT;
 
     /**
      * test that help() outputs subcommands.
-     *
-     * @return void
      */
     public function testHelpSubcommand()
     {
@@ -176,8 +172,6 @@ TEXT;
 
     /**
      * test getting help with defined options.
-     *
-     * @return void
      */
     public function testHelpWithOptions()
     {
@@ -206,8 +200,6 @@ TEXT;
 
     /**
      * test getting help with defined options.
-     *
-     * @return void
      */
     public function testHelpWithOptionsAndArguments()
     {
@@ -238,8 +230,6 @@ TEXT;
 
     /**
      * Test that a long set of options doesn't make useless output.
-     *
-     * @return void
      */
     public function testHelpWithLotsOfOptions()
     {
@@ -263,8 +253,6 @@ TEXT;
 
     /**
      * Test that a long set of arguments doesn't make useless output.
-     *
-     * @return void
      */
     public function testHelpWithLotsOfArguments()
     {
@@ -288,8 +276,6 @@ TEXT;
 
     /**
      * test help() with options and arguments that have choices.
-     *
-     * @return void
      */
     public function testXmlHelpWithChoices()
     {
@@ -342,8 +328,6 @@ TEXT;
 
     /**
      * test description and epilog in the help
-     *
-     * @return void
      */
     public function testXmlHelpDescriptionAndEpilog()
     {
@@ -384,8 +368,6 @@ TEXT;
 
     /**
      * test that help() outputs subcommands.
-     *
-     * @return void
      */
     public function testXmlHelpSubcommand()
     {
@@ -422,8 +404,6 @@ TEXT;
 
     /**
      * test getting help with defined options.
-     *
-     * @return void
      */
     public function testXmlHelpWithOptions()
     {
@@ -464,8 +444,6 @@ TEXT;
 
     /**
      * test getting help with defined options.
-     *
-     * @return void
      */
     public function testXmlHelpWithOptionsAndArguments()
     {
@@ -508,8 +486,6 @@ TEXT;
 
     /**
      * Test xml help as object
-     *
-     * @return void
      */
     public function testXmlHelpAsObject()
     {

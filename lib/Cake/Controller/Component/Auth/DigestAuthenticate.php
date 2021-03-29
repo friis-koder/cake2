@@ -8,7 +8,9 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('BasicAuthenticate', 'Controller/Component/Auth');
@@ -50,6 +52,7 @@ App::uses('BasicAuthenticate', 'Controller/Component/Auth');
  * store the password hash for use with other methods like Basic or Form.
  *
  * @package       Cake.Controller.Component.Auth
+ *
  * @since 2.0
  */
 class DigestAuthenticate extends BasicAuthenticate
@@ -110,6 +113,7 @@ class DigestAuthenticate extends BasicAuthenticate
      * Get a user based on information in the request. Used by cookie-less auth for stateless clients.
      *
      * @param CakeRequest $request Request object.
+     *
      * @return mixed Either false or an array of user information
      */
     public function getUser(CakeRequest $request)
@@ -160,6 +164,7 @@ class DigestAuthenticate extends BasicAuthenticate
      * Parse the digest authentication headers and split them up.
      *
      * @param string $digest The raw digest authentication headers.
+     *
      * @return array|null An array of digest authentication headers
      */
     public function parseAuthData($digest)
@@ -188,6 +193,7 @@ class DigestAuthenticate extends BasicAuthenticate
      *
      * @param array $digest Digest information containing data from DigestAuthenticate::parseAuthData().
      * @param string $password The digest hash password generated with DigestAuthenticate::password()
+     *
      * @return string Response hash
      */
     public function generateResponseHash($digest, $password)
@@ -205,6 +211,7 @@ class DigestAuthenticate extends BasicAuthenticate
      * @param string $username The username to use in the digest hash.
      * @param string $password The unhashed password to make a digest hash for.
      * @param string $realm The realm the password is for.
+     *
      * @return string the hashed password that can later be used with Digest authentication.
      */
     public static function password($username, $password, $realm)

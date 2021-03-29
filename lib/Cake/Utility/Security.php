@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Utility
+ *
  * @since         CakePHP(tm) v .0.10.0.1233
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('CakeText', 'Utility');
@@ -42,6 +46,7 @@ class Security
      * Get allowed minutes of inactivity based on security level.
      *
      * @deprecated 3.0.0 Exists for backwards compatibility only, not used by the core
+     *
      * @return int Allowed inactivity in minutes
      */
     public static function inactiveMins()
@@ -61,6 +66,7 @@ class Security
      * Generate authorization hash.
      *
      * @return string Hash
+     *
      * @deprecated 2.8.1 This method was removed in 3.0.0
      */
     public static function generateAuthKey()
@@ -72,7 +78,9 @@ class Security
      * Validate authorization hash.
      *
      * @param string $authKey Authorization hash
+     *
      * @return bool Success
+     *
      * @deprecated 2.8.1 This method was removed in 3.0.0
      */
     public static function validateAuthKey($authKey)
@@ -104,7 +112,9 @@ class Security
      * @param mixed $salt If true, automatically prepends the application's salt
      *     value to $string (Security.salt). If you are using blowfish the salt
      *     must be false or a previously generated salt.
+     *
      * @return string Hash
+     *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/security.html#Security::hash
      */
     public static function hash($string, $type = null, $salt = false)
@@ -147,7 +157,7 @@ class Security
      * Security::hash().
      *
      * @param string $hash Method to use (sha1/sha256/md5/blowfish)
-     * @return void
+     *
      * @see Security::hash()
      */
     public static function setHash($hash)
@@ -159,7 +169,6 @@ class Security
      * Sets the cost for they blowfish hash method.
      *
      * @param int $cost Valid values are 4-31
-     * @return void
      */
     public static function setCost($cost)
     {
@@ -182,6 +191,7 @@ class Security
      * if it cannot find a secure source of random data.
      *
      * @param int $length The number of bytes you want.
+     *
      * @return string Random bytes in binary.
      */
     public static function randomBytes($length)
@@ -223,7 +233,9 @@ class Security
      *
      * @param string $text Encrypted string to decrypt, normal string to encrypt
      * @param string $key Key to use
+     *
      * @return string Encrypted/Decrypted string
+     *
      * @deprecated 3.0.0 Will be removed in 3.0.
      */
     public static function cipher($text, $key)
@@ -260,6 +272,7 @@ class Security
      * @param string $text Encrypted string to decrypt, normal string to encrypt
      * @param string $key Key to use as the encryption key for encrypted data.
      * @param string $operation Operation to perform, encrypt or decrypt
+     *
      * @return string Encrypted/Decrypted string
      */
     public static function rijndael($text, $key, $operation)
@@ -308,6 +321,7 @@ class Security
      * [./0-9A-Za-z]{$length}.
      *
      * @param int $length The length of the returned salt
+     *
      * @return string The generated salt
      */
     protected static function _salt($length = 22)
@@ -326,6 +340,7 @@ class Security
      *
      * @param string $password The string to be encrypted.
      * @param mixed $salt false to generate a new salt or an existing salt.
+     *
      * @return string The hashed string or an empty string on error.
      */
     protected static function _crypt($password, $salt = false)
@@ -363,8 +378,10 @@ class Security
      * @param string $plain The value to encrypt.
      * @param string $key The 256 bit/32 byte key to use as a cipher key.
      * @param string $hmacSalt The salt to use for the HMAC process. Leave null to use Security.salt.
-     * @return string Encrypted data.
+     *
      * @throws CakeException On invalid data or key.
+     *
+     * @return string Encrypted data.
      */
     public static function encrypt($plain, $key, $hmacSalt = null)
     {
@@ -405,7 +422,7 @@ class Security
      *
      * @param string $key Key to check.
      * @param string $method The method the key is being checked for.
-     * @return void
+     *
      * @throws CakeException When key length is not 256 bit/32 bytes
      */
     protected static function _checkKey($key, $method)
@@ -421,8 +438,10 @@ class Security
      * @param string $cipher The ciphertext to decrypt.
      * @param string $key The 256 bit/32 byte key to use as a cipher key.
      * @param string $hmacSalt The salt to use for the HMAC process. Leave null to use Security.salt.
-     * @return string Decrypted data. Any trailing null bytes will be removed.
+     *
      * @throws CakeException On invalid data or key.
+     *
+     * @return string Decrypted data. Any trailing null bytes will be removed.
      */
     public static function decrypt($cipher, $key, $hmacSalt = null)
     {

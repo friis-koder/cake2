@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP Project
+ *
  * @package       Cake.Test.Case.Console.Command
+ *
  * @since         CakePHP v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('CommandListShell', 'Console/Command');
@@ -45,8 +49,6 @@ class CommandListShellTest extends CakeTestCase
 {
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -79,8 +81,6 @@ class CommandListShellTest extends CakeTestCase
 
     /**
      * tearDown
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -91,8 +91,6 @@ class CommandListShellTest extends CakeTestCase
 
     /**
      * test that main finds core shells.
-     *
-     * @return void
      */
     public function testMain()
     {
@@ -114,8 +112,6 @@ class CommandListShellTest extends CakeTestCase
 
     /**
      * test xml output.
-     *
-     * @return void
      */
     public function testMainXml()
     {

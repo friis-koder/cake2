@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Model.Datasource.Database
+ *
  * @since         CakePHP(tm) v 0.9.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('DboSource', 'Model/Datasource');
@@ -63,6 +67,7 @@ class Sqlite extends DboSource
      * SQLite3 column definition
      *
      * @var array
+     *
      * @link https://www.sqlite.org/datatype3.html Datatypes In SQLite Version 3
      */
     public $columns = [
@@ -104,8 +109,9 @@ class Sqlite extends DboSource
     /**
      * Connects to the database using config['database'] as a filename.
      *
-     * @return bool
      * @throws MissingConnectionException
+     *
+     * @return bool
      */
     public function connect()
     {
@@ -142,6 +148,7 @@ class Sqlite extends DboSource
      * Returns an array of tables in the database. If there are no tables, an error is raised and the application exits.
      *
      * @param mixed $data Unused.
+     *
      * @return array Array of table names in the database
      */
     public function listSources($data = null)
@@ -170,6 +177,7 @@ class Sqlite extends DboSource
      * Returns an array of the fields in given table name.
      *
      * @param Model|string $model Either the model or table name you want described.
+     *
      * @return array Fields in table. Keys are name and type
      */
     public function describe($model)
@@ -218,6 +226,7 @@ class Sqlite extends DboSource
      * @param array $fields The fields to update.
      * @param array $values The values to set columns to.
      * @param mixed $conditions array of conditions to use.
+     *
      * @return bool
      */
     public function update(Model $model, $fields = [], $values = null, $conditions = null)
@@ -241,6 +250,7 @@ class Sqlite extends DboSource
      * primary key, where applicable.
      *
      * @param string|Model $table A string or model class representing the table to be truncated
+     *
      * @return bool SQL TRUNCATE TABLE statement, false if not applicable.
      */
     public function truncate($table)
@@ -256,6 +266,7 @@ class Sqlite extends DboSource
      * Converts database-layer column types to basic types
      *
      * @param string $real Real database-layer column type (i.e. "varchar(255)")
+     *
      * @return string Abstract column type (i.e. "string")
      */
     public function column($real)
@@ -313,7 +324,6 @@ class Sqlite extends DboSource
      * Generate ResultSet
      *
      * @param PDOStatement $results The results to modify.
-     * @return void
      */
     public function resultSet($results)
     {
@@ -410,6 +420,7 @@ class Sqlite extends DboSource
      *
      * @param int $limit Limit of results returned
      * @param int $offset Offset from which to start results
+     *
      * @return string SQL limit/offset statement
      */
     public function limit($limit, $offset = null)
@@ -431,6 +442,7 @@ class Sqlite extends DboSource
      *
      * @param array $column An array structured like the following: array('name'=>'value', 'type'=>'value'[, options]),
      *    where options can be 'default', 'length', or 'key'.
+     *
      * @return string
      */
     public function buildColumn($column)
@@ -472,6 +484,7 @@ class Sqlite extends DboSource
      * Sets the database encoding
      *
      * @param string $enc Database encoding
+     *
      * @return bool
      */
     public function setEncoding($enc)
@@ -498,6 +511,7 @@ class Sqlite extends DboSource
      *
      * @param array $indexes The indexes to build.
      * @param string $table The table name.
+     *
      * @return string The completed index.
      */
     public function buildIndex($indexes, $table = null)
@@ -537,6 +551,7 @@ class Sqlite extends DboSource
      * Returns an array of the indexes in given table name.
      *
      * @param string $model Name of model to inspect
+     *
      * @return array Fields in table. Keys are column and unique
      */
     public function index($model)
@@ -579,6 +594,7 @@ class Sqlite extends DboSource
      *
      * @param string $type The type of statement being rendered.
      * @param array $data The data to convert to SQL.
+     *
      * @return string
      */
     public function renderStatement($type, $data)
@@ -613,6 +629,7 @@ class Sqlite extends DboSource
      * Generate a "drop table" statement for the given table
      *
      * @param type $table Name of the table to drop
+     *
      * @return string Drop table SQL statement
      */
     protected function _dropTable($table)
@@ -646,6 +663,7 @@ class Sqlite extends DboSource
      * Sqlite Datasource doesn't support row-level locking.
      *
      * @param mixed $mode Lock mode
+     *
      * @return string|null Null
      */
     public function getLockingHint($mode)

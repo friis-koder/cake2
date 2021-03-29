@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
+ *
  * @package       Cake.Routing
+ *
  * @since         CakePHP(tm) v 0.2.9
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('CakeRequest', 'Network');
@@ -207,8 +211,10 @@ class Router
      * Set the default route class to use or return the current one
      *
      * @param string $routeClass The route class to set as default.
-     * @return string|null The default route class.
+     *
      * @throws RouterException
+     *
+     * @return string|null The default route class.
      */
     public static function defaultRouteClass($routeClass = null)
     {
@@ -223,8 +229,10 @@ class Router
      * Validates that the passed route class exists and is a subclass of CakeRoute
      *
      * @param string $routeClass Route class name
-     * @return string
+     *
      * @throws RouterException
+     *
+     * @return string
      */
     protected static function _validateRouteClass($routeClass)
     {
@@ -239,8 +247,6 @@ class Router
 
     /**
      * Sets the Routing prefixes.
-     *
-     * @return void
      */
     protected static function _setPrefixes()
     {
@@ -254,6 +260,7 @@ class Router
      * Gets the named route elements for use in app/Config/routes.php
      *
      * @return array Named route elements
+     *
      * @see Router::$_namedExpressions
      */
     public static function getNamedExpressions()
@@ -265,7 +272,9 @@ class Router
      * Resource map getter & setter.
      *
      * @param array $resourceMap Resource map
+     *
      * @return mixed
+     *
      * @see Router::$_resourceMap
      */
     public static function resourceMap($resourceMap = null)
@@ -341,10 +350,13 @@ class Router
      *   element should match. Also contains additional parameters such as which routed parameters should be
      *   shifted into the passed arguments, supplying patterns for routing parameters and supplying the name of a
      *   custom routing class.
+     *
      * @see routes
      * @see parse().
-     * @return array Array of routes
+     *
      * @throws RouterException
+     *
+     * @return array Array of routes
      */
     public static function connect($route, $defaults = [], $options = [])
     {
@@ -415,7 +427,9 @@ class Router
      * @param array $options An array matching the named elements in the route to regular expressions which that
      *   element should match. Also contains additional parameters such as which routed parameters should be
      *   shifted into the passed arguments. As well as supplying patterns for routing parameters.
+     *
      * @see routes
+     *
      * @return array Array of routes
      */
     public static function redirect($route, $url, $options = [])
@@ -479,6 +493,7 @@ class Router
      * @param array $named A list of named parameters. Key value pairs are accepted where values are
      *    either regex strings to match, or arrays as seen above.
      * @param array $options Allows to control all settings: separator, greedy, reset, default
+     *
      * @return array
      */
     public static function connectNamed($named, $options = [])
@@ -519,6 +534,7 @@ class Router
      * Gets the current named parameter configuration values.
      *
      * @return array
+     *
      * @see Router::$_namedConfig
      */
     public static function namedConfig()
@@ -540,6 +556,7 @@ class Router
      *
      * @param string|array $controller A controller name or array of controller names (i.e. "Posts" or "ListItems")
      * @param array $options Options to use when generating REST routes
+     *
      * @return array Array of mapped resources
      */
     public static function mapResources($controller, $options = [])
@@ -606,6 +623,7 @@ class Router
      * Parses given URL string. Returns 'routing' parameters for that URL.
      *
      * @param string $url URL to be parsed
+     *
      * @return array Parsed elements from URL
      */
     public static function parse($url)
@@ -654,6 +672,7 @@ class Router
      * Parses a file extension out of a URL, if Router::parseExtensions() is enabled.
      *
      * @param string $url URL.
+     *
      * @return array Returns an array containing the altered URL and the parsed extension.
      */
     protected static function _parseExtension($url)
@@ -694,7 +713,6 @@ class Router
      * accepting arrays may be removed in the future.
      *
      * @param CakeRequest|array $request Parameters and path information or a CakeRequest object.
-     * @return void
      */
     public static function setRequestInfo($request)
     {
@@ -713,6 +731,7 @@ class Router
      * Pops a request off of the request stack. Used when doing requestAction
      *
      * @return CakeRequest The request removed from the stack.
+     *
      * @see Router::setRequestInfo()
      * @see Object::requestAction()
      */
@@ -725,6 +744,7 @@ class Router
      * Gets the current request object, or the first one.
      *
      * @param bool $current True to get the current request object, or false to get the first one.
+     *
      * @return CakeRequest|null Null if stack is empty.
      */
     public static function getRequest($current = false)
@@ -742,6 +762,7 @@ class Router
      * Gets parameter information
      *
      * @param bool $current Get current request parameter, useful when using requestAction
+     *
      * @return array Parameter information
      */
     public static function getParams($current = false)
@@ -761,6 +782,7 @@ class Router
      *
      * @param string $name Parameter name
      * @param bool $current Current parameter, useful when using requestAction
+     *
      * @return string|null Parameter value
      */
     public static function getParam($name = 'controller', $current = false)
@@ -777,6 +799,7 @@ class Router
      * Gets path information
      *
      * @param bool $current Current parameter, useful when using requestAction
+     *
      * @return array
      */
     public static function getPaths($current = false)
@@ -794,8 +817,6 @@ class Router
     /**
      * Reloads default Router settings. Resets all class variables and
      * removes all connected routes.
-     *
-     * @return void
      */
     public static function reload()
     {
@@ -818,6 +839,7 @@ class Router
      *
      * @param int $which A zero-based array index representing the route to move. For example,
      *    if 3 routes have been added, the last route would be 2.
+     *
      * @return bool Returns false if no route exists at the position specified by $which.
      */
     public static function promote($which = null)
@@ -862,6 +884,7 @@ class Router
      *   If an array accepts the following keys
      *    - escape - used when making URLs embedded in html escapes query string '&'
      *    - full - if true the full base URL will be prepended.
+     *
      * @return string Full translated URL with base path.
      */
     public static function url($url = null, $full = false)
@@ -1006,6 +1029,7 @@ class Router
      *
      * @param string $base the prefix for URLs generated containing the domain.
      * For example: ``http://example.com``
+     *
      * @return string
      */
     public static function fullBaseUrl($base = null)
@@ -1026,7 +1050,9 @@ class Router
      * any defined routes.
      *
      * @param array $url A URL that didn't match any routes
+     *
      * @return string A generated URL for the array
+     *
      * @see Router::url()
      */
     protected static function _handleNoRoute($url)
@@ -1104,6 +1130,7 @@ class Router
      *    an array of arguments to convert into a query string.
      * @param array $extra Extra querystring parameters.
      * @param bool $escape Whether or not to use escaped &
+     *
      * @return string|null
      */
     public static function queryString($q, $extra = [], $escape = false)
@@ -1149,6 +1176,7 @@ class Router
      * are used for CakePHP internals and should not normally be part of an output URL.
      *
      * @param CakeRequest|array $params The params array or CakeRequest object that needs to be reversed.
+     *
      * @return array The URL array ready to be used for redirect or HTML link.
      */
     public static function reverseToArray($params)
@@ -1187,6 +1215,7 @@ class Router
      * @param CakeRequest|array $params The params array or CakeRequest object that needs to be reversed.
      * @param bool $full Set to true to include the full URL including the protocol when reversing
      *     the URL.
+     *
      * @return string The string that is the reversed result of the array
      */
     public static function reverse($params, $full = false)
@@ -1203,6 +1232,7 @@ class Router
      * It will not unify the casing and underscoring of the input value.
      *
      * @param array|string $url URL to normalize Either an array or a string URL.
+     *
      * @return string Normalized URL
      */
     public static function normalize($url = '/')
@@ -1259,6 +1289,7 @@ class Router
      *
      * @param string $base Base URL
      * @param string $plugin Plugin name
+     *
      * @return string base URL with plugin name removed if present
      */
     public static function stripPlugin($base, $plugin = null)
@@ -1291,7 +1322,6 @@ class Router
      * If no parameters are given, anything after the first . (dot) after the last / in the URL will be
      * parsed, excluding querystring parameters (i.e. ?q=...).
      *
-     * @return void
      * @see RequestHandler::startup()
      */
     public static function parseExtensions()
@@ -1326,6 +1356,7 @@ class Router
      *
      * @param array $extensions List of extensions to be added as valid extension
      * @param bool $merge Default true will merge extensions. Set to false to override current extensions
+     *
      * @return array
      */
     public static function setExtensions($extensions, $merge = true)
@@ -1342,8 +1373,6 @@ class Router
 
     /**
      * Loads route configuration
-     *
-     * @return void
      */
     protected static function _loadRoutes()
     {

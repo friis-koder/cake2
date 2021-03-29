@@ -10,8 +10,10 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -60,7 +62,6 @@ class ShellDispatcher
      * Run the dispatcher
      *
      * @param array $argv The argv from PHP
-     * @return void
      */
     public static function run($argv)
     {
@@ -71,8 +72,6 @@ class ShellDispatcher
 
     /**
      * Defines core configuration.
-     *
-     * @return void
      */
     protected function _initConstants()
     {
@@ -97,7 +96,6 @@ class ShellDispatcher
     /**
      * Defines current working environment.
      *
-     * @return void
      * @throws CakeException
      */
     protected function _initEnvironment()
@@ -176,8 +174,6 @@ class ShellDispatcher
      * based on the `Error.consoleHandler`, and `Exception.consoleHandler` values
      * if they are set. If they are not set, the default ConsoleErrorHandler will be
      * used.
-     *
-     * @return void
      */
     public function setErrorHandlers()
     {
@@ -204,8 +200,9 @@ class ShellDispatcher
     /**
      * Dispatches a CLI request
      *
-     * @return bool
      * @throws MissingShellMethodException
+     *
+     * @return bool
      */
     public function dispatch()
     {
@@ -261,8 +258,10 @@ class ShellDispatcher
      * All paths in the loaded shell paths are searched.
      *
      * @param string $shell Optionally the name of a plugin
-     * @return mixed An object
+     *
      * @throws MissingShellException when errors are encountered.
+     *
+     * @return mixed An object
      */
     protected function _getShell($shell)
     {
@@ -295,7 +294,6 @@ class ShellDispatcher
      * Parses command line options and extracts the directory paths from $params
      *
      * @param array $args Parameters to parse
-     * @return void
      */
     public function parseParams($args)
     {
@@ -357,6 +355,7 @@ class ShellDispatcher
      * Checks whether the given path is absolute or relative.
      *
      * @param string $path absolute or relative path.
+     *
      * @return bool
      */
     protected function _isAbsolutePath($path)
@@ -368,6 +367,7 @@ class ShellDispatcher
      * Checks whether the given path is Window OS path.
      *
      * @param string $path absolute path.
+     *
      * @return bool
      */
     protected function _isWindowsPath($path)
@@ -379,7 +379,6 @@ class ShellDispatcher
      * Parses out the paths from from the argv
      *
      * @param array $args The argv to parse.
-     * @return void
      */
     protected function _parsePaths($args)
     {
@@ -410,8 +409,6 @@ class ShellDispatcher
 
     /**
      * Shows console help. Performs an internal dispatch to the CommandList Shell
-     *
-     * @return void
      */
     public function help()
     {
@@ -423,7 +420,6 @@ class ShellDispatcher
      * Stop execution of the current script
      *
      * @param int|string $status see http://php.net/exit for values
-     * @return void
      */
     protected function _stop($status = 0)
     {

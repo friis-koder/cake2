@@ -10,8 +10,10 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://cakephp.org CakePHP(tm) Project
  * @since         CakePHP(tm) v 2.0
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -184,6 +186,7 @@ class ConsoleOutput
      *
      * @param string|array $message A string or an array of strings to output
      * @param int $newlines Number of newlines to append
+     *
      * @return int Returns the number of bytes returned from writing to stdout.
      */
     public function write($message, $newlines = 1)
@@ -207,7 +210,6 @@ class ConsoleOutput
      * @param int $newlines Number of newlines to append.
      * @param int|null $size The number of bytes to overwrite. Defaults to the
      *    length of the last message output.
-     * @return void
      */
     public function overwrite($message, $newlines = 1, $size = null)
     {
@@ -229,6 +231,7 @@ class ConsoleOutput
      * Apply styling to text.
      *
      * @param string $text Text with styling tags.
+     *
      * @return string String with color codes added.
      */
     public function styleText($text)
@@ -253,6 +256,7 @@ class ConsoleOutput
      * Replace tags with color codes.
      *
      * @param array $matches An array of matches to replace.
+     *
      * @return string
      */
     protected function _replaceTags($matches)
@@ -283,6 +287,7 @@ class ConsoleOutput
      * Writes a message to the output stream.
      *
      * @param string $message Message to write.
+     *
      * @return bool success
      */
     protected function _write($message)
@@ -314,6 +319,7 @@ class ConsoleOutput
      * @param string $style The style to get or create.
      * @param array $definition The array definition of the style to change or create a style
      *   or false to remove a style.
+     *
      * @return mixed If you are getting styles, the style or null will be returned. If you are creating/modifying
      *   styles true will be returned.
      */
@@ -339,6 +345,7 @@ class ConsoleOutput
      * Get/Set the output type to use. The output type how formatting tags are treated.
      *
      * @param int $type The output type to use. Should be one of the class constants.
+     *
      * @return mixed Either null or the value if getting.
      */
     public function outputAs($type = null)

@@ -10,9 +10,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.I18n
+ *
  * @since         CakePHP(tm) v 1.2.0.5432
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('L10n', 'I18n');
@@ -26,8 +30,6 @@ class L10nTest extends CakeTestCase
 {
     /**
      * setUp method
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -37,8 +39,6 @@ class L10nTest extends CakeTestCase
 
     /**
      * testGet method
-     *
-     * @return void
      */
     public function testGet()
     {
@@ -82,8 +82,6 @@ class L10nTest extends CakeTestCase
 
     /**
      * testGetAutoLanguage method
-     *
-     * @return void
      */
     public function testGetAutoLanguage()
     {
@@ -123,8 +121,6 @@ class L10nTest extends CakeTestCase
 
     /**
      * testGet method with deprecated constant DEFAULT_LANGUAGE
-     *
-     * @return void
      */
     public function testGetWithDeprecatedConstant()
     {
@@ -152,8 +148,6 @@ class L10nTest extends CakeTestCase
 
     /**
      * testMap method
-     *
-     * @return void
      */
     public function testMap()
     {
@@ -490,8 +484,6 @@ class L10nTest extends CakeTestCase
 
     /**
      * testCatalog method
-     *
-     * @return void
      */
     public function testCatalog()
     {

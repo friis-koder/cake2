@@ -12,9 +12,13 @@
  * Redistributions of files must retain the above copyright notice
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
  * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ *
  * @package       Cake.Test.Case.Model.Behavior
+ *
  * @since         CakePHP(tm) v 1.2.0.5330
+ *
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Model', 'Model');
@@ -57,8 +61,6 @@ class TreeBehaviorScopedTest extends CakeTestCase
 
     /**
      * testStringScope method
-     *
-     * @return void
      */
     public function testStringScope()
     {
@@ -95,8 +97,6 @@ class TreeBehaviorScopedTest extends CakeTestCase
 
     /**
      * testArrayScope method
-     *
-     * @return void
      */
     public function testArrayScope()
     {
@@ -136,8 +136,6 @@ class TreeBehaviorScopedTest extends CakeTestCase
      *
      * Attempting to save an invalid data should not trigger an `Undefined offset`
      * error
-     *
-     * @return void
      */
     public function testSaveWithParentAndInvalidScope()
     {
@@ -157,8 +155,6 @@ class TreeBehaviorScopedTest extends CakeTestCase
 
     /**
      * testMoveUpWithScope method
-     *
-     * @return void
      */
     public function testMoveUpWithScope()
     {
@@ -175,8 +171,6 @@ class TreeBehaviorScopedTest extends CakeTestCase
 
     /**
      * testMoveDownWithScope method
-     *
-     * @return void
      */
     public function testMoveDownWithScope()
     {
@@ -194,8 +188,6 @@ class TreeBehaviorScopedTest extends CakeTestCase
     /**
      * Tests the interaction (non-interference) between TreeBehavior and other behaviors with respect
      * to callback hooks
-     *
-     * @return void
      */
     public function testTranslatingTree()
     {
@@ -313,8 +305,6 @@ class TreeBehaviorScopedTest extends CakeTestCase
 
     /**
      * testGenerateTreeListWithSelfJoin method
-     *
-     * @return void
      */
     public function testAliasesWithScopeInTwoTreeAssociations()
     {
@@ -372,8 +362,6 @@ class TreeBehaviorScopedTest extends CakeTestCase
 
     /**
      * testGenerateTreeListWithScope method
-     *
-     * @return void
      */
     public function testGenerateTreeListWithScope()
     {
@@ -412,8 +400,6 @@ class TreeBehaviorScopedTest extends CakeTestCase
 
     /**
      * testRecoverUsingParentMode method
-     *
-     * @return void
      */
     public function testRecoverUsingParentMode()
     {
@@ -473,8 +459,6 @@ class TreeBehaviorScopedTest extends CakeTestCase
 
     /**
      * testRecoverFromMissingParent method
-     *
-     * @return void
      */
     public function testRecoverFromMissingParent()
     {
@@ -505,8 +489,6 @@ class TreeBehaviorScopedTest extends CakeTestCase
 
     /**
      * testDetectInvalidParents method
-     *
-     * @return void
      */
     public function testDetectInvalidParents()
     {
@@ -536,8 +518,6 @@ class TreeBehaviorScopedTest extends CakeTestCase
 
     /**
      * testDetectInvalidLftsRghts method
-     *
-     * @return void
      */
     public function testDetectInvalidLftsRghts()
     {
@@ -566,8 +546,6 @@ class TreeBehaviorScopedTest extends CakeTestCase
 
     /**
      * Reproduces a situation where a single node has lft= rght, and all other lft and rght fields follow sequentially
-     *
-     * @return void
      */
     public function testDetectEqualLftsRghts()
     {
