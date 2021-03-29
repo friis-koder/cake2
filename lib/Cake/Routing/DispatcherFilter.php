@@ -13,7 +13,6 @@
  * @since		  CakePHP(tm) v 2.2
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('CakeEventListener', 'Event');
 
 /**
@@ -25,11 +24,11 @@ App::uses('CakeEventListener', 'Event');
  */
 abstract class DispatcherFilter implements CakeEventListener
 {
-/**
- * Default priority for all methods in this filter
- *
- * @var int
- */
+    /**
+     * Default priority for all methods in this filter
+     *
+     * @var int
+     */
     public $priority = 10;
 
     /**
@@ -37,14 +36,14 @@ abstract class DispatcherFilter implements CakeEventListener
      *
      * @var array
      */
-    public $settings = array();
+    public $settings = [];
 
     /**
      * Constructor.
      *
      * @param array $settings Configuration settings for the filter.
      */
-    public function __construct($settings = array())
+    public function __construct($settings = [])
     {
         $this->settings = Hash::merge($this->settings, $settings);
     }
@@ -60,10 +59,10 @@ abstract class DispatcherFilter implements CakeEventListener
      */
     public function implementedEvents()
     {
-        return array(
-            'Dispatcher.beforeDispatch' => array('callable' => 'beforeDispatch', 'priority' => $this->priority),
-            'Dispatcher.afterDispatch' => array('callable' => 'afterDispatch', 'priority' => $this->priority),
-        );
+        return [
+            'Dispatcher.beforeDispatch' => ['callable' => 'beforeDispatch', 'priority' => $this->priority],
+            'Dispatcher.afterDispatch'  => ['callable' => 'afterDispatch', 'priority' => $this->priority],
+        ];
     }
 
     /**

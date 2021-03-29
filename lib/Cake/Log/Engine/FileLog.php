@@ -15,7 +15,6 @@
  * @since         CakePHP(tm) v 1.3
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('BaseLog', 'Log/Engine');
 App::uses('Hash', 'Utility');
 App::uses('CakeNumber', 'Utility');
@@ -28,21 +27,21 @@ App::uses('CakeNumber', 'Utility');
  */
 class FileLog extends BaseLog
 {
-/**
- * Default configuration values
- *
- * @var array
- * @see FileLog::__construct()
- */
-    protected $_defaults = array(
-        'path' => LOGS,
-        'file' => null,
-        'types' => null,
-        'scopes' => array(),
+    /**
+     * Default configuration values
+     *
+     * @var array
+     * @see FileLog::__construct()
+     */
+    protected $_defaults = [
+        'path'   => LOGS,
+        'file'   => null,
+        'types'  => null,
+        'scopes' => [],
         'rotate' => 10,
-        'size' => 10485760, // 10MB
-        'mask' => null,
-    );
+        'size'   => 10485760, // 10MB
+        'mask'   => null,
+    ];
 
     /**
      * Path to save log files on.
@@ -85,7 +84,7 @@ class FileLog extends BaseLog
      *
      * @param array $config Options for the FileLog, see above.
      */
-    public function __construct($config = array())
+    public function __construct($config = [])
     {
         $config = Hash::merge($this->_defaults, $config);
         parent::__construct($config);
@@ -97,7 +96,7 @@ class FileLog extends BaseLog
      * @param array $config Engine configuration
      * @return array
      */
-    public function config($config = array())
+    public function config($config = [])
     {
         parent::config($config);
 
@@ -153,10 +152,11 @@ class FileLog extends BaseLog
             trigger_error(__d(
                 'cake_dev',
                 'Could not apply permission mask "%s" on log file "%s"',
-                array($this->_config['mask'], $pathname)
+                [$this->_config['mask'], $pathname]
             ), E_USER_WARNING);
             $selfError = false;
         }
+
         return $result;
     }
 
@@ -168,7 +168,7 @@ class FileLog extends BaseLog
      */
     protected function _getFilename($type)
     {
-        $debugTypes = array('notice', 'info', 'debug');
+        $debugTypes = ['notice', 'info', 'debug'];
 
         if (!empty($this->_file)) {
             $filename = $this->_file;

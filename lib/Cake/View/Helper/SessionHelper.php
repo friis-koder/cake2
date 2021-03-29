@@ -15,7 +15,6 @@
  * @since         CakePHP(tm) v 1.1.7.3328
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('AppHelper', 'View/Helper');
 App::uses('CakeSession', 'Model/Datasource');
 
@@ -29,16 +28,16 @@ App::uses('CakeSession', 'Model/Datasource');
  */
 class SessionHelper extends AppHelper
 {
-/**
- * Reads a session value for a key or returns values for all keys.
- *
- * In your view: `$this->Session->read('Controller.sessKey');`
- * Calling the method without a param will return all session vars
- *
- * @param string $name the name of the session key you want to read
- * @return mixed values from the session vars
- * @link https://book.cakephp.org/2.0/en/core-libraries/helpers/session.html#SessionHelper::read
- */
+    /**
+     * Reads a session value for a key or returns values for all keys.
+     *
+     * In your view: `$this->Session->read('Controller.sessKey');`
+     * Calling the method without a param will return all session vars
+     *
+     * @param string $name the name of the session key you want to read
+     * @return mixed values from the session vars
+     * @link https://book.cakephp.org/2.0/en/core-libraries/helpers/session.html#SessionHelper::read
+     */
     public function read($name = null)
     {
         return CakeSession::read($name);
@@ -132,7 +131,7 @@ class SessionHelper extends AppHelper
      * @link https://book.cakephp.org/2.0/en/core-libraries/helpers/session.html#SessionHelper::flash
      * @deprecated 3.0.0 Since 2.7, use FlashHelper::render() instead.
      */
-    public function flash($key = 'flash', $attrs = array())
+    public function flash($key = 'flash', $attrs = [])
     {
         $out = false;
 
@@ -149,6 +148,7 @@ class SessionHelper extends AppHelper
                 $out .= $this->_render($flashArray);
             }
         }
+
         return $out;
     }
 
@@ -183,7 +183,7 @@ class SessionHelper extends AppHelper
         } elseif (!$flash['element']) {
             $out = $message;
         } else {
-            $options = array();
+            $options = [];
             if (isset($flash['params']['plugin'])) {
                 $options['plugin'] = $flash['params']['plugin'];
             }
@@ -192,6 +192,7 @@ class SessionHelper extends AppHelper
             $tmpVars['key'] = $flash['key'];
             $out = $this->_View->element($flash['element'], $tmpVars, $options);
         }
+
         return $out;
     }
 }

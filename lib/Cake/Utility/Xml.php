@@ -17,7 +17,6 @@
  * @since         CakePHP v .0.10.3.1400
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('HttpSocket', 'Network/Http');
 
 /**
@@ -29,77 +28,77 @@ App::uses('HttpSocket', 'Network/Http');
  */
 class Xml
 {
-/**
- * Initialize SimpleXMLElement or DOMDocument from a given XML string, file path, URL or array.
- *
- * ### Usage:
- *
- * Building XML from a string:
- *
- * `$xml = Xml::build('<example>text</example>');`
- *
- * Building XML from string (output DOMDocument):
- *
- * `$xml = Xml::build('<example>text</example>', array('return' => 'domdocument'));`
- *
- * Building XML from a file path:
- *
- * `$xml = Xml::build('/path/to/an/xml/file.xml');`
- *
- * Building from a remote URL:
- *
- * `$xml = Xml::build('http://example.com/example.xml');`
- *
- * Building from an array:
- *
- * ```
- * 	$value = array(
- * 		'tags' => array(
- * 			'tag' => array(
- * 				array(
- * 					'id' => '1',
- * 					'name' => 'defect'
- * 				),
- * 				array(
- * 					'id' => '2',
- * 					'name' => 'enhancement'
- *				)
- * 			)
- * 		)
- * 	);
- * $xml = Xml::build($value);
- * ```
- *
- * When building XML from an array ensure that there is only one top level element.
- *
- * ### Options
- *
- * - `return` Can be 'simplexml' to return object of SimpleXMLElement or 'domdocument' to return DOMDocument.
- * - `loadEntities` Defaults to false. Set to true to enable loading of `<!ENTITY` definitions. This
- *   is disabled by default for security reasons.
- * - `readFile` Set to false to disable file reading. This is important to disable when
- *   putting user data into Xml::build(). If enabled local & remote files will be read if they exist.
- *   Defaults to true for backwards compatibility reasons.
- * - `parseHuge` Enable the `LIBXML_PARSEHUGE`
- *
- * If using array as input, you can pass `options` from Xml::fromArray.
- *
- * @param string|array $input XML string, a path to a file, a URL or an array
- * @param array $options The options to use
- * @return SimpleXMLElement|DOMDocument SimpleXMLElement or DOMDocument
- * @throws XmlException
- */
-    public static function build($input, $options = array())
+    /**
+     * Initialize SimpleXMLElement or DOMDocument from a given XML string, file path, URL or array.
+     *
+     * ### Usage:
+     *
+     * Building XML from a string:
+     *
+     * `$xml = Xml::build('<example>text</example>');`
+     *
+     * Building XML from string (output DOMDocument):
+     *
+     * `$xml = Xml::build('<example>text</example>', array('return' => 'domdocument'));`
+     *
+     * Building XML from a file path:
+     *
+     * `$xml = Xml::build('/path/to/an/xml/file.xml');`
+     *
+     * Building from a remote URL:
+     *
+     * `$xml = Xml::build('http://example.com/example.xml');`
+     *
+     * Building from an array:
+     *
+     * ```
+     * 	$value = array(
+     * 		'tags' => array(
+     * 			'tag' => array(
+     * 				array(
+     * 					'id' => '1',
+     * 					'name' => 'defect'
+     * 				),
+     * 				array(
+     * 					'id' => '2',
+     * 					'name' => 'enhancement'
+     *				)
+     * 			)
+     * 		)
+     * 	);
+     * $xml = Xml::build($value);
+     * ```
+     *
+     * When building XML from an array ensure that there is only one top level element.
+     *
+     * ### Options
+     *
+     * - `return` Can be 'simplexml' to return object of SimpleXMLElement or 'domdocument' to return DOMDocument.
+     * - `loadEntities` Defaults to false. Set to true to enable loading of `<!ENTITY` definitions. This
+     *   is disabled by default for security reasons.
+     * - `readFile` Set to false to disable file reading. This is important to disable when
+     *   putting user data into Xml::build(). If enabled local & remote files will be read if they exist.
+     *   Defaults to true for backwards compatibility reasons.
+     * - `parseHuge` Enable the `LIBXML_PARSEHUGE`
+     *
+     * If using array as input, you can pass `options` from Xml::fromArray.
+     *
+     * @param string|array $input XML string, a path to a file, a URL or an array
+     * @param array $options The options to use
+     * @return SimpleXMLElement|DOMDocument SimpleXMLElement or DOMDocument
+     * @throws XmlException
+     */
+    public static function build($input, $options = [])
     {
         if (!is_array($options)) {
-            $options = array('return' => (string)$options);
+            $options = ['return' => (string)$options];
         }
-        $defaults = array(
-            'return' => 'simplexml',
+        $defaults = [
+            'return'       => 'simplexml',
             'loadEntities' => false,
-            'readFile' => true,
-            'parseHuge' => true
-        );
+            'readFile'     => true,
+            'parseHuge'    => true
+        ];
         $options += $defaults;
 
         if (is_array($input) || is_object($input)) {
@@ -110,11 +109,12 @@ class Xml
             return static::_loadXml(file_get_contents($input), $options);
         } elseif ($options['readFile'] && strpos($input, 'http://') === 0 || strpos($input, 'https://') === 0) {
             try {
-                $socket = new HttpSocket(array('request' => array('redirect' => 10)));
+                $socket = new HttpSocket(['request' => ['redirect' => 10]]);
                 $response = $socket->get($input);
                 if (!$response->isOk()) {
                     throw new XmlException(__d('cake_dev', 'XML cannot be read.'));
                 }
+
                 return static::_loadXml($response->body, $options);
             } catch (SocketException $e) {
                 throw new XmlException(__d('cake_dev', 'XML cannot be read.'));
@@ -122,6 +122,7 @@ class Xml
         } elseif (!is_string($input)) {
             throw new XmlException(__d('cake_dev', 'Invalid input.'));
         }
+
         throw new XmlException(__d('cake_dev', 'XML cannot be read.'));
     }
 
@@ -144,6 +145,7 @@ class Xml
         if (!empty($options['parseHuge'])) {
             $flags |= LIBXML_PARSEHUGE;
         }
+
         try {
             if ($options['return'] === 'simplexml' || $options['return'] === 'simplexmlelement') {
                 $xml = new SimpleXMLElement($input, LIBXML_NOCDATA);
@@ -161,6 +163,7 @@ class Xml
         if ($xml === null) {
             throw new XmlException(__d('cake_dev', 'Xml cannot be read.'));
         }
+
         return $xml;
     }
 
@@ -202,7 +205,7 @@ class Xml
      * @return SimpleXMLElement|DOMDocument SimpleXMLElement or DOMDocument
      * @throws XmlException
      */
-    public static function fromArray($input, $options = array())
+    public static function fromArray($input, $options = [])
     {
         if (!is_array($input) || count($input) !== 1) {
             throw new XmlException(__d('cake_dev', 'Invalid input.'));
@@ -213,15 +216,15 @@ class Xml
         }
 
         if (!is_array($options)) {
-            $options = array('format' => (string)$options);
+            $options = ['format' => (string)$options];
         }
-        $defaults = array(
-            'format' => 'tags',
-            'version' => '1.0',
+        $defaults = [
+            'format'   => 'tags',
+            'version'  => '1.0',
             'encoding' => Configure::read('App.encoding'),
-            'return' => 'simplexml',
-            'pretty' => false
-        );
+            'return'   => 'simplexml',
+            'pretty'   => false
+        ];
         $options += $defaults;
 
         $dom = new DOMDocument($options['version'], $options['encoding']);
@@ -234,6 +237,7 @@ class Xml
         if ($options['return'] === 'simplexml' || $options['return'] === 'simplexmlelement') {
             return new SimpleXMLElement($dom->saveXML());
         }
+
         return $dom;
     }
 
@@ -263,6 +267,7 @@ class Xml
                     $isNamespace = strpos($key, 'xmlns:');
                     if ($isNamespace !== false) {
                         $node->setAttributeNS('http://www.w3.org/2000/xmlns/', $key, $value);
+
                         continue;
                     }
                     if ($key[0] !== '@' && $format === 'tags') {
@@ -355,9 +360,10 @@ class Xml
         if (!($obj instanceof SimpleXMLElement)) {
             throw new XmlException(__d('cake_dev', 'The input is not instance of SimpleXMLElement, DOMDocument or DOMNode.'));
         }
-        $result = array();
-        $namespaces = array_merge(array('' => ''), $obj->getNamespaces(true));
+        $result = [];
+        $namespaces = array_merge(['' => ''], $obj->getNamespaces(true));
         static::_toArray($obj, $result, '', array_keys($namespaces));
+
         return $result;
     }
 
@@ -372,7 +378,7 @@ class Xml
      */
     protected static function _toArray($xml, &$parentData, $ns, $namespaces)
     {
-        $data = array();
+        $data = [];
 
         foreach ($namespaces as $namespace) {
             foreach ($xml->attributes($namespace, true) as $key => $value) {
@@ -400,7 +406,7 @@ class Xml
         $name = $ns . $xml->getName();
         if (isset($parentData[$name])) {
             if (!is_array($parentData[$name]) || !isset($parentData[$name][0])) {
-                $parentData[$name] = array($parentData[$name]);
+                $parentData[$name] = [$parentData[$name]];
             }
             $parentData[$name][] = $data;
         } else {

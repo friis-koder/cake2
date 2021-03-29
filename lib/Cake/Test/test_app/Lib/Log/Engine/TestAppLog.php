@@ -15,7 +15,6 @@
  * @since         CakePHP(tm) v 1.3
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('BaseLog', 'Log/Engine');
 
 /**

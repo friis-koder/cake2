@@ -13,7 +13,6 @@
  * @since         CakePHP v 2.0
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('AppShell', 'Console/Command');
 App::uses('Inflector', 'Utility');
 
@@ -24,12 +23,12 @@ App::uses('Inflector', 'Utility');
  */
 class CommandListShell extends AppShell
 {
-/**
- * Contains tasks to load and instantiate
- *
- * @var array
- */
-    public $tasks = array('Command');
+    /**
+     * Contains tasks to load and instantiate
+     *
+     * @var array
+     */
+    public $tasks = ['Command'];
 
     /**
      * startup
@@ -135,13 +134,13 @@ class CommandListShell extends AppShell
 
         $parser->description(
             __d('cake_console', 'Get the list of available shells for this CakePHP application.')
-        )->addOption('sort', array(
-            'help' => __d('cake_console', 'Does nothing (deprecated)'),
+        )->addOption('sort', [
+            'help'    => __d('cake_console', 'Does nothing (deprecated)'),
             'boolean' => true
-        ))->addOption('xml', array(
-            'help' => __d('cake_console', 'Get the listing as XML.'),
+        ])->addOption('xml', [
+            'help'    => __d('cake_console', 'Get the listing as XML.'),
             'boolean' => true
-        ));
+        ]);
 
         return $parser;
     }

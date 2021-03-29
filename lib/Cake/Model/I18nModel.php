@@ -13,7 +13,6 @@
  * @since         CakePHP(tm) v 1.2.0.4525
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('AppModel', 'Model');
 
 /**
@@ -23,11 +22,11 @@ App::uses('AppModel', 'Model');
  */
 class I18nModel extends AppModel
 {
-/**
- * Model name
- *
- * @var string
- */
+    /**
+     * Model name
+     *
+     * @var string
+     */
     public $name = 'I18nModel';
 
     /**

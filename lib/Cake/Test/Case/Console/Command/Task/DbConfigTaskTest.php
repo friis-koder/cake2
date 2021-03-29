@@ -15,7 +15,6 @@
  * @since         CakePHP(tm) v 1.3
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('ShellDispatcher', 'Console');
 App::uses('ConsoleOutput', 'Console');
 App::uses('ConsoleInput', 'Console');
@@ -29,21 +28,21 @@ App::uses('DbConfigTask', 'Console/Command/Task');
  */
 class DbConfigTaskTest extends CakeTestCase
 {
-/**
- * setUp method
- *
- * @return void
- */
+    /**
+     * setUp method
+     *
+     * @return void
+     */
     public function setUp()
     {
         parent::setUp();
-        $out = $this->getMock('ConsoleOutput', array(), array(), '', false);
-        $in = $this->getMock('ConsoleInput', array(), array(), '', false);
+        $out = $this->getMock('ConsoleOutput', [], [], '', false);
+        $in = $this->getMock('ConsoleInput', [], [], '', false);
 
         $this->Task = $this->getMock(
             'DbConfigTask',
-            array('in', 'out', 'err', 'hr', 'createFile', '_stop', '_checkUnitTest', '_verify'),
-            array($out, $out, $in)
+            ['in', 'out', 'err', 'hr', 'createFile', '_stop', '_checkUnitTest', '_verify'],
+            [$out, $out, $in]
         );
 
         $this->Task->path = CONFIG;
@@ -96,12 +95,12 @@ class DbConfigTaskTest extends CakeTestCase
     {
         $this->Task->initialize();
 
-        $out = $this->getMock('ConsoleOutput', array(), array(), '', false);
-        $in = $this->getMock('ConsoleInput', array(), array(), '', false);
+        $out = $this->getMock('ConsoleOutput', [], [], '', false);
+        $in = $this->getMock('ConsoleInput', [], [], '', false);
         $this->Task = $this->getMock(
             'DbConfigTask',
-            array('in', '_stop', 'createFile', 'bake'),
-            array($out, $out, $in)
+            ['in', '_stop', 'createFile', 'bake'],
+            [$out, $out, $in]
         );
 
         $this->Task->expects($this->once())->method('_stop');
@@ -118,21 +117,21 @@ class DbConfigTaskTest extends CakeTestCase
         $this->Task->expects($this->at(13))->method('in')->will($this->returnValue('y')); //looks good
         $this->Task->expects($this->at(14))->method('in')->will($this->returnValue('n')); //another
         $this->Task->expects($this->at(15))->method('bake')
-            ->with(array(
-                array(
-                    'name' => 'default',
+            ->with([
+                [
+                    'name'       => 'default',
                     'datasource' => 'mysql',
                     'persistent' => 'false',
-                    'host' => 'localhost',
-                    'login' => 'root',
-                    'password' => 'password',
-                    'database' => 'cake_test',
-                    'prefix' => null,
-                    'encoding' => null,
-                    'port' => '',
-                    'schema' => null
-                )
-            ));
+                    'host'       => 'localhost',
+                    'login'      => 'root',
+                    'password'   => 'password',
+                    'database'   => 'cake_test',
+                    'prefix'     => null,
+                    'encoding'   => null,
+                    'port'       => '',
+                    'schema'     => null
+                ]
+            ]);
 
         $this->Task->execute();
     }

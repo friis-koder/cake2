@@ -19,7 +19,6 @@
  * @since         CakePHP(tm) v 0.10.4.1076
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('Component', 'Controller');
 App::uses('Xml', 'Utility');
 
@@ -35,12 +34,12 @@ App::uses('Xml', 'Utility');
  */
 class RequestHandlerComponent extends Component
 {
-/**
- * The layout that will be switched to for Ajax requests
- *
- * @var string
- * @see RequestHandler::setAjax()
- */
+    /**
+     * The layout that will be switched to for Ajax requests
+     *
+     * @var string
+     * @see RequestHandler::setAjax()
+     */
     public $ajaxLayout = 'ajax';
 
     /**
@@ -92,9 +91,9 @@ class RequestHandlerComponent extends Component
      *
      * @var array
      */
-    protected $_inputTypeMap = array(
-        'json' => array('json_decode', true)
-    );
+    protected $_inputTypeMap = [
+        'json' => ['json_decode', true]
+    ];
 
     /**
      * A mapping between type and viewClass
@@ -102,10 +101,10 @@ class RequestHandlerComponent extends Component
      *
      * @var array
      */
-    protected $_viewClassMap = array(
+    protected $_viewClassMap = [
         'json' => 'Json',
-        'xml' => 'Xml'
-    );
+        'xml'  => 'Xml'
+    ];
 
     /**
      * Constructor. Parses the accepted content types accepted by the client using HTTP_ACCEPT
@@ -113,10 +112,10 @@ class RequestHandlerComponent extends Component
      * @param ComponentCollection $collection ComponentCollection object.
      * @param array $settings Array of settings.
      */
-    public function __construct(ComponentCollection $collection, $settings = array())
+    public function __construct(ComponentCollection $collection, $settings = [])
     {
-        parent::__construct($collection, $settings + array('checkHttpCache' => true));
-        $this->addInputType('xml', array(array($this, 'convertXml')));
+        parent::__construct($collection, $settings + ['checkHttpCache' => true]);
+        $this->addInputType('xml', [[$this, 'convertXml']]);
 
         $Controller = $collection->getController();
         $this->request = $Controller->request;
@@ -170,7 +169,7 @@ class RequestHandlerComponent extends Component
 
         $accepts = $this->response->mapType($accept);
         $preferedTypes = current($accepts);
-        if (array_intersect($preferedTypes, array('html', 'xhtml'))) {
+        if (array_intersect($preferedTypes, ['html', 'xhtml'])) {
             return;
         }
 
@@ -179,6 +178,7 @@ class RequestHandlerComponent extends Component
             $ext = array_intersect($extensions, $types);
             if ($ext) {
                 $this->ext = current($ext);
+
                 break;
             }
         }
@@ -210,7 +210,7 @@ class RequestHandlerComponent extends Component
     {
         $controller->request->params['isAjax'] = $this->request->is('ajax');
         $isRecognized = (
-            !in_array($this->ext, array('html', 'htm')) &&
+            !in_array($this->ext, ['html', 'htm']) &&
             $this->response->getMimeType($this->ext)
         );
 
@@ -218,13 +218,13 @@ class RequestHandlerComponent extends Component
             $this->renderAs($controller, $this->ext);
         } elseif ($this->request->is('ajax')) {
             $this->renderAs($controller, 'ajax');
-        } elseif (empty($this->ext) || in_array($this->ext, array('html', 'htm'))) {
-            $this->respondAs('html', array('charset' => Configure::read('App.encoding')));
+        } elseif (empty($this->ext) || in_array($this->ext, ['html', 'htm'])) {
+            $this->respondAs('html', ['charset' => Configure::read('App.encoding')]);
         }
 
         foreach ($this->_inputTypeMap as $type => $handler) {
             if ($this->requestedWith($type)) {
-                $input = (array)call_user_func_array(array($controller->request, 'input'), $handler);
+                $input = (array)call_user_func_array([$controller->request, 'input'], $handler);
                 $controller->request->data = $input;
             }
         }
@@ -240,13 +240,14 @@ class RequestHandlerComponent extends Component
     public function convertXml($xml)
     {
         try {
-            $xml = Xml::build($xml, array('readFile' => false));
+            $xml = Xml::build($xml, ['readFile' => false]);
             if (isset($xml->data)) {
                 return Xml::toArray($xml->data);
             }
+
             return Xml::toArray($xml);
         } catch (XmlException $e) {
-            return array();
+            return [];
         }
     }
 
@@ -273,7 +274,7 @@ class RequestHandlerComponent extends Component
             unset($_POST[$key]);
         }
         if (is_array($url)) {
-            $url = Router::url($url + array('base' => false));
+            $url = Router::url($url + ['base' => false]);
         }
         if (!empty($status)) {
             $statusCode = $this->response->httpCodes($status);
@@ -282,7 +283,7 @@ class RequestHandlerComponent extends Component
                 $this->response->statusCode($code);
             }
         }
-        $this->response->body($this->requestAction($url, array('return', 'bare' => false)));
+        $this->response->body($this->requestAction($url, ['return', 'bare' => false]));
         $this->response->send();
         $this->_stop();
     }
@@ -440,6 +441,7 @@ class RequestHandlerComponent extends Component
     public function getAjaxVersion()
     {
         $httpX = env('HTTP_X_PROTOTYPE_VERSION');
+
         return ($httpX === null) ? false : $httpX;
     }
 
@@ -457,7 +459,7 @@ class RequestHandlerComponent extends Component
      */
     public function setContent($name, $type = null)
     {
-        $this->response->type(array($name => $type));
+        $this->response->type([$name => $type]);
     }
 
     /**
@@ -521,11 +523,13 @@ class RequestHandlerComponent extends Component
                     return true;
                 }
             }
+
             return false;
         }
         if (is_string($type)) {
             return in_array($this->mapAlias($type), $accepted);
         }
+
         return false;
     }
 
@@ -553,6 +557,7 @@ class RequestHandlerComponent extends Component
                     return $t;
                 }
             }
+
             return false;
         }
 
@@ -598,6 +603,7 @@ class RequestHandlerComponent extends Component
             if (empty($this->ext) && !empty($accepts)) {
                 return $accepts[0];
             }
+
             return $this->ext;
         }
 
@@ -607,6 +613,7 @@ class RequestHandlerComponent extends Component
             if (!empty($this->ext)) {
                 return in_array($this->ext, $types);
             }
+
             return in_array($types[0], $accepts);
         }
 
@@ -614,6 +621,7 @@ class RequestHandlerComponent extends Component
         if (empty($intersect)) {
             return false;
         }
+
         return $intersect[0];
     }
 
@@ -637,9 +645,9 @@ class RequestHandlerComponent extends Component
      * @see RequestHandlerComponent::setContent()
      * @see RequestHandlerComponent::respondAs()
      */
-    public function renderAs(Controller $controller, $type, $options = array())
+    public function renderAs(Controller $controller, $type, $options = [])
     {
-        $defaults = array('charset' => 'UTF-8');
+        $defaults = ['charset' => 'UTF-8'];
 
         if (Configure::read('App.encoding') !== null) {
             $defaults['charset'] = Configure::read('App.encoding');
@@ -648,6 +656,7 @@ class RequestHandlerComponent extends Component
 
         if ($type === 'ajax') {
             $controller->layout = $this->ajaxLayout;
+
             return $this->respondAs('html', $options);
         }
 
@@ -704,9 +713,9 @@ class RequestHandlerComponent extends Component
      *    already been set by this method.
      * @see RequestHandlerComponent::setContent()
      */
-    public function respondAs($type, $options = array())
+    public function respondAs($type, $options = [])
     {
-        $defaults = array('index' => null, 'charset' => null, 'attachment' => false);
+        $defaults = ['index' => null, 'charset' => null, 'attachment' => false];
         $options = $options + $defaults;
 
         $cType = $type;
@@ -737,6 +746,7 @@ class RequestHandlerComponent extends Component
         if (!empty($options['attachment'])) {
             $this->response->download($options['attachment']);
         }
+
         return true;
     }
 
@@ -773,15 +783,17 @@ class RequestHandlerComponent extends Component
     public function mapAlias($alias)
     {
         if (is_array($alias)) {
-            return array_map(array($this, 'mapAlias'), $alias);
+            return array_map([$this, 'mapAlias'], $alias);
         }
         $type = $this->response->getMimeType($alias);
         if ($type) {
             if (is_array($type)) {
                 return $type[0];
             }
+
             return $type;
         }
+
         return null;
     }
 
@@ -823,6 +835,7 @@ class RequestHandlerComponent extends Component
                 $this->viewClassMap($key, $value);
             }
         }
+
         return $this->_viewClassMap;
     }
 }

@@ -15,7 +15,6 @@
  * @since         CakePHP(tm) v 2.0
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('TaskCollection', 'Console');
 App::uses('Shell', 'Console');
 
@@ -33,16 +32,16 @@ class DbConfigAliasedTask extends Shell
  */
 class TaskCollectionTest extends CakeTestCase
 {
-/**
- * setUp
- *
- * @return void
- */
+    /**
+     * setUp
+     *
+     * @return void
+     */
     public function setUp()
     {
         parent::setUp();
-        $shell = $this->getMock('Shell', array(), array(), '', false);
-        $dispatcher = $this->getMock('ShellDispatcher', array(), array(), '', false);
+        $shell = $this->getMock('Shell', [], [], '', false);
+        $dispatcher = $this->getMock('ShellDispatcher', [], [], '', false);
         $this->Tasks = new TaskCollection($shell, $dispatcher);
     }
 
@@ -69,7 +68,7 @@ class TaskCollectionTest extends CakeTestCase
         $this->assertInstanceOf('DbConfigTask', $this->Tasks->DbConfig);
 
         $result = $this->Tasks->loaded();
-        $this->assertEquals(array('DbConfig'), $result, 'loaded() results are wrong.');
+        $this->assertEquals(['DbConfig'], $result, 'loaded() results are wrong.');
     }
 
     /**
@@ -79,7 +78,7 @@ class TaskCollectionTest extends CakeTestCase
      */
     public function testLoadWithEnableFalse()
     {
-        $result = $this->Tasks->load('DbConfig', array('enabled' => false));
+        $result = $this->Tasks->load('DbConfig', ['enabled' => false]);
         $this->assertInstanceOf('DbConfigTask', $result);
         $this->assertInstanceOf('DbConfigTask', $this->Tasks->DbConfig);
 
@@ -104,11 +103,11 @@ class TaskCollectionTest extends CakeTestCase
      */
     public function testLoadPluginTask()
     {
-        $dispatcher = $this->getMock('ShellDispatcher', array(), array(), '', false);
-        $shell = $this->getMock('Shell', array(), array(), '', false);
-        App::build(array(
-            'Plugin' => array(CAKE . 'Test' . DS . 'test_app' . DS . 'Plugin' . DS)
-        ));
+        $dispatcher = $this->getMock('ShellDispatcher', [], [], '', false);
+        $shell = $this->getMock('Shell', [], [], '', false);
+        App::build([
+            'Plugin' => [CAKE . 'Test' . DS . 'test_app' . DS . 'Plugin' . DS]
+        ]);
         CakePlugin::load('TestPlugin');
         $this->Tasks = new TaskCollection($shell, $dispatcher);
 
@@ -129,14 +128,14 @@ class TaskCollectionTest extends CakeTestCase
         $this->Tasks->load('DbConfig');
 
         $result = $this->Tasks->loaded();
-        $this->assertEquals(array('Extract', 'DbConfig'), $result, 'loaded tasks is wrong');
+        $this->assertEquals(['Extract', 'DbConfig'], $result, 'loaded tasks is wrong');
 
         $this->Tasks->unload('DbConfig');
         $this->assertFalse(isset($this->Tasks->DbConfig));
         $this->assertTrue(isset($this->Tasks->Extract));
 
         $result = $this->Tasks->loaded();
-        $this->assertEquals(array('Extract'), $result, 'loaded tasks is wrong');
+        $this->assertEquals(['Extract'], $result, 'loaded tasks is wrong');
     }
 
     /**
@@ -146,18 +145,18 @@ class TaskCollectionTest extends CakeTestCase
      */
     public function testLoadWithAlias()
     {
-        $result = $this->Tasks->load('DbConfig', array('className' => 'DbConfigAliased'));
+        $result = $this->Tasks->load('DbConfig', ['className' => 'DbConfigAliased']);
         $this->assertInstanceOf('DbConfigAliasedTask', $result);
         $this->assertInstanceOf('DbConfigAliasedTask', $this->Tasks->DbConfig);
 
         $result = $this->Tasks->loaded();
-        $this->assertEquals(array('DbConfig'), $result, 'loaded() results are wrong.');
+        $this->assertEquals(['DbConfig'], $result, 'loaded() results are wrong.');
 
-        $result = $this->Tasks->load('SomeTask', array('className' => 'TestPlugin.OtherTask'));
+        $result = $this->Tasks->load('SomeTask', ['className' => 'TestPlugin.OtherTask']);
         $this->assertInstanceOf('OtherTaskTask', $result);
         $this->assertInstanceOf('OtherTaskTask', $this->Tasks->SomeTask);
 
         $result = $this->Tasks->loaded();
-        $this->assertEquals(array('DbConfig', 'SomeTask'), $result, 'loaded() results are wrong.');
+        $this->assertEquals(['DbConfig', 'SomeTask'], $result, 'loaded() results are wrong.');
     }
 }

@@ -17,7 +17,6 @@
  * @since         CakePHP(tm) v 0.2.9
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 define('TIME_START', microtime(true));
 
 if (!defined('E_DEPRECATED')) {
@@ -139,7 +138,7 @@ require CAKE . 'basics.php';
 require CAKE . 'Core' . DS . 'App.php';
 require CAKE . 'Error' . DS . 'exceptions.php';
 
-spl_autoload_register(array('App', 'load'));
+spl_autoload_register(['App', 'load']);
 
 App::uses('ErrorHandler', 'Error');
 App::uses('Configure', 'Core');
@@ -172,7 +171,6 @@ if (!defined('FULL_BASE_URL')) {
 Configure::write('App.imageBaseUrl', IMAGES_URL);
 Configure::write('App.cssBaseUrl', CSS_URL);
 Configure::write('App.jsBaseUrl', JS_URL);
-
 
 if (!function_exists('mb_stripos')) {
 

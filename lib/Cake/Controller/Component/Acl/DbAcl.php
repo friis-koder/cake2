@@ -13,7 +13,6 @@
  * @since         CakePHP(tm) v 0.10.0.1076
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('AclInterface', 'Controller/Component/Acl');
 App::uses('Hash', 'Utility');
 App::uses('ClassRegistry', 'Utility');
@@ -39,13 +38,13 @@ App::uses('ClassRegistry', 'Utility');
  */
 class DbAcl extends CakeObject implements AclInterface
 {
-/**
- * Constructor
- */
+    /**
+     * Constructor
+     */
     public function __construct()
     {
         parent::__construct();
-        $this->Permission = ClassRegistry::init(array('class' => 'Permission', 'alias' => 'Permission'));
+        $this->Permission = ClassRegistry::init(['class' => 'Permission', 'alias' => 'Permission']);
         $this->Aro = $this->Permission->Aro;
         $this->Aco = $this->Permission->Aco;
     }

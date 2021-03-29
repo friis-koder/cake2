@@ -15,7 +15,6 @@
  * @since         CakePHP(tm) v 2.2
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('BaseLog', 'Log/Engine');
 App::uses('ConsoleOutput', 'Console');
 
@@ -26,11 +25,11 @@ App::uses('ConsoleOutput', 'Console');
  */
 class ConsoleLog extends BaseLog
 {
-/**
- * Output stream
- *
- * @var ConsoleOutput
- */
+    /**
+     * Output stream
+     *
+     * @var ConsoleOutput
+     */
     protected $_output = null;
 
     /**
@@ -46,7 +45,7 @@ class ConsoleLog extends BaseLog
      * @param array $config Options for the FileLog, see above.
      * @throws CakeLogException
      */
-    public function __construct($config = array())
+    public function __construct($config = [])
     {
         parent::__construct($config);
         if ((DS === '\\' && !(bool)env('ANSICON') && env('ConEmuANSI') !== 'ON') ||
@@ -56,12 +55,12 @@ class ConsoleLog extends BaseLog
         } else {
             $outputAs = ConsoleOutput::COLOR;
         }
-        $config = Hash::merge(array(
-            'stream' => 'php://stderr',
-            'types' => null,
-            'scopes' => array(),
+        $config = Hash::merge([
+            'stream'   => 'php://stderr',
+            'types'    => null,
+            'scopes'   => [],
             'outputAs' => $outputAs,
-            ), $this->_config);
+        ], $this->_config);
         $config = $this->config($config);
         if ($config['stream'] instanceof ConsoleOutput) {
             $this->_output = $config['stream'];
@@ -83,6 +82,7 @@ class ConsoleLog extends BaseLog
     public function write($type, $message)
     {
         $output = date('Y-m-d H:i:s') . ' ' . ucfirst($type) . ': ' . $message . "\n";
+
         return $this->_output->write(sprintf('<%s>%s</%s>', $type, $output, $type), false);
     }
 }

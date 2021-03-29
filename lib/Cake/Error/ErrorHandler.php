@@ -17,7 +17,6 @@
  * @since         CakePHP(tm) v 0.10.5.1732
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('Debugger', 'Utility');
 App::uses('CakeLog', 'Log');
 App::uses('ExceptionRenderer', 'Error');
@@ -95,12 +94,12 @@ App::uses('Router', 'Routing');
  */
 class ErrorHandler
 {
-/**
- * Whether to give up rendering an exception, if the renderer itself is
- * throwing exceptions.
- *
- * @var bool
- */
+    /**
+     * Whether to give up rendering an exception, if the renderer itself is
+     * throwing exceptions.
+     *
+     * @var bool
+     */
     protected static $_bailExceptionRendering = false;
 
     /**
@@ -123,6 +122,7 @@ class ErrorHandler
             list($plugin, $renderer) = pluginSplit($renderer, true);
             App::uses($renderer, $plugin . 'Error');
         }
+
         try {
             $error = new $renderer($exception);
             $error->render();
@@ -167,6 +167,7 @@ class ErrorHandler
             }
         }
         $message .= "\nStack Trace:\n" . $exception->getTraceAsString();
+
         return $message;
     }
 
@@ -190,6 +191,7 @@ class ErrorHandler
                 }
             }
         }
+
         return CakeLog::write(LOG_ERR, static::_getMessage($exception));
     }
 
@@ -220,20 +222,22 @@ class ErrorHandler
 
         $debug = Configure::read('debug');
         if ($debug) {
-            $data = array(
-                'level' => $log,
-                'code' => $code,
-                'error' => $error,
+            $data = [
+                'level'       => $log,
+                'code'        => $code,
+                'error'       => $error,
                 'description' => $description,
-                'file' => $file,
-                'line' => $line,
-                'context' => $context,
-                'start' => 2,
-                'path' => Debugger::trimPath($file)
-            );
+                'file'        => $file,
+                'line'        => $line,
+                'context'     => $context,
+                'start'       => 2,
+                'path'        => Debugger::trimPath($file)
+            ];
+
             return Debugger::getInstance()->outputError($data);
         }
         $message = static::_getErrorMessage($error, $code, $description, $file, $line);
+
         return CakeLog::write($log, $message);
     }
 
@@ -270,6 +274,7 @@ class ErrorHandler
 
         if (static::$_bailExceptionRendering) {
             static::$_bailExceptionRendering = false;
+
             throw $exception;
         }
 
@@ -295,6 +300,7 @@ class ErrorHandler
             case E_USER_ERROR:
                 $error = 'Fatal Error';
                 $log = LOG_ERR;
+
                 break;
             case E_WARNING:
             case E_USER_WARNING:
@@ -302,23 +308,28 @@ class ErrorHandler
             case E_RECOVERABLE_ERROR:
                 $error = 'Warning';
                 $log = LOG_WARNING;
+
                 break;
             case E_NOTICE:
             case E_USER_NOTICE:
                 $error = 'Notice';
                 $log = LOG_NOTICE;
+
                 break;
             case E_STRICT:
                 $error = 'Strict';
                 $log = LOG_NOTICE;
+
                 break;
             case E_DEPRECATED:
             case E_USER_DEPRECATED:
                 $error = 'Deprecated';
                 $log = LOG_NOTICE;
+
                 break;
         }
-        return array($error, $log);
+
+        return [$error, $log];
     }
 
     /**
@@ -346,9 +357,10 @@ class ErrorHandler
                     App::load('CakeText');
                 }
             }
-            $trace = Debugger::trace(array('start' => 1, 'format' => 'log'));
+            $trace = Debugger::trace(['start' => 1, 'format' => 'log']);
             $message .= "\nTrace:\n" . $trace . "\n";
         }
+
         return $message;
     }
 }

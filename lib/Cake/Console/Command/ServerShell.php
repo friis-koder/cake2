@@ -14,7 +14,6 @@
  * @since         CakePHP(tm) v 2.3.0
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('AppShell', 'Console/Command');
 
 /**
@@ -24,11 +23,11 @@ App::uses('AppShell', 'Console/Command');
  */
 class ServerShell extends AppShell
 {
-/**
- * Default ServerHost
- *
- * @var string
- */
+    /**
+     * Default ServerHost
+     *
+     * @var string
+     */
     public const DEFAULT_HOST = 'localhost';
 
     /**
@@ -129,6 +128,7 @@ class ServerShell extends AppShell
     {
         if (version_compare(PHP_VERSION, '5.4.0') < 0) {
             $this->out(__d('cake_console', '<warning>This command is available on %s or above</warning>', 'PHP5.4'));
+
             return;
         }
 
@@ -154,19 +154,19 @@ class ServerShell extends AppShell
     {
         $parser = parent::getOptionParser();
 
-        $parser->description(array(
+        $parser->description([
             __d('cake_console', 'PHP Built-in Server for CakePHP'),
             __d('cake_console', '<warning>[WARN] Don\'t use this at the production environment</warning>')
-        ))->addOption('host', array(
+        ])->addOption('host', [
             'short' => 'H',
-            'help' => __d('cake_console', 'ServerHost')
-        ))->addOption('port', array(
+            'help'  => __d('cake_console', 'ServerHost')
+        ])->addOption('port', [
             'short' => 'p',
-            'help' => __d('cake_console', 'ListenPort')
-        ))->addOption('document_root', array(
+            'help'  => __d('cake_console', 'ListenPort')
+        ])->addOption('document_root', [
             'short' => 'd',
-            'help' => __d('cake_console', 'DocumentRoot')
-        ));
+            'help'  => __d('cake_console', 'DocumentRoot')
+        ]);
 
         return $parser;
     }

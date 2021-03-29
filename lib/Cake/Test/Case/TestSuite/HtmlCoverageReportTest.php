@@ -17,7 +17,6 @@
  * @since         CakePHP(tm) v 2.0
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('HtmlCoverageReport', 'TestSuite/Coverage');
 App::uses('CakeBaseReporter', 'TestSuite/Reporter');
 
@@ -28,21 +27,21 @@ App::uses('CakeBaseReporter', 'TestSuite/Reporter');
  */
 class HtmlCoverageReportTest extends CakeTestCase
 {
-/**
- * setUp
- *
- * @return void
- */
+    /**
+     * setUp
+     *
+     * @return void
+     */
     public function setUp()
     {
         parent::setUp();
-        App::build(array(
-            'Plugin' => array(CAKE . 'Test' . DS . 'test_app' . DS . 'Plugin' . DS)
-        ), App::RESET);
-        CakePlugin::load(array('TestPlugin'));
+        App::build([
+            'Plugin' => [CAKE . 'Test' . DS . 'test_app' . DS . 'Plugin' . DS]
+        ], App::RESET);
+        CakePlugin::load(['TestPlugin']);
         $reporter = new CakeBaseReporter();
-        $reporter->params = array('app' => false, 'plugin' => false, 'group' => false);
-        $coverage = array();
+        $reporter->params = ['app' => false, 'plugin' => false, 'group' => false];
+        $coverage = [];
         $this->Coverage = new HtmlCoverageReport($coverage, $reporter);
     }
 
@@ -74,16 +73,16 @@ class HtmlCoverageReportTest extends CakeTestCase
      */
     public function testFilterCoverageDataByPathRemovingElements()
     {
-        $data = array(
-            CAKE . 'dispatcher.php' => array(
+        $data = [
+            CAKE . 'dispatcher.php' => [
                 10 => -1,
                 12 => 1
-            ),
-            APP . 'app_model.php' => array(
+            ],
+            APP . 'app_model.php' => [
                 50 => 1,
                 52 => -1
-            )
-        );
+            ]
+        ];
         $this->Coverage->setCoverage($data);
         $result = $this->Coverage->filterCoverageDataByPath(CAKE);
         $this->assertTrue(isset($result[CAKE . 'dispatcher.php']));
@@ -97,7 +96,7 @@ class HtmlCoverageReportTest extends CakeTestCase
      */
     public function testGenerateDiff()
     {
-        $file = array(
+        $file = [
             'line 1',
             'line 2',
             'line 3',
@@ -108,19 +107,19 @@ class HtmlCoverageReportTest extends CakeTestCase
             'line 8',
             'line 9',
             'line 10',
-        );
-        $coverage = array(
-            1 => array(array('id' => 'HtmlCoverageReportTest::testGenerateDiff')),
-            2 => -2,
-            3 => array(array('id' => 'HtmlCoverageReportTest::testGenerateDiff')),
-            4 => array(array('id' => 'HtmlCoverageReportTest::testGenerateDiff')),
-            5 => -1,
-            6 => array(array('id' => 'HtmlCoverageReportTest::testGenerateDiff')),
-            7 => array(array('id' => 'HtmlCoverageReportTest::testGenerateDiff')),
-            8 => array(array('id' => 'HtmlCoverageReportTest::testGenerateDiff')),
-            9 => -1,
-            10 => array(array('id' => 'HtmlCoverageReportTest::testGenerateDiff'))
-        );
+        ];
+        $coverage = [
+            1  => [['id' => 'HtmlCoverageReportTest::testGenerateDiff']],
+            2  => -2,
+            3  => [['id' => 'HtmlCoverageReportTest::testGenerateDiff']],
+            4  => [['id' => 'HtmlCoverageReportTest::testGenerateDiff']],
+            5  => -1,
+            6  => [['id' => 'HtmlCoverageReportTest::testGenerateDiff']],
+            7  => [['id' => 'HtmlCoverageReportTest::testGenerateDiff']],
+            8  => [['id' => 'HtmlCoverageReportTest::testGenerateDiff']],
+            9  => -1,
+            10 => [['id' => 'HtmlCoverageReportTest::testGenerateDiff']]
+        ];
         $result = $this->Coverage->generateDiff('myfile.php', $file, $coverage);
         $this->assertRegExp('/myfile\.php Code coverage\: \d+\.?\d*\%/', $result);
         $this->assertRegExp('/<div class="code-coverage-results" id\="coverage\-myfile\.php-' . md5('myfile.php') . '"/', $result);
@@ -128,7 +127,7 @@ class HtmlCoverageReportTest extends CakeTestCase
         foreach ($file as $i => $line) {
             $this->assertTrue(strpos($line, $result) !== 0, 'Content is missing ' . $i);
             $class = 'covered';
-            if (in_array($i + 1, array(5, 9, 2))) {
+            if (in_array($i + 1, [5, 9, 2])) {
                 $class = 'uncovered';
             }
             if ($i + 1 === 2) {
@@ -145,7 +144,7 @@ class HtmlCoverageReportTest extends CakeTestCase
      */
     public function testPhpunit36Compatibility()
     {
-        $file = array(
+        $file = [
             'line 1',
             'line 2',
             'line 3',
@@ -156,19 +155,19 @@ class HtmlCoverageReportTest extends CakeTestCase
             'line 8',
             'line 9',
             'line 10',
-        );
-        $coverage = array(
-            1 => array('HtmlCoverageReportTest::testGenerateDiff'),
-            2 => null,
-            3 => array('HtmlCoverageReportTest::testGenerateDiff'),
-            4 => array('HtmlCoverageReportTest::testGenerateDiff'),
-            5 => array(),
-            6 => array('HtmlCoverageReportTest::testGenerateDiff'),
-            7 => array('HtmlCoverageReportTest::testGenerateDiff'),
-            8 => array('HtmlCoverageReportTest::testGenerateDiff'),
-            9 => array(),
-            10 => array('HtmlCoverageReportTest::testSomething', 'HtmlCoverageReportTest::testGenerateDiff')
-        );
+        ];
+        $coverage = [
+            1  => ['HtmlCoverageReportTest::testGenerateDiff'],
+            2  => null,
+            3  => ['HtmlCoverageReportTest::testGenerateDiff'],
+            4  => ['HtmlCoverageReportTest::testGenerateDiff'],
+            5  => [],
+            6  => ['HtmlCoverageReportTest::testGenerateDiff'],
+            7  => ['HtmlCoverageReportTest::testGenerateDiff'],
+            8  => ['HtmlCoverageReportTest::testGenerateDiff'],
+            9  => [],
+            10 => ['HtmlCoverageReportTest::testSomething', 'HtmlCoverageReportTest::testGenerateDiff']
+        ];
 
         $result = $this->Coverage->generateDiff('myfile.php', $file, $coverage);
         $this->assertRegExp('/myfile\.php Code coverage\: \d+\.?\d*\%/', $result);
@@ -177,7 +176,7 @@ class HtmlCoverageReportTest extends CakeTestCase
         foreach ($file as $i => $line) {
             $this->assertTrue(strpos($line, $result) !== 0, 'Content is missing ' . $i);
             $class = 'covered';
-            if (in_array($i + 1, array(5, 9, 2))) {
+            if (in_array($i + 1, [5, 9, 2])) {
                 $class = 'uncovered';
             }
             if ($i + 1 === 2) {
@@ -194,21 +193,21 @@ class HtmlCoverageReportTest extends CakeTestCase
      */
     public function testCoveredLinesTitleAttributes()
     {
-        $file = array(
+        $file = [
             'line 1',
             'line 2',
             'line 3',
             'line 4',
             'line 5',
-        );
+        ];
 
-        $coverage = array(
-            1 => array(array('id' => 'HtmlCoverageReportTest::testAwesomeness')),
+        $coverage = [
+            1 => [['id' => 'HtmlCoverageReportTest::testAwesomeness']],
             2 => -2,
-            3 => array(array('id' => 'HtmlCoverageReportTest::testCakeIsSuperior')),
-            4 => array(array('id' => 'HtmlCoverageReportTest::testOther')),
+            3 => [['id' => 'HtmlCoverageReportTest::testCakeIsSuperior']],
+            4 => [['id' => 'HtmlCoverageReportTest::testOther']],
             5 => -1
-        );
+        ];
 
         $result = $this->Coverage->generateDiff('myfile.php', $file, $coverage);
 

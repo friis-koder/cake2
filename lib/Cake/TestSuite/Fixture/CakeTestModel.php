@@ -13,7 +13,6 @@
  * @since         CakePHP(tm) v 1.2.0.4667
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('Model', 'Model');
 
 /**
@@ -39,7 +38,7 @@ class CakeTestModel extends Model
     public function __construct($id = false, $table = null, $ds = null)
     {
         parent::__construct($id, $table, $ds);
-        $this->order = array($this->alias . '.' . $this->primaryKey => 'ASC');
+        $this->order = [$this->alias . '.' . $this->primaryKey => 'ASC'];
     }
 
     /**
@@ -50,10 +49,11 @@ class CakeTestModel extends Model
      * @param array $fieldList Whitelist of fields
      * @return mixed
      */
-    public function save($data = null, $validate = true, $fieldList = array())
+    public function save($data = null, $validate = true, $fieldList = [])
     {
         $db = $this->getDataSource();
         $db->columns['datetime']['formatter'] = 'CakeTestSuiteDispatcher::date';
+
         return parent::save($data, $validate, $fieldList);
     }
 }

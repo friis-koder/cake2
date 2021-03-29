@@ -30,11 +30,11 @@
  */
 class FileEngine extends CacheEngine
 {
-/**
- * Instance of SplFileObject class
- *
- * @var File
- */
+    /**
+     * Instance of SplFileObject class
+     *
+     * @var File
+     */
     protected $_File = null;
 
     /**
@@ -48,7 +48,7 @@ class FileEngine extends CacheEngine
      * @var array
      * @see CacheEngine::__defaults
      */
-    public $settings = array();
+    public $settings = [];
 
     /**
      * True unless FileEngine::__active(); fails
@@ -66,17 +66,17 @@ class FileEngine extends CacheEngine
      * @param array $settings array of setting for the engine
      * @return bool True if the engine has been successfully initialized, false if not
      */
-    public function init($settings = array())
+    public function init($settings = [])
     {
-        $settings += array(
-            'engine' => 'File',
-            'path' => CACHE,
-            'prefix' => 'cake_',
-            'lock' => true,
+        $settings += [
+            'engine'    => 'File',
+            'path'      => CACHE,
+            'prefix'    => 'cake_',
+            'lock'      => true,
             'serialize' => true,
             'isWindows' => false,
-            'mask' => 0664
-        );
+            'mask'      => 0664
+        ];
         parent::init($settings);
 
         if (DS === '\\') {
@@ -88,6 +88,7 @@ class FileEngine extends CacheEngine
         if (!empty($this->_groupPrefix)) {
             $this->_groupPrefix = str_replace('_', DS, $this->_groupPrefix);
         }
+
         return $this->_active();
     }
 
@@ -135,7 +136,7 @@ class FileEngine extends CacheEngine
         }
 
         $expires = time() + $duration;
-        $contents = implode(array($expires, $lineBreak, $data, $lineBreak));
+        $contents = implode([$expires, $lineBreak, $data, $lineBreak]);
 
         if ($this->settings['lock']) {
             $this->_File->flock(LOCK_EX);
@@ -175,6 +176,7 @@ class FileEngine extends CacheEngine
             if ($this->settings['lock']) {
                 $this->_File->flock(LOCK_UN);
             }
+
             return false;
         }
 
@@ -197,6 +199,7 @@ class FileEngine extends CacheEngine
             }
             $data = unserialize((string)$data);
         }
+
         return $data;
     }
 
@@ -242,7 +245,7 @@ class FileEngine extends CacheEngine
 
         $directory = new RecursiveDirectoryIterator($this->settings['path']);
         $contents = new RecursiveIteratorIterator($directory, RecursiveIteratorIterator::SELF_FIRST);
-        $cleared = array();
+        $cleared = [];
         foreach ($contents as $path) {
             if ($path->isFile()) {
                 continue;
@@ -254,6 +257,7 @@ class FileEngine extends CacheEngine
                 $cleared[] = $path;
             }
         }
+
         return true;
     }
 
@@ -368,10 +372,12 @@ class FileEngine extends CacheEngine
             $this->_File->valid() === false
         ) {
             $exists = file_exists($path->getPathname());
+
             try {
                 $this->_File = $path->openFile('c+');
             } catch (Exception $e) {
                 trigger_error($e->getMessage(), E_USER_WARNING);
+
                 return false;
             }
             unset($path);
@@ -380,10 +386,11 @@ class FileEngine extends CacheEngine
                 trigger_error(__d(
                     'cake_dev',
                     'Could not apply permission mask "%s" on cache file "%s"',
-                    array($this->_File->getPathname(), $this->settings['mask'])
+                    [$this->_File->getPathname(), $this->settings['mask']]
                 ), E_USER_WARNING);
             }
         }
+
         return true;
     }
 
@@ -404,8 +411,10 @@ class FileEngine extends CacheEngine
         if ($this->_init && !($dir->isDir() && $dir->isWritable())) {
             $this->_init = false;
             trigger_error(__d('cake_dev', '%s is not writable', $this->settings['path']), E_USER_WARNING);
+
             return false;
         }
+
         return true;
     }
 
@@ -421,7 +430,8 @@ class FileEngine extends CacheEngine
             return false;
         }
 
-        $key = Inflector::underscore(str_replace(array(DS, '/', '.', '<', '>', '?', ':', '|', '*', '"'), '_', strval($key)));
+        $key = Inflector::underscore(str_replace([DS, '/', '.', '<', '>', '?', ':', '|', '*', '"'], '_', strval($key)));
+
         return $key;
     }
 
@@ -450,6 +460,7 @@ class FileEngine extends CacheEngine
                 //@codingStandardsIgnoreEnd
             }
         }
+
         return true;
     }
 
@@ -468,6 +479,7 @@ class FileEngine extends CacheEngine
         if ($cachedValue === false) {
             return $this->write($key, $value, $duration);
         }
+
         return false;
     }
 }

@@ -15,7 +15,6 @@
  * @since         CakePHP(tm) v 1.2.0.5714
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('View', 'View');
 App::uses('CakeRequest', 'Network');
 
@@ -57,13 +56,13 @@ App::uses('CakeRequest', 'Network');
  */
 class MediaView extends View
 {
-/**
- * Display or download the given file
- *
- * @param string $view Not used
- * @param string $layout Not used
- * @return void
- */
+    /**
+     * Display or download the given file
+     *
+     * @param string $view Not used
+     * @param string $layout Not used
+     * @return void
+     */
     public function render($view = null, $layout = null)
     {
         $name = $extension = $download = $id = $modified = $path = $cache = $mimeType = $compress = null;

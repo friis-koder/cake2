@@ -26,11 +26,11 @@
  */
 class DataSource extends CakeObject
 {
-/**
- * Are we connected to the DataSource?
- *
- * @var bool
- */
+    /**
+     * Are we connected to the DataSource?
+     *
+     * @var bool
+     */
     public $connected = false;
 
     /**
@@ -38,14 +38,14 @@ class DataSource extends CakeObject
      *
      * @var array
      */
-    protected $_baseConfig = array();
+    protected $_baseConfig = [];
 
     /**
      * Holds references to descriptions loaded by the DataSource
      *
      * @var array
      */
-    protected $_descriptions = array();
+    protected $_descriptions = [];
 
     /**
      * Holds a list of sources (tables) contained in the DataSource
@@ -59,7 +59,7 @@ class DataSource extends CakeObject
      *
      * @var array
      */
-    public $config = array();
+    public $config = [];
 
     /**
      * Whether or not this DataSource is in the middle of a transaction
@@ -81,7 +81,7 @@ class DataSource extends CakeObject
      *
      * @param array $config Array of configuration information for the datasource.
      */
-    public function __construct($config = array())
+    public function __construct($config = [])
     {
         parent::__construct();
         $this->setConfig($config);
@@ -138,9 +138,11 @@ class DataSource extends CakeObject
         $cache = $this->_cacheDescription($table);
 
         if ($cache !== null) {
-            $this->_descriptions[$table] =& $cache;
+            $this->_descriptions[$table] = & $cache;
+
             return $cache;
         }
+
         return null;
     }
 
@@ -210,7 +212,7 @@ class DataSource extends CakeObject
      * @param int $recursive Number of levels of association
      * @return mixed
      */
-    public function read(Model $Model, $queryData = array(), $recursive = null)
+    public function read(Model $Model, $queryData = [], $recursive = null)
     {
         return false;
     }
@@ -297,7 +299,7 @@ class DataSource extends CakeObject
      * @param array $config The configuration array
      * @return void
      */
-    public function setConfig($config = array())
+    public function setConfig($config = [])
     {
         $this->config = array_merge($this->_baseConfig, $this->config, $config);
     }
@@ -316,7 +318,7 @@ class DataSource extends CakeObject
         }
 
         if ($data !== null) {
-            $this->_descriptions[$object] =& $data;
+            $this->_descriptions[$object] = & $data;
         }
 
         $key = ConnectionManager::getSourceName($this) . '_' . $object;
@@ -342,7 +344,7 @@ class DataSource extends CakeObject
      */
     public function insertQueryData($query, $data, $association, Model $Model, $stack)
     {
-        $keys = array('{$__cakeID__$}', '{$__cakeForeignKey__$}');
+        $keys = ['{$__cakeID__$}', '{$__cakeForeignKey__$}'];
 
         $modelAlias = $Model->alias;
 
@@ -389,6 +391,7 @@ class DataSource extends CakeObject
                         if (is_string($assocData) && isset($data[$assocData]) && isset($data[$assocData][$insertKey])) {
                             $val = $data[$assocData][$insertKey];
                             $found = true;
+
                             break;
                         }
                     }

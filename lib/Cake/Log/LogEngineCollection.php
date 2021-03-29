@@ -15,7 +15,6 @@
  * @since         CakePHP(tm) v 2.2
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('ObjectCollection', 'Utility');
 
 /**
@@ -25,15 +24,15 @@ App::uses('ObjectCollection', 'Utility');
  */
 class LogEngineCollection extends ObjectCollection
 {
-/**
- * Loads/constructs a Log engine.
- *
- * @param string $name instance identifier
- * @param array $options Setting for the Log Engine
- * @return BaseLog BaseLog engine instance
- * @throws CakeLogException when logger class does not implement a write method
- */
-    public function load($name, $options = array())
+    /**
+     * Loads/constructs a Log engine.
+     *
+     * @param string $name instance identifier
+     * @param array $options Setting for the Log Engine
+     * @return BaseLog BaseLog engine instance
+     * @throws CakeLogException when logger class does not implement a write method
+     */
+    public function load($name, $options = [])
     {
         $enable = isset($options['enabled']) ? $options['enabled'] : true;
         $loggerName = $options['engine'];
@@ -49,6 +48,7 @@ class LogEngineCollection extends ObjectCollection
         if ($enable) {
             $this->enable($name);
         }
+
         return $logger;
     }
 
@@ -70,6 +70,7 @@ class LogEngineCollection extends ObjectCollection
         if (!class_exists($loggerName)) {
             throw new CakeLogException(__d('cake_dev', 'Could not load class %s', $loggerName));
         }
+
         return $loggerName;
     }
 }

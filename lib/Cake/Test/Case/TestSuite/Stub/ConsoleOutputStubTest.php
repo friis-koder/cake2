@@ -19,11 +19,11 @@ App::uses("ConsoleOutputStub", "TestSuite/Stub");
  */
 class ConsoleOutputStubTest extends CakeTestCase
 {
-/**
- * setUp method
- *
- * @return void
- */
+    /**
+     * setUp method
+     *
+     * @return void
+     */
     public function setUp()
     {
         parent::setUp();
@@ -48,8 +48,8 @@ class ConsoleOutputStubTest extends CakeTestCase
      */
     public function testWrite()
     {
-        $this->stub->write(array("foo", "bar", "baz"));
-        $this->assertEquals(array("foo", "bar", "baz"), $this->stub->messages());
+        $this->stub->write(["foo", "bar", "baz"]);
+        $this->assertEquals(["foo", "bar", "baz"], $this->stub->messages());
     }
 
     /**
@@ -59,8 +59,8 @@ class ConsoleOutputStubTest extends CakeTestCase
      */
     public function testOverwrite()
     {
-        $this->stub->write(array("foo", "bar", "baz"));
+        $this->stub->write(["foo", "bar", "baz"]);
         $this->stub->overwrite("bat");
-        $this->assertEquals(array("foo", "bar", "baz", "", "bat"), $this->stub->messages());
+        $this->assertEquals(["foo", "bar", "baz", "", "bat"], $this->stub->messages());
     }
 }

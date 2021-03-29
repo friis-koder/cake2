@@ -17,7 +17,6 @@
  * @since         CakePHP v 1.3.0
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('ShellDispatcher', 'Console');
 App::uses('ConsoleOutput', 'Console');
 App::uses('ConsoleInput', 'Console');
@@ -33,21 +32,21 @@ App::uses('File', 'Utility');
  */
 class ProjectTaskTest extends CakeTestCase
 {
-/**
- * setUp method
- *
- * @return void
- */
+    /**
+     * setUp method
+     *
+     * @return void
+     */
     public function setUp()
     {
         parent::setUp();
-        $out = $this->getMock('ConsoleOutput', array(), array(), '', false);
-        $in = $this->getMock('ConsoleInput', array(), array(), '', false);
+        $out = $this->getMock('ConsoleOutput', [], [], '', false);
+        $in = $this->getMock('ConsoleInput', [], [], '', false);
 
         $this->Task = $this->getMock(
             'ProjectTask',
-            array('in', 'err', 'createFile', '_stop'),
-            array($out, $out, $in)
+            ['in', 'err', 'createFile', '_stop'],
+            [$out, $out, $in]
         );
         $this->Task->path = TMP . 'tests' . DS;
     }
@@ -89,7 +88,7 @@ class ProjectTaskTest extends CakeTestCase
         $path = $this->Task->path . 'bake_test_app';
 
         $this->assertTrue(is_dir($path), 'No project dir %s');
-        $dirs = array(
+        $dirs = [
             'Config',
             'Config' . DS . 'Schema',
             'Console',
@@ -127,7 +126,7 @@ class ProjectTaskTest extends CakeTestCase
             'webroot' . DS . 'img',
             'webroot' . DS . 'js',
 
-        );
+        ];
         foreach ($dirs as $dir) {
             $this->assertTrue(is_dir($path . DS . $dir), 'Missing ' . $dir);
         }
@@ -193,28 +192,28 @@ class ProjectTaskTest extends CakeTestCase
         $this->_setupTestProject();
         $path = $this->Task->path . 'bake_test_app';
 
-        $empty = array(
-            'Console' . DS . 'Command' . DS . 'Task' => 'empty',
-            'Controller' . DS . 'Component' => 'empty',
-            'Lib' => 'empty',
-            'Model' . DS . 'Behavior' => 'empty',
-            'Model' . DS . 'Datasource' => 'empty',
-            'Plugin' => 'empty',
-            'Test' . DS . 'Case' . DS . 'Model' . DS . 'Behavior' => 'empty',
+        $empty = [
+            'Console' . DS . 'Command' . DS . 'Task'                    => 'empty',
+            'Controller' . DS . 'Component'                             => 'empty',
+            'Lib'                                                       => 'empty',
+            'Model' . DS . 'Behavior'                                   => 'empty',
+            'Model' . DS . 'Datasource'                                 => 'empty',
+            'Plugin'                                                    => 'empty',
+            'Test' . DS . 'Case' . DS . 'Model' . DS . 'Behavior'       => 'empty',
             'Test' . DS . 'Case' . DS . 'Controller' . DS . 'Component' => 'empty',
-            'Test' . DS . 'Case' . DS . 'View' . DS . 'Helper' => 'empty',
-            'Test' . DS . 'Fixture' => 'empty',
-            'Vendor' => 'empty',
-            'View' . DS . 'Scaffolds' => 'empty',
-            'tmp' . DS . 'cache' . DS . 'models' => 'empty',
-            'tmp' . DS . 'cache' . DS . 'persistent' => 'empty',
-            'tmp' . DS . 'cache' . DS . 'views' => 'empty',
-            'tmp' . DS . 'logs' => 'empty',
-            'tmp' . DS . 'sessions' => 'empty',
-            'tmp' . DS . 'tests' => 'empty',
-            'webroot' . DS . 'js' => 'empty',
-            'webroot' . DS . 'files' => 'empty'
-        );
+            'Test' . DS . 'Case' . DS . 'View' . DS . 'Helper'          => 'empty',
+            'Test' . DS . 'Fixture'                                     => 'empty',
+            'Vendor'                                                    => 'empty',
+            'View' . DS . 'Scaffolds'                                   => 'empty',
+            'tmp' . DS . 'cache' . DS . 'models'                        => 'empty',
+            'tmp' . DS . 'cache' . DS . 'persistent'                    => 'empty',
+            'tmp' . DS . 'cache' . DS . 'views'                         => 'empty',
+            'tmp' . DS . 'logs'                                         => 'empty',
+            'tmp' . DS . 'sessions'                                     => 'empty',
+            'tmp' . DS . 'tests'                                        => 'empty',
+            'webroot' . DS . 'js'                                       => 'empty',
+            'webroot' . DS . 'files'                                    => 'empty'
+        ];
 
         foreach ($empty as $dir => $file) {
             $this->assertTrue(is_file($path . DS . $dir . DS . $file), sprintf('Missing %s file in %s', $file, $dir));
@@ -303,7 +302,7 @@ class ProjectTaskTest extends CakeTestCase
      */
     public function testGetPrefix()
     {
-        Configure::write('Routing.prefixes', array('admin'));
+        Configure::write('Routing.prefixes', ['admin']);
         $result = $this->Task->getPrefix();
         $this->assertEquals('admin_', $result);
 
@@ -336,7 +335,7 @@ class ProjectTaskTest extends CakeTestCase
         $result = $this->Task->cakeAdmin('my_prefix');
         $this->assertTrue($result);
 
-        $this->assertEquals(Configure::read('Routing.prefixes'), array('my_prefix'));
+        $this->assertEquals(Configure::read('Routing.prefixes'), ['my_prefix']);
         $File->delete();
     }
 
@@ -347,7 +346,7 @@ class ProjectTaskTest extends CakeTestCase
      */
     public function testGetPrefixWithMultiplePrefixes()
     {
-        Configure::write('Routing.prefixes', array('admin', 'ninja', 'shinobi'));
+        Configure::write('Routing.prefixes', ['admin', 'ninja', 'shinobi']);
         $this->_setupTestProject();
         $this->Task->configPath = $this->Task->path . 'bake_test_app' . DS . 'Config' . DS;
         $this->Task->expects($this->once())->method('in')->will($this->returnValue(2));

@@ -52,6 +52,7 @@ if (!function_exists('config')) {
                 $included++;
             }
         }
+
         return $included === $count;
     }
 }
@@ -81,8 +82,8 @@ if (!function_exists('debug')) {
         $line = '';
         $lineInfo = '';
         if ($showFrom) {
-            $trace = Debugger::trace(array('start' => 1, 'depth' => 2, 'format' => 'array'));
-            $file = str_replace(array(CAKE_CORE_INCLUDE_PATH, ROOT), '', $trace[0]['file']);
+            $trace = Debugger::trace(['start' => 1, 'depth' => 2, 'format' => 'array']);
+            $file = str_replace([CAKE_CORE_INCLUDE_PATH, ROOT], '', $trace[0]['file']);
             $line = $trace[0]['line'];
         }
         $html = <<<HTML
@@ -138,14 +139,14 @@ if (!function_exists('stackTrace')) {
  * @return void Outputs formatted stack trace.
  * @see Debugger::trace()
  */
-    function stackTrace(array $options = array())
+    function stackTrace(array $options = [])
     {
         if (!Configure::read('debug')) {
             return;
         }
         App::uses('Debugger', 'Utility');
 
-        $options += array('start' => 0);
+        $options += ['start' => 0];
         $options['start']++;
         echo Debugger::trace($options);
     }
@@ -168,7 +169,7 @@ if (!function_exists('sortByKey')) {
         if (!is_array($array)) {
             return null;
         }
-        $sa = array();
+        $sa = [];
         foreach ($array as $key => $val) {
             $sa[$key] = $val[$sortBy];
         }
@@ -177,10 +178,11 @@ if (!function_exists('sortByKey')) {
         } else {
             arsort($sa, $type);
         }
-        $out = array();
+        $out = [];
         foreach ($sa as $key => $val) {
             $out[] = $array[$key];
         }
+
         return $out;
     }
 }
@@ -203,10 +205,11 @@ if (!function_exists('h')) {
         if (is_string($text)) {
             //optimize for strings
         } elseif (is_array($text)) {
-            $texts = array();
+            $texts = [];
             foreach ($text as $k => $t) {
                 $texts[$k] = h($t, $double, $charset);
             }
+
             return $texts;
         } elseif (is_object($text)) {
             if (method_exists($text, '__toString')) {
@@ -229,6 +232,7 @@ if (!function_exists('h')) {
             $charset = $double;
             $double = true;
         }
+
         return htmlspecialchars($text, ENT_QUOTES, ($charset) ? $charset : $defaultCharset, $double);
     }
 }
@@ -254,9 +258,11 @@ if (!function_exists('pluginSplit')) {
             if ($dotAppend) {
                 $parts[0] .= '.';
             }
+
             return $parts;
         }
-        return array($plugin, $name);
+
+        return [$plugin, $name];
     }
 }
 
@@ -294,14 +300,15 @@ if (!function_exists('am')) {
  */
     function am()
     {
-        $r = array();
+        $r = [];
         $args = func_get_args();
         foreach ($args as $a) {
             if (!is_array($a)) {
-                $a = array($a);
+                $a = [$a];
             }
             $r = array_merge($r, $a);
         }
+
         return $r;
     }
 }
@@ -325,6 +332,7 @@ if (!function_exists('env')) {
             if (isset($_SERVER['HTTPS'])) {
                 return (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off');
             }
+
             return (strpos(env('SCRIPT_URI'), 'https://') === 0);
         }
 
@@ -362,6 +370,7 @@ if (!function_exists('env')) {
                 if (!strpos($name, '.php')) {
                     $offset = 4;
                 }
+
                 return substr($filename, 0, -(strlen($name) + $offset));
             case 'PHP_SELF':
                 return str_replace(env('DOCUMENT_ROOT'), '', env('SCRIPT_FILENAME'));
@@ -377,7 +386,7 @@ if (!function_exists('env')) {
                 } elseif ($count === 2) {
                     return '.' . $host;
                 } elseif ($count === 3) {
-                    $gTLD = array(
+                    $gTLD = [
                         'aero',
                         'asia',
                         'biz',
@@ -399,14 +408,16 @@ if (!function_exists('env')) {
                         'tel',
                         'travel',
                         'xxx'
-                    );
+                    ];
                     if (in_array($parts[1], $gTLD)) {
                         return '.' . $host;
                     }
                 }
                 array_shift($parts);
+
                 return '.' . implode('.', $parts);
         }
+
         return $default;
     }
 }
@@ -437,12 +448,15 @@ if (!function_exists('cache')) {
         switch (strtolower($target)) {
             case 'cache':
                 $filename = CACHE . $path;
+
                 break;
             case 'public':
                 $filename = WWW_ROOT . $path;
+
                 break;
             case 'tmp':
                 $filename = TMP . $path;
+
                 break;
         }
         $timediff = $expires - $now;
@@ -480,6 +494,7 @@ if (!function_exists('cache')) {
                 //@codingStandardsIgnoreEnd
             }
         }
+
         return $data;
     }
 }
@@ -521,13 +536,14 @@ if (!function_exists('clearCache')) {
                         //@codingStandardsIgnoreEnd
                     }
                 }
+
                 return true;
             }
-            $cache = array(
+            $cache = [
                 CACHE . $type . DS . '*' . $params . $ext,
                 CACHE . $type . DS . '*' . $params . '_*' . $ext
-            );
-            $files = array();
+            ];
+            $files = [];
             while ($search = array_shift($cache)) {
                 $results = glob($search);
                 if ($results !== false) {
@@ -544,13 +560,16 @@ if (!function_exists('clearCache')) {
                     //@codingStandardsIgnoreEnd
                 }
             }
+
             return true;
         } elseif (is_array($params)) {
             foreach ($params as $file) {
                 clearCache($file, $type, $ext);
             }
+
             return true;
         }
+
         return false;
     }
 }
@@ -573,6 +592,7 @@ if (!function_exists('stripslashes_deep')) {
         } else {
             $values = stripslashes($values);
         }
+
         return $values;
     }
 }
@@ -596,6 +616,7 @@ if (!function_exists('__')) {
         App::uses('I18n', 'I18n');
         $translated = I18n::translate($singular);
         $arguments = func_get_args();
+
         return I18n::insertArgs($translated, array_slice($arguments, 1));
     }
 }
@@ -622,6 +643,7 @@ if (!function_exists('__n')) {
         App::uses('I18n', 'I18n');
         $translated = I18n::translate($singular, $plural, null, I18n::LC_MESSAGES, $count);
         $arguments = func_get_args();
+
         return I18n::insertArgs($translated, array_slice($arguments, 3));
     }
 }
@@ -645,6 +667,7 @@ if (!function_exists('__d')) {
         App::uses('I18n', 'I18n');
         $translated = I18n::translate($msg, null, $domain);
         $arguments = func_get_args();
+
         return I18n::insertArgs($translated, array_slice($arguments, 2));
     }
 }
@@ -672,6 +695,7 @@ if (!function_exists('__dn')) {
         App::uses('I18n', 'I18n');
         $translated = I18n::translate($singular, $plural, $domain, I18n::LC_MESSAGES, $count);
         $arguments = func_get_args();
+
         return I18n::insertArgs($translated, array_slice($arguments, 4));
     }
 }
@@ -710,6 +734,7 @@ if (!function_exists('__dc')) {
         App::uses('I18n', 'I18n');
         $translated = I18n::translate($msg, null, $domain, $category);
         $arguments = func_get_args();
+
         return I18n::insertArgs($translated, array_slice($arguments, 3));
     }
 }
@@ -752,6 +777,7 @@ if (!function_exists('__dcn')) {
         App::uses('I18n', 'I18n');
         $translated = I18n::translate($singular, $plural, $domain, $category, $count);
         $arguments = func_get_args();
+
         return I18n::insertArgs($translated, array_slice($arguments, 5));
     }
 }
@@ -786,6 +812,7 @@ if (!function_exists('__c')) {
         App::uses('I18n', 'I18n');
         $translated = I18n::translate($msg, null, null, $category);
         $arguments = func_get_args();
+
         return I18n::insertArgs($translated, array_slice($arguments, 2));
     }
 }
@@ -810,6 +837,7 @@ if (!function_exists('__x')) {
         App::uses('I18n', 'I18n');
         $translated = I18n::translate($singular, null, null, null, null, null, $context);
         $arguments = func_get_args();
+
         return I18n::insertArgs($translated, array_slice($arguments, 2));
     }
 }
@@ -837,6 +865,7 @@ if (!function_exists('__xn')) {
         App::uses('I18n', 'I18n');
         $translated = I18n::translate($singular, $plural, null, I18n::LC_MESSAGES, $count, null, $context);
         $arguments = func_get_args();
+
         return I18n::insertArgs($translated, array_slice($arguments, 4));
     }
 }
@@ -861,6 +890,7 @@ if (!function_exists('__dx')) {
         App::uses('I18n', 'I18n');
         $translated = I18n::translate($msg, null, $domain, null, null, null, $context);
         $arguments = func_get_args();
+
         return I18n::insertArgs($translated, array_slice($arguments, 3));
     }
 }
@@ -889,6 +919,7 @@ if (!function_exists('__dxn')) {
         App::uses('I18n', 'I18n');
         $translated = I18n::translate($singular, $plural, $domain, I18n::LC_MESSAGES, $count, null, $context);
         $arguments = func_get_args();
+
         return I18n::insertArgs($translated, array_slice($arguments, 5));
     }
 }
@@ -928,6 +959,7 @@ if (!function_exists('__dxc')) {
         App::uses('I18n', 'I18n');
         $translated = I18n::translate($msg, null, $domain, $category, null, null, $context);
         $arguments = func_get_args();
+
         return I18n::insertArgs($translated, array_slice($arguments, 4));
     }
 }
@@ -971,6 +1003,7 @@ if (!function_exists('__dxcn')) {
         App::uses('I18n', 'I18n');
         $translated = I18n::translate($singular, $plural, $domain, $category, $count, null, $context);
         $arguments = func_get_args();
+
         return I18n::insertArgs($translated, array_slice($arguments, 6));
     }
 }
@@ -1006,6 +1039,7 @@ if (!function_exists('__xc')) {
         App::uses('I18n', 'I18n');
         $translated = I18n::translate($msg, null, null, $category, null, null, $context);
         $arguments = func_get_args();
+
         return I18n::insertArgs($translated, array_slice($arguments, 3));
     }
 }
@@ -1022,7 +1056,7 @@ if (!function_exists('LogError')) {
     function LogError($message)
     {
         App::uses('CakeLog', 'Log');
-        $bad = array("\n", "\r", "\t");
+        $bad = ["\n", "\r", "\t"];
         $good = ' ';
         CakeLog::write('error', str_replace($bad, $good, $message));
     }
@@ -1048,6 +1082,7 @@ if (!function_exists('fileExistsInPath')) {
                 return $file;
             }
         }
+
         return false;
     }
 }
@@ -1066,6 +1101,7 @@ if (!function_exists('convertSlash')) {
         $string = trim($string, '/');
         $string = preg_replace('/\/\//', '/', $string);
         $string = str_replace('/', '_', $string);
+
         return $string;
     }
 }
@@ -1079,15 +1115,16 @@ if (!function_exists('json_last_error_msg')) {
  */
     function json_last_error_msg()
     {
-        static $errors = array(
-            JSON_ERROR_NONE => '',
-            JSON_ERROR_DEPTH => 'Maximum stack depth exceeded',
+        static $errors = [
+            JSON_ERROR_NONE           => '',
+            JSON_ERROR_DEPTH          => 'Maximum stack depth exceeded',
             JSON_ERROR_STATE_MISMATCH => 'Invalid or malformed JSON',
-            JSON_ERROR_CTRL_CHAR => 'Control character error, possibly incorrectly encoded',
-            JSON_ERROR_SYNTAX => 'Syntax error',
-            JSON_ERROR_UTF8 => 'Malformed UTF-8 characters, possibly incorrectly encoded'
-        );
+            JSON_ERROR_CTRL_CHAR      => 'Control character error, possibly incorrectly encoded',
+            JSON_ERROR_SYNTAX         => 'Syntax error',
+            JSON_ERROR_UTF8           => 'Malformed UTF-8 characters, possibly incorrectly encoded'
+        ];
         $error = json_last_error();
+
         return array_key_exists($error, $errors) ? $errors[$error] : "Unknown error ({$error})";
     }
 }
@@ -1096,8 +1133,9 @@ if (!function_exists('each')) {
     function each(&$arr)
     {
         $key = key($arr);
-        $result = ($key === null) ? false : array($key, current($arr), 'key' => $key, 'value' => current($arr));
+        $result = ($key === null) ? false : [$key, current($arr), 'key' => $key, 'value' => current($arr)];
         next($arr);
+
         return $result;
     }
 }

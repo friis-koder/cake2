@@ -11,7 +11,6 @@
  * @link          https://cakephp.org CakePHP(tm) Project
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('View', 'View');
 
 /**
@@ -52,12 +51,12 @@ App::uses('View', 'View');
  */
 class JsonView extends View
 {
-/**
- * JSON views are always located in the 'json' sub directory for
- * controllers' views.
- *
- * @var string
- */
+    /**
+     * JSON views are always located in the 'json' sub directory for
+     * controllers' views.
+     *
+     * @var string
+     */
     public $subDir = 'json';
 
     /**
@@ -139,7 +138,7 @@ class JsonView extends View
     protected function _serialize($serialize)
     {
         if (is_array($serialize)) {
-            $data = array();
+            $data = [];
             foreach ($serialize as $alias => $key) {
                 if (is_numeric($alias)) {
                     $alias = $key;
@@ -173,6 +172,7 @@ class JsonView extends View
         if ($json === false) {
             throw new CakeException('Failed to parse JSON');
         }
+
         return $json;
     }
 }

@@ -14,7 +14,6 @@
  * @since         CakePHP(tm) v 1.2.0.4433
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('CakeBaseReporter', 'TestSuite/Reporter');
 
 /**
@@ -25,11 +24,11 @@ App::uses('CakeBaseReporter', 'TestSuite/Reporter');
  */
 class CakeHtmlReporter extends CakeBaseReporter
 {
-/**
- * The content buffer
- *
- * @var string
- */
+    /**
+     * The content buffer
+     *
+     * @var string
+     */
     protected $_buffer = '';
 
     /**
@@ -204,7 +203,7 @@ class CakeHtmlReporter extends CakeBaseReporter
      */
     protected function _paintLinks()
     {
-        $show = $query = array();
+        $show = $query = [];
         if (!empty($this->params['case'])) {
             $show['show'] = 'cases';
         }
@@ -235,11 +234,12 @@ class CakeHtmlReporter extends CakeBaseReporter
     protected function _queryString($url)
     {
         $out = '?';
-        $params = array();
+        $params = [];
         foreach ($url as $key => $value) {
             $params[] = "$key=$value";
         }
         $out .= implode('&amp;', $params);
+
         return $out;
     }
 
@@ -403,7 +403,7 @@ class CakeHtmlReporter extends CakeBaseReporter
     protected function _getStackTrace(Exception $e)
     {
         $trace = $e->getTrace();
-        $out = array();
+        $out = [];
         foreach ($trace as $frame) {
             if (isset($frame['file']) && isset($frame['line'])) {
                 $out[] = $frame['file'] . ' : ' . $frame['line'];
@@ -413,6 +413,7 @@ class CakeHtmlReporter extends CakeBaseReporter
                 $out[] = '[internal]';
             }
         }
+
         return implode('<br />', $out);
     }
 
@@ -437,7 +438,7 @@ class CakeHtmlReporter extends CakeBaseReporter
      */
     protected function _getQueryLink()
     {
-        $show = $query = array();
+        $show = $query = [];
         if (!empty($this->params['case'])) {
             $show['show'] = 'cases';
         }
@@ -456,6 +457,7 @@ class CakeHtmlReporter extends CakeBaseReporter
         }
         $show = $this->_queryString($show);
         $query = $this->_queryString($query);
-        return array($show, $query);
+
+        return [$show, $query];
     }
 }

@@ -44,23 +44,23 @@ App::uses('CakeTestSuiteCommand', 'TestSuite');
  */
 class CakeTestSuiteDispatcher
 {
-/**
- * 'Request' parameters
- *
- * @var array
- */
-    public $params = array(
+    /**
+     * 'Request' parameters
+     *
+     * @var array
+     */
+    public $params = [
         'codeCoverage' => false,
-        'case' => null,
-        'core' => false,
-        'app' => false,
-        'plugin' => null,
-        'output' => 'html',
-        'show' => 'groups',
-        'show_passes' => false,
-        'filter' => false,
-        'fixture' => null
-    );
+        'case'         => null,
+        'core'         => false,
+        'app'          => false,
+        'plugin'       => null,
+        'output'       => 'html',
+        'show'         => 'groups',
+        'show_passes'  => false,
+        'filter'       => false,
+        'fixture'      => null
+    ];
 
     /**
      * Baseurl for the request
@@ -118,6 +118,7 @@ class CakeTestSuiteDispatcher
 
         $output = ob_get_clean();
         echo $output;
+
         return $value;
     }
 
@@ -158,6 +159,7 @@ class CakeTestSuiteDispatcher
             return true;
         }
         include VENDORS . 'autoload.php';
+
         return class_exists('PHPUnit_Framework_TestCase');
     }
 
@@ -238,22 +240,22 @@ class CakeTestSuiteDispatcher
      */
     protected function _runTestCase()
     {
-        $commandArgs = array(
-            'case' => $this->params['case'],
-            'core' => $this->params['core'],
-            'app' => $this->params['app'],
-            'plugin' => $this->params['plugin'],
+        $commandArgs = [
+            'case'         => $this->params['case'],
+            'core'         => $this->params['core'],
+            'app'          => $this->params['app'],
+            'plugin'       => $this->params['plugin'],
             'codeCoverage' => $this->params['codeCoverage'],
-            'showPasses' => !empty($this->params['show_passes']),
-            'baseUrl' => $this->_baseUrl,
-            'baseDir' => $this->_baseDir,
-        );
+            'showPasses'   => !empty($this->params['show_passes']),
+            'baseUrl'      => $this->_baseUrl,
+            'baseDir'      => $this->_baseDir,
+        ];
 
-        $options = array(
+        $options = [
             '--filter', $this->params['filter'],
             '--output', $this->params['output'],
             '--fixture', $this->params['fixture']
-        );
+        ];
         restore_error_handler();
 
         try {
@@ -280,6 +282,7 @@ class CakeTestSuiteDispatcher
         if ($reset || !$now) {
             $now = time();
         }
+
         return $now;
     }
 

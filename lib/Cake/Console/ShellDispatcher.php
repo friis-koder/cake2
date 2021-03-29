@@ -22,19 +22,19 @@
  */
 class ShellDispatcher
 {
-/**
- * Contains command switches parsed from the command line.
- *
- * @var array
- */
-    public $params = array();
+    /**
+     * Contains command switches parsed from the command line.
+     *
+     * @var array
+     */
+    public $params = [];
 
     /**
      * Contains arguments parsed from the command line.
      *
      * @var array
      */
-    public $args = array();
+    public $args = [];
 
     /**
      * Constructor
@@ -45,7 +45,7 @@ class ShellDispatcher
      * @param array $args the argv from PHP
      * @param bool $bootstrap Should the environment be bootstrapped.
      */
-    public function __construct($args = array(), $bootstrap = true)
+    public function __construct($args = [], $bootstrap = true)
     {
         set_time_limit(0);
         $this->parseParams($args);
@@ -65,6 +65,7 @@ class ShellDispatcher
     public static function run($argv)
     {
         $dispatcher = new ShellDispatcher($argv);
+
         return $dispatcher->_stop($dispatcher->dispatch() === false ? 1 : 0);
     }
 
@@ -103,6 +104,7 @@ class ShellDispatcher
     {
         if (!$this->_bootstrap()) {
             $message = "Unable to load CakePHP core.\nMake sure " . DS . 'lib' . DS . 'Cake exists in ' . CAKE_CORE_INCLUDE_PATH;
+
             throw new CakeException($message);
         }
 
@@ -111,6 +113,7 @@ class ShellDispatcher
                 "Please make sure that " . DS . 'lib' . DS . 'Cake' . DS . "Console is in your system path,\n" .
                 "and check the cookbook for the correct usage of this command.\n" .
                 "(https://book.cakephp.org/)";
+
             throw new CakeException($message);
         }
 
@@ -184,11 +187,11 @@ class ShellDispatcher
 
         $errorHandler = new ConsoleErrorHandler();
         if (empty($error['consoleHandler'])) {
-            $error['consoleHandler'] = array($errorHandler, 'handleError');
+            $error['consoleHandler'] = [$errorHandler, 'handleError'];
             Configure::write('Error', $error);
         }
         if (empty($exception['consoleHandler'])) {
-            $exception['consoleHandler'] = array($errorHandler, 'handleException');
+            $exception['consoleHandler'] = [$errorHandler, 'handleException'];
             Configure::write('Exception', $exception);
         }
         set_exception_handler($exception['consoleHandler']);
@@ -210,10 +213,12 @@ class ShellDispatcher
 
         if (!$shell) {
             $this->help();
+
             return false;
         }
-        if (in_array($shell, array('help', '--help', '-h'))) {
+        if (in_array($shell, ['help', '--help', '-h'])) {
             $this->help();
+
             return true;
         }
 
@@ -226,6 +231,7 @@ class ShellDispatcher
 
         if ($Shell instanceof Shell) {
             $Shell->initialize();
+
             return $Shell->runCommand($command, $this->args);
         }
         $methods = array_diff(get_class_methods($Shell), get_class_methods('Shell'));
@@ -236,15 +242,17 @@ class ShellDispatcher
             if ($added) {
                 $this->shiftArgs();
                 $Shell->startup();
+
                 return $Shell->{$command}();
             }
             if (method_exists($Shell, 'main')) {
                 $Shell->startup();
+
                 return $Shell->main();
             }
         }
 
-        throw new MissingShellMethodException(array('shell' => $shell, 'method' => $command));
+        throw new MissingShellMethodException(['shell' => $shell, 'method' => $command]);
     }
 
     /**
@@ -273,12 +281,13 @@ class ShellDispatcher
         }
 
         if (!class_exists($class)) {
-            throw new MissingShellException(array(
+            throw new MissingShellException([
                 'class' => $class
-            ));
+            ]);
         }
         $Shell = new $class();
         $Shell->plugin = trim($plugin, '.');
+
         return $Shell;
     }
 
@@ -292,17 +301,18 @@ class ShellDispatcher
     {
         $this->_parsePaths($args);
 
-        $defaults = array(
-            'app' => 'app',
-            'root' => dirname(dirname(dirname(dirname(__FILE__)))),
+        $defaults = [
+            'app'     => 'app',
+            'root'    => dirname(dirname(dirname(dirname(__FILE__)))),
             'working' => null,
             'webroot' => 'webroot'
-        );
+        ];
         $params = array_merge($defaults, array_intersect_key($this->params, $defaults));
         $isWin = false;
         foreach ($defaults as $default => $value) {
             if (strpos($params[$default], '\\') !== false) {
                 $isWin = true;
+
                 break;
             }
         }
@@ -373,8 +383,8 @@ class ShellDispatcher
      */
     protected function _parsePaths($args)
     {
-        $parsed = array();
-        $keys = array('-working', '--working', '-app', '--app', '-root', '--root', '-webroot', '--webroot');
+        $parsed = [];
+        $keys = ['-working', '--working', '-app', '--app', '-root', '--root', '-webroot', '--webroot'];
         $args = (array)$args;
         foreach ($keys as $key) {
             while (($index = array_search($key, $args)) !== false) {
@@ -405,7 +415,7 @@ class ShellDispatcher
      */
     public function help()
     {
-        $this->args = array_merge(array('command_list'), $this->args);
+        $this->args = array_merge(['command_list'], $this->args);
         $this->dispatch();
     }
 

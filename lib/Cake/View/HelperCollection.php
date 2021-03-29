@@ -16,7 +16,6 @@
  * @since         CakePHP(tm) v 2.0
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('ObjectCollection', 'Utility');
 App::uses('CakeEventListener', 'Event');
 
@@ -28,11 +27,11 @@ App::uses('CakeEventListener', 'Event');
  */
 class HelperCollection extends ObjectCollection implements CakeEventListener
 {
-/**
- * View object to use when making helpers.
- *
- * @var View
- */
+    /**
+     * View object to use when making helpers.
+     *
+     * @var View
+     */
     protected $_View;
 
     /**
@@ -66,6 +65,7 @@ class HelperCollection extends ObjectCollection implements CakeEventListener
         } catch (MissingHelperException $exception) {
             if ($this->_View->plugin) {
                 $this->load($this->_View->plugin . '.' . $helper);
+
                 return true;
             }
         }
@@ -91,6 +91,7 @@ class HelperCollection extends ObjectCollection implements CakeEventListener
         if ($this->__isset($name)) {
             return $this->_loaded[$name];
         }
+
         return null;
     }
 
@@ -115,7 +116,7 @@ class HelperCollection extends ObjectCollection implements CakeEventListener
      * @return Helper A helper object, Either the existing loaded helper or a new one.
      * @throws MissingHelperException when the helper could not be found
      */
-    public function load($helper, $settings = array())
+    public function load($helper, $settings = [])
     {
         if (isset($settings['className'])) {
             $alias = $helper;
@@ -132,14 +133,14 @@ class HelperCollection extends ObjectCollection implements CakeEventListener
         $helperClass = $name . 'Helper';
         App::uses($helperClass, $plugin . 'View/Helper');
         if (!class_exists($helperClass)) {
-            throw new MissingHelperException(array(
-                'class' => $helperClass,
+            throw new MissingHelperException([
+                'class'  => $helperClass,
                 'plugin' => substr($plugin, 0, -1)
-            ));
+            ]);
         }
         $this->_loaded[$alias] = new $helperClass($this->_View, $settings);
 
-        $vars = array('request', 'theme', 'plugin');
+        $vars = ['request', 'theme', 'plugin'];
         foreach ($vars as $var) {
             $this->_loaded[$alias]->{$var} = $this->_View->{$var};
         }
@@ -147,6 +148,7 @@ class HelperCollection extends ObjectCollection implements CakeEventListener
         if ($enable) {
             $this->enable($alias);
         }
+
         return $this->_loaded[$alias];
     }
 
@@ -157,14 +159,14 @@ class HelperCollection extends ObjectCollection implements CakeEventListener
      */
     public function implementedEvents()
     {
-        return array(
+        return [
             'View.beforeRenderFile' => 'trigger',
-            'View.afterRenderFile' => 'trigger',
-            'View.beforeRender' => 'trigger',
-            'View.afterRender' => 'trigger',
-            'View.beforeLayout' => 'trigger',
-            'View.afterLayout' => 'trigger'
-        );
+            'View.afterRenderFile'  => 'trigger',
+            'View.beforeRender'     => 'trigger',
+            'View.afterRender'      => 'trigger',
+            'View.beforeLayout'     => 'trigger',
+            'View.afterLayout'      => 'trigger'
+        ];
     }
 
     /**
@@ -198,11 +200,12 @@ class HelperCollection extends ObjectCollection implements CakeEventListener
      * @return mixed Either the last result or all results if collectReturn is on.
      * @throws CakeException when modParams is used with an index that does not exist.
      */
-    public function trigger($callback, $params = array(), $options = array())
+    public function trigger($callback, $params = [], $options = [])
     {
         if ($callback instanceof CakeEvent) {
             $callback->omitSubject = true;
         }
+
         return parent::trigger($callback, $params, $options);
     }
 }

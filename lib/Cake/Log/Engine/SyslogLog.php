@@ -15,7 +15,6 @@
  * @since         CakePHP(tm) v 2.4
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('BaseLog', 'Log/Engine');
 
 /**
@@ -25,54 +24,54 @@ App::uses('BaseLog', 'Log/Engine');
  */
 class SyslogLog extends BaseLog
 {
-/**
- * By default messages are formatted as:
- * 	type: message
- *
- * To override the log format (e.g. to add your own info) define the format key when configuring
- * this logger
- *
- * If you wish to include a prefix to all messages, for instance to identify the
- * application or the web server, then use the prefix option. Please keep in mind
- * the prefix is shared by all streams using syslog, as it is dependent of
- * the running process. For a local prefix, to be used only by one stream, you
- * can use the format key.
- *
- * ## Example:
- *
- * ```
- *	CakeLog::config('error', array(
- *		'engine' => 'Syslog',
- *		'types' => array('emergency', 'alert', 'critical', 'error'),
- *		'format' => "%s: My-App - %s",
- *		'prefix' => 'Web Server 01'
- *	));
- * ```
- *
- * @var array
- */
-    protected $_defaults = array(
-        'format' => '%s: %s',
-        'flag' => LOG_ODELAY,
-        'prefix' => '',
+    /**
+     * By default messages are formatted as:
+     * 	type: message
+     *
+     * To override the log format (e.g. to add your own info) define the format key when configuring
+     * this logger
+     *
+     * If you wish to include a prefix to all messages, for instance to identify the
+     * application or the web server, then use the prefix option. Please keep in mind
+     * the prefix is shared by all streams using syslog, as it is dependent of
+     * the running process. For a local prefix, to be used only by one stream, you
+     * can use the format key.
+     *
+     * ## Example:
+     *
+     * ```
+     *	CakeLog::config('error', array(
+     *		'engine' => 'Syslog',
+     *		'types' => array('emergency', 'alert', 'critical', 'error'),
+     *		'format' => "%s: My-App - %s",
+     *		'prefix' => 'Web Server 01'
+     *	));
+     * ```
+     *
+     * @var array
+     */
+    protected $_defaults = [
+        'format'   => '%s: %s',
+        'flag'     => LOG_ODELAY,
+        'prefix'   => '',
         'facility' => LOG_USER
-    );
+    ];
 
     /**
      * Used to map the string names back to their LOG_* constants
      *
      * @var array
      */
-    protected $_priorityMap = array(
+    protected $_priorityMap = [
         'emergency' => LOG_EMERG,
-        'alert' => LOG_ALERT,
-        'critical' => LOG_CRIT,
-        'error' => LOG_ERR,
-        'warning' => LOG_WARNING,
-        'notice' => LOG_NOTICE,
-        'info' => LOG_INFO,
-        'debug' => LOG_DEBUG
-    );
+        'alert'     => LOG_ALERT,
+        'critical'  => LOG_CRIT,
+        'error'     => LOG_ERR,
+        'warning'   => LOG_WARNING,
+        'notice'    => LOG_NOTICE,
+        'info'      => LOG_INFO,
+        'debug'     => LOG_DEBUG
+    ];
 
     /**
      * Whether the logger connection is open or not
@@ -87,7 +86,7 @@ class SyslogLog extends BaseLog
      *
      * @param array $config Options list.
      */
-    public function __construct($config = array())
+    public function __construct($config = [])
     {
         $config += $this->_defaults;
         parent::__construct($config);

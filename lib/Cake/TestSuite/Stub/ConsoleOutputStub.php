@@ -28,12 +28,12 @@ App::uses("ConsoleOutput", "Console");
  */
 class ConsoleOutputStub extends ConsoleOutput
 {
-/**
- * Buffered messages.
- *
- * @var array
- */
-    protected $_out = array();
+    /**
+     * Buffered messages.
+     *
+     * @var array
+     */
+    protected $_out = [];
 
     /**
      * The number of bytes written by last call to write

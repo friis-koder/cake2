@@ -23,11 +23,11 @@
  */
 class TestPluginAuthUser extends TestPluginAppModel
 {
-/**
- * Name property
- *
- * @var string
- */
+    /**
+     * Name property
+     *
+     * @var string
+     */
     public $name = 'TestPluginAuthUser';
 
     /**

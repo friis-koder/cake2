@@ -15,7 +15,6 @@
  * @since         CakePHP(tm) v 2.0
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('File', 'Utility');
 
 /**
@@ -28,12 +27,12 @@ App::uses('File', 'Utility');
  */
 class CakeResponse
 {
-/**
- * Holds HTTP response statuses
- *
- * @var array
- */
-    protected $_statusCodes = array(
+    /**
+     * Holds HTTP response statuses
+     *
+     * @var array
+     */
+    protected $_statusCodes = [
         100 => 'Continue',
         101 => 'Switching Protocols',
         102 => 'Processing',
@@ -97,243 +96,243 @@ class CakeResponse
         508 => 'Loop Detected',
         510 => 'Not Extended',
         511 => 'Network Authentication Required'
-    );
+    ];
 
     /**
      * Holds known mime type mappings
      *
      * @var array
      */
-    protected $_mimeTypes = array(
-        'html' => array('text/html', '*/*'),
-        'json' => 'application/json',
-        'xml' => array('application/xml', 'text/xml'),
-        'rss' => 'application/rss+xml',
-        'ai' => 'application/postscript',
-        'bcpio' => 'application/x-bcpio',
-        'bin' => 'application/octet-stream',
-        'ccad' => 'application/clariscad',
-        'cdf' => 'application/x-netcdf',
-        'class' => 'application/octet-stream',
-        'cpio' => 'application/x-cpio',
-        'cpt' => 'application/mac-compactpro',
-        'csh' => 'application/x-csh',
-        'csv' => array('text/csv', 'application/vnd.ms-excel'),
-        'dcr' => 'application/x-director',
-        'dir' => 'application/x-director',
-        'dms' => 'application/octet-stream',
-        'doc' => 'application/msword',
-        'docx' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-        'drw' => 'application/drafting',
-        'dvi' => 'application/x-dvi',
-        'dwg' => 'application/acad',
-        'dxf' => 'application/dxf',
-        'dxr' => 'application/x-director',
-        'eot' => 'application/vnd.ms-fontobject',
-        'eps' => 'application/postscript',
-        'exe' => 'application/octet-stream',
-        'ez' => 'application/andrew-inset',
-        'flv' => 'video/x-flv',
-        'gtar' => 'application/x-gtar',
-        'gz' => 'application/x-gzip',
-        'bz2' => 'application/x-bzip',
-        '7z' => 'application/x-7z-compressed',
-        'hdf' => 'application/x-hdf',
-        'hqx' => 'application/mac-binhex40',
-        'ico' => 'image/x-icon',
-        'ips' => 'application/x-ipscript',
-        'ipx' => 'application/x-ipix',
-        'js' => 'application/javascript',
+    protected $_mimeTypes = [
+        'html'    => ['text/html', '*/*'],
+        'json'    => 'application/json',
+        'xml'     => ['application/xml', 'text/xml'],
+        'rss'     => 'application/rss+xml',
+        'ai'      => 'application/postscript',
+        'bcpio'   => 'application/x-bcpio',
+        'bin'     => 'application/octet-stream',
+        'ccad'    => 'application/clariscad',
+        'cdf'     => 'application/x-netcdf',
+        'class'   => 'application/octet-stream',
+        'cpio'    => 'application/x-cpio',
+        'cpt'     => 'application/mac-compactpro',
+        'csh'     => 'application/x-csh',
+        'csv'     => ['text/csv', 'application/vnd.ms-excel'],
+        'dcr'     => 'application/x-director',
+        'dir'     => 'application/x-director',
+        'dms'     => 'application/octet-stream',
+        'doc'     => 'application/msword',
+        'docx'    => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+        'drw'     => 'application/drafting',
+        'dvi'     => 'application/x-dvi',
+        'dwg'     => 'application/acad',
+        'dxf'     => 'application/dxf',
+        'dxr'     => 'application/x-director',
+        'eot'     => 'application/vnd.ms-fontobject',
+        'eps'     => 'application/postscript',
+        'exe'     => 'application/octet-stream',
+        'ez'      => 'application/andrew-inset',
+        'flv'     => 'video/x-flv',
+        'gtar'    => 'application/x-gtar',
+        'gz'      => 'application/x-gzip',
+        'bz2'     => 'application/x-bzip',
+        '7z'      => 'application/x-7z-compressed',
+        'hdf'     => 'application/x-hdf',
+        'hqx'     => 'application/mac-binhex40',
+        'ico'     => 'image/x-icon',
+        'ips'     => 'application/x-ipscript',
+        'ipx'     => 'application/x-ipix',
+        'js'      => 'application/javascript',
         'jsonapi' => 'application/vnd.api+json',
-        'latex' => 'application/x-latex',
-        'lha' => 'application/octet-stream',
-        'lsp' => 'application/x-lisp',
-        'lzh' => 'application/octet-stream',
-        'man' => 'application/x-troff-man',
-        'me' => 'application/x-troff-me',
-        'mif' => 'application/vnd.mif',
-        'ms' => 'application/x-troff-ms',
-        'nc' => 'application/x-netcdf',
-        'oda' => 'application/oda',
-        'otf' => 'font/otf',
-        'pdf' => 'application/pdf',
-        'pgn' => 'application/x-chess-pgn',
-        'pot' => 'application/vnd.ms-powerpoint',
-        'pps' => 'application/vnd.ms-powerpoint',
-        'ppt' => 'application/vnd.ms-powerpoint',
-        'pptx' => 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
-        'ppz' => 'application/vnd.ms-powerpoint',
-        'pre' => 'application/x-freelance',
-        'prt' => 'application/pro_eng',
-        'ps' => 'application/postscript',
-        'roff' => 'application/x-troff',
-        'scm' => 'application/x-lotusscreencam',
-        'set' => 'application/set',
-        'sh' => 'application/x-sh',
-        'shar' => 'application/x-shar',
-        'sit' => 'application/x-stuffit',
-        'skd' => 'application/x-koan',
-        'skm' => 'application/x-koan',
-        'skp' => 'application/x-koan',
-        'skt' => 'application/x-koan',
-        'smi' => 'application/smil',
-        'smil' => 'application/smil',
-        'sol' => 'application/solids',
-        'spl' => 'application/x-futuresplash',
-        'src' => 'application/x-wais-source',
-        'step' => 'application/STEP',
-        'stl' => 'application/SLA',
-        'stp' => 'application/STEP',
+        'latex'   => 'application/x-latex',
+        'lha'     => 'application/octet-stream',
+        'lsp'     => 'application/x-lisp',
+        'lzh'     => 'application/octet-stream',
+        'man'     => 'application/x-troff-man',
+        'me'      => 'application/x-troff-me',
+        'mif'     => 'application/vnd.mif',
+        'ms'      => 'application/x-troff-ms',
+        'nc'      => 'application/x-netcdf',
+        'oda'     => 'application/oda',
+        'otf'     => 'font/otf',
+        'pdf'     => 'application/pdf',
+        'pgn'     => 'application/x-chess-pgn',
+        'pot'     => 'application/vnd.ms-powerpoint',
+        'pps'     => 'application/vnd.ms-powerpoint',
+        'ppt'     => 'application/vnd.ms-powerpoint',
+        'pptx'    => 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+        'ppz'     => 'application/vnd.ms-powerpoint',
+        'pre'     => 'application/x-freelance',
+        'prt'     => 'application/pro_eng',
+        'ps'      => 'application/postscript',
+        'roff'    => 'application/x-troff',
+        'scm'     => 'application/x-lotusscreencam',
+        'set'     => 'application/set',
+        'sh'      => 'application/x-sh',
+        'shar'    => 'application/x-shar',
+        'sit'     => 'application/x-stuffit',
+        'skd'     => 'application/x-koan',
+        'skm'     => 'application/x-koan',
+        'skp'     => 'application/x-koan',
+        'skt'     => 'application/x-koan',
+        'smi'     => 'application/smil',
+        'smil'    => 'application/smil',
+        'sol'     => 'application/solids',
+        'spl'     => 'application/x-futuresplash',
+        'src'     => 'application/x-wais-source',
+        'step'    => 'application/STEP',
+        'stl'     => 'application/SLA',
+        'stp'     => 'application/STEP',
         'sv4cpio' => 'application/x-sv4cpio',
-        'sv4crc' => 'application/x-sv4crc',
-        'svg' => 'image/svg+xml',
-        'svgz' => 'image/svg+xml',
-        'swf' => 'application/x-shockwave-flash',
-        't' => 'application/x-troff',
-        'tar' => 'application/x-tar',
-        'tcl' => 'application/x-tcl',
-        'tex' => 'application/x-tex',
-        'texi' => 'application/x-texinfo',
+        'sv4crc'  => 'application/x-sv4crc',
+        'svg'     => 'image/svg+xml',
+        'svgz'    => 'image/svg+xml',
+        'swf'     => 'application/x-shockwave-flash',
+        't'       => 'application/x-troff',
+        'tar'     => 'application/x-tar',
+        'tcl'     => 'application/x-tcl',
+        'tex'     => 'application/x-tex',
+        'texi'    => 'application/x-texinfo',
         'texinfo' => 'application/x-texinfo',
-        'tr' => 'application/x-troff',
-        'tsp' => 'application/dsptype',
-        'ttc' => 'font/ttf',
-        'ttf' => 'font/ttf',
-        'unv' => 'application/i-deas',
-        'ustar' => 'application/x-ustar',
-        'vcd' => 'application/x-cdlink',
-        'vda' => 'application/vda',
-        'xlc' => 'application/vnd.ms-excel',
-        'xll' => 'application/vnd.ms-excel',
-        'xlm' => 'application/vnd.ms-excel',
-        'xls' => 'application/vnd.ms-excel',
-        'xlsx' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-        'xlw' => 'application/vnd.ms-excel',
-        'zip' => 'application/zip',
-        'aif' => 'audio/x-aiff',
-        'aifc' => 'audio/x-aiff',
-        'aiff' => 'audio/x-aiff',
-        'au' => 'audio/basic',
-        'kar' => 'audio/midi',
-        'mid' => 'audio/midi',
-        'midi' => 'audio/midi',
-        'mp2' => 'audio/mpeg',
-        'mp3' => 'audio/mpeg',
-        'mpga' => 'audio/mpeg',
-        'ogg' => 'audio/ogg',
-        'oga' => 'audio/ogg',
-        'spx' => 'audio/ogg',
-        'ra' => 'audio/x-realaudio',
-        'ram' => 'audio/x-pn-realaudio',
-        'rm' => 'audio/x-pn-realaudio',
-        'rpm' => 'audio/x-pn-realaudio-plugin',
-        'snd' => 'audio/basic',
-        'tsi' => 'audio/TSP-audio',
-        'wav' => 'audio/x-wav',
-        'aac' => 'audio/aac',
-        'asc' => 'text/plain',
-        'c' => 'text/plain',
-        'cc' => 'text/plain',
-        'css' => 'text/css',
-        'etx' => 'text/x-setext',
-        'f' => 'text/plain',
-        'f90' => 'text/plain',
-        'h' => 'text/plain',
-        'hh' => 'text/plain',
-        'htm' => array('text/html', '*/*'),
-        'ics' => 'text/calendar',
-        'm' => 'text/plain',
-        'rtf' => 'text/rtf',
-        'rtx' => 'text/richtext',
-        'sgm' => 'text/sgml',
-        'sgml' => 'text/sgml',
-        'tsv' => 'text/tab-separated-values',
-        'tpl' => 'text/template',
-        'txt' => 'text/plain',
-        'text' => 'text/plain',
-        'avi' => 'video/x-msvideo',
-        'fli' => 'video/x-fli',
-        'mov' => 'video/quicktime',
-        'movie' => 'video/x-sgi-movie',
-        'mpe' => 'video/mpeg',
-        'mpeg' => 'video/mpeg',
-        'mpg' => 'video/mpeg',
-        'qt' => 'video/quicktime',
-        'viv' => 'video/vnd.vivo',
-        'vivo' => 'video/vnd.vivo',
-        'ogv' => 'video/ogg',
-        'webm' => 'video/webm',
-        'mp4' => 'video/mp4',
-        'm4v' => 'video/mp4',
-        'f4v' => 'video/mp4',
-        'f4p' => 'video/mp4',
-        'm4a' => 'audio/mp4',
-        'f4a' => 'audio/mp4',
-        'f4b' => 'audio/mp4',
-        'gif' => 'image/gif',
-        'ief' => 'image/ief',
-        'jpg' => 'image/jpeg',
-        'jpeg' => 'image/jpeg',
-        'jpe' => 'image/jpeg',
-        'pbm' => 'image/x-portable-bitmap',
-        'pgm' => 'image/x-portable-graymap',
-        'png' => 'image/png',
-        'pnm' => 'image/x-portable-anymap',
-        'ppm' => 'image/x-portable-pixmap',
-        'ras' => 'image/cmu-raster',
-        'rgb' => 'image/x-rgb',
-        'tif' => 'image/tiff',
-        'tiff' => 'image/tiff',
-        'xbm' => 'image/x-xbitmap',
-        'xpm' => 'image/x-xpixmap',
-        'xwd' => 'image/x-xwindowdump',
-        'psd' => array(
+        'tr'      => 'application/x-troff',
+        'tsp'     => 'application/dsptype',
+        'ttc'     => 'font/ttf',
+        'ttf'     => 'font/ttf',
+        'unv'     => 'application/i-deas',
+        'ustar'   => 'application/x-ustar',
+        'vcd'     => 'application/x-cdlink',
+        'vda'     => 'application/vda',
+        'xlc'     => 'application/vnd.ms-excel',
+        'xll'     => 'application/vnd.ms-excel',
+        'xlm'     => 'application/vnd.ms-excel',
+        'xls'     => 'application/vnd.ms-excel',
+        'xlsx'    => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+        'xlw'     => 'application/vnd.ms-excel',
+        'zip'     => 'application/zip',
+        'aif'     => 'audio/x-aiff',
+        'aifc'    => 'audio/x-aiff',
+        'aiff'    => 'audio/x-aiff',
+        'au'      => 'audio/basic',
+        'kar'     => 'audio/midi',
+        'mid'     => 'audio/midi',
+        'midi'    => 'audio/midi',
+        'mp2'     => 'audio/mpeg',
+        'mp3'     => 'audio/mpeg',
+        'mpga'    => 'audio/mpeg',
+        'ogg'     => 'audio/ogg',
+        'oga'     => 'audio/ogg',
+        'spx'     => 'audio/ogg',
+        'ra'      => 'audio/x-realaudio',
+        'ram'     => 'audio/x-pn-realaudio',
+        'rm'      => 'audio/x-pn-realaudio',
+        'rpm'     => 'audio/x-pn-realaudio-plugin',
+        'snd'     => 'audio/basic',
+        'tsi'     => 'audio/TSP-audio',
+        'wav'     => 'audio/x-wav',
+        'aac'     => 'audio/aac',
+        'asc'     => 'text/plain',
+        'c'       => 'text/plain',
+        'cc'      => 'text/plain',
+        'css'     => 'text/css',
+        'etx'     => 'text/x-setext',
+        'f'       => 'text/plain',
+        'f90'     => 'text/plain',
+        'h'       => 'text/plain',
+        'hh'      => 'text/plain',
+        'htm'     => ['text/html', '*/*'],
+        'ics'     => 'text/calendar',
+        'm'       => 'text/plain',
+        'rtf'     => 'text/rtf',
+        'rtx'     => 'text/richtext',
+        'sgm'     => 'text/sgml',
+        'sgml'    => 'text/sgml',
+        'tsv'     => 'text/tab-separated-values',
+        'tpl'     => 'text/template',
+        'txt'     => 'text/plain',
+        'text'    => 'text/plain',
+        'avi'     => 'video/x-msvideo',
+        'fli'     => 'video/x-fli',
+        'mov'     => 'video/quicktime',
+        'movie'   => 'video/x-sgi-movie',
+        'mpe'     => 'video/mpeg',
+        'mpeg'    => 'video/mpeg',
+        'mpg'     => 'video/mpeg',
+        'qt'      => 'video/quicktime',
+        'viv'     => 'video/vnd.vivo',
+        'vivo'    => 'video/vnd.vivo',
+        'ogv'     => 'video/ogg',
+        'webm'    => 'video/webm',
+        'mp4'     => 'video/mp4',
+        'm4v'     => 'video/mp4',
+        'f4v'     => 'video/mp4',
+        'f4p'     => 'video/mp4',
+        'm4a'     => 'audio/mp4',
+        'f4a'     => 'audio/mp4',
+        'f4b'     => 'audio/mp4',
+        'gif'     => 'image/gif',
+        'ief'     => 'image/ief',
+        'jpg'     => 'image/jpeg',
+        'jpeg'    => 'image/jpeg',
+        'jpe'     => 'image/jpeg',
+        'pbm'     => 'image/x-portable-bitmap',
+        'pgm'     => 'image/x-portable-graymap',
+        'png'     => 'image/png',
+        'pnm'     => 'image/x-portable-anymap',
+        'ppm'     => 'image/x-portable-pixmap',
+        'ras'     => 'image/cmu-raster',
+        'rgb'     => 'image/x-rgb',
+        'tif'     => 'image/tiff',
+        'tiff'    => 'image/tiff',
+        'xbm'     => 'image/x-xbitmap',
+        'xpm'     => 'image/x-xpixmap',
+        'xwd'     => 'image/x-xwindowdump',
+        'psd'     => [
             'application/photoshop',
             'application/psd',
             'image/psd',
             'image/x-photoshop',
             'image/photoshop',
             'zz-application/zz-winassoc-psd'
-        ),
-        'ice' => 'x-conference/x-cooltalk',
-        'iges' => 'model/iges',
-        'igs' => 'model/iges',
-        'mesh' => 'model/mesh',
-        'msh' => 'model/mesh',
-        'silo' => 'model/mesh',
-        'vrml' => 'model/vrml',
-        'wrl' => 'model/vrml',
-        'mime' => 'www/mime',
-        'pdb' => 'chemical/x-pdb',
-        'xyz' => 'chemical/x-pdb',
-        'javascript' => 'application/javascript',
-        'form' => 'application/x-www-form-urlencoded',
-        'file' => 'multipart/form-data',
-        'xhtml' => array('application/xhtml+xml', 'application/xhtml', 'text/xhtml'),
+        ],
+        'ice'          => 'x-conference/x-cooltalk',
+        'iges'         => 'model/iges',
+        'igs'          => 'model/iges',
+        'mesh'         => 'model/mesh',
+        'msh'          => 'model/mesh',
+        'silo'         => 'model/mesh',
+        'vrml'         => 'model/vrml',
+        'wrl'          => 'model/vrml',
+        'mime'         => 'www/mime',
+        'pdb'          => 'chemical/x-pdb',
+        'xyz'          => 'chemical/x-pdb',
+        'javascript'   => 'application/javascript',
+        'form'         => 'application/x-www-form-urlencoded',
+        'file'         => 'multipart/form-data',
+        'xhtml'        => ['application/xhtml+xml', 'application/xhtml', 'text/xhtml'],
         'xhtml-mobile' => 'application/vnd.wap.xhtml+xml',
-        'atom' => 'application/atom+xml',
-        'amf' => 'application/x-amf',
-        'wap' => array('text/vnd.wap.wml', 'text/vnd.wap.wmlscript', 'image/vnd.wap.wbmp'),
-        'wml' => 'text/vnd.wap.wml',
-        'wmlscript' => 'text/vnd.wap.wmlscript',
-        'wbmp' => 'image/vnd.wap.wbmp',
-        'woff' => 'application/x-font-woff',
-        'webp' => 'image/webp',
-        'appcache' => 'text/cache-manifest',
-        'manifest' => 'text/cache-manifest',
-        'htc' => 'text/x-component',
-        'rdf' => 'application/xml',
-        'crx' => 'application/x-chrome-extension',
-        'oex' => 'application/x-opera-extension',
-        'xpi' => 'application/x-xpinstall',
-        'safariextz' => 'application/octet-stream',
-        'webapp' => 'application/x-web-app-manifest+json',
-        'vcf' => 'text/x-vcard',
-        'vtt' => 'text/vtt',
-        'mkv' => 'video/x-matroska',
-        'pkpass' => 'application/vnd.apple.pkpass',
-        'ajax' => 'text/html'
-    );
+        'atom'         => 'application/atom+xml',
+        'amf'          => 'application/x-amf',
+        'wap'          => ['text/vnd.wap.wml', 'text/vnd.wap.wmlscript', 'image/vnd.wap.wbmp'],
+        'wml'          => 'text/vnd.wap.wml',
+        'wmlscript'    => 'text/vnd.wap.wmlscript',
+        'wbmp'         => 'image/vnd.wap.wbmp',
+        'woff'         => 'application/x-font-woff',
+        'webp'         => 'image/webp',
+        'appcache'     => 'text/cache-manifest',
+        'manifest'     => 'text/cache-manifest',
+        'htc'          => 'text/x-component',
+        'rdf'          => 'application/xml',
+        'crx'          => 'application/x-chrome-extension',
+        'oex'          => 'application/x-opera-extension',
+        'xpi'          => 'application/x-xpinstall',
+        'safariextz'   => 'application/octet-stream',
+        'webapp'       => 'application/x-web-app-manifest+json',
+        'vcf'          => 'text/x-vcard',
+        'vtt'          => 'text/vtt',
+        'mkv'          => 'video/x-matroska',
+        'pkpass'       => 'application/vnd.apple.pkpass',
+        'ajax'         => 'text/html'
+    ];
 
     /**
      * Protocol header to send to the client
@@ -362,7 +361,7 @@ class CakeResponse
      *
      * @var array
      */
-    protected $_headers = array();
+    protected $_headers = [];
 
     /**
      * Buffer string for response message
@@ -398,14 +397,14 @@ class CakeResponse
      *
      * @var array
      */
-    protected $_cacheDirectives = array();
+    protected $_cacheDirectives = [];
 
     /**
      * Holds cookies to be sent to the client
      *
      * @var array
      */
-    protected $_cookies = array();
+    protected $_cookies = [];
 
     /**
      * Constructor
@@ -417,7 +416,7 @@ class CakeResponse
      *	- type: a complete mime-type string or an extension mapped in this class
      *	- charset: the charset for the response body
      */
-    public function __construct(array $options = array())
+    public function __construct(array $options = [])
     {
         if (isset($options['body'])) {
             $this->body($options['body']);
@@ -498,12 +497,12 @@ class CakeResponse
      */
     protected function _setContentType()
     {
-        if (in_array($this->_status, array(304, 204))) {
+        if (in_array($this->_status, [304, 204])) {
             return;
         }
-        $whitelist = array(
+        $whitelist = [
             'application/javascript', 'application/json', 'application/xml', 'application/rss+xml'
-        );
+        ];
 
         $charset = false;
         if ($this->_charset &&
@@ -526,7 +525,7 @@ class CakeResponse
      */
     protected function _setContent()
     {
-        if (in_array($this->_status, array(304, 204))) {
+        if (in_array($this->_status, [304, 204])) {
             $this->body('');
         }
     }
@@ -542,6 +541,7 @@ class CakeResponse
         $shouldSetLength = !isset($this->_headers['Content-Length']) && !in_array($this->_status, range(301, 307));
         if (isset($this->_headers['Content-Length']) && $this->_headers['Content-Length'] === false) {
             unset($this->_headers['Content-Length']);
+
             return;
         }
         if ($shouldSetLength && !$this->outputCompressed()) {
@@ -618,16 +618,17 @@ class CakeResponse
         if ($header === null) {
             return $this->_headers;
         }
-        $headers = is_array($header) ? $header : array($header => $value);
+        $headers = is_array($header) ? $header : [$header => $value];
         foreach ($headers as $header => $value) {
             if (is_numeric($header)) {
-                list($header, $value) = array($value, null);
+                list($header, $value) = [$value, null];
             }
             if ($value === null && strpos($header, ':') !== false) {
                 list($header, $value) = explode(':', $header, 2);
             }
             $this->_headers[$header] = is_array($value) ? array_map('trim', $value) : trim($value);
         }
+
         return $this->_headers;
     }
 
@@ -644,9 +645,11 @@ class CakeResponse
     {
         if ($url === null) {
             $headers = $this->header();
+
             return isset($headers['Location']) ? $headers['Location'] : null;
         }
         $this->header('Location', $url);
+
         return null;
     }
 
@@ -662,6 +665,7 @@ class CakeResponse
         if ($content === null) {
             return $this->_body;
         }
+
         return $this->_body = $content;
     }
 
@@ -681,6 +685,7 @@ class CakeResponse
         if (!isset($this->_statusCodes[$code])) {
             throw new CakeException(__d('cake_dev', 'Unknown status code'));
         }
+
         return $this->_status = $code;
     }
 
@@ -728,12 +733,14 @@ class CakeResponse
                 throw new CakeException(__d('cake_dev', 'Invalid status code'));
             }
             $this->_statusCodes = $code + $this->_statusCodes;
+
             return true;
         }
         if (!isset($this->_statusCodes[$code])) {
             return null;
         }
-        return array($code => $this->_statusCodes[$code]);
+
+        return [$code => $this->_statusCodes[$code]];
     }
 
     /**
@@ -770,6 +777,7 @@ class CakeResponse
             foreach ($contentType as $type => $definition) {
                 $this->_mimeTypes[$type] = $definition;
             }
+
             return $this->_contentType;
         }
         if (isset($this->_mimeTypes[$contentType])) {
@@ -779,6 +787,7 @@ class CakeResponse
         if (strpos($contentType, '/') === false) {
             return false;
         }
+
         return $this->_contentType = $contentType;
     }
 
@@ -795,6 +804,7 @@ class CakeResponse
         if (isset($this->_mimeTypes[$alias])) {
             return $this->_mimeTypes[$alias];
         }
+
         return false;
     }
 
@@ -809,7 +819,7 @@ class CakeResponse
     public function mapType($ctype)
     {
         if (is_array($ctype)) {
-            return array_map(array($this, 'mapType'), $ctype);
+            return array_map([$this, 'mapType'], $ctype);
         }
 
         foreach ($this->_mimeTypes as $alias => $types) {
@@ -817,6 +827,7 @@ class CakeResponse
                 return $alias;
             }
         }
+
         return null;
     }
 
@@ -832,6 +843,7 @@ class CakeResponse
         if ($charset === null) {
             return $this->_charset;
         }
+
         return $this->_charset = $charset;
     }
 
@@ -842,11 +854,11 @@ class CakeResponse
      */
     public function disableCache()
     {
-        $this->header(array(
-            'Expires' => 'Mon, 26 Jul 1997 05:00:00 GMT',
+        $this->header([
+            'Expires'       => 'Mon, 26 Jul 1997 05:00:00 GMT',
             'Last-Modified' => gmdate("D, d M Y H:i:s") . " GMT",
             'Cache-Control' => 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0'
-        ));
+        ]);
     }
 
     /**
@@ -861,9 +873,9 @@ class CakeResponse
         if (!is_int($time)) {
             $time = strtotime($time);
         }
-        $this->header(array(
+        $this->header([
             'Date' => gmdate("D, j M Y G:i:s ", time()) . 'GMT'
-        ));
+        ]);
         $this->modified($since);
         $this->expires($time);
         $this->sharable(true);
@@ -891,6 +903,7 @@ class CakeResponse
                 return null;
             }
             $sharable = $public || !($private || $noCache);
+
             return $sharable;
         }
         if ($public) {
@@ -905,6 +918,7 @@ class CakeResponse
         if ((int)$time === 0) {
             $this->_setCacheControl();
         }
+
         return (bool)$public;
     }
 
@@ -926,6 +940,7 @@ class CakeResponse
         if (isset($this->_cacheDirectives['s-maxage'])) {
             return $this->_cacheDirectives['s-maxage'];
         }
+
         return null;
     }
 
@@ -947,6 +962,7 @@ class CakeResponse
         if (isset($this->_cacheDirectives['max-age'])) {
             return $this->_cacheDirectives['max-age'];
         }
+
         return null;
     }
 
@@ -971,6 +987,7 @@ class CakeResponse
             }
             $this->_setCacheControl();
         }
+
         return array_key_exists('must-revalidate', $this->_cacheDirectives);
     }
 
@@ -1013,6 +1030,7 @@ class CakeResponse
         if (isset($this->_headers['Expires'])) {
             return $this->_headers['Expires'];
         }
+
         return null;
     }
 
@@ -1038,6 +1056,7 @@ class CakeResponse
         if (isset($this->_headers['Last-Modified'])) {
             return $this->_headers['Last-Modified'];
         }
+
         return null;
     }
 
@@ -1052,7 +1071,7 @@ class CakeResponse
     {
         $this->statusCode(304);
         $this->body('');
-        $remove = array(
+        $remove = [
             'Allow',
             'Content-Encoding',
             'Content-Language',
@@ -1060,7 +1079,7 @@ class CakeResponse
             'Content-MD5',
             'Content-Type',
             'Last-Modified'
-        );
+        ];
         foreach ($remove as $header) {
             unset($this->_headers[$header]);
         }
@@ -1085,6 +1104,7 @@ class CakeResponse
         if (isset($this->_headers['Vary'])) {
             return explode(', ', $this->_headers['Vary']);
         }
+
         return null;
     }
 
@@ -1117,6 +1137,7 @@ class CakeResponse
         if (isset($this->_headers['Etag'])) {
             return $this->_headers['Etag'];
         }
+
         return null;
     }
 
@@ -1137,6 +1158,7 @@ class CakeResponse
             $result = new DateTime($time);
         }
         $result->setTimeZone(new DateTimeZone('UTC'));
+
         return $result;
     }
 
@@ -1151,6 +1173,7 @@ class CakeResponse
         $compressionEnabled = ini_get("zlib.output_compression") !== '1' &&
             extension_loaded("zlib") &&
             (strpos(env('HTTP_ACCEPT_ENCODING'), 'gzip') !== false);
+
         return $compressionEnabled && ob_start('ob_gzhandler');
     }
 
@@ -1188,6 +1211,7 @@ class CakeResponse
         if ($protocol !== null) {
             $this->_protocol = $protocol;
         }
+
         return $this->_protocol;
     }
 
@@ -1206,6 +1230,7 @@ class CakeResponse
         if (isset($this->_headers['Content-Length'])) {
             return $this->_headers['Content-Length'];
         }
+
         return null;
     }
 
@@ -1225,12 +1250,12 @@ class CakeResponse
     public function checkNotModified(CakeRequest $request)
     {
         $ifNoneMatchHeader = $request->header('If-None-Match');
-        $etags = array();
+        $etags = [];
         if (is_string($ifNoneMatchHeader)) {
             $etags = preg_split('/\s*,\s*/', $ifNoneMatchHeader, null, PREG_SPLIT_NO_EMPTY);
         }
         $modifiedSince = $request->header('If-Modified-Since');
-        $checks = array();
+        $checks = [];
         if ($responseTag = $this->etag()) {
             $checks[] = in_array('*', $etags) || in_array($responseTag, $etags);
         }
@@ -1244,6 +1269,7 @@ class CakeResponse
         if ($notModified) {
             $this->notModified();
         }
+
         return $notModified;
     }
 
@@ -1307,18 +1333,19 @@ class CakeResponse
             if (!isset($this->_cookies[$options])) {
                 return null;
             }
+
             return $this->_cookies[$options];
         }
 
-        $defaults = array(
-            'name' => 'CakeCookie[default]',
-            'value' => '',
-            'expire' => 0,
-            'path' => '/',
-            'domain' => '',
-            'secure' => false,
+        $defaults = [
+            'name'     => 'CakeCookie[default]',
+            'value'    => '',
+            'expire'   => 0,
+            'path'     => '/',
+            'domain'   => '',
+            'secure'   => false,
             'httpOnly' => false
-        );
+        ];
         $options += $defaults;
 
         $this->_cookies[$options['name']] = $options;
@@ -1350,7 +1377,7 @@ class CakeResponse
      * @param string|array $allowedHeaders List of HTTP headers allowed
      * @return void
      */
-    public function cors(CakeRequest $request, $allowedDomains, $allowedMethods = array(), $allowedHeaders = array())
+    public function cors(CakeRequest $request, $allowedDomains, $allowedMethods = [], $allowedHeaders = [])
     {
         $origin = $request->header('Origin');
         if (!$origin) {
@@ -1365,6 +1392,7 @@ class CakeResponse
             $this->header('Access-Control-Allow-Origin', $domain['original'] === '*' ? '*' : $origin);
             $allowedMethods && $this->header('Access-Control-Allow-Methods', implode(', ', (array)$allowedMethods));
             $allowedHeaders && $this->header('Access-Control-Allow-Headers', implode(', ', (array)$allowedHeaders));
+
             break;
         }
     }
@@ -1378,16 +1406,18 @@ class CakeResponse
      */
     protected function _normalizeCorsDomains($domains, $requestIsSSL = false)
     {
-        $result = array();
+        $result = [];
         foreach ($domains as $domain) {
             if ($domain === '*') {
-                $result[] = array('preg' => '@.@', 'original' => '*');
+                $result[] = ['preg' => '@.@', 'original' => '*'];
+
                 continue;
             }
             $original = $domain;
             $preg = '@' . str_replace('*', '.*', $domain) . '@';
             $result[] = compact('original', 'preg');
         }
+
         return $result;
     }
 
@@ -1408,12 +1438,12 @@ class CakeResponse
      * @return void
      * @throws NotFoundException
      */
-    public function file($path, $options = array())
+    public function file($path, $options = [])
     {
-        $options += array(
-            'name' => null,
+        $options += [
+            'name'     => null,
             'download' => null
-        );
+        ];
 
         if (strpos($path, '../') !== false || strpos($path, '..\\') !== false) {
             throw new NotFoundException(__d(
@@ -1431,6 +1461,7 @@ class CakeResponse
             if (Configure::read('debug')) {
                 throw new NotFoundException(__d('cake_dev', 'The requested file %s was not found or not readable', $path));
             }
+
             throw new NotFoundException(__d('cake', 'The requested file was not found'));
         }
 
@@ -1507,19 +1538,20 @@ class CakeResponse
 
         if ($start > $end || $end > $lastByte || $start > $lastByte) {
             $this->statusCode(416);
-            $this->header(array(
+            $this->header([
                 'Content-Range' => 'bytes 0-' . $lastByte . '/' . $fileSize
-            ));
+            ]);
+
             return;
         }
 
-        $this->header(array(
+        $this->header([
             'Content-Length' => $end - $start + 1,
-            'Content-Range' => 'bytes ' . $start . '-' . $end . '/' . $fileSize
-        ));
+            'Content-Range'  => 'bytes ' . $start . '-' . $end . '/' . $fileSize
+        ]);
 
         $this->statusCode(206);
-        $this->_fileRange = array($start, $end);
+        $this->_fileRange = [$start, $end];
     }
 
     /**
@@ -1548,6 +1580,7 @@ class CakeResponse
         while (!feof($file->handle)) {
             if (!$this->_isActive()) {
                 $file->close();
+
                 return false;
             }
             $offset = $file->offset();
@@ -1563,6 +1596,7 @@ class CakeResponse
             }
         }
         $file->close();
+
         return true;
     }
 
@@ -1586,6 +1620,7 @@ class CakeResponse
         if (ob_get_length()) {
             return ob_end_clean();
         }
+
         return true;
     }
 

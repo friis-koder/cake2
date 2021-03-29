@@ -15,7 +15,6 @@
  * @since         CakePHP(tm) v 1.2.0.5436
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('Router', 'Routing');
 App::uses('CakeSession', 'Model/Datasource');
 App::uses('Controller', 'Controller');
@@ -32,11 +31,11 @@ require_once dirname(dirname(__FILE__)) . DS . 'Model' . DS . 'models.php';
  */
 class ScaffoldMockController extends Controller
 {
-/**
- * scaffold property
- *
- * @var mixed
- */
+    /**
+     * scaffold property
+     *
+     * @var mixed
+     */
     public $scaffold;
 }
 
@@ -47,11 +46,11 @@ class ScaffoldMockController extends Controller
  */
 class ScaffoldMockControllerWithFields extends Controller
 {
-/**
- * name property
- *
- * @var string
- */
+    /**
+     * name property
+     *
+     * @var string
+     */
     public $name = 'ScaffoldMock';
 
     /**
@@ -69,7 +68,8 @@ class ScaffoldMockControllerWithFields extends Controller
      */
     public function beforeScaffold($method)
     {
-        $this->set('scaffoldFields', array('title'));
+        $this->set('scaffoldFields', ['title']);
+
         return true;
     }
 }
@@ -81,11 +81,11 @@ class ScaffoldMockControllerWithFields extends Controller
  */
 class ScaffoldMockControllerWithError extends Controller
 {
-/**
- * name property
- *
- * @var string
- */
+    /**
+     * name property
+     *
+     * @var string
+     */
     public $name = 'ScaffoldMock';
 
     /**
@@ -114,12 +114,12 @@ class ScaffoldMockControllerWithError extends Controller
  */
 class TestScaffoldMock extends Scaffold
 {
-/**
- * Overload _scaffold
- *
- * @param CakeRequest $request Request object for scaffolding
- * @return void
- */
+    /**
+     * Overload _scaffold
+     *
+     * @param CakeRequest $request Request object for scaffolding
+     * @return void
+     */
     protected function _scaffold(CakeRequest $request)
     {
         $this->_params = $request;
@@ -143,11 +143,11 @@ class TestScaffoldMock extends Scaffold
  */
 class ScaffoldTest extends CakeTestCase
 {
-/**
- * Controller property
- *
- * @var SecurityTestController
- */
+    /**
+     * Controller property
+     *
+     * @var SecurityTestController
+     */
     public $Controller;
 
     /**
@@ -155,7 +155,7 @@ class ScaffoldTest extends CakeTestCase
      *
      * @var array
      */
-    public $fixtures = array('core.article', 'core.user', 'core.comment', 'core.join_thing', 'core.tag');
+    public $fixtures = ['core.article', 'core.user', 'core.comment', 'core.join_thing', 'core.tag'];
 
     /**
      * setUp method
@@ -168,7 +168,7 @@ class ScaffoldTest extends CakeTestCase
         Configure::write('Config.language', 'eng');
         $request = new CakeRequest(null, false);
         $this->Controller = new ScaffoldMockController($request);
-        $this->Controller->response = $this->getMock('CakeResponse', array('_sendHeader'));
+        $this->Controller->response = $this->getMock('CakeResponse', ['_sendHeader']);
     }
 
     /**
@@ -191,16 +191,16 @@ class ScaffoldTest extends CakeTestCase
      */
     public function testScaffoldParams()
     {
-        $params = array(
-            'plugin' => null,
-            'pass' => array(),
-            'form' => array(),
-            'named' => array(),
-            'url' => array('url' => 'admin/scaffold_mock/edit'),
+        $params = [
+            'plugin'     => null,
+            'pass'       => [],
+            'form'       => [],
+            'named'      => [],
+            'url'        => ['url' => 'admin/scaffold_mock/edit'],
             'controller' => 'scaffold_mock',
-            'action' => 'admin_edit',
-            'admin' => true,
-        );
+            'action'     => 'admin_edit',
+            'admin'      => true,
+        ];
         $this->Controller->request->base = '';
         $this->Controller->request->webroot = '/';
         $this->Controller->request->here = '/admin/scaffold_mock/edit';
@@ -222,16 +222,16 @@ class ScaffoldTest extends CakeTestCase
      */
     public function testScaffoldVariableSetting()
     {
-        $params = array(
-            'plugin' => null,
-            'pass' => array(),
-            'form' => array(),
-            'named' => array(),
-            'url' => array('url' => 'admin/scaffold_mock/edit'),
+        $params = [
+            'plugin'     => null,
+            'pass'       => [],
+            'form'       => [],
+            'named'      => [],
+            'url'        => ['url' => 'admin/scaffold_mock/edit'],
             'controller' => 'scaffold_mock',
-            'action' => 'admin_edit',
-            'admin' => true,
-        );
+            'action'     => 'admin_edit',
+            'admin'      => true,
+        ];
         $this->Controller->request->base = '';
         $this->Controller->request->webroot = '/';
         $this->Controller->request->here = '/admin/scaffold_mock/edit';
@@ -252,7 +252,7 @@ class ScaffoldTest extends CakeTestCase
         $this->assertEquals('title', $result['displayField']);
         $this->assertEquals('scaffoldMock', $result['singularVar']);
         $this->assertEquals('scaffoldMock', $result['pluralVar']);
-        $this->assertEquals(array('id', 'user_id', 'title', 'body', 'published', 'created', 'updated'), $result['scaffoldFields']);
+        $this->assertEquals(['id', 'user_id', 'title', 'body', 'published', 'created', 'updated'], $result['scaffoldFields']);
         $this->assertArrayHasKey('plugin', $result['associations']['belongsTo']['User']);
     }
 
@@ -279,15 +279,15 @@ class ScaffoldTest extends CakeTestCase
      */
     public function testScaffoldFlashMessages()
     {
-        $params = array(
-            'plugin' => null,
-            'pass' => array(1),
-            'form' => array(),
-            'named' => array(),
-            'url' => array('url' => 'scaffold_mock'),
+        $params = [
+            'plugin'     => null,
+            'pass'       => [1],
+            'form'       => [],
+            'named'      => [],
+            'url'        => ['url' => 'scaffold_mock'],
             'controller' => 'scaffold_mock',
-            'action' => 'edit',
-        );
+            'action'     => 'edit',
+        ];
         $this->Controller->request->base = '';
         $this->Controller->request->webroot = '/';
         $this->Controller->request->here = '/scaffold_mock/edit';
@@ -296,13 +296,13 @@ class ScaffoldTest extends CakeTestCase
         //set router.
         Router::reload();
         Router::setRequestInfo($this->Controller->request);
-        $this->Controller->request->data = array(
-            'ScaffoldMock' => array(
-                'id' => 1,
+        $this->Controller->request->data = [
+            'ScaffoldMock' => [
+                'id'    => 1,
                 'title' => 'New title',
-                'body' => 'new body'
-            )
-        );
+                'body'  => 'new body'
+            ]
+        ];
         $this->Controller->constructClasses();
         unset($this->Controller->Session);
 
@@ -321,15 +321,15 @@ class ScaffoldTest extends CakeTestCase
     public function testHabtmFieldAdditionWithScaffoldForm()
     {
         CakePlugin::unload();
-        $params = array(
-            'plugin' => null,
-            'pass' => array(1),
-            'form' => array(),
-            'named' => array(),
-            'url' => array('url' => 'scaffold_mock'),
+        $params = [
+            'plugin'     => null,
+            'pass'       => [1],
+            'form'       => [],
+            'named'      => [],
+            'url'        => ['url' => 'scaffold_mock'],
             'controller' => 'scaffold_mock',
-            'action' => 'edit',
-        );
+            'action'     => 'edit',
+        ];
         $this->Controller->request->base = '';
         $this->Controller->request->webroot = '/';
         $this->Controller->request->here = '/scaffold_mock/edit';
@@ -347,7 +347,7 @@ class ScaffoldTest extends CakeTestCase
         $this->assertRegExp('/name="data\[ScaffoldTag\]\[ScaffoldTag\]"/', $result);
 
         $result = $Scaffold->controller->viewVars;
-        $this->assertEquals(array('id', 'user_id', 'title', 'body', 'published', 'created', 'updated', 'ScaffoldTag'), $result['scaffoldFields']);
+        $this->assertEquals(['id', 'user_id', 'title', 'body', 'published', 'created', 'updated', 'ScaffoldTag'], $result['scaffoldFields']);
     }
 
     /**
@@ -359,17 +359,17 @@ class ScaffoldTest extends CakeTestCase
     {
         $request = new CakeRequest(null, false);
         $this->Controller = new ScaffoldMockControllerWithFields($request);
-        $this->Controller->response = $this->getMock('CakeResponse', array('_sendHeader'));
+        $this->Controller->response = $this->getMock('CakeResponse', ['_sendHeader']);
 
-        $params = array(
-            'plugin' => null,
-            'pass' => array(1),
-            'form' => array(),
-            'named' => array(),
-            'url' => array('url' => 'scaffold_mock/edit'),
+        $params = [
+            'plugin'     => null,
+            'pass'       => [1],
+            'form'       => [],
+            'named'      => [],
+            'url'        => ['url' => 'scaffold_mock/edit'],
             'controller' => 'scaffold_mock',
-            'action' => 'edit',
-        );
+            'action'     => 'edit',
+        ];
         $this->Controller->request->base = '';
         $this->Controller->request->webroot = '/';
         $this->Controller->request->here = '/scaffold_mock/edit';
@@ -397,17 +397,17 @@ class ScaffoldTest extends CakeTestCase
     {
         $request = new CakeRequest(null, false);
         $this->Controller = new ScaffoldMockControllerWithError($request);
-        $this->Controller->response = $this->getMock('CakeResponse', array('_sendHeader'));
+        $this->Controller->response = $this->getMock('CakeResponse', ['_sendHeader']);
 
-        $params = array(
-            'plugin' => null,
-            'pass' => array(1),
-            'form' => array(),
-            'named' => array(),
-            'url' => array('url' => 'scaffold_mock/edit'),
+        $params = [
+            'plugin'     => null,
+            'pass'       => [1],
+            'form'       => [],
+            'named'      => [],
+            'url'        => ['url' => 'scaffold_mock/edit'],
             'controller' => 'scaffold_mock',
-            'action' => 'edit',
-        );
+            'action'     => 'edit',
+        ];
         $this->Controller->request->base = '';
         $this->Controller->request->webroot = '/';
         $this->Controller->request->here = '/scaffold_mock/edit';

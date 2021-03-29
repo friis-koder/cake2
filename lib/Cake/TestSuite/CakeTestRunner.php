@@ -14,7 +14,6 @@
  * @since         CakePHP(tm) v 2.0
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 if (class_exists('SebastianBergmann\CodeCoverage\CodeCoverage')) {
     class_alias('SebastianBergmann\CodeCoverage\CodeCoverage', 'PHP_CodeCoverage');
     class_alias('SebastianBergmann\CodeCoverage\Report\Text', 'PHP_CodeCoverage_Report_Text');
@@ -33,12 +32,12 @@ App::uses('CakeFixtureManager', 'TestSuite/Fixture');
  */
 class CakeTestRunner extends PHPUnit_TextUI_TestRunner
 {
-/**
- * Lets us pass in some options needed for CakePHP's webrunner.
- *
- * @param mixed $loader The test suite loader
- * @param array $params list of options to be used for this run
- */
+    /**
+     * Lets us pass in some options needed for CakePHP's webrunner.
+     *
+     * @param mixed $loader The test suite loader
+     * @param array $params list of options to be used for this run
+     */
     public function __construct($loader, $params)
     {
         parent::__construct($loader);
@@ -54,7 +53,7 @@ class CakeTestRunner extends PHPUnit_TextUI_TestRunner
      * This argument is ignored if >PHPUnit5.2.0
      * @return void
      */
-    public function doRun(PHPUnit_Framework_Test $suite, array $arguments = array(), $exit = true)
+    public function doRun(PHPUnit_Framework_Test $suite, array $arguments = [], $exit = true)
     {
         if (isset($arguments['printer'])) {
             static::$versionStringPrinted = true;
@@ -74,10 +73,12 @@ class CakeTestRunner extends PHPUnit_TextUI_TestRunner
 
         $return = parent::doRun($suite, $arguments, $exit);
         $fixture->shutdown();
+
         return $return;
     }
 
     // @codingStandardsIgnoreStart PHPUnit overrides don't match CakePHP
+
     /**
      * Create the test result and splice on our code coverage reports.
      *
@@ -94,8 +95,10 @@ class CakeTestRunner extends PHPUnit_TextUI_TestRunner
                 $result->setCodeCoverage(new PHP_CodeCoverage());
             }
         }
+
         return $result;
     }
+
     // @codingStandardsIgnoreEnd
 
     /**
@@ -112,12 +115,14 @@ class CakeTestRunner extends PHPUnit_TextUI_TestRunner
             if (class_exists($arguments['fixtureManager'])) {
                 return new $arguments['fixtureManager']();
             }
+
             throw new RuntimeException(__d('cake_dev', 'Could not find fixture manager %s.', $arguments['fixtureManager']));
         }
         App::uses('AppFixtureManager', 'TestSuite');
         if (class_exists('AppFixtureManager')) {
             return new AppFixtureManager();
         }
+
         return new CakeFixtureManager();
     }
 }

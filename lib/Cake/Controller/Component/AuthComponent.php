@@ -17,7 +17,6 @@
  * @since         CakePHP(tm) v 0.10.0.1076
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('Component', 'Controller');
 App::uses('Router', 'Routing');
 App::uses('Security', 'Utility');
@@ -38,11 +37,11 @@ App::uses('CakeEvent', 'Event');
  */
 class AuthComponent extends Component
 {
-/**
- * Constant for 'all'
- *
- * @var string
- */
+    /**
+     * Constant for 'all'
+     *
+     * @var string
+     */
     public const ALL = 'all';
 
     /**
@@ -50,7 +49,7 @@ class AuthComponent extends Component
      *
      * @var array
      */
-    public $components = array('Session', 'Flash', 'RequestHandler');
+    public $components = ['Session', 'Flash', 'RequestHandler'];
 
     /**
      * An array of authentication objects to use for authenticating users. You can configure
@@ -84,14 +83,14 @@ class AuthComponent extends Component
      * @var array
      * @link https://book.cakephp.org/2.0/en/core-libraries/components/authentication.html
      */
-    public $authenticate = array('Form');
+    public $authenticate = ['Form'];
 
     /**
      * Objects that will be used for authentication checks.
      *
      * @var BaseAuthenticate[]
      */
-    protected $_authenticateObjects = array();
+    protected $_authenticateObjects = [];
 
     /**
      * An array of authorization objects to use for authorizing users. You can configure
@@ -131,7 +130,7 @@ class AuthComponent extends Component
      *
      * @var BaseAuthorize[]
      */
-    protected $_authorizeObjects = array();
+    protected $_authorizeObjects = [];
 
     /**
      * The name of an optional view element to render when an Ajax request is made
@@ -151,11 +150,11 @@ class AuthComponent extends Component
      *
      * @var array
      */
-    public $flash = array(
+    public $flash = [
         'element' => 'default',
-        'key' => 'auth',
-        'params' => array()
-    );
+        'key'     => 'auth',
+        'params'  => []
+    ];
 
     /**
      * The session key name where the record of the current user is stored. Default
@@ -172,7 +171,7 @@ class AuthComponent extends Component
      *
      * @var array
      */
-    protected static $_user = array();
+    protected static $_user = [];
 
     /**
      * A URL (defined as a string or array) to the controller action that handles
@@ -180,11 +179,11 @@ class AuthComponent extends Component
      *
      * @var mixed
      */
-    public $loginAction = array(
+    public $loginAction = [
         'controller' => 'users',
-        'action' => 'login',
-        'plugin' => null
-    );
+        'action'     => 'login',
+        'plugin'     => null
+    ];
 
     /**
      * Normally, if a user is redirected to the $loginAction page, the location they
@@ -234,7 +233,7 @@ class AuthComponent extends Component
      * @var array
      * @see AuthComponent::allow()
      */
-    public $allowedActions = array();
+    public $allowedActions = [];
 
     /**
      * Request object
@@ -255,7 +254,7 @@ class AuthComponent extends Component
      *
      * @var array
      */
-    protected $_methods = array();
+    protected $_methods = [];
 
     /**
      * Initializes AuthComponent for use in the controller.
@@ -301,6 +300,7 @@ class AuthComponent extends Component
 
         if ($this->_isAllowed($controller)) {
             $this->_getUser();
+
             return true;
         }
 
@@ -330,6 +330,7 @@ class AuthComponent extends Component
         if (in_array($action, array_map('strtolower', $this->allowedActions))) {
             return true;
         }
+
         return false;
     }
 
@@ -361,6 +362,7 @@ class AuthComponent extends Component
                     $this->Session->write('Auth.redirect', $controller->referer(null, true));
                 }
             }
+
             return true;
         }
 
@@ -368,6 +370,7 @@ class AuthComponent extends Component
             $this->flash($this->authError);
             $this->Session->write('Auth.redirect', $controller->request->here(false));
             $controller->redirect($this->loginAction);
+
             return false;
         }
         if (!empty($this->ajaxLogin)) {
@@ -376,11 +379,13 @@ class AuthComponent extends Component
             $response = $controller->render($this->ajaxLogin, $this->RequestHandler->ajaxLayout);
             $response->send();
             $this->_stop();
+
             return false;
         }
         $controller->response->statusCode(403);
         $controller->response->send();
         $this->_stop();
+
         return false;
     }
 
@@ -427,6 +432,7 @@ class AuthComponent extends Component
             $url = $this->unauthorizedRedirect;
         }
         $controller->redirect($url);
+
         return false;
     }
 
@@ -437,15 +443,16 @@ class AuthComponent extends Component
      */
     protected function _setDefaults()
     {
-        $defaults = array(
+        $defaults = [
             'logoutRedirect' => $this->loginAction,
-            'authError' => __d('cake', 'You are not authorized to access that location.')
-        );
+            'authError'      => __d('cake', 'You are not authorized to access that location.')
+        ];
         foreach ($defaults as $key => $value) {
             if (!isset($this->{$key}) || $this->{$key} === true) {
                 $this->{$key} = $value;
             }
         }
+
         return true;
     }
 
@@ -479,6 +486,7 @@ class AuthComponent extends Component
                 return true;
             }
         }
+
         return false;
     }
 
@@ -493,9 +501,9 @@ class AuthComponent extends Component
         if (empty($this->authorize)) {
             return null;
         }
-        $this->_authorizeObjects = array();
+        $this->_authorizeObjects = [];
         $config = Hash::normalize((array)$this->authorize);
-        $global = array();
+        $global = [];
         if (isset($config[AuthComponent::ALL])) {
             $global = $config[AuthComponent::ALL];
             unset($config[AuthComponent::ALL]);
@@ -513,6 +521,7 @@ class AuthComponent extends Component
             $settings = array_merge($global, (array)$settings);
             $this->_authorizeObjects[] = new $className($this->_Collection, $settings);
         }
+
         return $this->_authorizeObjects;
     }
 
@@ -535,6 +544,7 @@ class AuthComponent extends Component
         $args = func_get_args();
         if (empty($args) || $action === null) {
             $this->allowedActions = $this->_methods;
+
             return;
         }
         if (isset($args[0]) && is_array($args[0])) {
@@ -561,7 +571,8 @@ class AuthComponent extends Component
     {
         $args = func_get_args();
         if (empty($args) || $action === null) {
-            $this->allowedActions = array();
+            $this->allowedActions = [];
+
             return;
         }
         if (isset($args[0]) && is_array($args[0])) {
@@ -589,12 +600,12 @@ class AuthComponent extends Component
      * @link https://book.cakephp.org/2.0/en/core-libraries/components/authentication.html#mapping-actions-when-using-crudauthorize
      * @deprecated 3.0.0 Map actions using `actionMap` config key on authorize objects instead
      */
-    public function mapActions($map = array())
+    public function mapActions($map = [])
     {
         if (empty($this->_authorizeObjects)) {
             $this->constructAuthorize();
         }
-        $mappedActions = array();
+        $mappedActions = [];
         foreach ($this->_authorizeObjects as $auth) {
             $mappedActions = Hash::merge($mappedActions, $auth->mapActions($map));
         }
@@ -602,7 +613,7 @@ class AuthComponent extends Component
             return $mappedActions;
         }
 
-        return array();
+        return [];
     }
 
     /**
@@ -631,9 +642,10 @@ class AuthComponent extends Component
             } else {
                 static::$_user = $user;
             }
-            $event = new CakeEvent('Auth.afterIdentify', $this, array('user' => $user));
+            $event = new CakeEvent('Auth.afterIdentify', $this, ['user' => $user]);
             $this->_Collection->getController()->getEventManager()->dispatch($event);
         }
+
         return (bool)$this->user();
     }
 
@@ -660,10 +672,11 @@ class AuthComponent extends Component
         foreach ($this->_authenticateObjects as $auth) {
             $auth->logout($user);
         }
-        static::$_user = array();
+        static::$_user = [];
         $this->Session->delete(static::$sessionKey);
         $this->Session->delete('Auth.redirect');
         $this->Session->renew();
+
         return Router::normalize($this->logoutRedirect);
     }
 
@@ -690,6 +703,7 @@ class AuthComponent extends Component
         if ($key === null) {
             return $user;
         }
+
         return Hash::get($user, $key);
     }
 
@@ -704,6 +718,7 @@ class AuthComponent extends Component
         $user = $this->user();
         if ($user) {
             $this->Session->delete('Auth.redirect');
+
             return true;
         }
 
@@ -714,6 +729,7 @@ class AuthComponent extends Component
             $result = $auth->getUser($this->request);
             if (!empty($result) && is_array($result)) {
                 static::$_user = $result;
+
                 return true;
             }
         }
@@ -769,8 +785,9 @@ class AuthComponent extends Component
             $redir = '/';
         }
         if (is_array($redir)) {
-            return Router::url($redir + array('base' => false));
+            return Router::url($redir + ['base' => false]);
         }
+
         return $redir;
     }
 
@@ -793,6 +810,7 @@ class AuthComponent extends Component
                 return $result;
             }
         }
+
         return false;
     }
 
@@ -807,9 +825,9 @@ class AuthComponent extends Component
         if (empty($this->authenticate)) {
             return null;
         }
-        $this->_authenticateObjects = array();
+        $this->_authenticateObjects = [];
         $config = Hash::normalize((array)$this->authenticate);
-        $global = array();
+        $global = [];
         if (isset($config[AuthComponent::ALL])) {
             $global = $config[AuthComponent::ALL];
             unset($config[AuthComponent::ALL]);
@@ -833,6 +851,7 @@ class AuthComponent extends Component
             $this->_Collection->getController()->getEventManager()->attach($auth);
             $this->_authenticateObjects[] = $auth;
         }
+
         return $this->_authenticateObjects;
     }
 

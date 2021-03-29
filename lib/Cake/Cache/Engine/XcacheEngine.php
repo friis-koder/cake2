@@ -24,15 +24,15 @@
  */
 class XcacheEngine extends CacheEngine
 {
-/**
- * Settings
- *
- *  - PHP_AUTH_USER = xcache.admin.user, default cake
- *  - PHP_AUTH_PW = xcache.admin.password, default cake
- *
- * @var array
- */
-    public $settings = array();
+    /**
+     * Settings
+     *
+     *  - PHP_AUTH_USER = xcache.admin.user, default cake
+     *  - PHP_AUTH_PW = xcache.admin.password, default cake
+     *
+     * @var array
+     */
+    public $settings = [];
 
     /**
      * Initialize the Cache Engine
@@ -43,19 +43,21 @@ class XcacheEngine extends CacheEngine
      * @param array $settings array of setting for the engine
      * @return bool True if the engine has been successfully initialized, false if not
      */
-    public function init($settings = array())
+    public function init($settings = [])
     {
         if (PHP_SAPI !== 'cli') {
             parent::init(
-                array_merge(array(
-                'engine' => 'Xcache',
-                'prefix' => Inflector::slug(APP_DIR) . '_',
-                'PHP_AUTH_USER' => 'user',
-                'PHP_AUTH_PW' => 'password'
-                ), $settings)
+                array_merge([
+                    'engine'        => 'Xcache',
+                    'prefix'        => Inflector::slug(APP_DIR) . '_',
+                    'PHP_AUTH_USER' => 'user',
+                    'PHP_AUTH_PW'   => 'password'
+                ], $settings)
             );
+
             return function_exists('xcache_info');
         }
+
         return false;
     }
 
@@ -71,6 +73,7 @@ class XcacheEngine extends CacheEngine
     {
         $expires = time() + $duration;
         xcache_set($key . '_expires', $expires, $duration);
+
         return xcache_set($key, $value, $duration);
     }
 
@@ -88,8 +91,10 @@ class XcacheEngine extends CacheEngine
             if ($cachetime < $time || ($time + $this->settings['duration']) < $cachetime) {
                 return false;
             }
+
             return xcache_get($key);
         }
+
         return false;
     }
 
@@ -145,6 +150,7 @@ class XcacheEngine extends CacheEngine
             xcache_clear_cache(XC_TYPE_VAR, $i);
         }
         $this->_auth(true);
+
         return true;
     }
 
@@ -157,7 +163,7 @@ class XcacheEngine extends CacheEngine
      */
     public function groups()
     {
-        $result = array();
+        $result = [];
         foreach ($this->settings['groups'] as $group) {
             $value = xcache_get($this->settings['prefix'] . $group);
             if (!$value) {
@@ -166,6 +172,7 @@ class XcacheEngine extends CacheEngine
             }
             $result[] = $group . $value;
         }
+
         return $result;
     }
 
@@ -193,8 +200,8 @@ class XcacheEngine extends CacheEngine
      */
     protected function _auth($reverse = false)
     {
-        static $backup = array();
-        $keys = array('PHP_AUTH_USER' => 'user', 'PHP_AUTH_PW' => 'password');
+        static $backup = [];
+        $keys = ['PHP_AUTH_USER' => 'user', 'PHP_AUTH_PW' => 'password'];
         foreach ($keys as $key => $setting) {
             if ($reverse) {
                 if (isset($backup[$key])) {
@@ -234,6 +241,7 @@ class XcacheEngine extends CacheEngine
         if ($cachedValue === false) {
             return $this->write($key, $value, $duration);
         }
+
         return false;
     }
 }

@@ -15,7 +15,6 @@
  * @since         CakePHP(tm) v 1.2.0.5432
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('Cache', 'Cache');
 
 /**
@@ -39,7 +38,7 @@ class CacheTest extends CakeTestCase
         Configure::write('Cache.disable', false);
 
         $this->_defaultCacheConfig = Cache::config('default');
-        Cache::config('default', array('engine' => 'File', 'path' => TMP . 'tests'));
+        Cache::config('default', ['engine' => 'File', 'path' => TMP . 'tests']);
     }
 
     /**
@@ -64,7 +63,7 @@ class CacheTest extends CakeTestCase
      */
     public function testConfig()
     {
-        $settings = array('engine' => 'File', 'path' => TMP . 'tests', 'prefix' => 'cake_test_');
+        $settings = ['engine' => 'File', 'path' => TMP . 'tests', 'prefix' => 'cake_test_'];
         $results = Cache::config('new', $settings);
         $this->assertEquals(Cache::config('new'), $results);
         $this->assertTrue(isset($results['engine']));
@@ -79,7 +78,7 @@ class CacheTest extends CakeTestCase
      */
     public function testConfigInvalidEngine()
     {
-        $settings = array('engine' => 'Imaginary');
+        $settings = ['engine' => 'Imaginary'];
         Cache::config('imaginary', $settings);
     }
 
@@ -91,7 +90,7 @@ class CacheTest extends CakeTestCase
     public function testNonFatalErrorsWithCachedisable()
     {
         Configure::write('Cache.disable', true);
-        Cache::config('test', array('engine' => 'File', 'path' => TMP, 'prefix' => 'error_test_'));
+        Cache::config('test', ['engine' => 'File', 'path' => TMP, 'prefix' => 'error_test_']);
 
         Cache::write('no_save', 'Noooo!', 'test');
         Cache::read('no_save', 'test');
@@ -108,17 +107,17 @@ class CacheTest extends CakeTestCase
      */
     public function testConfigWithLibAndPluginEngines()
     {
-        App::build(array(
-            'Lib' => array(CAKE . 'Test' . DS . 'test_app' . DS . 'Lib' . DS),
-            'Plugin' => array(CAKE . 'Test' . DS . 'test_app' . DS . 'Plugin' . DS)
-        ), App::RESET);
+        App::build([
+            'Lib'    => [CAKE . 'Test' . DS . 'test_app' . DS . 'Lib' . DS],
+            'Plugin' => [CAKE . 'Test' . DS . 'test_app' . DS . 'Plugin' . DS]
+        ], App::RESET);
         CakePlugin::load('TestPlugin');
 
-        $settings = array('engine' => 'TestAppCache', 'path' => TMP, 'prefix' => 'cake_test_');
+        $settings = ['engine' => 'TestAppCache', 'path' => TMP, 'prefix' => 'cake_test_'];
         $result = Cache::config('libEngine', $settings);
         $this->assertEquals(Cache::config('libEngine'), $result);
 
-        $settings = array('engine' => 'TestPlugin.TestPluginCache', 'path' => TMP, 'prefix' => 'cake_test_');
+        $settings = ['engine' => 'TestPlugin.TestPluginCache', 'path' => TMP, 'prefix' => 'cake_test_'];
         $result = Cache::config('pluginLibEngine', $settings);
         $this->assertEquals(Cache::config('pluginLibEngine'), $result);
 
@@ -143,14 +142,14 @@ class CacheTest extends CakeTestCase
         $debug = Configure::read('debug');
         Configure::write('debug', 0);
 
-        Cache::config('invalid', array(
-            'engine' => 'File',
-            'duration' => '+1 year',
-            'prefix' => 'testing_invalid_',
-            'path' => 'data/',
+        Cache::config('invalid', [
+            'engine'    => 'File',
+            'duration'  => '+1 year',
+            'prefix'    => 'testing_invalid_',
+            'path'      => 'data/',
             'serialize' => true,
-            'random' => 'wii'
-        ));
+            'random'    => 'wii'
+        ]);
         Cache::read('Test', 'invalid');
 
         Configure::write('debug', $debug);
@@ -177,10 +176,10 @@ class CacheTest extends CakeTestCase
      */
     public function testAttemptingToConfigureANonCacheEngineClass()
     {
-        $this->getMock('StdClass', array(), array(), 'RubbishEngine');
-        Cache::config('Garbage', array(
+        $this->getMock('StdClass', [], [], 'RubbishEngine');
+        Cache::config('Garbage', [
             'engine' => 'Rubbish'
-        ));
+        ]);
     }
 
     /**
@@ -193,10 +192,10 @@ class CacheTest extends CakeTestCase
         $_cacheConfigSessions = Cache::config('sessions');
         $_cacheConfigTests = Cache::config('tests');
 
-        $result = Cache::config('sessions', array('engine' => 'File', 'path' => TMP . 'sessions'));
+        $result = Cache::config('sessions', ['engine' => 'File', 'path' => TMP . 'sessions']);
         $this->assertEquals(Cache::settings('sessions'), $result['settings']);
 
-        $result = Cache::config('tests', array('engine' => 'File', 'path' => TMP . 'tests'));
+        $result = Cache::config('tests', ['engine' => 'File', 'path' => TMP . 'tests']);
         $this->assertEquals(Cache::settings('tests'), $result['settings']);
 
         if ($_cacheConfigSessions !== false) {
@@ -214,7 +213,7 @@ class CacheTest extends CakeTestCase
      */
     public function testConfigSettingDefaultConfigKey()
     {
-        Cache::config('test_name', array('engine' => 'File', 'prefix' => 'test_name_'));
+        Cache::config('test_name', ['engine' => 'File', 'prefix' => 'test_name_']);
 
         Cache::write('value_one', 'I am cached', 'test_name');
         $result = Cache::read('value_one', 'test_name');
@@ -245,18 +244,18 @@ class CacheTest extends CakeTestCase
 
         Cache::write('test_something', 'this is the test data', 'tests');
 
-        $expected = array(
-            'path' => TMP . 'sessions' . DS,
-            'prefix' => 'cake_',
-            'lock' => true,
-            'serialize' => true,
-            'duration' => 3600,
+        $expected = [
+            'path'        => TMP . 'sessions' . DS,
+            'prefix'      => 'cake_',
+            'lock'        => true,
+            'serialize'   => true,
+            'duration'    => 3600,
             'probability' => 100,
-            'engine' => 'File',
-            'isWindows' => DIRECTORY_SEPARATOR === '\\',
-            'mask' => 0664,
-            'groups' => array()
-        );
+            'engine'      => 'File',
+            'isWindows'   => DIRECTORY_SEPARATOR === '\\',
+            'mask'        => 0664,
+            'groups'      => []
+        ];
         $this->assertEquals($expected, Cache::settings('sessions'));
 
         Cache::config('sessions', $_cacheConfigSessions['settings']);
@@ -269,53 +268,53 @@ class CacheTest extends CakeTestCase
      */
     public function testGroupConfigs()
     {
-        Cache::config('latest', array(
+        Cache::config('latest', [
             'duration' => 300,
-            'engine' => 'File',
-            'groups' => array(
+            'engine'   => 'File',
+            'groups'   => [
                 'posts', 'comments',
-            ),
-        ));
+            ],
+        ]);
 
-        $expected = array(
-            'posts' => array('latest'),
-            'comments' => array('latest'),
-        );
+        $expected = [
+            'posts'    => ['latest'],
+            'comments' => ['latest'],
+        ];
         $result = Cache::groupConfigs();
         $this->assertEquals($expected, $result);
 
         $result = Cache::groupConfigs('posts');
-        $this->assertEquals(array('posts' => array('latest')), $result);
+        $this->assertEquals(['posts' => ['latest']], $result);
 
-        Cache::config('page', array(
+        Cache::config('page', [
             'duration' => 86400,
-            'engine' => 'File',
-            'groups' => array(
+            'engine'   => 'File',
+            'groups'   => [
                 'posts', 'archive'
-            ),
-        ));
+            ],
+        ]);
 
         $result = Cache::groupConfigs();
-        $expected = array(
-            'posts' => array('latest', 'page'),
-            'comments' => array('latest'),
-            'archive' => array('page'),
-        );
+        $expected = [
+            'posts'    => ['latest', 'page'],
+            'comments' => ['latest'],
+            'archive'  => ['page'],
+        ];
         $this->assertEquals($expected, $result);
 
         $result = Cache::groupConfigs('archive');
-        $this->assertEquals(array('archive' => array('page')), $result);
+        $this->assertEquals(['archive' => ['page']], $result);
 
-        Cache::config('archive', array(
+        Cache::config('archive', [
             'duration' => 86400 * 30,
-            'engine' => 'File',
-            'groups' => array(
+            'engine'   => 'File',
+            'groups'   => [
                 'posts', 'archive', 'comments',
-            ),
-        ));
+            ],
+        ]);
 
         $result = Cache::groupConfigs('archive');
-        $this->assertEquals(array('archive' => array('archive', 'page')), $result);
+        $this->assertEquals(['archive' => ['archive', 'page']], $result);
     }
 
     /**
@@ -350,7 +349,7 @@ class CacheTest extends CakeTestCase
     public function testInitSettings()
     {
         $initial = Cache::settings();
-        $override = array('engine' => 'File', 'path' => TMP . 'tests');
+        $override = ['engine' => 'File', 'path' => TMP . 'tests'];
         Cache::config('for_test', $override);
 
         $settings = Cache::settings();
@@ -366,10 +365,10 @@ class CacheTest extends CakeTestCase
      */
     public function testDrop()
     {
-        App::build(array(
-            'Lib' => array(CAKE . 'Test' . DS . 'test_app' . DS . 'Lib' . DS),
-            'Plugin' => array(CAKE . 'Test' . DS . 'test_app' . DS . 'Plugin' . DS)
-        ), App::RESET);
+        App::build([
+            'Lib'    => [CAKE . 'Test' . DS . 'test_app' . DS . 'Lib' . DS],
+            'Plugin' => [CAKE . 'Test' . DS . 'test_app' . DS . 'Plugin' . DS]
+        ], App::RESET);
 
         $result = Cache::drop('some_config_that_does_not_exist');
         $this->assertFalse($result);
@@ -378,9 +377,9 @@ class CacheTest extends CakeTestCase
         $result = Cache::drop('tests');
         $this->assertTrue($result);
 
-        Cache::config('unconfigTest', array(
+        Cache::config('unconfigTest', [
             'engine' => 'TestAppCache'
-        ));
+        ]);
         $this->assertTrue(Cache::isInitialized('unconfigTest'));
 
         $this->assertTrue(Cache::drop('unconfigTest'));
@@ -420,12 +419,13 @@ class CacheTest extends CakeTestCase
      */
     public function testWriteTriggerError()
     {
-        App::build(array(
-            'Lib' => array(CAKE . 'Test' . DS . 'test_app' . DS . 'Lib' . DS),
-            'Plugin' => array(CAKE . 'Test' . DS . 'test_app' . DS . 'Plugin' . DS)
-        ), App::RESET);
+        App::build([
+            'Lib'    => [CAKE . 'Test' . DS . 'test_app' . DS . 'Lib' . DS],
+            'Plugin' => [CAKE . 'Test' . DS . 'test_app' . DS . 'Plugin' . DS]
+        ], App::RESET);
 
-        Cache::config('test_trigger', array('engine' => 'TestAppCache', 'prefix' => ''));
+        Cache::config('test_trigger', ['engine' => 'TestAppCache', 'prefix' => '']);
+
         try {
             Cache::write('fail', 'value', 'test_trigger');
             $this->fail('No exception thrown');
@@ -447,7 +447,7 @@ class CacheTest extends CakeTestCase
     public function testCacheDisable()
     {
         Configure::write('Cache.disable', false);
-        Cache::config('test_cache_disable_1', array('engine' => 'File', 'path' => TMP . 'tests'));
+        Cache::config('test_cache_disable_1', ['engine' => 'File', 'path' => TMP . 'tests']);
 
         $this->assertTrue(Cache::write('key_1', 'hello', 'test_cache_disable_1'));
         $this->assertSame(Cache::read('key_1', 'test_cache_disable_1'), 'hello');
@@ -463,7 +463,7 @@ class CacheTest extends CakeTestCase
         $this->assertSame(Cache::read('key_3', 'test_cache_disable_1'), 'hello');
 
         Configure::write('Cache.disable', true);
-        Cache::config('test_cache_disable_2', array('engine' => 'File', 'path' => TMP . 'tests'));
+        Cache::config('test_cache_disable_2', ['engine' => 'File', 'path' => TMP . 'tests']);
 
         $this->assertFalse(Cache::write('key_4', 'hello', 'test_cache_disable_2'));
         $this->assertFalse(Cache::read('key_4', 'test_cache_disable_2'));
@@ -488,7 +488,7 @@ class CacheTest extends CakeTestCase
     {
         $_cacheSet = Cache::set();
 
-        Cache::set(array('duration' => '+1 year'));
+        Cache::set(['duration' => '+1 year']);
         $data = Cache::read('test_cache');
         $this->assertFalse($data);
 
@@ -496,7 +496,7 @@ class CacheTest extends CakeTestCase
         $write = Cache::write('test_cache', $data);
         $this->assertTrue($write);
 
-        Cache::set(array('duration' => '+1 year'));
+        Cache::set(['duration' => '+1 year']);
         $data = Cache::read('test_cache');
         $this->assertEquals('this is just a simple test of the cache system', $data);
 
@@ -514,8 +514,8 @@ class CacheTest extends CakeTestCase
      */
     public function testSetOnAlternateConfigs()
     {
-        Cache::config('file_config', array('engine' => 'File', 'prefix' => 'test_file_'));
-        Cache::set(array('duration' => '+1 year'), 'file_config');
+        Cache::config('file_config', ['engine' => 'File', 'prefix' => 'test_file_']);
+        Cache::set(['duration' => '+1 year'], 'file_config');
         $settings = Cache::settings('file_config');
 
         $this->assertEquals('test_file_', $settings['prefix']);
@@ -530,11 +530,11 @@ class CacheTest extends CakeTestCase
     public function testRemember()
     {
         $expected = 'This is some data 0';
-        $result = Cache::remember('test_key', array($this, 'cacher'), 'default');
+        $result = Cache::remember('test_key', [$this, 'cacher'], 'default');
         $this->assertEquals($expected, $result);
 
         $this->_count = 1;
-        $result = Cache::remember('test_key', array($this, 'cacher'), 'default');
+        $result = Cache::remember('test_key', [$this, 'cacher'], 'default');
         $this->assertEquals($expected, $result);
     }
 
@@ -601,11 +601,11 @@ class CacheTest extends CakeTestCase
         $this->skipIf(!$socket, 'Memcached is not running.');
         fclose($socket);
 
-        Cache::config('memcached', array(
-            'engine' => 'Memcached',
-            'prefix' => 'cake_',
+        Cache::config('memcached', [
+            'engine'   => 'Memcached',
+            'prefix'   => 'cake_',
             'duration' => 3600
-        ));
+        ]);
 
         $actual = Cache::engine('memcached');
         $this->assertInstanceOf('MemcachedEngine', $actual);

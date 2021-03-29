@@ -11,7 +11,6 @@
  * @link          https://cakephp.org CakePHP(tm) Project
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('View', 'View');
 App::uses('Xml', 'Utility');
 App::uses('Hash', 'Utility');
@@ -53,11 +52,11 @@ App::uses('Hash', 'Utility');
  */
 class XmlView extends View
 {
-/**
- * The subdirectory. XML views are always in xml.
- *
- * @var string
- */
+    /**
+     * The subdirectory. XML views are always in xml.
+     *
+     * @var string
+     */
     public $subDir = 'xml';
 
     /**
@@ -124,7 +123,7 @@ class XmlView extends View
         $rootNode = isset($this->viewVars['_rootNode']) ? $this->viewVars['_rootNode'] : 'response';
 
         if (is_array($serialize)) {
-            $data = array($rootNode => array());
+            $data = [$rootNode => []];
             foreach ($serialize as $alias => $key) {
                 if (is_numeric($alias)) {
                     $alias = $key;
@@ -134,11 +133,11 @@ class XmlView extends View
         } else {
             $data = isset($this->viewVars[$serialize]) ? $this->viewVars[$serialize] : null;
             if (is_array($data) && Hash::numeric(array_keys($data))) {
-                $data = array($rootNode => array($serialize => $data));
+                $data = [$rootNode => [$serialize => $data]];
             }
         }
 
-        $options = array();
+        $options = [];
         if (isset($this->viewVars['_xmlOptions'])) {
             $options = $this->viewVars['_xmlOptions'];
         }
@@ -149,6 +148,7 @@ class XmlView extends View
         if (isset($options['return']) && strtolower($options['return']) === 'domdocument') {
             return Xml::fromArray($data, $options)->saveXML();
         }
+
         return Xml::fromArray($data, $options)->asXML();
     }
 }

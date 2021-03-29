@@ -25,11 +25,11 @@
  */
 class AllBehaviorsTest extends PHPUnit_Framework_TestSuite
 {
-/**
- * Suite define the tests for this suite
- *
- * @return void
- */
+    /**
+     * Suite define the tests for this suite
+     *
+     * @return void
+     */
     public static function suite()
     {
         $suite = new CakeTestSuite('Model Behavior and all behaviors');
@@ -38,6 +38,7 @@ class AllBehaviorsTest extends PHPUnit_Framework_TestSuite
         $suite->addTestFile(CORE_TEST_CASES . DS . 'Model' . DS . 'BehaviorCollectionTest.php');
 
         $suite->addTestDirectory($path);
+
         return $suite;
     }
 }

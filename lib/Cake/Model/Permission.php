@@ -13,7 +13,6 @@
  * @since         CakePHP(tm) v 0.2.9
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('AppModel', 'Model');
 
 /**
@@ -23,11 +22,11 @@ App::uses('AppModel', 'Model');
  */
 class Permission extends AppModel
 {
-/**
- * Explicitly disable in-memory query caching
- *
- * @var bool
- */
+    /**
+     * Explicitly disable in-memory query caching
+     *
+     * @var bool
+     */
     public $cacheQueries = false;
 
     /**
@@ -42,7 +41,7 @@ class Permission extends AppModel
      *
      * @var array
      */
-    public $belongsTo = array('Aro', 'Aco');
+    public $belongsTo = ['Aro', 'Aco'];
 
     /**
      * No behaviors for this model
@@ -85,51 +84,54 @@ class Permission extends AppModel
         if (!$aroPath) {
             $this->log(
                 __d(
-                'cake_dev',
-                "%s - Failed ARO node lookup in permissions check. Node references:\nAro: %s\nAco: %s",
-                'DbAcl::check()',
-                print_r($aro, true),
-                print_r($aco, true)
-            ),
+                    'cake_dev',
+                    "%s - Failed ARO node lookup in permissions check. Node references:\nAro: %s\nAco: %s",
+                    'DbAcl::check()',
+                    print_r($aro, true),
+                    print_r($aco, true)
+                ),
                 E_USER_WARNING
             );
+
             return false;
         }
 
         if (!$acoPath) {
             $this->log(
                 __d(
-                'cake_dev',
-                "%s - Failed ACO node lookup in permissions check. Node references:\nAro: %s\nAco: %s",
-                'DbAcl::check()',
-                print_r($aro, true),
-                print_r($aco, true)
-            ),
+                    'cake_dev',
+                    "%s - Failed ACO node lookup in permissions check. Node references:\nAro: %s\nAco: %s",
+                    'DbAcl::check()',
+                    print_r($aro, true),
+                    print_r($aco, true)
+                ),
                 E_USER_WARNING
             );
+
             return false;
         }
 
         if ($action !== '*' && !in_array('_' . $action, $permKeys)) {
             $this->log(__d('cake_dev', "ACO permissions key %s does not exist in %s", $action, 'DbAcl::check()'), E_USER_NOTICE);
+
             return false;
         }
 
         $acoIDs = Hash::extract($acoPath, '{n}.' . $this->Aco->alias . '.id');
 
         $count = count($aroPath);
-        $inherited = array();
+        $inherited = [];
         for ($i = 0; $i < $count; $i++) {
             $permAlias = $this->alias;
 
-            $perms = $this->find('all', array(
-                'conditions' => array(
+            $perms = $this->find('all', [
+                'conditions' => [
                     "{$permAlias}.aro_id" => $aroPath[$i][$this->Aro->alias]['id'],
                     "{$permAlias}.aco_id" => $acoIDs
-                ),
-                'order' => array($this->Aco->alias . '.lft' => 'desc'),
+                ],
+                'order'     => [$this->Aco->alias . '.lft' => 'desc'],
                 'recursive' => 0
-            ));
+            ]);
 
             if (empty($perms)) {
                 continue;
@@ -165,6 +167,7 @@ class Permission extends AppModel
                 return true;
             }
         }
+
         return false;
     }
 
@@ -182,10 +185,11 @@ class Permission extends AppModel
     {
         $perms = $this->getAclLink($aro, $aco);
         $permKeys = $this->getAcoKeys($this->schema());
-        $save = array();
+        $save = [];
 
         if (!$perms) {
             $this->log(__d('cake_dev', '%s - Invalid node', 'DbAcl::allow()'), E_USER_WARNING);
+
             return false;
         }
         if (isset($perms[0])) {
@@ -193,10 +197,10 @@ class Permission extends AppModel
         }
 
         if ($actions === '*') {
-            $save = array_combine($permKeys, array_pad(array(), count($permKeys), $value));
+            $save = array_combine($permKeys, array_pad([], count($permKeys), $value));
         } else {
             if (!is_array($actions)) {
-                $actions = array('_' . $actions);
+                $actions = ['_' . $actions];
             }
             foreach ($actions as $action) {
                 if ($action[0] !== '_') {
@@ -208,7 +212,7 @@ class Permission extends AppModel
                 $save[$action] = $value;
             }
         }
-        list($save['aro_id'], $save['aco_id']) = array($perms['aro'], $perms['aco']);
+        list($save['aro_id'], $save['aco_id']) = [$perms['aro'], $perms['aco']];
 
         if ($perms['link'] && !empty($perms['link'])) {
             $save['id'] = $perms['link'][0][$this->alias]['id'];
@@ -216,6 +220,7 @@ class Permission extends AppModel
             unset($save['id']);
             $this->id = null;
         }
+
         return ($this->save($save) !== false);
     }
 
@@ -228,7 +233,7 @@ class Permission extends AppModel
      */
     public function getAclLink($aro, $aco)
     {
-        $obj = array();
+        $obj = [];
         $obj['Aro'] = $this->Aro->node($aro);
         $obj['Aco'] = $this->Aco->node($aco);
 
@@ -240,14 +245,14 @@ class Permission extends AppModel
         $aro = current($aro);
         $aco = current($aco);
 
-        return array(
-            'aro' => $aro,
-            'aco' => $aco,
-            'link' => $this->find('all', array('conditions' => array(
+        return [
+            'aro'  => $aro,
+            'aco'  => $aco,
+            'link' => $this->find('all', ['conditions' => [
                 $this->alias . '.aro_id' => $aro,
                 $this->alias . '.aco_id' => $aco
-            )))
-        );
+            ]])
+        ];
     }
 
     /**
@@ -258,13 +263,14 @@ class Permission extends AppModel
      */
     public function getAcoKeys($keys)
     {
-        $newKeys = array();
+        $newKeys = [];
         $keys = array_keys($keys);
         foreach ($keys as $key) {
-            if (!in_array($key, array('id', 'aro_id', 'aco_id'))) {
+            if (!in_array($key, ['id', 'aro_id', 'aco_id'])) {
                 $newKeys[] = $key;
             }
         }
+
         return $newKeys;
     }
 }

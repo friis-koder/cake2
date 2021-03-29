@@ -17,7 +17,6 @@
  * @since         CakePHP(tm) v 1.3
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('HtmlHelper', 'View/Helper');
 App::uses('JsHelper', 'View/Helper');
 App::uses('JsBaseEngineHelper', 'View/Helper');
@@ -36,6 +35,7 @@ class JsEncodingObject
 
     //@codingStandardsIgnoreStart
     private $__noshow = 'Never ever';
+
     //@codingStandardsIgnoreEnd
 }
 
@@ -46,13 +46,13 @@ class JsEncodingObject
  */
 class OptionEngineHelper extends JsBaseEngineHelper
 {
-    protected $_optionMap = array(
-        'request' => array(
+    protected $_optionMap = [
+        'request' => [
             'complete' => 'success',
-            'request' => 'beforeSend',
-            'type' => 'dataType'
-        )
-    );
+            'request'  => 'beforeSend',
+            'type'     => 'dataType'
+        ]
+    ];
 
     /**
      * test method for testing option mapping
@@ -60,7 +60,7 @@ class OptionEngineHelper extends JsBaseEngineHelper
      * @param array $options
      * @return array
      */
-    public function testMap($options = array())
+    public function testMap($options = [])
     {
         return $this->_mapOptions('request', $options);
     }
@@ -72,7 +72,7 @@ class OptionEngineHelper extends JsBaseEngineHelper
      * @param array $safe
      * @return void
      */
-    public function testParseOptions($options, $safe = array())
+    public function testParseOptions($options, $safe = [])
     {
         return $this->_parseOptions($options, $safe);
     }
@@ -81,7 +81,7 @@ class OptionEngineHelper extends JsBaseEngineHelper
     {
     }
 
-    public function event($type, $callback, $options = array())
+    public function event($type, $callback, $options = [])
     {
     }
 
@@ -93,31 +93,31 @@ class OptionEngineHelper extends JsBaseEngineHelper
     {
     }
 
-    public function effect($name, $options = array())
+    public function effect($name, $options = [])
     {
     }
 
-    public function request($url, $options = array())
+    public function request($url, $options = [])
     {
     }
 
-    public function drag($options = array())
+    public function drag($options = [])
     {
     }
 
-    public function drop($options = array())
+    public function drop($options = [])
     {
     }
 
-    public function sortable($options = array())
+    public function sortable($options = [])
     {
     }
 
-    public function slider($options = array())
+    public function slider($options = [])
     {
     }
 
-    public function serializeForm($options = array())
+    public function serializeForm($options = [])
     {
     }
 }
@@ -129,11 +129,11 @@ class OptionEngineHelper extends JsBaseEngineHelper
  */
 class JsHelperTest extends CakeTestCase
 {
-/**
- * Regexp for CDATA start block
- *
- * @var string
- */
+    /**
+     * Regexp for CDATA start block
+     *
+     * @var string
+     */
     public $cDataStart = 'preg:/^\/\/<!\[CDATA\[[\n\r]*/';
 
     /**
@@ -155,7 +155,7 @@ class JsHelperTest extends CakeTestCase
         Configure::write('Asset.timestamp', false);
 
         $controller = null;
-        $this->View = $this->getMock('View', array('append'), array(&$controller));
+        $this->View = $this->getMock('View', ['append'], [&$controller]);
         $this->Js = new JsHelper($this->View, 'Option');
         $request = new CakeRequest(null, false);
         $this->Js->request = $request;
@@ -188,8 +188,8 @@ class JsHelperTest extends CakeTestCase
     {
         $request = new CakeRequest(null, false);
 
-        $this->Js = new JsHelper($this->View, array('TestJs'));
-        $this->Js->TestJsEngine = $this->getMock('JsBaseEngineHelper', array(), array($this->View));
+        $this->Js = new JsHelper($this->View, ['TestJs']);
+        $this->Js->TestJsEngine = $this->getMock('JsBaseEngineHelper', [], [$this->View]);
         $this->Js->request = $request;
         $this->Js->Html = new HtmlHelper($this->View);
         $this->Js->Html->request = $request;
@@ -206,16 +206,16 @@ class JsHelperTest extends CakeTestCase
     public function testConstruction()
     {
         $js = new JsHelper($this->View);
-        $this->assertEquals(array('Html', 'Form', 'JqueryEngine'), $js->helpers);
+        $this->assertEquals(['Html', 'Form', 'JqueryEngine'], $js->helpers);
 
-        $js = new JsHelper($this->View, array('mootools'));
-        $this->assertEquals(array('Html', 'Form', 'mootoolsEngine'), $js->helpers);
+        $js = new JsHelper($this->View, ['mootools']);
+        $this->assertEquals(['Html', 'Form', 'mootoolsEngine'], $js->helpers);
 
         $js = new JsHelper($this->View, 'prototype');
-        $this->assertEquals(array('Html', 'Form', 'prototypeEngine'), $js->helpers);
+        $this->assertEquals(['Html', 'Form', 'prototypeEngine'], $js->helpers);
 
         $js = new JsHelper($this->View, 'MyPlugin.Dojo');
-        $this->assertEquals(array('Html', 'Form', 'MyPlugin.DojoEngine'), $js->helpers);
+        $this->assertEquals(['Html', 'Form', 'MyPlugin.DojoEngine'], $js->helpers);
     }
 
     /**
@@ -248,7 +248,7 @@ class JsHelperTest extends CakeTestCase
     {
         $this->_useMock();
 
-        $this->Js->TestJsEngine->bufferedMethods = array('event', 'sortables');
+        $this->Js->TestJsEngine->bufferedMethods = ['event', 'sortables'];
         $this->Js->TestJsEngine->expects($this->exactly(3))
             ->method('event')
             ->will($this->returnValue('This is an event call'));
@@ -258,7 +258,7 @@ class JsHelperTest extends CakeTestCase
         $this->assertEquals(1, count($result));
         $this->assertEquals('This is an event call', $result[0]);
 
-        $result = $this->Js->event('click', 'foo', array('buffer' => false));
+        $result = $this->Js->event('click', 'foo', ['buffer' => false]);
         $buffer = $this->Js->getBuffer();
         $this->assertTrue(empty($buffer));
         $this->assertEquals('This is an event call', $result);
@@ -292,13 +292,13 @@ class JsHelperTest extends CakeTestCase
         $this->assertEquals(1, count($buffer));
         $this->assertEquals('I am not buffered.', $buffer[0]);
 
-        $result = $this->Js->effect('slideIn', array('speed' => 'slow'), true);
+        $result = $this->Js->effect('slideIn', ['speed' => 'slow'], true);
         $buffer = $this->Js->getBuffer();
         $this->assertNull($result);
         $this->assertEquals(1, count($buffer));
         $this->assertEquals('I am not buffered.', $buffer[0]);
 
-        $result = $this->Js->effect('slideIn', array('speed' => 'slow', 'buffer' => true));
+        $result = $this->Js->effect('slideIn', ['speed' => 'slow', 'buffer' => true]);
         $buffer = $this->Js->getBuffer();
         $this->assertNull($result);
         $this->assertEquals(1, count($buffer));
@@ -315,23 +315,23 @@ class JsHelperTest extends CakeTestCase
         $this->_useMock();
         $this->Js->buffer('one = 1;');
         $this->Js->buffer('two = 2;');
-        $result = $this->Js->writeBuffer(array('onDomReady' => false, 'cache' => false, 'clear' => false));
-        $expected = array(
-            'script' => array('type' => 'text/javascript'),
+        $result = $this->Js->writeBuffer(['onDomReady' => false, 'cache' => false, 'clear' => false]);
+        $expected = [
+            'script' => ['type' => 'text/javascript'],
             $this->cDataStart,
             "one = 1;\ntwo = 2;",
             $this->cDataEnd,
             '/script',
-        );
+        ];
         $this->assertTags($result, $expected);
 
         $this->Js->TestJsEngine->expects($this->atLeastOnce())->method('domReady');
-        $result = $this->Js->writeBuffer(array('onDomReady' => true, 'cache' => false, 'clear' => false));
+        $result = $this->Js->writeBuffer(['onDomReady' => true, 'cache' => false, 'clear' => false]);
 
         $this->View->expects($this->once())
             ->method('append')
             ->with('script', $this->matchesRegularExpression('/one\s\=\s1;\ntwo\s\=\s2;/'));
-        $result = $this->Js->writeBuffer(array('onDomReady' => false, 'inline' => false, 'cache' => false));
+        $result = $this->Js->writeBuffer(['onDomReady' => false, 'inline' => false, 'cache' => false]);
     }
 
     /**
@@ -347,7 +347,7 @@ class JsHelperTest extends CakeTestCase
             ->method('append')
             ->with('script', $this->matchesRegularExpression('#<script type="text\/javascript">window.app \= \{"foo"\:1\}\;<\/script>#'));
 
-        $this->Js->writeBuffer(array('onDomReady' => false, 'inline' => false, 'safe' => false));
+        $this->Js->writeBuffer(['onDomReady' => false, 'inline' => false, 'safe' => false]);
     }
 
     /**
@@ -386,13 +386,13 @@ class JsHelperTest extends CakeTestCase
 
         Configure::write('Cache.disable', false);
         $this->Js->request->webroot = '/';
-        $this->Js->JsBaseEngine = $this->getMock('JsBaseEngineHelper', array(), array($this->View));
+        $this->Js->JsBaseEngine = $this->getMock('JsBaseEngineHelper', [], [$this->View]);
         $this->Js->buffer('one = 1;');
         $this->Js->buffer('two = 2;');
-        $result = $this->Js->writeBuffer(array('onDomReady' => false, 'cache' => true));
-        $expected = array(
-            'script' => array('type' => 'text/javascript', 'src' => 'preg:/(.)*\.js/'),
-        );
+        $result = $this->Js->writeBuffer(['onDomReady' => false, 'cache' => true]);
+        $expected = [
+            'script' => ['type' => 'text/javascript', 'src' => 'preg:/(.)*\.js/'],
+        ];
         $this->assertTags($result, $expected);
         preg_match('/src="(.*\.js)"/', $result, $filename);
         $this->assertTrue(file_exists(WWW_ROOT . $filename[1]));
@@ -405,7 +405,7 @@ class JsHelperTest extends CakeTestCase
         Configure::write('Cache.disable', true);
         $this->Js->buffer('one = 1;');
         $this->Js->buffer('two = 2;');
-        $result = $this->Js->writeBuffer(array('onDomReady' => false, 'cache' => true));
+        $result = $this->Js->writeBuffer(['onDomReady' => false, 'cache' => true]);
         $this->assertRegExp('/one\s=\s1;\ntwo\s=\s2;/', $result);
         $this->assertFalse(file_exists(WWW_ROOT . $filename[1]));
     }
@@ -419,7 +419,7 @@ class JsHelperTest extends CakeTestCase
     {
         $this->_useMock();
 
-        $options = array('update' => '#content');
+        $options = ['update' => '#content'];
 
         $this->Js->TestJsEngine->expects($this->at(0))
             ->method('get');
@@ -431,14 +431,14 @@ class JsHelperTest extends CakeTestCase
 
         $this->Js->TestJsEngine->expects($this->at(2))
             ->method('event')
-            ->with('click', '--ajax code--', $options + array('buffer' => null));
+            ->with('click', '--ajax code--', $options + ['buffer' => null]);
 
         $result = $this->Js->link('test link', '/posts/view/1', $options);
-        $expected = array(
-            'a' => array('id' => 'preg:/link-\d+/', 'href' => '/posts/view/1'),
+        $expected = [
+            'a' => ['id' => 'preg:/link-\d+/', 'href' => '/posts/view/1'],
             'test link',
             '/a'
-        );
+        ];
         $this->assertTags($result, $expected);
     }
 
@@ -451,13 +451,13 @@ class JsHelperTest extends CakeTestCase
     {
         $this->_useMock();
 
-        $options = array(
+        $options = [
             'confirm' => 'Are you sure?',
-            'update' => '#content',
-            'class' => 'my-class',
-            'id' => 'custom-id',
-            'escape' => false
-        );
+            'update'  => '#content',
+            'class'   => 'my-class',
+            'id'      => 'custom-id',
+            'escape'  => false
+        ];
         $this->Js->TestJsEngine->expects($this->once())
             ->method('confirmReturn')
             ->with($options['confirm'])
@@ -472,11 +472,11 @@ class JsHelperTest extends CakeTestCase
             ->with('click', '--confirm script--');
 
         $result = $this->Js->link('test link »', '/posts/view/1', $options);
-        $expected = array(
-            'a' => array('id' => $options['id'], 'class' => $options['class'], 'href' => '/posts/view/1'),
+        $expected = [
+            'a' => ['id' => $options['id'], 'class' => $options['class'], 'href' => '/posts/view/1'],
             'test link »',
             '/a'
-        );
+        ];
         $this->assertTags($result, $expected);
     }
 
@@ -489,14 +489,14 @@ class JsHelperTest extends CakeTestCase
     {
         $this->_useMock();
 
-        $options = array('id' => 'something', 'htmlAttributes' => array('arbitrary' => 'value', 'batman' => 'robin'));
+        $options = ['id' => 'something', 'htmlAttributes' => ['arbitrary' => 'value', 'batman' => 'robin']];
         $result = $this->Js->link('test link', '/posts/view/1', $options);
-        $expected = array(
-            'a' => array('id' => $options['id'], 'href' => '/posts/view/1', 'arbitrary' => 'value',
-                'batman' => 'robin'),
+        $expected = [
+            'a' => ['id' => $options['id'], 'href' => '/posts/view/1', 'arbitrary' => 'value',
+                'batman' => 'robin'],
             'test link',
             '/a'
-        );
+        ];
         $this->assertTags($result, $expected);
     }
 
@@ -511,25 +511,25 @@ class JsHelperTest extends CakeTestCase
 
         $this->Js->TestJsEngine->expects($this->at(1))
             ->method('request')
-            ->with('/posts/view/1', array('update' => '#content'))
+            ->with('/posts/view/1', ['update' => '#content'])
             ->will($this->returnValue('ajax code'));
 
         $this->Js->TestJsEngine->expects($this->at(2))
             ->method('event')
             ->will($this->returnValue('-event handler-'));
 
-        $options = array('update' => '#content', 'buffer' => false);
+        $options = ['update' => '#content', 'buffer' => false];
         $result = $this->Js->link('test link', '/posts/view/1', $options);
-        $expected = array(
-            'a' => array('id' => 'preg:/link-\d+/', 'href' => '/posts/view/1'),
+        $expected = [
+            'a' => ['id' => 'preg:/link-\d+/', 'href' => '/posts/view/1'],
             'test link',
             '/a',
-            'script' => array('type' => 'text/javascript'),
+            'script' => ['type' => 'text/javascript'],
             $this->cDataStart,
             '-event handler-',
             $this->cDataEnd,
             '/script'
-        );
+        ];
         $this->assertTags($result, $expected);
     }
 
@@ -544,24 +544,24 @@ class JsHelperTest extends CakeTestCase
 
         $this->Js->TestJsEngine->expects($this->at(1))
             ->method('request')
-            ->with('/posts/view/1', array('update' => '#content'))
+            ->with('/posts/view/1', ['update' => '#content'])
             ->will($this->returnValue('ajax code'));
 
         $this->Js->TestJsEngine->expects($this->at(2))
             ->method('event')
             ->will($this->returnValue('-event handler-'));
 
-        $options = array('update' => '#content', 'buffer' => false, 'safe' => false);
+        $options = ['update' => '#content', 'buffer' => false, 'safe' => false];
         $result = $this->Js->link('test link', '/posts/view/1', $options);
 
-        $expected = array(
-            'a' => array('id' => 'preg:/link-\d+/', 'href' => '/posts/view/1'),
+        $expected = [
+            'a' => ['id' => 'preg:/link-\d+/', 'href' => '/posts/view/1'],
             'test link',
             '/a',
-            'script' => array('type' => 'text/javascript'),
+            'script' => ['type' => 'text/javascript'],
             '-event handler-',
             '/script'
-        );
+        ];
         $this->assertTags($result, $expected);
     }
 
@@ -574,7 +574,7 @@ class JsHelperTest extends CakeTestCase
     {
         $this->_useMock();
 
-        $options = array('update' => '#content', 'id' => 'test-submit', 'style' => 'margin: 0');
+        $options = ['update' => '#content', 'id' => 'test-submit', 'style' => 'margin: 0'];
 
         $this->Js->TestJsEngine->expects($this->at(0))
             ->method('get');
@@ -587,21 +587,21 @@ class JsHelperTest extends CakeTestCase
             ->method('request')
             ->will($this->returnValue('ajax-code'));
 
-        $params = array(
+        $params = [
             'update' => $options['update'], 'data' => 'serialize-code',
             'method' => 'post', 'dataExpression' => true, 'buffer' => null
-        );
+        ];
 
         $this->Js->TestJsEngine->expects($this->at(3))
             ->method('event')
             ->with('click', "ajax-code", $params);
 
         $result = $this->Js->submit('Save', $options);
-        $expected = array(
-            'div' => array('class' => 'submit'),
-            'input' => array('type' => 'submit', 'id' => $options['id'], 'value' => 'Save', 'style' => 'margin: 0'),
+        $expected = [
+            'div'   => ['class' => 'submit'],
+            'input' => ['type' => 'submit', 'id' => $options['id'], 'value' => 'Save', 'style' => 'margin: 0'],
             '/div'
-        );
+        ];
         $this->assertTags($result, $expected);
     }
 
@@ -621,34 +621,34 @@ class JsHelperTest extends CakeTestCase
             ->method('serializeForm')
             ->will($this->returnValue('serialize-code'));
 
-        $requestParams = array(
-            'update' => '#content',
-            'data' => 'serialize-code',
-            'method' => 'post',
+        $requestParams = [
+            'update'         => '#content',
+            'data'           => 'serialize-code',
+            'method'         => 'post',
             'dataExpression' => true
-        );
+        ];
 
         $this->Js->TestJsEngine->expects($this->at(2))
             ->method('request')
             ->with('/custom/url', $requestParams)
             ->will($this->returnValue('ajax-code'));
 
-        $params = array(
+        $params = [
             'update' => '#content', 'data' => 'serialize-code',
             'method' => 'post', 'dataExpression' => true, 'buffer' => null
-        );
+        ];
 
         $this->Js->TestJsEngine->expects($this->at(3))
             ->method('event')
             ->with('click', "ajax-code", $params);
 
-        $options = array('update' => '#content', 'id' => 'test-submit', 'url' => '/custom/url');
+        $options = ['update' => '#content', 'id' => 'test-submit', 'url' => '/custom/url'];
         $result = $this->Js->submit('Save', $options);
-        $expected = array(
-            'div' => array('class' => 'submit'),
-            'input' => array('type' => 'submit', 'id' => $options['id'], 'value' => 'Save'),
+        $expected = [
+            'div'   => ['class' => 'submit'],
+            'input' => ['type' => 'submit', 'id' => $options['id'], 'value' => 'Save'],
             '/div'
-        );
+        ];
         $this->assertTags($result, $expected);
     }
 
@@ -660,7 +660,7 @@ class JsHelperTest extends CakeTestCase
     public function testSubmitWithNoBuffer()
     {
         $this->_useMock();
-        $options = array('update' => '#content', 'id' => 'test-submit', 'buffer' => false, 'safe' => false);
+        $options = ['update' => '#content', 'id' => 'test-submit', 'buffer' => false, 'safe' => false];
 
         $this->Js->TestJsEngine->expects($this->at(0))
             ->method('get');
@@ -677,24 +677,24 @@ class JsHelperTest extends CakeTestCase
             ->method('event')
             ->will($this->returnValue('event-handler'));
 
-        $params = array(
+        $params = [
             'update' => $options['update'], 'data' => 'serialize-code',
             'method' => 'post', 'dataExpression' => true, 'buffer' => false
-        );
+        ];
 
         $this->Js->TestJsEngine->expects($this->at(3))
             ->method('event')
             ->with('click', "ajax-code", $params);
 
         $result = $this->Js->submit('Save', $options);
-        $expected = array(
-            'div' => array('class' => 'submit'),
-            'input' => array('type' => 'submit', 'id' => $options['id'], 'value' => 'Save'),
+        $expected = [
+            'div'   => ['class' => 'submit'],
+            'input' => ['type' => 'submit', 'id' => $options['id'], 'value' => 'Save'],
             '/div',
-            'script' => array('type' => 'text/javascript'),
+            'script' => ['type' => 'text/javascript'],
             'event-handler',
             '/script'
-        );
+        ];
         $this->assertTags($result, $expected);
     }
 
@@ -705,7 +705,7 @@ class JsHelperTest extends CakeTestCase
      */
     public function testObjectPassThrough()
     {
-        $result = $this->Js->object(array('one' => 'first', 'two' => 'second'));
+        $result = $this->Js->object(['one' => 'first', 'two' => 'second']);
         $expected = '{"one":"first","two":"second"}';
         $this->assertEquals($expected, $result);
     }
@@ -731,20 +731,20 @@ class JsHelperTest extends CakeTestCase
     public function testSet()
     {
         $this->Js->set('loggedIn', true);
-        $this->Js->set(array('height' => 'tall', 'color' => 'purple'));
+        $this->Js->set(['height' => 'tall', 'color' => 'purple']);
         $result = $this->Js->getBuffer();
         $expected = 'window.app = {"loggedIn":true,"height":"tall","color":"purple"};';
         $this->assertEquals($expected, $result[0]);
 
         $this->Js->set('loggedIn', true);
-        $this->Js->set(array('height' => 'tall', 'color' => 'purple'));
+        $this->Js->set(['height' => 'tall', 'color' => 'purple']);
         $this->Js->setVariable = 'WICKED';
         $result = $this->Js->getBuffer();
         $expected = 'window.WICKED = {"loggedIn":true,"height":"tall","color":"purple"};';
         $this->assertEquals($expected, $result[0]);
 
         $this->Js->set('loggedIn', true);
-        $this->Js->set(array('height' => 'tall', 'color' => 'purple'));
+        $this->Js->set(['height' => 'tall', 'color' => 'purple']);
         $this->Js->setVariable = 'Application.variables';
         $result = $this->Js->getBuffer();
         $expected = 'Application.variables = {"loggedIn":true,"height":"tall","color":"purple"};';
@@ -758,9 +758,9 @@ class JsHelperTest extends CakeTestCase
      */
     public function testSetVarsAtTopOfBufferedScripts()
     {
-        $this->Js->set(array('height' => 'tall', 'color' => 'purple'));
-        $this->Js->alert('hey you!', array('buffer' => true));
-        $this->Js->confirm('Are you sure?', array('buffer' => true));
+        $this->Js->set(['height' => 'tall', 'color' => 'purple']);
+        $this->Js->alert('hey you!', ['buffer' => true]);
+        $this->Js->confirm('Are you sure?', ['buffer' => true]);
         $result = $this->Js->getBuffer(false);
 
         $expected = 'window.app = {"height":"tall","color":"purple"};';
@@ -777,16 +777,16 @@ class JsHelperTest extends CakeTestCase
  */
 class JsBaseEngineTest extends CakeTestCase
 {
-/**
- * setUp method
- *
- * @return void
- */
+    /**
+     * setUp method
+     *
+     * @return void
+     */
     public function setUp()
     {
         parent::setUp();
         $controller = null;
-        $this->View = $this->getMock('View', array('append'), array(&$controller));
+        $this->View = $this->getMock('View', ['append'], [&$controller]);
         $this->JsEngine = new OptionEngineHelper($this->View);
     }
 
@@ -888,7 +888,7 @@ class JsBaseEngineTest extends CakeTestCase
      */
     public function testRedirect()
     {
-        $result = $this->JsEngine->redirect(array('controller' => 'posts', 'action' => 'view', 1));
+        $result = $this->JsEngine->redirect(['controller' => 'posts', 'action' => 'view', 1]);
         $expected = 'window.location = "/posts/view/1";';
         $this->assertEquals($expected, $result);
     }
@@ -900,49 +900,49 @@ class JsBaseEngineTest extends CakeTestCase
      */
     public function testObject()
     {
-        $object = array('title' => 'New thing', 'indexes' => array(5, 6, 7, 8));
+        $object = ['title' => 'New thing', 'indexes' => [5, 6, 7, 8]];
         $result = $this->JsEngine->object($object);
         $expected = '{"title":"New thing","indexes":[5,6,7,8]}';
         $this->assertEquals($expected, $result);
 
         $object = new JsEncodingObject();
         $object->title = 'New thing';
-        $object->indexes = array(5, 6, 7, 8);
+        $object->indexes = [5, 6, 7, 8];
         $result = $this->JsEngine->object($object);
         $this->assertEquals($expected, $result);
 
-        $result = $this->JsEngine->object(array('default' => 0));
+        $result = $this->JsEngine->object(['default' => 0]);
         $expected = '{"default":0}';
         $this->assertEquals($expected, $result);
 
-        $result = $this->JsEngine->object(array(
-            '2007' => array(
-                'Spring' => array(
-                    '1' => array('id' => 1, 'name' => 'Josh'), '2' => array('id' => 2, 'name' => 'Becky')
-                ),
-                'Fall' => array(
-                    '1' => array('id' => 1, 'name' => 'Josh'), '2' => array('id' => 2, 'name' => 'Becky')
-                )
-            ),
-            '2006' => array(
-                'Spring' => array(
-                    '1' => array('id' => 1, 'name' => 'Josh'), '2' => array('id' => 2, 'name' => 'Becky')
-                ),
-                'Fall' => array(
-                    '1' => array('id' => 1, 'name' => 'Josh'), '2' => array('id' => 2, 'name' => 'Becky')
-                )
-            )
-        ));
+        $result = $this->JsEngine->object([
+            '2007' => [
+                'Spring' => [
+                    '1' => ['id' => 1, 'name' => 'Josh'], '2' => ['id' => 2, 'name' => 'Becky']
+                ],
+                'Fall' => [
+                    '1' => ['id' => 1, 'name' => 'Josh'], '2' => ['id' => 2, 'name' => 'Becky']
+                ]
+            ],
+            '2006' => [
+                'Spring' => [
+                    '1' => ['id' => 1, 'name' => 'Josh'], '2' => ['id' => 2, 'name' => 'Becky']
+                ],
+                'Fall' => [
+                    '1' => ['id' => 1, 'name' => 'Josh'], '2' => ['id' => 2, 'name' => 'Becky']
+                ]
+            ]
+        ]);
         $expected = '{"2007":{"Spring":{"1":{"id":1,"name":"Josh"},"2":{"id":2,"name":"Becky"}},"Fall":{"1":{"id":1,"name":"Josh"},"2":{"id":2,"name":"Becky"}}},"2006":{"Spring":{"1":{"id":1,"name":"Josh"},"2":{"id":2,"name":"Becky"}},"Fall":{"1":{"id":1,"name":"Josh"},"2":{"id":2,"name":"Becky"}}}}';
         $this->assertEquals($expected, $result);
 
-        foreach (array('true' => true, 'false' => false, 'null' => null) as $expected => $data) {
+        foreach (['true' => true, 'false' => false, 'null' => null] as $expected => $data) {
             $result = $this->JsEngine->object($data);
             $this->assertEquals($expected, $result);
         }
 
-        $object = array('title' => 'New thing', 'indexes' => array(5, 6, 7, 8), 'object' => array('inner' => array('value' => 1)));
-        $result = $this->JsEngine->object($object, array('prefix' => 'PREFIX', 'postfix' => 'POSTFIX'));
+        $object = ['title' => 'New thing', 'indexes' => [5, 6, 7, 8], 'object' => ['inner' => ['value' => 1]]];
+        $result = $this->JsEngine->object($object, ['prefix' => 'PREFIX', 'postfix' => 'POSTFIX']);
         $this->assertRegExp('/^PREFIX/', $result);
         $this->assertRegExp('/POSTFIX$/', $result);
         $this->assertNotRegExp('/.PREFIX./', $result);
@@ -958,16 +958,16 @@ class JsBaseEngineTest extends CakeTestCase
     {
         $JsEngine = new OptionEngineHelper($this->View);
         $result = $JsEngine->testMap();
-        $this->assertSame(array(), $result);
+        $this->assertSame([], $result);
 
-        $result = $JsEngine->testMap(array('foo' => 'bar', 'baz' => 'sho'));
-        $this->assertEquals(array('foo' => 'bar', 'baz' => 'sho'), $result);
+        $result = $JsEngine->testMap(['foo' => 'bar', 'baz' => 'sho']);
+        $this->assertEquals(['foo' => 'bar', 'baz' => 'sho'], $result);
 
-        $result = $JsEngine->testMap(array('complete' => 'myFunc', 'type' => 'json', 'update' => '#element'));
-        $this->assertEquals(array('success' => 'myFunc', 'dataType' => 'json', 'update' => '#element'), $result);
+        $result = $JsEngine->testMap(['complete' => 'myFunc', 'type' => 'json', 'update' => '#element']);
+        $this->assertEquals(['success' => 'myFunc', 'dataType' => 'json', 'update' => '#element'], $result);
 
-        $result = $JsEngine->testMap(array('success' => 'myFunc', 'dataType' => 'json', 'update' => '#element'));
-        $this->assertEquals(array('success' => 'myFunc', 'dataType' => 'json', 'update' => '#element'), $result);
+        $result = $JsEngine->testMap(['success' => 'myFunc', 'dataType' => 'json', 'update' => '#element']);
+        $this->assertEquals(['success' => 'myFunc', 'dataType' => 'json', 'update' => '#element'], $result);
     }
 
     /**
@@ -979,11 +979,11 @@ class JsBaseEngineTest extends CakeTestCase
     {
         $JsEngine = new OptionEngineHelper($this->View);
 
-        $result = $JsEngine->testParseOptions(array('url' => '/posts/view/1', 'key' => 1));
+        $result = $JsEngine->testParseOptions(['url' => '/posts/view/1', 'key' => 1]);
         $expected = 'key:1, url:"\\/posts\\/view\\/1"';
         $this->assertEquals($expected, $result);
 
-        $result = $JsEngine->testParseOptions(array('url' => '/posts/view/1', 'success' => 'doSuccess'), array('success'));
+        $result = $JsEngine->testParseOptions(['url' => '/posts/view/1', 'success' => 'doSuccess'], ['success']);
         $expected = 'success:doSuccess, url:"\\/posts\\/view\\/1"';
         $this->assertEquals($expected, $result);
     }

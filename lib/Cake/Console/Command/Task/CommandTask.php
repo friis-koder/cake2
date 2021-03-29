@@ -12,7 +12,6 @@
  * @since         CakePHP(tm) v 2.5
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('AppShell', 'Console/Command');
 
 /**
@@ -22,17 +21,17 @@ App::uses('AppShell', 'Console/Command');
  */
 class CommandTask extends AppShell
 {
-/**
- * Gets the shell command listing.
- *
- * @return array
- */
+    /**
+     * Gets the shell command listing.
+     *
+     * @return array
+     */
     public function getShellList()
     {
-        $skipFiles = array('AppShell');
+        $skipFiles = ['AppShell'];
 
         $plugins = CakePlugin::loaded();
-        $shellList = array_fill_keys($plugins, null) + array('CORE' => null, 'app' => null);
+        $shellList = array_fill_keys($plugins, null) + ['CORE' => null, 'app' => null];
 
         $corePath = App::core('Console/Command');
         $shells = App::objects('file', $corePath[0]);
@@ -75,10 +74,10 @@ class CommandTask extends AppShell
     {
         $shellList = $this->getShellList();
 
-        $options = array();
+        $options = [];
         foreach ($shellList as $type => $commands) {
             $prefix = '';
-            if (!in_array(strtolower($type), array('app', 'core'))) {
+            if (!in_array(strtolower($type), ['app', 'core'])) {
                 $prefix = $type . '.';
             }
 
@@ -101,7 +100,7 @@ class CommandTask extends AppShell
         $Shell = $this->getShell($commandName);
 
         if (!$Shell) {
-            return array();
+            return [];
         }
 
         $taskMap = TaskCollection::normalizeObjectArray((array)$Shell->tasks);
@@ -110,14 +109,14 @@ class CommandTask extends AppShell
 
         $ShellReflection = new ReflectionClass('AppShell');
         $shellMethods = $ShellReflection->getMethods(ReflectionMethod::IS_PUBLIC);
-        $shellMethodNames = array('main', 'help');
+        $shellMethodNames = ['main', 'help'];
         foreach ($shellMethods as $method) {
             $shellMethodNames[] = $method->getName();
         }
 
         $Reflection = new ReflectionClass($Shell);
         $methods = $Reflection->getMethods(ReflectionMethod::IS_PUBLIC);
-        $methodNames = array();
+        $methodNames = [];
         foreach ($methods as $method) {
             $methodNames[] = $method->getName();
         }
@@ -138,7 +137,7 @@ class CommandTask extends AppShell
     {
         list($pluginDot, $name) = pluginSplit($commandName, true);
 
-        if (in_array(strtolower($pluginDot), array('app.', 'core.'))) {
+        if (in_array(strtolower($pluginDot), ['app.', 'core.'])) {
             $commandName = $name;
             $pluginDot = '';
         }
@@ -174,7 +173,7 @@ class CommandTask extends AppShell
             $parser = $Shell->getOptionParser();
         }
 
-        $options = array();
+        $options = [];
         $array = $parser->options();
         foreach ($array as $name => $obj) {
             $options[] = "--$name";
@@ -183,6 +182,7 @@ class CommandTask extends AppShell
                 $options[] = "-$short";
             }
         }
+
         return $options;
     }
 }

@@ -15,7 +15,6 @@
  * @since         CakePHP(tm) v 0.10.0.1076
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('Multibyte', 'I18n');
 
 /**
@@ -28,15 +27,15 @@ App::uses('Multibyte', 'I18n');
  */
 class CakeTime
 {
-/**
- * The format to use when formatting a time using `CakeTime::nice()`
- *
- * The format should use the locale strings as defined in the PHP docs under
- * `strftime` (http://php.net/manual/en/function.strftime.php)
- *
- * @var string
- * @see CakeTime::format()
- */
+    /**
+     * The format to use when formatting a time using `CakeTime::nice()`
+     *
+     * The format should use the locale strings as defined in the PHP docs under
+     * `strftime` (http://php.net/manual/en/function.strftime.php)
+     *
+     * @var string
+     * @see CakeTime::format()
+     */
     public static $niceFormat = '%a, %b %eS %Y, %H:%M';
 
     /**
@@ -64,15 +63,15 @@ class CakeTime
      * @var array
      * @see CakeTime::timeAgoInWords()
      */
-    public static $wordAccuracy = array(
-        'year' => 'day',
-        'month' => 'day',
-        'week' => 'day',
-        'day' => 'hour',
-        'hour' => 'minute',
+    public static $wordAccuracy = [
+        'year'   => 'day',
+        'month'  => 'day',
+        'week'   => 'day',
+        'day'    => 'hour',
+        'hour'   => 'minute',
         'minute' => 'minute',
         'second' => 'second',
-    );
+    ];
 
     /**
      * The end of relative time telling
@@ -102,6 +101,7 @@ class CakeTime
         switch ($name) {
             case 'niceFormat':
                 static::${$name} = $value;
+
                 break;
         }
     }
@@ -139,7 +139,8 @@ class CakeTime
             $time = time();
         }
         static::$_time = $time;
-        return preg_replace_callback('/\%(\w+)/', array('CakeTime', '_translateSpecifier'), $format);
+
+        return preg_replace_callback('/\%(\w+)/', ['CakeTime', '_translateSpecifier'], $format);
     }
 
     /**
@@ -157,18 +158,21 @@ class CakeTime
                 if (is_array($abday)) {
                     return $abday[date('w', static::$_time)];
                 }
+
                 break;
             case 'A':
                 $day = __dc('cake', 'day', 5);
                 if (is_array($day)) {
                     return $day[date('w', static::$_time)];
                 }
+
                 break;
             case 'c':
                 $format = __dc('cake', 'd_t_fmt', 5);
                 if ($format !== 'd_t_fmt') {
                     return static::convertSpecifiers($format, static::$_time);
                 }
+
                 break;
             case 'C':
                 return sprintf("%02d", date('Y', static::$_time) / 100);
@@ -182,6 +186,7 @@ class CakeTime
                 if ($day < 10) {
                     $day = ' ' . $day;
                 }
+
                 return $day;
             case 'eS':
                 return date('jS', static::$_time);
@@ -191,30 +196,35 @@ class CakeTime
                 if (is_array($months)) {
                     return $months[date('n', static::$_time) - 1];
                 }
+
                 return '%b';
             case 'B':
                 $months = __dc('cake', 'mon', 5);
                 if (is_array($months)) {
                     return $months[date('n', static::$_time) - 1];
                 }
+
                 break;
             case 'n':
                 return "\n";
             case 'p':
             case 'P':
-                $default = array('am' => 0, 'pm' => 1);
+                $default = ['am' => 0, 'pm' => 1];
                 $meridiem = $default[date('a', static::$_time)];
                 $format = __dc('cake', 'am_pm', 5);
                 if (is_array($format)) {
                     $meridiem = $format[$meridiem];
+
                     return ($specifier[1] === 'P') ? strtolower($meridiem) : strtoupper($meridiem);
                 }
+
                 break;
             case 'r':
                 $complete = __dc('cake', 't_fmt_ampm', 5);
                 if ($complete !== 't_fmt_ampm') {
-                    return str_replace('%p', static::_translateSpecifier(array('%p', 'p')), $complete);
+                    return str_replace('%p', static::_translateSpecifier(['%p', 'p']), $complete);
                 }
+
                 break;
             case 'R':
                 return date('H:i', static::$_time);
@@ -229,14 +239,17 @@ class CakeTime
                 if ($format !== 'd_fmt') {
                     return static::convertSpecifiers($format, static::$_time);
                 }
+
                 break;
             case 'X':
                 $format = __dc('cake', 't_fmt', 5);
                 if ($format !== 't_fmt') {
                     return static::convertSpecifiers($format, static::$_time);
                 }
+
                 break;
         }
+
         return $specifier[0];
     }
 
@@ -263,6 +276,7 @@ class CakeTime
             $userOffset = $timezone->getOffset(new DateTime('@' . $gmtTime));
         }
         $userTime = $gmtTime + $userOffset;
+
         return (int)$userTime;
     }
 
@@ -353,6 +367,7 @@ class CakeTime
         if ($timezone !== null) {
             return static::convert($date, $timezone);
         }
+
         return $date;
     }
 
@@ -378,6 +393,7 @@ class CakeTime
             $format = static::$niceFormat;
         }
         $convertedFormat = static::convertSpecifiers($format, $timestamp);
+
         return static::_strftimeWithTimezone($convertedFormat, $timestamp, $date, $timezone);
     }
 
@@ -405,19 +421,22 @@ class CakeTime
 
         if (static::isToday($date, $timezone)) {
             $formattedDate = static::_strftimeWithTimezone("%H:%M", $timestamp, $date, $timezone);
+
             return __d('cake', 'Today, %s', $formattedDate);
         }
         if (static::wasYesterday($date, $timezone)) {
             $formattedDate = static::_strftimeWithTimezone("%H:%M", $timestamp, $date, $timezone);
+
             return __d('cake', 'Yesterday, %s', $formattedDate);
         }
         if (static::isTomorrow($date, $timezone)) {
             $formattedDate = static::_strftimeWithTimezone("%H:%M", $timestamp, $date, $timezone);
+
             return __d('cake', 'Tomorrow, %s', $formattedDate);
         }
 
         $d = static::_strftimeWithTimezone("%w", $timestamp, $date, $timezone);
-        $day = array(
+        $day = [
             __d('cake', 'Sunday'),
             __d('cake', 'Monday'),
             __d('cake', 'Tuesday'),
@@ -425,13 +444,15 @@ class CakeTime
             __d('cake', 'Thursday'),
             __d('cake', 'Friday'),
             __d('cake', 'Saturday')
-        );
+        ];
         if (static::wasWithinLast('7 days', $date, $timezone)) {
             $formattedDate = static::_strftimeWithTimezone(static::$niceShortFormat, $timestamp, $date, $timezone);
+
             return sprintf('%s %s', $day[$d], $formattedDate);
         }
         if (static::isWithinNext('7 days', $date, $timezone)) {
             $formattedDate = static::_strftimeWithTimezone(static::$niceShortFormat, $timestamp, $date, $timezone);
+
             return __d('cake', 'On %s %s', $day[$d], $formattedDate);
         }
 
@@ -440,6 +461,7 @@ class CakeTime
             $y = ' %Y';
         }
         $format = static::convertSpecifiers("%b %eS{$y}, %H:%M", $timestamp);
+
         return static::_strftimeWithTimezone($format, $timestamp, $date, $timezone);
     }
 
@@ -490,6 +512,7 @@ class CakeTime
     {
         $timestamp = static::fromString($dateString, $timezone);
         $now = static::fromString('now', $timezone);
+
         return date('Y-m-d', $timestamp) === date('Y-m-d', $now);
     }
 
@@ -504,6 +527,7 @@ class CakeTime
     public static function isFuture($dateString, $timezone = null)
     {
         $timestamp = static::fromString($dateString, $timezone);
+
         return $timestamp > time();
     }
 
@@ -518,6 +542,7 @@ class CakeTime
     public static function isPast($dateString, $timezone = null)
     {
         $timestamp = static::fromString($dateString, $timezone);
+
         return $timestamp < time();
     }
 
@@ -533,6 +558,7 @@ class CakeTime
     {
         $timestamp = static::fromString($dateString, $timezone);
         $now = static::fromString('now', $timezone);
+
         return date('W o', $timestamp) === date('W o', $now);
     }
 
@@ -548,6 +574,7 @@ class CakeTime
     {
         $timestamp = static::fromString($dateString, $timezone);
         $now = static::fromString('now', $timezone);
+
         return date('m Y', $timestamp) === date('m Y', $now);
     }
 
@@ -563,6 +590,7 @@ class CakeTime
     {
         $timestamp = static::fromString($dateString, $timezone);
         $now = static::fromString('now', $timezone);
+
         return date('Y', $timestamp) === date('Y', $now);
     }
 
@@ -578,6 +606,7 @@ class CakeTime
     {
         $timestamp = static::fromString($dateString, $timezone);
         $yesterday = static::fromString('yesterday', $timezone);
+
         return date('Y-m-d', $timestamp) === date('Y-m-d', $yesterday);
     }
 
@@ -593,6 +622,7 @@ class CakeTime
     {
         $timestamp = static::fromString($dateString, $timezone);
         $tomorrow = static::fromString('tomorrow', $timezone);
+
         return date('Y-m-d', $timestamp) === date('Y-m-d', $tomorrow);
     }
 
@@ -615,13 +645,13 @@ class CakeTime
         $year = date('Y', $time);
         switch ($date) {
             case 1:
-                return array($year . '-01-01', $year . '-03-31');
+                return [$year . '-01-01', $year . '-03-31'];
             case 2:
-                return array($year . '-04-01', $year . '-06-30');
+                return [$year . '-04-01', $year . '-06-30'];
             case 3:
-                return array($year . '-07-01', $year . '-09-30');
+                return [$year . '-07-01', $year . '-09-30'];
             case 4:
-                return array($year . '-10-01', $year . '-12-31');
+                return [$year . '-10-01', $year . '-12-31'];
         }
     }
 
@@ -675,6 +705,7 @@ class CakeTime
         }
 
         $date->setTimezone(new DateTimeZone(date_default_timezone_get()));
+
         return $date->format($format);
     }
 
@@ -723,6 +754,7 @@ class CakeTime
             $minutes = (int)(fmod(abs($userOffset), $hours) * 60);
             $timezone = ($userOffset < 0 ? '-' : '+') . str_pad($hours, 2, '0', STR_PAD_LEFT) . str_pad($minutes, 2, '0', STR_PAD_LEFT);
         }
+
         return date('D, d M Y H:i:s', $date) . ' ' . $timezone;
     }
 
@@ -766,7 +798,7 @@ class CakeTime
      * @return string Relative time string.
      * @link https://book.cakephp.org/2.0/en/core-libraries/helpers/time.html#TimeHelper::timeAgoInWords
      */
-    public static function timeAgoInWords($dateTime, $options = array())
+    public static function timeAgoInWords($dateTime, $options = [])
     {
         $timezone = null;
         $accuracies = static::$wordAccuracy;
@@ -840,6 +872,7 @@ class CakeTime
             } else {
                 $date = static::_strftime($format, $inSeconds);
             }
+
             return sprintf($absoluteString, $date);
         }
 
@@ -920,9 +953,9 @@ class CakeTime
             $accuracy = $accuracies['minute'];
         }
 
-        $accuracyNum = str_replace(array('year', 'month', 'week', 'day', 'hour', 'minute', 'second'), array(1, 2, 3, 4, 5, 6, 7), $accuracy);
+        $accuracyNum = str_replace(['year', 'month', 'week', 'day', 'hour', 'minute', 'second'], [1, 2, 3, 4, 5, 6, 7], $accuracy);
 
-        $relativeDate = array();
+        $relativeDate = [];
         if ($accuracyNum >= 1 && $years > 0) {
             $relativeDate[] = __dn('cake', '%d year', '%d years', $years, $years);
         }
@@ -948,27 +981,28 @@ class CakeTime
 
         if ($relativeDate) {
             $relativeString = ($isFuture) ? $relativeStringFuture : $relativeStringPast;
+
             return sprintf($relativeString, $relativeDate);
         }
 
         if ($isFuture) {
-            $strings = array(
+            $strings = [
                 'second' => __d('cake', 'in about a second'),
                 'minute' => __d('cake', 'in about a minute'),
-                'hour' => __d('cake', 'in about an hour'),
-                'day' => __d('cake', 'in about a day'),
-                'week' => __d('cake', 'in about a week'),
-                'year' => __d('cake', 'in about a year')
-            );
+                'hour'   => __d('cake', 'in about an hour'),
+                'day'    => __d('cake', 'in about a day'),
+                'week'   => __d('cake', 'in about a week'),
+                'year'   => __d('cake', 'in about a year')
+            ];
         } else {
-            $strings = array(
+            $strings = [
                 'second' => __d('cake', 'about a second ago'),
                 'minute' => __d('cake', 'about a minute ago'),
-                'hour' => __d('cake', 'about an hour ago'),
-                'day' => __d('cake', 'about a day ago'),
-                'week' => __d('cake', 'about a week ago'),
-                'year' => __d('cake', 'about a year ago')
-            );
+                'hour'   => __d('cake', 'about an hour ago'),
+                'day'    => __d('cake', 'about a day ago'),
+                'week'   => __d('cake', 'about a week ago'),
+                'year'   => __d('cake', 'about a year ago')
+            ];
         }
 
         return $strings[$accuracy];
@@ -1034,6 +1068,7 @@ class CakeTime
         if ($dateString) {
             $time = static::fromString($dateString);
         }
+
         return gmmktime(
             (int)date('G', $time),
             (int)date('i', $time),
@@ -1076,6 +1111,7 @@ class CakeTime
         if ($time === false) {
             return static::i18nFormat($date, $format, $default, $timezone);
         }
+
         return date($date, $time);
     }
 
@@ -1103,6 +1139,7 @@ class CakeTime
             $format = '%x';
         }
         $convertedFormat = static::convertSpecifiers($format, $timestamp);
+
         return static::_strftimeWithTimezone($convertedFormat, $timestamp, $date, $timezone);
     }
 
@@ -1122,19 +1159,19 @@ class CakeTime
      * @since 2.2
      * @link https://book.cakephp.org/2.0/en/core-libraries/helpers/time.html#TimeHelper::listTimezones
      */
-    public static function listTimezones($filter = null, $country = null, $options = array())
+    public static function listTimezones($filter = null, $country = null, $options = [])
     {
         if (is_bool($options)) {
-            $options = array(
+            $options = [
                 'group' => $options,
-            );
+            ];
         }
-        $defaults = array(
-            'group' => true,
-            'abbr' => false,
+        $defaults = [
+            'group'  => true,
+            'abbr'   => false,
             'before' => ' - ',
-            'after' => null,
-        );
+            'after'  => null,
+        ];
         $options += $defaults;
         $group = $options['group'];
 
@@ -1164,7 +1201,7 @@ class CakeTime
         }
 
         if ($group) {
-            $return = array();
+            $return = [];
             $now = time();
             $before = $options['before'];
             $after = $options['after'];
@@ -1181,11 +1218,13 @@ class CakeTime
                 if (isset($item[1])) {
                     $return[$item[0]][$tz] = $item[1] . $abbr;
                 } else {
-                    $return[$item[0]] = array($tz => $item[0] . $abbr);
+                    $return[$item[0]] = [$tz => $item[0] . $abbr];
                 }
             }
+
             return $return;
         }
+
         return array_combine($identifiers, $identifiers);
     }
 
@@ -1212,6 +1251,7 @@ class CakeTime
                 $format = utf8_encode($format);
             }
         }
+
         return $format;
     }
 
@@ -1238,6 +1278,7 @@ class CakeTime
         }
         $result = static::_strftime($format, $timestamp);
         date_default_timezone_set($serverTimeZone);
+
         return $result;
     }
 }

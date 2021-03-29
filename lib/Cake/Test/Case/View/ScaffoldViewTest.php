@@ -15,7 +15,6 @@
  * @since         CakePHP(tm) v 2.0
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('Controller', 'Controller');
 App::uses('Scaffold', 'Controller');
 App::uses('ScaffoldView', 'View');
@@ -30,12 +29,12 @@ require_once dirname(dirname(__FILE__)) . DS . 'Model' . DS . 'models.php';
  */
 class TestScaffoldView extends ScaffoldView
 {
-/**
- * testGetFilename method
- *
- * @param string $action
- * @return void
- */
+    /**
+     * testGetFilename method
+     *
+     * @param string $action
+     * @return void
+     */
     public function testGetFilename($action)
     {
         return $this->_getViewFileName($action);
@@ -49,11 +48,11 @@ class TestScaffoldView extends ScaffoldView
  */
 class ScaffoldViewMockController extends Controller
 {
-/**
- * name property
- *
- * @var string
- */
+    /**
+     * name property
+     *
+     * @var string
+     */
     public $name = 'ScaffoldMock';
 
     /**
@@ -71,12 +70,12 @@ class ScaffoldViewMockController extends Controller
  */
 class ScaffoldViewTest extends CakeTestCase
 {
-/**
- * fixtures property
- *
- * @var array
- */
-    public $fixtures = array('core.article', 'core.user', 'core.comment', 'core.join_thing', 'core.tag');
+    /**
+     * fixtures property
+     *
+     * @var array
+     */
+    public $fixtures = ['core.article', 'core.user', 'core.comment', 'core.join_thing', 'core.tag'];
 
     /**
      * setUp method
@@ -88,12 +87,12 @@ class ScaffoldViewTest extends CakeTestCase
         parent::setUp();
         $this->request = new CakeRequest(null, false);
         $this->Controller = new ScaffoldViewMockController($this->request);
-        $this->Controller->response = $this->getMock('CakeResponse', array('_sendHeader'));
+        $this->Controller->response = $this->getMock('CakeResponse', ['_sendHeader']);
 
-        App::build(array(
-            'View' => array(CAKE . 'Test' . DS . 'test_app' . DS . 'View' . DS),
-            'Plugin' => array(CAKE . 'Test' . DS . 'test_app' . DS . 'Plugin' . DS)
-        ));
+        App::build([
+            'View'   => [CAKE . 'Test' . DS . 'test_app' . DS . 'View' . DS],
+            'Plugin' => [CAKE . 'Test' . DS . 'test_app' . DS . 'Plugin' . DS]
+        ]);
         CakePlugin::load('TestPlugin');
     }
 
@@ -116,7 +115,7 @@ class ScaffoldViewTest extends CakeTestCase
     public function testGetViewFilename()
     {
         $_admin = Configure::read('Routing.prefixes');
-        Configure::write('Routing.prefixes', array('admin'));
+        Configure::write('Routing.prefixes', ['admin']);
 
         $this->Controller->request->params['action'] = 'index';
         $ScaffoldView = new TestScaffoldView($this->Controller);
@@ -173,11 +172,11 @@ class ScaffoldViewTest extends CakeTestCase
         $Controller = new ScaffoldViewMockController($this->request);
         $Controller->scaffold = 'admin';
         $Controller->viewPath = 'Tests';
-        $Controller->request->addParams(array(
+        $Controller->request->addParams([
             'plugin' => 'test_plugin',
             'action' => 'admin_add',
-            'admin' => true
-        ));
+            'admin'  => true
+        ]);
         $Controller->plugin = 'TestPlugin';
 
         $ScaffoldView = new TestScaffoldView($Controller);
@@ -219,15 +218,15 @@ class ScaffoldViewTest extends CakeTestCase
      */
     public function testIndexScaffold()
     {
-        $params = array(
-            'plugin' => null,
-            'pass' => array(),
-            'form' => array(),
-            'named' => array(),
-            'url' => array('url' => 'scaffold_mock'),
+        $params = [
+            'plugin'     => null,
+            'pass'       => [],
+            'form'       => [],
+            'named'      => [],
+            'url'        => ['url' => 'scaffold_mock'],
             'controller' => 'scaffold_mock',
-            'action' => 'index',
-        );
+            'action'     => 'index',
+        ];
         $this->Controller->request->addParams($params);
         $this->Controller->request->webroot = '/';
         $this->Controller->request->base = '';
@@ -262,15 +261,15 @@ class ScaffoldViewTest extends CakeTestCase
         $this->Controller->request->base = '';
         $this->Controller->request->here = '/scaffold_mock';
         $this->Controller->request->webroot = '/';
-        $params = array(
-            'plugin' => null,
-            'pass' => array(1),
-            'form' => array(),
-            'named' => array(),
-            'url' => array('url' => 'scaffold_mock/view/1'),
+        $params = [
+            'plugin'     => null,
+            'pass'       => [1],
+            'form'       => [],
+            'named'      => [],
+            'url'        => ['url' => 'scaffold_mock/view/1'],
             'controller' => 'scaffold_mock',
-            'action' => 'view',
-        );
+            'action'     => 'view',
+        ];
         $this->Controller->request->addParams($params);
 
         //set router.
@@ -306,15 +305,15 @@ class ScaffoldViewTest extends CakeTestCase
         $this->Controller->request->webroot = '/';
         $this->Controller->request->here = '/scaffold_mock/edit/1';
 
-        $params = array(
-            'plugin' => null,
-            'pass' => array(1),
-            'form' => array(),
-            'named' => array(),
-            'url' => array('url' => 'scaffold_mock'),
+        $params = [
+            'plugin'     => null,
+            'pass'       => [1],
+            'form'       => [],
+            'named'      => [],
+            'url'        => ['url' => 'scaffold_mock'],
             'controller' => 'scaffold_mock',
-            'action' => 'edit',
-        );
+            'action'     => 'edit',
+        ];
         $this->Controller->request->addParams($params);
 
         //set router.
@@ -347,18 +346,18 @@ class ScaffoldViewTest extends CakeTestCase
     {
         $_backAdmin = Configure::read('Routing.prefixes');
 
-        Configure::write('Routing.prefixes', array('admin'));
-        $params = array(
-            'plugin' => null,
-            'pass' => array(),
-            'form' => array(),
-            'named' => array(),
-            'prefix' => 'admin',
-            'url' => array('url' => 'admin/scaffold_mock'),
+        Configure::write('Routing.prefixes', ['admin']);
+        $params = [
+            'plugin'     => null,
+            'pass'       => [],
+            'form'       => [],
+            'named'      => [],
+            'prefix'     => 'admin',
+            'url'        => ['url' => 'admin/scaffold_mock'],
             'controller' => 'scaffold_mock',
-            'action' => 'admin_index',
-            'admin' => 1,
-        );
+            'action'     => 'admin_index',
+            'admin'      => 1,
+        ];
         $this->Controller->request->base = '';
         $this->Controller->request->webroot = '/';
         $this->Controller->request->here = '/admin/scaffold_mock';
@@ -391,18 +390,18 @@ class ScaffoldViewTest extends CakeTestCase
      */
     public function testAdminEditScaffold()
     {
-        Configure::write('Routing.prefixes', array('admin'));
-        $params = array(
-            'plugin' => null,
-            'pass' => array(1),
-            'form' => array(),
-            'named' => array(),
-            'prefix' => 'admin',
-            'url' => array('url' => 'admin/scaffold_mock/edit/1'),
+        Configure::write('Routing.prefixes', ['admin']);
+        $params = [
+            'plugin'     => null,
+            'pass'       => [1],
+            'form'       => [],
+            'named'      => [],
+            'prefix'     => 'admin',
+            'url'        => ['url' => 'admin/scaffold_mock/edit/1'],
             'controller' => 'scaffold_mock',
-            'action' => 'admin_edit',
-            'admin' => 1,
-        );
+            'action'     => 'admin_edit',
+            'admin'      => 1,
+        ];
         $this->Controller->request->base = '';
         $this->Controller->request->webroot = '/';
         $this->Controller->request->here = '/admin/scaffold_mock/edit/1';
@@ -433,18 +432,18 @@ class ScaffoldViewTest extends CakeTestCase
     {
         $_backAdmin = Configure::read('Routing.prefixes');
 
-        Configure::write('Routing.prefixes', array('admin', 'member'));
-        $params = array(
-            'plugin' => null,
-            'pass' => array(),
-            'form' => array(),
-            'named' => array(),
-            'prefix' => 'member',
-            'url' => array('url' => 'member/scaffold_mock'),
+        Configure::write('Routing.prefixes', ['admin', 'member']);
+        $params = [
+            'plugin'     => null,
+            'pass'       => [],
+            'form'       => [],
+            'named'      => [],
+            'prefix'     => 'member',
+            'url'        => ['url' => 'member/scaffold_mock'],
             'controller' => 'scaffold_mock',
-            'action' => 'member_index',
-            'member' => 1,
-        );
+            'action'     => 'member_index',
+            'member'     => 1,
+        ];
         $this->Controller->request->base = '';
         $this->Controller->request->webroot = '/';
         $this->Controller->request->here = '/member/scaffold_mock';

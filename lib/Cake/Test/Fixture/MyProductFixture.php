@@ -23,23 +23,23 @@
  */
 class MyProductFixture extends CakeTestFixture
 {
-/**
- * fields property
- *
- * @var array
- */
-    public $fields = array(
-        'id' => array('type' => 'integer', 'key' => 'primary'),
-        'name' => array('type' => 'string', 'null' => false),
-    );
+    /**
+     * fields property
+     *
+     * @var array
+     */
+    public $fields = [
+        'id'   => ['type' => 'integer', 'key' => 'primary'],
+        'name' => ['type' => 'string', 'null' => false],
+    ];
 
     /**
      * records property
      *
      * @var array
      */
-    public $records = array(
-        array('id' => 1, 'name' => 'book'),
-        array('id' => 2, 'name' => 'computer'),
-    );
+    public $records = [
+        ['id' => 1, 'name' => 'book'],
+        ['id' => 2, 'name' => 'computer'],
+    ];
 }

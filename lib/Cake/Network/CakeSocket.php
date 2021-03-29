@@ -15,7 +15,6 @@
  * @since		  CakePHP(tm) v 1.2.0
  * @license		  https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('Validation', 'Utility');
 
 /**
@@ -27,11 +26,11 @@ App::uses('Validation', 'Utility');
  */
 class CakeSocket
 {
-/**
- * CakeSocket description
- *
- * @var string
- */
+    /**
+     * CakeSocket description
+     *
+     * @var string
+     */
     public $description = 'Remote DataSource Network Socket Interface';
 
     /**
@@ -39,21 +38,21 @@ class CakeSocket
      *
      * @var array
      */
-    protected $_baseConfig = array(
+    protected $_baseConfig = [
         'persistent' => false,
-        'host' => 'localhost',
-        'protocol' => 'tcp',
-        'port' => 80,
-        'timeout' => 30,
+        'host'       => 'localhost',
+        'protocol'   => 'tcp',
+        'port'       => 80,
+        'timeout'    => 30,
         'cryptoType' => 'tls',
-    );
+    ];
 
     /**
      * Configuration settings for the socket connection
      *
      * @var array
      */
-    public $config = array();
+    public $config = [];
 
     /**
      * Reference to socket connection resource
@@ -74,7 +73,7 @@ class CakeSocket
      *
      * @var array
      */
-    public $lastError = array();
+    public $lastError = [];
 
     /**
      * True if the socket stream is encrypted after a CakeSocket::enableCrypto() call
@@ -88,18 +87,18 @@ class CakeSocket
      *
      * @var array
      */
-    protected $_encryptMethods = array(
+    protected $_encryptMethods = [
         // @codingStandardsIgnoreStart
-        'sslv2_client' => STREAM_CRYPTO_METHOD_SSLv2_CLIENT,
-        'sslv3_client' => STREAM_CRYPTO_METHOD_SSLv3_CLIENT,
+        'sslv2_client'  => STREAM_CRYPTO_METHOD_SSLv2_CLIENT,
+        'sslv3_client'  => STREAM_CRYPTO_METHOD_SSLv3_CLIENT,
         'sslv23_client' => STREAM_CRYPTO_METHOD_SSLv23_CLIENT,
-        'tls_client' => STREAM_CRYPTO_METHOD_TLS_CLIENT,
-        'sslv2_server' => STREAM_CRYPTO_METHOD_SSLv2_SERVER,
-        'sslv3_server' => STREAM_CRYPTO_METHOD_SSLv3_SERVER,
+        'tls_client'    => STREAM_CRYPTO_METHOD_TLS_CLIENT,
+        'sslv2_server'  => STREAM_CRYPTO_METHOD_SSLv2_SERVER,
+        'sslv3_server'  => STREAM_CRYPTO_METHOD_SSLv3_SERVER,
         'sslv23_server' => STREAM_CRYPTO_METHOD_SSLv23_SERVER,
-        'tls_server' => STREAM_CRYPTO_METHOD_TLS_SERVER,
+        'tls_server'    => STREAM_CRYPTO_METHOD_TLS_SERVER,
         // @codingStandardsIgnoreEnd
-    );
+    ];
 
     /**
      * Used to capture connection warnings which can happen when there are
@@ -107,7 +106,7 @@ class CakeSocket
      *
      * @var array
      */
-    protected $_connectionErrors = array();
+    protected $_connectionErrors = [];
 
     /**
      * Constructor.
@@ -115,7 +114,7 @@ class CakeSocket
      * @param array $config Socket configuration, which will be merged with the base configuration
      * @see CakeSocket::$_baseConfig
      */
-    public function __construct($config = array())
+    public function __construct($config = [])
     {
         $this->config = array_merge($this->_baseConfig, $config);
 
@@ -137,14 +136,14 @@ class CakeSocket
      */
     protected function _addTlsVersions()
     {
-        $conditionalCrypto = array(
+        $conditionalCrypto = [
             'tlsv1_1_client' => 'STREAM_CRYPTO_METHOD_TLSv1_1_CLIENT',
             'tlsv1_2_client' => 'STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT',
             'tlsv1_1_server' => 'STREAM_CRYPTO_METHOD_TLSv1_1_SERVER',
             'tlsv1_2_server' => 'STREAM_CRYPTO_METHOD_TLSv1_2_SERVER',
             'tlsv1_3_server' => 'STREAM_CRYPTO_METHOD_TLSv1_3_SERVER',
             'tlsv1_3_client' => 'STREAM_CRYPTO_METHOD_TLSv1_3_CLIENT'
-        );
+        ];
         foreach ($conditionalCrypto as $key => $const) {
             if (defined($const)) {
                 $this->_encryptMethods[$key] = constant($const);
@@ -214,7 +213,7 @@ class CakeSocket
             $connectAs |= STREAM_CLIENT_PERSISTENT;
         }
 
-        set_error_handler(array($this, '_connectionErrorHandler'));
+        set_error_handler([$this, '_connectionErrorHandler']);
         $this->connection = stream_socket_client(
             $scheme . $this->config['host'] . ':' . $this->config['port'],
             $errNum,
@@ -227,11 +226,13 @@ class CakeSocket
 
         if (!empty($errNum) || !empty($errStr)) {
             $this->setLastError($errNum, $errStr);
+
             throw new SocketException($errStr, $errNum);
         }
 
         if (!$this->connection && $this->_connectionErrors) {
             $message = implode("\n", $this->_connectionErrors);
+
             throw new SocketException($message, E_WARNING);
         }
 
@@ -243,7 +244,7 @@ class CakeSocket
                 $this->config['request']['uri']['scheme'] === 'https' &&
                 !empty($this->config['proxy'])
             ) {
-                $req = array();
+                $req = [];
                 $req[] = 'CONNECT ' . $this->config['request']['uri']['host'] . ':' .
                     $this->config['request']['uri']['port'] . ' HTTP/1.1';
                 $req[] = 'Host: ' . $this->config['host'];
@@ -264,6 +265,7 @@ class CakeSocket
                 $this->enableCrypto($this->config['cryptoType'], 'client');
             }
         }
+
         return $this->connected;
     }
 
@@ -333,6 +335,7 @@ class CakeSocket
         if (!$this->connection) {
             return null;
         }
+
         return stream_context_get_options($this->connection);
     }
 
@@ -346,6 +349,7 @@ class CakeSocket
         if (Validation::ip($this->config['host'])) {
             return gethostbyaddr($this->config['host']);
         }
+
         return gethostbyaddr($this->address());
     }
 
@@ -359,6 +363,7 @@ class CakeSocket
         if (Validation::ip($this->config['host'])) {
             return $this->config['host'];
         }
+
         return gethostbyname($this->config['host']);
     }
 
@@ -370,8 +375,9 @@ class CakeSocket
     public function addresses()
     {
         if (Validation::ip($this->config['host'])) {
-            return array($this->config['host']);
+            return [$this->config['host']];
         }
+
         return gethostbynamel($this->config['host']);
     }
 
@@ -385,6 +391,7 @@ class CakeSocket
         if (!empty($this->lastError)) {
             return $this->lastError['num'] . ': ' . $this->lastError['str'];
         }
+
         return null;
     }
 
@@ -397,7 +404,7 @@ class CakeSocket
      */
     public function setLastError($errNum, $errStr)
     {
-        $this->lastError = array('num' => $errNum, 'str' => $errStr);
+        $this->lastError = ['num' => $errNum, 'str' => $errStr];
     }
 
     /**
@@ -420,6 +427,7 @@ class CakeSocket
                 return $written;
             }
         }
+
         return $written;
     }
 
@@ -443,10 +451,13 @@ class CakeSocket
             $info = stream_get_meta_data($this->connection);
             if ($info['timed_out']) {
                 $this->setLastError(E_WARNING, __d('cake_dev', 'Connection timed out'));
+
                 return false;
             }
+
             return $buffer;
         }
+
         return false;
     }
 
@@ -459,6 +470,7 @@ class CakeSocket
     {
         if (!is_resource($this->connection)) {
             $this->connected = false;
+
             return true;
         }
         $this->connected = !fclose($this->connection);
@@ -466,6 +478,7 @@ class CakeSocket
         if (!$this->connected) {
             $this->connection = null;
         }
+
         return !$this->connected;
     }
 
@@ -486,7 +499,7 @@ class CakeSocket
     public function reset($state = null)
     {
         if (empty($state)) {
-            static $initalState = array();
+            static $initalState = [];
             if (empty($initalState)) {
                 $initalState = get_class_vars(__CLASS__);
             }
@@ -496,6 +509,7 @@ class CakeSocket
         foreach ($state as $property => $value) {
             $this->{$property} = $value;
         }
+
         return true;
     }
 
@@ -516,6 +530,7 @@ class CakeSocket
             throw new InvalidArgumentException(__d('cake_dev', 'Invalid encryption scheme chosen'));
         }
         $enableCryptoResult = false;
+
         try {
             $enableCryptoResult = stream_socket_enable_crypto(
                 $this->connection,
@@ -524,14 +539,17 @@ class CakeSocket
             );
         } catch (Exception $e) {
             $this->setLastError(null, $e->getMessage());
+
             throw new SocketException($e->getMessage());
         }
         if ($enableCryptoResult === true) {
             $this->encrypted = $enable;
+
             return true;
         }
         $errorMessage = __d('cake_dev', 'Unable to perform enableCrypto operation on CakeSocket');
         $this->setLastError(null, $errorMessage);
+
         throw new SocketException($errorMessage);
     }
 }

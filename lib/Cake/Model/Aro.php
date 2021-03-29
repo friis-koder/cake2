@@ -13,7 +13,6 @@
  * @since         CakePHP(tm) v 0.2.9
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('AclNode', 'Model');
 
 /**
@@ -23,11 +22,11 @@ App::uses('AclNode', 'Model');
  */
 class Aro extends AclNode
 {
-/**
- * Model name
- *
- * @var string
- */
+    /**
+     * Model name
+     *
+     * @var string
+     */
     public $name = 'Aro';
 
     /**
@@ -35,5 +34,5 @@ class Aro extends AclNode
      *
      * @var array
      */
-    public $hasAndBelongsToMany = array('Aco' => array('with' => 'Permission'));
+    public $hasAndBelongsToMany = ['Aco' => ['with' => 'Permission']];
 }

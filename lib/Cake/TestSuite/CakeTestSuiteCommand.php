@@ -15,7 +15,6 @@
  * @since         CakePHP(tm) v 2.0
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('CakeTestRunner', 'TestSuite');
 App::uses('CakeTestLoader', 'TestSuite');
 App::uses('CakeTestSuite', 'TestSuite');
@@ -30,17 +29,17 @@ App::uses('CakeTestModel', 'TestSuite/Fixture');
  */
 class CakeTestSuiteCommand extends PHPUnit_TextUI_Command
 {
-/**
- * Construct method
- *
- * @param mixed $loader The loader instance to use.
- * @param array $params list of options to be used for this run
- * @throws MissingTestLoaderException When a loader class could not be found.
- */
-    public function __construct($loader, $params = array())
+    /**
+     * Construct method
+     *
+     * @param mixed $loader The loader instance to use.
+     * @param array $params list of options to be used for this run
+     * @throws MissingTestLoaderException When a loader class could not be found.
+     */
+    public function __construct($loader, $params = [])
     {
         if ($loader && !class_exists($loader)) {
-            throw new MissingTestLoaderException(array('class' => $loader));
+            throw new MissingTestLoaderException(['class' => $loader]);
         }
         $this->arguments['loader'] = $loader;
         $this->arguments['test'] = $params['case'];
@@ -155,6 +154,7 @@ class CakeTestSuiteCommand extends PHPUnit_TextUI_Command
         } else {
             $object = new $appClass(null, $this->_params);
         }
+
         return $this->arguments['printer'] = $object;
     }
 }

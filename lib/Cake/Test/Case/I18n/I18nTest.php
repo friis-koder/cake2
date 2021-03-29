@@ -15,7 +15,6 @@
  * @since         CakePHP(tm) v 1.2.0.5432
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('I18n', 'I18n');
 App::uses('CakeSession', 'Model/Datasource');
 
@@ -26,21 +25,21 @@ App::uses('CakeSession', 'Model/Datasource');
  */
 class I18nTest extends CakeTestCase
 {
-/**
- * setUp method
- *
- * @return void
- */
+    /**
+     * setUp method
+     *
+     * @return void
+     */
     public function setUp()
     {
         parent::setUp();
 
         Cache::delete('object_map', '_cake_core_');
-        App::build(array(
-            'Locale' => array(CAKE . 'Test' . DS . 'test_app' . DS . 'Locale' . DS),
-            'Plugin' => array(CAKE . 'Test' . DS . 'test_app' . DS . 'Plugin' . DS)
-        ), App::RESET);
-        CakePlugin::load(array('TestPlugin'));
+        App::build([
+            'Locale' => [CAKE . 'Test' . DS . 'test_app' . DS . 'Locale' . DS],
+            'Plugin' => [CAKE . 'Test' . DS . 'test_app' . DS . 'Plugin' . DS]
+        ], App::RESET);
+        CakePlugin::load(['TestPlugin']);
     }
 
     /**
@@ -1777,9 +1776,9 @@ class I18nTest extends CakeTestCase
      */
     public function testPluginTranslation()
     {
-        App::build(array(
-            'Plugin' => array(CAKE . 'Test' . DS . 'test_app' . DS . 'Plugin' . DS)
-        ));
+        App::build([
+            'Plugin' => [CAKE . 'Test' . DS . 'test_app' . DS . 'Plugin' . DS]
+        ]);
 
         Configure::write('Config.language', 'po');
         $singular = $this->_domainSingular();
@@ -1827,9 +1826,9 @@ class I18nTest extends CakeTestCase
 
         Configure::write('I18n.preferApp', true);
 
-        App::build(array(
-            'Plugin' => array(CAKE . 'Test' . DS . 'test_app' . DS . 'Plugin' . DS)
-        ));
+        App::build([
+            'Plugin' => [CAKE . 'Test' . DS . 'test_app' . DS . 'Plugin' . DS]
+        ]);
 
         Configure::write('Config.language', 'po');
         $singular = $this->_domainSingular();
@@ -2020,11 +2019,11 @@ class I18nTest extends CakeTestCase
         $this->assertEquals($expected, $result);
 
         $result = __c('am_pm', 5);
-        $expected = array('AM', 'PM');
+        $expected = ['AM', 'PM'];
         $this->assertEquals($expected, $result);
 
         $result = __c('abmon', 5);
-        $expected = array('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec');
+        $expected = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
         $this->assertEquals($expected, $result);
     }
 
@@ -2043,11 +2042,11 @@ class I18nTest extends CakeTestCase
         $this->assertEquals($expected, $result);
 
         $result = __c('am_pm', 5);
-        $expected = array("午前", "午後");
+        $expected = ["午前", "午後"];
         $this->assertEquals($expected, $result);
 
         $result = __c('abmon', 5);
-        $expected = array(" 1月", " 2月", " 3月", " 4月", " 5月", " 6月", " 7月", " 8月", " 9月", "10月", "11月", "12月");
+        $expected = [" 1月", " 2月", " 3月", " 4月", " 5月", " 6月", " 7月", " 8月", " 9月", "10月", "11月", "12月"];
         $this->assertEquals($expected, $result);
     }
 
@@ -2089,7 +2088,7 @@ class I18nTest extends CakeTestCase
     {
         $path = current(App::path('locales'));
         $result = I18n::loadLocaleDefinition($path . 'nld' . DS . 'LC_TIME');
-        $expected = array('zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag');
+        $expected = ['zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag'];
         $this->assertSame($expected, $result['day']);
     }
 
@@ -2138,6 +2137,7 @@ class I18nTest extends CakeTestCase
     protected function _domainCategorySingular($domain = 'test_plugin', $category = 3)
     {
         $singular = __dc($domain, 'Plural Rule 1', $category);
+
         return $singular;
     }
 
@@ -2148,10 +2148,11 @@ class I18nTest extends CakeTestCase
      */
     protected function _domainCategoryPlural($domain = 'test_plugin', $category = 3)
     {
-        $plurals = array();
+        $plurals = [];
         for ($number = 0; $number <= 25; $number++) {
             $plurals[] = sprintf(__dcn($domain, '%d = 1', '%d = 0 or > 1', (float)$number, $category), (float)$number);
         }
+
         return $plurals;
     }
 
@@ -2163,6 +2164,7 @@ class I18nTest extends CakeTestCase
     protected function _domainSingular($domain = 'test_plugin')
     {
         $singular = __d($domain, 'Plural Rule 1');
+
         return $singular;
     }
 
@@ -2173,10 +2175,11 @@ class I18nTest extends CakeTestCase
      */
     protected function _domainPlural($domain = 'test_plugin')
     {
-        $plurals = array();
+        $plurals = [];
         for ($number = 0; $number <= 25; $number++) {
             $plurals[] = sprintf(__dn($domain, '%d = 1', '%d = 0 or > 1', (float)$number), (float)$number);
         }
+
         return $plurals;
     }
 
@@ -2188,6 +2191,7 @@ class I18nTest extends CakeTestCase
     protected function _category($category = I18n::LC_MONETARY)
     {
         $singular = __c('Plural Rule 1', $category);
+
         return $singular;
     }
 
@@ -2199,6 +2203,7 @@ class I18nTest extends CakeTestCase
     protected function _singular()
     {
         $singular = __('Plural Rule 1');
+
         return $singular;
     }
 
@@ -2210,10 +2215,11 @@ class I18nTest extends CakeTestCase
      */
     protected function _plural($upTo = 25)
     {
-        $plurals = array();
+        $plurals = [];
         for ($number = 0; $number <= $upTo; $number++) {
             $plurals[] = sprintf(__n('%d = 1', '%d = 0 or > 1', (float)$number), (float)$number);
         }
+
         return $plurals;
     }
 
@@ -2225,6 +2231,7 @@ class I18nTest extends CakeTestCase
     protected function _singularFromCore()
     {
         $singular = __('Plural Rule 1 (from core)');
+
         return $singular;
     }
 
@@ -2236,10 +2243,11 @@ class I18nTest extends CakeTestCase
      */
     protected function _pluralFromCore($upTo = 25)
     {
-        $plurals = array();
+        $plurals = [];
         for ($number = 0; $number <= $upTo; $number++) {
             $plurals[] = sprintf(__n('%d = 1 (from core)', '%d = 0 or > 1 (from core)', (float)$number), (float)$number);
         }
+
         return $plurals;
     }
 }

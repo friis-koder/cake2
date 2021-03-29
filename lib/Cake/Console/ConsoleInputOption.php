@@ -24,11 +24,11 @@
  */
 class ConsoleInputOption
 {
-/**
- * Name of the option
- *
- * @var string
- */
+    /**
+     * Name of the option
+     *
+     * @var string
+     */
     protected $_name;
 
     /**
@@ -77,7 +77,7 @@ class ConsoleInputOption
      * @param array $choices Valid choices for this option.
      * @throws ConsoleException
      */
-    public function __construct($name, $short = null, $help = '', $boolean = false, $default = '', $choices = array())
+    public function __construct($name, $short = null, $help = '', $boolean = false, $default = '', $choices = [])
     {
         if (is_array($name) && isset($name['name'])) {
             foreach ($name as $key => $value) {
@@ -140,6 +140,7 @@ class ConsoleInputOption
         if (strlen($name) < $width) {
             $name = str_pad($name, $width, ' ');
         }
+
         return sprintf('%s%s%s', $name, $this->_help, $default);
     }
 
@@ -158,6 +159,7 @@ class ConsoleInputOption
         if (!empty($this->_choices)) {
             $default = ' ' . implode('|', $this->_choices);
         }
+
         return sprintf('[%s%s]', $name, $default);
     }
 
@@ -204,6 +206,7 @@ class ConsoleInputOption
                 )
             );
         }
+
         return true;
     }
 
@@ -229,6 +232,7 @@ class ConsoleInputOption
         foreach ($this->_choices as $valid) {
             $choices->addChild('choice', $valid);
         }
+
         return $parent;
     }
 }

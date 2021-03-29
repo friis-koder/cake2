@@ -13,7 +13,6 @@
  * @since         CakePHP(tm) v 1.2.0.4933
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('Inflector', 'Utility');
 App::uses('CacheEngine', 'Cache');
 
@@ -42,21 +41,21 @@ App::uses('CacheEngine', 'Cache');
  */
 class Cache
 {
-/**
- * Cache configuration stack
- * Keeps the permanent/default settings for each cache engine.
- * These settings are used to reset the engines after temporary modification.
- *
- * @var array
- */
-    protected static $_config = array();
+    /**
+     * Cache configuration stack
+     * Keeps the permanent/default settings for each cache engine.
+     * These settings are used to reset the engines after temporary modification.
+     *
+     * @var array
+     */
+    protected static $_config = [];
 
     /**
      * Group to Config mapping
      *
      * @var array
      */
-    protected static $_groups = array();
+    protected static $_groups = [];
 
     /**
      * Whether to reset the settings with the next call to Cache::set();
@@ -70,7 +69,7 @@ class Cache
      *
      * @var array
      */
-    protected static $_engines = array();
+    protected static $_engines = [];
 
     /**
      * Set the cache configuration to use. config() can
@@ -119,13 +118,13 @@ class Cache
      * @throws CacheException
      * @see app/Config/core.php for configuration settings
      */
-    public static function config($name = null, $settings = array())
+    public static function config($name = null, $settings = [])
     {
         if (is_array($name)) {
             $settings = $name;
         }
 
-        $current = array();
+        $current = [];
         if (isset(static::$_config[$name])) {
             $current = static::$_config[$name];
         }
@@ -154,6 +153,7 @@ class Cache
         } elseif ($settings = static::set(static::$_config[$name], null, $name)) {
             static::$_config[$name] = $settings;
         }
+
         return compact('engine', 'settings');
     }
 
@@ -185,11 +185,13 @@ class Cache
                 'Cache engine "%s" is not properly configured. Ensure required extensions are installed, and credentials/permissions are correct',
                 $name
             );
+
             throw new CacheException($msg);
         }
         if (static::$_engines[$name]->settings['probability'] && time() % static::$_engines[$name]->settings['probability'] === 0) {
             static::$_engines[$name]->gc();
         }
+
         return true;
     }
 
@@ -217,6 +219,7 @@ class Cache
             return false;
         }
         unset(static::$_config[$name], static::$_engines[$name]);
+
         return true;
     }
 
@@ -243,7 +246,7 @@ class Cache
      * @param string $config The configuration name you are changing. Defaults to 'default'
      * @return array Array of settings.
      */
-    public static function set($settings = array(), $value = null, $config = 'default')
+    public static function set($settings = [], $value = null, $config = 'default')
     {
         if (is_array($settings) && $value !== null) {
             $config = $value;
@@ -261,7 +264,7 @@ class Cache
                 $settings = static::$_config[$config];
             } else {
                 if (is_string($settings) && $value !== null) {
-                    $settings = array($settings => $value);
+                    $settings = [$settings => $value];
                 }
                 $settings += static::$_config[$config];
                 if (isset($settings['duration']) && !is_numeric($settings['duration'])) {
@@ -270,6 +273,7 @@ class Cache
             }
             static::$_engines[$config]->settings = $settings;
         }
+
         return static::settings($config);
     }
 
@@ -335,6 +339,7 @@ class Cache
                 E_USER_WARNING
             );
         }
+
         return $success;
     }
 
@@ -369,6 +374,7 @@ class Cache
         if (!$key) {
             return false;
         }
+
         return static::$_engines[$config]->read($settings['prefix'] . $key);
     }
 
@@ -398,6 +404,7 @@ class Cache
         }
         $success = static::$_engines[$config]->increment($settings['prefix'] . $key, $offset);
         static::set(null, $config);
+
         return $success;
     }
 
@@ -427,6 +434,7 @@ class Cache
         }
         $success = static::$_engines[$config]->decrement($settings['prefix'] . $key, $offset);
         static::set(null, $config);
+
         return $success;
     }
 
@@ -464,6 +472,7 @@ class Cache
 
         $success = static::$_engines[$config]->delete($settings['prefix'] . $key);
         static::set(null, $config);
+
         return $success;
     }
 
@@ -481,6 +490,7 @@ class Cache
         }
         $success = static::$_engines[$config]->clear($check);
         static::set(null, $config);
+
         return $success;
     }
 
@@ -498,6 +508,7 @@ class Cache
         }
         $success = static::$_engines[$config]->clearGroup($group);
         static::set(null, $config);
+
         return $success;
     }
 
@@ -512,6 +523,7 @@ class Cache
         if (Configure::read('Cache.disable')) {
             return false;
         }
+
         return isset(static::$_engines[$config]);
     }
 
@@ -527,7 +539,8 @@ class Cache
         if (!empty(static::$_engines[$name])) {
             return static::$_engines[$name]->settings();
         }
-        return array();
+
+        return [];
     }
 
     /**
@@ -555,8 +568,9 @@ class Cache
             return static::$_groups;
         }
         if (isset(static::$_groups[$group])) {
-            return array($group => static::$_groups[$group]);
+            return [$group => static::$_groups[$group]];
         }
+
         throw new CacheException(__d('cake_dev', 'Invalid cache group %s', $group));
     }
 
@@ -593,6 +607,7 @@ class Cache
         }
         $results = call_user_func($callable);
         static::write($key, $results, $config);
+
         return $results;
     }
 
@@ -633,6 +648,7 @@ class Cache
 
         $success = self::$_engines[$config]->add($settings['prefix'] . $key, $value, $settings['duration']);
         self::set(null, $config);
+
         return $success;
     }
 

@@ -23,19 +23,19 @@
  */
 class Multibyte
 {
-/**
- *  Holds the case folding values
- *
- * @var array
- */
-    protected static $_caseFold = array();
+    /**
+     *  Holds the case folding values
+     *
+     * @var array
+     */
+    protected static $_caseFold = [];
 
     /**
      * Holds an array of Unicode code point ranges
      *
      * @var array
      */
-    protected static $_codeRange = array();
+    protected static $_codeRange = [];
 
     /**
      * Holds the current code point range
@@ -53,9 +53,9 @@ class Multibyte
      */
     public static function utf8($string)
     {
-        $map = array();
+        $map = [];
 
-        $values = array();
+        $values = [];
         $find = 1;
         $length = strlen($string);
 
@@ -76,11 +76,12 @@ class Multibyte
                     } else {
                         $map[] = (($values[0] % 32) * 64) + ($values[1] % 64);
                     }
-                    $values = array();
+                    $values = [];
                     $find = 1;
                 }
             }
         }
+
         return $map;
     }
 
@@ -107,6 +108,7 @@ class Multibyte
                 $ascii .= chr(128 + ($utf8 % 64));
             }
         }
+
         return $ascii;
     }
 
@@ -124,8 +126,10 @@ class Multibyte
         if (Multibyte::checkMultibyte($haystack)) {
             $haystack = Multibyte::strtoupper($haystack);
             $needle = Multibyte::strtoupper($needle);
+
             return Multibyte::strpos($haystack, $needle, $offset);
         }
+
         return stripos($haystack, $needle, $offset);
     }
 
@@ -156,7 +160,7 @@ class Multibyte
             $needle = Multibyte::utf8($needle);
             $needleCount = count($needle);
 
-            $parts = array();
+            $parts = [];
             $position = 0;
 
             while (($found === false) && ($position < $haystackCount)) {
@@ -182,12 +186,14 @@ class Multibyte
             } elseif ($found && !empty($haystack)) {
                 return Multibyte::ascii($haystack);
             }
+
             return false;
         }
 
         if (!$php) {
             return stristr($haystack, $needle, $part);
         }
+
         return stristr($haystack, $needle);
     }
 
@@ -201,8 +207,10 @@ class Multibyte
     {
         if (Multibyte::checkMultibyte($string)) {
             $string = Multibyte::utf8($string);
+
             return count($string);
         }
+
         return strlen($string);
     }
 
@@ -245,8 +253,10 @@ class Multibyte
             if ($found) {
                 return $position;
             }
+
             return false;
         }
+
         return strpos($haystack, $needle, $offset);
     }
 
@@ -274,7 +284,7 @@ class Multibyte
         $needle = Multibyte::utf8($needle);
         $needleCount = count($needle);
 
-        $parts = array();
+        $parts = [];
         $position = 0;
 
         while (($found === false) && ($position < $haystackCount)) {
@@ -285,7 +295,8 @@ class Multibyte
                             $found = true;
                         }
                         unset($parts[$position - 1]);
-                        $haystack = array_merge(array($haystack[$position]), $haystack);
+                        $haystack = array_merge([$haystack[$position]], $haystack);
+
                         break;
                     }
                 }
@@ -308,6 +319,7 @@ class Multibyte
         } elseif ($found && !empty($haystack)) {
             return Multibyte::ascii($haystack);
         }
+
         return false;
     }
 
@@ -337,7 +349,7 @@ class Multibyte
         $needle = Multibyte::utf8($needle);
         $needleCount = count($needle);
 
-        $parts = array();
+        $parts = [];
         $position = 0;
 
         while (($found === false) && ($position < $haystackCount)) {
@@ -348,7 +360,8 @@ class Multibyte
                             $found = true;
                         }
                         unset($parts[$position - 1]);
-                        $haystack = array_merge(array($haystack[$position]), $haystack);
+                        $haystack = array_merge([$haystack[$position]], $haystack);
+
                         break;
                     }
                 }
@@ -371,6 +384,7 @@ class Multibyte
         } elseif ($found && !empty($haystack)) {
             return Multibyte::ascii($haystack);
         }
+
         return false;
     }
 
@@ -406,6 +420,7 @@ class Multibyte
                             if ($needle[$i] === $haystack[($position + $i) - 1]) {
                                 $position--;
                                 $found = true;
+
                                 continue;
                             }
                         }
@@ -420,8 +435,10 @@ class Multibyte
                 }
                 $position++;
             }
+
             return ($found) ? $position : false;
         }
+
         return strripos($haystack, $needle, $offset);
     }
 
@@ -457,6 +474,7 @@ class Multibyte
                             if ($needle[$i] === $haystack[($position + $i) - 1]) {
                                 $position--;
                                 $found = true;
+
                                 continue;
                             }
                         }
@@ -471,8 +489,10 @@ class Multibyte
                 }
                 $position++;
             }
+
             return ($found) ? $position : false;
         }
+
         return strrpos($haystack, $needle, $offset);
     }
 
@@ -501,7 +521,7 @@ class Multibyte
             $needle = Multibyte::utf8($needle);
             $needleCount = count($needle);
 
-            $parts = array();
+            $parts = [];
             $position = 0;
 
             while (($found === false) && ($position < $haystackCount)) {
@@ -527,12 +547,14 @@ class Multibyte
             } elseif ($found && !empty($haystack)) {
                 return Multibyte::ascii($haystack);
             }
+
             return false;
         }
 
         if (!$php) {
             return strstr($haystack, $needle, $part);
         }
+
         return strstr($haystack, $needle);
     }
 
@@ -547,7 +569,7 @@ class Multibyte
         $utf8Map = Multibyte::utf8($string);
 
         $length = count($utf8Map);
-        $lowerCase = array();
+        $lowerCase = [];
 
         for ($i = 0; $i < $length; $i++) {
             $char = $utf8Map[$i];
@@ -569,7 +591,8 @@ class Multibyte
                         if ($keys[$key]['upper'] == $char && count($keys[$key]['lower']) > 0) {
                             $lowerCase[] = $keys[$key]['lower'][0];
                             $matched = true;
-                            break 1;
+
+                            break ;
                         }
                     }
                 }
@@ -578,6 +601,7 @@ class Multibyte
                 $lowerCase[] = $char;
             }
         }
+
         return Multibyte::ascii($lowerCase);
     }
 
@@ -592,8 +616,8 @@ class Multibyte
         $utf8Map = Multibyte::utf8($string);
 
         $length = count($utf8Map);
-        $replaced = array();
-        $upperCase = array();
+        $replaced = [];
+        $upperCase = [];
 
         for ($i = 0; $i < $length; $i++) {
             $char = $utf8Map[$i];
@@ -629,7 +653,8 @@ class Multibyte
                                 $upperCase[] = $keys[$key]['upper'];
                                 $replaced = array_merge($replaced, array_values($keys[$key]['lower']));
                                 $matched = true;
-                                break 1;
+
+                                break ;
                             }
                         } elseif ($length > 1 && $keyCount > 1) {
                             $j = 0;
@@ -648,6 +673,7 @@ class Multibyte
                                         $upperCase[] = $keys[$ii]['upper'];
                                         $replaced = array_merge($replaced, array_values($keys[$ii]['lower']));
                                         $matched = true;
+
                                         break 2;
                                     }
                                 }
@@ -656,7 +682,8 @@ class Multibyte
                         if ($keys[$key]['lower'][0] == $char) {
                             $upperCase[] = $keys[$key]['upper'];
                             $matched = true;
-                            break 1;
+
+                            break ;
                         }
                     }
                 }
@@ -665,6 +692,7 @@ class Multibyte
                 $upperCase[] = $char;
             }
         }
+
         return Multibyte::ascii($upperCase);
     }
 
@@ -701,6 +729,7 @@ class Multibyte
                 }
             }
         }
+
         return $count;
     }
 
@@ -729,10 +758,11 @@ class Multibyte
         }
         $string = array_values($string);
 
-        $value = array();
+        $value = [];
         for ($i = 0; $i < $length; $i++) {
             $value[] = $string[$i];
         }
+
         return Multibyte::ascii($value);
     }
 
@@ -762,7 +792,7 @@ class Multibyte
         $length = 75 - strlen($start) - strlen($end);
         $length = $length - ($length % 4);
         if ($charset === 'UTF-8') {
-            $parts = array();
+            $parts = [];
             $maxchars = floor(($length * 3) / 4);
             $stringLength = strlen($string);
             while ($stringLength > $maxchars) {
@@ -782,6 +812,7 @@ class Multibyte
             $string = chunk_split(base64_encode($string), $length, $spacer);
             $string = preg_replace('/' . preg_quote($spacer) . '$/', '', $string);
         }
+
         return $start . $string . $end;
     }
 
@@ -831,6 +862,7 @@ class Multibyte
             $return = false;
         }
         static::$_codeRange[$decimal] = $return;
+
         return $return;
     }
 
@@ -843,11 +875,11 @@ class Multibyte
      */
     protected static function _find($char, $type = 'lower')
     {
-        $found = array();
+        $found = [];
         if (!isset(static::$_codeRange[$char])) {
             $range = static::_codepoint($char);
             if ($range === false) {
-                return array();
+                return [];
             }
             if (!Configure::configured('_cake_core_')) {
                 App::uses('PhpReader', 'Configure');
@@ -859,7 +891,7 @@ class Multibyte
         }
 
         if (!static::$_codeRange[$char]) {
-            return array();
+            return [];
         }
         static::$_table = static::$_codeRange[$char];
         $count = count(static::$_caseFold[static::$_table]);
@@ -871,6 +903,7 @@ class Multibyte
                 $found[] = static::$_caseFold[static::$_table][$i];
             }
         }
+
         return $found;
     }
 
@@ -890,6 +923,7 @@ class Multibyte
                 return true;
             }
         }
+
         return false;
     }
 }

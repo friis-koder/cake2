@@ -12,7 +12,6 @@
  * @since         CakePHP(tm) v 1.3
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('CakeRoute', 'Routing/Route');
 
 /**
@@ -23,13 +22,13 @@ App::uses('CakeRoute', 'Routing/Route');
  */
 class PluginShortRoute extends CakeRoute
 {
-/**
- * Parses a string URL into an array. If a plugin key is found, it will be copied to the
- * controller parameter
- *
- * @param string $url The URL to parse
- * @return mixed false on failure, or an array of request parameters
- */
+    /**
+     * Parses a string URL into an array. If a plugin key is found, it will be copied to the
+     * controller parameter
+     *
+     * @param string $url The URL to parse
+     * @return mixed false on failure, or an array of request parameters
+     */
     public function parse($url)
     {
         $params = parent::parse($url);
@@ -37,6 +36,7 @@ class PluginShortRoute extends CakeRoute
             return false;
         }
         $params['controller'] = $params['plugin'];
+
         return $params;
     }
 
@@ -55,6 +55,7 @@ class PluginShortRoute extends CakeRoute
         $this->defaults['controller'] = $url['controller'];
         $result = parent::match($url);
         unset($this->defaults['controller']);
+
         return $result;
     }
 }

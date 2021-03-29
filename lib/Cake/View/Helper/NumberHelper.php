@@ -17,7 +17,6 @@
  * @since         CakePHP(tm) v 0.10.0.1076
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('CakeNumber', 'Utility');
 App::uses('AppHelper', 'View/Helper');
 App::uses('Hash', 'Utility');
@@ -33,11 +32,11 @@ App::uses('Hash', 'Utility');
  */
 class NumberHelper extends AppHelper
 {
-/**
- * CakeNumber instance
- *
- * @var CakeNumber
- */
+    /**
+     * CakeNumber instance
+     *
+     * @var CakeNumber
+     */
     protected $_engine = null;
 
     /**
@@ -52,9 +51,9 @@ class NumberHelper extends AppHelper
      * @param array $settings Configuration settings for the helper
      * @throws CakeException When the engine class could not be found.
      */
-    public function __construct(View $View, $settings = array())
+    public function __construct(View $View, $settings = [])
     {
-        $settings = Hash::merge(array('engine' => 'CakeNumber'), $settings);
+        $settings = Hash::merge(['engine' => 'CakeNumber'], $settings);
         parent::__construct($View, $settings);
         list($plugin, $engineClass) = pluginSplit($settings['engine'], true);
         App::uses($engineClass, $plugin . 'Utility');
@@ -74,7 +73,7 @@ class NumberHelper extends AppHelper
      */
     public function __call($method, $params)
     {
-        return call_user_func_array(array($this->_engine, $method), $params);
+        return call_user_func_array([$this->_engine, $method], $params);
     }
 
     /**
@@ -118,7 +117,7 @@ class NumberHelper extends AppHelper
      * @see CakeNumber::toPercentage()
      * @link https://book.cakephp.org/2.0/en/core-libraries/helpers/number.html#NumberHelper::toPercentage
      */
-    public function toPercentage($number, $precision = 2, $options = array())
+    public function toPercentage($number, $precision = 2, $options = [])
     {
         return $this->_engine->toPercentage($number, $precision, $options);
     }
@@ -150,7 +149,7 @@ class NumberHelper extends AppHelper
      * @see CakeNumber::currency()
      * @link https://book.cakephp.org/2.0/en/core-libraries/helpers/number.html#NumberHelper::currency
      */
-    public function currency($number, $currency = null, $options = array())
+    public function currency($number, $currency = null, $options = [])
     {
         return $this->_engine->currency($number, $currency, $options);
     }

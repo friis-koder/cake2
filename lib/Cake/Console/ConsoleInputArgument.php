@@ -24,11 +24,11 @@
  */
 class ConsoleInputArgument
 {
-/**
- * Name of the argument.
- *
- * @var string
- */
+    /**
+     * Name of the argument.
+     *
+     * @var string
+     */
     protected $_name;
 
     /**
@@ -60,7 +60,7 @@ class ConsoleInputArgument
      * @param bool $required Whether this argument is required. Missing required args will trigger exceptions
      * @param array $choices Valid choices for this option.
      */
-    public function __construct($name, $help = '', $required = false, $choices = array())
+    public function __construct($name, $help = '', $required = false, $choices = [])
     {
         if (is_array($name) && isset($name['name'])) {
             foreach ($name as $key => $value) {
@@ -103,6 +103,7 @@ class ConsoleInputArgument
         if (!empty($this->_choices)) {
             $optional .= __d('cake_console', ' <comment>(choices: %s)</comment>', implode('|', $this->_choices));
         }
+
         return sprintf('%s%s%s', $name, $this->_help, $optional);
     }
 
@@ -121,6 +122,7 @@ class ConsoleInputArgument
         if (!$this->isRequired()) {
             $name = '[' . $name . ']';
         }
+
         return $name;
     }
 
@@ -157,6 +159,7 @@ class ConsoleInputArgument
                 )
             );
         }
+
         return true;
     }
 
@@ -176,6 +179,7 @@ class ConsoleInputArgument
         foreach ($this->_choices as $valid) {
             $choices->addChild('choice', $valid);
         }
+
         return $parent;
     }
 }

@@ -15,7 +15,6 @@
  * @since         CakePHP(tm) v 1.2.0.5432
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('ErrorHandler', 'Error');
 App::uses('Controller', 'Controller');
 App::uses('Router', 'Routing');
@@ -26,12 +25,12 @@ App::uses('Debugger', 'Utility');
  */
 class FaultyExceptionRenderer extends ExceptionRenderer
 {
-/**
- * Dummy rendering implementation.
- *
- * @return void
- * @throws Exception
- */
+    /**
+     * Dummy rendering implementation.
+     *
+     * @return void
+     * @throws Exception
+     */
     public function render()
     {
         throw new Exception('Error from renderer.');
@@ -55,11 +54,11 @@ class ErrorHandlerTest extends CakeTestCase
     public function setUp()
     {
         parent::setUp();
-        App::build(array(
-            'View' => array(
+        App::build([
+            'View' => [
                 CAKE . 'Test' . DS . 'test_app' . DS . 'View' . DS
-            )
-        ), App::RESET);
+            ]
+        ], App::RESET);
         Router::reload();
 
         $request = new CakeRequest(null, false);
@@ -114,10 +113,10 @@ class ErrorHandlerTest extends CakeTestCase
      */
     public static function errorProvider()
     {
-        return array(
-            array(E_USER_NOTICE, 'Notice'),
-            array(E_USER_WARNING, 'Warning'),
-        );
+        return [
+            [E_USER_NOTICE, 'Notice'],
+            [E_USER_WARNING, 'Warning'],
+        ];
     }
 
     /**
@@ -265,7 +264,7 @@ class ErrorHandlerTest extends CakeTestCase
             unlink(LOGS . 'error.log');
         }
         Configure::write('Exception.log', true);
-        Configure::write('Exception.skipLog', array('NotFoundException'));
+        Configure::write('Exception.skipLog', ['NotFoundException']);
         $notFound = new NotFoundException('Kaboom!');
         $forbidden = new ForbiddenException('Fooled you!');
 
@@ -291,11 +290,11 @@ class ErrorHandlerTest extends CakeTestCase
      */
     public function testLoadPluginHandler()
     {
-        App::build(array(
-            'Plugin' => array(
+        App::build([
+            'Plugin' => [
                 CAKE . 'Test' . DS . 'test_app' . DS . 'Plugin' . DS
-            )
-        ), App::RESET);
+            ]
+        ], App::RESET);
         CakePlugin::load('TestPlugin');
         Configure::write('Exception.renderer', 'TestPlugin.TestPluginExceptionRenderer');
         $error = new NotFoundException('Kaboom!');
@@ -367,6 +366,7 @@ class ErrorHandlerTest extends CakeTestCase
         Configure::write('Exception.renderer', 'FaultyExceptionRenderer');
 
         $result = false;
+
         try {
             ob_start();
             ob_start();
@@ -390,6 +390,7 @@ class ErrorHandlerTest extends CakeTestCase
         Configure::write('Exception.renderer', 'FaultyExceptionRenderer');
 
         $result = false;
+
         try {
             ob_start();
             ob_start();

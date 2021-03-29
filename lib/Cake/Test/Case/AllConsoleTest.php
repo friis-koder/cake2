@@ -25,11 +25,11 @@
  */
 class AllConsoleTest extends PHPUnit_Framework_TestSuite
 {
-/**
- * suite method, defines tests for this suite.
- *
- * @return void
- */
+    /**
+     * suite method, defines tests for this suite.
+     *
+     * @return void
+     */
     public static function suite()
     {
         $suite = new CakeTestSuite('All console classes');
@@ -39,6 +39,7 @@ class AllConsoleTest extends PHPUnit_Framework_TestSuite
         $suite->addTestFile($path . 'AllConsoleLibsTest.php');
         $suite->addTestFile($path . 'AllTasksTest.php');
         $suite->addTestFile($path . 'AllShellsTest.php');
+
         return $suite;
     }
 }

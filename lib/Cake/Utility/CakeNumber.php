@@ -28,55 +28,55 @@
  */
 class CakeNumber
 {
-/**
- * Currencies supported by the helper. You can add additional currency formats
- * with CakeNumber::addFormat
- *
- * @var array
- */
-    protected static $_currencies = array(
-        'AUD' => array(
-            'wholeSymbol' => '$', 'wholePosition' => 'before', 'fractionSymbol' => 'c', 'fractionPosition' => 'after',
-            'zero' => 0, 'places' => 2, 'thousands' => ',', 'decimals' => '.', 'negative' => '()', 'escape' => true,
+    /**
+     * Currencies supported by the helper. You can add additional currency formats
+     * with CakeNumber::addFormat
+     *
+     * @var array
+     */
+    protected static $_currencies = [
+        'AUD' => [
+            'wholeSymbol'      => '$', 'wholePosition' => 'before', 'fractionSymbol' => 'c', 'fractionPosition' => 'after',
+            'zero'             => 0, 'places' => 2, 'thousands' => ',', 'decimals' => '.', 'negative' => '()', 'escape' => true,
             'fractionExponent' => 2
-        ),
-        'CAD' => array(
-            'wholeSymbol' => '$', 'wholePosition' => 'before', 'fractionSymbol' => 'c', 'fractionPosition' => 'after',
-            'zero' => 0, 'places' => 2, 'thousands' => ',', 'decimals' => '.', 'negative' => '()', 'escape' => true,
+        ],
+        'CAD' => [
+            'wholeSymbol'      => '$', 'wholePosition' => 'before', 'fractionSymbol' => 'c', 'fractionPosition' => 'after',
+            'zero'             => 0, 'places' => 2, 'thousands' => ',', 'decimals' => '.', 'negative' => '()', 'escape' => true,
             'fractionExponent' => 2
-        ),
-        'USD' => array(
-            'wholeSymbol' => '$', 'wholePosition' => 'before', 'fractionSymbol' => 'c', 'fractionPosition' => 'after',
-            'zero' => 0, 'places' => 2, 'thousands' => ',', 'decimals' => '.', 'negative' => '()', 'escape' => true,
+        ],
+        'USD' => [
+            'wholeSymbol'      => '$', 'wholePosition' => 'before', 'fractionSymbol' => 'c', 'fractionPosition' => 'after',
+            'zero'             => 0, 'places' => 2, 'thousands' => ',', 'decimals' => '.', 'negative' => '()', 'escape' => true,
             'fractionExponent' => 2
-        ),
-        'EUR' => array(
-            'wholeSymbol' => '€', 'wholePosition' => 'before', 'fractionSymbol' => false, 'fractionPosition' => 'after',
-            'zero' => 0, 'places' => 2, 'thousands' => '.', 'decimals' => ',', 'negative' => '()', 'escape' => true,
+        ],
+        'EUR' => [
+            'wholeSymbol'      => '€', 'wholePosition' => 'before', 'fractionSymbol' => false, 'fractionPosition' => 'after',
+            'zero'             => 0, 'places' => 2, 'thousands' => '.', 'decimals' => ',', 'negative' => '()', 'escape' => true,
             'fractionExponent' => 0
-        ),
-        'GBP' => array(
-            'wholeSymbol' => '£', 'wholePosition' => 'before', 'fractionSymbol' => 'p', 'fractionPosition' => 'after',
-            'zero' => 0, 'places' => 2, 'thousands' => ',', 'decimals' => '.', 'negative' => '()', 'escape' => true,
+        ],
+        'GBP' => [
+            'wholeSymbol'      => '£', 'wholePosition' => 'before', 'fractionSymbol' => 'p', 'fractionPosition' => 'after',
+            'zero'             => 0, 'places' => 2, 'thousands' => ',', 'decimals' => '.', 'negative' => '()', 'escape' => true,
             'fractionExponent' => 2
-        ),
-        'JPY' => array(
-            'wholeSymbol' => '¥', 'wholePosition' => 'before', 'fractionSymbol' => false, 'fractionPosition' => 'after',
-            'zero' => 0, 'places' => 2, 'thousands' => ',', 'decimals' => '.', 'negative' => '()', 'escape' => true,
+        ],
+        'JPY' => [
+            'wholeSymbol'      => '¥', 'wholePosition' => 'before', 'fractionSymbol' => false, 'fractionPosition' => 'after',
+            'zero'             => 0, 'places' => 2, 'thousands' => ',', 'decimals' => '.', 'negative' => '()', 'escape' => true,
             'fractionExponent' => 0
-        ),
-    );
+        ],
+    ];
 
     /**
      * Default options for currency formats
      *
      * @var array
      */
-    protected static $_currencyDefaults = array(
-        'wholeSymbol' => '', 'wholePosition' => 'before', 'fractionSymbol' => false, 'fractionPosition' => 'after',
-        'zero' => '0', 'places' => 2, 'thousands' => ',', 'decimals' => '.', 'negative' => '()', 'escape' => true,
+    protected static $_currencyDefaults = [
+        'wholeSymbol'      => '', 'wholePosition' => 'before', 'fractionSymbol' => false, 'fractionPosition' => 'after',
+        'zero'             => '0', 'places' => 2, 'thousands' => ',', 'decimals' => '.', 'negative' => '()', 'escape' => true,
         'fractionExponent' => 2
-    );
+    ];
 
     /**
      * Default currency used by CakeNumber::currency()
@@ -145,24 +145,27 @@ class CakeNumber
         $size = strtoupper($size);
 
         $l = -2;
-        $i = array_search(substr($size, -2), array('KB', 'MB', 'GB', 'TB', 'PB'));
+        $i = array_search(substr($size, -2), ['KB', 'MB', 'GB', 'TB', 'PB']);
         if ($i === false) {
             $l = -1;
-            $i = array_search(substr($size, -1), array('K', 'M', 'G', 'T', 'P'));
+            $i = array_search(substr($size, -1), ['K', 'M', 'G', 'T', 'P']);
         }
         if ($i !== false) {
             $size = substr($size, 0, $l);
+
             return $size * pow(1024, $i + 1);
         }
 
         if (substr($size, -1) === 'B' && ctype_digit(substr($size, 0, -1))) {
             $size = substr($size, 0, -1);
+
             return (int)$size;
         }
 
         if ($default !== false) {
             return $default;
         }
+
         throw new CakeException(__d('cake_dev', 'No unit type.'));
     }
 
@@ -179,12 +182,13 @@ class CakeNumber
      * @return string Percentage string
      * @link https://book.cakephp.org/2.0/en/core-libraries/helpers/number.html#NumberHelper::toPercentage
      */
-    public static function toPercentage($value, $precision = 2, $options = array())
+    public static function toPercentage($value, $precision = 2, $options = [])
     {
-        $options += array('multiply' => false);
+        $options += ['multiply' => false];
         if ($options['multiply']) {
             $value *= 100;
         }
+
         return static::precision($value, $precision) . '%';
     }
 
@@ -204,7 +208,7 @@ class CakeNumber
             $places = $options;
         }
 
-        $separators = array(',', '.', '-', ':');
+        $separators = [',', '.', '-', ':'];
 
         $before = $after = null;
         if (is_string($options) && !in_array($options, $separators)) {
@@ -221,7 +225,7 @@ class CakeNumber
 
         $escape = true;
         if (is_array($options)) {
-            $defaults = array('before' => '$', 'places' => 2, 'thousands' => ',', 'decimals' => '.');
+            $defaults = ['before' => '$', 'places' => 2, 'thousands' => ',', 'decimals' => '.'];
             $options += $defaults;
             extract($options);
         }
@@ -232,6 +236,7 @@ class CakeNumber
         if ($escape) {
             return h($out);
         }
+
         return $out;
     }
 
@@ -252,12 +257,13 @@ class CakeNumber
      * @return string formatted delta
      * @link https://book.cakephp.org/2.0/en/core-libraries/helpers/number.html#NumberHelper::formatDelta
      */
-    public static function formatDelta($value, $options = array())
+    public static function formatDelta($value, $options = [])
     {
         $places = isset($options['places']) ? $options['places'] : 0;
         $value = static::_numberFormat($value, $places, '.', '');
         $sign = $value > 0 ? '+' : '';
         $options['before'] = isset($options['before']) ? $options['before'] . $sign : $sign;
+
         return static::format($value, $options);
     }
 
@@ -289,7 +295,8 @@ class CakeNumber
             $value = $foundThousand;
         }
         $value .= $after;
-        return strtr($value, array(' ' => $thousands, '.' => $decimals));
+
+        return strtr($value, [' ' => $thousands, '.' => $decimals]);
     }
 
     /**
@@ -329,7 +336,7 @@ class CakeNumber
      * @return string Number formatted as a currency.
      * @link https://book.cakephp.org/2.0/en/core-libraries/helpers/number.html#NumberHelper::currency
      */
-    public static function currency($value, $currency = null, $options = array())
+    public static function currency($value, $currency = null, $options = [])
     {
         $defaults = static::$_currencyDefaults;
         if ($currency === null) {
@@ -381,6 +388,7 @@ class CakeNumber
                 $result = $options['negative'] . $result;
             }
         }
+
         return $result;
     }
 
@@ -420,6 +428,7 @@ class CakeNumber
         if ($currency) {
             static::$_defaultCurrency = $currency;
         }
+
         return static::$_defaultCurrency;
     }
 }

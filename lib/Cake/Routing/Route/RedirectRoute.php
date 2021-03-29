@@ -13,7 +13,6 @@
  * @since         CakePHP(tm) v 2.0
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('CakeResponse', 'Network');
 App::uses('CakeRoute', 'Routing/Route');
 
@@ -26,11 +25,11 @@ App::uses('CakeRoute', 'Routing/Route');
  */
 class RedirectRoute extends CakeRoute
 {
-/**
- * A CakeResponse object
- *
- * @var CakeResponse
- */
+    /**
+     * A CakeResponse object
+     *
+     * @var CakeResponse
+     */
     public $response = null;
 
     /**
@@ -54,7 +53,7 @@ class RedirectRoute extends CakeRoute
      * @param array $defaults Array of defaults for the route.
      * @param array $options Array of additional options for the Route
      */
-    public function __construct($template, $defaults = array(), $options = array())
+    public function __construct($template, $defaults = [], $options = [])
     {
         parent::__construct($template, $defaults, $options);
         $this->redirect = (array)$defaults;
@@ -81,7 +80,7 @@ class RedirectRoute extends CakeRoute
             $redirect = $this->redirect[0];
         }
         if (isset($this->options['persist']) && is_array($redirect)) {
-            $redirect += array('named' => $params['named'], 'pass' => $params['pass'], 'url' => array());
+            $redirect += ['named' => $params['named'], 'pass' => $params['pass'], 'url' => []];
             if (is_array($this->options['persist'])) {
                 foreach ($this->options['persist'] as $elem) {
                     if (isset($params[$elem])) {
@@ -95,7 +94,7 @@ class RedirectRoute extends CakeRoute
         if (isset($this->options['status']) && ($this->options['status'] >= 300 && $this->options['status'] < 400)) {
             $status = $this->options['status'];
         }
-        $this->response->header(array('Location' => Router::url($redirect, true)));
+        $this->response->header(['Location' => Router::url($redirect, true)]);
         $this->response->statusCode($status);
         $this->response->send();
         $this->_stop();

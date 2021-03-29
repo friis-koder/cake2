@@ -19,11 +19,11 @@ App::uses("BaseShellHelper", "Console/Helper");
  */
 class ProgressShellHelper extends BaseShellHelper
 {
-/**
- * The current progress.
- *
- * @var int
- */
+    /**
+     * The current progress.
+     *
+     * @var int
+     */
     protected $_progress = 0;
 
     /**
@@ -56,7 +56,7 @@ class ProgressShellHelper extends BaseShellHelper
      */
     public function output($args)
     {
-        $args += array('callback' => null);
+        $args += ['callback' => null];
         if (isset($args[0])) {
             $args['callback'] = $args[0];
         }
@@ -82,9 +82,9 @@ class ProgressShellHelper extends BaseShellHelper
      * @param array $args The initialization data.
      * @return void
      */
-    public function init(array $args = array())
+    public function init(array $args = [])
     {
-        $args += array('total' => 100, 'width' => 80);
+        $args += ['total' => 100, 'width' => 80];
         $this->_progress = 0;
         $this->_width = $args['width'];
         $this->_total = $args['total'];

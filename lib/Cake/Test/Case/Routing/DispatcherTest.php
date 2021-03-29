@@ -15,7 +15,6 @@
  * @since         CakePHP(tm) v 1.2.0.4206
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('Dispatcher', 'Routing');
 App::uses('DispatcherFilter', 'Routing');
 
@@ -45,11 +44,11 @@ class DispatcherMockCakeResponse extends CakeResponse
  */
 class TestDispatcher extends Dispatcher
 {
-/**
- * Controller instance, made publicly available for testing
- *
- * @var Controller
- */
+    /**
+     * Controller instance, made publicly available for testing
+     *
+     * @var Controller
+     */
     public $controller;
 
     /**
@@ -62,6 +61,7 @@ class TestDispatcher extends Dispatcher
     protected function _invoke(Controller $controller, CakeRequest $request)
     {
         $this->controller = $controller;
+
         return parent::_invoke($controller, $request);
     }
 
@@ -85,6 +85,7 @@ class TestDispatcher extends Dispatcher
     public function filterTest2($event)
     {
         $event->stopPropagation();
+
         return $event->data['response'];
     }
 }
@@ -121,12 +122,12 @@ interface DispatcherTestInterfaceController
  */
 class MyPluginController extends MyPluginAppController
 {
-/**
- * uses property
- *
- * @var array
- */
-    public $uses = array();
+    /**
+     * uses property
+     *
+     * @var array
+     */
+    public $uses = [];
 
     /**
      * index method
@@ -167,12 +168,12 @@ class MyPluginController extends MyPluginAppController
  */
 class SomePagesController extends AppController
 {
-/**
- * uses property
- *
- * @var array
- */
-    public $uses = array();
+    /**
+     * uses property
+     *
+     * @var array
+     */
+    public $uses = [];
 
     /**
      * display method
@@ -202,7 +203,7 @@ class SomePagesController extends AppController
      */
     public function responseGenerator()
     {
-        return new CakeResponse(array('body' => 'new response'));
+        return new CakeResponse(['body' => 'new response']);
     }
 
     /**
@@ -213,6 +214,7 @@ class SomePagesController extends AppController
     public function sendfile()
     {
         $this->response->file(CAKE . 'Test' . DS . 'test_app' . DS . 'Vendor' . DS . 'css' . DS . 'test_asset.css');
+
         return $this->response;
     }
 }
@@ -224,12 +226,12 @@ class SomePagesController extends AppController
  */
 class OtherPagesController extends MyPluginAppController
 {
-/**
- * uses property
- *
- * @var array
- */
-    public $uses = array();
+    /**
+     * uses property
+     *
+     * @var array
+     */
+    public $uses = [];
 
     /**
      * display method
@@ -260,12 +262,12 @@ class OtherPagesController extends MyPluginAppController
  */
 class TestDispatchPagesController extends AppController
 {
-/**
- * uses property
- *
- * @var array
- */
-    public $uses = array();
+    /**
+     * uses property
+     *
+     * @var array
+     */
+    public $uses = [];
 
     /**
      * admin_index method
@@ -304,12 +306,12 @@ class ArticlesTestAppController extends AppController
  */
 class ArticlesTestController extends ArticlesTestAppController
 {
-/**
- * uses property
- *
- * @var array
- */
-    public $uses = array();
+    /**
+     * uses property
+     *
+     * @var array
+     */
+    public $uses = [];
 
     /**
      * admin_index method
@@ -339,12 +341,12 @@ class ArticlesTestController extends ArticlesTestAppController
  */
 class SomePostsController extends AppController
 {
-/**
- * uses property
- *
- * @var array
- */
-    public $uses = array();
+    /**
+     * uses property
+     *
+     * @var array
+     */
+    public $uses = [];
 
     /**
      * autoRender property
@@ -365,7 +367,7 @@ class SomePostsController extends AppController
         } else {
             $this->params['action'] = 'change';
         }
-        $this->params['pass'] = array('changed');
+        $this->params['pass'] = ['changed'];
     }
 
     /**
@@ -396,30 +398,30 @@ class SomePostsController extends AppController
  */
 class TestCachedPagesController extends Controller
 {
-/**
- * uses property
- *
- * @var array
- */
-    public $uses = array();
+    /**
+     * uses property
+     *
+     * @var array
+     */
+    public $uses = [];
 
     /**
      * helpers property
      *
      * @var array
      */
-    public $helpers = array('Cache', 'Html');
+    public $helpers = ['Cache', 'Html'];
 
     /**
      * cacheAction property
      *
      * @var array
      */
-    public $cacheAction = array(
-        'index' => '+2 sec',
+    public $cacheAction = [
+        'index'             => '+2 sec',
         'test_nocache_tags' => '+2 sec',
-        'view' => '+2 sec'
-    );
+        'view'              => '+2 sec'
+    ];
 
     /**
      * Mock out the response object so it doesn't send headers.
@@ -496,12 +498,12 @@ class TestCachedPagesController extends Controller
  */
 class TimesheetsController extends Controller
 {
-/**
- * uses property
- *
- * @var array
- */
-    public $uses = array();
+    /**
+     * uses property
+     *
+     * @var array
+     */
+    public $uses = [];
 
     /**
      * index method
@@ -533,7 +535,8 @@ class TestFilterDispatcher extends DispatcherFilter
     {
         $event->stopPropagation();
         $response = $event->data['request'];
-        $response->addParams(array('settings' => $this->settings));
+        $response->addParams(['settings' => $this->settings]);
+
         return null;
     }
 
@@ -555,16 +558,16 @@ class TestFilterDispatcher extends DispatcherFilter
  */
 class DispatcherTest extends CakeTestCase
 {
-/**
- * setUp method
- *
- * @return void
- */
+    /**
+     * setUp method
+     *
+     * @return void
+     */
     public function setUp()
     {
         parent::setUp();
         $this->_get = $_GET;
-        $_GET = array();
+        $_GET = [];
         $this->_post = $_POST;
         $this->_files = $_FILES;
         $this->_server = $_SERVER;
@@ -601,7 +604,7 @@ class DispatcherTest extends CakeTestCase
         Configure::write('App', $this->_app);
         Configure::write('Cache', $this->_cache);
         Configure::write('debug', $this->_debug);
-        Configure::write('Dispatcher.filters', array());
+        Configure::write('Dispatcher.filters', []);
     }
 
     /**
@@ -614,7 +617,7 @@ class DispatcherTest extends CakeTestCase
     {
         $Dispatcher = new Dispatcher();
         $request = new CakeRequest("/testcontroller/testaction/params1/params2/params3");
-        $event = new CakeEvent('DispatcherTest', $Dispatcher, array('request' => $request));
+        $event = new CakeEvent('DispatcherTest', $Dispatcher, ['request' => $request]);
         $Dispatcher->parseParams($event);
         $this->assertSame($request['controller'], 'testcontroller');
         $this->assertSame($request['action'], 'testaction');
@@ -635,7 +638,7 @@ class DispatcherTest extends CakeTestCase
         $_POST['testdata'] = "My Posted Content";
         $Dispatcher = new Dispatcher();
         $request = new CakeRequest("/");
-        $event = new CakeEvent('DispatcherTest', $Dispatcher, array('request' => $request));
+        $event = new CakeEvent('DispatcherTest', $Dispatcher, ['request' => $request]);
         $Dispatcher->parseParams($event);
         $Dispatcher->parseParams($event);
         $this->assertEquals("My Posted Content", $request['data']['testdata']);
@@ -651,7 +654,7 @@ class DispatcherTest extends CakeTestCase
     {
         $Dispatcher = new Dispatcher();
         $test = new CakeRequest("/testcontroller/testaction/1/0/23");
-        $event = new CakeEvent('DispatcherTest', $Dispatcher, array('request' => $test));
+        $event = new CakeEvent('DispatcherTest', $Dispatcher, ['request' => $test]);
         $Dispatcher->parseParams($event);
 
         $this->assertSame($test['controller'], 'testcontroller');
@@ -671,7 +674,7 @@ class DispatcherTest extends CakeTestCase
     {
         $Dispatcher = new Dispatcher();
         $test = new CakeRequest("/testcontroller/testaction/0/0/0/0/0/0");
-        $event = new CakeEvent('DispatcherTest', $Dispatcher, array('request' => $test));
+        $event = new CakeEvent('DispatcherTest', $Dispatcher, ['request' => $test]);
         $Dispatcher->parseParams($event);
 
         $this->assertRegExp('/\\A(?:0)\\z/', $test['pass'][0]);
@@ -692,7 +695,7 @@ class DispatcherTest extends CakeTestCase
     {
         $Dispatcher = new Dispatcher();
         $test = new CakeRequest("/testcontroller/testaction/000/0000/00000/000000/000000/0000000");
-        $event = new CakeEvent('DispatcherTest', $Dispatcher, array('request' => $test));
+        $event = new CakeEvent('DispatcherTest', $Dispatcher, ['request' => $test]);
         $Dispatcher->parseParams($event);
 
         $this->assertRegExp('/\\A(?:000)\\z/', $test['pass'][0]);
@@ -713,7 +716,7 @@ class DispatcherTest extends CakeTestCase
     {
         $Dispatcher = new Dispatcher();
         $test = new CakeRequest("/testcontroller/testaction/01/0403/04010/000002/000030/0000400");
-        $event = new CakeEvent('DispatcherTest', $Dispatcher, array('request' => $test));
+        $event = new CakeEvent('DispatcherTest', $Dispatcher, ['request' => $test]);
         $Dispatcher->parseParams($event);
 
         $this->assertRegExp('/\\A(?:01)\\z/', $test['pass'][0]);
@@ -734,14 +737,14 @@ class DispatcherTest extends CakeTestCase
     public function testQueryStringOnRoot()
     {
         Router::reload();
-        Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'home'));
-        Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
+        Router::connect('/', ['controller' => 'pages', 'action' => 'display', 'home']);
+        Router::connect('/pages/*', ['controller' => 'pages', 'action' => 'display']);
         Router::connect('/:controller/:action/*');
 
-        $_GET = array('coffee' => 'life', 'sleep' => 'sissies');
+        $_GET = ['coffee' => 'life', 'sleep' => 'sissies'];
         $Dispatcher = new Dispatcher();
         $request = new CakeRequest('posts/home/?coffee=life&sleep=sissies');
-        $event = new CakeEvent('DispatcherTest', $Dispatcher, array('request' => $request));
+        $event = new CakeEvent('DispatcherTest', $Dispatcher, ['request' => $request]);
         $Dispatcher->parseParams($event);
 
         $this->assertRegExp('/posts/', $request['controller']);
@@ -752,7 +755,7 @@ class DispatcherTest extends CakeTestCase
         $Dispatcher = new Dispatcher();
         $request = new CakeRequest('/?coffee=life&sleep=sissy');
 
-        $event = new CakeEvent('DispatcherTest', $Dispatcher, array('request' => $request));
+        $event = new CakeEvent('DispatcherTest', $Dispatcher, ['request' => $request]);
         $Dispatcher->parseParams($event);
         $this->assertRegExp('/pages/', $request['controller']);
         $this->assertRegExp('/display/', $request['action']);
@@ -777,7 +780,7 @@ class DispatcherTest extends CakeTestCase
         $url = new CakeRequest('some_controller/home/param:value/param2:value2');
         $response = $this->getMock('CakeResponse');
 
-        $Dispatcher->dispatch($url, $response, array('return' => 1));
+        $Dispatcher->dispatch($url, $response, ['return' => 1]);
     }
 
     /**
@@ -796,7 +799,7 @@ class DispatcherTest extends CakeTestCase
         $url = new CakeRequest('dispatcher_test_interface/index');
         $response = $this->getMock('CakeResponse');
 
-        $Dispatcher->dispatch($url, $response, array('return' => 1));
+        $Dispatcher->dispatch($url, $response, ['return' => 1]);
     }
 
     /**
@@ -815,7 +818,7 @@ class DispatcherTest extends CakeTestCase
         $url = new CakeRequest('dispatcher_test_abstract/index');
         $response = $this->getMock('CakeResponse');
 
-        $Dispatcher->dispatch($url, $response, array('return' => 1));
+        $Dispatcher->dispatch($url, $response, ['return' => 1]);
     }
 
     /**
@@ -825,31 +828,31 @@ class DispatcherTest extends CakeTestCase
      */
     public function testDispatchBasic()
     {
-        App::build(array(
-            'View' => array(CAKE . 'Test' . DS . 'test_app' . DS . 'View' . DS)
-        ));
+        App::build([
+            'View' => [CAKE . 'Test' . DS . 'test_app' . DS . 'View' . DS]
+        ]);
         $Dispatcher = new TestDispatcher();
         Configure::write('App.baseUrl', '/index.php');
         $url = new CakeRequest('pages/home/param:value/param2:value2');
         $response = $this->getMock('CakeResponse');
 
-        $Dispatcher->dispatch($url, $response, array('return' => 1));
+        $Dispatcher->dispatch($url, $response, ['return' => 1]);
         $expected = 'Pages';
         $this->assertEquals($expected, $Dispatcher->controller->name);
 
-        $expected = array('0' => 'home', 'param' => 'value', 'param2' => 'value2');
+        $expected = ['0' => 'home', 'param' => 'value', 'param2' => 'value2'];
         $this->assertSame($expected, $Dispatcher->controller->passedArgs);
 
         Configure::write('App.baseUrl', '/pages/index.php');
 
         $url = new CakeRequest('pages/home');
-        $Dispatcher->dispatch($url, $response, array('return' => 1));
+        $Dispatcher->dispatch($url, $response, ['return' => 1]);
 
         $expected = 'Pages';
         $this->assertEquals($expected, $Dispatcher->controller->name);
 
         $url = new CakeRequest('pages/home/');
-        $Dispatcher->dispatch($url, $response, array('return' => 1));
+        $Dispatcher->dispatch($url, $response, ['return' => 1]);
         $this->assertNull($Dispatcher->controller->plugin);
 
         $expected = 'Pages';
@@ -862,23 +865,23 @@ class DispatcherTest extends CakeTestCase
         Configure::write('App.baseUrl', '/timesheets/index.php');
 
         $url = new CakeRequest('timesheets');
-        $Dispatcher->dispatch($url, $response, array('return' => 1));
+        $Dispatcher->dispatch($url, $response, ['return' => 1]);
 
         $expected = 'Timesheets';
         $this->assertEquals($expected, $Dispatcher->controller->name);
 
         $url = new CakeRequest('timesheets/');
-        $Dispatcher->dispatch($url, $response, array('return' => 1));
+        $Dispatcher->dispatch($url, $response, ['return' => 1]);
 
         $this->assertEquals('Timesheets', $Dispatcher->controller->name);
         $this->assertEquals('/timesheets/index.php', $url->base);
 
         $url = new CakeRequest('test_dispatch_pages/camelCased');
-        $Dispatcher->dispatch($url, $response, array('return' => 1));
+        $Dispatcher->dispatch($url, $response, ['return' => 1]);
         $this->assertEquals('TestDispatchPages', $Dispatcher->controller->name);
 
         $url = new CakeRequest('test_dispatch_pages/camelCased/something. .');
-        $Dispatcher->dispatch($url, $response, array('return' => 1));
+        $Dispatcher->dispatch($url, $response, ['return' => 1]);
         $this->assertEquals('something. .', $Dispatcher->controller->params['pass'][0], 'Period was chopped off. %s');
     }
 
@@ -892,7 +895,7 @@ class DispatcherTest extends CakeTestCase
         Router::connect('/:controller/:action');
         $Dispatcher = new Dispatcher();
         $request = new CakeRequest('some_pages/responseGenerator');
-        $response = $this->getMock('CakeResponse', array('_sendHeader'));
+        $response = $this->getMock('CakeResponse', ['_sendHeader']);
 
         ob_start();
         $Dispatcher->dispatch($request, $response);
@@ -911,7 +914,7 @@ class DispatcherTest extends CakeTestCase
         Router::connect('/:controller/:action');
         $Dispatcher = new Dispatcher();
         $request = new CakeRequest('some_pages/sendfile');
-        $response = $this->getMock('CakeResponse', array(
+        $response = $this->getMock('CakeResponse', [
             'header',
             'type',
             'download',
@@ -920,7 +923,7 @@ class DispatcherTest extends CakeTestCase
             '_isActive',
             '_clearBuffer',
             '_flushBuffer'
-        ));
+        ]);
         $response->expects($this->exactly(1))
             ->method('_isActive')
             ->will($this->returnValue(true));
@@ -937,19 +940,19 @@ class DispatcherTest extends CakeTestCase
      */
     public function testAdminDispatch()
     {
-        $_POST = array();
+        $_POST = [];
         $Dispatcher = new TestDispatcher();
-        Configure::write('Routing.prefixes', array('admin'));
+        Configure::write('Routing.prefixes', ['admin']);
         Configure::write('App.baseUrl', '/cake/repo/branches/1.2.x.x/index.php');
         $url = new CakeRequest('admin/test_dispatch_pages/index/param:value/param2:value2');
         $response = $this->getMock('CakeResponse');
 
         Router::reload();
-        $Dispatcher->dispatch($url, $response, array('return' => 1));
+        $Dispatcher->dispatch($url, $response, ['return' => 1]);
 
         $this->assertEquals('TestDispatchPages', $Dispatcher->controller->name);
 
-        $this->assertSame($Dispatcher->controller->passedArgs, array('param' => 'value', 'param2' => 'value2'));
+        $this->assertSame($Dispatcher->controller->passedArgs, ['param' => 'value', 'param2' => 'value2']);
         $this->assertTrue($Dispatcher->controller->params['admin']);
 
         $expected = '/cake/repo/branches/1.2.x.x/index.php/admin/test_dispatch_pages/index/param:value/param2:value2';
@@ -967,26 +970,26 @@ class DispatcherTest extends CakeTestCase
      */
     public function testPluginDispatch()
     {
-        $_POST = array();
+        $_POST = [];
 
         Router::reload();
         $Dispatcher = new TestDispatcher();
         Router::connect(
             '/my_plugin/:controller/*',
-            array('plugin' => 'my_plugin', 'controller' => 'pages', 'action' => 'display')
+            ['plugin' => 'my_plugin', 'controller' => 'pages', 'action' => 'display']
         );
 
         $url = new CakeRequest('my_plugin/some_pages/home/param:value/param2:value2');
         $response = $this->getMock('CakeResponse');
-        $Dispatcher->dispatch($url, $response, array('return' => 1));
+        $Dispatcher->dispatch($url, $response, ['return' => 1]);
 
-        $event = new CakeEvent('DispatcherTest', $Dispatcher, array('request' => $url));
+        $event = new CakeEvent('DispatcherTest', $Dispatcher, ['request' => $url]);
         $Dispatcher->parseParams($event);
-        $expected = array(
-            'pass' => array('home'),
-            'named' => array('param' => 'value', 'param2' => 'value2'), 'plugin' => 'my_plugin',
+        $expected = [
+            'pass'       => ['home'],
+            'named'      => ['param' => 'value', 'param2' => 'value2'], 'plugin' => 'my_plugin',
             'controller' => 'some_pages', 'action' => 'display'
-        );
+        ];
         foreach ($expected as $key => $value) {
             $this->assertEquals($value, $url[$key], 'Value mismatch ' . $key . ' %');
         }
@@ -994,7 +997,7 @@ class DispatcherTest extends CakeTestCase
         $this->assertSame($Dispatcher->controller->plugin, 'MyPlugin');
         $this->assertSame($Dispatcher->controller->name, 'SomePages');
         $this->assertSame($Dispatcher->controller->params['controller'], 'some_pages');
-        $this->assertSame($Dispatcher->controller->passedArgs, array('0' => 'home', 'param' => 'value', 'param2' => 'value2'));
+        $this->assertSame($Dispatcher->controller->passedArgs, ['0' => 'home', 'param' => 'value', 'param2' => 'value2']);
     }
 
     /**
@@ -1004,26 +1007,26 @@ class DispatcherTest extends CakeTestCase
      */
     public function testAutomaticPluginDispatch()
     {
-        $_POST = array();
+        $_POST = [];
         $_SERVER['PHP_SELF'] = '/cake/repo/branches/1.2.x.x/index.php';
 
         Router::reload();
         $Dispatcher = new TestDispatcher();
         Router::connect(
             '/my_plugin/:controller/:action/*',
-            array('plugin' => 'my_plugin', 'controller' => 'pages', 'action' => 'display')
+            ['plugin' => 'my_plugin', 'controller' => 'pages', 'action' => 'display']
         );
 
         $Dispatcher->base = false;
 
         $url = new CakeRequest('my_plugin/other_pages/index/param:value/param2:value2');
         $response = $this->getMock('CakeResponse');
-        $Dispatcher->dispatch($url, $response, array('return' => 1));
+        $Dispatcher->dispatch($url, $response, ['return' => 1]);
 
         $this->assertSame($Dispatcher->controller->plugin, 'MyPlugin');
         $this->assertSame($Dispatcher->controller->name, 'OtherPages');
         $this->assertSame($Dispatcher->controller->action, 'index');
-        $this->assertSame($Dispatcher->controller->passedArgs, array('param' => 'value', 'param2' => 'value2'));
+        $this->assertSame($Dispatcher->controller->passedArgs, ['param' => 'value', 'param2' => 'value2']);
 
         $expected = '/cake/repo/branches/1.2.x.x/my_plugin/other_pages/index/param:value/param2:value2';
         $this->assertSame($expected, $url->here);
@@ -1043,7 +1046,7 @@ class DispatcherTest extends CakeTestCase
         $plugins[] = 'MyPlugin';
         $plugins[] = 'ArticlesTest';
 
-        CakePlugin::load('MyPlugin', array('path' => '/fake/path'));
+        CakePlugin::load('MyPlugin', ['path' => '/fake/path']);
 
         Router::reload();
         $Dispatcher = new TestDispatcher();
@@ -1052,12 +1055,12 @@ class DispatcherTest extends CakeTestCase
         $url = new CakeRequest('my_plugin/my_plugin/add/param:value/param2:value2');
         $response = $this->getMock('CakeResponse');
 
-        $Dispatcher->dispatch($url, $response, array('return' => 1));
+        $Dispatcher->dispatch($url, $response, ['return' => 1]);
 
         $this->assertSame($Dispatcher->controller->plugin, 'MyPlugin');
         $this->assertSame($Dispatcher->controller->name, 'MyPlugin');
         $this->assertSame($Dispatcher->controller->action, 'add');
-        $this->assertEquals(array('param' => 'value', 'param2' => 'value2'), $Dispatcher->controller->params['named']);
+        $this->assertEquals(['param' => 'value', 'param2' => 'value2'], $Dispatcher->controller->params['named']);
 
         Router::reload();
         require CAKE . 'Config' . DS . 'routes.php';
@@ -1065,13 +1068,13 @@ class DispatcherTest extends CakeTestCase
         $Dispatcher->base = false;
 
         // Simulates the Route for a real plugin, installed in APP/plugins
-        Router::connect('/my_plugin/:controller/:action/*', array('plugin' => 'my_plugin'));
+        Router::connect('/my_plugin/:controller/:action/*', ['plugin' => 'my_plugin']);
 
         $plugin = 'MyPlugin';
         $pluginUrl = Inflector::underscore($plugin);
 
         $url = new CakeRequest($pluginUrl);
-        $Dispatcher->dispatch($url, $response, array('return' => 1));
+        $Dispatcher->dispatch($url, $response, ['return' => 1]);
         $this->assertSame($Dispatcher->controller->plugin, 'MyPlugin');
         $this->assertSame($Dispatcher->controller->name, 'MyPlugin');
         $this->assertSame($Dispatcher->controller->action, 'index');
@@ -1079,7 +1082,7 @@ class DispatcherTest extends CakeTestCase
         $expected = $pluginUrl;
         $this->assertEquals($expected, $Dispatcher->controller->params['controller']);
 
-        Configure::write('Routing.prefixes', array('admin'));
+        Configure::write('Routing.prefixes', ['admin']);
 
         Router::reload();
         require CAKE . 'Config' . DS . 'routes.php';
@@ -1088,42 +1091,42 @@ class DispatcherTest extends CakeTestCase
         $url = new CakeRequest('admin/my_plugin/my_plugin/add/5/param:value/param2:value2');
         $response = $this->getMock('CakeResponse');
 
-        $Dispatcher->dispatch($url, $response, array('return' => 1));
+        $Dispatcher->dispatch($url, $response, ['return' => 1]);
 
         $this->assertEquals('my_plugin', $Dispatcher->controller->params['plugin']);
         $this->assertEquals('my_plugin', $Dispatcher->controller->params['controller']);
         $this->assertEquals('admin_add', $Dispatcher->controller->params['action']);
-        $this->assertEquals(array(5), $Dispatcher->controller->params['pass']);
-        $this->assertEquals(array('param' => 'value', 'param2' => 'value2'), $Dispatcher->controller->params['named']);
+        $this->assertEquals([5], $Dispatcher->controller->params['pass']);
+        $this->assertEquals(['param' => 'value', 'param2' => 'value2'], $Dispatcher->controller->params['named']);
         $this->assertSame($Dispatcher->controller->plugin, 'MyPlugin');
         $this->assertSame($Dispatcher->controller->name, 'MyPlugin');
         $this->assertSame($Dispatcher->controller->action, 'admin_add');
 
-        $expected = array(0 => 5, 'param' => 'value', 'param2' => 'value2');
+        $expected = [0 => 5, 'param' => 'value', 'param2' => 'value2'];
         $this->assertEquals($expected, $Dispatcher->controller->passedArgs);
 
-        Configure::write('Routing.prefixes', array('admin'));
-        CakePlugin::load('ArticlesTest', array('path' => '/fake/path'));
+        Configure::write('Routing.prefixes', ['admin']);
+        CakePlugin::load('ArticlesTest', ['path' => '/fake/path']);
         Router::reload();
         require CAKE . 'Config' . DS . 'routes.php';
 
         $Dispatcher = new TestDispatcher();
 
-        $Dispatcher->dispatch(new CakeRequest('admin/articles_test'), $response, array('return' => 1));
+        $Dispatcher->dispatch(new CakeRequest('admin/articles_test'), $response, ['return' => 1]);
         $this->assertSame($Dispatcher->controller->plugin, 'ArticlesTest');
         $this->assertSame($Dispatcher->controller->name, 'ArticlesTest');
         $this->assertSame($Dispatcher->controller->action, 'admin_index');
 
-        $expected = array(
-            'pass' => array(),
-            'named' => array(),
+        $expected = [
+            'pass'       => [],
+            'named'      => [],
             'controller' => 'articles_test',
-            'plugin' => 'articles_test',
-            'action' => 'admin_index',
-            'prefix' => 'admin',
-            'admin' => true,
-            'return' => 1
-        );
+            'plugin'     => 'articles_test',
+            'action'     => 'admin_index',
+            'prefix'     => 'admin',
+            'admin'      => true,
+            'return'     => 1
+        ];
         foreach ($expected as $key => $value) {
             $this->assertEquals($expected[$key], $Dispatcher->controller->request[$key], 'Value mismatch ' . $key);
         }
@@ -1137,7 +1140,7 @@ class DispatcherTest extends CakeTestCase
      */
     public function testAutomaticPluginDispatchWithShortAccess()
     {
-        CakePlugin::load('MyPlugin', array('path' => '/fake/path'));
+        CakePlugin::load('MyPlugin', ['path' => '/fake/path']);
         Router::reload();
 
         $Dispatcher = new TestDispatcher();
@@ -1146,7 +1149,7 @@ class DispatcherTest extends CakeTestCase
         $url = new CakeRequest('my_plugin/');
         $response = $this->getMock('CakeResponse');
 
-        $Dispatcher->dispatch($url, $response, array('return' => 1));
+        $Dispatcher->dispatch($url, $response, ['return' => 1]);
         $this->assertEquals('my_plugin', $Dispatcher->controller->params['controller']);
         $this->assertEquals('my_plugin', $Dispatcher->controller->params['plugin']);
         $this->assertEquals('index', $Dispatcher->controller->params['action']);
@@ -1165,10 +1168,10 @@ class DispatcherTest extends CakeTestCase
         $this->skipIf($loaded, 'TestPluginController already loaded.');
 
         Router::reload();
-        App::build(array(
-            'Plugin' => array(CAKE . 'Test' . DS . 'test_app' . DS . 'Plugin' . DS)
-        ), App::RESET);
-        CakePlugin::load(array('TestPlugin', 'TestPluginTwo'));
+        App::build([
+            'Plugin' => [CAKE . 'Test' . DS . 'test_app' . DS . 'Plugin' . DS]
+        ], App::RESET);
+        CakePlugin::load(['TestPlugin', 'TestPluginTwo']);
 
         $Dispatcher = new TestDispatcher();
         $Dispatcher->base = false;
@@ -1176,21 +1179,21 @@ class DispatcherTest extends CakeTestCase
         $url = new CakeRequest('test_plugin/');
         $response = $this->getMock('CakeResponse');
 
-        $Dispatcher->dispatch($url, $response, array('return' => 1));
+        $Dispatcher->dispatch($url, $response, ['return' => 1]);
         $this->assertEquals('test_plugin', $Dispatcher->controller->params['controller']);
         $this->assertEquals('test_plugin', $Dispatcher->controller->params['plugin']);
         $this->assertEquals('index', $Dispatcher->controller->params['action']);
         $this->assertFalse(isset($Dispatcher->controller->params['pass'][0]));
 
         $url = new CakeRequest('/test_plugin/tests/index');
-        $Dispatcher->dispatch($url, $response, array('return' => 1));
+        $Dispatcher->dispatch($url, $response, ['return' => 1]);
         $this->assertEquals('tests', $Dispatcher->controller->params['controller']);
         $this->assertEquals('test_plugin', $Dispatcher->controller->params['plugin']);
         $this->assertEquals('index', $Dispatcher->controller->params['action']);
         $this->assertFalse(isset($Dispatcher->controller->params['pass'][0]));
 
         $url = new CakeRequest('/test_plugin/tests/index/some_param');
-        $Dispatcher->dispatch($url, $response, array('return' => 1));
+        $Dispatcher->dispatch($url, $response, ['return' => 1]);
         $this->assertEquals('tests', $Dispatcher->controller->params['controller']);
         $this->assertEquals('test_plugin', $Dispatcher->controller->params['plugin']);
         $this->assertEquals('index', $Dispatcher->controller->params['action']);
@@ -1214,7 +1217,7 @@ class DispatcherTest extends CakeTestCase
         $url = new CakeRequest('my_plugin/not_here/param:value/param2:value2');
         $response = $this->getMock('CakeResponse');
 
-        $Dispatcher->dispatch($url, $response, array('return' => 1));
+        $Dispatcher->dispatch($url, $response, ['return' => 1]);
     }
 
     /**
@@ -1224,7 +1227,6 @@ class DispatcherTest extends CakeTestCase
      * @expectedExceptionMessage Action MyPluginController::param:value() could not be found.
      * @return void
      */
-
     public function testAutomaticPluginControllerIndexMissingAction()
     {
         Router::reload();
@@ -1233,7 +1235,7 @@ class DispatcherTest extends CakeTestCase
         $url = new CakeRequest('my_plugin/param:value/param2:value2');
         $response = $this->getMock('CakeResponse');
 
-        $Dispatcher->dispatch($url, $response, array('return' => 1));
+        $Dispatcher->dispatch($url, $response, ['return' => 1]);
     }
 
     /**
@@ -1244,16 +1246,16 @@ class DispatcherTest extends CakeTestCase
     public function testTestPluginDispatch()
     {
         $Dispatcher = new TestDispatcher();
-        App::build(array(
-            'Plugin' => array(CAKE . 'Test' . DS . 'test_app' . DS . 'Plugin' . DS)
-        ), App::RESET);
-        CakePlugin::load(array('TestPlugin', 'TestPluginTwo'));
+        App::build([
+            'Plugin' => [CAKE . 'Test' . DS . 'test_app' . DS . 'Plugin' . DS]
+        ], App::RESET);
+        CakePlugin::load(['TestPlugin', 'TestPluginTwo']);
         Router::reload();
         Router::parse('/');
 
         $url = new CakeRequest('/test_plugin/tests/index');
         $response = $this->getMock('CakeResponse');
-        $Dispatcher->dispatch($url, $response, array('return' => 1));
+        $Dispatcher->dispatch($url, $response, ['return' => 1]);
         $this->assertTrue(class_exists('TestsController'));
         $this->assertTrue(class_exists('TestPluginAppController'));
         $this->assertTrue(class_exists('PluginsComponent'));
@@ -1272,32 +1274,32 @@ class DispatcherTest extends CakeTestCase
      */
     public function testDispatcherFilterSubscriber()
     {
-        App::build(array(
-            'View' => array(CAKE . 'Test' . DS . 'test_app' . DS . 'View' . DS),
-            'Plugin' => array(CAKE . 'Test' . DS . 'test_app' . DS . 'Plugin' . DS)
-        ), App::RESET);
+        App::build([
+            'View'   => [CAKE . 'Test' . DS . 'test_app' . DS . 'View' . DS],
+            'Plugin' => [CAKE . 'Test' . DS . 'test_app' . DS . 'Plugin' . DS]
+        ], App::RESET);
 
         CakePlugin::load('TestPlugin');
-        Configure::write('Dispatcher.filters', array(
-            array('callable' => 'TestPlugin.TestDispatcherFilter')
-        ));
+        Configure::write('Dispatcher.filters', [
+            ['callable' => 'TestPlugin.TestDispatcherFilter']
+        ]);
         $dispatcher = new TestDispatcher();
         $request = new CakeRequest('/');
         $request->params['altered'] = false;
-        $response = $this->getMock('CakeResponse', array('send'));
+        $response = $this->getMock('CakeResponse', ['send']);
 
         $dispatcher->dispatch($request, $response);
         $this->assertTrue($request->params['altered']);
         $this->assertEquals(304, $response->statusCode());
 
-        Configure::write('Dispatcher.filters', array(
+        Configure::write('Dispatcher.filters', [
             'TestPlugin.Test2DispatcherFilter',
             'TestPlugin.TestDispatcherFilter'
-        ));
+        ]);
         $dispatcher = new TestDispatcher();
         $request = new CakeRequest('/');
         $request->params['altered'] = false;
-        $response = $this->getMock('CakeResponse', array('send'));
+        $response = $this->getMock('CakeResponse', ['send']);
 
         $dispatcher->dispatch($request, $response);
         $this->assertFalse($request->params['altered']);
@@ -1312,15 +1314,15 @@ class DispatcherTest extends CakeTestCase
      */
     public function testDispatcherFilterSettings()
     {
-        Configure::write('Dispatcher.filters', array(
-            'TestFilterDispatcher' => array('service' => 'google.com')
-        ));
+        Configure::write('Dispatcher.filters', [
+            'TestFilterDispatcher' => ['service' => 'google.com']
+        ]);
         $Dispatcher = new Dispatcher();
         $url = new CakeRequest('some_pages/index');
         $response = $this->getMock('CakeResponse');
-        $Dispatcher->dispatch($url, $response, array('return' => 1));
+        $Dispatcher->dispatch($url, $response, ['return' => 1]);
         $settings = $url->param('settings');
-        $this->assertEquals($settings, array('service' => 'google.com'));
+        $this->assertEquals($settings, ['service' => 'google.com']);
     }
 
     /**
@@ -1331,17 +1333,17 @@ class DispatcherTest extends CakeTestCase
      */
     public function testDispatcherFilterSuscriberMissing()
     {
-        App::build(array(
-            'Plugin' => array(CAKE . 'Test' . DS . 'test_app' . DS . 'Plugin' . DS)
-        ), App::RESET);
+        App::build([
+            'Plugin' => [CAKE . 'Test' . DS . 'test_app' . DS . 'Plugin' . DS]
+        ], App::RESET);
 
         CakePlugin::load('TestPlugin');
-        Configure::write('Dispatcher.filters', array(
-            array('callable' => 'TestPlugin.NotAFilter')
-        ));
+        Configure::write('Dispatcher.filters', [
+            ['callable' => 'TestPlugin.NotAFilter']
+        ]);
         $dispatcher = new TestDispatcher();
         $request = new CakeRequest('/');
-        $response = $this->getMock('CakeResponse', array('send'));
+        $response = $this->getMock('CakeResponse', ['send']);
         $dispatcher->dispatch($request, $response);
     }
 
@@ -1352,67 +1354,67 @@ class DispatcherTest extends CakeTestCase
      */
     public function testDispatcherFilterCallable()
     {
-        App::build(array(
-            'View' => array(CAKE . 'Test' . DS . 'test_app' . DS . 'View' . DS)
-        ), App::RESET);
+        App::build([
+            'View' => [CAKE . 'Test' . DS . 'test_app' . DS . 'View' . DS]
+        ], App::RESET);
 
         $dispatcher = new TestDispatcher();
-        Configure::write('Dispatcher.filters', array(
-            array('callable' => array($dispatcher, 'filterTest'), 'on' => 'before')
-        ));
+        Configure::write('Dispatcher.filters', [
+            ['callable' => [$dispatcher, 'filterTest'], 'on' => 'before']
+        ]);
 
         $request = new CakeRequest('/');
-        $response = $this->getMock('CakeResponse', array('send'));
+        $response = $this->getMock('CakeResponse', ['send']);
         $dispatcher->dispatch($request, $response);
         $this->assertEquals('Dispatcher.beforeDispatch', $request->params['eventName']);
 
         $dispatcher = new TestDispatcher();
-        Configure::write('Dispatcher.filters', array(
-            array('callable' => array($dispatcher, 'filterTest'), 'on' => 'after')
-        ));
+        Configure::write('Dispatcher.filters', [
+            ['callable' => [$dispatcher, 'filterTest'], 'on' => 'after']
+        ]);
 
         $request = new CakeRequest('/');
-        $response = $this->getMock('CakeResponse', array('send'));
+        $response = $this->getMock('CakeResponse', ['send']);
         $dispatcher->dispatch($request, $response);
         $this->assertEquals('Dispatcher.afterDispatch', $request->params['eventName']);
 
         $dispatcher = new TestDispatcher();
-        Configure::write('Dispatcher.filters', array(
-            'filterTest' => array('callable' => array($dispatcher, 'filterTest'), 'on' => 'before')
-        ));
+        Configure::write('Dispatcher.filters', [
+            'filterTest' => ['callable' => [$dispatcher, 'filterTest'], 'on' => 'before']
+        ]);
 
         $request = new CakeRequest('/');
-        $response = $this->getMock('CakeResponse', array('send'));
+        $response = $this->getMock('CakeResponse', ['send']);
         $dispatcher->dispatch($request, $response);
         $this->assertEquals('Dispatcher.beforeDispatch', $request->params['eventName']);
 
         // Test that it is possible to skip the route connection process
         $dispatcher = new TestDispatcher();
-        Configure::write('Dispatcher.filters', array(
-            array('callable' => array($dispatcher, 'filterTest2'), 'on' => 'before', 'priority' => 1)
-        ));
+        Configure::write('Dispatcher.filters', [
+            ['callable' => [$dispatcher, 'filterTest2'], 'on' => 'before', 'priority' => 1]
+        ]);
 
         $request = new CakeRequest('/');
-        $response = $this->getMock('CakeResponse', array('send'));
+        $response = $this->getMock('CakeResponse', ['send']);
         $dispatcher->dispatch($request, $response);
         $this->assertEmpty($dispatcher->controller);
-        $expected = array('controller' => null, 'action' => null, 'plugin' => null, 'named' => array(), 'pass' => array());
+        $expected = ['controller' => null, 'action' => null, 'plugin' => null, 'named' => [], 'pass' => []];
         $this->assertEquals($expected, $request->params);
 
         $dispatcher = new TestDispatcher();
-        Configure::write('Dispatcher.filters', array(
-            array('callable' => array($dispatcher, 'filterTest2'), 'on' => 'before', 'priority' => 1)
-        ));
+        Configure::write('Dispatcher.filters', [
+            ['callable' => [$dispatcher, 'filterTest2'], 'on' => 'before', 'priority' => 1]
+        ]);
 
         $request = new CakeRequest('/');
         $request->params['return'] = true;
-        $response = $this->getMock('CakeResponse', array('send'));
+        $response = $this->getMock('CakeResponse', ['send']);
         $response->body('this is a body');
         $result = $dispatcher->dispatch($request, $response);
         $this->assertEquals('this is a body', $result);
 
         $request = new CakeRequest('/');
-        $response = $this->getMock('CakeResponse', array('send'));
+        $response = $this->getMock('CakeResponse', ['send']);
         $response->expects($this->once())->method('send');
         $response->body('this is a body');
         $result = $dispatcher->dispatch($request, $response);
@@ -1431,14 +1433,14 @@ class DispatcherTest extends CakeTestCase
         $url = new CakeRequest('some_posts/index/param:value/param2:value2');
 
         try {
-            $Dispatcher->dispatch($url, $response, array('return' => 1));
+            $Dispatcher->dispatch($url, $response, ['return' => 1]);
             $this->fail('No exception.');
         } catch (MissingActionException $e) {
             $this->assertEquals('Action SomePostsController::view() could not be found.', $e->getMessage());
         }
 
         $url = new CakeRequest('some_posts/something_else/param:value/param2:value2');
-        $Dispatcher->dispatch($url, $response, array('return' => 1));
+        $Dispatcher->dispatch($url, $response, ['return' => 1]);
 
         $expected = 'SomePosts';
         $this->assertEquals($expected, $Dispatcher->controller->name);
@@ -1446,7 +1448,7 @@ class DispatcherTest extends CakeTestCase
         $expected = 'change';
         $this->assertEquals($expected, $Dispatcher->controller->action);
 
-        $expected = array('changed');
+        $expected = ['changed'];
         $this->assertSame($expected, $Dispatcher->controller->params['pass']);
     }
 
@@ -1459,16 +1461,16 @@ class DispatcherTest extends CakeTestCase
     {
         Router::reload();
 
-        App::build(array(
-            'Plugin' => array(CAKE . 'Test' . DS . 'test_app' . DS . 'Plugin' . DS),
-            'Vendor' => array(CAKE . 'Test' . DS . 'test_app' . DS . 'Vendor' . DS),
-            'View' => array(CAKE . 'Test' . DS . 'test_app' . DS . 'View' . DS)
-        ));
-        CakePlugin::load(array('TestPlugin', 'TestPluginTwo'));
-        Configure::write('Dispatcher.filters', array('AssetDispatcher'));
+        App::build([
+            'Plugin' => [CAKE . 'Test' . DS . 'test_app' . DS . 'Plugin' . DS],
+            'Vendor' => [CAKE . 'Test' . DS . 'test_app' . DS . 'Vendor' . DS],
+            'View'   => [CAKE . 'Test' . DS . 'test_app' . DS . 'View' . DS]
+        ]);
+        CakePlugin::load(['TestPlugin', 'TestPluginTwo']);
+        Configure::write('Dispatcher.filters', ['AssetDispatcher']);
 
         $Dispatcher = new TestDispatcher();
-        $response = $this->getMock('CakeResponse', array('_sendHeader'));
+        $response = $this->getMock('CakeResponse', ['_sendHeader']);
 
         try {
             $Dispatcher->dispatch(new CakeRequest('theme/test_theme/../webroot/css/test_asset.css'), $response);
@@ -1497,76 +1499,76 @@ class DispatcherTest extends CakeTestCase
      */
     public static function assetProvider()
     {
-        return array(
-            array(
+        return [
+            [
                 'theme/test_theme/flash/theme_test.swf',
                 'View/Themed/TestTheme/webroot/flash/theme_test.swf'
-            ),
-            array(
+            ],
+            [
                 'theme/test_theme/pdfs/theme_test.pdf',
                 'View/Themed/TestTheme/webroot/pdfs/theme_test.pdf'
-            ),
-            array(
+            ],
+            [
                 'theme/test_theme/img/test.jpg',
                 'View/Themed/TestTheme/webroot/img/test.jpg'
-            ),
-            array(
+            ],
+            [
                 'theme/test_theme/css/test_asset.css',
                 'View/Themed/TestTheme/webroot/css/test_asset.css'
-            ),
-            array(
+            ],
+            [
                 'theme/test_theme/js/theme.js',
                 'View/Themed/TestTheme/webroot/js/theme.js'
-            ),
-            array(
+            ],
+            [
                 'theme/test_theme/js/one/theme_one.js',
                 'View/Themed/TestTheme/webroot/js/one/theme_one.js'
-            ),
-            array(
+            ],
+            [
                 'theme/test_theme/space%20image.text',
                 'View/Themed/TestTheme/webroot/space image.text'
-            ),
-            array(
+            ],
+            [
                 'test_plugin/root.js',
                 'Plugin/TestPlugin/webroot/root.js'
-            ),
-            array(
+            ],
+            [
                 'test_plugin/flash/plugin_test.swf',
                 'Plugin/TestPlugin/webroot/flash/plugin_test.swf'
-            ),
-            array(
+            ],
+            [
                 'test_plugin/pdfs/plugin_test.pdf',
                 'Plugin/TestPlugin/webroot/pdfs/plugin_test.pdf'
-            ),
-            array(
+            ],
+            [
                 'test_plugin/js/test_plugin/test.js',
                 'Plugin/TestPlugin/webroot/js/test_plugin/test.js'
-            ),
-            array(
+            ],
+            [
                 'test_plugin/css/test_plugin_asset.css',
                 'Plugin/TestPlugin/webroot/css/test_plugin_asset.css'
-            ),
-            array(
+            ],
+            [
                 'test_plugin/img/cake.icon.gif',
                 'Plugin/TestPlugin/webroot/img/cake.icon.gif'
-            ),
-            array(
+            ],
+            [
                 'plugin_js/js/plugin_js.js',
                 'Plugin/PluginJs/webroot/js/plugin_js.js'
-            ),
-            array(
+            ],
+            [
                 'plugin_js/js/one/plugin_one.js',
                 'Plugin/PluginJs/webroot/js/one/plugin_one.js'
-            ),
-            array(
+            ],
+            [
                 'test_plugin/css/unknown.extension',
                 'Plugin/TestPlugin/webroot/css/unknown.extension'
-            ),
-            array(
+            ],
+            [
                 'test_plugin/css/theme_one.htc',
                 'Plugin/TestPlugin/webroot/css/theme_one.htc'
-            ),
-        );
+            ],
+        ];
     }
 
     /**
@@ -1580,16 +1582,16 @@ class DispatcherTest extends CakeTestCase
     {
         Router::reload();
 
-        App::build(array(
-            'Plugin' => array(CAKE . 'Test' . DS . 'test_app' . DS . 'Plugin' . DS),
-            'Vendor' => array(CAKE . 'Test' . DS . 'test_app' . DS . 'Vendor' . DS),
-            'View' => array(CAKE . 'Test' . DS . 'test_app' . DS . 'View' . DS)
-        ));
-        CakePlugin::load(array('TestPlugin', 'PluginJs'));
-        Configure::write('Dispatcher.filters', array('AssetDispatcher'));
+        App::build([
+            'Plugin' => [CAKE . 'Test' . DS . 'test_app' . DS . 'Plugin' . DS],
+            'Vendor' => [CAKE . 'Test' . DS . 'test_app' . DS . 'Vendor' . DS],
+            'View'   => [CAKE . 'Test' . DS . 'test_app' . DS . 'View' . DS]
+        ]);
+        CakePlugin::load(['TestPlugin', 'PluginJs']);
+        Configure::write('Dispatcher.filters', ['AssetDispatcher']);
 
         $Dispatcher = new TestDispatcher();
-        $response = $this->getMock('CakeResponse', array('_sendHeader'));
+        $response = $this->getMock('CakeResponse', ['_sendHeader']);
 
         $Dispatcher->dispatch(new CakeRequest($url), $response);
         $result = ob_get_clean();
@@ -1610,13 +1612,13 @@ class DispatcherTest extends CakeTestCase
      */
     public function testMissingAssetProcessor404()
     {
-        $response = $this->getMock('CakeResponse', array('send'));
+        $response = $this->getMock('CakeResponse', ['send']);
         $Dispatcher = new TestDispatcher();
-        Configure::write('Asset.filter', array(
-            'js' => '',
+        Configure::write('Asset.filter', [
+            'js'  => '',
             'css' => null
-        ));
-        Configure::write('Dispatcher.filters', array('AssetDispatcher'));
+        ]);
+        Configure::write('Dispatcher.filters', ['AssetDispatcher']);
 
         $request = new CakeRequest('ccss/cake.generic.css');
         $Dispatcher->dispatch($request, $response);
@@ -1636,17 +1638,17 @@ class DispatcherTest extends CakeTestCase
      */
     public static function cacheActionProvider()
     {
-        return array(
-            array('/'),
-            array('test_cached_pages/index'),
-            array('TestCachedPages/index'),
-            array('test_cached_pages/test_nocache_tags'),
-            array('TestCachedPages/test_nocache_tags'),
-            array('test_cached_pages/view/param/param'),
-            array('test_cached_pages/view/foo:bar/value:goo'),
-            array('test_cached_pages/view?q=cakephp'),
-            array('test_cached_pages/themed'),
-        );
+        return [
+            ['/'],
+            ['test_cached_pages/index'],
+            ['TestCachedPages/index'],
+            ['test_cached_pages/test_nocache_tags'],
+            ['TestCachedPages/test_nocache_tags'],
+            ['test_cached_pages/view/param/param'],
+            ['test_cached_pages/view/foo:bar/value:goo'],
+            ['test_cached_pages/view?q=cakephp'],
+            ['test_cached_pages/themed'],
+        ];
     }
 
     /**
@@ -1662,23 +1664,23 @@ class DispatcherTest extends CakeTestCase
         Configure::write('debug', 2);
 
         Router::reload();
-        Router::connect('/', array('controller' => 'test_cached_pages', 'action' => 'index'));
+        Router::connect('/', ['controller' => 'test_cached_pages', 'action' => 'index']);
         Router::connect('/:controller/:action/*');
 
-        App::build(array(
-            'View' => array(CAKE . 'Test' . DS . 'test_app' . DS . 'View' . DS),
-        ), App::RESET);
+        App::build([
+            'View' => [CAKE . 'Test' . DS . 'test_app' . DS . 'View' . DS],
+        ], App::RESET);
 
         $dispatcher = new TestDispatcher();
         $request = new CakeRequest($url);
-        $response = $this->getMock('CakeResponse', array('send'));
+        $response = $this->getMock('CakeResponse', ['send']);
 
         $dispatcher->dispatch($request, $response);
         $out = $response->body();
 
-        Configure::write('Dispatcher.filters', array('CacheDispatcher'));
+        Configure::write('Dispatcher.filters', ['CacheDispatcher']);
         $request = new CakeRequest($url);
-        $response = $this->getMock('CakeResponse', array('send'));
+        $response = $this->getMock('CakeResponse', ['send']);
         $dispatcher = new TestDispatcher();
         $dispatcher->dispatch($request, $response);
         $cached = $response->body();
@@ -1710,9 +1712,9 @@ class DispatcherTest extends CakeTestCase
         $dispatcher = new Dispatcher();
 
         $request = new CakeRequest('/posts');
-        $event = new CakeEvent('DispatcherTest', $dispatcher, array('request' => $request));
+        $event = new CakeEvent('DispatcherTest', $dispatcher, ['request' => $request]);
         $dispatcher->parseParams($event);
-        $expected = array('pass' => array(), 'named' => array(), 'plugin' => null, 'controller' => 'posts', 'action' => 'add', '[method]' => 'POST');
+        $expected = ['pass' => [], 'named' => [], 'plugin' => null, 'controller' => 'posts', 'action' => 'add', '[method]' => 'POST'];
         foreach ($expected as $key => $value) {
             $this->assertEquals($value, $request[$key], 'Value mismatch for ' . $key . ' %s');
         }
@@ -1721,17 +1723,17 @@ class DispatcherTest extends CakeTestCase
         $_SERVER['HTTP_X_HTTP_METHOD_OVERRIDE'] = 'PUT';
 
         $request = new CakeRequest('/posts/5');
-        $event = new CakeEvent('DispatcherTest', $dispatcher, array('request' => $request));
+        $event = new CakeEvent('DispatcherTest', $dispatcher, ['request' => $request]);
         $dispatcher->parseParams($event);
-        $expected = array(
-            'pass' => array('5'),
-            'named' => array(),
-            'id' => '5',
-            'plugin' => null,
+        $expected = [
+            'pass'       => ['5'],
+            'named'      => [],
+            'id'         => '5',
+            'plugin'     => null,
             'controller' => 'posts',
-            'action' => 'edit',
-            '[method]' => 'PUT'
-        );
+            'action'     => 'edit',
+            '[method]'   => 'PUT'
+        ];
         foreach ($expected as $key => $value) {
             $this->assertEquals($value, $request[$key], 'Value mismatch for ' . $key . ' %s');
         }
@@ -1740,9 +1742,9 @@ class DispatcherTest extends CakeTestCase
         $_SERVER['REQUEST_METHOD'] = 'GET';
 
         $request = new CakeRequest('/posts/5');
-        $event = new CakeEvent('DispatcherTest', $dispatcher, array('request' => $request));
+        $event = new CakeEvent('DispatcherTest', $dispatcher, ['request' => $request]);
         $dispatcher->parseParams($event);
-        $expected = array('pass' => array('5'), 'named' => array(), 'id' => '5', 'plugin' => null, 'controller' => 'posts', 'action' => 'view', '[method]' => 'GET');
+        $expected = ['pass' => ['5'], 'named' => [], 'id' => '5', 'plugin' => null, 'controller' => 'posts', 'action' => 'view', '[method]' => 'GET'];
         foreach ($expected as $key => $value) {
             $this->assertEquals($value, $request[$key], 'Value mismatch for ' . $key . ' %s');
         }
@@ -1750,25 +1752,25 @@ class DispatcherTest extends CakeTestCase
         $_POST['_method'] = 'PUT';
 
         $request = new CakeRequest('/posts/5');
-        $event = new CakeEvent('DispatcherTest', $dispatcher, array('request' => $request));
+        $event = new CakeEvent('DispatcherTest', $dispatcher, ['request' => $request]);
         $dispatcher->parseParams($event);
-        $expected = array('pass' => array('5'), 'named' => array(), 'id' => '5', 'plugin' => null, 'controller' => 'posts', 'action' => 'edit', '[method]' => 'PUT');
+        $expected = ['pass' => ['5'], 'named' => [], 'id' => '5', 'plugin' => null, 'controller' => 'posts', 'action' => 'edit', '[method]' => 'PUT'];
         foreach ($expected as $key => $value) {
             $this->assertEquals($value, $request[$key], 'Value mismatch for ' . $key . ' %s');
         }
 
         $_POST['_method'] = 'POST';
-        $_POST['data'] = array('Post' => array('title' => 'New Post'));
+        $_POST['data'] = ['Post' => ['title' => 'New Post']];
         $_POST['extra'] = 'data';
-        $_SERVER = array();
+        $_SERVER = [];
 
         $request = new CakeRequest('/posts');
-        $event = new CakeEvent('DispatcherTest', $dispatcher, array('request' => $request));
+        $event = new CakeEvent('DispatcherTest', $dispatcher, ['request' => $request]);
         $dispatcher->parseParams($event);
-        $expected = array(
-            'pass' => array(), 'named' => array(), 'plugin' => null, 'controller' => 'posts', 'action' => 'add',
-            '[method]' => 'POST', 'data' => array('extra' => 'data', 'Post' => array('title' => 'New Post')),
-        );
+        $expected = [
+            'pass'     => [], 'named' => [], 'plugin' => null, 'controller' => 'posts', 'action' => 'add',
+            '[method]' => 'POST', 'data' => ['extra' => 'data', 'Post' => ['title' => 'New Post']],
+        ];
         foreach ($expected as $key => $value) {
             $this->assertEquals($value, $request[$key], 'Value mismatch for ' . $key . ' %s');
         }
@@ -1795,6 +1797,7 @@ class DispatcherTest extends CakeTestCase
         if (!file_exists($filename)) {
             $filename = CACHE . 'views' . DS . $path . '_index.php';
         }
+
         return $filename;
     }
 }

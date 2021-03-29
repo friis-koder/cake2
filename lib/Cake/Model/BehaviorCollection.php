@@ -17,7 +17,6 @@
  * @since         CakePHP(tm) v 1.2.0.0
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('ObjectCollection', 'Utility');
 App::uses('CakeEventListener', 'Event');
 
@@ -30,11 +29,11 @@ App::uses('CakeEventListener', 'Event');
  */
 class BehaviorCollection extends ObjectCollection implements CakeEventListener
 {
-/**
- * Stores a reference to the attached name
- *
- * @var string
- */
+    /**
+     * Stores a reference to the attached name
+     *
+     * @var string
+     */
     public $modelName = null;
 
     /**
@@ -42,14 +41,14 @@ class BehaviorCollection extends ObjectCollection implements CakeEventListener
      *
      * @var array
      */
-    protected $_methods = array();
+    protected $_methods = [];
 
     /**
      * Keeps a list of all methods which have been mapped with regular expressions
      *
      * @var array
      */
-    protected $_mappedMethods = array();
+    protected $_mappedMethods = [];
 
     /**
      * Attaches a model object and loads a list of behaviors
@@ -58,7 +57,7 @@ class BehaviorCollection extends ObjectCollection implements CakeEventListener
      * @param array $behaviors Behaviors list.
      * @return void
      */
-    public function init($modelName, $behaviors = array())
+    public function init($modelName, $behaviors = [])
     {
         $this->modelName = $modelName;
 
@@ -77,7 +76,7 @@ class BehaviorCollection extends ObjectCollection implements CakeEventListener
      * @return bool true.
      * @deprecated 3.0.0 Will be removed in 3.0. Replaced with load().
      */
-    public function attach($behavior, $config = array())
+    public function attach($behavior, $config = [])
     {
         return $this->load($behavior, $config);
     }
@@ -102,7 +101,7 @@ class BehaviorCollection extends ObjectCollection implements CakeEventListener
      * @return bool True on success.
      * @throws MissingBehaviorException when a behavior could not be found.
      */
-    public function load($behavior, $config = array())
+    public function load($behavior, $config = [])
     {
         if (isset($config['className'])) {
             $alias = $behavior;
@@ -121,10 +120,10 @@ class BehaviorCollection extends ObjectCollection implements CakeEventListener
 
         App::uses($class, $plugin . 'Model/Behavior');
         if (!class_exists($class)) {
-            throw new MissingBehaviorException(array(
-                'class' => $class,
+            throw new MissingBehaviorException([
+                'class'  => $class,
                 'plugin' => substr($plugin, 0, -1)
-            ));
+            ]);
         }
 
         if (!isset($this->{$alias})) {
@@ -138,24 +137,24 @@ class BehaviorCollection extends ObjectCollection implements CakeEventListener
             if ($config !== null && $config !== false) {
                 $config = array_merge($this->_loaded[$alias]->settings[$this->modelName], $config);
             } else {
-                $config = array();
+                $config = [];
             }
         }
         if (empty($config)) {
-            $config = array();
+            $config = [];
         }
         $this->_loaded[$alias]->settings['priority'] = $priority;
         $this->_loaded[$alias]->setup(ClassRegistry::getObject($this->modelName), $config);
 
         foreach ($this->_loaded[$alias]->mapMethods as $method => $methodAlias) {
-            $this->_mappedMethods[$method] = array($alias, $methodAlias);
+            $this->_mappedMethods[$method] = [$alias, $methodAlias];
         }
         $methods = get_class_methods($this->_loaded[$alias]);
         $parentMethods = array_flip(get_class_methods('ModelBehavior'));
-        $callbacks = array(
+        $callbacks = [
             'setup', 'cleanup', 'beforeFind', 'afterFind', 'beforeSave', 'afterSave',
             'beforeDelete', 'afterDelete', 'onError'
-        );
+        ];
 
         foreach ($methods as $m) {
             if (!isset($parentMethods[$m])) {
@@ -164,7 +163,7 @@ class BehaviorCollection extends ObjectCollection implements CakeEventListener
                     !in_array($m, $callbacks)
                 );
                 if ($methodAllowed) {
-                    $this->_methods[$m] = array($alias, $m);
+                    $this->_methods[$m] = [$alias, $m];
                 }
             }
         }
@@ -224,24 +223,26 @@ class BehaviorCollection extends ObjectCollection implements CakeEventListener
      * @param bool $strict If methods are not found, trigger an error.
      * @return array All methods for all behaviors attached to this object
      */
-    public function dispatchMethod($model, $method, $params = array(), $strict = false)
+    public function dispatchMethod($model, $method, $params = [], $strict = false)
     {
         $method = $this->hasMethod($method, true);
 
         if ($strict && empty($method)) {
             trigger_error(__d('cake_dev', '%s - Method %s not found in any attached behavior', 'BehaviorCollection::dispatchMethod()', $method), E_USER_WARNING);
+
             return null;
         }
         if (empty($method)) {
-            return array('unhandled');
+            return ['unhandled'];
         }
         if (count($method) === 3) {
             array_unshift($params, $method[2]);
             unset($method[2]);
         }
+
         return call_user_func_array(
-            array($this->_loaded[$method[0]], $method[1]),
-            array_merge(array(&$model), $params)
+            [$this->_loaded[$method[0]], $method[1]],
+            array_merge([&$model], $params)
         );
     }
 
@@ -274,11 +275,14 @@ class BehaviorCollection extends ObjectCollection implements CakeEventListener
             if (preg_match($pattern . 'i', $method)) {
                 if ($callback) {
                     $target[] = $method;
+
                     return $target;
                 }
+
                 return true;
             }
         }
+
         return false;
     }
 
@@ -290,15 +294,15 @@ class BehaviorCollection extends ObjectCollection implements CakeEventListener
      */
     public function implementedEvents()
     {
-        return array(
-            'Model.beforeFind' => 'trigger',
-            'Model.afterFind' => 'trigger',
+        return [
+            'Model.beforeFind'     => 'trigger',
+            'Model.afterFind'      => 'trigger',
             'Model.beforeValidate' => 'trigger',
-            'Model.afterValidate' => 'trigger',
-            'Model.beforeSave' => 'trigger',
-            'Model.afterSave' => 'trigger',
-            'Model.beforeDelete' => 'trigger',
-            'Model.afterDelete' => 'trigger'
-        );
+            'Model.afterValidate'  => 'trigger',
+            'Model.beforeSave'     => 'trigger',
+            'Model.afterSave'      => 'trigger',
+            'Model.beforeDelete'   => 'trigger',
+            'Model.afterDelete'    => 'trigger'
+        ];
     }
 }

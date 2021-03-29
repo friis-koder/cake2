@@ -15,7 +15,6 @@
  * @since         CakePHP(tm) v 2.0
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('Dispatcher', 'Routing');
 App::uses('CakeTestCase', 'TestSuite');
 App::uses('Router', 'Routing');
@@ -31,11 +30,11 @@ App::uses('CakeEvent', 'Event');
  */
 class ControllerTestDispatcher extends Dispatcher
 {
-/**
- * The controller to use in the dispatch process
- *
- * @var Controller
- */
+    /**
+     * The controller to use in the dispatch process
+     *
+     * @var Controller
+     */
     public $testController = null;
 
     /**
@@ -57,7 +56,7 @@ class ControllerTestDispatcher extends Dispatcher
         if ($this->testController === null) {
             $this->testController = parent::_getController($request, $response);
         }
-        $this->testController->helpers = array_merge(array('InterceptContent'), $this->testController->helpers);
+        $this->testController->helpers = array_merge(['InterceptContent'], $this->testController->helpers);
         $this->testController->setRequest($request);
         $this->testController->response = $this->response;
         foreach ($this->testController->Components->loaded() as $component) {
@@ -69,6 +68,7 @@ class ControllerTestDispatcher extends Dispatcher
                 $object->request = $request;
             }
         }
+
         return $this->testController;
     }
 
@@ -93,12 +93,12 @@ class ControllerTestDispatcher extends Dispatcher
  */
 class InterceptContentHelper extends Helper
 {
-/**
- * Intercepts and stores the contents of the view before the layout is rendered
- *
- * @param string $viewFile The view file
- * @return void
- */
+    /**
+     * Intercepts and stores the contents of the view before the layout is rendered
+     *
+     * @param string $viewFile The view file
+     * @return void
+     */
     public function afterRender($viewFile)
     {
         $this->_View->assign('__view_no_layout__', $this->_View->fetch('content'));
@@ -114,11 +114,11 @@ class InterceptContentHelper extends Helper
  */
 abstract class ControllerTestCase extends CakeTestCase
 {
-/**
- * The controller to test in testAction
- *
- * @var Controller
- */
+    /**
+     * The controller to test in testAction
+     *
+     * @var Controller
+     */
     public $controller = null;
 
     /**
@@ -198,8 +198,9 @@ abstract class ControllerTestCase extends CakeTestCase
     public function __call($name, $arguments)
     {
         if ($name === 'testAction') {
-            return call_user_func_array(array($this, '_testAction'), $arguments);
+            return call_user_func_array([$this, '_testAction'], $arguments);
         }
+
         throw new BadMethodCallException("Method '{$name}' does not exist.");
     }
 
@@ -225,30 +226,30 @@ abstract class ControllerTestCase extends CakeTestCase
      * @return mixed The specified return type.
      * @triggers ControllerTestCase $Dispatch, array('request' => $request)
      */
-    protected function _testAction($url, $options = array())
+    protected function _testAction($url, $options = [])
     {
         $this->vars = $this->result = $this->view = $this->contents = $this->headers = null;
 
-        $options += array(
-            'data' => array(),
+        $options += [
+            'data'   => [],
             'method' => 'POST',
             'return' => 'result'
-        );
+        ];
 
         if (is_array($url)) {
             $url = Router::url($url);
         }
 
-        $restore = array('get' => $_GET, 'post' => $_POST);
+        $restore = ['get' => $_GET, 'post' => $_POST];
 
         $_SERVER['REQUEST_METHOD'] = strtoupper($options['method']);
         if (is_array($options['data'])) {
             if (strtoupper($options['method']) === 'GET') {
                 $_GET = $options['data'];
-                $_POST = array();
+                $_POST = [];
             } else {
                 $_POST = $options['data'];
-                $_GET = array();
+                $_GET = [];
             }
         }
 
@@ -260,7 +261,7 @@ abstract class ControllerTestCase extends CakeTestCase
 
         $_SERVER['REQUEST_URI'] = $url;
         /** @var CakeRequest|PHPUnit_Framework_MockObject_MockObject $request */
-        $request = $this->getMock('CakeRequest', array('_readInput'));
+        $request = $this->getMock('CakeRequest', ['_readInput']);
 
         if (is_string($options['data'])) {
             $request->expects($this->any())
@@ -271,13 +272,14 @@ abstract class ControllerTestCase extends CakeTestCase
         $Dispatch = $this->_createDispatcher();
         foreach (Router::$routes as $route) {
             if ($route instanceof RedirectRoute) {
-                $route->response = $this->getMock('CakeResponse', array('send'));
+                $route->response = $this->getMock('CakeResponse', ['send']);
             }
         }
         $Dispatch->loadRoutes = $this->loadRoutes;
-        $Dispatch->parseParams(new CakeEvent('ControllerTestCase', $Dispatch, array('request' => $request)));
+        $Dispatch->parseParams(new CakeEvent('ControllerTestCase', $Dispatch, ['request' => $request]));
         if (!isset($request->params['controller']) && Router::currentRoute()) {
             $this->headers = Router::currentRoute()->response->header();
+
             return null;
         }
         if ($this->_dirtyController) {
@@ -288,14 +290,14 @@ abstract class ControllerTestCase extends CakeTestCase
         if ($this->controller === null && $this->autoMock) {
             $this->generate($plugin . Inflector::camelize($request->params['controller']));
         }
-        $params = array();
+        $params = [];
         if ($options['return'] === 'result') {
             $params['return'] = 1;
             $params['bare'] = 1;
             $params['requested'] = 1;
         }
         $Dispatch->testController = $this->controller;
-        $Dispatch->response = $this->getMock($this->_responseClass, array('send', '_clearBuffer'));
+        $Dispatch->response = $this->getMock($this->_responseClass, ['send', '_clearBuffer']);
         $this->result = $Dispatch->dispatch($request, $Dispatch->response, $params);
 
         // Clear out any stored requests.
@@ -349,7 +351,7 @@ abstract class ControllerTestCase extends CakeTestCase
      * @throws MissingControllerException When controllers could not be created.
      * @throws MissingComponentException When components could not be created.
      */
-    public function generate($controller, $mocks = array())
+    public function generate($controller, $mocks = [])
     {
         list($plugin, $controller) = pluginSplit($controller);
         if ($plugin) {
@@ -358,27 +360,27 @@ abstract class ControllerTestCase extends CakeTestCase
         }
         App::uses($controller . 'Controller', $plugin . 'Controller');
         if (!class_exists($controller . 'Controller')) {
-            throw new MissingControllerException(array(
-                'class' => $controller . 'Controller',
+            throw new MissingControllerException([
+                'class'  => $controller . 'Controller',
                 'plugin' => substr($plugin, 0, -1)
-            ));
+            ]);
         }
         ClassRegistry::flush();
 
-        $mocks = array_merge_recursive(array(
-            'methods' => array('_stop'),
-            'models' => array(),
-            'components' => array()
-        ), (array)$mocks);
+        $mocks = array_merge_recursive([
+            'methods'    => ['_stop'],
+            'models'     => [],
+            'components' => []
+        ], (array)$mocks);
 
         list($plugin, $name) = pluginSplit($controller);
         /** @var Controller|PHPUnit_Framework_MockObject_MockObject $controllerObj */
-        $controllerObj = $this->getMock($name . 'Controller', $mocks['methods'], array(), '', false);
+        $controllerObj = $this->getMock($name . 'Controller', $mocks['methods'], [], '', false);
         $controllerObj->name = $name;
         /** @var CakeRequest|PHPUnit_Framework_MockObject_MockObject $request */
         $request = $this->getMock('CakeRequest');
         /** @var CakeResponse|PHPUnit_Framework_MockObject_MockObject $response */
-        $response = $this->getMock($this->_responseClass, array('_sendHeader'));
+        $response = $this->getMock($this->_responseClass, ['_sendHeader']);
         $controllerObj->__construct($request, $response);
         $controllerObj->Components->setController($controllerObj);
 
@@ -389,7 +391,7 @@ abstract class ControllerTestCase extends CakeTestCase
                 $methods = true;
             }
             if ($methods === true) {
-                $methods = array();
+                $methods = [];
             }
             $this->getMockForModel($model, $methods, $config);
         }
@@ -400,9 +402,9 @@ abstract class ControllerTestCase extends CakeTestCase
                 $methods = true;
             }
             if ($methods === true) {
-                $methods = array();
+                $methods = [];
             }
-            $config = isset($controllerObj->components[$component]) ? $controllerObj->components[$component] : array();
+            $config = isset($controllerObj->components[$component]) ? $controllerObj->components[$component] : [];
             if (isset($config['className'])) {
                 $alias = $component;
                 $component = $config['className'];
@@ -414,12 +416,12 @@ abstract class ControllerTestCase extends CakeTestCase
             $componentClass = $name . 'Component';
             App::uses($componentClass, $plugin . 'Controller/Component');
             if (!class_exists($componentClass)) {
-                throw new MissingComponentException(array(
+                throw new MissingComponentException([
                     'class' => $componentClass
-                ));
+                ]);
             }
             /** @var Component|PHPUnit_Framework_MockObject_MockObject $componentObj */
-            $componentObj = $this->getMock($componentClass, $methods, array($controllerObj->Components, $config));
+            $componentObj = $this->getMock($componentClass, $methods, [$controllerObj->Components, $config]);
             $controllerObj->Components->set($alias, $componentObj);
             $controllerObj->Components->enable($alias);
             unset($alias);
@@ -429,6 +431,7 @@ abstract class ControllerTestCase extends CakeTestCase
         $this->_dirtyController = false;
 
         $this->controller = $controllerObj;
+
         return $this->controller;
     }
 

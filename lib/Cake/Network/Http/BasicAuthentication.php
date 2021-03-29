@@ -23,14 +23,14 @@
  */
 class BasicAuthentication
 {
-/**
- * Authentication
- *
- * @param HttpSocket $http Http socket instance.
- * @param array &$authInfo Authentication info.
- * @return void
- * @see http://www.ietf.org/rfc/rfc2617.txt
- */
+    /**
+     * Authentication
+     *
+     * @param HttpSocket $http Http socket instance.
+     * @param array &$authInfo Authentication info.
+     * @return void
+     * @see http://www.ietf.org/rfc/rfc2617.txt
+     */
     public static function authentication(HttpSocket $http, &$authInfo)
     {
         if (isset($authInfo['user'], $authInfo['pass'])) {

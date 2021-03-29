@@ -20,20 +20,20 @@
  */
 abstract class AbstractPasswordHasher
 {
-/**
- * Configurations for this object. Settings passed from authenticator class to
- * the constructor are merged with this property.
- *
- * @var array
- */
-    protected $_config = array();
+    /**
+     * Configurations for this object. Settings passed from authenticator class to
+     * the constructor are merged with this property.
+     *
+     * @var array
+     */
+    protected $_config = [];
 
     /**
      * Constructor
      *
      * @param array $config Array of config.
      */
-    public function __construct($config = array())
+    public function __construct($config = [])
     {
         $this->config($config);
     }
@@ -49,6 +49,7 @@ abstract class AbstractPasswordHasher
         if (is_array($config)) {
             $this->_config = array_merge($this->_config, $config);
         }
+
         return $this->_config;
     }
 

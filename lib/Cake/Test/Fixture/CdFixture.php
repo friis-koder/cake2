@@ -23,24 +23,24 @@
  */
 class CdFixture extends CakeTestFixture
 {
-/**
- * fields property
- *
- * @var array
- */
-    public $fields = array(
-        'id' => array('type' => 'integer', 'key' => 'primary'),
-        'title' => array('type' => 'string', 'length' => 255),
-        'artist' => array('type' => 'string', 'length' => 255, 'null' => true),
-        'genre' => array('type' => 'string', 'length' => 255, 'null' => true)
-    );
+    /**
+     * fields property
+     *
+     * @var array
+     */
+    public $fields = [
+        'id'     => ['type' => 'integer', 'key' => 'primary'],
+        'title'  => ['type' => 'string', 'length' => 255],
+        'artist' => ['type' => 'string', 'length' => 255, 'null' => true],
+        'genre'  => ['type' => 'string', 'length' => 255, 'null' => true]
+    ];
 
     /**
      * records property
      *
      * @var array
      */
-    public $records = array(
-        array('id' => 1, 'title' => 'Grace', 'artist' => 'Jeff Buckley', 'genre' => 'awesome')
-    );
+    public $records = [
+        ['id' => 1, 'title' => 'Grace', 'artist' => 'Jeff Buckley', 'genre' => 'awesome']
+    ];
 }

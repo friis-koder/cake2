@@ -15,7 +15,6 @@
  * @since         CakePHP(tm) v 2.0
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('Model', 'Model');
 App::uses('CakeSession', 'Model/Datasource');
 App::uses('DatabaseSession', 'Model/Datasource/Session');
@@ -45,7 +44,7 @@ class DatabaseSessionTest extends CakeTestCase
      *
      * @var string
      */
-    public $fixtures = array('core.session');
+    public $fixtures = ['core.session'];
 
     /**
      * test case startup
@@ -55,9 +54,9 @@ class DatabaseSessionTest extends CakeTestCase
     public static function setupBeforeClass()
     {
         static::$_sessionBackup = Configure::read('Session');
-        Configure::write('Session.handler', array(
+        Configure::write('Session.handler', [
             'model' => 'SessionTestModel',
-        ));
+        ]);
         Configure::write('Session.timeout', 100);
     }
 
@@ -204,8 +203,8 @@ class DatabaseSessionTest extends CakeTestCase
 
         $mockedModel = $this->getMockForModel(
             'SessionTestModel',
-            array('exists'),
-            array('alias' => 'MockedSessionTestModel', 'table' => 'sessions')
+            ['exists'],
+            ['alias' => 'MockedSessionTestModel', 'table' => 'sessions']
         );
         Configure::write('Session.handler.model', 'MockedSessionTestModel');
 

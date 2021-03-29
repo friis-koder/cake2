@@ -21,14 +21,14 @@
  */
 interface ConfigReaderInterface
 {
-/**
- * Read method is used for reading configuration information from sources.
- * These sources can either be static resources like files, or dynamic ones like
- * a database, or other datasource.
- *
- * @param string $key Key to read.
- * @return array An array of data to merge into the runtime configuration
- */
+    /**
+     * Read method is used for reading configuration information from sources.
+     * These sources can either be static resources like files, or dynamic ones like
+     * a database, or other datasource.
+     *
+     * @param string $key Key to read.
+     * @return array An array of data to merge into the runtime configuration
+     */
     public function read($key);
 
     /**

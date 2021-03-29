@@ -9,7 +9,6 @@
  * @package       app.View.Helper
  * @since         CakePHP(tm) v 0.2.9
  */
-
 App::uses('Helper', 'View');
 
 /**

@@ -27,17 +27,17 @@
  */
 class FlagTreeFixture extends CakeTestFixture
 {
-/**
- * fields property
- *
- * @var array
- */
-    public $fields = array(
-        'id' => array('type' => 'integer', 'key' => 'primary'),
-        'name' => array('type' => 'string', 'null' => false),
+    /**
+     * fields property
+     *
+     * @var array
+     */
+    public $fields = [
+        'id'        => ['type' => 'integer', 'key' => 'primary'],
+        'name'      => ['type' => 'string', 'null' => false],
         'parent_id' => 'integer',
-        'lft' => array('type' => 'integer', 'null' => false),
-        'rght' => array('type' => 'integer', 'null' => false),
-        'flag' => array('type' => 'integer', 'null' => false, 'length' => 1, 'default' => 0)
-    );
+        'lft'       => ['type' => 'integer', 'null' => false],
+        'rght'      => ['type' => 'integer', 'null' => false],
+        'flag'      => ['type' => 'integer', 'null' => false, 'length' => 1, 'default' => 0]
+    ];
 }

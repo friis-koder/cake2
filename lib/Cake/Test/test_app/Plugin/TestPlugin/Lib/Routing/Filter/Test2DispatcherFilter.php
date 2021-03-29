@@ -13,7 +13,6 @@
  * @since		  CakePHP(tm) v 2.2
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('DispatcherFilter', 'Routing');
 
 /**
@@ -27,6 +26,7 @@ class Test2DispatcherFilter extends DispatcherFilter
     {
         $event->data['response']->statusCode(500);
         $event->stopPropagation();
+
         return $event->data['response'];
     }
 

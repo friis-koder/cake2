@@ -14,7 +14,6 @@
  * @since         CakePHP(tm) v 1.3
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('AppShell', 'Console/Command');
 App::uses('Folder', 'Utility');
 
@@ -26,12 +25,12 @@ App::uses('Folder', 'Utility');
  */
 class TemplateTask extends AppShell
 {
-/**
- * variables to add to template scope
- *
- * @var array
- */
-    public $templateVars = array();
+    /**
+     * variables to add to template scope
+     *
+     * @var array
+     */
+    public $templateVars = [];
 
     /**
      * Paths to look for templates on.
@@ -39,7 +38,7 @@ class TemplateTask extends AppShell
      *
      * @var array
      */
-    public $templatePaths = array();
+    public $templatePaths = [];
 
     /**
      * Initialize callback. Setup paths for the template task.
@@ -83,7 +82,7 @@ class TemplateTask extends AppShell
             $paths[$i] = rtrim($path, DS) . DS;
         }
 
-        $themes = array();
+        $themes = [];
         foreach ($paths as $path) {
             $Folder = new Folder($path . 'Templates', false);
             $contents = $Folder->read();
@@ -101,6 +100,7 @@ class TemplateTask extends AppShell
                 }
             }
         }
+
         return $themes;
     }
 
@@ -121,7 +121,7 @@ class TemplateTask extends AppShell
                 $data = $one;
             }
         } else {
-            $data = array($one => $two);
+            $data = [$one => $two];
         }
 
         if (!$data) {
@@ -154,8 +154,10 @@ class TemplateTask extends AppShell
             ob_implicit_flush(0);
             include $templateFile;
             $content = ob_get_clean();
+
             return $content;
         }
+
         return '';
     }
 
@@ -171,6 +173,7 @@ class TemplateTask extends AppShell
     {
         if (count($this->templatePaths) === 1) {
             $paths = array_values($this->templatePaths);
+
             return $paths[0];
         }
         if (!empty($this->params['theme']) && isset($this->templatePaths[$this->params['theme']])) {
@@ -183,7 +186,7 @@ class TemplateTask extends AppShell
         $this->hr();
 
         $i = 1;
-        $indexedPaths = array();
+        $indexedPaths = [];
         foreach ($this->templatePaths as $key => $path) {
             $this->out($i . '. ' . $key);
             $indexedPaths[$i] = $path;
@@ -192,6 +195,7 @@ class TemplateTask extends AppShell
         $index = $this->in(__d('cake_console', 'Which bake theme would you like to use?'), range(1, $i - 1), 1);
         $themeNames = array_keys($this->templatePaths);
         $this->params['theme'] = $themeNames[$index - 1];
+
         return $indexedPaths[$index];
     }
 
@@ -217,6 +221,7 @@ class TemplateTask extends AppShell
             }
         }
         $this->err(__d('cake_console', 'Could not find template for %s', $filename));
+
         return false;
     }
 }

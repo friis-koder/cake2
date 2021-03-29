@@ -25,11 +25,11 @@
  */
 class AllNetworkTest extends PHPUnit_Framework_TestSuite
 {
-/**
- * suite method, defines tests for this suite.
- *
- * @return void
- */
+    /**
+     * suite method, defines tests for this suite.
+     *
+     * @return void
+     */
     public static function suite()
     {
         $suite = new CakeTestSuite('All Network related class tests');
@@ -37,6 +37,7 @@ class AllNetworkTest extends PHPUnit_Framework_TestSuite
         $suite->addTestDirectory(CORE_TEST_CASES . DS . 'Network');
         $suite->addTestDirectory(CORE_TEST_CASES . DS . 'Network' . DS . 'Email');
         $suite->addTestDirectory(CORE_TEST_CASES . DS . 'Network' . DS . 'Http');
+
         return $suite;
     }
 }

@@ -14,7 +14,6 @@
  * @since         CakePHP(tm) v 1.2
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('AppShell', 'Console/Command');
 
 /**
@@ -24,11 +23,11 @@ App::uses('AppShell', 'Console/Command');
  */
 class DbConfigTask extends AppShell
 {
-/**
- * path to CONFIG directory
- *
- * @var string
- */
+    /**
+     * path to CONFIG directory
+     *
+     * @var string
+     */
     public $path = null;
 
     /**
@@ -36,19 +35,19 @@ class DbConfigTask extends AppShell
      *
      * @var array
      */
-    protected $_defaultConfig = array(
-        'name' => 'default',
+    protected $_defaultConfig = [
+        'name'       => 'default',
         'datasource' => 'Database/Mysql',
         'persistent' => 'false',
-        'host' => 'localhost',
-        'login' => 'root',
-        'password' => 'password',
-        'database' => 'project_name',
-        'schema' => null,
-        'prefix' => null,
-        'encoding' => null,
-        'port' => null
-    );
+        'host'       => 'localhost',
+        'login'      => 'root',
+        'password'   => 'password',
+        'database'   => 'project_name',
+        'schema'     => null,
+        'prefix'     => null,
+        'encoding'   => null,
+        'port'       => null
+    ];
 
     /**
      * String name of the database config class name.
@@ -77,6 +76,7 @@ class DbConfigTask extends AppShell
     {
         if (empty($this->args)) {
             $this->_interactive();
+
             return $this->_stop();
         }
     }
@@ -92,7 +92,7 @@ class DbConfigTask extends AppShell
         $this->out(__d('cake_console', 'Database Configuration:'));
         $this->hr();
         $done = false;
-        $dbConfigs = array();
+        $dbConfigs = [];
 
         while (!$done) {
             $name = '';
@@ -108,9 +108,9 @@ class DbConfigTask extends AppShell
                 }
             }
 
-            $datasource = $this->in(__d('cake_console', 'Datasource:'), array('Mysql', 'Postgres', 'Sqlite', 'Sqlserver'), 'Mysql');
+            $datasource = $this->in(__d('cake_console', 'Datasource:'), ['Mysql', 'Postgres', 'Sqlite', 'Sqlserver'], 'Mysql');
 
-            $persistent = $this->in(__d('cake_console', 'Persistent Connection?'), array('y', 'n'), 'n');
+            $persistent = $this->in(__d('cake_console', 'Persistent Connection?'), ['y', 'n'], 'n');
             if (strtolower($persistent) === 'n') {
                 $persistent = 'false';
             } else {
@@ -142,7 +142,7 @@ class DbConfigTask extends AppShell
                 $password = $this->in(__d('cake_console', 'Password:'));
 
                 if (!$password) {
-                    $blank = $this->in(__d('cake_console', 'The password you supplied was empty. Use an empty password?'), array('y', 'n'), 'n');
+                    $blank = $this->in(__d('cake_console', 'The password you supplied was empty. Use an empty password?'), ['y', 'n'], 'n');
                     if ($blank === 'y') {
                         $blankPassword = true;
                     }
@@ -196,6 +196,7 @@ class DbConfigTask extends AppShell
 
         $this->bake($dbConfigs);
         config('database');
+
         return true;
     }
 
@@ -239,11 +240,12 @@ class DbConfigTask extends AppShell
         }
 
         $this->hr();
-        $looksGood = $this->in(__d('cake_console', 'Look okay?'), array('y', 'n'), 'y');
+        $looksGood = $this->in(__d('cake_console', 'Look okay?'), ['y', 'n'], 'y');
 
         if (strtolower($looksGood) === 'y') {
             return $config;
         }
+
         return false;
     }
 
@@ -257,11 +259,12 @@ class DbConfigTask extends AppShell
     {
         if (!is_dir($this->path)) {
             $this->err(__d('cake_console', '%s not found', $this->path));
+
             return false;
         }
 
         $filename = $this->path . 'database.php';
-        $oldConfigs = array();
+        $oldConfigs = [];
 
         if (file_exists($filename)) {
             config('database');
@@ -283,19 +286,19 @@ class DbConfigTask extends AppShell
 
                 $info['persistent'] = var_export((bool)$info['persistent'], true);
 
-                $oldConfigs[] = array(
-                    'name' => $configName,
+                $oldConfigs[] = [
+                    'name'       => $configName,
                     'datasource' => $info['datasource'],
                     'persistent' => $info['persistent'],
-                    'host' => $info['host'],
-                    'port' => $info['port'],
-                    'login' => $info['login'],
-                    'password' => $info['password'],
-                    'database' => $info['database'],
-                    'prefix' => $info['prefix'],
-                    'schema' => $info['schema'],
-                    'encoding' => $info['encoding']
-                );
+                    'host'       => $info['host'],
+                    'port'       => $info['port'],
+                    'login'      => $info['login'],
+                    'password'   => $info['password'],
+                    'database'   => $info['database'],
+                    'prefix'     => $info['prefix'],
+                    'schema'     => $info['schema'],
+                    'encoding'   => $info['encoding']
+                ];
             }
         }
 
@@ -348,6 +351,7 @@ class DbConfigTask extends AppShell
 
         $out .= "}\n";
         $filename = $this->path . 'database.php';
+
         return $this->createFile($filename, $out);
     }
 
@@ -370,6 +374,7 @@ class DbConfigTask extends AppShell
         if (count($connections) > 1) {
             $useDbConfig = $this->in(__d('cake_console', 'Use Database Config') . ':', $connections, $useDbConfig);
         }
+
         return $useDbConfig;
     }
 

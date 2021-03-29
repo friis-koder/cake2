@@ -23,14 +23,14 @@
  */
 class DigestAuthentication
 {
-/**
- * Authentication
- *
- * @param HttpSocket $http Http socket instance.
- * @param array &$authInfo Authentication info.
- * @return void
- * @link http://www.ietf.org/rfc/rfc2617.txt
- */
+    /**
+     * Authentication
+     *
+     * @param HttpSocket $http Http socket instance.
+     * @param array &$authInfo Authentication info.
+     * @return void
+     * @link http://www.ietf.org/rfc/rfc2617.txt
+     */
     public static function authentication(HttpSocket $http, &$authInfo)
     {
         if (isset($authInfo['user'], $authInfo['pass'])) {
@@ -66,6 +66,7 @@ class DigestAuthentication
         if (!empty($authInfo['qop']) && empty($authInfo['nc'])) {
             $authInfo['nc'] = 1;
         }
+
         return true;
     }
 
@@ -90,7 +91,7 @@ class DigestAuthentication
         }
 
         $authHeader = 'Digest ';
-        $authHeader .= 'username="' . str_replace(array('\\', '"'), array('\\\\', '\\"'), $authInfo['user']) . '", ';
+        $authHeader .= 'username="' . str_replace(['\\', '"'], ['\\\\', '\\"'], $authInfo['user']) . '", ';
         $authHeader .= 'realm="' . $authInfo['realm'] . '", ';
         $authHeader .= 'nonce="' . $authInfo['nonce'] . '", ';
         $authHeader .= 'uri="' . $http->request['uri']['path'] . '", ';
@@ -101,6 +102,7 @@ class DigestAuthentication
         if (!empty($authInfo['qop'])) {
             $authHeader .= ', qop="auth", nc=' . $nc . ', cnonce="' . $authInfo['cnonce'] . '"';
         }
+
         return $authHeader;
     }
 }

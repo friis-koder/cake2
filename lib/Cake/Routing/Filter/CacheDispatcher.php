@@ -12,7 +12,6 @@
  * @since         CakePHP(tm) v 2.2
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('DispatcherFilter', 'Routing');
 
 /**
@@ -23,12 +22,12 @@ App::uses('DispatcherFilter', 'Routing');
  */
 class CacheDispatcher extends DispatcherFilter
 {
-/**
- * Default priority for all methods in this filter
- * This filter should run before the request gets parsed by router
- *
- * @var int
- */
+    /**
+     * Default priority for all methods in this filter
+     * This filter should run before the request gets parsed by router
+     *
+     * @var int
+     */
     public $priority = 9;
 
     /**
@@ -66,6 +65,7 @@ class CacheDispatcher extends DispatcherFilter
             if ($result !== false) {
                 $event->stopPropagation();
                 $event->data['response']->body($result);
+
                 return $event->data['response'];
             }
         }

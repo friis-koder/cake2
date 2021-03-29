@@ -23,25 +23,25 @@
  */
 class AcoActionFixture extends CakeTestFixture
 {
-/**
- * fields property
- *
- * @var array
- */
-    public $fields = array(
-        'id' => array('type' => 'integer', 'key' => 'primary'),
-        'parent_id' => array('type' => 'integer', 'length' => 10, 'null' => true),
-        'model' => array('type' => 'string', 'default' => ''),
-        'foreign_key' => array('type' => 'integer', 'length' => 10, 'null' => true),
-        'alias' => array('type' => 'string', 'default' => ''),
-        'lft' => array('type' => 'integer', 'length' => 10, 'null' => true),
-        'rght' => array('type' => 'integer', 'length' => 10, 'null' => true)
-    );
+    /**
+     * fields property
+     *
+     * @var array
+     */
+    public $fields = [
+        'id'          => ['type' => 'integer', 'key' => 'primary'],
+        'parent_id'   => ['type' => 'integer', 'length' => 10, 'null' => true],
+        'model'       => ['type' => 'string', 'default' => ''],
+        'foreign_key' => ['type' => 'integer', 'length' => 10, 'null' => true],
+        'alias'       => ['type' => 'string', 'default' => ''],
+        'lft'         => ['type' => 'integer', 'length' => 10, 'null' => true],
+        'rght'        => ['type' => 'integer', 'length' => 10, 'null' => true]
+    ];
 
     /**
      * records property
      *
      * @var array
      */
-    public $records = array();
+    public $records = [];
 }

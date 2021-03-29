@@ -23,11 +23,11 @@
  */
 class RedisEngine extends CacheEngine
 {
-/**
- * Redis wrapper.
- *
- * @var Redis
- */
+    /**
+     * Redis wrapper.
+     *
+     * @var Redis
+     */
     protected $_Redis = null;
 
     /**
@@ -42,7 +42,7 @@ class RedisEngine extends CacheEngine
      *
      * @var array
      */
-    public $settings = array();
+    public $settings = [];
 
     /**
      * Initialize the Cache Engine
@@ -53,23 +53,23 @@ class RedisEngine extends CacheEngine
      * @param array $settings array of setting for the engine
      * @return bool True if the engine has been successfully initialized, false if not
      */
-    public function init($settings = array())
+    public function init($settings = [])
     {
         if (!class_exists('Redis')) {
             return false;
         }
         parent::init(
-            array_merge(array(
-            'engine' => 'Redis',
-            'prefix' => Inflector::slug(APP_DIR) . '_',
-            'server' => '127.0.0.1',
-            'database' => 0,
-            'port' => 6379,
-            'password' => false,
-            'timeout' => 0,
-            'persistent' => true,
-            'unix_socket' => false
-            ), $settings)
+            array_merge([
+                'engine'      => 'Redis',
+                'prefix'      => Inflector::slug(APP_DIR) . '_',
+                'server'      => '127.0.0.1',
+                'database'    => 0,
+                'port'        => 6379,
+                'password'    => false,
+                'timeout'     => 0,
+                'persistent'  => true,
+                'unix_socket' => false
+            ], $settings)
         );
 
         return $this->_connect();
@@ -101,6 +101,7 @@ class RedisEngine extends CacheEngine
         if ($this->settings['password'] && !$this->_Redis->auth($this->settings['password'])) {
             return false;
         }
+
         return $this->_Redis->select($this->settings['database']);
     }
 
@@ -144,6 +145,7 @@ class RedisEngine extends CacheEngine
         if ($value !== false && is_string($value)) {
             return unserialize($value);
         }
+
         return $value;
     }
 
@@ -211,7 +213,7 @@ class RedisEngine extends CacheEngine
      */
     public function groups()
     {
-        $result = array();
+        $result = [];
         foreach ($this->settings['groups'] as $group) {
             $value = $this->_Redis->get($this->settings['prefix'] . $group);
             if (!$value) {
@@ -220,6 +222,7 @@ class RedisEngine extends CacheEngine
             }
             $result[] = $group . $value;
         }
+
         return $result;
     }
 
@@ -266,6 +269,7 @@ class RedisEngine extends CacheEngine
         if ($result) {
             return $this->_Redis->setex($key, $duration, $value);
         }
+
         return false;
     }
 }

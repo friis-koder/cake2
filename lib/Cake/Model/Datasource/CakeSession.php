@@ -20,7 +20,6 @@
  * @since         CakePHP(tm) v .0.10.0.1222
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('Hash', 'Utility');
 App::uses('Security', 'Utility');
 
@@ -34,11 +33,11 @@ App::uses('Security', 'Utility');
  */
 class CakeSession
 {
-/**
- * True if the Session is still valid
- *
- * @var bool
- */
+    /**
+     * True if the Session is still valid
+     *
+     * @var bool
+     */
     public static $valid = false;
 
     /**
@@ -183,6 +182,7 @@ class CakeSession
     {
         if (empty($base)) {
             static::$path = '/';
+
             return;
         }
         if (strpos($base, 'index.php') !== false) {
@@ -227,6 +227,7 @@ class CakeSession
 
         static::$error = false;
         static::$valid = true;
+
         return static::started();
     }
 
@@ -240,6 +241,7 @@ class CakeSession
         if (function_exists('session_status')) {
             return isset($_SESSION) && (session_status() === PHP_SESSION_ACTIVE);
         }
+
         return isset($_SESSION) && session_id();
     }
 
@@ -284,6 +286,7 @@ class CakeSession
         if (static::started()) {
             return session_id();
         }
+
         return static::$id;
     }
 
@@ -297,8 +300,10 @@ class CakeSession
     {
         if (static::check($name)) {
             static::_overwrite($_SESSION, Hash::remove($_SESSION, $name));
+
             return !static::check($name);
         }
+
         return false;
     }
 
@@ -334,6 +339,7 @@ class CakeSession
         if (!is_array(static::$error) || !array_key_exists($errorNumber, static::$error)) {
             return false;
         }
+
         return static::$error[$errorNumber];
     }
 
@@ -347,6 +353,7 @@ class CakeSession
         if (static::$lastError) {
             return static::_error(static::$lastError);
         }
+
         return false;
     }
 
@@ -365,6 +372,7 @@ class CakeSession
                 static::_setError(1, 'Session Highjacking Attempted !!!');
             }
         }
+
         return static::$valid;
     }
 
@@ -387,6 +395,7 @@ class CakeSession
             Configure::read('Session.checkAgent') === false ||
             isset($userAgent) && static::$_userAgent === $userAgent
         );
+
         return ($validAgent && static::$time <= $time);
     }
 
@@ -404,6 +413,7 @@ class CakeSession
         if (empty(static::$_userAgent)) {
             CakeSession::init(static::$path);
         }
+
         return static::$_userAgent;
     }
 
@@ -427,6 +437,7 @@ class CakeSession
         if (isset($result)) {
             return $result;
         }
+
         return null;
     }
 
@@ -441,6 +452,7 @@ class CakeSession
             return $_SESSION;
         }
         static::_setError(2, 'No Session vars set');
+
         return false;
     }
 
@@ -459,7 +471,7 @@ class CakeSession
 
         $write = $name;
         if (!is_array($name)) {
-            $write = array($name => $value);
+            $write = [$name => $value];
         }
         foreach ($write as $key => $val) {
             static::_overwrite($_SESSION, Hash::insert($_SESSION, $key, $val));
@@ -467,6 +479,7 @@ class CakeSession
                 return false;
             }
         }
+
         return true;
     }
 
@@ -486,6 +499,7 @@ class CakeSession
         if ($value !== null) {
             static::_overwrite($_SESSION, Hash::remove($_SESSION, $name));
         }
+
         return $value;
     }
 
@@ -525,7 +539,8 @@ class CakeSession
     public static function clear($renew = true)
     {
         if (!$renew) {
-            $_SESSION = array();
+            $_SESSION = [];
+
             return;
         }
 
@@ -612,12 +627,12 @@ class CakeSession
             $handler = static::_getHandler($sessionConfig['handler']['engine']);
             if (!function_exists('session_status') || session_status() !== PHP_SESSION_ACTIVE) {
                 session_set_save_handler(
-                    array($handler, 'open'),
-                    array($handler, 'close'),
-                    array($handler, 'read'),
-                    array($handler, 'write'),
-                    array($handler, 'destroy'),
-                    array($handler, 'gc')
+                    [$handler, 'open'],
+                    [$handler, 'close'],
+                    [$handler, 'read'],
+                    [$handler, 'write'],
+                    [$handler, 'destroy'],
+                    [$handler, 'gc']
                 );
             }
         }
@@ -677,6 +692,7 @@ class CakeSession
         if ($handler instanceof CakeSessionHandlerInterface) {
             return $handler;
         }
+
         throw new CakeSessionException(__d('cake_dev', 'Chosen SessionHandler does not implement CakeSessionHandlerInterface it cannot be used with an engine key.'));
     }
 
@@ -688,63 +704,64 @@ class CakeSession
      */
     protected static function _defaultConfig($name)
     {
-        $defaults = array(
-            'php' => array(
-                'cookie' => 'CAKEPHP',
+        $defaults = [
+            'php' => [
+                'cookie'  => 'CAKEPHP',
                 'timeout' => 240,
-                'ini' => array(
+                'ini'     => [
                     'session.use_trans_sid' => 0,
-                    'session.cookie_path' => static::$path
-                )
-            ),
-            'cake' => array(
-                'cookie' => 'CAKEPHP',
+                    'session.cookie_path'   => static::$path
+                ]
+            ],
+            'cake' => [
+                'cookie'  => 'CAKEPHP',
                 'timeout' => 240,
-                'ini' => array(
-                    'session.use_trans_sid' => 0,
-                    'url_rewriter.tags' => '',
+                'ini'     => [
+                    'session.use_trans_sid'     => 0,
+                    'url_rewriter.tags'         => '',
                     'session.serialize_handler' => 'php',
-                    'session.use_cookies' => 1,
-                    'session.cookie_path' => static::$path,
-                    'session.save_path' => TMP . 'sessions',
-                    'session.save_handler' => 'files'
-                )
-            ),
-            'cache' => array(
-                'cookie' => 'CAKEPHP',
+                    'session.use_cookies'       => 1,
+                    'session.cookie_path'       => static::$path,
+                    'session.save_path'         => TMP . 'sessions',
+                    'session.save_handler'      => 'files'
+                ]
+            ],
+            'cache' => [
+                'cookie'  => 'CAKEPHP',
                 'timeout' => 240,
-                'ini' => array(
+                'ini'     => [
                     'session.use_trans_sid' => 0,
-                    'url_rewriter.tags' => '',
-                    'session.use_cookies' => 1,
-                    'session.cookie_path' => static::$path,
-                    'session.save_handler' => 'user',
-                ),
-                'handler' => array(
+                    'url_rewriter.tags'     => '',
+                    'session.use_cookies'   => 1,
+                    'session.cookie_path'   => static::$path,
+                    'session.save_handler'  => 'user',
+                ],
+                'handler' => [
                     'engine' => 'CacheSession',
                     'config' => 'default'
-                )
-            ),
-            'database' => array(
-                'cookie' => 'CAKEPHP',
+                ]
+            ],
+            'database' => [
+                'cookie'  => 'CAKEPHP',
                 'timeout' => 240,
-                'ini' => array(
-                    'session.use_trans_sid' => 0,
-                    'url_rewriter.tags' => '',
-                    'session.use_cookies' => 1,
-                    'session.cookie_path' => static::$path,
-                    'session.save_handler' => 'user',
+                'ini'     => [
+                    'session.use_trans_sid'     => 0,
+                    'url_rewriter.tags'         => '',
+                    'session.use_cookies'       => 1,
+                    'session.cookie_path'       => static::$path,
+                    'session.save_handler'      => 'user',
                     'session.serialize_handler' => 'php',
-                ),
-                'handler' => array(
+                ],
+                'handler' => [
                     'engine' => 'DatabaseSession',
-                    'model' => 'Session'
-                )
-            )
-        );
+                    'model'  => 'Session'
+                ]
+            ]
+        ];
         if (isset($defaults[$name])) {
             return $defaults[$name];
         }
+
         return false;
     }
 
@@ -761,7 +778,7 @@ class CakeSession
 
         if (headers_sent()) {
             if (empty($_SESSION)) {
-                $_SESSION = array();
+                $_SESSION = [];
             }
         } else {
             $limit = Configure::read('Session.cacheLimiter');
@@ -770,6 +787,7 @@ class CakeSession
             }
             session_start();
         }
+
         return true;
     }
 
@@ -797,7 +815,7 @@ class CakeSession
                     }
                 }
             } else {
-                $_SESSION = array();
+                $_SESSION = [];
                 static::destroy();
                 static::_setError(1, 'Session Highjacking Attempted !!!');
                 static::_startSession();
@@ -850,7 +868,7 @@ class CakeSession
     protected static function _setError($errorNumber, $errorMessage)
     {
         if (static::$error === false) {
-            static::$error = array();
+            static::$error = [];
         }
         static::$error[$errorNumber] = $errorMessage;
         static::$lastError = $errorNumber;

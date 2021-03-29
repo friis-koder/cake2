@@ -15,7 +15,6 @@
  * @since         CakePHP(tm) v 1.2.0.4206
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('CakeSocket', 'Network');
 
 /**
@@ -25,15 +24,15 @@ App::uses('CakeSocket', 'Network');
  */
 class CakeSocketTest extends CakeTestCase
 {
-/**
- * setUp method
- *
- * @return void
- */
+    /**
+     * setUp method
+     *
+     * @return void
+     */
     public function setUp()
     {
         parent::setUp();
-        $this->Socket = new CakeSocket(array('timeout' => 1));
+        $this->Socket = new CakeSocket(['timeout' => 1]);
     }
 
     /**
@@ -56,21 +55,21 @@ class CakeSocketTest extends CakeTestCase
     {
         $this->Socket = new CakeSocket();
         $config = $this->Socket->config;
-        $this->assertSame($config, array(
+        $this->assertSame($config, [
             'persistent' => false,
-            'host' => 'localhost',
-            'protocol' => 'tcp',
-            'port' => 80,
-            'timeout' => 30,
+            'host'       => 'localhost',
+            'protocol'   => 'tcp',
+            'port'       => 80,
+            'timeout'    => 30,
             'cryptoType' => 'tls',
-        ));
+        ]);
 
         $this->Socket->reset();
-        $this->Socket->__construct(array('host' => 'foo-bar'));
+        $this->Socket->__construct(['host' => 'foo-bar']);
         $config['host'] = 'foo-bar';
         $this->assertSame($this->Socket->config, $config);
 
-        $this->Socket = new CakeSocket(array('host' => 'www.cakephp.org', 'port' => 23, 'protocol' => 'udp'));
+        $this->Socket = new CakeSocket(['host' => 'www.cakephp.org', 'port' => 23, 'protocol' => 'udp']);
         $config = $this->Socket->config;
 
         $config['host'] = 'www.cakephp.org';
@@ -90,6 +89,7 @@ class CakeSocketTest extends CakeTestCase
         $this->assertFalse($this->Socket->connected);
         $this->Socket->disconnect();
         $this->assertFalse($this->Socket->connected);
+
         try {
             $this->Socket->connect();
             $this->assertTrue($this->Socket->connected);
@@ -97,7 +97,7 @@ class CakeSocketTest extends CakeTestCase
             $this->assertTrue($this->Socket->connected);
 
             $this->Socket->disconnect();
-            $config = array('persistent' => true);
+            $config = ['persistent' => true];
             $this->Socket = new CakeSocket($config);
             $this->Socket->connect();
             $this->assertTrue($this->Socket->connected);
@@ -113,10 +113,10 @@ class CakeSocketTest extends CakeTestCase
      */
     public static function invalidConnections()
     {
-        return array(
-            array(array('host' => 'invalid.host', 'port' => 9999, 'timeout' => 1)),
-            array(array('host' => '127.0.0.1', 'port' => '70000', 'timeout' => 1))
-        );
+        return [
+            [['host' => 'invalid.host', 'port' => 9999, 'timeout' => 1]],
+            [['host' => '127.0.0.1', 'port' => '70000', 'timeout' => 1]]
+        ];
     }
 
     /**
@@ -147,7 +147,7 @@ class CakeSocketTest extends CakeTestCase
             $this->assertEquals(null, $this->Socket->lastError());
             $this->assertTrue(in_array('127.0.0.1', $this->Socket->addresses()));
 
-            $this->Socket = new CakeSocket(array('host' => '127.0.0.1'));
+            $this->Socket = new CakeSocket(['host' => '127.0.0.1']);
             $this->Socket->connect();
             $this->assertEquals('127.0.0.1', $this->Socket->address());
             $this->assertEquals(gethostbyaddr('127.0.0.1'), $this->Socket->host());
@@ -180,12 +180,13 @@ class CakeSocketTest extends CakeTestCase
      */
     public function testSocketReading()
     {
-        $this->Socket = new CakeSocket(array('timeout' => 5));
+        $this->Socket = new CakeSocket(['timeout' => 5]);
+
         try {
             $this->Socket->connect();
             $this->assertEquals(null, $this->Socket->read(26));
 
-            $config = array('host' => 'google.com', 'port' => 80, 'timeout' => 1);
+            $config = ['host' => 'google.com', 'port' => 80, 'timeout' => 1];
             $this->Socket = new CakeSocket($config);
             $this->assertTrue($this->Socket->connect());
             $this->assertEquals(null, $this->Socket->read(26));
@@ -202,12 +203,13 @@ class CakeSocketTest extends CakeTestCase
      */
     public function testTimeOutConnection()
     {
-        $config = array('host' => '127.0.0.1', 'timeout' => 0.5);
+        $config = ['host' => '127.0.0.1', 'timeout' => 0.5];
         $this->Socket = new CakeSocket($config);
+
         try {
             $this->assertTrue($this->Socket->connect());
 
-            $config = array('host' => '127.0.0.1', 'timeout' => 0.00001);
+            $config = ['host' => '127.0.0.1', 'timeout' => 0.00001];
             $this->Socket = new CakeSocket($config);
             $this->assertFalse($this->Socket->read(1024 * 1024));
             $this->assertEquals('2: ' . __d('cake_dev', 'Connection timed out'), $this->Socket->lastError());
@@ -235,16 +237,16 @@ class CakeSocketTest extends CakeTestCase
      */
     public function testReset()
     {
-        $config = array(
+        $config = [
             'persistent' => true,
-            'host' => '127.0.0.1',
-            'protocol' => 'udp',
-            'port' => 80,
-            'timeout' => 20
-        );
+            'host'       => '127.0.0.1',
+            'protocol'   => 'udp',
+            'port'       => 80,
+            'timeout'    => 20
+        ];
         $anotherSocket = new CakeSocket($config);
         $anotherSocket->reset();
-        $this->assertEquals(array(), $anotherSocket->config);
+        $this->assertEquals([], $anotherSocket->config);
     }
 
     /**
@@ -256,7 +258,7 @@ class CakeSocketTest extends CakeTestCase
     public function testEnableCryptoSocketExceptionNoSsl()
     {
         $this->skipIf(!extension_loaded('openssl'), 'OpenSSL is not enabled cannot test SSL.');
-        $configNoSslOrTls = array('host' => 'localhost', 'port' => 80, 'timeout' => 0.1);
+        $configNoSslOrTls = ['host' => 'localhost', 'port' => 80, 'timeout' => 0.1];
 
         // testing exception on no ssl socket server for ssl and tls methods
         $this->Socket = new CakeSocket($configNoSslOrTls);
@@ -272,7 +274,7 @@ class CakeSocketTest extends CakeTestCase
      */
     public function testEnableCryptoSocketExceptionNoTls()
     {
-        $configNoSslOrTls = array('host' => 'localhost', 'port' => 80, 'timeout' => 0.1);
+        $configNoSslOrTls = ['host' => 'localhost', 'port' => 80, 'timeout' => 0.1];
 
         // testing exception on no ssl socket server for ssl and tls methods
         $this->Socket = new CakeSocket($configNoSslOrTls);
@@ -288,8 +290,9 @@ class CakeSocketTest extends CakeTestCase
     public function testConnectProtocolInHost()
     {
         $this->skipIf(!extension_loaded('openssl'), 'OpenSSL is not enabled cannot test SSL.');
-        $configSslTls = array('host' => 'ssl://smtp.gmail.com', 'port' => 465, 'timeout' => 5);
+        $configSslTls = ['host' => 'ssl://smtp.gmail.com', 'port' => 465, 'timeout' => 5];
         $socket = new CakeSocket($configSslTls);
+
         try {
             $socket->connect();
             $this->assertEquals('smtp.gmail.com', $socket->config['host']);
@@ -307,8 +310,9 @@ class CakeSocketTest extends CakeTestCase
     protected function _connectSocketToSslTls()
     {
         $this->skipIf(!extension_loaded('openssl'), 'OpenSSL is not enabled cannot test SSL.');
-        $configSslTls = array('host' => 'smtp.gmail.com', 'port' => 465, 'timeout' => 5);
+        $configSslTls = ['host' => 'smtp.gmail.com', 'port' => 465, 'timeout' => 5];
         $this->Socket = new CakeSocket($configSslTls);
+
         try {
             $this->Socket->connect();
         } catch (SocketException $e) {
@@ -407,14 +411,14 @@ class CakeSocketTest extends CakeTestCase
     public function testGetContext()
     {
         $this->skipIf(!extension_loaded('openssl'), 'OpenSSL is not enabled cannot test SSL.');
-        $config = array(
-            'host' => 'smtp.gmail.com',
-            'port' => 465,
+        $config = [
+            'host'    => 'smtp.gmail.com',
+            'port'    => 465,
             'timeout' => 5,
-            'context' => array(
-                'ssl' => array('capture_peer' => true)
-            )
-        );
+            'context' => [
+                'ssl' => ['capture_peer' => true]
+            ]
+        ];
         $this->Socket = new CakeSocket($config);
         $this->Socket->connect();
         $result = $this->Socket->context();
@@ -429,15 +433,15 @@ class CakeSocketTest extends CakeTestCase
     public function testConfigContext()
     {
         $this->skipIf(!extension_loaded('openssl'), 'OpenSSL is not enabled cannot test SSL.');
-        $config = array(
-            'host' => 'smtp.gmail.com',
-            'port' => 465,
-            'timeout' => 5,
-            'ssl_verify_peer' => true,
+        $config = [
+            'host'                  => 'smtp.gmail.com',
+            'port'                  => 465,
+            'timeout'               => 5,
+            'ssl_verify_peer'       => true,
             'ssl_allow_self_signed' => false,
-            'ssl_verify_depth' => 5,
-            'ssl_verify_host' => true,
-        );
+            'ssl_verify_depth'      => 5,
+            'ssl_verify_host'       => true,
+        ];
         $this->Socket = new CakeSocket($config);
 
         $this->Socket->connect();

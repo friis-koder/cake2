@@ -13,7 +13,6 @@
  * @since         CakePHP(tm) v 0.10.0.1076
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('Component', 'Controller');
 App::uses('AclInterface', 'Controller/Component/Acl');
 
@@ -29,11 +28,11 @@ App::uses('AclInterface', 'Controller/Component/Acl');
  */
 class AclComponent extends Component
 {
-/**
- * Instance of an ACL class
- *
- * @var AclInterface
- */
+    /**
+     * Instance of an ACL class
+     *
+     * @var AclInterface
+     */
     protected $_Instance = null;
 
     /**
@@ -57,7 +56,7 @@ class AclComponent extends Component
      * @param array $settings Settings list.
      * @throws CakeException when Acl.classname could not be loaded.
      */
-    public function __construct(ComponentCollection $collection, $settings = array())
+    public function __construct(ComponentCollection $collection, $settings = [])
     {
         parent::__construct($collection, $settings);
         $name = Configure::read('Acl.classname');
@@ -94,8 +93,10 @@ class AclComponent extends Component
             }
             $this->_Instance = $adapter;
             $this->_Instance->initialize($this);
+
             return null;
         }
+
         return $this->_Instance;
     }
 
@@ -167,6 +168,7 @@ class AclComponent extends Component
     public function grant($aro, $aco, $action = "*")
     {
         trigger_error(__d('cake_dev', '%s is deprecated, use %s instead', 'AclComponent::grant()', 'allow()'), E_USER_WARNING);
+
         return $this->_Instance->allow($aro, $aco, $action);
     }
 
@@ -182,6 +184,7 @@ class AclComponent extends Component
     public function revoke($aro, $aco, $action = "*")
     {
         trigger_error(__d('cake_dev', '%s is deprecated, use %s instead', 'AclComponent::revoke()', 'deny()'), E_USER_WARNING);
+
         return $this->_Instance->deny($aro, $aco, $action);
     }
 }

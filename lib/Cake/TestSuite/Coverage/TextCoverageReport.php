@@ -17,7 +17,6 @@
  * @since         CakePHP(tm) v 2.0
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('BaseCoverageReport', 'TestSuite/Coverage');
 
 /**
@@ -27,11 +26,11 @@ App::uses('BaseCoverageReport', 'TestSuite/Coverage');
  */
 class TextCoverageReport extends BaseCoverageReport
 {
-/**
- * Generates report text to display.
- *
- * @return string compiled plain text report.
- */
+    /**
+     * Generates report text to display.
+     *
+     * @return string compiled plain text report.
+     */
     public function report()
     {
         $pathFilter = $this->getPathFilter();
@@ -44,6 +43,7 @@ class TextCoverageReport extends BaseCoverageReport
             $fileData = file($file);
             $output .= $this->generateDiff($file, $fileData, $coverageData);
         }
+
         return $output;
     }
 
@@ -60,6 +60,7 @@ class TextCoverageReport extends BaseCoverageReport
     {
         list($covered, $total) = $this->_calculateCoveredLines($fileLines, $coverageData);
         $percentCovered = round(100 * $covered / $total, 2);
+
         return "$filename : $percentCovered%\n";
     }
 }

@@ -16,7 +16,6 @@
  * @since         CakePHP(tm) v 1.2.0.4433
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('TestShell', 'Console/Command');
 App::uses('AppShell', 'Console/Command');
 App::uses('CakeTestSuiteDispatcher', 'TestSuite');
@@ -31,19 +30,19 @@ App::uses('CakeTestLoader', 'TestSuite');
  */
 class TestsuiteShell extends TestShell
 {
-/**
- * Gets the option parser instance and configures it.
- *
- * @return ConsoleOptionParser
- */
+    /**
+     * Gets the option parser instance and configures it.
+     *
+     * @return ConsoleOptionParser
+     */
     public function getOptionParser()
     {
         $parser = parent::getOptionParser();
 
-        $parser->description(array(
+        $parser->description([
             __d('cake_console', 'The CakePHP Testsuite allows you to run test cases from the command line'),
             __d('cake_console', "<warning>This shell is for backwards-compatibility only</warning>\nuse the test shell instead")
-        ));
+        ]);
 
         return $parser;
     }
@@ -58,12 +57,12 @@ class TestsuiteShell extends TestShell
         if (empty($this->args)) {
             return;
         }
-        $params = array(
-            'core' => false,
-            'app' => false,
+        $params = [
+            'core'   => false,
+            'app'    => false,
             'plugin' => null,
             'output' => 'text',
-        );
+        ];
 
         $category = $this->args[0];
 
@@ -78,6 +77,7 @@ class TestsuiteShell extends TestShell
         if (isset($this->args[1])) {
             $params['case'] = $this->args[1];
         }
+
         return $params;
     }
 

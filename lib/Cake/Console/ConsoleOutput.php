@@ -44,11 +44,11 @@
  */
 class ConsoleOutput
 {
-/**
- * Raw output constant - no modification of output text.
- *
- * @var int
- */
+    /**
+     * Raw output constant - no modification of output text.
+     *
+     * @var int
+     */
     public const RAW = 0;
 
     /**
@@ -99,44 +99,44 @@ class ConsoleOutput
      *
      * @var array
      */
-    protected static $_foregroundColors = array(
-        'black' => 30,
-        'red' => 31,
-        'green' => 32,
-        'yellow' => 33,
-        'blue' => 34,
+    protected static $_foregroundColors = [
+        'black'   => 30,
+        'red'     => 31,
+        'green'   => 32,
+        'yellow'  => 33,
+        'blue'    => 34,
         'magenta' => 35,
-        'cyan' => 36,
-        'white' => 37
-    );
+        'cyan'    => 36,
+        'white'   => 37
+    ];
 
     /**
      * background colors used in colored output.
      *
      * @var array
      */
-    protected static $_backgroundColors = array(
-        'black' => 40,
-        'red' => 41,
-        'green' => 42,
-        'yellow' => 43,
-        'blue' => 44,
+    protected static $_backgroundColors = [
+        'black'   => 40,
+        'red'     => 41,
+        'green'   => 42,
+        'yellow'  => 43,
+        'blue'    => 44,
         'magenta' => 45,
-        'cyan' => 46,
-        'white' => 47
-    );
+        'cyan'    => 46,
+        'white'   => 47
+    ];
 
     /**
      * formatting options for colored output
      *
      * @var string
      */
-    protected static $_options = array(
-        'bold' => 1,
+    protected static $_options = [
+        'bold'      => 1,
         'underline' => 4,
-        'blink' => 5,
-        'reverse' => 7,
-    );
+        'blink'     => 5,
+        'reverse'   => 7,
+    ];
 
     /**
      * Styles that are available as tags in console output.
@@ -144,19 +144,19 @@ class ConsoleOutput
      *
      * @var array
      */
-    protected static $_styles = array(
-        'emergency' => array('text' => 'red', 'underline' => true),
-        'alert' => array('text' => 'red', 'underline' => true),
-        'critical' => array('text' => 'red', 'underline' => true),
-        'error' => array('text' => 'red', 'underline' => true),
-        'warning' => array('text' => 'yellow'),
-        'info' => array('text' => 'cyan'),
-        'debug' => array('text' => 'yellow'),
-        'success' => array('text' => 'green'),
-        'comment' => array('text' => 'blue'),
-        'question' => array('text' => 'magenta'),
-        'notice' => array('text' => 'cyan')
-    );
+    protected static $_styles = [
+        'emergency' => ['text' => 'red', 'underline' => true],
+        'alert'     => ['text' => 'red', 'underline' => true],
+        'critical'  => ['text' => 'red', 'underline' => true],
+        'error'     => ['text' => 'red', 'underline' => true],
+        'warning'   => ['text' => 'yellow'],
+        'info'      => ['text' => 'cyan'],
+        'debug'     => ['text' => 'yellow'],
+        'success'   => ['text' => 'green'],
+        'comment'   => ['text' => 'blue'],
+        'question'  => ['text' => 'magenta'],
+        'notice'    => ['text' => 'cyan']
+    ];
 
     /**
      * Construct the output object.
@@ -191,6 +191,7 @@ class ConsoleOutput
         if (is_array($message)) {
             $message = implode(static::LF, $message);
         }
+
         return $this->_write($this->styleText($message . str_repeat(static::LF, $newlines)));
     }
 
@@ -237,11 +238,13 @@ class ConsoleOutput
         }
         if ($this->_outputAs == static::PLAIN) {
             $tags = implode('|', array_keys(static::$_styles));
+
             return preg_replace('#</?(?:' . $tags . ')>#', '', $text);
         }
+
         return preg_replace_callback(
             '/<(?P<tag>[a-z0-9-_]+)>(?P<text>.*?)<\/(\1)>/ims',
-            array($this, '_replaceTags'),
+            [$this, '_replaceTags'],
             $text
         );
     }
@@ -259,7 +262,7 @@ class ConsoleOutput
             return '<' . $matches['tag'] . '>' . $matches['text'] . '</' . $matches['tag'] . '>';
         }
 
-        $styleInfo = array();
+        $styleInfo = [];
         if (!empty($style['text']) && isset(static::$_foregroundColors[$style['text']])) {
             $styleInfo[] = static::$_foregroundColors[$style['text']];
         }
@@ -272,6 +275,7 @@ class ConsoleOutput
                 $styleInfo[] = static::$_options[$option];
             }
         }
+
         return "\033[" . implode(';', $styleInfo) . 'm' . $matches['text'] . "\033[0m";
     }
 
@@ -284,6 +288,7 @@ class ConsoleOutput
     protected function _write($message)
     {
         $this->_lastWritten = fwrite($this->_output, $message);
+
         return $this->_lastWritten;
     }
 
@@ -322,9 +327,11 @@ class ConsoleOutput
         }
         if ($definition === false) {
             unset(static::$_styles[$style]);
+
             return true;
         }
         static::$_styles[$style] = $definition;
+
         return true;
     }
 

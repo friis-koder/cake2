@@ -17,7 +17,6 @@
  * @since         Cake v 0.10.0.1076
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('View', 'View');
 
 /**
@@ -28,13 +27,13 @@ App::uses('View', 'View');
  */
 class ScaffoldView extends View
 {
-/**
- * Override _getViewFileName Appends special scaffolding views in.
- *
- * @param string $name name of the view file to get.
- * @return string action
- * @throws MissingViewException
- */
+    /**
+     * Override _getViewFileName Appends special scaffolding views in.
+     *
+     * @param string $name name of the view file to get.
+     * @return string action
+     * @throws MissingViewException
+     */
     protected function _getViewFileName($name = null)
     {
         if ($name === null) {
@@ -47,6 +46,7 @@ class ScaffoldView extends View
             foreach ($prefixes as $prefix) {
                 if (strpos($name, $prefix . '_') !== false) {
                     $name = substr($name, strlen($prefix) + 1);
+
                     break;
                 }
             }
@@ -68,7 +68,7 @@ class ScaffoldView extends View
         $names[] = 'Scaffolds' . DS . $subDir . $name;
 
         $paths = $this->_paths($this->plugin);
-        $exts = array($this->ext);
+        $exts = [$this->ext];
         if ($this->ext !== '.ctp') {
             $exts[] = '.ctp';
         }

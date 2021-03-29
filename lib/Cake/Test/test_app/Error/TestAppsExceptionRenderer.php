@@ -9,6 +9,7 @@ class TestAppsExceptionRenderer extends ExceptionRenderer
             $request = new CakeRequest();
         }
         $response = new CakeResponse();
+
         try {
             $controller = new TestAppsErrorController($request, $response);
             $controller->layout = 'banana';
@@ -16,6 +17,7 @@ class TestAppsExceptionRenderer extends ExceptionRenderer
             $controller = new Controller($request, $response);
             $controller->viewPath = 'Errors';
         }
+
         return $controller;
     }
 }

@@ -12,7 +12,6 @@
  * @since         CakePHP(tm) v 1.2.0.5012
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('AppShell', 'Console/Command');
 
 /**
@@ -23,26 +22,26 @@ App::uses('AppShell', 'Console/Command');
  */
 class ConsoleShell extends AppShell
 {
-/**
- * Available binding types
- *
- * @var array
- */
-    public $associations = array('hasOne', 'hasMany', 'belongsTo', 'hasAndBelongsToMany');
+    /**
+     * Available binding types
+     *
+     * @var array
+     */
+    public $associations = ['hasOne', 'hasMany', 'belongsTo', 'hasAndBelongsToMany'];
 
     /**
      * Chars that describe invalid commands
      *
      * @var array
      */
-    public $badCommandChars = array('$', ';');
+    public $badCommandChars = ['$', ';'];
 
     /**
      * Available models
      *
      * @var array
      */
-    public $models = array();
+    public $models = [];
 
     /**
      * _finished
@@ -58,20 +57,20 @@ class ConsoleShell extends AppShell
      *
      * @var array
      */
-    protected $_methodPatterns = array(
-        'help' => '/^(help|\?)/',
-        '_exit' => '/^(quit|exit)/',
-        '_models' => '/^models/i',
-        '_bind' => '/^(\w+) bind (\w+) (\w+)/',
-        '_unbind' => '/^(\w+) unbind (\w+) (\w+)/',
-        '_find' => '/.+->find/',
-        '_save' => '/.+->save/',
-        '_columns' => '/^(\w+) columns/',
-        '_routesReload' => '/^routes\s+reload/i',
-        '_routesShow' => '/^routes\s+show/i',
+    protected $_methodPatterns = [
+        'help'           => '/^(help|\?)/',
+        '_exit'          => '/^(quit|exit)/',
+        '_models'        => '/^models/i',
+        '_bind'          => '/^(\w+) bind (\w+) (\w+)/',
+        '_unbind'        => '/^(\w+) unbind (\w+) (\w+)/',
+        '_find'          => '/.+->find/',
+        '_save'          => '/.+->save/',
+        '_columns'       => '/^(\w+) columns/',
+        '_routesReload'  => '/^routes\s+reload/i',
+        '_routesShow'    => '/^routes\s+show/i',
         '_routeToString' => '/^route\s+(\(.*\))$/i',
-        '_routeToArray' => '/^route\s+(.*)$/i',
-    );
+        '_routeToArray'  => '/^route\s+(.*)$/i',
+    ];
 
     /**
      * Override startup of the Shell
@@ -114,12 +113,12 @@ class ConsoleShell extends AppShell
     {
         $parser = parent::getOptionParser();
 
-        $parser->description(array(
+        $parser->description([
             'The interactive console is a tool for testing parts of your',
             'app before you write code.',
             '',
             'See below for a list of supported commands.'
-        ))->epilog(array(
+        ])->epilog([
             '<info>Model testing</info>',
             '',
             'To test model results, use the name of your model without a leading $',
@@ -178,10 +177,11 @@ class ConsoleShell extends AppShell
             'To show all connected routes, do the following:',
             '',
             "\tRoutes show",
-        ));
+        ]);
 
         return $parser;
     }
+
     /**
      * Prints the help message
      *
@@ -280,7 +280,7 @@ class ConsoleShell extends AppShell
         $modelB = $tmp[3];
 
         if ($this->_isValidModel($modelA) && $this->_isValidModel($modelB) && in_array($association, $this->associations)) {
-            $this->{$modelA}->bindModel(array($association => array($modelB => array('className' => $modelB))), false);
+            $this->{$modelA}->bindModel([$association => [$modelB => ['className' => $modelB]]], false);
             $this->out(__d(
                 'cake_console',
                 "Created %s association between %s and %s",
@@ -323,7 +323,7 @@ class ConsoleShell extends AppShell
         }
 
         if ($this->_isValidModel($modelA) && $this->_isValidModel($modelB) && in_array($association, $this->associations) && $validCurrentAssociation) {
-            $this->{$modelA}->unbindModel(array($association => array($modelB)));
+            $this->{$modelA}->unbindModel([$association => [$modelB]]);
             $this->out(__d(
                 'cake_console',
                 "Removed %s association between %s and %s",
@@ -536,6 +536,7 @@ class ConsoleShell extends AppShell
         CakePlugin::routes();
 
         Router::parse('/');
+
         return true;
     }
 }

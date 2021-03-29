@@ -11,7 +11,6 @@
  * @link          https://cakephp.org CakePHP(tm) Project
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('Security', 'Utility');
 App::uses('Hash', 'Utility');
 App::uses('CakeEventListener', 'Event');
@@ -23,34 +22,34 @@ App::uses('CakeEventListener', 'Event');
  */
 abstract class BaseAuthenticate implements CakeEventListener
 {
-/**
- * Settings for this object.
- *
- * - `fields` The fields to use to identify a user by.
- * - `userModel` The model name of the User, defaults to User.
- * - `userFields` Array of fields to retrieve from User model, null to retrieve all. Defaults to null.
- * - `scope` Additional conditions to use when looking up and authenticating users,
- *    i.e. `array('User.is_active' => 1).`
- * - `recursive` The value of the recursive key passed to find(). Defaults to 0.
- * - `contain` Extra models to contain and store in session.
- * - `passwordHasher` Password hasher class. Can be a string specifying class name
- *    or an array containing `className` key, any other keys will be passed as
- *    settings to the class. Defaults to 'Simple'.
- *
- * @var array
- */
-    public $settings = array(
-        'fields' => array(
+    /**
+     * Settings for this object.
+     *
+     * - `fields` The fields to use to identify a user by.
+     * - `userModel` The model name of the User, defaults to User.
+     * - `userFields` Array of fields to retrieve from User model, null to retrieve all. Defaults to null.
+     * - `scope` Additional conditions to use when looking up and authenticating users,
+     *    i.e. `array('User.is_active' => 1).`
+     * - `recursive` The value of the recursive key passed to find(). Defaults to 0.
+     * - `contain` Extra models to contain and store in session.
+     * - `passwordHasher` Password hasher class. Can be a string specifying class name
+     *    or an array containing `className` key, any other keys will be passed as
+     *    settings to the class. Defaults to 'Simple'.
+     *
+     * @var array
+     */
+    public $settings = [
+        'fields' => [
             'username' => 'username',
             'password' => 'password'
-        ),
-        'userModel' => 'User',
-        'userFields' => null,
-        'scope' => array(),
-        'recursive' => 0,
-        'contain' => null,
+        ],
+        'userModel'      => 'User',
+        'userFields'     => null,
+        'scope'          => [],
+        'recursive'      => 0,
+        'contain'        => null,
         'passwordHasher' => 'Simple'
-    );
+    ];
 
     /**
      * A Component collection, used to get more components.
@@ -73,7 +72,7 @@ abstract class BaseAuthenticate implements CakeEventListener
      */
     public function implementedEvents()
     {
-        return array();
+        return [];
     }
 
     /**
@@ -111,9 +110,9 @@ abstract class BaseAuthenticate implements CakeEventListener
         if (is_array($username)) {
             $conditions = $username;
         } else {
-            $conditions = array(
+            $conditions = [
                 $model . '.' . $fields['username'] => $username
-            );
+            ];
         }
 
         if (!empty($this->settings['scope'])) {
@@ -125,14 +124,15 @@ abstract class BaseAuthenticate implements CakeEventListener
             $userFields[] = $model . '.' . $fields['password'];
         }
 
-        $result = ClassRegistry::init($userModel)->find('first', array(
+        $result = ClassRegistry::init($userModel)->find('first', [
             'conditions' => $conditions,
-            'recursive' => $this->settings['recursive'],
-            'fields' => $userFields,
-            'contain' => $this->settings['contain'],
-        ));
+            'recursive'  => $this->settings['recursive'],
+            'fields'     => $userFields,
+            'contain'    => $this->settings['contain'],
+        ]);
         if (empty($result[$model])) {
             $this->passwordHasher()->hash($password);
+
             return false;
         }
 
@@ -145,6 +145,7 @@ abstract class BaseAuthenticate implements CakeEventListener
         }
 
         unset($result[$model]);
+
         return array_merge($user, $result);
     }
 
@@ -161,7 +162,7 @@ abstract class BaseAuthenticate implements CakeEventListener
             return $this->_passwordHasher;
         }
 
-        $config = array();
+        $config = [];
         if (is_string($this->settings['passwordHasher'])) {
             $class = $this->settings['passwordHasher'];
         } else {
@@ -179,6 +180,7 @@ abstract class BaseAuthenticate implements CakeEventListener
             throw new CakeException(__d('cake_dev', 'Password hasher must extend AbstractPasswordHasher class.'));
         }
         $this->_passwordHasher = new $className($config);
+
         return $this->_passwordHasher;
     }
 

@@ -17,7 +17,6 @@
  * @since         CakePHP(tm) v 2.2.0
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('CakeValidationRule', 'Model/Validator');
 
 /**
@@ -29,19 +28,19 @@ App::uses('CakeValidationRule', 'Model/Validator');
  */
 class CakeValidationSet implements ArrayAccess, IteratorAggregate, Countable
 {
-/**
- * Holds the CakeValidationRule objects
- *
- * @var CakeValidationRule[]
- */
-    protected $_rules = array();
+    /**
+     * Holds the CakeValidationRule objects
+     *
+     * @var CakeValidationRule[]
+     */
+    protected $_rules = [];
 
     /**
      * List of methods available for validation
      *
      * @var array
      */
-    protected $_methods = array();
+    protected $_methods = [];
 
     /**
      * I18n domain for validation messages.
@@ -69,7 +68,7 @@ class CakeValidationSet implements ArrayAccess, IteratorAggregate, Countable
      *
      * @var array
      */
-    public $ruleSet = array();
+    public $ruleSet = [];
 
     /**
      * Constructor
@@ -82,7 +81,7 @@ class CakeValidationSet implements ArrayAccess, IteratorAggregate, Countable
         $this->field = $fieldName;
 
         if (!is_array($ruleSet) || (is_array($ruleSet) && isset($ruleSet['rule']))) {
-            $ruleSet = array($ruleSet);
+            $ruleSet = [$ruleSet];
         }
 
         foreach ($ruleSet as $index => $validateProp) {
@@ -99,7 +98,7 @@ class CakeValidationSet implements ArrayAccess, IteratorAggregate, Countable
      */
     public function setMethods(&$methods)
     {
-        $this->_methods =& $methods;
+        $this->_methods = & $methods;
     }
 
     /**
@@ -124,7 +123,7 @@ class CakeValidationSet implements ArrayAccess, IteratorAggregate, Countable
     public function validate($data, $isUpdate = false)
     {
         $this->reset();
-        $errors = array();
+        $errors = [];
         foreach ($this->getRules() as $name => $rule) {
             $rule->isUpdate($isUpdate);
             if ($rule->skip()) {
@@ -206,6 +205,7 @@ class CakeValidationSet implements ArrayAccess, IteratorAggregate, Countable
             $rule = new CakeValidationRule($rule);
         }
         $this->_rules[$name] = $rule;
+
         return $this;
     }
 
@@ -226,6 +226,7 @@ class CakeValidationSet implements ArrayAccess, IteratorAggregate, Countable
     public function removeRule($name)
     {
         unset($this->_rules[$name]);
+
         return $this;
     }
 
@@ -245,14 +246,15 @@ class CakeValidationSet implements ArrayAccess, IteratorAggregate, Countable
      * @param bool $mergeVars [optional] If true, merges vars instead of replace. Defaults to true.
      * @return self
      */
-    public function setRules($rules = array(), $mergeVars = true)
+    public function setRules($rules = [], $mergeVars = true)
     {
         if ($mergeVars === false) {
-            $this->_rules = array();
+            $this->_rules = [];
         }
         foreach ($rules as $name => $rule) {
             $this->setRule($name, $rule);
         }
+
         return $this;
     }
 
@@ -313,6 +315,7 @@ class CakeValidationSet implements ArrayAccess, IteratorAggregate, Countable
                 $args[$k] = __d($this->_validationDomain, $arg);
             }
         }
+
         return $args;
     }
 

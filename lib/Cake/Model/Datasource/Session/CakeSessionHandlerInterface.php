@@ -22,11 +22,11 @@
  */
 interface CakeSessionHandlerInterface
 {
-/**
- * Method called on open of a session.
- *
- * @return bool Success
- */
+    /**
+     * Method called on open of a session.
+     *
+     * @return bool Success
+     */
     public function open();
 
     /**

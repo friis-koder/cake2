@@ -22,14 +22,14 @@
  */
 interface AclInterface
 {
-/**
- * Empty method to be overridden in subclasses
- *
- * @param string $aro ARO The requesting object identifier.
- * @param string $aco ACO The controlled object identifier.
- * @param string $action Action (defaults to *)
- * @return bool Success
- */
+    /**
+     * Empty method to be overridden in subclasses
+     *
+     * @param string $aro ARO The requesting object identifier.
+     * @param string $aco ACO The controlled object identifier.
+     * @param string $action Action (defaults to *)
+     * @return bool Success
+     */
     public function check($aro, $aco, $action = "*");
 
     /**

@@ -15,7 +15,6 @@
  * @since         CakePHP(tm) v 2.0
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('PluginShortRoute', 'Routing/Route');
 App::uses('Router', 'Routing');
 
@@ -26,15 +25,15 @@ App::uses('Router', 'Routing');
  */
 class PluginShortRouteTest extends CakeTestCase
 {
-/**
- * setUp method
- *
- * @return void
- */
+    /**
+     * setUp method
+     *
+     * @return void
+     */
     public function setUp()
     {
         parent::setUp();
-        Configure::write('Routing', array('admin' => null, 'prefixes' => array()));
+        Configure::write('Routing', ['admin' => null, 'prefixes' => []]);
         Router::reload();
     }
 
@@ -45,7 +44,7 @@ class PluginShortRouteTest extends CakeTestCase
      */
     public function testParsing()
     {
-        $route = new PluginShortRoute('/:plugin', array('action' => 'index'), array('plugin' => 'foo|bar'));
+        $route = new PluginShortRoute('/:plugin', ['action' => 'index'], ['plugin' => 'foo|bar']);
 
         $result = $route->parse('/foo');
         $this->assertEquals('foo', $result['plugin']);
@@ -63,12 +62,12 @@ class PluginShortRouteTest extends CakeTestCase
      */
     public function testMatch()
     {
-        $route = new PluginShortRoute('/:plugin', array('action' => 'index'), array('plugin' => 'foo|bar'));
+        $route = new PluginShortRoute('/:plugin', ['action' => 'index'], ['plugin' => 'foo|bar']);
 
-        $result = $route->match(array('plugin' => 'foo', 'controller' => 'posts', 'action' => 'index'));
+        $result = $route->match(['plugin' => 'foo', 'controller' => 'posts', 'action' => 'index']);
         $this->assertFalse($result, 'plugin controller mismatch was converted. %s');
 
-        $result = $route->match(array('plugin' => 'foo', 'controller' => 'foo', 'action' => 'index'));
+        $result = $route->match(['plugin' => 'foo', 'controller' => 'foo', 'action' => 'index']);
         $this->assertEquals('/foo', $result);
     }
 }

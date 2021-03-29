@@ -25,11 +25,11 @@
  */
 class AllShellsTest extends PHPUnit_Framework_TestSuite
 {
-/**
- * suite method, defines tests for this suite.
- *
- * @return void
- */
+    /**
+     * suite method, defines tests for this suite.
+     *
+     * @return void
+     */
     public static function suite()
     {
         $suite = new CakeTestSuite('All shell classes');
@@ -37,6 +37,7 @@ class AllShellsTest extends PHPUnit_Framework_TestSuite
         $path = CORE_TEST_CASES . DS . 'Console' . DS . 'Command' . DS;
 
         $suite->addTestDirectory($path);
+
         return $suite;
     }
 }

@@ -24,11 +24,11 @@
  */
 class CakeBaseException extends RuntimeException
 {
-/**
- * Array of headers to be passed to CakeResponse::header()
- *
- * @var array
- */
+    /**
+     * Array of headers to be passed to CakeResponse::header()
+     *
+     * @var array
+     */
     protected $_responseHeaders = null;
 
     /**
@@ -47,8 +47,9 @@ class CakeBaseException extends RuntimeException
             if (is_array($header)) {
                 return $this->_responseHeaders = $header;
             }
-            $this->_responseHeaders = array($header => $value);
+            $this->_responseHeaders = [$header => $value];
         }
+
         return $this->_responseHeaders;
     }
 }
@@ -74,12 +75,12 @@ if (!class_exists('HttpException', false)) {
  */
 class BadRequestException extends HttpException
 {
-/**
- * Constructor
- *
- * @param string $message If no message is given 'Bad Request' will be the message
- * @param int $code Status code, defaults to 400
- */
+    /**
+     * Constructor
+     *
+     * @param string $message If no message is given 'Bad Request' will be the message
+     * @param int $code Status code, defaults to 400
+     */
     public function __construct($message = null, $code = 400)
     {
         if (empty($message)) {
@@ -96,12 +97,12 @@ class BadRequestException extends HttpException
  */
 class UnauthorizedException extends HttpException
 {
-/**
- * Constructor
- *
- * @param string $message If no message is given 'Unauthorized' will be the message
- * @param int $code Status code, defaults to 401
- */
+    /**
+     * Constructor
+     *
+     * @param string $message If no message is given 'Unauthorized' will be the message
+     * @param int $code Status code, defaults to 401
+     */
     public function __construct($message = null, $code = 401)
     {
         if (empty($message)) {
@@ -118,12 +119,12 @@ class UnauthorizedException extends HttpException
  */
 class ForbiddenException extends HttpException
 {
-/**
- * Constructor
- *
- * @param string $message If no message is given 'Forbidden' will be the message
- * @param int $code Status code, defaults to 403
- */
+    /**
+     * Constructor
+     *
+     * @param string $message If no message is given 'Forbidden' will be the message
+     * @param int $code Status code, defaults to 403
+     */
     public function __construct($message = null, $code = 403)
     {
         if (empty($message)) {
@@ -140,12 +141,12 @@ class ForbiddenException extends HttpException
  */
 class NotFoundException extends HttpException
 {
-/**
- * Constructor
- *
- * @param string $message If no message is given 'Not Found' will be the message
- * @param int $code Status code, defaults to 404
- */
+    /**
+     * Constructor
+     *
+     * @param string $message If no message is given 'Not Found' will be the message
+     * @param int $code Status code, defaults to 404
+     */
     public function __construct($message = null, $code = 404)
     {
         if (empty($message)) {
@@ -162,12 +163,12 @@ class NotFoundException extends HttpException
  */
 class MethodNotAllowedException extends HttpException
 {
-/**
- * Constructor
- *
- * @param string $message If no message is given 'Method Not Allowed' will be the message
- * @param int $code Status code, defaults to 405
- */
+    /**
+     * Constructor
+     *
+     * @param string $message If no message is given 'Method Not Allowed' will be the message
+     * @param int $code Status code, defaults to 405
+     */
     public function __construct($message = null, $code = 405)
     {
         if (empty($message)) {
@@ -184,12 +185,12 @@ class MethodNotAllowedException extends HttpException
  */
 class InternalErrorException extends HttpException
 {
-/**
- * Constructor
- *
- * @param string $message If no message is given 'Internal Server Error' will be the message
- * @param int $code Status code, defaults to 500
- */
+    /**
+     * Constructor
+     *
+     * @param string $message If no message is given 'Internal Server Error' will be the message
+     * @param int $code Status code, defaults to 500
+     */
     public function __construct($message = null, $code = 500)
     {
         if (empty($message)) {
@@ -207,13 +208,13 @@ class InternalErrorException extends HttpException
  */
 class CakeException extends CakeBaseException
 {
-/**
- * Array of attributes that are passed in from the constructor, and
- * made available in the view when a development error is displayed.
- *
- * @var array
- */
-    protected $_attributes = array();
+    /**
+     * Array of attributes that are passed in from the constructor, and
+     * made available in the view when a development error is displayed.
+     *
+     * @var array
+     */
+    protected $_attributes = [];
 
     /**
      * Template string that has attributes sprintf()'ed into it.
@@ -267,6 +268,7 @@ class MissingControllerException extends CakeException
     {
         parent::__construct($message, $code);
     }
+
     //@codingStandardsIgnoreEnd
 }
 
@@ -285,6 +287,7 @@ class MissingActionException extends CakeException
     {
         parent::__construct($message, $code);
     }
+
     //@codingStandardsIgnoreEnd
 }
 
@@ -303,6 +306,7 @@ class PrivateActionException extends CakeException
     {
         parent::__construct($message, $code, $previous);
     }
+
     //@codingStandardsIgnoreEnd
 }
 
@@ -384,7 +388,7 @@ class MissingConnectionException extends CakeException
     public function __construct($message, $code = 500)
     {
         if (is_array($message)) {
-            $message += array('enabled' => true);
+            $message += ['enabled' => true];
         }
         parent::__construct($message, $code);
     }
@@ -586,14 +590,14 @@ class ConsoleException extends CakeException
  */
 class FatalErrorException extends CakeException
 {
-/**
- * Constructor
- *
- * @param string $message The error message.
- * @param int $code The error code.
- * @param string $file The file the error occurred in.
- * @param int $line The line the error occurred on.
- */
+    /**
+     * Constructor
+     *
+     * @param string $message The error message.
+     * @param int $code The error code.
+     * @param string $file The file the error occurred in.
+     * @param int $line The line the error occurred on.
+     */
     public function __construct($message, $code = 500, $file = null, $line = null)
     {
         parent::__construct($message, $code);
@@ -620,6 +624,7 @@ class NotImplementedException extends CakeException
     {
         parent::__construct($message, $code);
     }
+
     //@codingStandardsIgnoreEnd
 }
 
@@ -630,10 +635,10 @@ class NotImplementedException extends CakeException
  */
 class SecurityException extends BadRequestException
 {
-/**
- * Security Exception type
- * @var string
- */
+    /**
+     * Security Exception type
+     * @var string
+     */
     protected $_type = 'secure';
 
     /**
@@ -693,9 +698,9 @@ class SecurityException extends BadRequestException
  */
 class AuthSecurityException extends SecurityException
 {
-/**
- * Security Exception type
- * @var string
- */
+    /**
+     * Security Exception type
+     * @var string
+     */
     protected $_type = 'auth';
 }

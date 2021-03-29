@@ -15,7 +15,6 @@
  * @since         CakePHP(tm) v 1.2.0.4206
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('Model', 'Model');
 App::uses('DataSource', 'Model/Datasource');
 
@@ -26,33 +25,33 @@ App::uses('DataSource', 'Model/Datasource');
  */
 class TestSource extends DataSource
 {
-/**
- * _schema
- * @var type
- */
-    protected $_schema = array(
-        'id' => array(
-            'type' => 'integer',
-            'null' => false,
-            'key' => 'primary',
+    /**
+     * _schema
+     * @var type
+     */
+    protected $_schema = [
+        'id' => [
+            'type'   => 'integer',
+            'null'   => false,
+            'key'    => 'primary',
             'length' => 11,
-        ),
-        'text' => array(
-            'type' => 'string',
-            'null' => true,
+        ],
+        'text' => [
+            'type'   => 'string',
+            'null'   => true,
             'length' => 140,
-        ),
-        'status' => array(
-            'type' => 'string',
-            'null' => true,
+        ],
+        'status' => [
+            'type'   => 'string',
+            'null'   => true,
             'length' => 140,
-        ),
-        'customField' => array(
-            'type' => 'string',
-            'null' => true,
+        ],
+        'customField' => [
+            'type'   => 'string',
+            'null'   => true,
             'length' => 255,
-        ),
-    );
+        ],
+    ];
 
     /**
      * listSources
@@ -84,7 +83,7 @@ class TestSource extends DataSource
      * @param type $params
      * @return array
      */
-    public function calculate(Model $Model, $func, $params = array())
+    public function calculate(Model $Model, $func, $params = [])
     {
         return $func;
     }
@@ -97,11 +96,11 @@ class TestSource extends DataSource
  */
 class DataSourceTest extends CakeTestCase
 {
-/**
- * Name of test source
- *
- * @var string
- */
+    /**
+     * Name of test source
+     *
+     * @var string
+     */
     public $sourceName = 'myapitest';
 
     /**
@@ -114,16 +113,16 @@ class DataSourceTest extends CakeTestCase
         parent::setUp();
         $this->Source = $this->getMock(
             'TestSource',
-            array('create', 'read', 'update', 'delete')
+            ['create', 'read', 'update', 'delete']
         );
-        ConnectionManager::create($this->sourceName, array(
+        ConnectionManager::create($this->sourceName, [
             'datasource' => get_class($this->Source),
-            'apiKey' => '1234abcd',
-        ));
+            'apiKey'     => '1234abcd',
+        ]);
         $this->Model = $this->getMock(
             'Model',
-            array('getDataSource'),
-            array(array('ds' => $this->sourceName))
+            ['getDataSource'],
+            [['ds' => $this->sourceName]]
         );
         $this->Model->expects($this->any())
             ->method('getDataSource')
@@ -149,16 +148,16 @@ class DataSourceTest extends CakeTestCase
      */
     public function testCreate()
     {
-        $data = array(
-            $this->Model->alias => array(
-                'text' => 'This is a test',
-                'status' => 'Test status',
-                'customField' => array(
+        $data = [
+            $this->Model->alias => [
+                'text'        => 'This is a test',
+                'status'      => 'Test status',
+                'customField' => [
                     'array', 'field', 'type',
                     'for', 'custom', 'datasources',
-                ),
-            ),
-        );
+                ],
+            ],
+        ];
         $this->Source->expects($this->once())
             ->method('create')
             ->with(
@@ -176,28 +175,28 @@ class DataSourceTest extends CakeTestCase
      */
     public function testRead()
     {
-        $expected = array(
-            'conditions'	=> array('status' => 'test'),
-            'fields'		=> null,
-            'joins'			=> array(),
-            'limit'			=> 10,
-            'offset'		=> null,
-            'order'			=> array(array('status')),
-            'page'			=> 1,
-            'group'			=> null,
-            'callbacks'		=> true,
-        );
+        $expected = [
+            'conditions'	 => ['status' => 'test'],
+            'fields'		    => null,
+            'joins'			    => [],
+            'limit'			    => 10,
+            'offset'		    => null,
+            'order'			    => [['status']],
+            'page'			     => 1,
+            'group'			    => null,
+            'callbacks'		 => true,
+        ];
         $this->Source->expects($this->once())
             ->method('read')
             ->with(
                 $this->anything(),
                 $this->equalTo($expected)
             );
-        $this->Model->find('all', array(
-            'conditions' => array('status' => 'test'),
-            'limit' => 10,
-            'order' => array('status'),
-        ));
+        $this->Model->find('all', [
+            'conditions' => ['status' => 'test'],
+            'limit'      => 10,
+            'order'      => ['status'],
+        ]);
     }
 
     /**
@@ -207,22 +206,22 @@ class DataSourceTest extends CakeTestCase
      */
     public function testUpdate()
     {
-        $data = array(
-            $this->Model->alias => array(
-                'id' => 1,
-                'text' => 'This is a test',
-                'status' => 'Test status',
-                'customField' => array(
+        $data = [
+            $this->Model->alias => [
+                'id'          => 1,
+                'text'        => 'This is a test',
+                'status'      => 'Test status',
+                'customField' => [
                     'array', 'field', 'type',
                     'for', 'custom', 'datasources',
-                ),
-            ),
-        );
+                ],
+            ],
+        ];
         $this->Source->expects($this->any())
             ->method('read')
-            ->will($this->returnValue(array(
-                array($this->Model->alias => array('count' => 1))
-            )));
+            ->will($this->returnValue([
+                [$this->Model->alias => ['count' => 1]]
+            ]));
         $this->Source->expects($this->once())
             ->method('update')
             ->with(
@@ -242,14 +241,14 @@ class DataSourceTest extends CakeTestCase
     {
         $this->Source->expects($this->any())
             ->method('read')
-            ->will($this->returnValue(array(
-                array($this->Model->alias => array('count' => 1))
-            )));
+            ->will($this->returnValue([
+                [$this->Model->alias => ['count' => 1]]
+            ]));
         $this->Source->expects($this->once())
             ->method('delete')
             ->with(
                 $this->equalTo($this->Model),
-                $this->equalTo(array($this->Model->alias . '.id' => 1))
+                $this->equalTo([$this->Model->alias . '.id' => 1])
             );
         $this->Model->delete(1);
     }

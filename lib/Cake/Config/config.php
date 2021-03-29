@@ -15,7 +15,7 @@
  * @since         CakePHP(tm) v 1.1.11.4062
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 $versionFile = file(CAKE . 'VERSION.txt');
 $config['Cake.version'] = trim(array_pop($versionFile));
+
 return $config;

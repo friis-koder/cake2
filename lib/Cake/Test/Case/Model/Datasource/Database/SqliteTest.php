@@ -15,7 +15,6 @@
  * @since         CakePHP(tm) v 1.2.0
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('Model', 'Model');
 App::uses('AppModel', 'Model');
 App::uses('Sqlite', 'Model/Datasource/Database');
@@ -29,12 +28,12 @@ require_once dirname(dirname(dirname(__FILE__))) . DS . 'models.php';
  */
 class DboSqliteTestDb extends Sqlite
 {
-/**
- * simulated property
- *
- * @var array
- */
-    public $simulated = array();
+    /**
+     * simulated property
+     *
+     * @var array
+     */
+    public $simulated = [];
 
     /**
      * execute method
@@ -42,9 +41,10 @@ class DboSqliteTestDb extends Sqlite
      * @param mixed $sql
      * @return void
      */
-    protected function _execute($sql, $params = array(), $prepareOptions = array())
+    protected function _execute($sql, $params = [], $prepareOptions = [])
     {
         $this->simulated[] = $sql;
+
         return null;
     }
 
@@ -66,11 +66,11 @@ class DboSqliteTestDb extends Sqlite
  */
 class SqliteTest extends CakeTestCase
 {
-/**
- * Do not automatically load fixtures for each test, they will be loaded manually using CakeTestCase::loadFixtures
- *
- * @var bool
- */
+    /**
+     * Do not automatically load fixtures for each test, they will be loaded manually using CakeTestCase::loadFixtures
+     *
+     * @var bool
+     */
     public $autoFixtures = false;
 
     /**
@@ -78,7 +78,7 @@ class SqliteTest extends CakeTestCase
      *
      * @var object
      */
-    public $fixtures = array('core.user', 'core.uuid', 'core.datatype');
+    public $fixtures = ['core.user', 'core.uuid', 'core.datatype'];
 
     /**
      * Actual DB connection used in testing
@@ -141,22 +141,22 @@ class SqliteTest extends CakeTestCase
         $this->Dbo->query('CREATE TABLE ' . $name . ' ("id" int(11) PRIMARY KEY, "bool" int(1), "small_char" varchar(50), "description" varchar(40) );');
         $this->Dbo->query('CREATE INDEX pointless_bool ON ' . $name . '("bool")');
         $this->Dbo->query('CREATE UNIQUE INDEX char_index ON ' . $name . '("small_char")');
-        $expected = array(
-            'PRIMARY' => array('column' => 'id', 'unique' => 1),
-            'pointless_bool' => array('column' => 'bool', 'unique' => 0),
-            'char_index' => array('column' => 'small_char', 'unique' => 1),
+        $expected = [
+            'PRIMARY'        => ['column' => 'id', 'unique' => 1],
+            'pointless_bool' => ['column' => 'bool', 'unique' => 0],
+            'char_index'     => ['column' => 'small_char', 'unique' => 1],
 
-        );
+        ];
         $result = $this->Dbo->index($name);
         $this->assertEquals($expected, $result);
         $this->Dbo->query('DROP TABLE ' . $name);
 
         $this->Dbo->query('CREATE TABLE ' . $name . ' ("id" int(11) PRIMARY KEY, "bool" int(1), "small_char" varchar(50), "description" varchar(40) );');
         $this->Dbo->query('CREATE UNIQUE INDEX multi_col ON ' . $name . '("small_char", "bool")');
-        $expected = array(
-            'PRIMARY' => array('column' => 'id', 'unique' => 1),
-            'multi_col' => array('column' => array('small_char', 'bool'), 'unique' => 1),
-        );
+        $expected = [
+            'PRIMARY'   => ['column' => 'id', 'unique' => 1],
+            'multi_col' => ['column' => ['small_char', 'bool'], 'unique' => 1],
+        ];
         $result = $this->Dbo->index($name);
         $this->assertEquals($expected, $result);
         $this->Dbo->query('DROP TABLE ' . $name);
@@ -175,24 +175,24 @@ class SqliteTest extends CakeTestCase
         $this->assertFalse(file_exists(TMP . $dbName));
 
         try {
-            $db = new Sqlite(array_merge($this->Dbo->config, array('database' => TMP . $dbName)));
+            $db = new Sqlite(array_merge($this->Dbo->config, ['database' => TMP . $dbName]));
         } catch (MissingConnectionException $e) {
             // This might be caused by NTFS file systems, where '*' is a forbidden character. Repeat without this character.
             $dbName = str_replace('*', '', $dbName);
-            $db = new Sqlite(array_merge($this->Dbo->config, array('database' => TMP . $dbName)));
+            $db = new Sqlite(array_merge($this->Dbo->config, ['database' => TMP . $dbName]));
         }
         $this->assertTrue(file_exists(TMP . $dbName));
 
         $db->execute("CREATE TABLE test_list (id VARCHAR(255));");
 
         $db->cacheSources = true;
-        $this->assertEquals(array('test_list'), $db->listSources());
+        $this->assertEquals(['test_list'], $db->listSources());
         $db->cacheSources = false;
 
         $fileName = '_' . preg_replace('/[^A-Za-z0-9_\-+]/', '_', TMP . $dbName) . '_list';
 
         $result = Cache::read($fileName, '_cake_model_');
-        $this->assertEquals(array('test_list'), $result);
+        $this->assertEquals(['test_list'], $result);
 
         Cache::delete($fileName, '_cake_model_');
         Configure::write('Cache.disable', true);
@@ -205,110 +205,110 @@ class SqliteTest extends CakeTestCase
      */
     public function testBuildColumn()
     {
-        $data = array(
+        $data = [
             'name' => 'int_field',
             'type' => 'integer',
             'null' => false,
-        );
+        ];
         $result = $this->Dbo->buildColumn($data);
         $expected = '"int_field" integer NOT NULL';
         $this->assertEquals($expected, $result);
 
-        $data = array(
-            'name' => 'name',
-            'type' => 'string',
+        $data = [
+            'name'   => 'name',
+            'type'   => 'string',
             'length' => 20,
-            'null' => false,
-        );
+            'null'   => false,
+        ];
         $result = $this->Dbo->buildColumn($data);
         $expected = '"name" varchar(20) NOT NULL';
         $this->assertEquals($expected, $result);
 
-        $data = array(
-            'name' => 'testName',
-            'type' => 'string',
-            'length' => 20,
+        $data = [
+            'name'    => 'testName',
+            'type'    => 'string',
+            'length'  => 20,
             'default' => null,
-            'null' => true,
+            'null'    => true,
             'collate' => 'NOCASE'
-        );
+        ];
         $result = $this->Dbo->buildColumn($data);
         $expected = '"testName" varchar(20) DEFAULT NULL COLLATE NOCASE';
         $this->assertEquals($expected, $result);
 
-        $data = array(
-            'name' => 'testName',
-            'type' => 'string',
-            'length' => 20,
+        $data = [
+            'name'    => 'testName',
+            'type'    => 'string',
+            'length'  => 20,
             'default' => 'test-value',
-            'null' => false,
-        );
+            'null'    => false,
+        ];
         $result = $this->Dbo->buildColumn($data);
         $expected = '"testName" varchar(20) DEFAULT \'test-value\' NOT NULL';
         $this->assertEquals($expected, $result);
 
-        $data = array(
-            'name' => 'testName',
-            'type' => 'integer',
-            'length' => 10,
+        $data = [
+            'name'    => 'testName',
+            'type'    => 'integer',
+            'length'  => 10,
             'default' => 10,
-            'null' => false,
-        );
+            'null'    => false,
+        ];
         $result = $this->Dbo->buildColumn($data);
         $expected = '"testName" integer(10) DEFAULT 10 NOT NULL';
         $this->assertEquals($expected, $result);
 
-        $data = array(
-            'name' => 'testName',
-            'type' => 'integer',
-            'length' => 10,
+        $data = [
+            'name'    => 'testName',
+            'type'    => 'integer',
+            'length'  => 10,
             'default' => 10,
-            'null' => false,
+            'null'    => false,
             'collate' => 'BADVALUE'
-        );
+        ];
         $result = $this->Dbo->buildColumn($data);
         $expected = '"testName" integer(10) DEFAULT 10 NOT NULL';
         $this->assertEquals($expected, $result);
 
-        $data = array(
-            'name' => 'testName',
-            'type' => 'smallinteger',
-            'length' => 6,
+        $data = [
+            'name'    => 'testName',
+            'type'    => 'smallinteger',
+            'length'  => 6,
             'default' => 6,
-            'null' => false,
-        );
+            'null'    => false,
+        ];
         $result = $this->Dbo->buildColumn($data);
         $expected = '"testName" smallint(6) DEFAULT 6 NOT NULL';
         $this->assertEquals($expected, $result);
 
-        $data = array(
-            'name' => 'testName',
-            'type' => 'tinyinteger',
-            'length' => 4,
+        $data = [
+            'name'    => 'testName',
+            'type'    => 'tinyinteger',
+            'length'  => 4,
             'default' => 4,
-            'null' => false,
-        );
+            'null'    => false,
+        ];
         $result = $this->Dbo->buildColumn($data);
         $expected = '"testName" tinyint(4) DEFAULT 4 NOT NULL';
         $this->assertEquals($expected, $result);
 
-        $data = array(
-            'name' => 'huge',
-            'type' => 'biginteger',
+        $data = [
+            'name'   => 'huge',
+            'type'   => 'biginteger',
             'length' => 20,
-            'null' => false,
-        );
+            'null'   => false,
+        ];
         $result = $this->Dbo->buildColumn($data);
         $expected = '"huge" bigint(20) NOT NULL';
         $this->assertEquals($expected, $result);
 
-        $data = array(
-            'name' => 'id',
-            'type' => 'biginteger',
+        $data = [
+            'name'   => 'id',
+            'type'   => 'biginteger',
             'length' => 20,
-            'null' => false,
-            'key' => 'primary',
-        );
+            'null'   => false,
+            'key'    => 'primary',
+        ];
         $result = $this->Dbo->buildColumn($data);
         $expected = '"id" bigint(20) NOT NULL PRIMARY KEY';
         $this->assertEquals($expected, $result);
@@ -322,49 +322,49 @@ class SqliteTest extends CakeTestCase
     public function testDescribe()
     {
         $this->loadFixtures('User');
-        $Model = new Model(array(
-            'name' => 'User',
-            'ds' => 'test',
+        $Model = new Model([
+            'name'  => 'User',
+            'ds'    => 'test',
             'table' => 'users'
-        ));
+        ]);
 
         $this->Dbo->cacheSources = true;
         Configure::write('Cache.disable', false);
 
         $result = $this->Dbo->describe($Model);
-        $expected = array(
-            'id' => array(
-                'type' => 'integer',
-                'key' => 'primary',
-                'null' => false,
+        $expected = [
+            'id' => [
+                'type'    => 'integer',
+                'key'     => 'primary',
+                'null'    => false,
                 'default' => null,
-                'length' => 11
-            ),
-            'user' => array(
-                'type' => 'string',
-                'length' => 255,
-                'null' => true,
+                'length'  => 11
+            ],
+            'user' => [
+                'type'    => 'string',
+                'length'  => 255,
+                'null'    => true,
                 'default' => null
-            ),
-            'password' => array(
-                'type' => 'string',
-                'length' => 255,
-                'null' => true,
+            ],
+            'password' => [
+                'type'    => 'string',
+                'length'  => 255,
+                'null'    => true,
                 'default' => null
-            ),
-            'created' => array(
-                'type' => 'datetime',
-                'null' => true,
+            ],
+            'created' => [
+                'type'    => 'datetime',
+                'null'    => true,
                 'default' => null,
-                'length' => null,
-            ),
-            'updated' => array(
-                'type' => 'datetime',
-                'null' => true,
+                'length'  => null,
+            ],
+            'updated' => [
+                'type'    => 'datetime',
+                'null'    => true,
                 'default' => null,
-                'length' => null,
-            )
-        );
+                'length'  => null,
+            ]
+        ];
         $this->assertEquals($expected, $result);
 
         $result = $this->Dbo->describe($Model->useTable);
@@ -382,63 +382,63 @@ class SqliteTest extends CakeTestCase
     public function testDatatypes()
     {
         $this->loadFixtures('Datatype');
-        $Model = new Model(array(
-            'name' => 'Datatype',
-            'ds' => 'test',
+        $Model = new Model([
+            'name'  => 'Datatype',
+            'ds'    => 'test',
             'table' => 'datatypes'
-        ));
+        ]);
         $result = $this->Dbo->describe($Model);
-        $expected = array(
-            'id' => array(
-                'type' => 'integer',
-                'null' => false,
+        $expected = [
+            'id' => [
+                'type'    => 'integer',
+                'null'    => false,
                 'default' => '',
-                'length' => 11,
-                'key' => 'primary',
-            ),
-            'float_field' => array(
-                'type' => 'float',
-                'null' => false,
+                'length'  => 11,
+                'key'     => 'primary',
+            ],
+            'float_field' => [
+                'type'    => 'float',
+                'null'    => false,
                 'default' => '',
-                'length' => '5,2',
-            ),
-            'decimal_field' => array(
-                'type' => 'decimal',
-                'null' => true,
+                'length'  => '5,2',
+            ],
+            'decimal_field' => [
+                'type'    => 'decimal',
+                'null'    => true,
                 'default' => '0.000',
-                'length' => '6,3',
-            ),
-            'huge_int' => array(
-                'type' => 'biginteger',
-                'null' => true,
+                'length'  => '6,3',
+            ],
+            'huge_int' => [
+                'type'    => 'biginteger',
+                'null'    => true,
                 'default' => null,
-                'length' => 20,
-            ),
-            'normal_int' => array(
-                'type' => 'integer',
-                'null' => true,
+                'length'  => 20,
+            ],
+            'normal_int' => [
+                'type'    => 'integer',
+                'null'    => true,
                 'default' => null,
-                'length' => null
-            ),
-            'small_int' => array(
-                'type' => 'smallinteger',
-                'null' => true,
+                'length'  => null
+            ],
+            'small_int' => [
+                'type'    => 'smallinteger',
+                'null'    => true,
                 'default' => null,
-                'length' => null
-            ),
-            'tiny_int' => array(
-                'type' => 'tinyinteger',
-                'null' => true,
+                'length'  => null
+            ],
+            'tiny_int' => [
+                'type'    => 'tinyinteger',
+                'null'    => true,
                 'default' => null,
-                'length' => null
-            ),
-            'bool' => array(
-                'type' => 'boolean',
-                'null' => false,
+                'length'  => null
+            ],
+            'bool' => [
+                'type'    => 'boolean',
+                'null'    => false,
                 'default' => '0',
-                'length' => null
-            ),
-        );
+                'length'  => null
+            ],
+        ];
         $this->assertSame($expected, $result);
     }
 
@@ -451,29 +451,29 @@ class SqliteTest extends CakeTestCase
     {
         $tableName = 'uuid_tests';
         $this->Dbo->query("CREATE TABLE {$tableName} (id VARCHAR(36) PRIMARY KEY, name VARCHAR, created DATETIME, modified DATETIME)");
-        $Model = new Model(array('name' => 'UuidTest', 'ds' => 'test', 'table' => 'uuid_tests'));
+        $Model = new Model(['name' => 'UuidTest', 'ds' => 'test', 'table' => 'uuid_tests']);
         $result = $this->Dbo->describe($Model);
-        $expected = array(
-            'type' => 'string',
-            'length' => 36,
-            'null' => false,
+        $expected = [
+            'type'    => 'string',
+            'length'  => 36,
+            'null'    => false,
             'default' => null,
-            'key' => 'primary',
-        );
+            'key'     => 'primary',
+        ];
         $this->assertEquals($expected, $result['id']);
         $this->Dbo->query('DROP TABLE ' . $tableName);
 
         $tableName = 'uuid_tests';
         $this->Dbo->query("CREATE TABLE {$tableName} (id CHAR(36) PRIMARY KEY, name VARCHAR, created DATETIME, modified DATETIME)");
-        $Model = new Model(array('name' => 'UuidTest', 'ds' => 'test', 'table' => 'uuid_tests'));
+        $Model = new Model(['name' => 'UuidTest', 'ds' => 'test', 'table' => 'uuid_tests']);
         $result = $this->Dbo->describe($Model);
-        $expected = array(
-            'type' => 'string',
-            'length' => 36,
-            'null' => false,
+        $expected = [
+            'type'    => 'string',
+            'length'  => 36,
+            'null'    => false,
             'default' => null,
-            'key' => 'primary',
-        );
+            'key'     => 'primary',
+        ];
         $this->assertEquals($expected, $result['id']);
         $this->Dbo->query('DROP TABLE ' . $tableName);
     }
@@ -495,20 +495,20 @@ CREATE TABLE $name (
 );
 SQL;
         $this->Dbo->execute($sql);
-        $model = new Model(array(
+        $model = new Model([
             'table' => 'timestamp_default_values',
-            'ds' => 'test',
+            'ds'    => 'test',
             'alias' => 'TimestampDefaultValue'
-        ));
+        ]);
         $result = $this->Dbo->describe($model);
         $this->Dbo->execute('DROP TABLE ' . $name);
 
         $this->assertNull($result['limit_date']['default']);
 
-        $schema = new CakeSchema(array(
-            'connection' => 'test',
+        $schema = new CakeSchema([
+            'connection'    => 'test',
             'testdescribes' => $result
-        ));
+        ]);
         $result = $this->Dbo->createSchema($schema);
         $this->assertContains('"limit_date" timestamp NOT NULL', $result);
     }
@@ -522,11 +522,11 @@ SQL;
     {
         $this->loadFixtures('User');
         $User = ClassRegistry::init('User');
-        $User->virtualFields = array('name' => 'SUBSTR(User.user, 5, LENGTH(User.user) - 4)');
+        $User->virtualFields = ['name' => 'SUBSTR(User.user, 5, LENGTH(User.user) - 4)'];
 
-        $result = $User->find('first', array(
-            'conditions' => array('User.user' => 'garrett')
-        ));
+        $result = $User->find('first', [
+            'conditions' => ['User.user' => 'garrett']
+        ]);
         $this->assertEquals('ett', $result['User']['name']);
     }
 
@@ -541,10 +541,10 @@ SQL;
         $this->loadFixtures('Uuid');
         $Model = ClassRegistry::init('Uuid');
 
-        $data = array(
+        $data = [
             'title' => 'A UUID should work',
             'count' => 10
-        );
+        ];
         $Model->create($data);
         $this->assertTrue((bool)$Model->save());
         $result = $Model->read();
@@ -565,7 +565,7 @@ SQL;
 
         $this->loadFixtures('User');
         $model = new User();
-        $model->hasOne = $model->hasMany = $model->belongsTo = $model->hasAndBelongsToMany = array();
+        $model->hasOne = $model->hasMany = $model->belongsTo = $model->hasAndBelongsToMany = [];
         $model->cacheQueries = false;
         $this->Dbo->cacheMethods = false;
 
@@ -628,17 +628,17 @@ SQL;
             'OR "User.id" IN (5, 6, 7, 8)';
         $result = $this->Dbo->fetchRow($sql);
 
-        $expected = array(
-            'User' => array(
-                'id' => 4,
-                'user' => 'garrett',
+        $expected = [
+            'User' => [
+                'id'       => 4,
+                'user'     => 'garrett',
                 'password' => '5f4dcc3b5aa765d61d8327deb882cf99',
-                'created' => '2007-03-17 01:22:23'
-            ),
-            0 => array(
+                'created'  => '2007-03-17 01:22:23'
+            ],
+            0 => [
                 'two' => 2
-            )
-        );
+            ]
+        ];
         $this->assertEquals($expected, $result);
 
         $sql = 'SELECT "User"."id", "User"."user" ' .
@@ -648,12 +648,12 @@ SQL;
             'FROM "users" AS "User" WHERE "User"."id" = 3';
         $result = $this->Dbo->fetchRow($sql);
 
-        $expected = array(
-            'User' => array(
-                'id' => 3,
+        $expected = [
+            'User' => [
+                'id'   => 3,
                 'user' => 'larry',
-            ),
-        );
+            ],
+        ];
         $this->assertEquals($expected, $result);
     }
 
@@ -673,13 +673,13 @@ SQL;
 			WHERE "User"."id" > 0';
         $result = $this->Dbo->fetchRow($sql);
 
-        $expected = array(
-            '0' => array(
-                'User__count' => '4',
-                'User__case' => '1',
+        $expected = [
+            '0' => [
+                'User__count'  => '4',
+                'User__case'   => '1',
                 'User__bigint' => '2.5',
-            ),
-        );
+            ],
+        ];
         $this->assertEquals($expected, $result);
     }
 
@@ -692,14 +692,14 @@ SQL;
     {
         $model = new TestModel();
         $sql = $this->Dbo->buildStatement(
-            array(
-                'fields' => array('id'),
-                'table' => 'users',
-                'alias' => 'User',
-                'order' => array('id'),
-                'limit' => 1,
-                'lock' => true,
-            ),
+            [
+                'fields' => ['id'],
+                'table'  => 'users',
+                'alias'  => 'User',
+                'order'  => ['id'],
+                'limit'  => 1,
+                'lock'   => true,
+            ],
             $model
         );
         $expected = 'SELECT id FROM users AS "User"   WHERE 1 = 1   ORDER BY "id" ASC  LIMIT 1';

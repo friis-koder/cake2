@@ -15,7 +15,6 @@
  * @since         CakePHP(tm) v .0.10.0.1233
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('CakeText', 'Utility');
 
 /**
@@ -25,11 +24,11 @@ App::uses('CakeText', 'Utility');
  */
 class Security
 {
-/**
- * Default hash method
- *
- * @var string
- */
+    /**
+     * Default hash method
+     *
+     * @var string
+     */
     public static $hashType = null;
 
     /**
@@ -139,6 +138,7 @@ class Security
         if (function_exists('hash')) {
             return hash($type, $string);
         }
+
         return md5($string);
     }
 
@@ -167,8 +167,9 @@ class Security
             trigger_error(__d(
                 'cake_dev',
                 'Invalid value, cost must be between %s and %s',
-                array(4, 31)
+                [4, 31]
             ), E_USER_WARNING);
+
             return null;
         }
         static::$hashCost = $cost;
@@ -206,6 +207,7 @@ class Security
             $bytes .= static::hash(CakeText::uuid() . uniqid(mt_rand(), true), 'sha512', true);
             $byteLength = strlen($bytes);
         }
+
         return substr($bytes, 0, $length);
     }
 
@@ -228,6 +230,7 @@ class Security
     {
         if (empty($key)) {
             trigger_error(__d('cake_dev', 'You cannot use an empty key for %s', 'Security::cipher()'), E_USER_WARNING);
+
             return '';
         }
 
@@ -243,6 +246,7 @@ class Security
             $out .= chr(ord(substr($text, $i, 1)) ^ $mask);
         }
         srand();
+
         return $out;
     }
 
@@ -262,14 +266,17 @@ class Security
     {
         if (empty($key)) {
             trigger_error(__d('cake_dev', 'You cannot use an empty key for %s', 'Security::rijndael()'), E_USER_WARNING);
+
             return '';
         }
-        if (empty($operation) || !in_array($operation, array('encrypt', 'decrypt'))) {
+        if (empty($operation) || !in_array($operation, ['encrypt', 'decrypt'])) {
             trigger_error(__d('cake_dev', 'You must specify the operation for Security::rijndael(), either encrypt or decrypt'), E_USER_WARNING);
+
             return '';
         }
         if (strlen($key) < 32) {
             trigger_error(__d('cake_dev', 'You must use a key larger than 32 bytes for Security::rijndael()'), E_USER_WARNING);
+
             return '';
         }
         $algorithm = MCRYPT_RIJNDAEL_256;
@@ -280,15 +287,18 @@ class Security
 
         if ($operation === 'encrypt') {
             $iv = mcrypt_create_iv($ivSize, MCRYPT_RAND);
+
             return $iv . '$$' . mcrypt_encrypt($algorithm, $cryptKey, $text, $mode, $iv);
         }
         // Backwards compatible decrypt with fixed iv
         if (substr($text, $ivSize, 2) !== '$$') {
             $iv = substr($key, strlen($key) - 32, 32);
+
             return rtrim(mcrypt_decrypt($algorithm, $cryptKey, $text, $mode, $iv), "\0");
         }
         $iv = substr($text, 0, $ivSize);
         $text = substr($text, $ivSize + 2);
+
         return rtrim(mcrypt_decrypt($algorithm, $cryptKey, $text, $mode, $iv), "\0");
     }
 
@@ -303,10 +313,11 @@ class Security
     protected static function _salt($length = 22)
     {
         $salt = str_replace(
-            array('+', '='),
+            ['+', '='],
             '.',
             base64_encode(sha1(uniqid(Configure::read('Security.salt'), true), true))
         );
+
         return substr($salt, 0, $length);
     }
 
@@ -321,7 +332,7 @@ class Security
     {
         if ($salt === false || $salt === null || $salt === '') {
             $salt = static::_salt(22);
-            $salt = vsprintf('$2a$%02d$%s', array(static::$hashCost, $salt));
+            $salt = vsprintf('$2a$%02d$%s', [static::$hashCost, $salt]);
         }
 
         $invalidCipher = (
@@ -333,10 +344,12 @@ class Security
             trigger_error(__d(
                 'cake_dev',
                 'Invalid salt: %s for %s Please visit http://www.php.net/crypt and read the appropriate section for building %s salts.',
-                array($salt, 'blowfish', 'blowfish')
+                [$salt, 'blowfish', 'blowfish']
             ), E_USER_WARNING);
+
             return '';
         }
+
         return crypt($password, $salt);
     }
 
@@ -383,6 +396,7 @@ class Security
         }
 
         $hmac = hash_hmac('sha256', $ciphertext, $key);
+
         return $hmac . $ciphertext;
     }
 

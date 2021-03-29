@@ -15,7 +15,6 @@
  * @since         CakePHP(tm) v 2.0.0
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('CakeEmail', 'Network/Email');
 App::uses('AbstractTransport', 'Network/Email');
 App::uses('MailTransport', 'Network/Email');
@@ -25,16 +24,16 @@ App::uses('MailTransport', 'Network/Email');
  */
 class MailTransportTest extends CakeTestCase
 {
-/**
- * Setup
- *
- * @return void
- */
+    /**
+     * Setup
+     *
+     * @return void
+     */
     public function setUp()
     {
         parent::setUp();
-        $this->MailTransport = $this->getMock('MailTransport', array('_mail'));
-        $this->MailTransport->config(array('additionalParameters' => '-f'));
+        $this->MailTransport = $this->getMock('MailTransport', ['_mail']);
+        $this->MailTransport->config(['additionalParameters' => '-f']);
     }
 
     /**
@@ -44,23 +43,23 @@ class MailTransportTest extends CakeTestCase
      */
     public function testSendData()
     {
-        $email = $this->getMock('CakeEmail', array('message'), array());
+        $email = $this->getMock('CakeEmail', ['message'], []);
         $email->from('noreply@cakephp.org', 'CakePHP Test');
         $email->returnPath('pleasereply@cakephp.org', 'CakePHP Return');
         $email->to('cake@cakephp.org', 'CakePHP');
-        $email->cc(array('mark@cakephp.org' => 'Mark Story', 'juan@cakephp.org' => 'Juan Basso'));
+        $email->cc(['mark@cakephp.org' => 'Mark Story', 'juan@cakephp.org' => 'Juan Basso']);
         $email->bcc('phpnut@cakephp.org');
         $email->messageID('<4d9946cf-0a44-4907-88fe-1d0ccbdd56cb@localhost>');
         $longNonAscii = 'Foø Bår Béz Foø Bår Béz Foø Bår Béz Foø Bår Béz';
         $email->subject($longNonAscii);
         $date = date(DATE_RFC2822);
-        $email->setHeaders(array(
+        $email->setHeaders([
             'X-Mailer' => 'CakePHP Email',
-            'Date' => $date,
-            'X-add' => mb_encode_mimeheader($longNonAscii, 'utf8', 'B'),
-        ));
+            'Date'     => $date,
+            'X-add'    => mb_encode_mimeheader($longNonAscii, 'utf8', 'B'),
+        ]);
         $email->expects($this->any())->method('message')
-            ->will($this->returnValue(array('First Line', 'Second Line', '.Third Line', '')));
+            ->will($this->returnValue(['First Line', 'Second Line', '.Third Line', '']));
 
         $encoded = '=?UTF-8?B?Rm/DuCBCw6VyIELDqXogRm/DuCBCw6VyIELDqXogRm/DuCBCw6VyIELDqXog?=';
         $encoded .= ' =?UTF-8?B?Rm/DuCBCw6VyIELDqXo=?=';
@@ -81,7 +80,7 @@ class MailTransportTest extends CakeTestCase
             ->with(
                 'CakePHP <cake@cakephp.org>',
                 $encoded,
-                implode(PHP_EOL, array('First Line', 'Second Line', '.Third Line', '')),
+                implode(PHP_EOL, ['First Line', 'Second Line', '.Third Line', '']),
                 $data,
                 '-f'
             );

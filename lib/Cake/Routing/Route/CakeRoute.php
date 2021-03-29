@@ -12,7 +12,6 @@
  * @since         CakePHP(tm) v 1.3
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('Hash', 'Utility');
 
 /**
@@ -26,27 +25,27 @@ App::uses('Hash', 'Utility');
  */
 class CakeRoute
 {
-/**
- * An array of named segments in a Route.
- * `/:controller/:action/:id` has 3 key elements
- *
- * @var array
- */
-    public $keys = array();
+    /**
+     * An array of named segments in a Route.
+     * `/:controller/:action/:id` has 3 key elements
+     *
+     * @var array
+     */
+    public $keys = [];
 
     /**
      * An array of additional parameters for the Route.
      *
      * @var array
      */
-    public $options = array();
+    public $options = [];
 
     /**
      * Default parameters for a Route
      *
      * @var array
      */
-    public $defaults = array();
+    public $defaults = [];
 
     /**
      * The routes template string.
@@ -75,11 +74,11 @@ class CakeRoute
      *
      * @var array
      */
-    protected $_headerMap = array(
-        'type' => 'content_type',
+    protected $_headerMap = [
+        'type'   => 'content_type',
         'method' => 'request_method',
         'server' => 'server_name'
-    );
+    ];
 
     /**
      * Constructor for a Route
@@ -88,7 +87,7 @@ class CakeRoute
      * @param array $defaults Array of defaults for the route.
      * @param array $options Array of additional options for the Route
      */
-    public function __construct($template, $defaults = array(), $options = array())
+    public function __construct($template, $defaults = [], $options = [])
     {
         $this->template = $template;
         $this->defaults = (array)$defaults;
@@ -119,6 +118,7 @@ class CakeRoute
             return $this->_compiledRoute;
         }
         $this->_writeRoute();
+
         return $this->_compiledRoute;
     }
 
@@ -134,11 +134,12 @@ class CakeRoute
     {
         if (empty($this->template) || ($this->template === '/')) {
             $this->_compiledRoute = '#^/*$#';
-            $this->keys = array();
+            $this->keys = [];
+
             return;
         }
         $route = $this->template;
-        $names = $routeParams = array();
+        $names = $routeParams = [];
         $parsed = preg_quote($this->template, '#');
 
         preg_match_all('#:([A-Za-z0-9_-]+[A-Z0-9a-z])#', $route, $namedElements);
@@ -228,7 +229,7 @@ class CakeRoute
         for ($i = 0; $i <= $count; $i++) {
             unset($route[$i]);
         }
-        $route['pass'] = $route['named'] = array();
+        $route['pass'] = $route['named'] = [];
 
         // Assign defaults, set passed args to pass
         foreach ($this->defaults as $key => $value) {
@@ -237,6 +238,7 @@ class CakeRoute
             }
             if (is_int($key)) {
                 $route['pass'][] = $value;
+
                 continue;
             }
             $route[$key] = $value;
@@ -263,6 +265,7 @@ class CakeRoute
                 }
             }
         }
+
         return $route;
     }
 
@@ -276,7 +279,7 @@ class CakeRoute
      */
     protected function _parseArgs($args, $context)
     {
-        $pass = $named = array();
+        $pass = $named = [];
         $args = explode('/', $args);
 
         $namedConfig = Router::namedConfig();
@@ -287,6 +290,7 @@ class CakeRoute
             foreach ((array)$this->options['named'] as $key => $val) {
                 if (is_numeric($key)) {
                     $rules[$val] = true;
+
                     continue;
                 }
                 $rules[$key] = $val;
@@ -313,22 +317,23 @@ class CakeRoute
                         $arr = $val;
                         foreach ($matches as $match) {
                             if (empty($match[1])) {
-                                $arr = array($arr);
+                                $arr = [$arr];
                             } else {
-                                $arr = array(
+                                $arr = [
                                     $match[1] => $arr
-                                );
+                                ];
                             }
                         }
                         $val = $arr;
                     }
-                    $named = array_merge_recursive($named, array($key => $val));
+                    $named = array_merge_recursive($named, [$key => $val]);
                 }
             } else {
                 $pass[] = $param;
             }
         }
-        return array($pass, $named);
+
+        return [$pass, $named];
     }
 
     /**
@@ -348,7 +353,7 @@ class CakeRoute
             return $rule;
         }
         if (is_string($rule)) {
-            $rule = array('match' => $rule);
+            $rule = ['match' => $rule];
         }
         if (!is_array($rule)) {
             return false;
@@ -368,6 +373,7 @@ class CakeRoute
         if (!$actionMatches) {
             return false;
         }
+
         return (!isset($rule['match']) || preg_match('/' . $rule['match'] . '/', $val));
     }
 
@@ -390,6 +396,7 @@ class CakeRoute
                 $url[$persistKey] = $params[$persistKey];
             }
         }
+
         return $url;
     }
 
@@ -421,7 +428,7 @@ class CakeRoute
         }
 
         // Missing defaults is a fail.
-        if (array_diff_key($defaults, $url) !== array()) {
+        if (array_diff_key($defaults, $url) !== []) {
             return false;
         }
 
@@ -430,7 +437,7 @@ class CakeRoute
         $greedyNamed = $namedConfig['greedyNamed'];
         $allowedNamedParams = $namedConfig['rules'];
 
-        $named = $pass = array();
+        $named = $pass = [];
 
         foreach ($url as $key => $value) {
             // keys that exist in the defaults and have different values is a match failure.
@@ -453,6 +460,7 @@ class CakeRoute
             } elseif ($numeric) {
                 $pass[] = $value;
                 unset($url[$key]);
+
                 continue;
             }
 
@@ -462,6 +470,7 @@ class CakeRoute
                 (!in_array($key, $prefixes))
             ) {
                 $named[$key] = $value;
+
                 continue;
             }
 
@@ -484,6 +493,7 @@ class CakeRoute
                 }
             }
         }
+
         return $this->_writeUrl(array_merge($url, compact('pass', 'named')));
     }
 
@@ -514,7 +524,7 @@ class CakeRoute
         $separator = $namedConfig['separator'];
 
         if (!empty($params['named']) && is_array($params['named'])) {
-            $named = array();
+            $named = [];
             foreach ($params['named'] as $key => $value) {
                 if (is_array($value)) {
                     $flat = Hash::flatten($value, '%5D%5B');
@@ -530,7 +540,7 @@ class CakeRoute
         $out = $this->template;
 
         if (!empty($this->keys)) {
-            $search = $replace = array();
+            $search = $replace = [];
 
             foreach ($this->keys as $key) {
                 $string = null;
@@ -552,6 +562,7 @@ class CakeRoute
             $out = str_replace('*', $params['pass'], $out);
         }
         $out = str_replace('//', '/', $out);
+
         return $out;
     }
 
@@ -571,6 +582,7 @@ class CakeRoute
         foreach ($fields as $field => $value) {
             $obj->$field = $value;
         }
+
         return $obj;
     }
 }

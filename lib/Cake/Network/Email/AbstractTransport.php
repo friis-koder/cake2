@@ -23,12 +23,12 @@
  */
 abstract class AbstractTransport
 {
-/**
- * Configurations
- *
- * @var array
- */
-    protected $_config = array();
+    /**
+     * Configurations
+     *
+     * @var array
+     */
+    protected $_config = [];
 
     /**
      * Send mail
@@ -49,6 +49,7 @@ abstract class AbstractTransport
         if (is_array($config)) {
             $this->_config = $config + $this->_config;
         }
+
         return $this->_config;
     }
 
@@ -71,6 +72,7 @@ abstract class AbstractTransport
         if (!empty($out)) {
             $out = substr($out, 0, -1 * strlen($eol));
         }
+
         return $out;
     }
 }

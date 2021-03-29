@@ -15,7 +15,6 @@
  * @since         CakePHP(tm) v 1.2.0.3467
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('Component', 'Controller');
 App::uses('Multibyte', 'I18n');
 App::uses('CakeEmail', 'Network/Email');
@@ -33,11 +32,11 @@ App::uses('CakeEmail', 'Network/Email');
  */
 class EmailComponent extends Component
 {
-/**
- * Recipient of the email
- *
- * @var string
- */
+    /**
+     * Recipient of the email
+     *
+     * @var string
+     */
     public $to = null;
 
     /**
@@ -79,7 +78,7 @@ class EmailComponent extends Component
      *
      * @var array
      */
-    public $cc = array();
+    public $cc = [];
 
     /**
      * Blind Carbon Copy
@@ -89,7 +88,7 @@ class EmailComponent extends Component
      *
      * @var array
      */
-    public $bcc = array();
+    public $bcc = [];
 
     /**
      * The date to put in the Date: header. This should be a date
@@ -113,7 +112,7 @@ class EmailComponent extends Component
      *
      * @var array
      */
-    public $headers = array();
+    public $headers = [];
 
     /**
      * List of additional headers
@@ -187,7 +186,7 @@ class EmailComponent extends Component
      *
      * @var array
      */
-    public $attachments = array();
+    public $attachments = [];
 
     /**
      * What mailer should EmailComponent identify itself as
@@ -201,7 +200,7 @@ class EmailComponent extends Component
      *
      * @var array
      */
-    public $filePaths = array();
+    public $filePaths = [];
 
     /**
      * List of options to use for smtp mail method
@@ -216,7 +215,7 @@ class EmailComponent extends Component
      *
      * @var array
      */
-    public $smtpOptions = array();
+    public $smtpOptions = [];
 
     /**
      * Contains the rendered plain text message if one was sent.
@@ -258,7 +257,7 @@ class EmailComponent extends Component
      * @param ComponentCollection $collection A ComponentCollection this component can use to lazy load its components
      * @param array $settings Array of configuration settings.
      */
-    public function __construct(ComponentCollection $collection, $settings = array())
+    public function __construct(ComponentCollection $collection, $settings = [])
     {
         $this->_controller = $collection->getController();
         parent::__construct($collection, $settings);
@@ -316,7 +315,7 @@ class EmailComponent extends Component
         $lib->messageID($this->messageId);
         $lib->helpers($this->_controller->helpers);
 
-        $headers = array('X-Mailer' => $this->xMailer);
+        $headers = ['X-Mailer' => $this->xMailer];
         foreach ($this->headers as $key => $value) {
             $headers['X-' . $key] = $value;
         }
@@ -339,11 +338,11 @@ class EmailComponent extends Component
 
         $lib->transport(ucfirst($this->delivery));
         if ($this->delivery === 'mail') {
-            $lib->config(array('eol' => $this->lineFeed, 'additionalParameters' => $this->additionalParams));
+            $lib->config(['eol' => $this->lineFeed, 'additionalParameters' => $this->additionalParams]);
         } elseif ($this->delivery === 'smtp') {
             $lib->config($this->smtpOptions);
         } else {
-            $lib->config(array());
+            $lib->config([]);
         }
 
         $sent = $lib->send($content);
@@ -357,8 +356,8 @@ class EmailComponent extends Component
             $this->textMessage = null;
         }
 
-        $this->_header = array();
-        $this->_message = array();
+        $this->_header = [];
+        $this->_message = [];
 
         return $sent;
     }
@@ -371,16 +370,16 @@ class EmailComponent extends Component
     public function reset()
     {
         $this->template = null;
-        $this->to = array();
+        $this->to = [];
         $this->from = null;
         $this->replyTo = null;
         $this->return = null;
-        $this->cc = array();
-        $this->bcc = array();
+        $this->cc = [];
+        $this->bcc = [];
         $this->subject = null;
         $this->additionalParams = null;
         $this->date = null;
-        $this->attachments = array();
+        $this->attachments = [];
         $this->htmlMessage = null;
         $this->textMessage = null;
         $this->messageId = true;
@@ -394,7 +393,7 @@ class EmailComponent extends Component
      */
     protected function _formatAttachFiles()
     {
-        $files = array();
+        $files = [];
         foreach ($this->attachments as $filename => $attachment) {
             $file = $this->_findFiles($attachment);
             if (!empty($file)) {
@@ -404,6 +403,7 @@ class EmailComponent extends Component
                 $files[$filename] = $file;
             }
         }
+
         return $files;
     }
 
@@ -421,9 +421,11 @@ class EmailComponent extends Component
         foreach ($this->filePaths as $path) {
             if (file_exists($path . DS . $attachment)) {
                 $file = $path . DS . $attachment;
+
                 return $file;
             }
         }
+
         return null;
     }
 
@@ -435,7 +437,7 @@ class EmailComponent extends Component
      */
     protected function _formatAddresses($addresses)
     {
-        $formatted = array();
+        $formatted = [];
         foreach ($addresses as $address) {
             if (preg_match('/((.*))?\s?<(.+)>/', $address, $matches) && !empty($matches[2])) {
                 $formatted[$this->_strip($matches[3])] = $matches[2];
@@ -444,6 +446,7 @@ class EmailComponent extends Component
                 $formatted[$address] = $address;
             }
         }
+
         return $formatted;
     }
 
@@ -467,6 +470,7 @@ class EmailComponent extends Component
         while (preg_match($search, $value)) {
             $value = preg_replace($search, '', $value);
         }
+
         return $value;
     }
 }

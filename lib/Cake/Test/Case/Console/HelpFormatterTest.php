@@ -15,7 +15,6 @@
  * @since         CakePHP(tm) v 2.0
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('ConsoleOptionParser', 'Console');
 App::uses('HelpFormatter', 'Console');
 
@@ -26,18 +25,18 @@ App::uses('HelpFormatter', 'Console');
  */
 class HelpFormatterTest extends CakeTestCase
 {
-/**
- * test that the console max width is respected when generating help.
- *
- * @return void
- */
+    /**
+     * test that the console max width is respected when generating help.
+     *
+     * @return void
+     */
     public function testWidthFormatting()
     {
         $parser = new ConsoleOptionParser('test', false);
         $parser->description('This is fifteen This is fifteen This is fifteen')
-            ->addOption('four', array('help' => 'this is help text this is help text'))
-            ->addArgument('four', array('help' => 'this is help text this is help text'))
-            ->addSubcommand('four', array('help' => 'this is help text this is help text'));
+            ->addOption('four', ['help' => 'this is help text this is help text'])
+            ->addArgument('four', ['help' => 'this is help text this is help text'])
+            ->addSubcommand('four', ['help' => 'this is help text this is help text']);
 
         $formatter = new HelpFormatter($parser);
         $result = $formatter->text(30);
@@ -79,13 +78,13 @@ TEXT;
     public function testHelpWithChoices()
     {
         $parser = new ConsoleOptionParser('mycommand', false);
-        $parser->addOption('test', array('help' => 'A test option.', 'choices' => array('one', 'two')))
-            ->addArgument('type', array(
-                'help' => 'Resource type.',
-                'choices' => array('aco', 'aro'),
+        $parser->addOption('test', ['help' => 'A test option.', 'choices' => ['one', 'two']])
+            ->addArgument('type', [
+                'help'     => 'Resource type.',
+                'choices'  => ['aco', 'aro'],
                 'required' => true
-            ))
-            ->addArgument('other_longer', array('help' => 'Another argument.'));
+            ])
+            ->addArgument('other_longer', ['help' => 'Another argument.']);
 
         $formatter = new HelpFormatter($parser);
         $result = $formatter->text();
@@ -117,8 +116,8 @@ TEXT;
         $parser = new ConsoleOptionParser('mycommand', false);
         $parser->description('Description text')
             ->epilog('epilog text')
-            ->addOption('test', array('help' => 'A test option.'))
-            ->addArgument('model', array('help' => 'The model to make.', 'required' => true));
+            ->addOption('test', ['help' => 'A test option.'])
+            ->addArgument('model', ['help' => 'The model to make.', 'required' => true]);
 
         $formatter = new HelpFormatter($parser);
         $result = $formatter->text();
@@ -151,8 +150,8 @@ TEXT;
     public function testHelpSubcommand()
     {
         $parser = new ConsoleOptionParser('mycommand', false);
-        $parser->addSubcommand('method', array('help' => 'This is another command'))
-            ->addOption('test', array('help' => 'A test option.'));
+        $parser->addSubcommand('method', ['help' => 'This is another command'])
+            ->addOption('test', ['help' => 'A test option.']);
 
         $formatter = new HelpFormatter($parser);
         $result = $formatter->text();
@@ -183,10 +182,10 @@ TEXT;
     public function testHelpWithOptions()
     {
         $parser = new ConsoleOptionParser('mycommand', false);
-        $parser->addOption('test', array('help' => 'A test option.'))
-            ->addOption('connection', array(
+        $parser->addOption('test', ['help' => 'A test option.'])
+            ->addOption('connection', [
                 'short' => 'c', 'help' => 'The connection to use.', 'default' => 'default'
-            ));
+            ]);
 
         $formatter = new HelpFormatter($parser);
         $result = $formatter->text();
@@ -213,9 +212,9 @@ TEXT;
     public function testHelpWithOptionsAndArguments()
     {
         $parser = new ConsoleOptionParser('mycommand', false);
-        $parser->addOption('test', array('help' => 'A test option.'))
-            ->addArgument('model', array('help' => 'The model to make.', 'required' => true))
-            ->addArgument('other_longer', array('help' => 'Another argument.'));
+        $parser->addOption('test', ['help' => 'A test option.'])
+            ->addArgument('model', ['help' => 'The model to make.', 'required' => true])
+            ->addArgument('other_longer', ['help' => 'Another argument.']);
 
         $formatter = new HelpFormatter($parser);
         $result = $formatter->text();
@@ -246,15 +245,15 @@ TEXT;
     {
         $parser = new ConsoleOptionParser('mycommand', false);
         $parser
-            ->addOption('test', array('help' => 'A test option.'))
-            ->addOption('test2', array('help' => 'A test option.'))
-            ->addOption('test3', array('help' => 'A test option.'))
-            ->addOption('test4', array('help' => 'A test option.'))
-            ->addOption('test5', array('help' => 'A test option.'))
-            ->addOption('test6', array('help' => 'A test option.'))
-            ->addOption('test7', array('help' => 'A test option.'))
-            ->addArgument('model', array('help' => 'The model to make.', 'required' => true))
-            ->addArgument('other_longer', array('help' => 'Another argument.'));
+            ->addOption('test', ['help' => 'A test option.'])
+            ->addOption('test2', ['help' => 'A test option.'])
+            ->addOption('test3', ['help' => 'A test option.'])
+            ->addOption('test4', ['help' => 'A test option.'])
+            ->addOption('test5', ['help' => 'A test option.'])
+            ->addOption('test6', ['help' => 'A test option.'])
+            ->addOption('test7', ['help' => 'A test option.'])
+            ->addArgument('model', ['help' => 'The model to make.', 'required' => true])
+            ->addArgument('other_longer', ['help' => 'Another argument.']);
 
         $formatter = new HelpFormatter($parser);
         $result = $formatter->text();
@@ -271,15 +270,15 @@ TEXT;
     {
         $parser = new ConsoleOptionParser('mycommand', false);
         $parser
-            ->addArgument('test', array('help' => 'A test option.'))
-            ->addArgument('test2', array('help' => 'A test option.'))
-            ->addArgument('test3', array('help' => 'A test option.'))
-            ->addArgument('test4', array('help' => 'A test option.'))
-            ->addArgument('test5', array('help' => 'A test option.'))
-            ->addArgument('test6', array('help' => 'A test option.'))
-            ->addArgument('test7', array('help' => 'A test option.'))
-            ->addArgument('model', array('help' => 'The model to make.', 'required' => true))
-            ->addArgument('other_longer', array('help' => 'Another argument.'));
+            ->addArgument('test', ['help' => 'A test option.'])
+            ->addArgument('test2', ['help' => 'A test option.'])
+            ->addArgument('test3', ['help' => 'A test option.'])
+            ->addArgument('test4', ['help' => 'A test option.'])
+            ->addArgument('test5', ['help' => 'A test option.'])
+            ->addArgument('test6', ['help' => 'A test option.'])
+            ->addArgument('test7', ['help' => 'A test option.'])
+            ->addArgument('model', ['help' => 'The model to make.', 'required' => true])
+            ->addArgument('other_longer', ['help' => 'Another argument.']);
 
         $formatter = new HelpFormatter($parser);
         $result = $formatter->text();
@@ -295,13 +294,13 @@ TEXT;
     public function testXmlHelpWithChoices()
     {
         $parser = new ConsoleOptionParser('mycommand', false);
-        $parser->addOption('test', array('help' => 'A test option.', 'choices' => array('one', 'two')))
-            ->addArgument('type', array(
-                'help' => 'Resource type.',
-                'choices' => array('aco', 'aro'),
+        $parser->addOption('test', ['help' => 'A test option.', 'choices' => ['one', 'two']])
+            ->addArgument('type', [
+                'help'     => 'Resource type.',
+                'choices'  => ['aco', 'aro'],
                 'required' => true
-            ))
-            ->addArgument('other_longer', array('help' => 'Another argument.'));
+            ])
+            ->addArgument('other_longer', ['help' => 'Another argument.']);
 
         $formatter = new HelpFormatter($parser);
         $result = $formatter->xml();
@@ -351,8 +350,8 @@ TEXT;
         $parser = new ConsoleOptionParser('mycommand', false);
         $parser->description('Description text')
             ->epilog('epilog text')
-            ->addOption('test', array('help' => 'A test option.'))
-            ->addArgument('model', array('help' => 'The model to make.', 'required' => true));
+            ->addOption('test', ['help' => 'A test option.'])
+            ->addArgument('model', ['help' => 'The model to make.', 'required' => true]);
 
         $formatter = new HelpFormatter($parser);
         $result = $formatter->xml();
@@ -391,8 +390,8 @@ TEXT;
     public function testXmlHelpSubcommand()
     {
         $parser = new ConsoleOptionParser('mycommand', false);
-        $parser->addSubcommand('method', array('help' => 'This is another command'))
-            ->addOption('test', array('help' => 'A test option.'));
+        $parser->addSubcommand('method', ['help' => 'This is another command'])
+            ->addOption('test', ['help' => 'A test option.']);
 
         $formatter = new HelpFormatter($parser);
         $result = $formatter->xml();
@@ -429,10 +428,10 @@ TEXT;
     public function testXmlHelpWithOptions()
     {
         $parser = new ConsoleOptionParser('mycommand', false);
-        $parser->addOption('test', array('help' => 'A test option.'))
-            ->addOption('connection', array(
+        $parser->addOption('test', ['help' => 'A test option.'])
+            ->addOption('connection', [
                 'short' => 'c', 'help' => 'The connection to use.', 'default' => 'default'
-            ));
+            ]);
 
         $formatter = new HelpFormatter($parser);
         $result = $formatter->xml();
@@ -471,9 +470,9 @@ TEXT;
     public function testXmlHelpWithOptionsAndArguments()
     {
         $parser = new ConsoleOptionParser('mycommand', false);
-        $parser->addOption('test', array('help' => 'A test option.'))
-            ->addArgument('model', array('help' => 'The model to make.', 'required' => true))
-            ->addArgument('other_longer', array('help' => 'Another argument.'));
+        $parser->addOption('test', ['help' => 'A test option.'])
+            ->addArgument('model', ['help' => 'The model to make.', 'required' => true])
+            ->addArgument('other_longer', ['help' => 'Another argument.']);
 
         $formatter = new HelpFormatter($parser);
         $result = $formatter->xml();
@@ -515,9 +514,9 @@ TEXT;
     public function testXmlHelpAsObject()
     {
         $parser = new ConsoleOptionParser('mycommand', false);
-        $parser->addOption('test', array('help' => 'A test option.'))
-            ->addArgument('model', array('help' => 'The model to make.', 'required' => true))
-            ->addArgument('other_longer', array('help' => 'Another argument.'));
+        $parser->addOption('test', ['help' => 'A test option.'])
+            ->addArgument('model', ['help' => 'The model to make.', 'required' => true])
+            ->addArgument('other_longer', ['help' => 'Another argument.']);
 
         $formatter = new HelpFormatter($parser);
         $result = $formatter->xml(false);

@@ -13,7 +13,6 @@
  * @since		  CakePHP(tm) v 2.1
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('CakeEventListener', 'Event');
 App::uses('CakeEvent', 'Event');
 
@@ -27,11 +26,11 @@ App::uses('CakeEvent', 'Event');
  */
 class CakeEventManager
 {
-/**
- * The default priority queue value for new, attached listeners
- *
- * @var int
- */
+    /**
+     * The default priority queue value for new, attached listeners
+     *
+     * @var int
+     */
     public static $defaultPriority = 10;
 
     /**
@@ -46,7 +45,7 @@ class CakeEventManager
      *
      * @var object
      */
-    protected $_listeners = array();
+    protected $_listeners = [];
 
     /**
      * Internal flag to distinguish a common manager from the singleton
@@ -76,6 +75,7 @@ class CakeEventManager
         }
 
         static::$_generalManager->_isGlobal = true;
+
         return static::$_generalManager;
     }
 
@@ -99,20 +99,21 @@ class CakeEventManager
      * @throws InvalidArgumentException When event key is missing or callable is not an
      *   instance of CakeEventListener.
      */
-    public function attach($callable, $eventKey = null, $options = array())
+    public function attach($callable, $eventKey = null, $options = [])
     {
         if (!$eventKey && !($callable instanceof CakeEventListener)) {
             throw new InvalidArgumentException(__d('cake_dev', 'The eventKey variable is required'));
         }
         if ($callable instanceof CakeEventListener) {
             $this->_attachSubscriber($callable);
+
             return;
         }
-        $options = $options + array('priority' => static::$defaultPriority, 'passParams' => false);
-        $this->_listeners[$eventKey][$options['priority']][] = array(
-            'callable' => $callable,
+        $options = $options + ['priority' => static::$defaultPriority, 'passParams' => false];
+        $this->_listeners[$eventKey][$options['priority']][] = [
+            'callable'   => $callable,
             'passParams' => $options['passParams'],
-        );
+        ];
     }
 
     /**
@@ -125,7 +126,7 @@ class CakeEventManager
     protected function _attachSubscriber(CakeEventListener $subscriber)
     {
         foreach ((array)$subscriber->implementedEvents() as $eventKey => $function) {
-            $options = array();
+            $options = [];
             $method = $function;
             if (is_array($function) && isset($function['callable'])) {
                 list($method, $options) = $this->_extractCallable($function, $subscriber);
@@ -134,10 +135,11 @@ class CakeEventManager
                     list($method, $options) = $this->_extractCallable($f, $subscriber);
                     $this->attach($method, $eventKey, $options);
                 }
+
                 continue;
             }
             if (is_string($method)) {
-                $method = array($subscriber, $function);
+                $method = [$subscriber, $function];
             }
             $this->attach($method, $eventKey, $options);
         }
@@ -157,9 +159,10 @@ class CakeEventManager
         $options = $function;
         unset($options['callable']);
         if (is_string($method)) {
-            $method = array($object, $method);
+            $method = [$object, $method];
         }
-        return array($method, $options);
+
+        return [$method, $options];
     }
 
     /**
@@ -178,6 +181,7 @@ class CakeEventManager
             foreach (array_keys($this->_listeners) as $eventKey) {
                 $this->detach($callable, $eventKey);
             }
+
             return;
         }
         if (empty($this->_listeners[$eventKey])) {
@@ -187,6 +191,7 @@ class CakeEventManager
             foreach ($callables as $k => $callback) {
                 if ($callback['callable'] === $callable) {
                     unset($this->_listeners[$eventKey][$priority][$k]);
+
                     break;
                 }
             }
@@ -206,20 +211,21 @@ class CakeEventManager
         if (!empty($eventKey) && empty($events[$eventKey])) {
             return;
         } elseif (!empty($eventKey)) {
-            $events = array($eventKey => $events[$eventKey]);
+            $events = [$eventKey => $events[$eventKey]];
         }
         foreach ($events as $key => $function) {
             if (is_array($function)) {
                 if (is_numeric(key($function))) {
                     foreach ($function as $handler) {
                         $handler = isset($handler['callable']) ? $handler['callable'] : $handler;
-                        $this->detach(array($subscriber, $handler), $key);
+                        $this->detach([$subscriber, $handler], $key);
                     }
+
                     continue;
                 }
                 $function = $function['callable'];
             }
-            $this->detach(array($subscriber, $function), $key);
+            $this->detach([$subscriber, $function], $key);
         }
     }
 
@@ -257,6 +263,7 @@ class CakeEventManager
                 $event->result = $result;
             }
         }
+
         return $event;
     }
 
@@ -268,20 +275,20 @@ class CakeEventManager
      */
     public function listeners($eventKey)
     {
-        $localListeners = array();
-        $priorities = array();
+        $localListeners = [];
+        $priorities = [];
         if (!$this->_isGlobal) {
             $localListeners = $this->prioritisedListeners($eventKey);
-            $localListeners = empty($localListeners) ? array() : $localListeners;
+            $localListeners = empty($localListeners) ? [] : $localListeners;
         }
         $globalListeners = static::instance()->prioritisedListeners($eventKey);
-        $globalListeners = empty($globalListeners) ? array() : $globalListeners;
+        $globalListeners = empty($globalListeners) ? [] : $globalListeners;
 
         $priorities = array_merge(array_keys($globalListeners), array_keys($localListeners));
         $priorities = array_unique($priorities);
         asort($priorities);
 
-        $result = array();
+        $result = [];
         foreach ($priorities as $priority) {
             if (isset($globalListeners[$priority])) {
                 $result = array_merge($result, $globalListeners[$priority]);
@@ -290,6 +297,7 @@ class CakeEventManager
                 $result = array_merge($result, $localListeners[$priority]);
             }
         }
+
         return $result;
     }
 
@@ -302,8 +310,9 @@ class CakeEventManager
     public function prioritisedListeners($eventKey)
     {
         if (empty($this->_listeners[$eventKey])) {
-            return array();
+            return [];
         }
+
         return $this->_listeners[$eventKey];
     }
 }

@@ -16,7 +16,6 @@
  * @since         CakePHP(tm) v 1.2.0.5012
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('AppShell', 'Console/Command');
 App::uses('File', 'Utility');
 
@@ -29,12 +28,12 @@ App::uses('File', 'Utility');
  */
 class ApiShell extends AppShell
 {
-/**
- * Map between short name for paths and real paths.
- *
- * @var array
- */
-    public $paths = array();
+    /**
+     * Map between short name for paths and real paths.
+     *
+     * @var array
+     */
+    public $paths = [];
 
     /**
      * Override initialize of the Shell
@@ -43,16 +42,16 @@ class ApiShell extends AppShell
      */
     public function initialize()
     {
-        $this->paths = array_merge($this->paths, array(
-            'behavior' => CAKE . 'Model' . DS . 'Behavior' . DS,
-            'cache' => CAKE . 'Cache' . DS,
+        $this->paths = array_merge($this->paths, [
+            'behavior'   => CAKE . 'Model' . DS . 'Behavior' . DS,
+            'cache'      => CAKE . 'Cache' . DS,
             'controller' => CAKE . 'Controller' . DS,
-            'component' => CAKE . 'Controller' . DS . 'Component' . DS,
-            'helper' => CAKE . 'View' . DS . 'Helper' . DS,
-            'model' => CAKE . 'Model' . DS,
-            'view' => CAKE . 'View' . DS,
-            'core' => CAKE
-        ));
+            'component'  => CAKE . 'Controller' . DS . 'Component' . DS,
+            'helper'     => CAKE . 'View' . DS . 'Helper' . DS,
+            'model'      => CAKE . 'Model' . DS,
+            'view'       => CAKE . 'View' . DS,
+            'core'       => CAKE
+        ]);
     }
 
     /**
@@ -84,7 +83,7 @@ class ApiShell extends AppShell
         }
         $objects = App::objects('class', $path);
         if (in_array($class, $objects)) {
-            if (in_array($type, array('behavior', 'component', 'helper')) && $type !== $file) {
+            if (in_array($type, ['behavior', 'component', 'helper']) && $type !== $file) {
                 if (!preg_match('/' . Inflector::camelize($type) . '$/', $class)) {
                     $class .= Inflector::camelize($type);
                 }
@@ -99,6 +98,7 @@ class ApiShell extends AppShell
             if (isset($this->params['method'])) {
                 if (!isset($parsed[$this->params['method']])) {
                     $this->err(__d('cake_console', '%s::%s() could not be found', $class, $this->params['method']));
+
                     return $this->_stop();
                 }
                 $method = $parsed[$this->params['method']];
@@ -118,6 +118,7 @@ class ApiShell extends AppShell
                 while ($number = strtolower($this->in(__d('cake_console', 'Select a number to see the more information about a specific method. q to quit. l to list.'), null, 'q'))) {
                     if ($number === 'q') {
                         $this->out(__d('cake_console', 'Done'));
+
                         return $this->_stop();
                     }
 
@@ -148,14 +149,14 @@ class ApiShell extends AppShell
 
         $parser->description(
             __d('cake_console', 'Lookup doc block comments for classes in CakePHP.')
-        )->addArgument('type', array(
+        )->addArgument('type', [
             'help' => __d('cake_console', 'Either a full path or type of class (model, behavior, controller, component, view, helper)')
-        ))->addArgument('className', array(
+        ])->addArgument('className', [
             'help' => __d('cake_console', 'A CakePHP core class name (e.g: Component, HtmlHelper).')
-        ))->addOption('method', array(
+        ])->addOption('method', [
             'short' => 'm',
-            'help' => __d('cake_console', 'The specific method you want help on.')
-        ));
+            'help'  => __d('cake_console', 'The specific method you want help on.')
+        ]);
 
         return $parser;
     }
@@ -171,7 +172,7 @@ class ApiShell extends AppShell
         $head .= "-----------------------------------------------\n";
         $head .= "Parameters:\n\n";
 
-        $commands = array(
+        $commands = [
             'path' => "\t<type>\n" .
                 "\t\tEither a full path or type of class (model, behavior, controller, component, view, helper).\n" .
                 "\t\tAvailable values:\n\n" .
@@ -184,7 +185,7 @@ class ApiShell extends AppShell
                 "\t\tview\tLook for class in CakePHP view path\n",
             'className' => "\t<className>\n" .
                 "\t\tA CakePHP core class name (e.g: Component, HtmlHelper).\n"
-        );
+        ];
 
         $this->out($head);
         if (!isset($this->args[1])) {
@@ -208,7 +209,7 @@ class ApiShell extends AppShell
      */
     protected function _parseClass($path, $class)
     {
-        $parsed = array();
+        $parsed = [];
 
         if (!class_exists($class)) {
             if (!include_once $path) {
@@ -225,7 +226,7 @@ class ApiShell extends AppShell
             if ($method->getDeclaringClass()->getName() != $class) {
                 continue;
             }
-            $args = array();
+            $args = [];
             foreach ($method->getParameters() as $param) {
                 $paramString = '$' . $param->getName();
                 if ($param->isDefaultValueAvailable()) {
@@ -233,13 +234,14 @@ class ApiShell extends AppShell
                 }
                 $args[] = $paramString;
             }
-            $parsed[$method->getName()] = array(
-                'comment' => str_replace(array('/*', '*/', '*'), '', $method->getDocComment()),
-                'method' => $method->getName(),
+            $parsed[$method->getName()] = [
+                'comment'    => str_replace(['/*', '*/', '*'], '', $method->getDocComment()),
+                'method'     => $method->getName(),
                 'parameters' => '(' . implode(', ', $args) . ')'
-            );
+            ];
         }
         ksort($parsed);
+
         return $parsed;
     }
 }

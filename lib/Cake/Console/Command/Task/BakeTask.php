@@ -14,7 +14,6 @@
  * @since         CakePHP(tm) v 1.3
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('AppShell', 'Console/Command');
 
 /**
@@ -24,11 +23,11 @@ App::uses('AppShell', 'Console/Command');
  */
 class BakeTask extends AppShell
 {
-/**
- * Name of plugin
- *
- * @var string
- */
+    /**
+     * Name of plugin
+     *
+     * @var string
+     */
     public $plugin = null;
 
     /**
@@ -70,6 +69,7 @@ class BakeTask extends AppShell
         if (isset($this->plugin)) {
             $path = $this->_pluginPath($this->plugin) . $this->name . DS;
         }
+
         return $path;
     }
 
@@ -84,6 +84,7 @@ class BakeTask extends AppShell
         foreach ($this->args as $i => $arg) {
             if (strpos($arg, '.')) {
                 list($this->params['plugin'], $this->args[$i]) = pluginSplit($arg);
+
                 break;
             }
         }

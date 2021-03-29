@@ -17,7 +17,6 @@
  * @since         CakePHP v 2.1
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('CakeEvent', 'Event');
 
 /**
@@ -25,12 +24,12 @@ App::uses('CakeEvent', 'Event');
  */
 class CakeEventTest extends CakeTestCase
 {
-/**
- * Tests the name() method
- *
- * @return void
- * @triggers fake.event
- */
+    /**
+     * Tests the name() method
+     *
+     * @return void
+     * @triggers fake.event
+     */
     public function testName()
     {
         $event = new CakeEvent('fake.event');
@@ -75,8 +74,8 @@ class CakeEventTest extends CakeTestCase
      */
     public function testEventData()
     {
-        $event = new CakeEvent('fake.event', $this, array('some' => 'data'));
-        $this->assertEquals(array('some' => 'data'), $event->data);
+        $event = new CakeEvent('fake.event', $this, ['some' => 'data']);
+        $this->assertEquals(['some' => 'data'], $event->data);
     }
 
     /**

@@ -13,7 +13,6 @@
  * @since         CakePHP(tm) v 1.2
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('ComponentCollection', 'Controller');
 
 /**
@@ -39,11 +38,11 @@ App::uses('ComponentCollection', 'Controller');
  */
 class Component extends CakeObject
 {
-/**
- * Component collection class used to lazy load components.
- *
- * @var ComponentCollection
- */
+    /**
+     * Component collection class used to lazy load components.
+     *
+     * @var ComponentCollection
+     */
     protected $_Collection;
 
     /**
@@ -51,21 +50,21 @@ class Component extends CakeObject
      *
      * @var array
      */
-    public $settings = array();
+    public $settings = [];
 
     /**
      * Other Components this component uses.
      *
      * @var array
      */
-    public $components = array();
+    public $components = [];
 
     /**
      * A component lookup table used to lazy load component objects.
      *
      * @var array
      */
-    protected $_componentMap = array();
+    protected $_componentMap = [];
 
     /**
      * Constructor
@@ -73,7 +72,7 @@ class Component extends CakeObject
      * @param ComponentCollection $collection A ComponentCollection this component can use to lazy load its components
      * @param array $settings Array of configuration settings.
      */
-    public function __construct(ComponentCollection $collection, $settings = array())
+    public function __construct(ComponentCollection $collection, $settings = [])
     {
         $this->_Collection = $collection;
         $this->settings = $settings;
@@ -92,7 +91,7 @@ class Component extends CakeObject
     public function __get($name)
     {
         if (isset($this->_componentMap[$name]) && !isset($this->{$name})) {
-            $settings = (array)$this->_componentMap[$name]['settings'] + array('enabled' => false);
+            $settings = (array)$this->_componentMap[$name]['settings'] + ['enabled' => false];
             $this->{$name} = $this->_Collection->load($this->_componentMap[$name]['class'], $settings);
         }
         if (isset($this->{$name})) {

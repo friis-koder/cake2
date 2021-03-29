@@ -15,7 +15,6 @@
  * @since         CakePHP v 1.2.0.7726
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('ConsoleOutput', 'Console');
 App::uses('ConsoleInput', 'Console');
 App::uses('ShellDispatcher', 'Console');
@@ -29,21 +28,21 @@ App::uses('ApiShell', 'Console/Command');
  */
 class ApiShellTest extends CakeTestCase
 {
-/**
- * setUp method
- *
- * @return void
- */
+    /**
+     * setUp method
+     *
+     * @return void
+     */
     public function setUp()
     {
         parent::setUp();
-        $out = $this->getMock('ConsoleOutput', array(), array(), '', false);
-        $in = $this->getMock('ConsoleInput', array(), array(), '', false);
+        $out = $this->getMock('ConsoleOutput', [], [], '', false);
+        $in = $this->getMock('ConsoleInput', [], [], '', false);
 
         $this->Shell = $this->getMock(
             'ApiShell',
-            array('in', 'out', 'createFile', 'hr', '_stop'),
-            array($out, $out, $in)
+            ['in', 'out', 'createFile', 'hr', '_stop'],
+            [$out, $out, $in]
         );
     }
 
@@ -57,7 +56,7 @@ class ApiShellTest extends CakeTestCase
         $this->Shell->expects($this->any())->method('in')->will($this->returnValue('q'));
         $this->Shell->expects($this->at(0))->method('out')->with('Controller');
 
-        $expected = array(
+        $expected = [
             '1. afterFilter()',
             '2. afterScaffoldSave($method)',
             '3. afterScaffoldSaveError($method)',
@@ -87,10 +86,10 @@ class ApiShellTest extends CakeTestCase
             '27. startupProcess()',
             '28. validate()',
             '29. validateErrors()'
-        );
+        ];
         $this->Shell->expects($this->at(2))->method('out')->with($expected);
 
-        $this->Shell->args = array('controller');
+        $this->Shell->args = ['controller'];
         $this->Shell->paths['controller'] = CAKE . 'Controller' . DS;
         $this->Shell->main();
     }

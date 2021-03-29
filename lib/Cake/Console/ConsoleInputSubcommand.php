@@ -24,11 +24,11 @@
  */
 class ConsoleInputSubcommand
 {
-/**
- * Name of the subcommand
- *
- * @var string
- */
+    /**
+     * Name of the subcommand
+     *
+     * @var string
+     */
     protected $_name;
 
     /**
@@ -92,6 +92,7 @@ class ConsoleInputSubcommand
         if (strlen($name) < $width) {
             $name = str_pad($name, $width, ' ');
         }
+
         return $name . $this->_help;
     }
 
@@ -105,6 +106,7 @@ class ConsoleInputSubcommand
         if ($this->_parser instanceof ConsoleOptionParser) {
             return $this->_parser;
         }
+
         return false;
     }
 
@@ -119,6 +121,7 @@ class ConsoleInputSubcommand
         $command = $parent->addChild('command');
         $command->addAttribute('name', $this->_name);
         $command->addAttribute('help', $this->_help);
+
         return $parent;
     }
 }

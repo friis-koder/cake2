@@ -24,11 +24,11 @@
  */
 class SessionsSchema extends CakeSchema
 {
-/**
- * Name property
- *
- * @var string
- */
+    /**
+     * Name property
+     *
+     * @var string
+     */
     public $name = 'Sessions';
 
     /**
@@ -37,7 +37,7 @@ class SessionsSchema extends CakeSchema
      * @param array $event Schema object properties
      * @return bool Should process continue
      */
-    public function before($event = array())
+    public function before($event = [])
     {
         return true;
     }
@@ -48,7 +48,7 @@ class SessionsSchema extends CakeSchema
      * @param array $event Schema object properties
      * @return void
      */
-    public function after($event = array())
+    public function after($event = [])
     {
     }
 
@@ -57,10 +57,10 @@ class SessionsSchema extends CakeSchema
      *
      * @var array
      */
-    public $cake_sessions = array(
-        'id' => array('type' => 'string', 'null' => false, 'key' => 'primary'),
-        'data' => array('type' => 'text', 'null' => true, 'default' => null),
-        'expires' => array('type' => 'integer', 'null' => true, 'default' => null),
-        'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1))
-    );
+    public $cake_sessions = [
+        'id'      => ['type' => 'string', 'null' => false, 'key' => 'primary'],
+        'data'    => ['type' => 'text', 'null' => true, 'default' => null],
+        'expires' => ['type' => 'integer', 'null' => true, 'default' => null],
+        'indexes' => ['PRIMARY' => ['column' => 'id', 'unique' => 1]]
+    ];
 }

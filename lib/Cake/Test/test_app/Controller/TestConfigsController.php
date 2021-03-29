@@ -4,9 +4,9 @@ App::uses('CakeErrorController', 'Controller');
 
 class TestConfigsController extends CakeErrorController
 {
-    public $components = array(
-        'RequestHandler' => array(
+    public $components = [
+        'RequestHandler' => [
             'some' => 'config'
-        )
-    );
+        ]
+    ];
 }

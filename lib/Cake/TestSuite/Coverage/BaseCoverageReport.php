@@ -18,7 +18,6 @@
  * @since         CakePHP(tm) v 2.0
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('Inflector', 'Utility');
 App::uses('CakePlugin', 'Core');
 
@@ -30,11 +29,11 @@ App::uses('CakePlugin', 'Core');
  */
 abstract class BaseCoverageReport
 {
-/**
- * coverage data
- *
- * @var string
- */
+    /**
+     * coverage data
+     *
+     * @var string
+     */
     protected $_rawCoverage;
 
     /**
@@ -57,7 +56,7 @@ abstract class BaseCoverageReport
      *
      * @var array
      */
-    protected $_testNames = array();
+    protected $_testNames = [];
 
     /**
      * Constructor
@@ -113,6 +112,7 @@ abstract class BaseCoverageReport
         } else {
             $path = CAKE;
         }
+
         return $path;
     }
 
@@ -124,13 +124,14 @@ abstract class BaseCoverageReport
      */
     public function filterCoverageDataByPath($path)
     {
-        $files = array();
+        $files = [];
         foreach ($this->_rawCoverage as $fileName => $fileCoverage) {
             if (strpos($fileName, $path) !== 0) {
                 continue;
             }
             $files[$fileName] = $fileCoverage;
         }
+
         return $files;
     }
 
@@ -161,11 +162,12 @@ abstract class BaseCoverageReport
             if (is_array($coverageData[$lineno]) && !empty($coverageData[$lineno])) {
                 $covered++;
                 $total++;
-            } elseif ($coverageData[$lineno] === -1 || $coverageData[$lineno] === array()) {
+            } elseif ($coverageData[$lineno] === -1 || $coverageData[$lineno] === []) {
                 $total++;
             }
         }
-        return array($covered, $total);
+
+        return [$covered, $total];
     }
 
     /**

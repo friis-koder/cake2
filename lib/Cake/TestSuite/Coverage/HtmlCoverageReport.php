@@ -15,7 +15,6 @@
  * @since         CakePHP(tm) v 2.0
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('BaseCoverageReport', 'TestSuite/Coverage');
 
 /**
@@ -25,11 +24,11 @@ App::uses('BaseCoverageReport', 'TestSuite/Coverage');
  */
 class HtmlCoverageReport extends BaseCoverageReport
 {
-/**
- * Holds the total number of processed rows.
- *
- * @var int
- */
+    /**
+     * Holds the total number of processed rows.
+     *
+     * @var int
+     */
     protected $_total = 0;
 
     /**
@@ -67,6 +66,7 @@ HTML;
             $percentCovered = round(100 * $this->_covered / $this->_total, 2);
         }
         $output .= '<div class="total">Overall coverage: <span class="coverage">' . $percentCovered . '%</span></div>';
+
         return $output;
     }
 
@@ -86,7 +86,7 @@ HTML;
     public function generateDiff($filename, $fileLines, $coverageData)
     {
         $output = '';
-        $diff = array();
+        $diff = [];
 
         list($covered, $total) = $this->_calculateCoveredLines($fileLines, $coverageData);
         $this->_covered += $covered;
@@ -98,9 +98,9 @@ HTML;
 
         foreach ($fileLines as $lineno => $line) {
             $class = 'ignored';
-            $coveringTests = array();
+            $coveringTests = [];
             if (!empty($coverageData[$lineno]) && is_array($coverageData[$lineno])) {
-                $coveringTests = array();
+                $coveringTests = [];
                 foreach ($coverageData[$lineno] as $test) {
                     $class = (is_array($test) && isset($test['id'])) ? $test['id'] : $test;
                     $testReflection = new ReflectionClass(current(explode('::', $class)));
@@ -108,7 +108,7 @@ HTML;
                     $coveringTests[] = $class;
                 }
                 $class = 'covered';
-            } elseif (isset($coverageData[$lineno]) && ($coverageData[$lineno] === -1 || $coverageData[$lineno] === array())) {
+            } elseif (isset($coverageData[$lineno]) && ($coverageData[$lineno] === -1 || $coverageData[$lineno] === [])) {
                 $class = 'uncovered';
             } elseif (array_key_exists($lineno, $coverageData) && ($coverageData[$lineno] === -2 || $coverageData[$lineno] === null)) {
                 $class .= ' dead';
@@ -123,6 +123,7 @@ HTML;
         $output .= $this->coverageHeader($filename, $percentCovered);
         $output .= implode("", $diff);
         $output .= $this->coverageFooter();
+
         return $output;
     }
 
@@ -137,9 +138,11 @@ HTML;
         $basename = basename($testReflection->getFilename());
         if (strpos($basename, '.test') !== false) {
             list($subject, ) = explode('.', $basename, 2);
+
             return $subject;
         }
         $subject = str_replace('Test.php', '', $basename);
+
         return $subject;
     }
 
@@ -211,6 +214,7 @@ HTML;
         list($file) = explode('.', $filename);
         $display = in_array($file, $this->_testNames) ? 'block' : 'none';
         $primary = $display === 'block' ? 'primary' : '';
+
         return <<<HTML
 	<div class="coverage-container $primary" style="display:$display;">
 	<h4>

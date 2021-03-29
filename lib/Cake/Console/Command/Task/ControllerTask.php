@@ -14,7 +14,6 @@
  * @since         CakePHP(tm) v 1.2
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('AppShell', 'Console/Command');
 App::uses('BakeTask', 'Console/Command/Task');
 App::uses('AppModel', 'Model');
@@ -26,12 +25,12 @@ App::uses('AppModel', 'Model');
  */
 class ControllerTask extends BakeTask
 {
-/**
- * Tasks to be loaded by this Task
- *
- * @var array
- */
-    public $tasks = array('Model', 'Test', 'Template', 'DbConfig', 'Project');
+    /**
+     * Tasks to be loaded by this Task
+     *
+     * @var array
+     */
+    public $tasks = ['Model', 'Test', 'Template', 'DbConfig', 'Project'];
 
     /**
      * path to Controller directory
@@ -105,7 +104,7 @@ class ControllerTask extends BakeTask
     {
         $this->interactive = false;
         $this->listAll($this->connection, false);
-        ClassRegistry::config('Model', array('ds' => $this->connection));
+        ClassRegistry::config('Model', ['ds' => $this->connection]);
         $unitTestExists = $this->_checkUnitTest();
 
         $admin = false;
@@ -157,7 +156,7 @@ class ControllerTask extends BakeTask
         $this->out(__d('cake_console', 'Baking %sController', $controllerName));
         $this->hr();
 
-        $helpers = $components = array();
+        $helpers = $components = [];
         $actions = '';
         $wannaUseSession = 'y';
         $wannaBakeAdminCrud = 'n';
@@ -168,13 +167,13 @@ class ControllerTask extends BakeTask
         if (file_exists($this->path . $controllerName . 'Controller.php')) {
             $question[] = __d('cake_console', "Warning: Choosing no will overwrite the %sController.", $controllerName);
         }
-        $doItInteractive = $this->in(implode("\n", $question), array('y', 'n'), 'y');
+        $doItInteractive = $this->in(implode("\n", $question), ['y', 'n'], 'y');
 
         if (strtolower($doItInteractive) === 'y') {
             $this->interactive = true;
             $useDynamicScaffold = $this->in(
                 __d('cake_console', "Would you like to use dynamic scaffolding?"),
-                array('y', 'n'),
+                ['y', 'n'],
                 'n'
             );
 
@@ -189,7 +188,7 @@ class ControllerTask extends BakeTask
 
                 $wannaUseSession = $this->in(
                     __d('cake_console', "Would you like to use the FlashComponent to display flash messages?"),
-                    array('y', 'n'),
+                    ['y', 'n'],
                     'y'
                 );
 
@@ -213,7 +212,7 @@ class ControllerTask extends BakeTask
         $baked = false;
         if ($this->interactive === true) {
             $this->confirmController($controllerName, $useDynamicScaffold, $helpers, $components);
-            $looksGood = $this->in(__d('cake_console', 'Look okay?'), array('y', 'n'), 'y');
+            $looksGood = $this->in(__d('cake_console', 'Look okay?'), ['y', 'n'], 'y');
 
             if (strtolower($looksGood) === 'y') {
                 $baked = $this->bake($controllerName, $actions, $helpers, $components);
@@ -227,6 +226,7 @@ class ControllerTask extends BakeTask
                 $this->bakeTest($controllerName);
             }
         }
+
         return $baked;
     }
 
@@ -251,10 +251,10 @@ class ControllerTask extends BakeTask
             $this->out("public \$scaffold;");
         }
 
-        $properties = array(
-            'helpers' => __d('cake_console', 'Helpers:'),
+        $properties = [
+            'helpers'    => __d('cake_console', 'Helpers:'),
             'components' => __d('cake_console', 'Components:'),
-        );
+        ];
 
         foreach ($properties as $var => $title) {
             if (count(${$var})) {
@@ -282,15 +282,16 @@ class ControllerTask extends BakeTask
     {
         $wannaBakeCrud = $this->in(
             __d('cake_console', "Would you like to create some basic class methods \n(index(), add(), view(), edit())?"),
-            array('y', 'n'),
+            ['y', 'n'],
             'n'
         );
         $wannaBakeAdminCrud = $this->in(
             __d('cake_console', "Would you like to create the basic class methods for admin routing?"),
-            array('y', 'n'),
+            ['y', 'n'],
             'n'
         );
-        return array($wannaBakeCrud, $wannaBakeAdminCrud);
+
+        return [$wannaBakeCrud, $wannaBakeAdminCrud];
     }
 
     /**
@@ -311,6 +312,7 @@ class ControllerTask extends BakeTask
         App::uses($modelImport, $plugin . 'Model');
         if (!class_exists($modelImport)) {
             $this->err(__d('cake_console', 'You must have a model for this class to build basic methods. Please try again.'));
+
             return $this->_stop();
         }
 
@@ -338,6 +340,7 @@ class ControllerTask extends BakeTask
             'primaryKey'
         ));
         $actions = $this->Template->generate('actions', 'controller_actions');
+
         return $actions;
     }
 
@@ -355,17 +358,17 @@ class ControllerTask extends BakeTask
         $this->out("\n" . __d('cake_console', 'Baking controller class for %s...', $controllerName), 1, Shell::QUIET);
 
         if ($helpers === null) {
-            $helpers = array();
+            $helpers = [];
         }
         if ($components === null) {
-            $components = array();
+            $components = [];
         }
         $isScaffold = ($actions === 'scaffold') ? true : false;
 
-        $this->Template->set(array(
-            'plugin' => $this->plugin,
+        $this->Template->set([
+            'plugin'     => $this->plugin,
             'pluginPath' => empty($this->plugin) ? '' : $this->plugin . '.'
-        ));
+        ]);
 
         if (!in_array('Paginator', (array)$components)) {
             $components[] = 'Paginator';
@@ -379,6 +382,7 @@ class ControllerTask extends BakeTask
         if ($this->createFile($filename, $contents)) {
             return $contents;
         }
+
         return false;
     }
 
@@ -393,6 +397,7 @@ class ControllerTask extends BakeTask
         $this->Test->plugin = $this->plugin;
         $this->Test->connection = $this->connection;
         $this->Test->interactive = $this->interactive;
+
         return $this->Test->bake('Controller', $className);
     }
 
@@ -416,7 +421,8 @@ class ControllerTask extends BakeTask
      */
     public function doComponents()
     {
-        $components = array('Paginator');
+        $components = ['Paginator'];
+
         return array_merge($components, $this->_doPropertyChoices(
             __d('cake_console', "Would you like this controller to use other components\nbesides PaginatorComponent?"),
             __d('cake_console', "Please provide a comma separated list of the component names you'd like to use.\nExample: 'Acl, Security, RequestHandler'")
@@ -432,13 +438,14 @@ class ControllerTask extends BakeTask
      */
     protected function _doPropertyChoices($prompt, $example)
     {
-        $proceed = $this->in($prompt, array('y', 'n'), 'n');
-        $property = array();
+        $proceed = $this->in($prompt, ['y', 'n'], 'n');
+        $property = [];
         if (strtolower($proceed) === 'y') {
             $propertyList = $this->in($example);
             $propertyListTrimmed = str_replace(' ', '', $propertyList);
             $property = explode(',', $propertyListTrimmed);
         }
+
         return array_filter($property);
     }
 
@@ -458,14 +465,16 @@ class ControllerTask extends BakeTask
         if ($this->interactive) {
             $this->out(__d('cake_console', 'Possible Controllers based on your current database:'));
             $this->hr();
-            $this->_controllerNames = array();
+            $this->_controllerNames = [];
             $count = count($this->__tables);
             for ($i = 0; $i < $count; $i++) {
                 $this->_controllerNames[] = $this->_controllerName($this->_modelName($this->__tables[$i]));
                 $this->out(sprintf("%2d. %s", $i + 1, $this->_controllerNames[$i]));
             }
+
             return $this->_controllerNames;
         }
+
         return $this->__tables;
     }
 
@@ -484,6 +493,7 @@ class ControllerTask extends BakeTask
             $enteredController = $this->in(__d('cake_console', "Enter a number from the list above,\ntype in the name of another controller, or 'q' to exit"), null, 'q');
             if ($enteredController === 'q') {
                 $this->out(__d('cake_console', 'Exit'));
+
                 return $this->_stop();
             }
 
@@ -498,6 +508,7 @@ class ControllerTask extends BakeTask
         } else {
             $controllerName = Inflector::camelize($enteredController);
         }
+
         return $controllerName;
     }
 
@@ -515,29 +526,29 @@ class ControllerTask extends BakeTask
                 'cake_console',
                 'Bake a controller for a model. Using options you can bake public, admin or both.'
             )
-        )->addArgument('name', array(
+        )->addArgument('name', [
             'help' => __d('cake_console', 'Name of the controller to bake. Can use Plugin.name to bake controllers into plugins.')
-        ))->addOption('public', array(
-            'help' => __d('cake_console', 'Bake a controller with basic crud actions (index, view, add, edit, delete).'),
+        ])->addOption('public', [
+            'help'    => __d('cake_console', 'Bake a controller with basic crud actions (index, view, add, edit, delete).'),
             'boolean' => true
-        ))->addOption('admin', array(
-            'help' => __d('cake_console', 'Bake a controller with crud actions for one of the Routing.prefixes.'),
+        ])->addOption('admin', [
+            'help'    => __d('cake_console', 'Bake a controller with crud actions for one of the Routing.prefixes.'),
             'boolean' => true
-        ))->addOption('plugin', array(
+        ])->addOption('plugin', [
             'short' => 'p',
-            'help' => __d('cake_console', 'Plugin to bake the controller into.')
-        ))->addOption('connection', array(
+            'help'  => __d('cake_console', 'Plugin to bake the controller into.')
+        ])->addOption('connection', [
             'short' => 'c',
-            'help' => __d('cake_console', 'The connection the controller\'s model is on.')
-        ))->addOption('theme', array(
+            'help'  => __d('cake_console', 'The connection the controller\'s model is on.')
+        ])->addOption('theme', [
             'short' => 't',
-            'help' => __d('cake_console', 'Theme to use when baking code.')
-        ))->addOption('force', array(
+            'help'  => __d('cake_console', 'Theme to use when baking code.')
+        ])->addOption('force', [
             'short' => 'f',
-            'help' => __d('cake_console', 'Force overwriting existing files without prompting.')
-        ))->addSubcommand('all', array(
+            'help'  => __d('cake_console', 'Force overwriting existing files without prompting.')
+        ])->addSubcommand('all', [
             'help' => __d('cake_console', 'Bake all controllers with CRUD methods.')
-        ))->epilog(
+        ])->epilog(
             __d('cake_console', 'Omitting all arguments and options will enter into an interactive mode.')
         );
 

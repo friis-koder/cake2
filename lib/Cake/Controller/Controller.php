@@ -13,7 +13,6 @@
  * @since         CakePHP(tm) v 0.2.9
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('CakeResponse', 'Network');
 App::uses('ClassRegistry', 'Utility');
 App::uses('ComponentCollection', 'Controller');
@@ -64,12 +63,12 @@ App::uses('CakeEventManager', 'Event');
  */
 class Controller extends CakeObject implements CakeEventListener
 {
-/**
- * The name of this controller. Controller names are plural, named after the model they manipulate.
- *
- * @var string
- * @link https://book.cakephp.org/2.0/en/controllers.html#controller-attributes
- */
+    /**
+     * The name of this controller. Controller names are plural, named after the model they manipulate.
+     *
+     * @var string
+     * @link https://book.cakephp.org/2.0/en/controllers.html#controller-attributes
+     */
     public $name = null;
 
     /**
@@ -101,7 +100,7 @@ class Controller extends CakeObject implements CakeEventListener
      * @var mixed
      * @link https://book.cakephp.org/2.0/en/controllers.html#components-helpers-and-uses
      */
-    public $helpers = array();
+    public $helpers = [];
 
     /**
      * An instance of a CakeRequest object that contains information about the current request.
@@ -147,7 +146,7 @@ class Controller extends CakeObject implements CakeEventListener
      *
      * @var array
      */
-    public $viewVars = array();
+    public $viewVars = [];
 
     /**
      * The name of the view file to render. The name specified
@@ -197,7 +196,7 @@ class Controller extends CakeObject implements CakeEventListener
      * @var array
      * @link https://book.cakephp.org/2.0/en/controllers/components.html
      */
-    public $components = array('Session', 'Flash');
+    public $components = ['Session', 'Flash'];
 
     /**
      * The name of the View class this controller sends output to.
@@ -255,7 +254,7 @@ class Controller extends CakeObject implements CakeEventListener
      *
      * @var mixed
      */
-    public $passedArgs = array();
+    public $passedArgs = [];
 
     /**
      * Triggers Scaffolding
@@ -271,7 +270,7 @@ class Controller extends CakeObject implements CakeEventListener
      *
      * @var array
      */
-    public $methods = array();
+    public $methods = [];
 
     /**
      * This controller's primary model class name, the Inflector::singularize()'ed version of
@@ -385,6 +384,7 @@ class Controller extends CakeObject implements CakeEventListener
             if (!$plugin) {
                 $plugin = $this->plugin ? $this->plugin . '.' : null;
             }
+
             return $this->loadModel($plugin . $this->modelClass);
         }
 
@@ -436,15 +436,19 @@ class Controller extends CakeObject implements CakeEventListener
             case 'webroot':
             case 'data':
                 $this->request->{$name} = $value;
+
                 return;
             case 'action':
                 $this->request->params['action'] = $value;
+
                 return;
             case 'params':
                 $this->request->params = $value;
+
                 return;
             case 'paginate':
                 $this->Components->load('Paginator')->settings = $value;
+
                 return;
         }
         $this->{$name} = $value;
@@ -497,20 +501,22 @@ class Controller extends CakeObject implements CakeEventListener
             $method = new ReflectionMethod($this, $request->params['action']);
 
             if ($this->_isPrivateAction($method, $request)) {
-                throw new PrivateActionException(array(
+                throw new PrivateActionException([
                     'controller' => $this->name . "Controller",
-                    'action' => $request->params['action']
-                ));
+                    'action'     => $request->params['action']
+                ]);
             }
+
             return $method->invokeArgs($this, $request->params['pass']);
         } catch (ReflectionException $e) {
             if ($this->scaffold !== false) {
                 return $this->_getScaffold($request);
             }
-            throw new MissingActionException(array(
+
+            throw new MissingActionException([
                 'controller' => $this->name . "Controller",
-                'action' => $request->params['action']
-            ));
+                'action'     => $request->params['action']
+            ]);
         }
     }
 
@@ -537,6 +543,7 @@ class Controller extends CakeObject implements CakeEventListener
                 $privateAction = in_array(strtolower($prefix), $prefixes);
             }
         }
+
         return $privateAction;
     }
 
@@ -561,8 +568,8 @@ class Controller extends CakeObject implements CakeEventListener
     {
         $pluginController = $pluginDot = null;
         $mergeParent = is_subclass_of($this, $this->_mergeParent);
-        $pluginVars = array();
-        $appVars = array();
+        $pluginVars = [];
+        $appVars = [];
 
         if (!empty($this->plugin)) {
             $pluginController = $this->plugin . 'AppController';
@@ -573,13 +580,13 @@ class Controller extends CakeObject implements CakeEventListener
         }
 
         if ($pluginController) {
-            $merge = array('components', 'helpers');
+            $merge = ['components', 'helpers'];
             $this->_mergeVars($merge, $pluginController);
         }
 
         if ($mergeParent || !empty($pluginController)) {
             $appVars = get_class_vars($this->_mergeParent);
-            $merge = array('components', 'helpers');
+            $merge = ['components', 'helpers'];
             $this->_mergeVars($merge, $this->_mergeParent, true);
         }
 
@@ -587,7 +594,7 @@ class Controller extends CakeObject implements CakeEventListener
             $this->uses = false;
         }
         if ($this->uses === true) {
-            $this->uses = array($pluginDot . $this->modelClass);
+            $this->uses = [$pluginDot . $this->modelClass];
         }
         if (is_array($this->uses) && isset($appVars['uses']) && $appVars['uses'] === $this->uses) {
             array_unshift($this->uses, $pluginDot . $this->modelClass);
@@ -599,7 +606,7 @@ class Controller extends CakeObject implements CakeEventListener
             $this->_mergeUses($pluginVars);
             $this->_mergeUses($appVars);
         } else {
-            $this->uses = array();
+            $this->uses = [];
             $this->modelClass = '';
         }
     }
@@ -632,12 +639,12 @@ class Controller extends CakeObject implements CakeEventListener
      */
     public function implementedEvents()
     {
-        return array(
-            'Controller.initialize' => 'beforeFilter',
-            'Controller.beforeRender' => 'beforeRender',
-            'Controller.beforeRedirect' => array('callable' => 'beforeRedirect', 'passParams' => true),
-            'Controller.shutdown' => 'afterFilter'
-        );
+        return [
+            'Controller.initialize'     => 'beforeFilter',
+            'Controller.beforeRender'   => 'beforeRender',
+            'Controller.beforeRedirect' => ['callable' => 'beforeRedirect', 'passParams' => true],
+            'Controller.shutdown'       => 'afterFilter'
+        ];
     }
 
     /**
@@ -658,6 +665,7 @@ class Controller extends CakeObject implements CakeEventListener
             list(, $this->modelClass) = pluginSplit(reset($this->uses));
         }
         $this->Components->init($this);
+
         return true;
     }
 
@@ -675,6 +683,7 @@ class Controller extends CakeObject implements CakeEventListener
             $this->_eventManager->attach($this->Components);
             $this->_eventManager->attach($this);
         }
+
         return $this->_eventManager;
     }
 
@@ -751,19 +760,20 @@ class Controller extends CakeObject implements CakeEventListener
             $modelClass = $this->modelClass;
         }
 
-        $this->uses = ($this->uses) ? (array)$this->uses : array();
+        $this->uses = ($this->uses) ? (array)$this->uses : [];
         if (!in_array($modelClass, $this->uses, true)) {
             $this->uses[] = $modelClass;
         }
 
         list($plugin, $modelClass) = pluginSplit($modelClass, true);
 
-        $this->{$modelClass} = ClassRegistry::init(array(
+        $this->{$modelClass} = ClassRegistry::init([
             'class' => $plugin . $modelClass, 'alias' => $modelClass, 'id' => $id
-        ));
+        ]);
         if (!$this->{$modelClass}) {
             throw new MissingModelException($modelClass);
         }
+
         return true;
     }
 
@@ -786,9 +796,9 @@ class Controller extends CakeObject implements CakeEventListener
         if (is_array($status)) {
             extract($status, EXTR_OVERWRITE);
         }
-        $event = new CakeEvent('Controller.beforeRedirect', $this, array($url, $status, $exit));
+        $event = new CakeEvent('Controller.beforeRedirect', $this, [$url, $status, $exit]);
 
-        list($event->break, $event->breakOn, $event->collectReturn) = array(true, false, true);
+        list($event->break, $event->breakOn, $event->collectReturn) = [true, false, true];
         $this->getEventManager()->dispatch($event);
 
         if ($event->isStopped()) {
@@ -843,6 +853,7 @@ class Controller extends CakeObject implements CakeEventListener
         } elseif (is_array($response)) {
             extract($response, EXTR_OVERWRITE);
         }
+
         return compact('url', 'status', 'exit');
     }
 
@@ -876,7 +887,7 @@ class Controller extends CakeObject implements CakeEventListener
                 $data = $one;
             }
         } else {
-            $data = array($one => $two);
+            $data = [$one => $two];
         }
         $this->viewVars = $data + $this->viewVars;
     }
@@ -901,7 +912,8 @@ class Controller extends CakeObject implements CakeEventListener
         $this->view = $action;
         $args = func_get_args();
         unset($args[0]);
-        return call_user_func_array(array(&$this, $action), $args);
+
+        return call_user_func_array([&$this, $action], $args);
     }
 
     /**
@@ -913,11 +925,12 @@ class Controller extends CakeObject implements CakeEventListener
     public function validate()
     {
         $args = func_get_args();
-        $errors = call_user_func_array(array(&$this, 'validateErrors'), $args);
+        $errors = call_user_func_array([&$this, 'validateErrors'], $args);
 
         if ($errors === false) {
             return 0;
         }
+
         return count($errors);
     }
 
@@ -938,7 +951,7 @@ class Controller extends CakeObject implements CakeEventListener
             return false;
         }
 
-        $errors = array();
+        $errors = [];
         foreach ($objects as $object) {
             if (isset($this->{$object->alias})) {
                 $object = $this->{$object->alias};
@@ -965,6 +978,7 @@ class Controller extends CakeObject implements CakeEventListener
         $this->getEventManager()->dispatch($event);
         if ($event->isStopped()) {
             $this->autoRender = false;
+
             return $this->response;
         }
 
@@ -984,12 +998,13 @@ class Controller extends CakeObject implements CakeEventListener
                 $className = get_class($currentObject);
                 list($plugin) = pluginSplit(App::location($className));
                 $this->request->params['models'][$currentObject->alias] = compact('plugin', 'className');
-                $this->View->validationErrors[$currentObject->alias] =& $currentObject->validationErrors;
+                $this->View->validationErrors[$currentObject->alias] = & $currentObject->validationErrors;
             }
         }
 
         $this->autoRender = false;
         $this->response->body($this->View->render($view, $layout));
+
         return $this->response;
     }
 
@@ -1011,6 +1026,7 @@ class Controller extends CakeObject implements CakeEventListener
         if ($referer === '/' && $default && $default !== $referer) {
             return Router::url($default, !$local);
         }
+
         return $referer;
     }
 
@@ -1067,7 +1083,7 @@ class Controller extends CakeObject implements CakeEventListener
      * @deprecated 3.0.0 Will be removed in 3.0.
      * @throws RuntimeException when unsafe operators are found.
      */
-    public function postConditions($data = array(), $op = null, $bool = 'AND', $exclusive = false)
+    public function postConditions($data = [], $op = null, $bool = 'AND', $exclusive = false)
     {
         if (!is_array($data) || empty($data)) {
             if (!empty($this->request->data)) {
@@ -1076,7 +1092,7 @@ class Controller extends CakeObject implements CakeEventListener
                 return null;
             }
         }
-        $cond = array();
+        $cond = [];
 
         if ($op === null) {
             $op = '';
@@ -1117,8 +1133,9 @@ class Controller extends CakeObject implements CakeEventListener
             }
         }
         if ($bool && strtoupper($bool) !== 'AND') {
-            $cond = array($bool => $cond);
+            $cond = [$bool => $cond];
         }
+
         return $cond;
     }
 
@@ -1131,7 +1148,7 @@ class Controller extends CakeObject implements CakeEventListener
      * @return array Model query results
      * @link https://book.cakephp.org/2.0/en/controllers.html#Controller::paginate
      */
-    public function paginate($object = null, $scope = array(), $whitelist = array())
+    public function paginate($object = null, $scope = [], $whitelist = [])
     {
         return $this->Components->load('Paginator', $this->paginate)->paginate($object, $scope, $whitelist);
     }

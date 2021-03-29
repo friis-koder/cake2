@@ -14,7 +14,6 @@
  * @since         CakePHP(tm) v 1.3
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('AppShell', 'Console/Command');
 App::uses('BakeTask', 'Console/Command/Task');
 App::uses('Model', 'Model');
@@ -26,12 +25,12 @@ App::uses('Model', 'Model');
  */
 class FixtureTask extends BakeTask
 {
-/**
- * Tasks to be loaded by this Task
- *
- * @var array
- */
-    public $tasks = array('DbConfig', 'Model', 'Template');
+    /**
+     * Tasks to be loaded by this Task
+     *
+     * @var array
+     */
+    public $tasks = ['DbConfig', 'Model', 'Template'];
 
     /**
      * path to fixtures directory
@@ -71,35 +70,35 @@ class FixtureTask extends BakeTask
 
         $parser->description(
             __d('cake_console', 'Generate fixtures for use with the test suite. You can use `bake fixture all` to bake all fixtures.')
-        )->addArgument('name', array(
+        )->addArgument('name', [
             'help' => __d('cake_console', 'Name of the fixture to bake. Can use Plugin.name to bake plugin fixtures.')
-        ))->addOption('count', array(
-            'help' => __d('cake_console', 'When using generated data, the number of records to include in the fixture(s).'),
-            'short' => 'n',
+        ])->addOption('count', [
+            'help'    => __d('cake_console', 'When using generated data, the number of records to include in the fixture(s).'),
+            'short'   => 'n',
             'default' => 1
-        ))->addOption('connection', array(
-            'help' => __d('cake_console', 'Which database configuration to use for baking.'),
-            'short' => 'c',
+        ])->addOption('connection', [
+            'help'    => __d('cake_console', 'Which database configuration to use for baking.'),
+            'short'   => 'c',
             'default' => 'default'
-        ))->addOption('plugin', array(
-            'help' => __d('cake_console', 'CamelCased name of the plugin to bake fixtures for.'),
+        ])->addOption('plugin', [
+            'help'  => __d('cake_console', 'CamelCased name of the plugin to bake fixtures for.'),
             'short' => 'p'
-        ))->addOption('schema', array(
-            'help' => __d('cake_console', 'Importing schema for fixtures rather than hardcoding it.'),
-            'short' => 's',
+        ])->addOption('schema', [
+            'help'    => __d('cake_console', 'Importing schema for fixtures rather than hardcoding it.'),
+            'short'   => 's',
             'boolean' => true
-        ))->addOption('theme', array(
+        ])->addOption('theme', [
             'short' => 't',
-            'help' => __d('cake_console', 'Theme to use when baking code.')
-        ))->addOption('force', array(
+            'help'  => __d('cake_console', 'Theme to use when baking code.')
+        ])->addOption('force', [
             'short' => 'f',
-            'help' => __d('cake_console', 'Force overwriting existing files without prompting.')
-        ))->addOption('records', array(
+            'help'  => __d('cake_console', 'Force overwriting existing files without prompting.')
+        ])->addOption('records', [
             'help' => __d('cake_console', 'Used with --count and <name>/all commands to pull [n] records from the live tables, ' .
                 'where [n] is either --count or the default of 10.'),
-            'short' => 'r',
+            'short'   => 'r',
             'boolean' => true
-        ))->epilog(
+        ])->epilog(
             __d('cake_console', 'Omitting all arguments and options will enter into an interactive mode.')
         );
 
@@ -146,7 +145,7 @@ class FixtureTask extends BakeTask
 
         foreach ($tables as $table) {
             $model = $this->_modelName($table);
-            $importOptions = array();
+            $importOptions = [];
             if (!empty($this->params['schema'])) {
                 $importOptions['schema'] = $model;
             }
@@ -183,7 +182,7 @@ class FixtureTask extends BakeTask
      */
     public function importOptions($modelName)
     {
-        $options = array();
+        $options = [];
         $plugin = '';
         if (isset($this->params['plugin'])) {
             $plugin = $this->params['plugin'] . '.';
@@ -192,7 +191,7 @@ class FixtureTask extends BakeTask
         if (!empty($this->params['schema'])) {
             $options['schema'] = $plugin . $modelName;
         } elseif ($this->interactive) {
-            $doSchema = $this->in(__d('cake_console', 'Would you like to import schema for this fixture?'), array('y', 'n'), 'n');
+            $doSchema = $this->in(__d('cake_console', 'Would you like to import schema for this fixture?'), ['y', 'n'], 'n');
             if ($doSchema === 'y') {
                 $options['schema'] = $modelName;
             }
@@ -201,18 +200,19 @@ class FixtureTask extends BakeTask
         if (!empty($this->params['records'])) {
             $options['fromTable'] = true;
         } elseif ($this->interactive) {
-            $doRecords = $this->in(__d('cake_console', 'Would you like to use record importing for this fixture?'), array('y', 'n'), 'n');
+            $doRecords = $this->in(__d('cake_console', 'Would you like to use record importing for this fixture?'), ['y', 'n'], 'n');
             if ($doRecords === 'y') {
                 $options['records'] = true;
             }
         }
         if (!isset($options['records']) && $this->interactive) {
             $prompt = __d('cake_console', "Would you like to build this fixture with data from %s's table?", $modelName);
-            $fromTable = $this->in($prompt, array('y', 'n'), 'n');
+            $fromTable = $this->in($prompt, ['y', 'n'], 'n');
             if (strtolower($fromTable) === 'y') {
                 $options['fromTable'] = true;
             }
         }
+
         return $options;
     }
 
@@ -224,11 +224,11 @@ class FixtureTask extends BakeTask
      * @param array $importOptions Options for public $import
      * @return string|null Baked fixture content, otherwise null.
      */
-    public function bake($model, $useTable = false, $importOptions = array())
+    public function bake($model, $useTable = false, $importOptions = [])
     {
         App::uses('CakeSchema', 'Model');
         $table = $schema = $records = $import = $modelImport = null;
-        $importBits = array();
+        $importBits = [];
 
         if (!$useTable) {
             $useTable = Inflector::tableize($model);
@@ -253,9 +253,10 @@ class FixtureTask extends BakeTask
         }
 
         $this->_Schema = new CakeSchema();
-        $data = $this->_Schema->read(array('models' => false, 'connection' => $this->connection));
+        $data = $this->_Schema->read(['models' => false, 'connection' => $this->connection]);
         if (!isset($data['tables'][$useTable])) {
             $this->err("<warning>Warning:</warning> Could not find the '${useTable}' table for ${model}.");
+
             return null;
         }
 
@@ -275,6 +276,7 @@ class FixtureTask extends BakeTask
             $records = $this->_makeRecordString($this->_getRecordsFromTable($model, $useTable));
         }
         $out = $this->generateFixtureFile($model, compact('records', 'table', 'schema', 'import'));
+
         return $out;
     }
 
@@ -287,7 +289,7 @@ class FixtureTask extends BakeTask
      */
     public function generateFixtureFile($model, $otherVars)
     {
-        $defaults = array('table' => null, 'schema' => null, 'records' => null, 'import' => null, 'fields' => null);
+        $defaults = ['table' => null, 'schema' => null, 'records' => null, 'import' => null, 'fields' => null];
         $vars = array_merge($defaults, $otherVars);
 
         $path = $this->getPath();
@@ -299,6 +301,7 @@ class FixtureTask extends BakeTask
 
         $this->out("\n" . __d('cake_console', 'Baking test fixture for %s...', $model), 1, Shell::QUIET);
         $this->createFile($path . $filename, $content);
+
         return $content;
     }
 
@@ -313,6 +316,7 @@ class FixtureTask extends BakeTask
         if (isset($this->plugin)) {
             $path = $this->_pluginPath($this->plugin) . 'Test' . DS . 'Fixture' . DS;
         }
+
         return $path;
     }
 
@@ -325,6 +329,7 @@ class FixtureTask extends BakeTask
     protected function _generateSchema($tableInfo)
     {
         $schema = trim($this->_Schema->generateTable('f', $tableInfo), "\n");
+
         return substr($schema, 13, -1);
     }
 
@@ -337,9 +342,9 @@ class FixtureTask extends BakeTask
      */
     protected function _generateRecords($tableInfo, $recordCount = 1)
     {
-        $records = array();
+        $records = [];
         for ($i = 0; $i < $recordCount; $i++) {
-            $record = array();
+            $record = [];
             foreach ($tableInfo as $field => $fieldInfo) {
                 if (empty($fieldInfo['type'])) {
                     continue;
@@ -352,6 +357,7 @@ class FixtureTask extends BakeTask
                     case 'integer':
                     case 'float':
                         $insert = $i + 1;
+
                         break;
                     case 'string':
                     case 'binary':
@@ -367,21 +373,27 @@ class FixtureTask extends BakeTask
                                 $insert = substr($insert, 0, (int)$fieldInfo['length'] - 2);
                             }
                         }
+
                         break;
                     case 'timestamp':
                         $insert = time();
+
                         break;
                     case 'datetime':
                         $insert = date('Y-m-d H:i:s');
+
                         break;
                     case 'date':
                         $insert = date('Y-m-d');
+
                         break;
                     case 'time':
                         $insert = date('H:i:s');
+
                         break;
                     case 'boolean':
                         $insert = 1;
+
                         break;
                     case 'text':
                         $insert = "Lorem ipsum dolor sit amet, aliquet feugiat.";
@@ -391,12 +403,14 @@ class FixtureTask extends BakeTask
                         $insert .= " vestibulum massa neque ut et, id hendrerit sit,";
                         $insert .= " feugiat in taciti enim proin nibh, tempor dignissim, rhoncus";
                         $insert .= " duis vestibulum nunc mattis convallis.";
+
                         break;
                 }
                 $record[$field] = $insert;
             }
             $records[] = $record;
         }
+
         return $records;
     }
 
@@ -410,7 +424,7 @@ class FixtureTask extends BakeTask
     {
         $out = "array(\n";
         foreach ($records as $record) {
-            $values = array();
+            $values = [];
             foreach ($record as $field => $value) {
                 $val = var_export($value, true);
                 if ($val === 'NULL') {
@@ -423,6 +437,7 @@ class FixtureTask extends BakeTask
             $out .= "\n\t\t),\n";
         }
         $out .= "\t)";
+
         return $out;
     }
 
@@ -436,7 +451,7 @@ class FixtureTask extends BakeTask
      */
     protected function _getRecordsFromTable($modelName, $useTable = null)
     {
-        $modelObject = new Model(array('name' => $modelName, 'table' => $useTable, 'ds' => $this->connection));
+        $modelObject = new Model(['name' => $modelName, 'table' => $useTable, 'ds' => $this->connection]);
         if ($this->interactive) {
             $condition = null;
             $prompt = __d('cake_console', "Please provide a SQL fragment to use as conditions\nExample: WHERE 1=1");
@@ -444,10 +459,10 @@ class FixtureTask extends BakeTask
                 $condition = $this->in($prompt, null, 'WHERE 1=1');
             }
 
-            $recordsFound = $modelObject->find('count', array(
+            $recordsFound = $modelObject->find('count', [
                 'conditions' => $condition,
-                'recursive' => -1,
-            ));
+                'recursive'  => -1,
+            ]);
 
             $prompt = __d('cake_console', "How many records do you want to import?");
             $recordCount = $this->in($prompt, null, ($recordsFound < 10) ? $recordsFound : 10);
@@ -456,16 +471,16 @@ class FixtureTask extends BakeTask
             $recordCount = (isset($this->params['count']) ? $this->params['count'] : 10);
         }
 
-        $records = $modelObject->find('all', array(
+        $records = $modelObject->find('all', [
             'conditions' => $condition,
-            'recursive' => -1,
-            'limit' => $recordCount
-        ));
+            'recursive'  => -1,
+            'limit'      => $recordCount
+        ]);
 
         $schema = $modelObject->schema(true);
-        $out = array();
+        $out = [];
         foreach ($records as $record) {
-            $row = array();
+            $row = [];
             foreach ($record[$modelObject->alias] as $field => $value) {
                 if ($schema[$field]['type'] === 'boolean') {
                     $value = (int)(bool)$value;
@@ -474,6 +489,7 @@ class FixtureTask extends BakeTask
             }
             $out[] = $row;
         }
+
         return $out;
     }
 }

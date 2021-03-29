@@ -12,7 +12,6 @@
  * @since         CakePHP(tm) v 1.2.0.5432
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('Security', 'Utility');
 
 /**
@@ -22,11 +21,11 @@ App::uses('Security', 'Utility');
  */
 class SecurityTest extends CakeTestCase
 {
-/**
- * sut property
- *
- * @var mixed
- */
+    /**
+     * sut property
+     *
+     * @var mixed
+     */
     public $sut = null;
 
     /**
@@ -132,6 +131,7 @@ class SecurityTest extends CakeTestCase
     {
         Security::setCost(1000);
     }
+
     /**
      * testHash method
      *
@@ -415,15 +415,15 @@ class SecurityTest extends CakeTestCase
      */
     public function plainTextProvider()
     {
-        return array(
-            array(''),
-            array('abcdefg'),
-            array('1234567890123456'),
-            array('The quick brown fox'),
-            array('12345678901234567890123456789012'),
-            array('The quick brown fox jumped over the lazy dog.'),
-            array('何らかのマルチバイト文字列'),
-        );
+        return [
+            [''],
+            ['abcdefg'],
+            ['1234567890123456'],
+            ['The quick brown fox'],
+            ['12345678901234567890123456789012'],
+            ['The quick brown fox jumped over the lazy dog.'],
+            ['何らかのマルチバイト文字列'],
+        ];
     }
 
     /**

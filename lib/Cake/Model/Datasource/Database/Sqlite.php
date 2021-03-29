@@ -15,7 +15,6 @@
  * @since         CakePHP(tm) v 0.9.0
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('DboSource', 'Model/Datasource');
 App::uses('CakeText', 'Utility');
 
@@ -28,11 +27,11 @@ App::uses('CakeText', 'Utility');
  */
 class Sqlite extends DboSource
 {
-/**
- * Datasource Description
- *
- * @var string
- */
+    /**
+     * Datasource Description
+     *
+     * @var string
+     */
     public $description = "SQLite DBO Driver";
 
     /**
@@ -54,11 +53,11 @@ class Sqlite extends DboSource
      *
      * @var array
      */
-    protected $_baseConfig = array(
+    protected $_baseConfig = [
         'persistent' => false,
-        'database' => null,
-        'flags' => array()
-    );
+        'database'   => null,
+        'flags'      => []
+    ];
 
     /**
      * SQLite3 column definition
@@ -66,41 +65,41 @@ class Sqlite extends DboSource
      * @var array
      * @link https://www.sqlite.org/datatype3.html Datatypes In SQLite Version 3
      */
-    public $columns = array(
-        'primary_key' => array('name' => 'integer primary key autoincrement'),
-        'string' => array('name' => 'varchar', 'limit' => '255'),
-        'text' => array('name' => 'text'),
-        'integer' => array('name' => 'integer', 'limit' => null, 'formatter' => 'intval'),
-        'smallinteger' => array('name' => 'smallint', 'limit' => null, 'formatter' => 'intval'),
-        'tinyinteger' => array('name' => 'tinyint', 'limit' => null, 'formatter' => 'intval'),
-        'biginteger' => array('name' => 'bigint', 'limit' => 20),
-        'float' => array('name' => 'float', 'formatter' => 'floatval'),
-        'decimal' => array('name' => 'decimal', 'formatter' => 'floatval'),
-        'datetime' => array('name' => 'datetime', 'format' => 'Y-m-d H:i:s', 'formatter' => 'date'),
-        'timestamp' => array('name' => 'timestamp', 'format' => 'Y-m-d H:i:s', 'formatter' => 'date'),
-        'time' => array('name' => 'time', 'format' => 'H:i:s', 'formatter' => 'date'),
-        'date' => array('name' => 'date', 'format' => 'Y-m-d', 'formatter' => 'date'),
-        'binary' => array('name' => 'blob'),
-        'boolean' => array('name' => 'boolean')
-    );
+    public $columns = [
+        'primary_key'  => ['name' => 'integer primary key autoincrement'],
+        'string'       => ['name' => 'varchar', 'limit' => '255'],
+        'text'         => ['name' => 'text'],
+        'integer'      => ['name' => 'integer', 'limit' => null, 'formatter' => 'intval'],
+        'smallinteger' => ['name' => 'smallint', 'limit' => null, 'formatter' => 'intval'],
+        'tinyinteger'  => ['name' => 'tinyint', 'limit' => null, 'formatter' => 'intval'],
+        'biginteger'   => ['name' => 'bigint', 'limit' => 20],
+        'float'        => ['name' => 'float', 'formatter' => 'floatval'],
+        'decimal'      => ['name' => 'decimal', 'formatter' => 'floatval'],
+        'datetime'     => ['name' => 'datetime', 'format' => 'Y-m-d H:i:s', 'formatter' => 'date'],
+        'timestamp'    => ['name' => 'timestamp', 'format' => 'Y-m-d H:i:s', 'formatter' => 'date'],
+        'time'         => ['name' => 'time', 'format' => 'H:i:s', 'formatter' => 'date'],
+        'date'         => ['name' => 'date', 'format' => 'Y-m-d', 'formatter' => 'date'],
+        'binary'       => ['name' => 'blob'],
+        'boolean'      => ['name' => 'boolean']
+    ];
 
     /**
      * List of engine specific additional field parameters used on table creating
      *
      * @var array
      */
-    public $fieldParameters = array(
-        'collate' => array(
-            'value' => 'COLLATE',
-            'quote' => false,
-            'join' => ' ',
-            'column' => 'Collate',
+    public $fieldParameters = [
+        'collate' => [
+            'value'    => 'COLLATE',
+            'quote'    => false,
+            'join'     => ' ',
+            'column'   => 'Collate',
             'position' => 'afterDefault',
-            'options' => array(
+            'options'  => [
                 'BINARY', 'NOCASE', 'RTRIM'
-            )
-        ),
-    );
+            ]
+        ],
+    ];
 
     /**
      * Connects to the database using config['database'] as a filename.
@@ -111,19 +110,21 @@ class Sqlite extends DboSource
     public function connect()
     {
         $config = $this->config;
-        $flags = $config['flags'] + array(
+        $flags = $config['flags'] + [
             PDO::ATTR_PERSISTENT => $config['persistent'],
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-        );
+            PDO::ATTR_ERRMODE    => PDO::ERRMODE_EXCEPTION
+        ];
+
         try {
             $this->_connection = new PDO('sqlite:' . $config['database'], null, null, $flags);
             $this->connected = true;
         } catch (PDOException $e) {
-            throw new MissingConnectionException(array(
-                'class' => get_class($this),
+            throw new MissingConnectionException([
+                'class'   => get_class($this),
                 'message' => $e->getMessage()
-            ));
+            ]);
         }
+
         return $this->connected;
     }
 
@@ -153,14 +154,15 @@ class Sqlite extends DboSource
         $result = $this->fetchAll("SELECT name FROM sqlite_master WHERE type='table' ORDER BY name;", false);
 
         if (!$result || empty($result)) {
-            return array();
+            return [];
         }
 
-        $tables = array();
+        $tables = [];
         foreach ($result as $table) {
             $tables[] = $table[0]['name'];
         }
         parent::listSources($tables);
+
         return $tables;
     }
 
@@ -177,7 +179,7 @@ class Sqlite extends DboSource
         if ($cache) {
             return $cache;
         }
-        $fields = array();
+        $fields = [];
         $result = $this->_execute(
             'PRAGMA table_info(' . $this->value($table, 'string') . ')'
         );
@@ -185,13 +187,13 @@ class Sqlite extends DboSource
         foreach ($result as $column) {
             $default = ($column['dflt_value'] === 'NULL') ? null : trim($column['dflt_value'], "'");
 
-            $fields[$column['name']] = array(
-                'type' => $this->column($column['type']),
-                'null' => !$column['notnull'],
+            $fields[$column['name']] = [
+                'type'    => $this->column($column['type']),
+                'null'    => !$column['notnull'],
                 'default' => $default,
-                'length' => $this->length($column['type'])
-            );
-            if (in_array($fields[$column['name']]['type'], array('timestamp', 'datetime')) && strtoupper($fields[$column['name']]['default']) === 'CURRENT_TIMESTAMP') {
+                'length'  => $this->length($column['type'])
+            ];
+            if (in_array($fields[$column['name']]['type'], ['timestamp', 'datetime']) && strtoupper($fields[$column['name']]['default']) === 'CURRENT_TIMESTAMP') {
                 $fields[$column['name']]['default'] = null;
             }
             if ($column['pk'] == 1) {
@@ -205,6 +207,7 @@ class Sqlite extends DboSource
 
         $result->closeCursor();
         $this->_cacheDescription($table, $fields);
+
         return $fields;
     }
 
@@ -217,7 +220,7 @@ class Sqlite extends DboSource
      * @param mixed $conditions array of conditions to use.
      * @return bool
      */
-    public function update(Model $model, $fields = array(), $values = null, $conditions = null)
+    public function update(Model $model, $fields = [], $values = null, $conditions = null)
     {
         if (empty($values) && !empty($fields)) {
             foreach ($fields as $field => $value) {
@@ -229,6 +232,7 @@ class Sqlite extends DboSource
                 }
             }
         }
+
         return parent::update($model, $fields, $values, $conditions);
     }
 
@@ -244,6 +248,7 @@ class Sqlite extends DboSource
         if (in_array('sqlite_sequence', $this->listSources())) {
             $this->_execute('DELETE FROM sqlite_sequence where name=' . $this->startQuote . $this->fullTableName($table, false, false) . $this->endQuote);
         }
+
         return $this->execute('DELETE FROM ' . $this->fullTableName($table));
     }
 
@@ -260,6 +265,7 @@ class Sqlite extends DboSource
             if (isset($real['limit'])) {
                 $col .= '(' . $real['limit'] . ')';
             }
+
             return $col;
         }
 
@@ -268,7 +274,7 @@ class Sqlite extends DboSource
             list($col) = explode('(', $col);
         }
 
-        $standard = array(
+        $standard = [
             'text',
             'integer',
             'float',
@@ -277,7 +283,7 @@ class Sqlite extends DboSource
             'date',
             'datetime',
             'time'
-        );
+        ];
         if (in_array($col, $standard)) {
             return $col;
         }
@@ -293,12 +299,13 @@ class Sqlite extends DboSource
         if (strpos($col, 'char') !== false) {
             return 'string';
         }
-        if (in_array($col, array('blob', 'clob'))) {
+        if (in_array($col, ['blob', 'clob'])) {
             return 'binary';
         }
         if (strpos($col, 'numeric') !== false || strpos($col, 'decimal') !== false) {
             return 'decimal';
         }
+
         return 'text';
     }
 
@@ -311,7 +318,7 @@ class Sqlite extends DboSource
     public function resultSet($results)
     {
         $this->results = $results;
-        $this->map = array();
+        $this->map = [];
         $numFields = $results->columnCount();
         $index = 0;
         $j = 0;
@@ -321,25 +328,27 @@ class Sqlite extends DboSource
         $querystring = $results->queryString;
         if (stripos($querystring, 'SELECT') === 0 && stripos($querystring, 'FROM') > 0) {
             $selectpart = substr($querystring, 7);
-            $selects = array();
+            $selects = [];
             foreach (CakeText::tokenize($selectpart, ',', '(', ')') as $part) {
                 $fromPos = stripos($part, ' FROM ');
                 if ($fromPos !== false) {
                     $selects[] = trim(substr($part, 0, $fromPos));
+
                     break;
                 }
                 $selects[] = $part;
             }
         } elseif (strpos($querystring, 'PRAGMA table_info') === 0) {
-            $selects = array('cid', 'name', 'type', 'notnull', 'dflt_value', 'pk');
+            $selects = ['cid', 'name', 'type', 'notnull', 'dflt_value', 'pk'];
         } elseif (strpos($querystring, 'PRAGMA index_list') === 0) {
-            $selects = array('seq', 'name', 'unique');
+            $selects = ['seq', 'name', 'unique'];
         } elseif (strpos($querystring, 'PRAGMA index_info') === 0) {
-            $selects = array('seqno', 'cid', 'name');
+            $selects = ['seqno', 'cid', 'name'];
         }
         while ($j < $numFields) {
             if (!isset($selects[$j])) {
                 $j++;
+
                 continue;
             }
             if (preg_match('/\bAS(?!.*\bAS\b)\s+(.*)/i', $selects[$j], $matches)) {
@@ -353,6 +362,7 @@ class Sqlite extends DboSource
             }
 
             $metaType = false;
+
             try {
                 $metaData = (array)$results->getColumnMeta($j);
                 if (!empty($metaData['sqlite:decl_type'])) {
@@ -363,9 +373,9 @@ class Sqlite extends DboSource
 
             if (strpos($columnName, '.')) {
                 $parts = explode('.', $columnName);
-                $this->map[$index++] = array(trim($parts[0]), trim($parts[1]), $metaType);
+                $this->map[$index++] = [trim($parts[0]), trim($parts[1]), $metaType];
             } else {
-                $this->map[$index++] = array(0, $columnName, $metaType);
+                $this->map[$index++] = [0, $columnName, $metaType];
             }
             $j++;
         }
@@ -379,7 +389,7 @@ class Sqlite extends DboSource
     public function fetchResult()
     {
         if ($row = $this->_result->fetch(PDO::FETCH_NUM)) {
-            $resultRow = array();
+            $resultRow = [];
             foreach ($this->map as $col => $meta) {
                 list($table, $column, $type) = $meta;
                 $resultRow[$table][$column] = $row[$col];
@@ -387,9 +397,11 @@ class Sqlite extends DboSource
                     $resultRow[$table][$column] = $this->boolean($resultRow[$table][$column]);
                 }
             }
+
             return $resultRow;
         }
         $this->_result->closeCursor();
+
         return false;
     }
 
@@ -407,8 +419,10 @@ class Sqlite extends DboSource
             if ($offset) {
                 $rt .= sprintf(' OFFSET %u', $offset);
             }
+
             return $rt;
         }
+
         return null;
     }
 
@@ -422,16 +436,18 @@ class Sqlite extends DboSource
     public function buildColumn($column)
     {
         $name = $type = null;
-        $column += array('null' => true);
+        $column += ['null' => true];
         extract($column);
 
         if (empty($name) || empty($type)) {
             trigger_error(__d('cake_dev', 'Column name or type not defined in schema'), E_USER_WARNING);
+
             return null;
         }
 
         if (!isset($this->columns[$type])) {
             trigger_error(__d('cake_dev', 'Column type %s does not exist', $type), E_USER_WARNING);
+
             return null;
         }
 
@@ -445,8 +461,10 @@ class Sqlite extends DboSource
             if ($column['null'] === false) {
                 $replacement = 'NOT NULL ' . $replacement;
             }
+
             return str_replace($this->columns['primary_key']['name'], $replacement, $out);
         }
+
         return $out;
     }
 
@@ -458,9 +476,10 @@ class Sqlite extends DboSource
      */
     public function setEncoding($enc)
     {
-        if (!in_array($enc, array("UTF-8", "UTF-16", "UTF-16le", "UTF-16be"))) {
+        if (!in_array($enc, ["UTF-8", "UTF-16", "UTF-16le", "UTF-16be"])) {
             return false;
         }
+
         return $this->_execute("PRAGMA encoding = \"{$enc}\"") !== false;
     }
 
@@ -483,7 +502,7 @@ class Sqlite extends DboSource
      */
     public function buildIndex($indexes, $table = null)
     {
-        $join = array();
+        $join = [];
 
         $table = str_replace('"', '', $table);
         list($dbname, $table) = explode('.', $table);
@@ -499,7 +518,7 @@ class Sqlite extends DboSource
                 $out .= 'UNIQUE ';
             }
             if (is_array($value['column'])) {
-                $value['column'] = implode(', ', array_map(array(&$this, 'name'), $value['column']));
+                $value['column'] = implode(', ', array_map([&$this, 'name'], $value['column']));
             } else {
                 $value['column'] = $this->name($value['column']);
             }
@@ -509,6 +528,7 @@ class Sqlite extends DboSource
             $out .= "INDEX {$dbname}.{$indexname} ON {$table}({$value['column']});";
             $join[] = $out;
         }
+
         return $join;
     }
 
@@ -521,20 +541,20 @@ class Sqlite extends DboSource
      */
     public function index($model)
     {
-        $index = array();
+        $index = [];
         $table = $this->fullTableName($model, false, false);
         if ($table) {
             $indexes = $this->query('PRAGMA index_list(' . $table . ')');
 
             if (is_bool($indexes)) {
-                return array();
+                return [];
             }
             foreach ($indexes as $info) {
                 $key = array_pop($info);
                 $keyInfo = $this->query('PRAGMA index_info("' . $key['name'] . '")');
                 foreach ($keyInfo as $keyCol) {
                     if (!isset($index[$key['name']])) {
-                        $col = array();
+                        $col = [];
                         if (preg_match('/autoindex/', $key['name'])) {
                             $key['name'] = 'PRIMARY';
                         }
@@ -550,6 +570,7 @@ class Sqlite extends DboSource
                 }
             }
         }
+
         return $index;
     }
 
@@ -571,6 +592,7 @@ class Sqlite extends DboSource
                 if (is_array($indexes)) {
                     $indexes = "\t" . implode("\n\t", array_filter($indexes));
                 }
+
                 return "CREATE TABLE {$table} (\n{$columns});\n{$indexes}";
             default:
                 return parent::renderStatement($type, $data);

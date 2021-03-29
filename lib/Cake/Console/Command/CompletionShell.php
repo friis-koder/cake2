@@ -13,7 +13,6 @@
  * @since         CakePHP v 2.5
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('AppShell', 'Console/Command');
 
 /**
@@ -23,12 +22,12 @@ App::uses('AppShell', 'Console/Command');
  */
 class CompletionShell extends AppShell
 {
-/**
- * Contains tasks to load and instantiate
- *
- * @var array
- */
-    public $tasks = array('Command');
+    /**
+     * Contains tasks to load and instantiate
+     *
+     * @var array
+     */
+    public $tasks = ['Command'];
 
     /**
      * Echo no header by overriding the startup method
@@ -57,6 +56,7 @@ class CompletionShell extends AppShell
     public function commands()
     {
         $options = $this->Command->commands();
+
         return $this->_output($options);
     }
 
@@ -88,6 +88,7 @@ class CompletionShell extends AppShell
         }
 
         $options = $this->Command->subCommands($this->args[0]);
+
         return $this->_output($options);
     }
 
@@ -112,36 +113,36 @@ class CompletionShell extends AppShell
 
         $parser->description(
             __d('cake_console', 'Used by shells like bash to autocomplete command name, options and arguments')
-        )->addSubcommand('commands', array(
-            'help' => __d('cake_console', 'Output a list of available commands'),
-            'parser' => array(
+        )->addSubcommand('commands', [
+            'help'   => __d('cake_console', 'Output a list of available commands'),
+            'parser' => [
                 'description' => __d('cake_console', 'List all availables'),
-                'arguments' => array(
-                )
-            )
-        ))->addSubcommand('subcommands', array(
-            'help' => __d('cake_console', 'Output a list of available subcommands'),
-            'parser' => array(
+                'arguments'   => [
+                ]
+            ]
+        ])->addSubcommand('subcommands', [
+            'help'   => __d('cake_console', 'Output a list of available subcommands'),
+            'parser' => [
                 'description' => __d('cake_console', 'List subcommands for a command'),
-                'arguments' => array(
-                    'command' => array(
-                        'help' => __d('cake_console', 'The command name'),
+                'arguments'   => [
+                    'command' => [
+                        'help'     => __d('cake_console', 'The command name'),
                         'required' => true,
-                    )
-                )
-            )
-        ))->addSubcommand('options', array(
-            'help' => __d('cake_console', 'Output a list of available options'),
-            'parser' => array(
+                    ]
+                ]
+            ]
+        ])->addSubcommand('options', [
+            'help'   => __d('cake_console', 'Output a list of available options'),
+            'parser' => [
                 'description' => __d('cake_console', 'List options'),
-                'arguments' => array(
-                    'command' => array(
-                        'help' => __d('cake_console', 'The command name'),
+                'arguments'   => [
+                    'command' => [
+                        'help'     => __d('cake_console', 'The command name'),
                         'required' => false,
-                    )
-                )
-            )
-        ))->epilog(
+                    ]
+                ]
+            ]
+        ])->epilog(
             __d('cake_console', 'This command is not intended to be called manually')
         );
 
@@ -154,7 +155,7 @@ class CompletionShell extends AppShell
      * @param array $options The options to output
      * @return void
      */
-    protected function _output($options = array())
+    protected function _output($options = [])
     {
         if ($options) {
             return $this->out(implode(' ', $options));

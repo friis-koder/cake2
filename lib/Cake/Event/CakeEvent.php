@@ -23,11 +23,11 @@
  */
 class CakeEvent
 {
-/**
- * Name of the event
- *
- * @var string
- */
+    /**
+     * Name of the event
+     *
+     * @var string
+     */
     protected $_name = null;
 
     /**

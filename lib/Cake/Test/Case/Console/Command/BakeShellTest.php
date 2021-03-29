@@ -15,7 +15,6 @@
  * @since         CakePHP(tm) v 1.3
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('ConsoleOutput', 'Console');
 App::uses('ConsoleInput', 'Console');
 App::uses('ShellDispatcher', 'Console');
@@ -34,12 +33,12 @@ if (!class_exists('UsersController')) {
 
 class BakeShellTest extends CakeTestCase
 {
-/**
- * fixtures
- *
- * @var array
- */
-    public $fixtures = array('core.user');
+    /**
+     * fixtures
+     *
+     * @var array
+     */
+    public $fixtures = ['core.user'];
 
     /**
      * setup test
@@ -49,13 +48,13 @@ class BakeShellTest extends CakeTestCase
     public function setUp()
     {
         parent::setUp();
-        $out = $this->getMock('ConsoleOutput', array(), array(), '', false);
-        $in = $this->getMock('ConsoleInput', array(), array(), '', false);
+        $out = $this->getMock('ConsoleOutput', [], [], '', false);
+        $in = $this->getMock('ConsoleInput', [], [], '', false);
 
         $this->Shell = $this->getMock(
             'BakeShell',
-            array('in', 'out', 'hr', 'err', 'createFile', '_stop', '_checkUnitTest'),
-            array($out, $out, $in)
+            ['in', 'out', 'hr', 'err', 'createFile', '_stop', '_checkUnitTest'],
+            [$out, $out, $in]
         );
     }
 
@@ -81,10 +80,10 @@ class BakeShellTest extends CakeTestCase
         $userExists = class_exists('User');
         $this->skipIf($userExists, 'User class exists, cannot test `bake all [param]`.');
 
-        $this->Shell->Model = $this->getMock('ModelTask', array(), array(&$this->Dispatcher));
-        $this->Shell->Controller = $this->getMock('ControllerTask', array(), array(&$this->Dispatcher));
-        $this->Shell->View = $this->getMock('ModelTask', array(), array(&$this->Dispatcher));
-        $this->Shell->DbConfig = $this->getMock('DbConfigTask', array(), array(&$this->Dispatcher));
+        $this->Shell->Model = $this->getMock('ModelTask', [], [&$this->Dispatcher]);
+        $this->Shell->Controller = $this->getMock('ControllerTask', [], [&$this->Dispatcher]);
+        $this->Shell->View = $this->getMock('ModelTask', [], [&$this->Dispatcher]);
+        $this->Shell->DbConfig = $this->getMock('DbConfigTask', [], [&$this->Dispatcher]);
 
         $this->Shell->DbConfig->expects($this->once())
             ->method('getConfig')
@@ -114,8 +113,8 @@ class BakeShellTest extends CakeTestCase
             ->with('<success>Bake All complete</success>');
 
         $this->Shell->connection = '';
-        $this->Shell->params = array();
-        $this->Shell->args = array('User');
+        $this->Shell->params = [];
+        $this->Shell->args = ['User'];
         $this->Shell->all();
 
         $this->assertEquals('User', $this->Shell->View->args[0]);

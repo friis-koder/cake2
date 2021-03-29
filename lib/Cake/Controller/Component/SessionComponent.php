@@ -15,7 +15,6 @@
  * @since         CakePHP(tm) v 0.10.0.1232
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('Component', 'Controller');
 App::uses('CakeSession', 'Model/Datasource');
 
@@ -30,12 +29,12 @@ App::uses('CakeSession', 'Model/Datasource');
  */
 class SessionComponent extends Component
 {
-/**
- * Get / Set the userAgent
- *
- * @param string $userAgent Set the userAgent
- * @return string Current user agent.
- */
+    /**
+     * Get / Set the userAgent
+     *
+     * @param string $userAgent Set the userAgent
+     * @return string Current user agent.
+     */
     public function userAgent($userAgent = null)
     {
         return CakeSession::userAgent($userAgent);
@@ -142,14 +141,14 @@ class SessionComponent extends Component
      * @link https://book.cakephp.org/2.0/en/core-libraries/components/sessions.html#creating-notification-messages
      * @deprecated 3.0.0 Since 2.7, use the FlashComponent instead.
      */
-    public function setFlash($message, $element = 'default', $params = array(), $key = 'flash')
+    public function setFlash($message, $element = 'default', $params = [], $key = 'flash')
     {
         $messages = (array)CakeSession::read('Message.' . $key);
-        $messages[] = array(
+        $messages[] = [
             'message' => $message,
             'element' => $element,
-            'params' => $params,
-        );
+            'params'  => $params,
+        ];
         CakeSession::write('Message.' . $key, $messages);
     }
 
@@ -205,6 +204,7 @@ class SessionComponent extends Component
         if (empty($id)) {
             CakeSession::start();
         }
+
         return CakeSession::id($id);
     }
 

@@ -15,7 +15,6 @@
  * @since         CakePHP(tm) v 2.0
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('CakeSession', 'Model/Datasource');
 App::uses('CacheSession', 'Model/Datasource/Session');
 class_exists('CakeSession');
@@ -36,10 +35,10 @@ class CacheSessionTest extends CakeTestCase
      */
     public static function setupBeforeClass()
     {
-        Cache::config('session_test', array(
+        Cache::config('session_test', [
             'engine' => 'File',
             'prefix' => 'session_test_'
-        ));
+        ]);
         static::$_sessionBackup = Configure::read('Session');
 
         Configure::write('Session.handler.config', 'session_test');

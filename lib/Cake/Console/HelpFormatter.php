@@ -13,7 +13,6 @@
  * @link          https://cakephp.org CakePHP(tm) Project
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('CakeText', 'Utility');
 
 /**
@@ -30,11 +29,11 @@ App::uses('CakeText', 'Utility');
  */
 class HelpFormatter
 {
-/**
- * The maximum number of arguments shown when generating usage.
- *
- * @var int
- */
+    /**
+     * The maximum number of arguments shown when generating usage.
+     *
+     * @var int
+     */
     protected $_maxArgs = 6;
 
     /**
@@ -63,7 +62,7 @@ class HelpFormatter
     public function text($width = 72)
     {
         $parser = $this->_parser;
-        $out = array();
+        $out = [];
         $description = $parser->description();
         if (!empty($description)) {
             $out[] = CakeText::wrap($description, $width);
@@ -78,11 +77,11 @@ class HelpFormatter
             $out[] = '';
             $max = $this->_getMaxLength($subcommands) + 2;
             foreach ($subcommands as $command) {
-                $out[] = CakeText::wrap($command->help($max), array(
-                    'width' => $width,
-                    'indent' => str_repeat(' ', $max),
+                $out[] = CakeText::wrap($command->help($max), [
+                    'width'    => $width,
+                    'indent'   => str_repeat(' ', $max),
                     'indentAt' => 1
-                ));
+                ]);
             }
             $out[] = '';
             $out[] = __d('cake_console', 'To see help on a subcommand use <info>`cake %s [subcommand] --help`</info>', $parser->command());
@@ -95,11 +94,11 @@ class HelpFormatter
             $out[] = __d('cake_console', '<info>Options:</info>');
             $out[] = '';
             foreach ($options as $option) {
-                $out[] = CakeText::wrap($option->help($max), array(
-                    'width' => $width,
-                    'indent' => str_repeat(' ', $max),
+                $out[] = CakeText::wrap($option->help($max), [
+                    'width'    => $width,
+                    'indent'   => str_repeat(' ', $max),
                     'indentAt' => 1
-                ));
+                ]);
             }
             $out[] = '';
         }
@@ -110,11 +109,11 @@ class HelpFormatter
             $out[] = __d('cake_console', '<info>Arguments:</info>');
             $out[] = '';
             foreach ($arguments as $argument) {
-                $out[] = CakeText::wrap($argument->help($max), array(
-                    'width' => $width,
-                    'indent' => str_repeat(' ', $max),
+                $out[] = CakeText::wrap($argument->help($max), [
+                    'width'    => $width,
+                    'indent'   => str_repeat(' ', $max),
                     'indentAt' => 1
-                ));
+                ]);
             }
             $out[] = '';
         }
@@ -123,6 +122,7 @@ class HelpFormatter
             $out[] = CakeText::wrap($epilog, $width);
             $out[] = '';
         }
+
         return implode("\n", $out);
     }
 
@@ -135,27 +135,28 @@ class HelpFormatter
      */
     protected function _generateUsage()
     {
-        $usage = array('cake ' . $this->_parser->command());
+        $usage = ['cake ' . $this->_parser->command()];
         $subcommands = $this->_parser->subcommands();
         if (!empty($subcommands)) {
             $usage[] = '[subcommand]';
         }
-        $options = array();
+        $options = [];
         foreach ($this->_parser->options() as $option) {
             $options[] = $option->usage();
         }
         if (count($options) > $this->_maxOptions) {
-            $options = array('[options]');
+            $options = ['[options]'];
         }
         $usage = array_merge($usage, $options);
-        $args = array();
+        $args = [];
         foreach ($this->_parser->arguments() as $argument) {
             $args[] = $argument->usage();
         }
         if (count($args) > $this->_maxArgs) {
-            $args = array('[arguments]');
+            $args = ['[arguments]'];
         }
         $usage = array_merge($usage, $args);
+
         return implode(' ', $usage);
     }
 
@@ -171,6 +172,7 @@ class HelpFormatter
         foreach ($collection as $item) {
             $max = (strlen($item->name()) > $max) ? strlen($item->name()) : $max;
         }
+
         return $max;
     }
 
@@ -200,6 +202,7 @@ class HelpFormatter
             $argument->xml($arguments);
         }
         $xml->addChild('epilog', $parser->epilog());
+
         return $string ? $xml->asXml() : $xml;
     }
 }

@@ -17,7 +17,6 @@
  * @since         CakePHP(tm) v 0.2.9
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('LogEngineCollection', 'Log');
 
 /**
@@ -74,11 +73,11 @@ App::uses('LogEngineCollection', 'Log');
  */
 class CakeLog
 {
-/**
- * LogEngineCollection class
- *
- * @var LogEngineCollection
- */
+    /**
+     * LogEngineCollection class
+     *
+     * @var LogEngineCollection
+     */
     protected static $_Collection;
 
     /**
@@ -90,16 +89,16 @@ class CakeLog
      *
      * @var array
      */
-    protected static $_defaultLevels = array(
+    protected static $_defaultLevels = [
         'emergency' => LOG_EMERG,
-        'alert' => LOG_ALERT,
-        'critical' => LOG_CRIT,
-        'error' => LOG_ERR,
-        'warning' => LOG_WARNING,
-        'notice' => LOG_NOTICE,
-        'info' => LOG_INFO,
-        'debug' => LOG_DEBUG,
-    );
+        'alert'     => LOG_ALERT,
+        'critical'  => LOG_CRIT,
+        'error'     => LOG_ERR,
+        'warning'   => LOG_WARNING,
+        'notice'    => LOG_NOTICE,
+        'info'      => LOG_INFO,
+        'debug'     => LOG_DEBUG,
+    ];
 
     /**
      * Active log levels for this instance.
@@ -202,6 +201,7 @@ class CakeLog
             static::_init();
         }
         static::$_Collection->load($key, $config);
+
         return true;
     }
 
@@ -215,6 +215,7 @@ class CakeLog
         if (empty(static::$_Collection)) {
             static::_init();
         }
+
         return static::$_Collection->loaded();
     }
 
@@ -264,7 +265,7 @@ class CakeLog
      * @param bool $append true to append, false to replace
      * @return array Active log levels
      */
-    public static function levels($levels = array(), $append = true)
+    public static function levels($levels = [], $append = true)
     {
         if (empty(static::$_Collection)) {
             static::_init();
@@ -279,6 +280,7 @@ class CakeLog
             static::$_levels = $levels;
         }
         static::$_levelMap = array_flip(static::$_levels);
+
         return static::$_levels;
     }
 
@@ -291,6 +293,7 @@ class CakeLog
     {
         static::$_levelMap = static::$_defaultLevels;
         static::$_levels = array_flip(static::$_levelMap);
+
         return static::$_levels;
     }
 
@@ -324,6 +327,7 @@ class CakeLog
         if (!isset(static::$_Collection->{$streamName})) {
             throw new CakeLogException(__d('cake_dev', 'Stream %s not found', $streamName));
         }
+
         return static::$_Collection->enabled($streamName);
     }
 
@@ -381,6 +385,7 @@ class CakeLog
         if (!empty(static::$_Collection->{$streamName})) {
             return static::$_Collection->{$streamName};
         }
+
         return false;
     }
 
@@ -415,7 +420,7 @@ class CakeLog
      * @return bool Success
      * @link https://book.cakephp.org/2.0/en/core-libraries/logging.html#writing-to-logs
      */
-    public static function write($type, $message, $scope = array())
+    public static function write($type, $message, $scope = [])
     {
         if (empty(static::$_Collection)) {
             static::_init();
@@ -430,7 +435,7 @@ class CakeLog
         $logged = false;
         foreach (static::$_Collection->enabled() as $streamName) {
             $logger = static::$_Collection->{$streamName};
-            $types = $scopes = $config = array();
+            $types = $scopes = $config = [];
             if (method_exists($logger, 'config')) {
                 $config = $logger->config();
             }
@@ -462,6 +467,7 @@ class CakeLog
                 $logged = true;
             }
         }
+
         return $logged;
     }
 
@@ -485,7 +491,7 @@ class CakeLog
      *    See CakeLog::config() for more information on logging scopes.
      * @return bool Success
      */
-    public static function emergency($message, $scope = array())
+    public static function emergency($message, $scope = [])
     {
         return static::write(static::$_levelMap['emergency'], $message, $scope);
     }
@@ -498,7 +504,7 @@ class CakeLog
      *    See CakeLog::config() for more information on logging scopes.
      * @return bool Success
      */
-    public static function alert($message, $scope = array())
+    public static function alert($message, $scope = [])
     {
         return static::write(static::$_levelMap['alert'], $message, $scope);
     }
@@ -511,7 +517,7 @@ class CakeLog
      *    See CakeLog::config() for more information on logging scopes.
      * @return bool Success
      */
-    public static function critical($message, $scope = array())
+    public static function critical($message, $scope = [])
     {
         return static::write(static::$_levelMap['critical'], $message, $scope);
     }
@@ -524,7 +530,7 @@ class CakeLog
      *    See CakeLog::config() for more information on logging scopes.
      * @return bool Success
      */
-    public static function error($message, $scope = array())
+    public static function error($message, $scope = [])
     {
         return static::write(static::$_levelMap['error'], $message, $scope);
     }
@@ -537,7 +543,7 @@ class CakeLog
      *    See CakeLog::config() for more information on logging scopes.
      * @return bool Success
      */
-    public static function warning($message, $scope = array())
+    public static function warning($message, $scope = [])
     {
         return static::write(static::$_levelMap['warning'], $message, $scope);
     }
@@ -550,7 +556,7 @@ class CakeLog
      *    See CakeLog::config() for more information on logging scopes.
      * @return bool Success
      */
-    public static function notice($message, $scope = array())
+    public static function notice($message, $scope = [])
     {
         return static::write(static::$_levelMap['notice'], $message, $scope);
     }
@@ -563,7 +569,7 @@ class CakeLog
      *    See CakeLog::config() for more information on logging scopes.
      * @return bool Success
      */
-    public static function debug($message, $scope = array())
+    public static function debug($message, $scope = [])
     {
         return static::write(static::$_levelMap['debug'], $message, $scope);
     }
@@ -576,7 +582,7 @@ class CakeLog
      *    See CakeLog::config() for more information on logging scopes.
      * @return bool Success
      */
-    public static function info($message, $scope = array())
+    public static function info($message, $scope = [])
     {
         return static::write(static::$_levelMap['info'], $message, $scope);
     }

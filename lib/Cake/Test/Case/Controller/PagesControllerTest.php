@@ -15,7 +15,6 @@
  * @since         CakePHP(tm) v 1.2.0.5436
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('PagesController', 'Controller');
 
 /**
@@ -25,18 +24,18 @@ App::uses('PagesController', 'Controller');
  */
 class PagesControllerTest extends CakeTestCase
 {
-/**
- * testDisplay method
- *
- * @return void
- */
+    /**
+     * testDisplay method
+     *
+     * @return void
+     */
     public function testDisplay()
     {
-        App::build(array(
-            'View' => array(
+        App::build([
+            'View' => [
                 CAKE . 'Test' . DS . 'test_app' . DS . 'View' . DS
-            )
-        ));
+            ]
+        ]);
         $Pages = new PagesController(new CakeRequest(null, false), new CakeResponse());
 
         $Pages->viewPath = 'Posts';
@@ -88,11 +87,11 @@ class PagesControllerTest extends CakeTestCase
      */
     public function testDirectoryTraversalProtection()
     {
-        App::build(array(
-            'View' => array(
+        App::build([
+            'View' => [
                 CAKE . 'Test' . DS . 'test_app' . DS . 'View' . DS
-            )
-        ));
+            ]
+        ]);
         $Pages = new PagesController(new CakeRequest(null, false), new CakeResponse());
         $Pages->display('..', 'Posts', 'index');
     }

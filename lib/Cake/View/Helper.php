@@ -13,7 +13,6 @@
  * @since         CakePHP(tm) v 0.2.9
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('Router', 'Routing');
 App::uses('Hash', 'Utility');
 App::uses('Inflector', 'Utility');
@@ -26,26 +25,26 @@ App::uses('Inflector', 'Utility');
  */
 class Helper extends CakeObject
 {
-/**
- * Settings for this helper.
- *
- * @var array
- */
-    public $settings = array();
+    /**
+     * Settings for this helper.
+     *
+     * @var array
+     */
+    public $settings = [];
 
     /**
      * List of helpers used by this helper
      *
      * @var array
      */
-    public $helpers = array();
+    public $helpers = [];
 
     /**
      * A helper lookup table used to lazy load helper objects.
      *
      * @var array
      */
-    protected $_helperMap = array();
+    protected $_helperMap = [];
 
     /**
      * The current theme name if any.
@@ -74,14 +73,14 @@ class Helper extends CakeObject
      *
      * @var array
      */
-    public $fieldset = array();
+    public $fieldset = [];
 
     /**
      * Holds tag templates.
      *
      * @var array
      */
-    public $tags = array();
+    public $tags = [];
 
     /**
      * Holds the content to be cleaned.
@@ -111,9 +110,9 @@ class Helper extends CakeObject
      *
      * @var array
      */
-    protected $_fieldSuffixes = array(
+    protected $_fieldSuffixes = [
         'year', 'month', 'day', 'hour', 'min', 'second', 'meridian'
-    );
+    ];
 
     /**
      * The name of the current model entities are in scope of.
@@ -144,7 +143,7 @@ class Helper extends CakeObject
      *
      * @var array
      */
-    protected $_minimizedAttributes = array(
+    protected $_minimizedAttributes = [
         'allowfullscreen',
         'async',
         'autofocus',
@@ -187,7 +186,7 @@ class Helper extends CakeObject
         'truespeed',
         'typemustmatch',
         'visible'
-    );
+    ];
 
     /**
      * Format to attribute
@@ -209,7 +208,7 @@ class Helper extends CakeObject
      * @param View $View The View this helper is being attached to.
      * @param array $settings Configuration settings for the helper.
      */
-    public function __construct(View $View, $settings = array())
+    public function __construct(View $View, $settings = [])
     {
         $this->_View = $View;
         $this->request = $View->request;
@@ -243,7 +242,7 @@ class Helper extends CakeObject
     public function __get($name)
     {
         if (isset($this->_helperMap[$name]) && !isset($this->{$name})) {
-            $settings = array('enabled' => false) + (array)$this->_helperMap[$name]['settings'];
+            $settings = ['enabled' => false] + (array)$this->_helperMap[$name]['settings'];
             $this->{$name} = $this->_View->loadHelper($this->_helperMap[$name]['class'], $settings);
         }
         if (isset($this->{$name})) {
@@ -278,9 +277,11 @@ class Helper extends CakeObject
             case 'webroot':
             case 'data':
                 $this->request->{$name} = $value;
+
                 return;
             case 'action':
                 $this->request->params['action'] = $value;
+
                 return;
         }
         $this->{$name} = $value;
@@ -337,6 +338,7 @@ class Helper extends CakeObject
         if (strpos($webPath, '//') !== false) {
             return str_replace('//', '/', $webPath . $asset[1]);
         }
+
         return $webPath . $asset[1];
     }
 
@@ -352,7 +354,7 @@ class Helper extends CakeObject
      *   `plugin` False value will prevent parsing path as a plugin
      * @return string Generated URL
      */
-    public function assetUrl($path, $options = array())
+    public function assetUrl($path, $options = [])
     {
         if (is_array($path)) {
             return $this->url($path, !empty($options['fullBase']));
@@ -383,6 +385,7 @@ class Helper extends CakeObject
         if (!empty($options['fullBase'])) {
             $path = rtrim(Router::fullBaseUrl(), '/') . '/' . ltrim($path, '/');
         }
+
         return $path;
     }
 
@@ -398,6 +401,7 @@ class Helper extends CakeObject
         $parts = array_map('rawurldecode', explode('/', $path));
         $parts = array_map('rawurlencode', $parts);
         $encoded = implode('/', $parts);
+
         return h(str_replace($path, $encoded, $url));
     }
 
@@ -444,6 +448,7 @@ class Helper extends CakeObject
                 }
             }
         }
+
         return $path;
     }
 
@@ -466,10 +471,12 @@ class Helper extends CakeObject
             foreach ($output as $key => $value) {
                 $return[$key] = $this->clean($value);
             }
+
             return $return;
         }
         $this->_tainted = $output;
         $this->_clean();
+
         return $this->_cleaned;
     }
 
@@ -502,15 +509,15 @@ class Helper extends CakeObject
     protected function _parseAttributes($options, $exclude = null, $insertBefore = ' ', $insertAfter = null)
     {
         if (!is_string($options)) {
-            $options = (array)$options + array('escape' => true);
+            $options = (array)$options + ['escape' => true];
 
             if (!is_array($exclude)) {
-                $exclude = array();
+                $exclude = [];
             }
 
-            $exclude = array('escape' => true) + array_flip($exclude);
+            $exclude = ['escape' => true] + array_flip($exclude);
             $escape = $options['escape'];
-            $attributes = array();
+            $attributes = [];
 
             foreach ($options as $key => $value) {
                 if (!isset($exclude[$key]) && $value !== false && $value !== null) {
@@ -521,6 +528,7 @@ class Helper extends CakeObject
         } else {
             $out = $options;
         }
+
         return $out ? $insertBefore . $out . $insertAfter : '';
     }
 
@@ -542,7 +550,7 @@ class Helper extends CakeObject
         if (is_numeric($key)) {
             return sprintf($this->_minimizedAttributeFormat, $value, $value);
         }
-        $truthy = array(1, '1', true, 'true', $key);
+        $truthy = [1, '1', true, 'true', $key];
         $isMinimized = in_array($key, $this->_minimizedAttributes);
         if ($isMinimized && in_array($value, $truthy, true)) {
             return sprintf($this->_minimizedAttributeFormat, $key, $key);
@@ -550,6 +558,7 @@ class Helper extends CakeObject
         if ($isMinimized) {
             return '';
         }
+
         return sprintf($this->_attributeFormat, $key, ($escape ? h($value) : $value));
     }
 
@@ -562,13 +571,14 @@ class Helper extends CakeObject
      * @param array $options Array of options
      * @return string onclick JS code
      */
-    protected function _confirm($message, $okCode, $cancelCode = '', $options = array())
+    protected function _confirm($message, $okCode, $cancelCode = '', $options = [])
     {
         $message = json_encode($message);
         $confirm = "if (confirm({$message})) { {$okCode} } {$cancelCode}";
         if (isset($options['escape']) && $options['escape'] === false) {
             $confirm = h($confirm);
         }
+
         return $confirm;
     }
 
@@ -633,6 +643,7 @@ class Helper extends CakeObject
             foreach ($reversed as $i => $part) {
                 if ($i > 0 && preg_match('/^[A-Z]/', $part)) {
                     $this->_association = $part;
+
                     break;
                 }
             }
@@ -660,6 +671,7 @@ class Helper extends CakeObject
         if ($this->_association) {
             return $this->_association;
         }
+
         return $this->_modelScope;
     }
 
@@ -678,6 +690,7 @@ class Helper extends CakeObject
         if ($count > 2 && in_array($last, $this->_fieldSuffixes)) {
             $last = isset($entity[$count - 2]) ? $entity[$count - 2] : null;
         }
+
         return $last;
     }
 
@@ -695,21 +708,24 @@ class Helper extends CakeObject
     {
         if (is_array($options) && array_key_exists($id, $options) && $options[$id] === null) {
             unset($options[$id]);
+
             return $options;
         } elseif (!is_array($options) && $options !== null) {
             $this->setEntity($options);
+
             return $this->domId();
         }
 
         $entity = $this->entity();
         $model = array_shift($entity);
-        $dom = $model . implode('', array_map(array('Inflector', 'camelize'), $entity));
+        $dom = $model . implode('', array_map(['Inflector', 'camelize'], $entity));
 
         if (is_array($options) && !array_key_exists($id, $options)) {
             $options[$id] = $dom;
         } elseif ($options === null) {
             return $dom;
         }
+
         return $options;
     }
 
@@ -724,10 +740,10 @@ class Helper extends CakeObject
      * @return mixed If an array was given for $options, an array with $key set will be returned.
      *   If a string was supplied a string will be returned.
      */
-    protected function _name($options = array(), $field = null, $key = 'name')
+    protected function _name($options = [], $field = null, $key = 'name')
     {
         if ($options === null) {
-            $options = array();
+            $options = [];
         } elseif (is_string($options)) {
             $field = $options;
             $options = 0;
@@ -744,6 +760,7 @@ class Helper extends CakeObject
         switch ($field) {
             case '_method':
                 $name = $field;
+
                 break;
             default:
                 $name = 'data[' . implode('][', $this->entity()) . ']';
@@ -751,8 +768,10 @@ class Helper extends CakeObject
 
         if (is_array($options)) {
             $options[$key] = $name;
+
             return $options;
         }
+
         return $name;
     }
 
@@ -766,10 +785,10 @@ class Helper extends CakeObject
      * @return mixed If an array was given for $options, an array with $key set will be returned.
      *   If a string was supplied a string will be returned.
      */
-    public function value($options = array(), $field = null, $key = 'value')
+    public function value($options = [], $field = null, $key = 'value')
     {
         if ($options === null) {
-            $options = array();
+            $options = [];
         } elseif (is_string($options)) {
             $field = $options;
             $options = 0;
@@ -809,8 +828,10 @@ class Helper extends CakeObject
 
         if (is_array($options)) {
             $options[$key] = $result;
+
             return $options;
         }
+
         return $result;
     }
 
@@ -822,7 +843,7 @@ class Helper extends CakeObject
      * @param array $options Array of options to use while initializing an input field.
      * @return array Array options for the form input.
      */
-    protected function _initInputField($field, $options = array())
+    protected function _initInputField($field, $options = [])
     {
         if ($field !== null) {
             $this->setEntity($field);
@@ -831,6 +852,7 @@ class Helper extends CakeObject
         $options = $this->_name($options);
         $options = $this->value($options);
         $options = $this->domId($options);
+
         return $options;
     }
 
@@ -842,13 +864,14 @@ class Helper extends CakeObject
      * @param string $key the key to use for class.
      * @return array Array of options with $key set.
      */
-    public function addClass($options = array(), $class = null, $key = 'class')
+    public function addClass($options = [], $class = null, $key = 'class')
     {
         if (isset($options[$key]) && trim($options[$key])) {
             $options[$key] .= ' ' . $class;
         } else {
             $options[$key] = $class;
         }
+
         return $options;
     }
 
@@ -961,7 +984,7 @@ class Helper extends CakeObject
                 $data = $this->request->data[$model];
             }
         }
-        $array = array();
+        $array = [];
         if (!empty($data)) {
             foreach ($data as $row) {
                 if (isset($row[$key])) {
@@ -969,6 +992,7 @@ class Helper extends CakeObject
                 }
             }
         }
+
         return empty($array) ? null : $array;
     }
 
@@ -996,7 +1020,7 @@ class Helper extends CakeObject
             $this->_cleaned = $this->_tainted;
         }
 
-        $this->_cleaned = str_replace(array("&amp;", "&lt;", "&gt;"), array("&amp;amp;", "&amp;lt;", "&amp;gt;"), $this->_cleaned);
+        $this->_cleaned = str_replace(["&amp;", "&lt;", "&gt;"], ["&amp;amp;", "&amp;lt;", "&amp;gt;"], $this->_cleaned);
         $this->_cleaned = preg_replace('#(&\#*\w+)[\x00-\x20]+;#u', "$1;", $this->_cleaned);
         $this->_cleaned = preg_replace('#(&\#x*)([0-9A-F]+);*#iu', "$1$2;", $this->_cleaned);
         $this->_cleaned = html_entity_decode($this->_cleaned, ENT_COMPAT, "UTF-8");
@@ -1013,6 +1037,6 @@ class Helper extends CakeObject
             $oldstring = $this->_cleaned;
             $this->_cleaned = preg_replace('#</*(applet|meta|xml|blink|link|style|script|embed|object|iframe|frame|frameset|ilayer|layer|bgsound|title|base)[^>]*>#i', "", $this->_cleaned);
         } while ($oldstring !== $this->_cleaned);
-        $this->_cleaned = str_replace(array("&amp;", "&lt;", "&gt;"), array("&amp;amp;", "&amp;lt;", "&amp;gt;"), $this->_cleaned);
+        $this->_cleaned = str_replace(["&amp;", "&lt;", "&gt;"], ["&amp;amp;", "&amp;lt;", "&amp;gt;"], $this->_cleaned);
     }
 }

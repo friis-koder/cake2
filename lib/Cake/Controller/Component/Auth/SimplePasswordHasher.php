@@ -12,7 +12,6 @@
  * @since         CakePHP(tm) v 2.4.0
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('AbstractPasswordHasher', 'Controller/Component/Auth');
 App::uses('Security', 'Utility');
 
@@ -23,12 +22,12 @@ App::uses('Security', 'Utility');
  */
 class SimplePasswordHasher extends AbstractPasswordHasher
 {
-/**
- * Config for this object.
- *
- * @var array
- */
-    protected $_config = array('hashType' => null);
+    /**
+     * Config for this object.
+     *
+     * @var array
+     */
+    protected $_config = ['hashType' => null];
 
     /**
      * Generates password hash.

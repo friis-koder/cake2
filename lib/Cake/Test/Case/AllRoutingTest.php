@@ -25,11 +25,11 @@
  */
 class AllRoutingTest extends PHPUnit_Framework_TestSuite
 {
-/**
- * suite method, defines tests for this suite.
- *
- * @return void
- */
+    /**
+     * suite method, defines tests for this suite.
+     *
+     * @return void
+     */
     public static function suite()
     {
         $suite = new CakeTestSuite('All Routing class tests');
@@ -39,6 +39,7 @@ class AllRoutingTest extends PHPUnit_Framework_TestSuite
         $suite->addTestDirectory($libs . 'Routing');
         $suite->addTestDirectory($libs . 'Routing' . DS . 'Route');
         $suite->addTestDirectory($libs . 'Routing' . DS . 'Filter');
+
         return $suite;
     }
 }

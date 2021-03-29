@@ -13,7 +13,6 @@
  * @since		  CakePHP(tm) v 2.2
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('DispatcherFilter', 'Routing');
 
 /**
@@ -24,12 +23,12 @@ App::uses('DispatcherFilter', 'Routing');
  */
 class AssetDispatcher extends DispatcherFilter
 {
-/**
- * Default priority for all methods in this filter
- * This filter should run before the request gets parsed by router
- *
- * @var int
- */
+    /**
+     * Default priority for all methods in this filter
+     * This filter should run before the request gets parsed by router
+     *
+     * @var int
+     */
     public $priority = 9;
 
     /**
@@ -48,6 +47,7 @@ class AssetDispatcher extends DispatcherFilter
 
         if ($result = $this->_filterAsset($event)) {
             $event->stopPropagation();
+
             return $result;
         }
 
@@ -67,6 +67,7 @@ class AssetDispatcher extends DispatcherFilter
         $ext = array_pop($pathSegments);
 
         $this->_deliverAsset($response, $assetFile, $ext);
+
         return $response;
     }
 
@@ -93,16 +94,19 @@ class AssetDispatcher extends DispatcherFilter
 
         if (($isCss && empty($filters['css'])) || ($isJs && empty($filters['js']))) {
             $response->statusCode(404);
+
             return $response;
         }
 
         if ($isCss) {
             include WWW_ROOT . DS . $filters['css'];
+
             return $response;
         }
 
         if ($isJs) {
             include WWW_ROOT . DS . $filters['js'];
+
             return $response;
         }
     }
@@ -121,6 +125,7 @@ class AssetDispatcher extends DispatcherFilter
             unset($parts[0], $parts[1]);
             $fileFragment = implode(DS, $parts);
             $path = App::themePath($themeName) . 'webroot' . DS;
+
             return $path . $fileFragment;
         }
 
@@ -129,6 +134,7 @@ class AssetDispatcher extends DispatcherFilter
             unset($parts[0]);
             $fileFragment = implode(DS, $parts);
             $pluginWebroot = CakePlugin::path($plugin) . 'webroot' . DS;
+
             return $pluginWebroot . $fileFragment;
         }
     }

@@ -13,7 +13,6 @@
  * @since         CakePHP(tm) v 2.4
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('SyslogLog', 'Log/Engine');
 
 /**
@@ -23,24 +22,24 @@ App::uses('SyslogLog', 'Log/Engine');
  */
 class SyslogLogTest extends CakeTestCase
 {
-/**
- * Tests that the connection to the logger is open with the right arguments
- *
- * @return void
- */
+    /**
+     * Tests that the connection to the logger is open with the right arguments
+     *
+     * @return void
+     */
     public function testOpenLog()
     {
-        $log = $this->getMock('SyslogLog', array('_open', '_write'));
+        $log = $this->getMock('SyslogLog', ['_open', '_write']);
         $log->expects($this->once())->method('_open')->with('', LOG_ODELAY, LOG_USER);
         $log->write('debug', 'message');
 
-        $log = $this->getMock('SyslogLog', array('_open', '_write'));
-        $log->config(array(
-            'prefix' => 'thing',
-            'flag' => LOG_NDELAY,
+        $log = $this->getMock('SyslogLog', ['_open', '_write']);
+        $log->config([
+            'prefix'   => 'thing',
+            'flag'     => LOG_NDELAY,
             'facility' => LOG_MAIL,
-            'format' => '%s: %s'
-        ));
+            'format'   => '%s: %s'
+        ]);
         $log->expects($this->once())->method('_open')
             ->with('thing', LOG_NDELAY, LOG_MAIL);
         $log->write('debug', 'message');
@@ -54,7 +53,7 @@ class SyslogLogTest extends CakeTestCase
      */
     public function testWriteOneLine($type, $expected)
     {
-        $log = $this->getMock('SyslogLog', array('_open', '_write'));
+        $log = $this->getMock('SyslogLog', ['_open', '_write']);
         $log->expects($this->once())->method('_write')->with($expected, $type . ': Foo');
         $log->write($type, 'Foo');
     }
@@ -66,7 +65,7 @@ class SyslogLogTest extends CakeTestCase
      */
     public function testWriteMultiLine()
     {
-        $log = $this->getMock('SyslogLog', array('_open', '_write'));
+        $log = $this->getMock('SyslogLog', ['_open', '_write']);
         $log->expects($this->at(1))->method('_write')->with(LOG_DEBUG, 'debug: Foo');
         $log->expects($this->at(2))->method('_write')->with(LOG_DEBUG, 'debug: Bar');
         $log->expects($this->exactly(2))->method('_write');
@@ -80,15 +79,15 @@ class SyslogLogTest extends CakeTestCase
      */
     public function typesProvider()
     {
-        return array(
-            array('emergency', LOG_EMERG),
-            array('alert', LOG_ALERT),
-            array('critical', LOG_CRIT),
-            array('error', LOG_ERR),
-            array('warning', LOG_WARNING),
-            array('notice', LOG_NOTICE),
-            array('info', LOG_INFO),
-            array('debug', LOG_DEBUG)
-        );
+        return [
+            ['emergency', LOG_EMERG],
+            ['alert', LOG_ALERT],
+            ['critical', LOG_CRIT],
+            ['error', LOG_ERR],
+            ['warning', LOG_WARNING],
+            ['notice', LOG_NOTICE],
+            ['info', LOG_INFO],
+            ['debug', LOG_DEBUG]
+        ];
     }
 }

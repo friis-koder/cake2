@@ -23,11 +23,11 @@
  */
 class ConsoleInput
 {
-/**
- * Input value.
- *
- * @var resource
- */
+    /**
+     * Input value.
+     *
+     * @var resource
+     */
     protected $_input;
 
     /**
@@ -64,8 +64,10 @@ class ConsoleInput
             if (!empty($line)) {
                 readline_add_history($line);
             }
+
             return $line;
         }
+
         return fgets($this->_input);
     }
 
@@ -77,8 +79,9 @@ class ConsoleInput
      */
     public function dataAvailable($timeout = 0)
     {
-        $readFds = array($this->_input);
+        $readFds = [$this->_input];
         $readyFds = stream_select($readFds, $writeFds, $errorFds, $timeout);
+
         return ($readyFds > 0);
     }
 }

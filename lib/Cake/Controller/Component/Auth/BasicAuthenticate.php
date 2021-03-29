@@ -11,7 +11,6 @@
  * @link          https://cakephp.org CakePHP(tm) Project
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('BaseAuthenticate', 'Controller/Component/Auth');
 
 /**
@@ -50,12 +49,12 @@ App::uses('BaseAuthenticate', 'Controller/Component/Auth');
  */
 class BasicAuthenticate extends BaseAuthenticate
 {
-/**
- * Constructor, completes configuration for basic authentication.
- *
- * @param ComponentCollection $collection The Component collection used on this request.
- * @param array $settings An array of settings.
- */
+    /**
+     * Constructor, completes configuration for basic authentication.
+     *
+     * @param ComponentCollection $collection The Component collection used on this request.
+     * @param array $settings An array of settings.
+     */
     public function __construct(ComponentCollection $collection, $settings)
     {
         parent::__construct($collection, $settings);
@@ -97,6 +96,7 @@ class BasicAuthenticate extends BaseAuthenticate
         if (!is_string($username) || $username === '' || !is_string($pass) || $pass === '') {
             return false;
         }
+
         return $this->_findUser($username, $pass);
     }
 
@@ -111,7 +111,8 @@ class BasicAuthenticate extends BaseAuthenticate
     public function unauthenticated(CakeRequest $request, CakeResponse $response)
     {
         $Exception = new UnauthorizedException();
-        $Exception->responseHeader(array($this->loginHeaders()));
+        $Exception->responseHeader([$this->loginHeaders()]);
+
         throw $Exception;
     }
 

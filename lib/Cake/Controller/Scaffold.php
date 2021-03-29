@@ -31,11 +31,11 @@
  */
 class Scaffold
 {
-/**
- * Controller object
- *
- * @var Controller
- */
+    /**
+     * Controller object
+     *
+     * @var Controller
+     */
     public $controller = null;
 
     /**
@@ -85,9 +85,9 @@ class Scaffold
      *
      * @var array
      */
-    protected $_passedVars = array(
+    protected $_passedVars = [
         'layout', 'name', 'viewPath', 'request'
-    );
+    ];
 
     /**
      * Title HTML element for current scaffolded view
@@ -113,7 +113,7 @@ class Scaffold
             $this->{$var} = $controller->{$var};
         }
 
-        $this->redirect = array('action' => 'index');
+        $this->redirect = ['action' => 'index'];
 
         $this->modelClass = $controller->modelClass;
         $this->modelKey = $controller->modelKey;
@@ -263,8 +263,10 @@ class Scaffold
                             Inflector::humanize($this->modelKey),
                             $success
                         );
+
                         return $this->_sendMessage($message, 'success');
                     }
+
                     return $this->controller->afterScaffoldSaveError($action);
                 }
                 if ($this->_validSession) {
@@ -321,6 +323,7 @@ class Scaffold
             }
             if ($this->ScaffoldModel->delete()) {
                 $message = __d('cake', 'The %1$s with id: %2$s has been deleted.', Inflector::humanize($this->modelClass), $id);
+
                 return $this->_sendMessage($message, 'success');
             }
             $message = __d(
@@ -329,6 +332,7 @@ class Scaffold
                 Inflector::humanize($this->modelClass),
                 $id
             );
+
             return $this->_sendMessage($message);
         } elseif ($this->controller->scaffoldError('delete') === false) {
             return $this->_scaffoldError();
@@ -347,6 +351,7 @@ class Scaffold
     {
         if ($this->_validSession) {
             $this->controller->Flash->set($message, compact('element'));
+
             return $this->controller->redirect($this->redirect);
         }
         $this->controller->flash($message, $this->redirect);
@@ -380,11 +385,11 @@ class Scaffold
 
         if (isset($db)) {
             if (empty($this->scaffoldActions)) {
-                $this->scaffoldActions = array(
+                $this->scaffoldActions = [
                     'index', 'list', 'view', 'add', 'create', 'edit', 'update', 'delete'
-                );
+                ];
             } elseif (!empty($prefixes) && in_array($scaffoldPrefix, $prefixes)) {
-                $this->scaffoldActions = array(
+                $this->scaffoldActions = [
                     $scaffoldPrefix . '_index',
                     $scaffoldPrefix . '_list',
                     $scaffoldPrefix . '_view',
@@ -393,7 +398,7 @@ class Scaffold
                     $scaffoldPrefix . '_edit',
                     $scaffoldPrefix . '_update',
                     $scaffoldPrefix . '_delete'
-                );
+                ];
             }
 
             if (in_array($request->params['action'], $this->scaffoldActions)) {
@@ -404,30 +409,35 @@ class Scaffold
                     case 'index':
                     case 'list':
                         $this->_scaffoldIndex($request);
+
                         break;
                     case 'view':
                         $this->_scaffoldView($request);
+
                         break;
                     case 'add':
                     case 'create':
                         $this->_scaffoldSave($request, 'add');
+
                         break;
                     case 'edit':
                     case 'update':
                         $this->_scaffoldSave($request, 'edit');
+
                         break;
                     case 'delete':
                         $this->_scaffoldDelete($request);
+
                         break;
                 }
             } else {
-                throw new MissingActionException(array(
+                throw new MissingActionException([
                     'controller' => get_class($this->controller),
-                    'action' => $request->action
-                ));
+                    'action'     => $request->action
+                ]);
             }
         } else {
-            throw new MissingDatabaseException(array('connection' => $this->ScaffoldModel->useDbConfig));
+            throw new MissingDatabaseException(['connection' => $this->ScaffoldModel->useDbConfig]);
         }
     }
 
@@ -438,8 +448,8 @@ class Scaffold
      */
     protected function _associations()
     {
-        $keys = array('belongsTo', 'hasOne', 'hasMany', 'hasAndBelongsToMany');
-        $associations = array();
+        $keys = ['belongsTo', 'hasOne', 'hasMany', 'hasAndBelongsToMany'];
+        $associations = [];
 
         foreach ($keys as $type) {
             foreach ($this->ScaffoldModel->{$type} as $assocKey => $assocData) {
@@ -466,6 +476,7 @@ class Scaffold
                 }
             }
         }
+
         return $associations;
     }
 }

@@ -15,7 +15,6 @@
  * @since         CakePHP(tm) v 2.0
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('ConsoleErrorHandler', 'Console');
 
 /**
@@ -25,16 +24,16 @@ App::uses('ConsoleErrorHandler', 'Console');
  */
 class ConsoleErrorHandlerTest extends CakeTestCase
 {
-/**
- * setup, create mocks
- *
- * @return Mock object
- */
+    /**
+     * setup, create mocks
+     *
+     * @return Mock object
+     */
     public function setUp()
     {
         parent::setUp();
-        $this->Error = $this->getMock('ConsoleErrorHandler', array('_stop'));
-        ConsoleErrorHandler::$stderr = $this->getMock('ConsoleOutput', array(), array(), '', false);
+        $this->Error = $this->getMock('ConsoleErrorHandler', ['_stop']);
+        ConsoleErrorHandler::$stderr = $this->getMock('ConsoleOutput', [], [], '', false);
     }
 
     /**

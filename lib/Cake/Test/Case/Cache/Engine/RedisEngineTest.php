@@ -15,7 +15,6 @@
  * @since         CakePHP(tm) v 2.2
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('Cache', 'Cache');
 App::uses('RedisEngine', 'Cache/Engine');
 
@@ -26,11 +25,11 @@ App::uses('RedisEngine', 'Cache/Engine');
  */
 class RedisEngineTest extends CakeTestCase
 {
-/**
- * setUp method
- *
- * @return void
- */
+    /**
+     * setUp method
+     *
+     * @return void
+     */
     public function setUp()
     {
         parent::setUp();
@@ -45,11 +44,11 @@ class RedisEngineTest extends CakeTestCase
         $this->skipIf(!$socket, 'Redis is not running.');
         fclose($socket);
 
-        Cache::config('redis', array(
-            'engine' => 'Redis',
-            'prefix' => 'cake_',
+        Cache::config('redis', [
+            'engine'   => 'Redis',
+            'prefix'   => 'cake_',
             'duration' => 3600
-        ));
+        ]);
     }
 
     /**
@@ -75,20 +74,20 @@ class RedisEngineTest extends CakeTestCase
     public function testSettings()
     {
         $settings = Cache::settings('redis');
-        $expecting = array(
-            'prefix' => 'cake_',
-            'duration' => 3600,
+        $expecting = [
+            'prefix'      => 'cake_',
+            'duration'    => 3600,
             'probability' => 100,
-            'groups' => array(),
-            'engine' => 'Redis',
-            'server' => '127.0.0.1',
-            'port' => 6379,
-            'timeout' => 0,
-            'persistent' => true,
-            'password' => false,
-            'database' => 0,
+            'groups'      => [],
+            'engine'      => 'Redis',
+            'server'      => '127.0.0.1',
+            'port'        => 6379,
+            'timeout'     => 0,
+            'persistent'  => true,
+            'password'    => false,
+            'database'    => 0,
             'unix_socket' => false,
-        );
+        ];
         $this->assertEquals($expecting, $settings);
     }
 
@@ -110,20 +109,20 @@ class RedisEngineTest extends CakeTestCase
      */
     public function testMultiDatabaseOperations()
     {
-        Cache::config('redisdb0', array(
-            'engine' => 'Redis',
-            'prefix' => 'cake2_',
-            'duration' => 3600,
+        Cache::config('redisdb0', [
+            'engine'     => 'Redis',
+            'prefix'     => 'cake2_',
+            'duration'   => 3600,
             'persistent' => false,
-        ));
+        ]);
 
-        Cache::config('redisdb1', array(
-            'engine' => 'Redis',
-            'database' => 1,
-            'prefix' => 'cake2_',
-            'duration' => 3600,
+        Cache::config('redisdb1', [
+            'engine'     => 'Redis',
+            'database'   => 1,
+            'prefix'     => 'cake2_',
+            'duration'   => 3600,
             'persistent' => false,
-        ));
+        ]);
 
         $result = Cache::write('save_in_0', true, 'redisdb0');
         $exist = Cache::read('save_in_0', 'redisdb0');
@@ -173,7 +172,7 @@ class RedisEngineTest extends CakeTestCase
      */
     public function testReadAndWriteCache()
     {
-        Cache::set(array('duration' => 1), null, 'redis');
+        Cache::set(['duration' => 1], null, 'redis');
 
         $result = Cache::read('test', 'redis');
         $expecting = '';
@@ -187,7 +186,7 @@ class RedisEngineTest extends CakeTestCase
         $expecting = $data;
         $this->assertEquals($expecting, $result);
 
-        $data = array(1, 2, 3);
+        $data = [1, 2, 3];
         $this->assertTrue(Cache::write('array_data', $data, 'redis'));
         $this->assertEquals($data, Cache::read('array_data', 'redis'));
 
@@ -201,7 +200,7 @@ class RedisEngineTest extends CakeTestCase
      */
     public function testExpiry()
     {
-        Cache::set(array('duration' => 1), 'redis');
+        Cache::set(['duration' => 1], 'redis');
 
         $result = Cache::read('test', 'redis');
         $this->assertFalse($result);
@@ -214,7 +213,7 @@ class RedisEngineTest extends CakeTestCase
         $result = Cache::read('other_test', 'redis');
         $this->assertFalse($result);
 
-        Cache::set(array('duration' => "+1 second"), 'redis');
+        Cache::set(['duration' => "+1 second"], 'redis');
 
         $data = 'this is a test of the emergency broadcasting system';
         $result = Cache::write('other_test', $data, 'redis');
@@ -224,13 +223,13 @@ class RedisEngineTest extends CakeTestCase
         $result = Cache::read('other_test', 'redis');
         $this->assertFalse($result);
 
-        Cache::config('redis', array('duration' => '+1 second'));
+        Cache::config('redis', ['duration' => '+1 second']);
         sleep(2);
 
         $result = Cache::read('other_test', 'redis');
         $this->assertFalse($result);
 
-        Cache::config('redis', array('duration' => '+29 days'));
+        Cache::config('redis', ['duration' => '+29 days']);
         $data = 'this is a test of the emergency broadcasting system';
         $result = Cache::write('long_expiry_test', $data, 'redis');
         $this->assertTrue($result);
@@ -240,7 +239,7 @@ class RedisEngineTest extends CakeTestCase
         $expecting = $data;
         $this->assertEquals($expecting, $result);
 
-        Cache::config('redis', array('duration' => 3600));
+        Cache::config('redis', ['duration' => 3600]);
     }
 
     /**
@@ -310,11 +309,11 @@ class RedisEngineTest extends CakeTestCase
      */
     public function testClear()
     {
-        Cache::config('redis2', array(
-            'engine' => 'Redis',
-            'prefix' => 'cake2_',
+        Cache::config('redis2', [
+            'engine'   => 'Redis',
+            'prefix'   => 'cake2_',
             'duration' => 3600
-        ));
+        ]);
 
         Cache::write('some_value', 'cache1', 'redis');
         $result = Cache::clear(true, 'redis');
@@ -337,7 +336,7 @@ class RedisEngineTest extends CakeTestCase
      */
     public function testZeroDuration()
     {
-        Cache::config('redis', array('duration' => 0));
+        Cache::config('redis', ['duration' => 0]);
         $result = Cache::write('test_key', 'written!', 'redis');
 
         $this->assertTrue($result);
@@ -354,17 +353,17 @@ class RedisEngineTest extends CakeTestCase
      */
     public function testGroupReadWrite()
     {
-        Cache::config('redis_groups', array(
-            'engine' => 'Redis',
+        Cache::config('redis_groups', [
+            'engine'   => 'Redis',
             'duration' => 3600,
-            'groups' => array('group_a', 'group_b'),
-            'prefix' => 'test_'
-        ));
-        Cache::config('redis_helper', array(
-            'engine' => 'Redis',
+            'groups'   => ['group_a', 'group_b'],
+            'prefix'   => 'test_'
+        ]);
+        Cache::config('redis_helper', [
+            'engine'   => 'Redis',
             'duration' => 3600,
-            'prefix' => 'test_'
-        ));
+            'prefix'   => 'test_'
+        ]);
         $this->assertTrue(Cache::write('test_groups', 'value', 'redis_groups'));
         $this->assertEquals('value', Cache::read('test_groups', 'redis_groups'));
 
@@ -386,11 +385,11 @@ class RedisEngineTest extends CakeTestCase
      */
     public function testGroupDelete()
     {
-        Cache::config('redis_groups', array(
-            'engine' => 'Redis',
+        Cache::config('redis_groups', [
+            'engine'   => 'Redis',
             'duration' => 3600,
-            'groups' => array('group_a', 'group_b')
-        ));
+            'groups'   => ['group_a', 'group_b']
+        ]);
         $this->assertTrue(Cache::write('test_groups', 'value', 'redis_groups'));
         $this->assertEquals('value', Cache::read('test_groups', 'redis_groups'));
         $this->assertTrue(Cache::delete('test_groups', 'redis_groups'));
@@ -405,11 +404,11 @@ class RedisEngineTest extends CakeTestCase
      */
     public function testGroupClear()
     {
-        Cache::config('redis_groups', array(
-            'engine' => 'Redis',
+        Cache::config('redis_groups', [
+            'engine'   => 'Redis',
             'duration' => 3600,
-            'groups' => array('group_a', 'group_b')
-        ));
+            'groups'   => ['group_a', 'group_b']
+        ]);
 
         $this->assertTrue(Cache::write('test_groups', 'value', 'redis_groups'));
         $this->assertTrue(Cache::clearGroup('group_a', 'redis_groups'));

@@ -13,7 +13,6 @@
  * @since         CakePHP(tm) v 2.0.0
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('Multibyte', 'I18n');
 App::uses('AbstractTransport', 'Network/Email');
 App::uses('File', 'Utility');
@@ -30,11 +29,11 @@ App::uses('View', 'View');
  */
 class CakeEmail
 {
-/**
- * Default X-Mailer
- *
- * @var string
- */
+    /**
+     * Default X-Mailer
+     *
+     * @var string
+     */
     public const EMAIL_CLIENT = 'CakePHP Email';
 
     /**
@@ -77,35 +76,35 @@ class CakeEmail
      *
      * @var array
      */
-    protected $_to = array();
+    protected $_to = [];
 
     /**
      * The mail which the email is sent from
      *
      * @var array
      */
-    protected $_from = array();
+    protected $_from = [];
 
     /**
      * The sender email
      *
      * @var array
      */
-    protected $_sender = array();
+    protected $_sender = [];
 
     /**
      * The email the recipient will reply to
      *
      * @var array
      */
-    protected $_replyTo = array();
+    protected $_replyTo = [];
 
     /**
      * The read receipt email
      *
      * @var array
      */
-    protected $_readReceipt = array();
+    protected $_readReceipt = [];
 
     /**
      * The mail that will be used in case of any errors like
@@ -115,7 +114,7 @@ class CakeEmail
      *
      * @var array
      */
-    protected $_returnPath = array();
+    protected $_returnPath = [];
 
     /**
      * Carbon Copy
@@ -125,7 +124,7 @@ class CakeEmail
      *
      * @var array
      */
-    protected $_cc = array();
+    protected $_cc = [];
 
     /**
      * Blind Carbon Copy
@@ -135,7 +134,7 @@ class CakeEmail
      *
      * @var array
      */
-    protected $_bcc = array();
+    protected $_bcc = [];
 
     /**
      * Message ID
@@ -165,7 +164,7 @@ class CakeEmail
      *
      * @var array
      */
-    protected $_headers = array();
+    protected $_headers = [];
 
     /**
      * Layout for the View
@@ -193,7 +192,7 @@ class CakeEmail
      *
      * @var array
      */
-    protected $_viewVars = array();
+    protected $_viewVars = [];
 
     /**
      * Theme for the View
@@ -207,7 +206,7 @@ class CakeEmail
      *
      * @var array
      */
-    protected $_helpers = array('Html');
+    protected $_helpers = ['Html'];
 
     /**
      * Text message
@@ -228,14 +227,14 @@ class CakeEmail
      *
      * @var array
      */
-    protected $_message = array();
+    protected $_message = [];
 
     /**
      * Available formats to be sent.
      *
      * @var array
      */
-    protected $_emailFormatAvailable = array('text', 'html', 'both');
+    protected $_emailFormatAvailable = ['text', 'html', 'both'];
 
     /**
      * What format should the email be sent in
@@ -287,7 +286,7 @@ class CakeEmail
      *
      * @var array
      */
-    protected $_attachments = array();
+    protected $_attachments = [];
 
     /**
      * If set, boundary to use for multipart mime messages
@@ -301,23 +300,23 @@ class CakeEmail
      *
      * @var string|array
      */
-    protected $_config = array();
+    protected $_config = [];
 
     /**
      * 8Bit character sets
      *
      * @var array
      */
-    protected $_charset8bit = array('UTF-8', 'SHIFT_JIS');
+    protected $_charset8bit = ['UTF-8', 'SHIFT_JIS'];
 
     /**
      * Define Content-Type charset name
      *
      * @var array
      */
-    protected $_contentTypeCharset = array(
+    protected $_contentTypeCharset = [
         'ISO-2022-JP-MS' => 'ISO-2022-JP'
-    );
+    ];
 
     /**
      * Regex for email validation
@@ -386,6 +385,7 @@ class CakeEmail
         if ($email === null) {
             return $this->_from;
         }
+
         return $this->_setEmailSingle('_from', $email, $name, __d('cake_dev', 'From requires only 1 email address.'));
     }
 
@@ -403,6 +403,7 @@ class CakeEmail
         if ($email === null) {
             return $this->_sender;
         }
+
         return $this->_setEmailSingle('_sender', $email, $name, __d('cake_dev', 'Sender requires only 1 email address.'));
     }
 
@@ -420,6 +421,7 @@ class CakeEmail
         if ($email === null) {
             return $this->_replyTo;
         }
+
         return $this->_setEmailSingle('_replyTo', $email, $name, __d('cake_dev', 'Reply-To requires only 1 email address.'));
     }
 
@@ -437,6 +439,7 @@ class CakeEmail
         if ($email === null) {
             return $this->_readReceipt;
         }
+
         return $this->_setEmailSingle('_readReceipt', $email, $name, __d('cake_dev', 'Disposition-Notification-To requires only 1 email address.'));
     }
 
@@ -454,6 +457,7 @@ class CakeEmail
         if ($email === null) {
             return $this->_returnPath;
         }
+
         return $this->_setEmailSingle('_returnPath', $email, $name, __d('cake_dev', 'Return-Path requires only 1 email address.'));
     }
 
@@ -470,6 +474,7 @@ class CakeEmail
         if ($email === null) {
             return $this->_to;
         }
+
         return $this->_setEmail('_to', $email, $name);
     }
 
@@ -499,6 +504,7 @@ class CakeEmail
         if ($email === null) {
             return $this->_cc;
         }
+
         return $this->_setEmail('_cc', $email, $name);
     }
 
@@ -528,6 +534,7 @@ class CakeEmail
         if ($email === null) {
             return $this->_bcc;
         }
+
         return $this->_setEmail('_bcc', $email, $name);
     }
 
@@ -559,6 +566,7 @@ class CakeEmail
         if (empty($this->headerCharset)) {
             $this->headerCharset = $charset;
         }
+
         return $this->charset;
     }
 
@@ -573,6 +581,7 @@ class CakeEmail
         if ($charset === null) {
             return $this->headerCharset;
         }
+
         return $this->headerCharset = $charset;
     }
 
@@ -590,6 +599,7 @@ class CakeEmail
             return $this->_emailPattern;
         }
         $this->_emailPattern = $regex;
+
         return $this;
     }
 
@@ -609,10 +619,11 @@ class CakeEmail
             if ($name === null) {
                 $name = $email;
             }
-            $this->{$varName} = array($email => $name);
+            $this->{$varName} = [$email => $name];
+
             return $this;
         }
-        $list = array();
+        $list = [];
         foreach ($email as $key => $value) {
             if (is_int($key)) {
                 $key = $value;
@@ -621,6 +632,7 @@ class CakeEmail
             $list[$key] = $value;
         }
         $this->{$varName} = $list;
+
         return $this;
     }
 
@@ -644,6 +656,7 @@ class CakeEmail
         if ($email == '') {
             throw new SocketException(__d('cake_dev', 'The email set for "%s" is empty.', $context));
         }
+
         throw new SocketException(__d('cake_dev', 'Invalid email set for "%s". You passed "%s".', $context, $email));
     }
 
@@ -664,8 +677,10 @@ class CakeEmail
         $this->_setEmail($varName, $email, $name);
         if (count($this->{$varName}) !== 1) {
             $this->{$varName} = $current;
+
             throw new SocketException($throwMessage);
         }
+
         return $this;
     }
 
@@ -687,9 +702,10 @@ class CakeEmail
                 $name = $email;
             }
             $this->{$varName}[$email] = $name;
+
             return $this;
         }
-        $list = array();
+        $list = [];
         foreach ($email as $key => $value) {
             if (is_int($key)) {
                 $key = $value;
@@ -698,6 +714,7 @@ class CakeEmail
             $list[$key] = $value;
         }
         $this->{$varName} = array_merge($this->{$varName}, $list);
+
         return $this;
     }
 
@@ -713,6 +730,7 @@ class CakeEmail
             return $this->_subject;
         }
         $this->_subject = $this->_encode((string)$subject);
+
         return $this;
     }
 
@@ -729,6 +747,7 @@ class CakeEmail
             throw new SocketException(__d('cake_dev', '$headers should be an array.'));
         }
         $this->_headers = $headers;
+
         return $this;
     }
 
@@ -745,6 +764,7 @@ class CakeEmail
             throw new SocketException(__d('cake_dev', '$headers should be an array.'));
         }
         $this->_headers = array_merge($this->_headers, $headers);
+
         return $this;
     }
 
@@ -765,26 +785,26 @@ class CakeEmail
      * @param array $include List of headers.
      * @return array
      */
-    public function getHeaders($include = array())
+    public function getHeaders($include = [])
     {
         if ($include == array_values($include)) {
             $include = array_fill_keys($include, true);
         }
         $defaults = array_fill_keys(
-            array(
+            [
                 'from', 'sender', 'replyTo', 'readReceipt', 'returnPath',
-                'to', 'cc', 'bcc', 'subject'),
+                'to', 'cc', 'bcc', 'subject'],
             false
         );
         $include += $defaults;
 
-        $headers = array();
-        $relation = array(
-            'from' => 'From',
-            'replyTo' => 'Reply-To',
+        $headers = [];
+        $relation = [
+            'from'        => 'From',
+            'replyTo'     => 'Reply-To',
             'readReceipt' => 'Disposition-Notification-To',
-            'returnPath' => 'Return-Path'
-        );
+            'returnPath'  => 'Return-Path'
+        ];
         foreach ($relation as $var => $header) {
             if ($include[$var]) {
                 $var = '_' . $var;
@@ -799,7 +819,7 @@ class CakeEmail
             }
         }
 
-        foreach (array('to', 'cc', 'bcc') as $var) {
+        foreach (['to', 'cc', 'bcc'] as $var) {
             if ($include[$var]) {
                 $classVar = '_' . $var;
                 $headers[ucfirst($var)] = implode(', ', $this->_formatAddress($this->{$classVar}));
@@ -852,7 +872,7 @@ class CakeEmail
      */
     protected function _formatAddress($address)
     {
-        $return = array();
+        $return = [];
         foreach ($address as $email => $alias) {
             if ($email === $alias) {
                 $return[] = $email;
@@ -867,6 +887,7 @@ class CakeEmail
                 $return[] = sprintf('%s <%s>', $encoded, $email);
             }
         }
+
         return $return;
     }
 
@@ -880,15 +901,16 @@ class CakeEmail
     public function template($template = false, $layout = false)
     {
         if ($template === false) {
-            return array(
+            return [
                 'template' => $this->_template,
-                'layout' => $this->_layout
-            );
+                'layout'   => $this->_layout
+            ];
         }
         $this->_template = $template;
         if ($layout !== false) {
             $this->_layout = $layout;
         }
+
         return $this;
     }
 
@@ -904,6 +926,7 @@ class CakeEmail
             return $this->_viewRender;
         }
         $this->_viewRender = $viewClass;
+
         return $this;
     }
 
@@ -919,6 +942,7 @@ class CakeEmail
             return $this->_viewVars;
         }
         $this->_viewVars = array_merge($this->_viewVars, (array)$viewVars);
+
         return $this;
     }
 
@@ -934,6 +958,7 @@ class CakeEmail
             return $this->_theme;
         }
         $this->_theme = $theme;
+
         return $this;
     }
 
@@ -949,6 +974,7 @@ class CakeEmail
             return $this->_helpers;
         }
         $this->_helpers = (array)$helpers;
+
         return $this;
     }
 
@@ -968,6 +994,7 @@ class CakeEmail
             throw new SocketException(__d('cake_dev', 'Format not available.'));
         }
         $this->_emailFormat = $format;
+
         return $this;
     }
 
@@ -984,6 +1011,7 @@ class CakeEmail
         }
         $this->_transportName = (string)$name;
         $this->_transportClass = null;
+
         return $this;
     }
 
@@ -1030,6 +1058,7 @@ class CakeEmail
             }
             $this->_messageId = $message;
         }
+
         return $this;
     }
 
@@ -1045,6 +1074,7 @@ class CakeEmail
             return $this->_domain;
         }
         $this->_domain = $domain;
+
         return $this;
     }
 
@@ -1100,10 +1130,10 @@ class CakeEmail
         if ($attachments === null) {
             return $this->_attachments;
         }
-        $attach = array();
+        $attach = [];
         foreach ((array)$attachments as $name => $fileInfo) {
             if (!is_array($fileInfo)) {
-                $fileInfo = array('file' => $fileInfo);
+                $fileInfo = ['file' => $fileInfo];
             }
             if (!isset($fileInfo['file'])) {
                 if (!isset($fileInfo['data'])) {
@@ -1132,6 +1162,7 @@ class CakeEmail
             $attach[$name] = $fileInfo;
         }
         $this->_attachments = $attach;
+
         return $this;
     }
 
@@ -1148,6 +1179,7 @@ class CakeEmail
         $current = $this->_attachments;
         $this->attachments($attachments);
         $this->_attachments = array_merge($current, $this->_attachments);
+
         return $this;
     }
 
@@ -1165,6 +1197,7 @@ class CakeEmail
             case static::MESSAGE_TEXT:
                 return $this->_textMessage;
         }
+
         return $this->_message;
     }
 
@@ -1194,6 +1227,7 @@ class CakeEmail
         }
 
         $this->_applyConfig($config);
+
         return $this;
     }
 
@@ -1221,13 +1255,13 @@ class CakeEmail
 
         $contents = $this->transportClass()->send($this);
         if (!empty($this->_config['log'])) {
-            $config = array(
+            $config = [
                 'level' => LOG_DEBUG,
                 'scope' => 'email'
-            );
+            ];
             if ($this->_config['log'] !== true) {
                 if (!is_array($this->_config['log'])) {
-                    $this->_config['log'] = array('level' => $this->_config['log']);
+                    $this->_config['log'] = ['level' => $this->_config['log']];
                 }
                 $config = $this->_config['log'] + $config;
             }
@@ -1237,6 +1271,7 @@ class CakeEmail
                 $config['scope']
             );
         }
+
         return $contents;
     }
 
@@ -1308,11 +1343,11 @@ class CakeEmail
         if (empty($this->headerCharset)) {
             $this->headerCharset = $this->charset;
         }
-        $simpleMethods = array(
+        $simpleMethods = [
             'from', 'sender', 'to', 'replyTo', 'readReceipt', 'returnPath', 'cc', 'bcc',
             'messageId', 'domain', 'subject', 'viewRender', 'viewVars', 'attachments',
             'transport', 'emailFormat', 'theme', 'helpers', 'emailPattern'
-        );
+        ];
         foreach ($simpleMethods as $method) {
             if (isset($config[$method])) {
                 $this->$method($config[$method]);
@@ -1341,23 +1376,23 @@ class CakeEmail
      */
     public function reset()
     {
-        $this->_to = array();
-        $this->_from = array();
-        $this->_sender = array();
-        $this->_replyTo = array();
-        $this->_readReceipt = array();
-        $this->_returnPath = array();
-        $this->_cc = array();
-        $this->_bcc = array();
+        $this->_to = [];
+        $this->_from = [];
+        $this->_sender = [];
+        $this->_replyTo = [];
+        $this->_readReceipt = [];
+        $this->_returnPath = [];
+        $this->_cc = [];
+        $this->_bcc = [];
         $this->_messageId = true;
         $this->_subject = '';
-        $this->_headers = array();
+        $this->_headers = [];
         $this->_layout = 'default';
         $this->_template = '';
         $this->_viewRender = 'View';
-        $this->_viewVars = array();
+        $this->_viewVars = [];
         $this->_theme = null;
-        $this->_helpers = array('Html');
+        $this->_helpers = ['Html'];
         $this->_textMessage = '';
         $this->_htmlMessage = '';
         $this->_message = '';
@@ -1366,9 +1401,10 @@ class CakeEmail
         $this->_transportClass = null;
         $this->charset = 'utf-8';
         $this->headerCharset = null;
-        $this->_attachments = array();
-        $this->_config = array();
+        $this->_attachments = [];
+        $this->_config = [];
         $this->_emailPattern = static::EMAIL_PATTERN;
+
         return $this;
     }
 
@@ -1392,6 +1428,7 @@ class CakeEmail
         if ($internalEncoding) {
             mb_internal_encoding($restore);
         }
+
         return $return;
     }
 
@@ -1408,6 +1445,7 @@ class CakeEmail
         if ($this->_appCharset === $charset || !function_exists('mb_convert_encoding')) {
             return $text;
         }
+
         return mb_convert_encoding($text, $charset, $this->_appCharset);
     }
 
@@ -1421,20 +1459,22 @@ class CakeEmail
     protected function _wrap($message, $wrapLength = CakeEmail::LINE_LENGTH_MUST)
     {
         if (strlen($message) === 0) {
-            return array('');
+            return [''];
         }
-        $message = str_replace(array("\r\n", "\r"), "\n", $message);
+        $message = str_replace(["\r\n", "\r"], "\n", $message);
         $lines = explode("\n", $message);
-        $formatted = array();
+        $formatted = [];
         $cut = ($wrapLength == CakeEmail::LINE_LENGTH_MUST);
 
         foreach ($lines as $line) {
             if (empty($line) && $line !== '0') {
                 $formatted[] = '';
+
                 continue;
             }
             if (strlen($line) < $wrapLength) {
                 $formatted[] = $line;
+
                 continue;
             }
             if (!preg_match('/<[a-z]+.*>/i', $line)) {
@@ -1442,6 +1482,7 @@ class CakeEmail
                     $formatted,
                     explode("\n", wordwrap($line, $wrapLength, "\n", $cut))
                 );
+
                 continue;
             }
 
@@ -1476,16 +1517,19 @@ class CakeEmail
                         $tag = '';
                         $tagOpen = false;
                     }
+
                     continue;
                 }
                 if ($char === '<') {
                     $tagOpen = true;
                     $tag = '<';
+
                     continue;
                 }
                 if ($char === ' ' && $tmpLineLength >= $wrapLength) {
                     $formatted[] = $tmpLine;
                     $tmpLineLength = 0;
+
                     continue;
                 }
                 $tmpLine .= $char;
@@ -1516,6 +1560,7 @@ class CakeEmail
             }
         }
         $formatted[] = '';
+
         return $formatted;
     }
 
@@ -1543,7 +1588,7 @@ class CakeEmail
             $boundary = $this->_boundary;
         }
 
-        $msg = array();
+        $msg = [];
         foreach ($this->_attachments as $filename => $fileInfo) {
             if (!empty($fileInfo['contentId'])) {
                 continue;
@@ -1562,6 +1607,7 @@ class CakeEmail
             $msg[] = $data;
             $msg[] = '';
         }
+
         return $msg;
     }
 
@@ -1574,6 +1620,7 @@ class CakeEmail
     protected function _readFile($path)
     {
         $File = new File($path);
+
         return chunk_split(base64_encode($File->read()));
     }
 
@@ -1589,7 +1636,7 @@ class CakeEmail
             $boundary = $this->_boundary;
         }
 
-        $msg = array();
+        $msg = [];
         foreach ($this->_attachments as $filename => $fileInfo) {
             if (empty($fileInfo['contentId'])) {
                 continue;
@@ -1605,6 +1652,7 @@ class CakeEmail
             $msg[] = $data;
             $msg[] = '';
         }
+
         return $msg;
     }
 
@@ -1622,7 +1670,7 @@ class CakeEmail
         $rendered = $this->_renderTemplates($content);
 
         $this->_createBoundary();
-        $msg = array();
+        $msg = [];
 
         $contentIds = array_filter((array)Hash::extract($this->_attachments, '{s}.contentId'));
         $hasInlineAttachments = count($contentIds) > 0;
@@ -1694,6 +1742,7 @@ class CakeEmail
             $msg[] = '--' . $boundary . '--';
             $msg[] = '';
         }
+
         return $msg;
     }
 
@@ -1704,10 +1753,11 @@ class CakeEmail
      */
     protected function _getTypes()
     {
-        $types = array($this->_emailFormat);
+        $types = [$this->_emailFormat];
         if ($this->_emailFormat === 'both') {
-            $types = array('html', 'text');
+            $types = ['html', 'text'];
         }
+
         return $types;
     }
 
@@ -1722,11 +1772,12 @@ class CakeEmail
     protected function _renderTemplates($content)
     {
         $types = $this->_getTypes();
-        $rendered = array();
+        $rendered = [];
         if (empty($this->_template)) {
             foreach ($types as $type) {
                 $rendered[$type] = $this->_encodeString($content, $this->charset);
             }
+
             return $rendered;
         }
         $viewClass = $this->_viewRender;
@@ -1770,7 +1821,7 @@ class CakeEmail
             $View->viewPath = $View->layoutPath = 'Emails' . DS . $type;
 
             $render = $View->render($this->_template, $this->_layout);
-            $render = str_replace(array("\r\n", "\r"), "\n", $render);
+            $render = str_replace(["\r\n", "\r"], "\n", $render);
             $rendered[$type] = $this->_encodeString($render, $this->charset);
         }
 
@@ -1779,6 +1830,7 @@ class CakeEmail
             $rendered[$type] = implode("\n", $rendered[$type]);
             $rendered[$type] = rtrim($rendered[$type], "\n");
         }
+
         return $rendered;
     }
 
@@ -1793,6 +1845,7 @@ class CakeEmail
         if (in_array($charset, $this->_charset8bit)) {
             return '8bit';
         }
+
         return '7bit';
     }
 
@@ -1810,6 +1863,7 @@ class CakeEmail
         if (array_key_exists($charset, $this->_contentTypeCharset)) {
             return strtoupper($this->_contentTypeCharset[$charset]);
         }
+
         return strtoupper($this->charset);
     }
 }

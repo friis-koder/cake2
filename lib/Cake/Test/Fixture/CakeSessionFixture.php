@@ -21,21 +21,21 @@
  */
 class CakeSessionFixture extends CakeTestFixture
 {
-/**
- * fields property
- *
- * @var array
- */
-    public $fields = array(
-        'id' => array('type' => 'string', 'length' => 128, 'key' => 'primary'),
-        'data' => array('type' => 'text', 'null' => true),
-        'expires' => array('type' => 'integer', 'length' => 11, 'null' => true)
-    );
+    /**
+     * fields property
+     *
+     * @var array
+     */
+    public $fields = [
+        'id'      => ['type' => 'string', 'length' => 128, 'key' => 'primary'],
+        'data'    => ['type' => 'text', 'null' => true],
+        'expires' => ['type' => 'integer', 'length' => 11, 'null' => true]
+    ];
 
     /**
      * records property
      *
      * @var array
      */
-    public $records = array();
+    public $records = [];
 }

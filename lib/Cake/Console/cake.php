@@ -16,7 +16,6 @@
  * @since         CakePHP(tm) v 1.2.0.5012
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 if (!defined('DS')) {
     define('DS', DIRECTORY_SEPARATOR);
 }
@@ -28,6 +27,7 @@ $paths = explode(PATH_SEPARATOR, ini_get('include_path'));
 foreach ($paths as $path) {
     if (file_exists($path . DS . $dispatcher)) {
         $found = $path;
+
         break;
     }
 }

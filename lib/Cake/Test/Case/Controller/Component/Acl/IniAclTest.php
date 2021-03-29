@@ -15,7 +15,6 @@
  * @since         CakePHP(tm) v 2.0
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('IniAcl', 'Controller/Component/Acl');
 
 /**
@@ -25,11 +24,11 @@ App::uses('IniAcl', 'Controller/Component/Acl');
  */
 class IniAclTest extends CakeTestCase
 {
-/**
- * testIniCheck method
- *
- * @return void
- */
+    /**
+     * testIniCheck method
+     *
+     * @return void
+     */
     public function testCheck()
     {
         $iniFile = CAKE . 'Test' . DS . 'test_app' . DS . 'Config' . DS . 'acl.ini.php';
@@ -62,9 +61,9 @@ class IniAclTest extends CakeTestCase
         $Ini->config = $Ini->readConfigFile($iniFile);
         $Ini->userPath = 'User.username';
 
-        $user = array(
-            'User' => array('username' => 'admin')
-        );
+        $user = [
+            'User' => ['username' => 'admin']
+        ];
         $this->assertTrue($Ini->check($user, 'posts'));
     }
 }

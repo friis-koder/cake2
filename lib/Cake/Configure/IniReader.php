@@ -15,7 +15,6 @@
  * @since         CakePHP(tm) v 2.0
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('Hash', 'Utility');
 App::uses('CakePlugin', 'Core');
 
@@ -55,11 +54,11 @@ App::uses('CakePlugin', 'Core');
  */
 class IniReader implements ConfigReaderInterface
 {
-/**
- * The path to read ini files from.
- *
- * @var array
- */
+    /**
+     * The path to read ini files from.
+     *
+     * @var array
+     */
     protected $_path;
 
     /**
@@ -112,16 +111,17 @@ class IniReader implements ConfigReaderInterface
         if (!empty($this->_section) && isset($contents[$this->_section])) {
             $values = $this->_parseNestedValues($contents[$this->_section]);
         } else {
-            $values = array();
+            $values = [];
             foreach ($contents as $section => $attribs) {
                 if (is_array($attribs)) {
                     $values[$section] = $this->_parseNestedValues($attribs);
                 } else {
-                    $parse = $this->_parseNestedValues(array($attribs));
+                    $parse = $this->_parseNestedValues([$attribs]);
                     $values[$section] = array_shift($parse);
                 }
             }
         }
+
         return $values;
     }
 
@@ -147,6 +147,7 @@ class IniReader implements ConfigReaderInterface
                 $values[$key] = $value;
             }
         }
+
         return $values;
     }
 
@@ -160,7 +161,7 @@ class IniReader implements ConfigReaderInterface
      */
     public function dump($key, $data)
     {
-        $result = array();
+        $result = [];
         foreach ($data as $k => $value) {
             $isSection = false;
             if ($k[0] !== '[') {
@@ -180,6 +181,7 @@ class IniReader implements ConfigReaderInterface
         $contents = trim(implode("\n", $result));
 
         $filename = $this->_getFilePath($key);
+
         return file_put_contents($filename, $contents);
     }
 
@@ -200,6 +202,7 @@ class IniReader implements ConfigReaderInterface
         if ($val === false) {
             return 'false';
         }
+
         return (string)$val;
     }
 

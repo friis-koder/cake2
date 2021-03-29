@@ -14,7 +14,6 @@
  * @since         CakePHP(tm) v 1.3
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('CakeBaseReporter', 'TestSuite/Reporter');
 App::uses('TextCoverageReport', 'TestSuite/Coverage');
 
@@ -25,11 +24,11 @@ App::uses('TextCoverageReport', 'TestSuite/Coverage');
  */
 class CakeTextReporter extends CakeBaseReporter
 {
-/**
- * Sets the text/plain header if the test is not a CLI test.
- *
- * @return void
- */
+    /**
+     * Sets the text/plain header if the test is not a CLI test.
+     *
+     * @return void
+     */
     public function paintDocumentStart()
     {
         if (!headers_sent()) {

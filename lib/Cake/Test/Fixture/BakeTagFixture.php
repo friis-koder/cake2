@@ -23,22 +23,22 @@
  */
 class BakeTagFixture extends CakeTestFixture
 {
-/**
- * fields property
- *
- * @var array
- */
-    public $fields = array(
-        'id' => array('type' => 'integer', 'key' => 'primary'),
-        'tag' => array('type' => 'string', 'null' => false),
+    /**
+     * fields property
+     *
+     * @var array
+     */
+    public $fields = [
+        'id'      => ['type' => 'integer', 'key' => 'primary'],
+        'tag'     => ['type' => 'string', 'null' => false],
         'created' => 'datetime',
         'updated' => 'datetime'
-    );
+    ];
 
     /**
      * records property
      *
      * @var array
      */
-    public $records = array();
+    public $records = [];
 }

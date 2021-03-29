@@ -25,17 +25,18 @@
  */
 class AllTasksTest extends PHPUnit_Framework_TestSuite
 {
-/**
- * suite method, defines tests for this suite.
- *
- * @return void
- */
+    /**
+     * suite method, defines tests for this suite.
+     *
+     * @return void
+     */
     public static function suite()
     {
         $suite = new CakeTestSuite('All Tasks tests');
 
         $path = CORE_TEST_CASES . DS . 'Console' . DS . 'Command' . DS . 'Task' . DS;
         $suite->addTestDirectory($path);
+
         return $suite;
     }
 }

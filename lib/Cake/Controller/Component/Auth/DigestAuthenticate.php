@@ -11,7 +11,6 @@
  * @link          https://cakephp.org CakePHP(tm) Project
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('BasicAuthenticate', 'Controller/Component/Auth');
 
 /**
@@ -55,40 +54,40 @@ App::uses('BasicAuthenticate', 'Controller/Component/Auth');
  */
 class DigestAuthenticate extends BasicAuthenticate
 {
-/**
- * Settings for this object.
- *
- * - `fields` The fields to use to identify a user by.
- * - `userModel` The model name of the User, defaults to User.
- * - `userFields` Array of fields to retrieve from User model, null to retrieve all. Defaults to null.
- * - `scope` Additional conditions to use when looking up and authenticating users,
- *    i.e. `array('User.is_active' => 1).`
- * - `recursive` The value of the recursive key passed to find(). Defaults to 0.
- * - `contain` Extra models to contain and store in session.
- * - `realm` The realm authentication is for, Defaults to the servername.
- * - `nonce` A nonce used for authentication. Defaults to `uniqid()`.
- * - `qop` Defaults to auth, no other values are supported at this time.
- * - `opaque` A string that must be returned unchanged by clients.
- *    Defaults to `md5($settings['realm'])`
- *
- * @var array
- */
-    public $settings = array(
-        'fields' => array(
+    /**
+     * Settings for this object.
+     *
+     * - `fields` The fields to use to identify a user by.
+     * - `userModel` The model name of the User, defaults to User.
+     * - `userFields` Array of fields to retrieve from User model, null to retrieve all. Defaults to null.
+     * - `scope` Additional conditions to use when looking up and authenticating users,
+     *    i.e. `array('User.is_active' => 1).`
+     * - `recursive` The value of the recursive key passed to find(). Defaults to 0.
+     * - `contain` Extra models to contain and store in session.
+     * - `realm` The realm authentication is for, Defaults to the servername.
+     * - `nonce` A nonce used for authentication. Defaults to `uniqid()`.
+     * - `qop` Defaults to auth, no other values are supported at this time.
+     * - `opaque` A string that must be returned unchanged by clients.
+     *    Defaults to `md5($settings['realm'])`
+     *
+     * @var array
+     */
+    public $settings = [
+        'fields' => [
             'username' => 'username',
             'password' => 'password'
-        ),
-        'userModel' => 'User',
-        'userFields' => null,
-        'scope' => array(),
-        'recursive' => 0,
-        'contain' => null,
-        'realm' => '',
-        'qop' => 'auth',
-        'nonce' => '',
-        'opaque' => '',
+        ],
+        'userModel'      => 'User',
+        'userFields'     => null,
+        'scope'          => [],
+        'recursive'      => 0,
+        'contain'        => null,
+        'realm'          => '',
+        'qop'            => 'auth',
+        'nonce'          => '',
+        'opaque'         => '',
         'passwordHasher' => 'Simple',
-    );
+    ];
 
     /**
      * Constructor, completes configuration for digest authentication.
@@ -121,9 +120,9 @@ class DigestAuthenticate extends BasicAuthenticate
         }
 
         list(, $model) = pluginSplit($this->settings['userModel']);
-        $user = $this->_findUser(array(
+        $user = $this->_findUser([
             $model . '.' . $this->settings['fields']['username'] => $digest['username']
-        ));
+        ]);
         if (empty($user)) {
             return false;
         }
@@ -132,6 +131,7 @@ class DigestAuthenticate extends BasicAuthenticate
         if ($digest['response'] === $this->generateResponseHash($digest, $password)) {
             return $user;
         }
+
         return false;
     }
 
@@ -152,6 +152,7 @@ class DigestAuthenticate extends BasicAuthenticate
         if (empty($digest)) {
             return false;
         }
+
         return $this->parseAuthData($digest);
     }
 
@@ -166,8 +167,8 @@ class DigestAuthenticate extends BasicAuthenticate
         if (substr($digest, 0, 7) === 'Digest ') {
             $digest = substr($digest, 7);
         }
-        $keys = $match = array();
-        $req = array('nonce' => 1, 'nc' => 1, 'cnonce' => 1, 'qop' => 1, 'username' => 1, 'uri' => 1, 'response' => 1);
+        $keys = $match = [];
+        $req = ['nonce' => 1, 'nc' => 1, 'cnonce' => 1, 'qop' => 1, 'username' => 1, 'uri' => 1, 'response' => 1];
         preg_match_all('/(\w+)=([\'"]?)([a-zA-Z0-9\:\#\%\?\&@=\.\/_-]+)\2/', $digest, $match, PREG_SET_ORDER);
 
         foreach ($match as $i) {
@@ -178,6 +179,7 @@ class DigestAuthenticate extends BasicAuthenticate
         if (empty($req)) {
             return $keys;
         }
+
         return null;
     }
 
@@ -217,16 +219,17 @@ class DigestAuthenticate extends BasicAuthenticate
      */
     public function loginHeaders()
     {
-        $options = array(
-            'realm' => $this->settings['realm'],
-            'qop' => $this->settings['qop'],
-            'nonce' => $this->settings['nonce'],
+        $options = [
+            'realm'  => $this->settings['realm'],
+            'qop'    => $this->settings['qop'],
+            'nonce'  => $this->settings['nonce'],
             'opaque' => $this->settings['opaque']
-        );
-        $opts = array();
+        ];
+        $opts = [];
         foreach ($options as $k => $v) {
             $opts[] = sprintf('%s="%s"', $k, $v);
         }
+
         return 'WWW-Authenticate: Digest ' . implode(',', $opts);
     }
 }

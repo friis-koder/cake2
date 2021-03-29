@@ -15,7 +15,6 @@
  * @since         CakePHP(tm) v 2.0.0
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('HttpSocket', 'Network/Http');
 App::uses('BasicAuthentication', 'Network/Http');
 
@@ -26,11 +25,11 @@ App::uses('BasicAuthentication', 'Network/Http');
  */
 class TestSslHttpSocket extends HttpSocket
 {
-/**
- * testSetProxy method
- *
- * @return void
- */
+    /**
+     * testSetProxy method
+     *
+     * @return void
+     */
     public function testSetProxy($proxy = null)
     {
         $this->_proxy = $proxy;
@@ -45,19 +44,19 @@ class TestSslHttpSocket extends HttpSocket
  */
 class BasicAuthenticationTest extends CakeTestCase
 {
-/**
- * testAuthentication method
- *
- * @return void
- */
+    /**
+     * testAuthentication method
+     *
+     * @return void
+     */
     public function testAuthentication()
     {
         $http = new HttpSocket();
-        $auth = array(
+        $auth = [
             'method' => 'Basic',
-            'user' => 'mark',
-            'pass' => 'secret'
-        );
+            'user'   => 'mark',
+            'pass'   => 'secret'
+        ];
 
         BasicAuthentication::authentication($http, $auth);
         $this->assertEquals('Basic bWFyazpzZWNyZXQ=', $http->request['header']['Authorization']);
@@ -71,11 +70,11 @@ class BasicAuthenticationTest extends CakeTestCase
     public function testProxyAuthentication()
     {
         $http = new HttpSocket();
-        $proxy = array(
+        $proxy = [
             'method' => 'Basic',
-            'user' => 'mark',
-            'pass' => 'secret'
-        );
+            'user'   => 'mark',
+            'pass'   => 'secret'
+        ];
 
         BasicAuthentication::proxyAuthentication($http, $proxy);
         $this->assertEquals('Basic bWFyazpzZWNyZXQ=', $http->request['header']['Proxy-Authorization']);
@@ -90,13 +89,13 @@ class BasicAuthenticationTest extends CakeTestCase
     {
         $http = new TestSslHttpSocket();
         $http->request['uri']['scheme'] = 'https';
-        $proxy = array(
-            'host' => 'localhost',
-            'port' => 3128,
+        $proxy = [
+            'host'   => 'localhost',
+            'port'   => 3128,
             'method' => 'Basic',
-            'user' => 'mark',
-            'pass' => 'secret'
-        );
+            'user'   => 'mark',
+            'pass'   => 'secret'
+        ];
 
         $http->testSetProxy($proxy);
 

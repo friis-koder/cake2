@@ -15,7 +15,6 @@
  * @since         CakePHP(tm) v 2.0
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('PhpReader', 'Configure');
 
 /**
@@ -25,25 +24,25 @@ App::uses('PhpReader', 'Configure');
  */
 class PhpReaderTest extends CakeTestCase
 {
-/**
- * Test data to serialize and unserialize.
- *
- * @var array
- */
-    public $testData = array(
-        'One' => array(
-            'two' => 'value',
-            'three' => array(
+    /**
+     * Test data to serialize and unserialize.
+     *
+     * @var array
+     */
+    public $testData = [
+        'One' => [
+            'two'   => 'value',
+            'three' => [
                 'four' => 'value four'
-            ),
-            'is_null' => null,
+            ],
+            'is_null'    => null,
             'bool_false' => false,
-            'bool_true' => true,
-        ),
-        'Asset' => array(
+            'bool_true'  => true,
+        ],
+        'Asset' => [
             'timestamp' => 'force'
-        ),
-    );
+        ],
+    ];
 
     /**
      * Setup.
@@ -127,9 +126,9 @@ class PhpReaderTest extends CakeTestCase
      */
     public function testReadPluginValue()
     {
-        App::build(array(
-            'Plugin' => array(CAKE . 'Test' . DS . 'test_app' . DS . 'Plugin' . DS)
-        ), App::RESET);
+        App::build([
+            'Plugin' => [CAKE . 'Test' . DS . 'test_app' . DS . 'Plugin' . DS]
+        ], App::RESET);
         CakePlugin::load('TestPlugin');
         $reader = new PhpReader($this->path);
         $result = $reader->read('TestPlugin.load');

@@ -27,16 +27,17 @@
  */
 class CakeTestLoader extends PHPUnit_Runner_StandardTestSuiteLoader
 {
-/**
- * Load a file and find the first test case / suite in that file.
- *
- * @param string $filePath The file path to load
- * @param string $params Additional parameters
- * @return ReflectionClass
- */
+    /**
+     * Load a file and find the first test case / suite in that file.
+     *
+     * @param string $filePath The file path to load
+     * @param string $params Additional parameters
+     * @return ReflectionClass
+     */
     public function load($filePath, $params = '')
     {
         $file = $this->_resolveTestFile($filePath, $params);
+
         return parent::load('', $file);
     }
 
@@ -51,6 +52,7 @@ class CakeTestLoader extends PHPUnit_Runner_StandardTestSuiteLoader
     {
         $basePath = $this->_basePath($params) . DS . $filePath;
         $ending = 'Test.php';
+
         return (strpos($basePath, $ending) === (strlen($basePath) - strlen($ending))) ? $basePath : $basePath . $ending;
     }
 
@@ -78,6 +80,7 @@ class CakeTestLoader extends PHPUnit_Runner_StandardTestSuiteLoader
         } elseif (!empty($params['app'])) {
             $result = APP_TEST_CASES;
         }
+
         return $result;
     }
 
@@ -92,13 +95,14 @@ class CakeTestLoader extends PHPUnit_Runner_StandardTestSuiteLoader
         $directory = static::_basePath($params);
         $fileList = static::_getRecursiveFileList($directory);
 
-        $testCases = array();
+        $testCases = [];
         foreach ($fileList as $testCaseFile) {
             $case = str_replace($directory . DS, '', $testCaseFile);
             $case = str_replace('Test.php', '', $case);
             $testCases[$testCaseFile] = $case;
         }
         sort($testCases);
+
         return $testCases;
     }
 
@@ -111,7 +115,7 @@ class CakeTestLoader extends PHPUnit_Runner_StandardTestSuiteLoader
      */
     protected static function _getRecursiveFileList($directory = '.')
     {
-        $fileList = array();
+        $fileList = [];
         if (!is_dir($directory)) {
             return $fileList;
         }
@@ -124,6 +128,7 @@ class CakeTestLoader extends PHPUnit_Runner_StandardTestSuiteLoader
         foreach ($files as $file) {
             $fileList[] = $file->getPathname();
         }
+
         return $fileList;
     }
 }

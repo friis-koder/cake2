@@ -8,7 +8,6 @@
  * @package       app.Controller
  * @since         CakePHP(tm) v 0.2.9
  */
-
 App::uses('AppController', 'Controller');
 
 /**
@@ -21,12 +20,12 @@ App::uses('AppController', 'Controller');
  */
 class PagesController extends AppController
 {
-/**
- * This controller does not use a model
- *
- * @var array
- */
-    public $uses = array();
+    /**
+     * This controller does not use a model
+     *
+     * @var array
+     */
+    public $uses = [];
 
     /**
      * Displays a view
@@ -66,6 +65,7 @@ class PagesController extends AppController
             if (Configure::read('debug')) {
                 throw $e;
             }
+
             throw new NotFoundException();
         }
     }

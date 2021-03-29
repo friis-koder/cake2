@@ -15,7 +15,6 @@
  * @since         CakePHP(tm) v 2.4
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('LogEngineCollection', 'Log');
 App::uses('FileLog', 'Log/Engine');
 
@@ -54,7 +53,7 @@ class LogEngineCollectionTest extends CakeTestCase
      */
     public function testLoad()
     {
-        $result = $this->Collection->load('key', array('engine' => 'File'));
+        $result = $this->Collection->load('key', ['engine' => 'File']);
         $this->assertInstanceOf('CakeLogInterface', $result);
     }
 
@@ -65,7 +64,7 @@ class LogEngineCollectionTest extends CakeTestCase
      */
     public function testLoadWithSuffix()
     {
-        $result = $this->Collection->load('key', array('engine' => 'FileLog'));
+        $result = $this->Collection->load('key', ['engine' => 'FileLog']);
         $this->assertInstanceOf('CakeLogInterface', $result);
     }
 
@@ -76,7 +75,7 @@ class LogEngineCollectionTest extends CakeTestCase
      */
     public function testLoadWithSuffixAtBeginning()
     {
-        $result = $this->Collection->load('key', array('engine' => 'LoggerEngine'));
+        $result = $this->Collection->load('key', ['engine' => 'LoggerEngine']);
         $this->assertInstanceOf('CakeLogInterface', $result);
     }
 
@@ -88,7 +87,7 @@ class LogEngineCollectionTest extends CakeTestCase
      */
     public function testLoadInvalid()
     {
-        $result = $this->Collection->load('key', array('engine' => 'ImaginaryFile'));
+        $result = $this->Collection->load('key', ['engine' => 'ImaginaryFile']);
         $this->assertInstanceOf('CakeLogInterface', $result);
     }
 }

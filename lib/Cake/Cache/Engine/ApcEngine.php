@@ -23,13 +23,13 @@
  */
 class ApcEngine extends CacheEngine
 {
-/**
- * Contains the compiled group names
- * (prefixed with the global configuration prefix)
- *
- * @var array
- */
-    protected $_compiledGroupNames = array();
+    /**
+     * Contains the compiled group names
+     * (prefixed with the global configuration prefix)
+     *
+     * @var array
+     */
+    protected $_compiledGroupNames = [];
 
     /**
      * APC or APCu extension
@@ -48,17 +48,19 @@ class ApcEngine extends CacheEngine
      * @return bool True if the engine has been successfully initialized, false if not
      * @see CacheEngine::__defaults
      */
-    public function init($settings = array())
+    public function init($settings = [])
     {
         if (!isset($settings['prefix'])) {
             $settings['prefix'] = Inflector::slug(APP_DIR) . '_';
         }
-        $settings += array('engine' => 'Apc');
+        $settings += ['engine' => 'Apc'];
         parent::init($settings);
         if (function_exists('apcu_dec')) {
             $this->_apcExtension = 'apcu';
+
             return true;
         }
+
         return function_exists('apc_dec');
     }
 
@@ -78,6 +80,7 @@ class ApcEngine extends CacheEngine
         }
         $func = $this->_apcExtension . '_store';
         $func($key . '_expires', $expires, $duration);
+
         return $func($key, $value, $duration);
     }
 
@@ -95,6 +98,7 @@ class ApcEngine extends CacheEngine
         if ($cachetime !== 0 && ($cachetime < $time || ($time + $this->settings['duration']) < $cachetime)) {
             return false;
         }
+
         return $func($key);
     }
 
@@ -108,6 +112,7 @@ class ApcEngine extends CacheEngine
     public function increment($key, $offset = 1)
     {
         $func = $this->_apcExtension . '_inc';
+
         return $func($key, $offset);
     }
 
@@ -121,6 +126,7 @@ class ApcEngine extends CacheEngine
     public function decrement($key, $offset = 1)
     {
         $func = $this->_apcExtension . '_dec';
+
         return $func($key, $offset);
     }
 
@@ -133,6 +139,7 @@ class ApcEngine extends CacheEngine
     public function delete($key)
     {
         $func = $this->_apcExtension . '_delete';
+
         return $func($key);
     }
 
@@ -156,6 +163,7 @@ class ApcEngine extends CacheEngine
                 APC_ITER_NONE
             );
             $func($iterator);
+
             return true;
         }
         $cache = $this->_apcExtension === 'apc' ? apc_cache_info('user') : apcu_cache_info();
@@ -164,6 +172,7 @@ class ApcEngine extends CacheEngine
                 $func($key['info']);
             }
         }
+
         return true;
     }
 
@@ -195,11 +204,12 @@ class ApcEngine extends CacheEngine
             ksort($groups);
         }
 
-        $result = array();
+        $result = [];
         $groups = array_values($groups);
         foreach ($this->settings['groups'] as $i => $group) {
             $result[] = $group . $groups[$i];
         }
+
         return $result;
     }
 
@@ -214,6 +224,7 @@ class ApcEngine extends CacheEngine
     {
         $func = $this->_apcExtension . '_inc';
         $func($this->settings['prefix'] . $group, 1, $success);
+
         return $success;
     }
 
@@ -235,6 +246,7 @@ class ApcEngine extends CacheEngine
         }
         $func = $this->_apcExtension . '_add';
         $func($key . '_expires', $expires, $duration);
+
         return $func($key, $value, $duration);
     }
 }

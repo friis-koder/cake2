@@ -11,7 +11,6 @@
  * @link          https://cakephp.org CakePHP(tm) Project
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('BaseAuthorize', 'Controller/Component/Auth');
 
 /**
@@ -36,13 +35,13 @@ App::uses('BaseAuthorize', 'Controller/Component/Auth');
  */
 class ControllerAuthorize extends BaseAuthorize
 {
-/**
- * Get/set the controller this authorize object will be working with. Also checks that isAuthorized is implemented.
- *
- * @param Controller $controller null to get, a controller to set.
- * @return mixed
- * @throws CakeException
- */
+    /**
+     * Get/set the controller this authorize object will be working with. Also checks that isAuthorized is implemented.
+     *
+     * @param Controller $controller null to get, a controller to set.
+     * @return mixed
+     * @throws CakeException
+     */
     public function controller(Controller $controller = null)
     {
         if ($controller) {
@@ -50,6 +49,7 @@ class ControllerAuthorize extends BaseAuthorize
                 throw new CakeException(__d('cake_dev', '$controller does not implement an %s method.', 'isAuthorized()'));
             }
         }
+
         return parent::controller($controller);
     }
 

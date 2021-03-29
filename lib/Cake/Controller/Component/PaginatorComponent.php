@@ -15,7 +15,6 @@
  * @since         CakePHP(tm) v 2.0
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('Component', 'Controller');
 App::uses('Hash', 'Utility');
 
@@ -70,41 +69,41 @@ App::uses('Hash', 'Utility');
  */
 class PaginatorComponent extends Component
 {
-/**
- * Pagination settings. These settings control pagination at a general level.
- * You can also define sub arrays for pagination settings for specific models.
- *
- * - `maxLimit` The maximum limit users can choose to view. Defaults to 100
- * - `limit` The initial number of items per page. Defaults to 20.
- * - `page` The starting page, defaults to 1.
- * - `paramType` What type of parameters you want pagination to use?
- *      - `named` Use named parameters / routed parameters.
- *      - `querystring` Use query string parameters.
- * - `queryScope` By using request parameter scopes you can paginate multiple queries in the same controller action.
- *
- * ```
- * $paginator->paginate = array(
- *	'Article' => array('queryScope' => 'articles'),
- *	'Tag' => array('queryScope' => 'tags'),
- * );
- * ```
- *
- * Each of the above queries will use different query string parameter sets
- * for pagination data. An example URL paginating both results would be:
- *
- * ```
- * /dashboard/articles[page]:1/tags[page]:2
- * ```
- *
- * @var array
- */
-    public $settings = array(
-        'page' => 1,
-        'limit' => 20,
-        'maxLimit' => 100,
-        'paramType' => 'named',
+    /**
+     * Pagination settings. These settings control pagination at a general level.
+     * You can also define sub arrays for pagination settings for specific models.
+     *
+     * - `maxLimit` The maximum limit users can choose to view. Defaults to 100
+     * - `limit` The initial number of items per page. Defaults to 20.
+     * - `page` The starting page, defaults to 1.
+     * - `paramType` What type of parameters you want pagination to use?
+     *      - `named` Use named parameters / routed parameters.
+     *      - `querystring` Use query string parameters.
+     * - `queryScope` By using request parameter scopes you can paginate multiple queries in the same controller action.
+     *
+     * ```
+     * $paginator->paginate = array(
+     *	'Article' => array('queryScope' => 'articles'),
+     *	'Tag' => array('queryScope' => 'tags'),
+     * );
+     * ```
+     *
+     * Each of the above queries will use different query string parameter sets
+     * for pagination data. An example URL paginating both results would be:
+     *
+     * ```
+     * /dashboard/articles[page]:1/tags[page]:2
+     * ```
+     *
+     * @var array
+     */
+    public $settings = [
+        'page'       => 1,
+        'limit'      => 20,
+        'maxLimit'   => 100,
+        'paramType'  => 'named',
         'queryScope' => null
-    );
+    ];
 
     /**
      * A list of parameters users are allowed to set using request parameters. Modifying
@@ -113,9 +112,9 @@ class PaginatorComponent extends Component
      *
      * @var array
      */
-    public $whitelist = array(
+    public $whitelist = [
         'limit', 'sort', 'page', 'direction'
-    );
+    ];
 
     /**
      * Constructor
@@ -123,7 +122,7 @@ class PaginatorComponent extends Component
      * @param ComponentCollection $collection A ComponentCollection this component can use to lazy load its components
      * @param array $settings Array of configuration settings.
      */
-    public function __construct(ComponentCollection $collection, $settings = array())
+    public function __construct(ComponentCollection $collection, $settings = [])
     {
         $settings = array_merge($this->settings, (array)$settings);
         $this->Controller = $collection->getController();
@@ -142,7 +141,7 @@ class PaginatorComponent extends Component
      * @throws MissingModelException
      * @throws NotFoundException
      */
-    public function paginate($object = null, $scope = array(), $whitelist = array())
+    public function paginate($object = null, $scope = [], $whitelist = [])
     {
         if (is_array($object)) {
             $whitelist = $scope;
@@ -163,7 +162,7 @@ class PaginatorComponent extends Component
         $conditions = $fields = $order = $limit = $page = $recursive = null;
 
         if (!isset($options['conditions'])) {
-            $options['conditions'] = array();
+            $options['conditions'] = [];
         }
 
         $type = 'all';
@@ -178,7 +177,7 @@ class PaginatorComponent extends Component
         if (is_array($scope) && !empty($scope)) {
             $conditions = array_merge($conditions, $scope);
         } elseif (is_string($scope)) {
-            $conditions = array($conditions, $scope);
+            $conditions = [$conditions, $scope];
         }
         if ($recursive === null) {
             $recursive = $object->recursive;
@@ -244,26 +243,26 @@ class PaginatorComponent extends Component
         $requestedPage = $page;
         $page = max(min($page, $pageCount), 1);
 
-        $paging = array(
-            'page' => $page,
-            'current' => count($results),
-            'count' => $count,
-            'prevPage' => ($page > 1),
-            'nextPage' => ($count > ($page * $limit)),
-            'pageCount' => $pageCount,
-            'order' => $order,
-            'limit' => $limit,
-            'options' => Hash::diff($options, $defaults),
-            'paramType' => $options['paramType'],
+        $paging = [
+            'page'       => $page,
+            'current'    => count($results),
+            'count'      => $count,
+            'prevPage'   => ($page > 1),
+            'nextPage'   => ($count > ($page * $limit)),
+            'pageCount'  => $pageCount,
+            'order'      => $order,
+            'limit'      => $limit,
+            'options'    => Hash::diff($options, $defaults),
+            'paramType'  => $options['paramType'],
             'queryScope' => $options['queryScope'],
-        );
+        ];
 
         if (!isset($this->Controller->request['paging'])) {
-            $this->Controller->request['paging'] = array();
+            $this->Controller->request['paging'] = [];
         }
         $this->Controller->request['paging'] = array_merge(
             (array)$this->Controller->request['paging'],
-            array($object->alias => $paging)
+            [$object->alias => $paging]
         );
 
         if ($requestedPage > $page) {
@@ -275,6 +274,7 @@ class PaginatorComponent extends Component
         ) {
             $this->Controller->helpers[] = 'Paginator';
         }
+
         return $results;
     }
 
@@ -320,6 +320,7 @@ class PaginatorComponent extends Component
 
             return $this->Controller->{$name};
         }
+
         return $object;
     }
 
@@ -344,15 +345,18 @@ class PaginatorComponent extends Component
         switch ($defaults['paramType']) {
             case 'named':
                 $request = $this->Controller->request->params['named'];
+
                 break;
             case 'querystring':
                 $request = $this->Controller->request->query;
+
                 break;
         }
         if ($defaults['queryScope']) {
-            $request = Hash::get($request, $defaults['queryScope'], array());
+            $request = Hash::get($request, $defaults['queryScope'], []);
         }
         $request = array_intersect_key($request, array_flip($this->whitelist));
+
         return array_merge($defaults, $request);
     }
 
@@ -369,13 +373,14 @@ class PaginatorComponent extends Component
         if (isset($this->settings[$alias])) {
             $defaults = $this->settings[$alias];
         }
-        $defaults += array(
-            'page' => 1,
-            'limit' => 20,
-            'maxLimit' => 100,
-            'paramType' => 'named',
+        $defaults += [
+            'page'       => 1,
+            'limit'      => 20,
+            'maxLimit'   => 100,
+            'paramType'  => 'named',
             'queryScope' => null
-        );
+        ];
+
         return $defaults;
     }
 
@@ -395,7 +400,7 @@ class PaginatorComponent extends Component
      * @param array $whitelist The list of columns that can be used for sorting. If empty all keys are allowed.
      * @return array An array of options with sort + direction removed and replaced with order if possible.
      */
-    public function validateSort(Model $object, array $options, array $whitelist = array())
+    public function validateSort(Model $object, array $options, array $whitelist = [])
     {
         if (empty($options['order']) && is_array($object->order)) {
             $options['order'] = $object->order;
@@ -406,10 +411,10 @@ class PaginatorComponent extends Component
             if (isset($options['direction'])) {
                 $direction = strtolower($options['direction']);
             }
-            if (!in_array($direction, array('asc', 'desc'))) {
+            if (!in_array($direction, ['asc', 'desc'])) {
                 $direction = 'asc';
             }
-            $options['order'] = array($options['sort'] => $direction);
+            $options['order'] = [$options['sort'] => $direction];
         }
 
         if (!empty($whitelist) && isset($options['order']) && is_array($options['order'])) {
@@ -418,10 +423,11 @@ class PaginatorComponent extends Component
             if (!$inWhitelist) {
                 $options['order'] = null;
             }
+
             return $options;
         }
         if (!empty($options['order']) && is_array($options['order'])) {
-            $order = array();
+            $order = [];
             foreach ($options['order'] as $key => $value) {
                 if (is_int($key)) {
                     $field = explode(' ', $value);
@@ -462,6 +468,7 @@ class PaginatorComponent extends Component
             $options['limit'] = 1;
         }
         $options['limit'] = min($options['limit'], $options['maxLimit']);
+
         return $options;
     }
 }

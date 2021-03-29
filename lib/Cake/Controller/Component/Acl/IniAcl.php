@@ -13,7 +13,6 @@
  * @since         CakePHP(tm) v 0.10.0.1076
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('AclInterface', 'Controller/Component/Acl');
 
 /**
@@ -24,11 +23,11 @@ App::uses('AclInterface', 'Controller/Component/Acl');
  */
 class IniAcl extends CakeObject implements AclInterface
 {
-/**
- * Array with configuration, parsed from ini file
- *
- * @var array
- */
+    /**
+     * Array with configuration, parsed from ini file
+     *
+     * @var array
+     */
     public $config = null;
 
     /**
@@ -146,6 +145,7 @@ class IniAcl extends CakeObject implements AclInterface
                 }
             }
         }
+
         return false;
     }
 
@@ -160,6 +160,7 @@ class IniAcl extends CakeObject implements AclInterface
     {
         App::uses('IniReader', 'Configure');
         $iniFile = new IniReader(dirname($filename) . DS);
+
         return $iniFile->read(basename($filename));
     }
 
@@ -175,6 +176,7 @@ class IniAcl extends CakeObject implements AclInterface
             $array[$key] = trim($value);
         }
         array_unshift($array, "");
+
         return $array;
     }
 }

@@ -15,7 +15,6 @@
  * @since         CakePHP(tm) v 1.2.0.4116
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('CakePlugin', 'Core');
 App::uses('L10n', 'I18n');
 App::uses('Multibyte', 'I18n');
@@ -28,11 +27,11 @@ App::uses('CakeSession', 'Model/Datasource');
  */
 class I18n
 {
-/**
- * Instance of the L10n class for localization
- *
- * @var L10n
- */
+    /**
+     * Instance of the L10n class for localization
+     *
+     * @var L10n
+     */
     public $l10n = null;
 
     /**
@@ -68,7 +67,7 @@ class I18n
      *
      * @var array
      */
-    protected $_domains = array();
+    protected $_domains = [];
 
     /**
      * Set to true when I18N::_bindTextDomain() is called for the first time.
@@ -83,9 +82,9 @@ class I18n
      *
      * @var array
      */
-    protected $_categories = array(
+    protected $_categories = [
         'LC_ALL', 'LC_COLLATE', 'LC_CTYPE', 'LC_MONETARY', 'LC_NUMERIC', 'LC_TIME', 'LC_MESSAGES'
-    );
+    ];
 
     /**
      * Constants for the translation categories.
@@ -100,6 +99,7 @@ class I18n
      * To keep the code more readable, I18n constants are preferred over
      * hardcoded integers.
      */
+
     /**
      * Constant for LC_ALL.
      *
@@ -171,10 +171,11 @@ class I18n
      */
     public static function getInstance()
     {
-        static $instance = array();
+        static $instance = [];
         if (!$instance) {
             $instance[0] = new I18n();
         }
+
         return $instance[0];
     }
 
@@ -296,6 +297,7 @@ class I18n
         if (!empty($plurals)) {
             return $plural;
         }
+
         return $singular;
     }
 
@@ -307,7 +309,7 @@ class I18n
     public static function clear()
     {
         $self = I18n::getInstance();
-        $self->_domains = array();
+        $self->_domains = [];
     }
 
     /**
@@ -318,6 +320,7 @@ class I18n
     public static function domains()
     {
         $self = I18n::getInstance();
+
         return $self->_domains;
     }
 
@@ -349,6 +352,7 @@ class I18n
                 } elseif (strpos($header, "100<10")) {
                     return $n % 10 == 1 && $n % 100 != 11 ? 0 : ($n % 10 >= 2 && ($n % 100 < 10 || $n % 100 >= 20) ? 1 : 2);
                 }
+
                 return $n % 10 == 1 && $n % 100 != 11 ? 0 : ($n != 0 ? 1 : 2);
             } elseif (strpos($header, "n==2")) {
                 return $n == 1 ? 0 : ($n == 2 ? 1 : 2);
@@ -359,6 +363,7 @@ class I18n
             } elseif (strpos($header, "10>=2")) {
                 return $n == 1 ? 0 : ($n % 10 >= 2 && $n % 10 <= 4 && ($n % 100 < 10 || $n % 100 >= 20) ? 1 : 2);
             }
+
             return $n % 10 == 1 ? 0 : ($n % 10 == 2 ? 1 : 2);
         } elseif (strpos($header, "plurals=4")) {
             if (strpos($header, "100==2")) {
@@ -391,7 +396,7 @@ class I18n
     {
         $this->_noLocale = true;
         $core = true;
-        $merge = array();
+        $merge = [];
         $searchPaths = App::path('locales');
         $plugins = CakePlugin::loaded();
 
@@ -403,6 +408,7 @@ class I18n
                     if (!Configure::read('I18n.preferApp')) {
                         $searchPaths = array_reverse($searchPaths);
                     }
+
                     break;
                 }
             }
@@ -416,6 +422,7 @@ class I18n
                     if ($definitions !== false) {
                         $this->_domains[$domain][$this->_lang][$this->category] = $definitions;
                         $this->_noLocale = false;
+
                         return $domain;
                     }
                 }
@@ -452,13 +459,15 @@ class I18n
                 if ($translations !== false) {
                     $this->_domains[$domain][$this->_lang][$this->category] = $translations;
                     $this->_noLocale = false;
+
                     break 2;
                 }
             }
         }
 
         if (empty($this->_domains[$domain][$this->_lang][$this->category])) {
-            $this->_domains[$domain][$this->_lang][$this->category] = array();
+            $this->_domains[$domain][$this->_lang][$this->category] = [];
+
             return $domain;
         }
 
@@ -500,7 +509,7 @@ class I18n
         // @codingStandardsIgnoreStart
         // Binary files extracted makes non-standard local variables
         if ($data = file_get_contents($filename)) {
-            $translations = array();
+            $translations = [];
             $header = substr($data, 0, 20);
             $header = unpack('L1magic/L1version/L1count/L1o_msg/L1o_trn', $header);
             extract($header);
@@ -532,7 +541,7 @@ class I18n
                     }
 
                     if (isset($msgid_plural)) {
-                        $translations[$msgid_plural] =& $translations[$msgid];
+                        $translations[$msgid_plural] = & $translations[$msgid];
                     }
                 }
             }
@@ -555,7 +564,7 @@ class I18n
         }
 
         $type = 0;
-        $translations = array();
+        $translations = [];
         $translationKey = '';
         $translationContext = null;
         $plural = 0;
@@ -620,6 +629,7 @@ class I18n
         fclose($file);
 
         $merge[''] = $header;
+
         return array_merge($merge, $translations);
     }
 
@@ -635,7 +645,7 @@ class I18n
             return false;
         }
 
-        $definitions = array();
+        $definitions = [];
         $comment = '#';
         $escape = '\\';
         $currentToken = false;
@@ -649,10 +659,12 @@ class I18n
             $parts = preg_split("/[[:space:]]+/", $line);
             if ($parts[0] === 'comment_char') {
                 $comment = $parts[1];
+
                 continue;
             }
             if ($parts[0] === 'escape_char') {
                 $escape = $parts[1];
+
                 continue;
             }
             $count = count($parts);
@@ -668,17 +680,18 @@ class I18n
             $len = strlen($value) - 1;
             if ($value[$len] === $escape) {
                 $value = substr($value, 0, $len);
+
                 continue;
             }
 
-            $mustEscape = array($escape . ',', $escape . ';', $escape . '<', $escape . '>', $escape . $escape);
+            $mustEscape = [$escape . ',', $escape . ';', $escape . '<', $escape . '>', $escape . $escape];
             $replacements = array_map('crc32', $mustEscape);
             $value = str_replace($mustEscape, $replacements, $value);
             $value = explode(';', $value);
             $_this->_escape = $escape;
             foreach ($value as $i => $val) {
                 $val = trim($val, '"');
-                $val = preg_replace_callback('/(?:<)?(.[^>]*)(?:>)?/', array(&$_this, '_parseLiteralValue'), $val);
+                $val = preg_replace_callback('/(?:<)?(.[^>]*)(?:>)?/', [&$_this, '_parseLiteralValue'], $val);
                 $val = str_replace($replacements, $mustEscape, $val);
                 $value[$i] = $val;
             }
@@ -729,6 +742,7 @@ class I18n
         );
 
         $translated = preg_replace('/(?<!%)%(?![%\'\-+bcdeEfFgGosuxX\d\.])/', '%%', $translated);
+
         return vsprintf($translated, $args);
     }
 
@@ -743,23 +757,28 @@ class I18n
         $string = $string[1];
         if (substr($string, 0, 2) === $this->_escape . 'x') {
             $delimiter = $this->_escape . 'x';
+
             return implode('', array_map('chr', array_map('hexdec', array_filter(explode($delimiter, $string)))));
         }
         if (substr($string, 0, 2) === $this->_escape . 'd') {
             $delimiter = $this->_escape . 'd';
+
             return implode('', array_map('chr', array_filter(explode($delimiter, $string))));
         }
         if ($string[0] === $this->_escape && isset($string[1]) && is_numeric($string[1])) {
             $delimiter = $this->_escape;
+
             return implode('', array_map('chr', array_filter(explode($delimiter, $string))));
         }
         if (substr($string, 0, 3) === 'U00') {
             $delimiter = 'U00';
+
             return implode('', array_map('chr', array_map('hexdec', array_filter(explode($delimiter, $string)))));
         }
         if (preg_match('/U([0-9a-fA-F]{4})/', $string, $match)) {
-            return Multibyte::ascii(array(hexdec($match[1])));
+            return Multibyte::ascii([hexdec($match[1])]);
         }
+
         return $string;
     }
 
@@ -777,6 +796,7 @@ class I18n
                 return $trans;
             }
         }
+
         return $format;
     }
 }

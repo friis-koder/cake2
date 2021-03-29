@@ -17,7 +17,6 @@
  * @since         CakePHP(tm) v 0.10.0.1076
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('ConnectionManager', 'Model');
 
 /**
@@ -31,14 +30,14 @@ App::uses('ConnectionManager', 'Model');
  */
 class Sanitize
 {
-/**
- * Removes any non-alphanumeric characters.
- *
- * @param string|array $string String to sanitize
- * @param array $allowed An array of additional characters that are not to be removed.
- * @return string|array Sanitized string
- */
-    public static function paranoid($string, $allowed = array())
+    /**
+     * Removes any non-alphanumeric characters.
+     *
+     * @param string|array $string String to sanitize
+     * @param array $allowed An array of additional characters that are not to be removed.
+     * @return string|array Sanitized string
+     */
+    public static function paranoid($string, $allowed = [])
     {
         $allow = null;
         if (!empty($allowed)) {
@@ -51,7 +50,7 @@ class Sanitize
             return preg_replace("/[^{$allow}a-zA-Z0-9]/", '', $string);
         }
 
-        $cleaned = array();
+        $cleaned = [];
         foreach ($string as $key => $clean) {
             $cleaned[$key] = preg_replace("/[^{$allow}a-zA-Z0-9]/", '', $clean);
         }
@@ -98,7 +97,7 @@ class Sanitize
      * @param array $options Array of options to use.
      * @return string Sanitized string
      */
-    public static function html($string, $options = array())
+    public static function html($string, $options = [])
     {
         static $defaultCharset = false;
         if ($defaultCharset === false) {
@@ -107,12 +106,12 @@ class Sanitize
                 $defaultCharset = 'UTF-8';
             }
         }
-        $defaults = array(
-            'remove' => false,
+        $defaults = [
+            'remove'  => false,
             'charset' => $defaultCharset,
-            'quotes' => ENT_QUOTES,
-            'double' => true
-        );
+            'quotes'  => ENT_QUOTES,
+            'double'  => true
+        ];
 
         $options += $defaults;
 
@@ -142,11 +141,11 @@ class Sanitize
      */
     public static function stripImages($str)
     {
-        $preg = array(
+        $preg = [
             '/(<a[^>]*>)(<img[^>]+alt=")([^"]*)("[^>]*>)(<\/a>)/i' => '$1$3$5<br />',
-            '/(<img[^>]+alt=")([^"]*)("[^>]*>)/i' => '$2<br />',
-            '/<img[^>]*>/i' => ''
-        );
+            '/(<img[^>]+alt=")([^"]*)("[^>]*>)/i'                  => '$2<br />',
+            '/<img[^>]*>/i'                                        => ''
+        ];
 
         return preg_replace(array_keys($preg), array_values($preg), $str);
     }
@@ -165,6 +164,7 @@ class Sanitize
             '<script[^>]*>.*?<\/script>|' .
             '<style[^>]*>.*?<\/style>|' .
             '<!--.*?-->/is';
+
         return preg_replace($regex, '', $str);
     }
 
@@ -202,6 +202,7 @@ class Sanitize
             $str = preg_replace('/<' . $params[$i] . '\b[^>]*>/i', '', $str);
             $str = preg_replace('/<\/' . $params[$i] . '[^>]*>/i', '', $str);
         }
+
         return $str;
     }
 
@@ -223,32 +224,33 @@ class Sanitize
      * @param string|array $options If string, DB connection being used, otherwise set of options
      * @return mixed Sanitized data
      */
-    public static function clean($data, $options = array())
+    public static function clean($data, $options = [])
     {
         if (empty($data)) {
             return $data;
         }
 
         if (!is_array($options)) {
-            $options = array('connection' => $options);
+            $options = ['connection' => $options];
         }
 
-        $options += array(
-            'connection' => 'default',
-            'odd_spaces' => true,
+        $options += [
+            'connection'  => 'default',
+            'odd_spaces'  => true,
             'remove_html' => false,
-            'encode' => true,
-            'dollar' => true,
-            'carriage' => true,
-            'unicode' => true,
-            'escape' => true,
-            'backslash' => true
-        );
+            'encode'      => true,
+            'dollar'      => true,
+            'carriage'    => true,
+            'unicode'     => true,
+            'escape'      => true,
+            'backslash'   => true
+        ];
 
         if (is_array($data)) {
             foreach ($data as $key => $val) {
                 $data[$key] = Sanitize::clean($val, $options);
             }
+
             return $data;
         }
 
@@ -256,7 +258,7 @@ class Sanitize
             $data = str_replace(chr(0xCA), '', $data);
         }
         if ($options['encode']) {
-            $data = Sanitize::html($data, array('remove' => $options['remove_html']));
+            $data = Sanitize::html($data, ['remove' => $options['remove_html']]);
         }
         if ($options['dollar']) {
             $data = str_replace("\\\$", "$", $data);
@@ -273,6 +275,7 @@ class Sanitize
         if ($options['backslash']) {
             $data = preg_replace("/\\\(?!&amp;#|\?#)/", "\\", $data);
         }
+
         return $data;
     }
 }

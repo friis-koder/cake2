@@ -15,7 +15,6 @@
  * @since         CakePHP(tm) v 1.2.0.4206
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('Model', 'Model');
 App::uses('AppModel', 'Model');
 
@@ -28,11 +27,11 @@ require_once dirname(__FILE__) . DS . 'models.php';
  */
 abstract class BaseModelTest extends CakeTestCase
 {
-/**
- * autoFixtures property
- *
- * @var bool
- */
+    /**
+     * autoFixtures property
+     *
+     * @var bool
+     */
     public $autoFixtures = false;
 
     /**
@@ -47,7 +46,7 @@ abstract class BaseModelTest extends CakeTestCase
      *
      * @var array
      */
-    public $fixtures = array(
+    public $fixtures = [
         'core.category', 'core.category_thread', 'core.user', 'core.my_category', 'core.my_product',
         'core.my_user', 'core.my_categories_my_users', 'core.my_categories_my_products',
         'core.article', 'core.featured', 'core.article_featureds_tags', 'core.article_featured',
@@ -74,7 +73,7 @@ abstract class BaseModelTest extends CakeTestCase
         'core.uuidnativeitem', 'core.uuidnativeportfolio', 'core.uuidnativeitems_uuidnativeportfolio',
         'core.uuidnativeitems_uuidnativeportfolio_numericid',
         'core.translated_article', 'core.translate_article',
-    );
+    ];
 
     /**
      * setUp method

@@ -23,7 +23,7 @@
  */
 class TestsAppsPostsController extends AppController
 {
-    public $uses = array('Post');
+    public $uses = ['Post'];
 
     public $viewPath = 'TestsApps';
 
@@ -34,13 +34,13 @@ class TestsAppsPostsController extends AppController
      */
     public function add()
     {
-        $data = array(
-            'Post' => array(
-                'title' => 'Test article',
-                'body' => 'Body of article.',
+        $data = [
+            'Post' => [
+                'title'     => 'Test article',
+                'body'      => 'Body of article.',
                 'author_id' => 1
-            )
-        );
+            ]
+        ];
         $this->Post->save($data);
 
         $this->set('posts', $this->Post->find('all'));

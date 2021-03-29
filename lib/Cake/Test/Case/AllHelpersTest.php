@@ -25,11 +25,11 @@
  */
 class AllHelpersTest extends PHPUnit_Framework_TestSuite
 {
-/**
- * suite declares tests to run
- *
- * @return void
- */
+    /**
+     * suite declares tests to run
+     *
+     * @return void
+     */
     public static function suite()
     {
         $suite = new CakeTestSuite('All Helper tests');
@@ -37,6 +37,7 @@ class AllHelpersTest extends PHPUnit_Framework_TestSuite
         $suite->addTestFile(CORE_TEST_CASES . DS . 'View' . DS . 'HelperTest.php');
         $suite->addTestFile(CORE_TEST_CASES . DS . 'View' . DS . 'HelperCollectionTest.php');
         $suite->addTestDirectory(CORE_TEST_CASES . DS . 'View' . DS . 'Helper' . DS);
+
         return $suite;
     }
 }

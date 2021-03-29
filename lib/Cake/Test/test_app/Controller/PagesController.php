@@ -17,7 +17,6 @@
  * @since         CakePHP(tm) v 0.2.9
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('AppController', 'Controller');
 
 /**
@@ -30,19 +29,19 @@ App::uses('AppController', 'Controller');
  */
 class PagesController extends AppController
 {
-/**
- * Default helper
- *
- * @var array
- */
-    public $helpers = array('Html', 'Session');
+    /**
+     * Default helper
+     *
+     * @var array
+     */
+    public $helpers = ['Html', 'Session'];
 
     /**
      * This controller does not use a model
      *
      * @var array
      */
-    public $uses = array();
+    public $uses = [];
 
     /**
      * Displays a view
@@ -71,11 +70,11 @@ class PagesController extends AppController
         if (!empty($path[$count - 1])) {
             $titleForLayout = Inflector::humanize($path[$count - 1]);
         }
-        $this->set(array(
-            'page' => $page,
-            'subpage' => $subpage,
+        $this->set([
+            'page'             => $page,
+            'subpage'          => $subpage,
             'title_for_layout' => $titleForLayout
-        ));
+        ]);
 
         try {
             $this->render(implode('/', $path));
@@ -83,6 +82,7 @@ class PagesController extends AppController
             if (Configure::read('debug')) {
                 throw $e;
             }
+
             throw new NotFoundException();
         }
     }

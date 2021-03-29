@@ -15,7 +15,6 @@
  * @package       app.Console
  * @since         CakePHP(tm) v 2.0
  */
-
 if (!defined('DS')) {
     define('DS', DIRECTORY_SEPARATOR);
 }

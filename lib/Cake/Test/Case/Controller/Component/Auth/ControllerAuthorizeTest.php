@@ -15,7 +15,6 @@
  * @since         CakePHP(tm) v 2.0
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('Controller', 'Controller');
 App::uses('ControllerAuthorize', 'Controller/Component/Auth');
 App::uses('CakeRequest', 'Network');
@@ -28,15 +27,15 @@ App::uses('CakeResponse', 'Network');
  */
 class ControllerAuthorizeTest extends CakeTestCase
 {
-/**
- * setup
- *
- * @return void
- */
+    /**
+     * setup
+     *
+     * @return void
+     */
     public function setUp()
     {
         parent::setUp();
-        $this->controller = $this->getMock('Controller', array('isAuthorized'), array(), '', false);
+        $this->controller = $this->getMock('Controller', ['isAuthorized'], [], '', false);
         $this->components = $this->getMock('ComponentCollection');
         $this->components->expects($this->any())
             ->method('getController')
@@ -80,7 +79,7 @@ class ControllerAuthorizeTest extends CakeTestCase
      */
     public function testAuthorizeFailure()
     {
-        $user = array();
+        $user = [];
         $request = new CakeRequest('/posts/index', false);
         $this->assertFalse($this->auth->authorize($user, $request));
     }
@@ -92,7 +91,7 @@ class ControllerAuthorizeTest extends CakeTestCase
      */
     public function testAuthorizeSuccess()
     {
-        $user = array('User' => array('username' => 'mark'));
+        $user = ['User' => ['username' => 'mark']];
         $request = new CakeRequest('/posts/index', false);
 
         $this->controller->expects($this->once())

@@ -25,37 +25,37 @@
  */
 class Inflector
 {
-/**
- * Plural inflector rules
- *
- * @var array
- */
-    protected static $_plural = array(
-        'rules' => array(
-            '/(s)tatus$/i' => '\1tatuses',
-            '/(quiz)$/i' => '\1zes',
-            '/^(ox)$/i' => '\1\2en',
-            '/([m|l])ouse$/i' => '\1ice',
-            '/(matr|vert|ind)(ix|ex)$/i' => '\1ices',
-            '/(x|ch|ss|sh)$/i' => '\1es',
-            '/([^aeiouy]|qu)y$/i' => '\1ies',
-            '/(hive)$/i' => '\1s',
-            '/(?:([^f])fe|([lre])f)$/i' => '\1\2ves',
-            '/sis$/i' => 'ses',
-            '/([ti])um$/i' => '\1a',
-            '/(p)erson$/i' => '\1eople',
-            '/(?<!u)(m)an$/i' => '\1en',
-            '/(c)hild$/i' => '\1hildren',
-            '/(buffal|tomat)o$/i' => '\1\2oes',
+    /**
+     * Plural inflector rules
+     *
+     * @var array
+     */
+    protected static $_plural = [
+        'rules' => [
+            '/(s)tatus$/i'                                                       => '\1tatuses',
+            '/(quiz)$/i'                                                         => '\1zes',
+            '/^(ox)$/i'                                                          => '\1\2en',
+            '/([m|l])ouse$/i'                                                    => '\1ice',
+            '/(matr|vert|ind)(ix|ex)$/i'                                         => '\1ices',
+            '/(x|ch|ss|sh)$/i'                                                   => '\1es',
+            '/([^aeiouy]|qu)y$/i'                                                => '\1ies',
+            '/(hive)$/i'                                                         => '\1s',
+            '/(?:([^f])fe|([lre])f)$/i'                                          => '\1\2ves',
+            '/sis$/i'                                                            => 'ses',
+            '/([ti])um$/i'                                                       => '\1a',
+            '/(p)erson$/i'                                                       => '\1eople',
+            '/(?<!u)(m)an$/i'                                                    => '\1en',
+            '/(c)hild$/i'                                                        => '\1hildren',
+            '/(buffal|tomat)o$/i'                                                => '\1\2oes',
             '/(alumn|bacill|cact|foc|fung|nucle|radi|stimul|syllab|termin)us$/i' => '\1i',
-            '/us$/i' => 'uses',
-            '/(alias)$/i' => '\1es',
-            '/(ax|cris|test)is$/i' => '\1es',
-            '/s$/' => 's',
-            '/^$/' => '',
-            '/$/' => 's',
-        ),
-        'uninflected' => array(
+            '/us$/i'                                                             => 'uses',
+            '/(alias)$/i'                                                        => '\1es',
+            '/(ax|cris|test)is$/i'                                               => '\1es',
+            '/s$/'                                                               => 's',
+            '/^$/'                                                               => '',
+            '/$/'                                                                => 's',
+        ],
+        'uninflected' => [
             '.*[nrlm]ese',
             '.*data',
             '.*deer',
@@ -67,108 +67,108 @@ class Inflector
             'people',
             'feedback',
             'stadia'
-        ),
-        'irregular' => array(
-            'atlas' => 'atlases',
-            'beef' => 'beefs',
-            'brief' => 'briefs',
-            'brother' => 'brothers',
-            'cafe' => 'cafes',
-            'child' => 'children',
-            'cookie' => 'cookies',
-            'corpus' => 'corpuses',
-            'cow' => 'cows',
+        ],
+        'irregular' => [
+            'atlas'     => 'atlases',
+            'beef'      => 'beefs',
+            'brief'     => 'briefs',
+            'brother'   => 'brothers',
+            'cafe'      => 'cafes',
+            'child'     => 'children',
+            'cookie'    => 'cookies',
+            'corpus'    => 'corpuses',
+            'cow'       => 'cows',
             'criterion' => 'criteria',
-            'ganglion' => 'ganglions',
-            'genie' => 'genies',
-            'genus' => 'genera',
-            'graffito' => 'graffiti',
-            'hoof' => 'hoofs',
-            'loaf' => 'loaves',
-            'man' => 'men',
-            'money' => 'monies',
-            'mongoose' => 'mongooses',
-            'move' => 'moves',
-            'mythos' => 'mythoi',
-            'niche' => 'niches',
-            'numen' => 'numina',
-            'occiput' => 'occiputs',
-            'octopus' => 'octopuses',
-            'opus' => 'opuses',
-            'ox' => 'oxen',
-            'penis' => 'penises',
-            'person' => 'people',
-            'sex' => 'sexes',
+            'ganglion'  => 'ganglions',
+            'genie'     => 'genies',
+            'genus'     => 'genera',
+            'graffito'  => 'graffiti',
+            'hoof'      => 'hoofs',
+            'loaf'      => 'loaves',
+            'man'       => 'men',
+            'money'     => 'monies',
+            'mongoose'  => 'mongooses',
+            'move'      => 'moves',
+            'mythos'    => 'mythoi',
+            'niche'     => 'niches',
+            'numen'     => 'numina',
+            'occiput'   => 'occiputs',
+            'octopus'   => 'octopuses',
+            'opus'      => 'opuses',
+            'ox'        => 'oxen',
+            'penis'     => 'penises',
+            'person'    => 'people',
+            'sex'       => 'sexes',
             'soliloquy' => 'soliloquies',
-            'testis' => 'testes',
-            'trilby' => 'trilbys',
-            'turf' => 'turfs',
-            'potato' => 'potatoes',
-            'hero' => 'heroes',
-            'tooth' => 'teeth',
-            'goose' => 'geese',
-            'foot' => 'feet',
-            'sieve' => 'sieves'
-        )
-    );
+            'testis'    => 'testes',
+            'trilby'    => 'trilbys',
+            'turf'      => 'turfs',
+            'potato'    => 'potatoes',
+            'hero'      => 'heroes',
+            'tooth'     => 'teeth',
+            'goose'     => 'geese',
+            'foot'      => 'feet',
+            'sieve'     => 'sieves'
+        ]
+    ];
 
     /**
      * Singular inflector rules
      *
      * @var array
      */
-    protected static $_singular = array(
-        'rules' => array(
-            '/(s)tatuses$/i' => '\1\2tatus',
-            '/^(.*)(menu)s$/i' => '\1\2',
-            '/(quiz)zes$/i' => '\\1',
-            '/(matr)ices$/i' => '\1ix',
-            '/(vert|ind)ices$/i' => '\1ex',
-            '/^(ox)en/i' => '\1',
-            '/(alias)(es)*$/i' => '\1',
+    protected static $_singular = [
+        'rules' => [
+            '/(s)tatuses$/i'                                                          => '\1\2tatus',
+            '/^(.*)(menu)s$/i'                                                        => '\1\2',
+            '/(quiz)zes$/i'                                                           => '\\1',
+            '/(matr)ices$/i'                                                          => '\1ix',
+            '/(vert|ind)ices$/i'                                                      => '\1ex',
+            '/^(ox)en/i'                                                              => '\1',
+            '/(alias)(es)*$/i'                                                        => '\1',
             '/(alumn|bacill|cact|foc|fung|nucle|radi|stimul|syllab|termin|viri?)i$/i' => '\1us',
-            '/([ftw]ax)es/i' => '\1',
-            '/(cris|ax|test)es$/i' => '\1is',
-            '/(shoe)s$/i' => '\1',
-            '/(o)es$/i' => '\1',
-            '/ouses$/' => 'ouse',
-            '/([^a])uses$/' => '\1us',
-            '/([m|l])ice$/i' => '\1ouse',
-            '/(x|ch|ss|sh)es$/i' => '\1',
-            '/(m)ovies$/i' => '\1\2ovie',
-            '/(s)eries$/i' => '\1\2eries',
-            '/([^aeiouy]|qu)ies$/i' => '\1y',
-            '/(tive)s$/i' => '\1',
-            '/(hive)s$/i' => '\1',
-            '/(drive)s$/i' => '\1',
-            '/([le])ves$/i' => '\1f',
-            '/([^rfoa])ves$/i' => '\1fe',
-            '/(^analy)ses$/i' => '\1sis',
-            '/(analy|diagno|^ba|(p)arenthe|(p)rogno|(s)ynop|(t)he)ses$/i' => '\1\2sis',
-            '/([ti])a$/i' => '\1um',
-            '/(p)eople$/i' => '\1\2erson',
-            '/(m)en$/i' => '\1an',
-            '/(c)hildren$/i' => '\1\2hild',
-            '/(n)ews$/i' => '\1\2ews',
-            '/eaus$/' => 'eau',
-            '/^(.*us)$/' => '\\1',
-            '/s$/i' => ''
-        ),
-        'uninflected' => array(
+            '/([ftw]ax)es/i'                                                          => '\1',
+            '/(cris|ax|test)es$/i'                                                    => '\1is',
+            '/(shoe)s$/i'                                                             => '\1',
+            '/(o)es$/i'                                                               => '\1',
+            '/ouses$/'                                                                => 'ouse',
+            '/([^a])uses$/'                                                           => '\1us',
+            '/([m|l])ice$/i'                                                          => '\1ouse',
+            '/(x|ch|ss|sh)es$/i'                                                      => '\1',
+            '/(m)ovies$/i'                                                            => '\1\2ovie',
+            '/(s)eries$/i'                                                            => '\1\2eries',
+            '/([^aeiouy]|qu)ies$/i'                                                   => '\1y',
+            '/(tive)s$/i'                                                             => '\1',
+            '/(hive)s$/i'                                                             => '\1',
+            '/(drive)s$/i'                                                            => '\1',
+            '/([le])ves$/i'                                                           => '\1f',
+            '/([^rfoa])ves$/i'                                                        => '\1fe',
+            '/(^analy)ses$/i'                                                         => '\1sis',
+            '/(analy|diagno|^ba|(p)arenthe|(p)rogno|(s)ynop|(t)he)ses$/i'             => '\1\2sis',
+            '/([ti])a$/i'                                                             => '\1um',
+            '/(p)eople$/i'                                                            => '\1\2erson',
+            '/(m)en$/i'                                                               => '\1an',
+            '/(c)hildren$/i'                                                          => '\1\2hild',
+            '/(n)ews$/i'                                                              => '\1\2ews',
+            '/eaus$/'                                                                 => 'eau',
+            '/^(.*us)$/'                                                              => '\\1',
+            '/s$/i'                                                                   => ''
+        ],
+        'uninflected' => [
             '.*data',
             '.*[nrlm]ese', '.*deer', '.*fish', '.*measles', '.*ois', '.*pox', '.*sheep', '.*ss', 'feedback'
-        ),
-        'irregular' => array(
+        ],
+        'irregular' => [
             'foes' => 'foe',
-        )
-    );
+        ]
+    ];
 
     /**
      * Words that should not be inflected
      *
      * @var array
      */
-    protected static $_uninflected = array(
+    protected static $_uninflected = [
         'Amoyese', 'bison', 'Borghese', 'bream', 'breeches', 'britches', 'buffalo', 'cantus',
         'carp', 'chassis', 'clippers', 'cod', 'coitus', 'Congoese', 'contretemps', 'corps',
         'debris', 'diabetes', 'djinn', 'eland', 'elk', 'equipment', 'Faroese', 'flounder',
@@ -181,86 +181,86 @@ class Inflector
         'sea[- ]bass', 'series', 'Shavese', 'shears', 'siemens', 'species', 'swine', 'testes',
         'trousers', 'trout', 'tuna', 'Vermontese', 'Wenchowese', 'whiting', 'wildebeest',
         'Yengeese'
-    );
+    ];
 
     /**
      * Default map of accented and special characters to ASCII characters
      *
      * @var array
      */
-    protected static $_transliteration = array(
-        '/À|Á|Â|Ã|Å|Ǻ|Ā|Ă|Ą|Ǎ/' => 'A',
-        '/Æ|Ǽ/' => 'AE',
-        '/Ä/' => 'Ae',
-        '/Ç|Ć|Ĉ|Ċ|Č/' => 'C',
-        '/Ð|Ď|Đ/' => 'D',
-        '/È|É|Ê|Ë|Ē|Ĕ|Ė|Ę|Ě/' => 'E',
-        '/Ĝ|Ğ|Ġ|Ģ|Ґ/' => 'G',
-        '/Ĥ|Ħ/' => 'H',
-        '/Ì|Í|Î|Ï|Ĩ|Ī|Ĭ|Ǐ|Į|İ|І/' => 'I',
-        '/Ĳ/' => 'IJ',
-        '/Ĵ/' => 'J',
-        '/Ķ/' => 'K',
-        '/Ĺ|Ļ|Ľ|Ŀ|Ł/' => 'L',
-        '/Ñ|Ń|Ņ|Ň/' => 'N',
-        '/Ò|Ó|Ô|Õ|Ō|Ŏ|Ǒ|Ő|Ơ|Ø|Ǿ/' => 'O',
-        '/Œ/' => 'OE',
-        '/Ö/' => 'Oe',
-        '/Ŕ|Ŗ|Ř/' => 'R',
-        '/Ś|Ŝ|Ş|Ș|Š/' => 'S',
-        '/ẞ/' => 'SS',
-        '/Ţ|Ț|Ť|Ŧ/' => 'T',
-        '/Þ/' => 'TH',
+    protected static $_transliteration = [
+        '/À|Á|Â|Ã|Å|Ǻ|Ā|Ă|Ą|Ǎ/'           => 'A',
+        '/Æ|Ǽ/'                           => 'AE',
+        '/Ä/'                             => 'Ae',
+        '/Ç|Ć|Ĉ|Ċ|Č/'                     => 'C',
+        '/Ð|Ď|Đ/'                         => 'D',
+        '/È|É|Ê|Ë|Ē|Ĕ|Ė|Ę|Ě/'             => 'E',
+        '/Ĝ|Ğ|Ġ|Ģ|Ґ/'                     => 'G',
+        '/Ĥ|Ħ/'                           => 'H',
+        '/Ì|Í|Î|Ï|Ĩ|Ī|Ĭ|Ǐ|Į|İ|І/'         => 'I',
+        '/Ĳ/'                             => 'IJ',
+        '/Ĵ/'                             => 'J',
+        '/Ķ/'                             => 'K',
+        '/Ĺ|Ļ|Ľ|Ŀ|Ł/'                     => 'L',
+        '/Ñ|Ń|Ņ|Ň/'                       => 'N',
+        '/Ò|Ó|Ô|Õ|Ō|Ŏ|Ǒ|Ő|Ơ|Ø|Ǿ/'         => 'O',
+        '/Œ/'                             => 'OE',
+        '/Ö/'                             => 'Oe',
+        '/Ŕ|Ŗ|Ř/'                         => 'R',
+        '/Ś|Ŝ|Ş|Ș|Š/'                     => 'S',
+        '/ẞ/'                             => 'SS',
+        '/Ţ|Ț|Ť|Ŧ/'                       => 'T',
+        '/Þ/'                             => 'TH',
         '/Ù|Ú|Û|Ũ|Ū|Ŭ|Ů|Ű|Ų|Ư|Ǔ|Ǖ|Ǘ|Ǚ|Ǜ/' => 'U',
-        '/Ü/' => 'Ue',
-        '/Ŵ/' => 'W',
-        '/Ý|Ÿ|Ŷ/' => 'Y',
-        '/Є/' => 'Ye',
-        '/Ї/' => 'Yi',
-        '/Ź|Ż|Ž/' => 'Z',
-        '/à|á|â|ã|å|ǻ|ā|ă|ą|ǎ|ª/' => 'a',
-        '/ä|æ|ǽ/' => 'ae',
-        '/ç|ć|ĉ|ċ|č/' => 'c',
-        '/ð|ď|đ/' => 'd',
-        '/è|é|ê|ë|ē|ĕ|ė|ę|ě/' => 'e',
-        '/ƒ/' => 'f',
-        '/ĝ|ğ|ġ|ģ|ґ/' => 'g',
-        '/ĥ|ħ/' => 'h',
-        '/ì|í|î|ï|ĩ|ī|ĭ|ǐ|į|ı|і/' => 'i',
-        '/ĳ/' => 'ij',
-        '/ĵ/' => 'j',
-        '/ķ/' => 'k',
-        '/ĺ|ļ|ľ|ŀ|ł/' => 'l',
-        '/ñ|ń|ņ|ň|ŉ/' => 'n',
-        '/ò|ó|ô|õ|ō|ŏ|ǒ|ő|ơ|ø|ǿ|º/' => 'o',
-        '/ö|œ/' => 'oe',
-        '/ŕ|ŗ|ř/' => 'r',
-        '/ś|ŝ|ş|ș|š|ſ/' => 's',
-        '/ß/' => 'ss',
-        '/ţ|ț|ť|ŧ/' => 't',
-        '/þ/' => 'th',
+        '/Ü/'                             => 'Ue',
+        '/Ŵ/'                             => 'W',
+        '/Ý|Ÿ|Ŷ/'                         => 'Y',
+        '/Є/'                             => 'Ye',
+        '/Ї/'                             => 'Yi',
+        '/Ź|Ż|Ž/'                         => 'Z',
+        '/à|á|â|ã|å|ǻ|ā|ă|ą|ǎ|ª/'         => 'a',
+        '/ä|æ|ǽ/'                         => 'ae',
+        '/ç|ć|ĉ|ċ|č/'                     => 'c',
+        '/ð|ď|đ/'                         => 'd',
+        '/è|é|ê|ë|ē|ĕ|ė|ę|ě/'             => 'e',
+        '/ƒ/'                             => 'f',
+        '/ĝ|ğ|ġ|ģ|ґ/'                     => 'g',
+        '/ĥ|ħ/'                           => 'h',
+        '/ì|í|î|ï|ĩ|ī|ĭ|ǐ|į|ı|і/'         => 'i',
+        '/ĳ/'                             => 'ij',
+        '/ĵ/'                             => 'j',
+        '/ķ/'                             => 'k',
+        '/ĺ|ļ|ľ|ŀ|ł/'                     => 'l',
+        '/ñ|ń|ņ|ň|ŉ/'                     => 'n',
+        '/ò|ó|ô|õ|ō|ŏ|ǒ|ő|ơ|ø|ǿ|º/'       => 'o',
+        '/ö|œ/'                           => 'oe',
+        '/ŕ|ŗ|ř/'                         => 'r',
+        '/ś|ŝ|ş|ș|š|ſ/'                   => 's',
+        '/ß/'                             => 'ss',
+        '/ţ|ț|ť|ŧ/'                       => 't',
+        '/þ/'                             => 'th',
         '/ù|ú|û|ũ|ū|ŭ|ů|ű|ų|ư|ǔ|ǖ|ǘ|ǚ|ǜ/' => 'u',
-        '/ü/' => 'ue',
-        '/ŵ/' => 'w',
-        '/ý|ÿ|ŷ/' => 'y',
-        '/є/' => 'ye',
-        '/ї/' => 'yi',
-        '/ź|ż|ž/' => 'z',
-    );
+        '/ü/'                             => 'ue',
+        '/ŵ/'                             => 'w',
+        '/ý|ÿ|ŷ/'                         => 'y',
+        '/є/'                             => 'ye',
+        '/ї/'                             => 'yi',
+        '/ź|ż|ž/'                         => 'z',
+    ];
 
     /**
      * Method cache array.
      *
      * @var array
      */
-    protected static $_cache = array();
+    protected static $_cache = [];
 
     /**
      * The initial state of Inflector so reset() works.
      *
      * @var array
      */
-    protected static $_initialState = array();
+    protected static $_initialState = [];
 
     /**
      * Cache inflected values, and return if already available
@@ -276,11 +276,13 @@ class Inflector
         $type = '_' . $type;
         if ($value !== false) {
             static::$_cache[$type][$key] = $value;
+
             return $value;
         }
         if (!isset(static::$_cache[$type][$key])) {
             return false;
         }
+
         return static::$_cache[$type][$key];
     }
 
@@ -294,6 +296,7 @@ class Inflector
     {
         if (empty(static::$_initialState)) {
             static::$_initialState = get_class_vars('Inflector');
+
             return;
         }
         foreach (static::$_initialState as $key => $val) {
@@ -335,6 +338,7 @@ class Inflector
                 } else {
                     static::$_transliteration = $rules + static::$_transliteration;
                 }
+
                 break;
 
             default:
@@ -354,9 +358,9 @@ class Inflector
                             unset(static::${$var}['merged'][$rule]);
                         }
                         if ($type === 'plural') {
-                            static::$_cache['pluralize'] = static::$_cache['tableize'] = array();
+                            static::$_cache['pluralize'] = static::$_cache['tableize'] = [];
                         } elseif ($type === 'singular') {
-                            static::$_cache['singularize'] = array();
+                            static::$_cache['singularize'] = [];
                         }
                     }
                 }
@@ -394,17 +398,20 @@ class Inflector
             static::$_cache['pluralize'][$word] = $regs[1] .
                 substr($regs[2], 0, 1) .
                 substr(static::$_plural['merged']['irregular'][strtolower($regs[2])], 1);
+
             return static::$_cache['pluralize'][$word];
         }
 
         if (preg_match('/^(' . static::$_plural['cacheUninflected'] . ')$/i', $word, $regs)) {
             static::$_cache['pluralize'][$word] = $word;
+
             return $word;
         }
 
         foreach (static::$_plural['rules'] as $rule => $replacement) {
             if (preg_match($rule, $word)) {
                 static::$_cache['pluralize'][$word] = preg_replace($rule, $replacement, $word);
+
                 return static::$_cache['pluralize'][$word];
             }
         }
@@ -446,21 +453,25 @@ class Inflector
             static::$_cache['singularize'][$word] = $regs[1] .
                 substr($regs[2], 0, 1) .
                 substr(static::$_singular['merged']['irregular'][strtolower($regs[2])], 1);
+
             return static::$_cache['singularize'][$word];
         }
 
         if (preg_match('/^(' . static::$_singular['cacheUninflected'] . ')$/i', $word, $regs)) {
             static::$_cache['singularize'][$word] = $word;
+
             return $word;
         }
 
         foreach (static::$_singular['rules'] as $rule => $replacement) {
             if (preg_match($rule, $word)) {
                 static::$_cache['singularize'][$word] = preg_replace($rule, $replacement, $word);
+
                 return static::$_cache['singularize'][$word];
             }
         }
         static::$_cache['singularize'][$word] = $word;
+
         return $word;
     }
 
@@ -477,6 +488,7 @@ class Inflector
             $result = str_replace(' ', '', Inflector::humanize($lowerCaseAndUnderscoredWord));
             static::_cache(__FUNCTION__, $lowerCaseAndUnderscoredWord, $result);
         }
+
         return $result;
     }
 
@@ -494,6 +506,7 @@ class Inflector
             $result = mb_strtolower($underscoredWord);
             static::_cache(__FUNCTION__, $camelCasedWord, $result);
         }
+
         return $result;
     }
 
@@ -515,6 +528,7 @@ class Inflector
             $result = implode(' ', $result);
             static::_cache(__FUNCTION__, $lowerCaseAndUnderscoredWord, $result);
         }
+
         return $result;
     }
 
@@ -531,6 +545,7 @@ class Inflector
             $result = Inflector::pluralize(Inflector::underscore($className));
             static::_cache(__FUNCTION__, $className, $result);
         }
+
         return $result;
     }
 
@@ -547,6 +562,7 @@ class Inflector
             $result = Inflector::camelize(Inflector::singularize($tableName));
             static::_cache(__FUNCTION__, $tableName, $result);
         }
+
         return $result;
     }
 
@@ -565,6 +581,7 @@ class Inflector
             $result = preg_replace('/\\w/', $replace, $camelized, 1);
             static::_cache(__FUNCTION__, $string, $result);
         }
+
         return $result;
     }
 
@@ -581,13 +598,14 @@ class Inflector
     {
         $quotedReplacement = preg_quote($replacement, '/');
 
-        $merge = array(
+        $merge = [
             '/[^\s\p{Zs}\p{Ll}\p{Lm}\p{Lo}\p{Lt}\p{Lu}\p{Nd}]/mu' => ' ',
-            '/[\s\p{Zs}]+/mu' => $replacement,
+            '/[\s\p{Zs}]+/mu'                                     => $replacement,
             sprintf('/^[%s]+|[%s]+$/', $quotedReplacement, $quotedReplacement) => '',
-        );
+        ];
 
         $map = static::$_transliteration + $merge;
+
         return preg_replace(array_keys($map), array_values($map), $string);
     }
 }

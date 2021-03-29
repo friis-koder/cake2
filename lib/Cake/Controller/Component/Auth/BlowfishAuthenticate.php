@@ -11,7 +11,6 @@
  * @link          https://cakephp.org CakePHP(tm) Project
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('FormAuthenticate', 'Controller/Component/Auth');
 
 /**
@@ -39,12 +38,12 @@ App::uses('FormAuthenticate', 'Controller/Component/Auth');
  */
 class BlowfishAuthenticate extends FormAuthenticate
 {
-/**
- * Constructor. Sets default passwordHasher to Blowfish
- *
- * @param ComponentCollection $collection The Component collection used on this request.
- * @param array $settings Array of settings to use.
- */
+    /**
+     * Constructor. Sets default passwordHasher to Blowfish
+     *
+     * @param ComponentCollection $collection The Component collection used on this request.
+     * @param array $settings Array of settings to use.
+     */
     public function __construct(ComponentCollection $collection, $settings)
     {
         $this->settings['passwordHasher'] = 'Blowfish';

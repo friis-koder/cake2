@@ -15,7 +15,6 @@
  * @since         CakePHP v 2.0
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('CommandListShell', 'Console/Command');
 App::uses('ConsoleOutput', 'Console');
 App::uses('ConsoleInput', 'Console');
@@ -44,37 +43,37 @@ class TestStringOutput extends ConsoleOutput
  */
 class CommandListShellTest extends CakeTestCase
 {
-/**
- * setUp method
- *
- * @return void
- */
+    /**
+     * setUp method
+     *
+     * @return void
+     */
     public function setUp()
     {
         parent::setUp();
-        App::build(array(
-            'Plugin' => array(
+        App::build([
+            'Plugin' => [
                 CAKE . 'Test' . DS . 'test_app' . DS . 'Plugin' . DS
-            ),
-            'Console/Command' => array(
+            ],
+            'Console/Command' => [
                 CAKE . 'Test' . DS . 'test_app' . DS . 'Console' . DS . 'Command' . DS
-            )
-        ), App::RESET);
-        CakePlugin::load(array('TestPlugin', 'TestPluginTwo'));
+            ]
+        ], App::RESET);
+        CakePlugin::load(['TestPlugin', 'TestPluginTwo']);
 
         $out = new TestStringOutput();
-        $in = $this->getMock('ConsoleInput', array(), array(), '', false);
+        $in = $this->getMock('ConsoleInput', [], [], '', false);
 
         $this->Shell = $this->getMock(
             'CommandListShell',
-            array('in', '_stop', 'clear'),
-            array($out, $out, $in)
+            ['in', '_stop', 'clear'],
+            [$out, $out, $in]
         );
 
         $this->Shell->Command = $this->getMock(
             'CommandTask',
-            array('in', '_stop', 'clear'),
-            array($out, $out, $in)
+            ['in', '_stop', 'clear'],
+            [$out, $out, $in]
         );
     }
 

@@ -12,7 +12,6 @@
  * @since         CakePHP(tm) v 2.4.0
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('AbstractPasswordHasher', 'Controller/Component/Auth');
 App::uses('Security', 'Utility');
 
@@ -23,13 +22,13 @@ App::uses('Security', 'Utility');
  */
 class BlowfishPasswordHasher extends AbstractPasswordHasher
 {
-/**
- * Generates password hash.
- *
- * @param string $password Plain text password to hash.
- * @return string Password hash
- * @link https://book.cakephp.org/2.0/en/core-libraries/components/authentication.html#using-bcrypt-for-passwords
- */
+    /**
+     * Generates password hash.
+     *
+     * @param string $password Plain text password to hash.
+     * @return string Password hash
+     * @link https://book.cakephp.org/2.0/en/core-libraries/components/authentication.html#using-bcrypt-for-passwords
+     */
     public function hash($password)
     {
         return Security::hash($password, 'blowfish', false);

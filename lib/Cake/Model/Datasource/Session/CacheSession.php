@@ -15,7 +15,6 @@
  * @since         CakePHP(tm) v 2.0
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('Cache', 'Cache');
 App::uses('CakeSessionHandlerInterface', 'Model/Datasource/Session');
 
@@ -27,11 +26,11 @@ App::uses('CakeSessionHandlerInterface', 'Model/Datasource/Session');
  */
 class CacheSession implements CakeSessionHandlerInterface
 {
-/**
- * Method called on open of a database session.
- *
- * @return bool Success
- */
+    /**
+     * Method called on open of a database session.
+     *
+     * @return bool Success
+     */
     public function open()
     {
         return true;
@@ -60,6 +59,7 @@ class CacheSession implements CakeSessionHandlerInterface
         if (!is_numeric($data) && empty($data)) {
             return '';
         }
+
         return $data;
     }
 

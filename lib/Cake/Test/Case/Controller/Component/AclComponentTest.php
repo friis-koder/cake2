@@ -15,7 +15,6 @@
  * @since         CakePHP(tm) v 1.2.0.5435
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('AclComponent', 'Controller/Component');
 class_exists('AclComponent');
 
@@ -26,16 +25,16 @@ class_exists('AclComponent');
  */
 class AclComponentTest extends CakeTestCase
 {
-/**
- * setUp method
- *
- * @return void
- */
+    /**
+     * setUp method
+     *
+     * @return void
+     */
     public function setUp()
     {
         parent::setUp();
         if (!class_exists('MockAclImplementation', false)) {
-            $this->getMock('AclInterface', array(), array(), 'MockAclImplementation');
+            $this->getMock('AclInterface', [], [], 'MockAclImplementation');
         }
         Configure::write('Acl.classname', 'MockAclImplementation');
         $Collection = new ComponentCollection();

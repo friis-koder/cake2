@@ -14,7 +14,6 @@
  * @since         CakePHP(tm) v 2.0
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('ErrorHandler', 'Error');
 App::uses('ConsoleOutput', 'Console');
 App::uses('CakeLog', 'Log');
@@ -27,11 +26,11 @@ App::uses('CakeLog', 'Log');
  */
 class ConsoleErrorHandler
 {
-/**
- * Standard error stream.
- *
- * @var ConsoleOutput
- */
+    /**
+     * Standard error stream.
+     *
+     * @var ConsoleOutput
+     */
     public static $stderr;
 
     /**
@@ -44,6 +43,7 @@ class ConsoleErrorHandler
         if (empty(static::$stderr)) {
             static::$stderr = new ConsoleOutput('php://stderr');
         }
+
         return static::$stderr;
     }
 
@@ -64,6 +64,7 @@ class ConsoleErrorHandler
         ));
         $code = $exception->getCode();
         $code = ($code && is_int($code)) ? $code : 1;
+
         return $this->_stop($code);
     }
 

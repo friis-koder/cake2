@@ -13,7 +13,6 @@
  * @since         CakePHP(tm) v 1.2.0.4667
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('CakeSchema', 'Model');
 
 /**
@@ -24,11 +23,11 @@ App::uses('CakeSchema', 'Model');
  */
 class CakeTestFixture
 {
-/**
- * Name of the object
- *
- * @var string
- */
+    /**
+     * Name of the object
+     *
+     * @var string
+     */
     public $name = null;
 
     /**
@@ -57,7 +56,7 @@ class CakeTestFixture
      *
      * @var array
      */
-    public $created = array();
+    public $created = [];
 
     /**
      * Fields / Schema for the fixture.
@@ -65,14 +64,14 @@ class CakeTestFixture
      *
      * @var array
      */
-    public $fields = array();
+    public $fields = [];
 
     /**
      * Fixture records to be inserted.
      *
      * @var array
      */
-    public $records = array();
+    public $records = [];
 
     /**
      * The primary key for the table this fixture represents.
@@ -114,10 +113,11 @@ class CakeTestFixture
                     $connection,
                     $this->name
                 );
+
                 throw new CakeException($message);
             }
         }
-        $this->Schema = new CakeSchema(array('name' => 'TestSuite', 'connection' => $connection));
+        $this->Schema = new CakeSchema(['name' => 'TestSuite', 'connection' => $connection]);
         $this->init();
     }
 
@@ -131,8 +131,8 @@ class CakeTestFixture
     {
         if (isset($this->import) && (is_string($this->import) || is_array($this->import))) {
             $import = array_merge(
-                array('connection' => 'default', 'records' => false),
-                is_array($this->import) ? $this->import : array('model' => $this->import)
+                ['connection' => 'default', 'records' => false],
+                is_array($this->import) ? $this->import : ['model' => $this->import]
             );
 
             $this->Schema->connection = $import['connection'];
@@ -140,7 +140,7 @@ class CakeTestFixture
                 list($plugin, $modelClass) = pluginSplit($import['model'], true);
                 App::uses($modelClass, $plugin . 'Model');
                 if (!class_exists($modelClass)) {
-                    throw new MissingModelException(array('class' => $modelClass));
+                    throw new MissingModelException(['class' => $modelClass]);
                 }
                 $model = new $modelClass(null, null, $import['connection']);
                 $db = $model->getDataSource();
@@ -151,7 +151,7 @@ class CakeTestFixture
                 $this->fields[$model->primaryKey]['key'] = 'primary';
                 $this->table = $db->fullTableName($model, false, false);
                 $this->primaryKey = $model->primaryKey;
-                ClassRegistry::config(array('ds' => 'test'));
+                ClassRegistry::config(['ds' => 'test']);
                 ClassRegistry::flush();
             } elseif (isset($import['table'])) {
                 $model = new Model(null, $import['table'], $import['connection']);
@@ -171,16 +171,16 @@ class CakeTestFixture
             }
 
             if (isset($import['records']) && $import['records'] !== false && isset($model) && isset($db)) {
-                $this->records = array();
-                $query = array(
-                    'fields' => $db->fields($model, null, array_keys($this->fields)),
-                    'table' => $db->fullTableName($model),
-                    'alias' => $model->alias,
-                    'conditions' => array(),
-                    'order' => null,
-                    'limit' => null,
-                    'group' => null
-                );
+                $this->records = [];
+                $query = [
+                    'fields'     => $db->fields($model, null, array_keys($this->fields)),
+                    'table'      => $db->fullTableName($model),
+                    'alias'      => $model->alias,
+                    'conditions' => [],
+                    'order'      => null,
+                    'limit'      => null,
+                    'group'      => null
+                ];
                 $records = $db->fetchAll($db->buildStatement($query, $model), false, $model->alias);
 
                 if ($records !== false && !empty($records)) {
@@ -221,8 +221,9 @@ class CakeTestFixture
                     continue;
                 }
 
-                if (in_array($type, array('blob', 'text', 'binary'))) {
+                if (in_array($type, ['blob', 'text', 'binary'])) {
                     $canUseMemory = false;
+
                     break;
                 }
             }
@@ -231,9 +232,10 @@ class CakeTestFixture
                 $this->fields['tableParameters']['engine'] = 'MEMORY';
             }
         }
-        $this->Schema->build(array($this->table => $this->fields));
+        $this->Schema->build([$this->table => $this->fields]);
+
         try {
-            $db->execute($db->createSchema($this->Schema), array('log' => false));
+            $db->execute($db->createSchema($this->Schema), ['log' => false]);
             $this->created[] = $db->configKeyName;
         } catch (Exception $e) {
             $msg = __d(
@@ -244,8 +246,10 @@ class CakeTestFixture
             );
             CakeLog::error($msg);
             trigger_error($msg, E_USER_WARNING);
+
             return false;
         }
+
         return true;
     }
 
@@ -260,13 +264,15 @@ class CakeTestFixture
         if (empty($this->fields)) {
             return false;
         }
-        $this->Schema->build(array($this->table => $this->fields));
+        $this->Schema->build([$this->table => $this->fields]);
+
         try {
-            $db->execute($db->dropSchema($this->Schema), array('log' => false));
-            $this->created = array_diff($this->created, array($db->configKeyName));
+            $db->execute($db->dropSchema($this->Schema), ['log' => false]);
+            $this->created = array_diff($this->created, [$db->configKeyName]);
         } catch (Exception $e) {
             return false;
         }
+
         return true;
     }
 
@@ -281,9 +287,9 @@ class CakeTestFixture
     public function insert($db)
     {
         if (!isset($this->_insert)) {
-            $values = array();
+            $values = [];
             if (isset($this->records) && !empty($this->records)) {
-                $fields = array();
+                $fields = [];
                 foreach ($this->records as $record) {
                     $fields = array_merge($fields, array_keys(array_intersect_key($record, $this->fields)));
                 }
@@ -309,13 +315,15 @@ class CakeTestFixture
                 $result = $db->insertMulti($this->table, $fields, $values);
                 if ($this->primaryKey &&
                     isset($this->fields[$this->primaryKey]['type']) &&
-                    in_array($this->fields[$this->primaryKey]['type'], array('integer', 'biginteger'))
+                    in_array($this->fields[$this->primaryKey]['type'], ['integer', 'biginteger'])
                 ) {
                     $db->resetSequence($this->table, $this->primaryKey);
                 }
                 $db->useNestedTransactions = $nested;
+
                 return $result;
             }
+
             return true;
         }
     }
@@ -333,6 +341,7 @@ class CakeTestFixture
         $db->fullDebug = false;
         $return = $db->truncate($this->table);
         $db->fullDebug = $fullDebug;
+
         return $return;
     }
 }

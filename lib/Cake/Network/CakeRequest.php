@@ -14,7 +14,6 @@
  * @since         CakePHP(tm) v 2.0
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('Hash', 'Utility');
 
 /**
@@ -34,18 +33,18 @@ App::uses('Hash', 'Utility');
  */
 class CakeRequest implements ArrayAccess
 {
-/**
- * Array of parameters parsed from the URL.
- *
- * @var array
- */
-    public $params = array(
-        'plugin' => null,
+    /**
+     * Array of parameters parsed from the URL.
+     *
+     * @var array
+     */
+    public $params = [
+        'plugin'     => null,
         'controller' => null,
-        'action' => null,
-        'named' => array(),
-        'pass' => array(),
-    );
+        'action'     => null,
+        'named'      => [],
+        'pass'       => [],
+    ];
 
     /**
      * Array of POST data. Will contain form data as well as uploaded files.
@@ -55,14 +54,14 @@ class CakeRequest implements ArrayAccess
      *
      * @var array
      */
-    public $data = array();
+    public $data = [];
 
     /**
      * Array of querystring arguments
      *
      * @var array
      */
-    public $query = array();
+    public $query = [];
 
     /**
      * The URL string used for the request.
@@ -100,27 +99,27 @@ class CakeRequest implements ArrayAccess
      *
      * @var array
      */
-    protected $_detectors = array(
-        'get' => array('env' => 'REQUEST_METHOD', 'value' => 'GET'),
-        'patch' => array('env' => 'REQUEST_METHOD', 'value' => 'PATCH'),
-        'post' => array('env' => 'REQUEST_METHOD', 'value' => 'POST'),
-        'put' => array('env' => 'REQUEST_METHOD', 'value' => 'PUT'),
-        'delete' => array('env' => 'REQUEST_METHOD', 'value' => 'DELETE'),
-        'head' => array('env' => 'REQUEST_METHOD', 'value' => 'HEAD'),
-        'options' => array('env' => 'REQUEST_METHOD', 'value' => 'OPTIONS'),
-        'ssl' => array('env' => 'HTTPS', 'value' => 1),
-        'ajax' => array('env' => 'HTTP_X_REQUESTED_WITH', 'value' => 'XMLHttpRequest'),
-        'flash' => array('env' => 'HTTP_USER_AGENT', 'pattern' => '/^(Shockwave|Adobe) Flash/'),
-        'mobile' => array('env' => 'HTTP_USER_AGENT', 'options' => array(
+    protected $_detectors = [
+        'get'     => ['env' => 'REQUEST_METHOD', 'value' => 'GET'],
+        'patch'   => ['env' => 'REQUEST_METHOD', 'value' => 'PATCH'],
+        'post'    => ['env' => 'REQUEST_METHOD', 'value' => 'POST'],
+        'put'     => ['env' => 'REQUEST_METHOD', 'value' => 'PUT'],
+        'delete'  => ['env' => 'REQUEST_METHOD', 'value' => 'DELETE'],
+        'head'    => ['env' => 'REQUEST_METHOD', 'value' => 'HEAD'],
+        'options' => ['env' => 'REQUEST_METHOD', 'value' => 'OPTIONS'],
+        'ssl'     => ['env' => 'HTTPS', 'value' => 1],
+        'ajax'    => ['env' => 'HTTP_X_REQUESTED_WITH', 'value' => 'XMLHttpRequest'],
+        'flash'   => ['env' => 'HTTP_USER_AGENT', 'pattern' => '/^(Shockwave|Adobe) Flash/'],
+        'mobile'  => ['env' => 'HTTP_USER_AGENT', 'options' => [
             'Android', 'AvantGo', 'BB10', 'BlackBerry', 'DoCoMo', 'Fennec', 'iPod', 'iPhone', 'iPad',
             'J2ME', 'MIDP', 'NetFront', 'Nokia', 'Opera Mini', 'Opera Mobi', 'PalmOS', 'PalmSource',
             'portalmmm', 'Plucker', 'ReqwirelessWeb', 'SonyEricsson', 'Symbian', 'UP\\.Browser',
             'webOS', 'Windows CE', 'Windows Phone OS', 'Xiino'
-        )),
-        'requested' => array('param' => 'requested', 'value' => 1),
-        'json' => array('accept' => array('application/json'), 'param' => 'ext', 'value' => 'json'),
-        'xml' => array('accept' => array('application/xml', 'text/xml'), 'param' => 'ext', 'value' => 'xml'),
-    );
+        ]],
+        'requested' => ['param' => 'requested', 'value' => 1],
+        'json'      => ['accept' => ['application/json'], 'param' => 'ext', 'value' => 'json'],
+        'xml'       => ['accept' => ['application/xml', 'text/xml'], 'param' => 'ext', 'value' => 'xml'],
+    ];
 
     /**
      * Copy of php://input. Since this stream can only be read once in most SAPI's
@@ -199,8 +198,8 @@ class CakeRequest implements ArrayAccess
             unset($this->data['_method']);
         }
 
-        if ($override && !in_array($override, array('POST', 'PUT', 'PATCH', 'DELETE'))) {
-            $this->data = array();
+        if ($override && !in_array($override, ['POST', 'PUT', 'PATCH', 'DELETE'])) {
+            $this->data = [];
         }
 
         if ($isArray && isset($this->data['data'])) {
@@ -227,7 +226,7 @@ class CakeRequest implements ArrayAccess
             $query = $_GET;
         }
 
-        $unsetUrl = '/' . str_replace(array('.', ' '), '_', urldecode($this->url));
+        $unsetUrl = '/' . str_replace(['.', ' '], '_', urldecode($this->url));
         unset($query[$unsetUrl]);
         unset($query[$this->base . $unsetUrl]);
         if (strpos($this->url, '?') !== false) {
@@ -291,6 +290,7 @@ class CakeRequest implements ArrayAccess
         ) {
             $uri = '/';
         }
+
         return $uri;
     }
 
@@ -314,6 +314,7 @@ class CakeRequest implements ArrayAccess
         }
         if ($base !== false) {
             $this->webroot = $base . '/';
+
             return $this->base = $base;
         }
 
@@ -361,6 +362,7 @@ class CakeRequest implements ArrayAccess
                 $this->webroot .= $webroot . '/';
             }
         }
+
         return $this->base = $base . $file;
     }
 
@@ -422,6 +424,7 @@ class CakeRequest implements ArrayAccess
         if ($type) {
             return $type;
         }
+
         return env('HTTP_CONTENT_TYPE');
     }
 
@@ -441,6 +444,7 @@ class CakeRequest implements ArrayAccess
         } else {
             $ipaddr = env('REMOTE_ADDR');
         }
+
         return trim($ipaddr);
     }
 
@@ -464,11 +468,13 @@ class CakeRequest implements ArrayAccess
                 if ($ref[0] !== '/') {
                     $ref = '/' . $ref;
                 }
+
                 return $ref;
             } elseif (!$local) {
                 return $ref;
             }
         }
+
         return '/';
     }
 
@@ -484,8 +490,10 @@ class CakeRequest implements ArrayAccess
     {
         if (strpos($name, 'is') === 0) {
             $type = strtolower(substr($name, 2));
+
             return $this->is($type);
         }
+
         throw new CakeException(__d('cake_dev', 'Method %s does not exist', $name));
     }
 
@@ -502,6 +510,7 @@ class CakeRequest implements ArrayAccess
         if (isset($this->params[$name])) {
             return $this->params[$name];
         }
+
         return null;
     }
 
@@ -536,6 +545,7 @@ class CakeRequest implements ArrayAccess
                     return true;
                 }
             }
+
             return false;
         }
         $type = strtolower($type);
@@ -558,6 +568,7 @@ class CakeRequest implements ArrayAccess
         if (isset($detect['callback']) && is_callable($detect['callback'])) {
             return call_user_func($detect['callback'], $this);
         }
+
         return false;
     }
 
@@ -570,11 +581,12 @@ class CakeRequest implements ArrayAccess
     protected function _extensionDetector($detect)
     {
         if (is_string($detect['extension'])) {
-            $detect['extension'] = array($detect['extension']);
+            $detect['extension'] = [$detect['extension']];
         }
         if (in_array($this->params['ext'], $detect['extension'])) {
             return true;
         }
+
         return false;
     }
 
@@ -592,6 +604,7 @@ class CakeRequest implements ArrayAccess
                 return true;
             }
         }
+
         return false;
     }
 
@@ -609,9 +622,11 @@ class CakeRequest implements ArrayAccess
                 if (!is_string($value) && !is_bool($value) && is_callable($value)) {
                     return call_user_func($value, $header);
                 }
+
                 return ($header === $value);
             }
         }
+
         return false;
     }
 
@@ -626,11 +641,13 @@ class CakeRequest implements ArrayAccess
         $key = $detect['param'];
         if (isset($detect['value'])) {
             $value = $detect['value'];
+
             return isset($this->params[$key]) ? $this->params[$key] == $value : false;
         }
         if (isset($detect['options'])) {
             return isset($this->params[$key]) ? in_array($this->params[$key], $detect['options']) : false;
         }
+
         return false;
     }
 
@@ -651,9 +668,11 @@ class CakeRequest implements ArrayAccess
             }
             if (isset($detect['options'])) {
                 $pattern = '/' . implode('|', $detect['options']) . '/i';
+
                 return (bool)preg_match($pattern, env($detect['env']));
             }
         }
+
         return false;
     }
 
@@ -675,6 +694,7 @@ class CakeRequest implements ArrayAccess
                 return false;
             }
         }
+
         return true;
     }
 
@@ -744,6 +764,7 @@ class CakeRequest implements ArrayAccess
     public function addParams($params)
     {
         $this->params = array_merge($this->params, (array)$params);
+
         return $this;
     }
 
@@ -756,11 +777,12 @@ class CakeRequest implements ArrayAccess
      */
     public function addPaths($paths)
     {
-        foreach (array('webroot', 'here', 'base') as $element) {
+        foreach (['webroot', 'here', 'base'] as $element) {
             if (isset($paths[$element])) {
                 $this->{$element} = $paths[$element];
             }
         }
+
         return $this;
     }
 
@@ -779,6 +801,7 @@ class CakeRequest implements ArrayAccess
         if (!$base) {
             $url = preg_replace('/^' . preg_quote($this->base, '/') . '/', '', $url, 1);
         }
+
         return $url;
     }
 
@@ -799,6 +822,7 @@ class CakeRequest implements ArrayAccess
         if (isset($_SERVER[$name])) {
             return $_SERVER[$name];
         }
+
         return false;
     }
 
@@ -831,6 +855,7 @@ class CakeRequest implements ArrayAccess
         if ($trustProxy) {
             return env('HTTP_X_FORWARDED_HOST');
         }
+
         return env('HTTP_HOST');
     }
 
@@ -845,6 +870,7 @@ class CakeRequest implements ArrayAccess
     {
         $segments = explode('.', $this->host());
         $domain = array_slice($segments, -1 * ($tldLength + 1));
+
         return implode('.', $domain);
     }
 
@@ -858,6 +884,7 @@ class CakeRequest implements ArrayAccess
     public function subdomains($tldLength = 1)
     {
         $segments = explode('.', $this->host());
+
         return array_slice($segments, 0, -1 * ($tldLength + 1));
     }
 
@@ -883,13 +910,14 @@ class CakeRequest implements ArrayAccess
     public function accepts($type = null)
     {
         $raw = $this->parseAccept();
-        $accept = array();
+        $accept = [];
         foreach ($raw as $types) {
             $accept = array_merge($accept, $types);
         }
         if ($type === null) {
             return $accept;
         }
+
         return in_array($type, $accept);
     }
 
@@ -924,7 +952,7 @@ class CakeRequest implements ArrayAccess
     public static function acceptLanguage($language = null)
     {
         $raw = static::_parseAcceptWithQualifier(static::header('Accept-Language'));
-        $accept = array();
+        $accept = [];
         foreach ($raw as $languages) {
             foreach ($languages as &$lang) {
                 if (strpos($lang, '_')) {
@@ -937,6 +965,7 @@ class CakeRequest implements ArrayAccess
         if ($language === null) {
             return $accept;
         }
+
         return in_array(strtolower($language), $accept);
     }
 
@@ -951,7 +980,7 @@ class CakeRequest implements ArrayAccess
      */
     protected static function _parseAcceptWithQualifier($header)
     {
-        $accept = array();
+        $accept = [];
         $header = explode(',', $header);
         foreach (array_filter($header) as $value) {
             $prefValue = '1.0';
@@ -970,13 +999,14 @@ class CakeRequest implements ArrayAccess
             }
 
             if (!isset($accept[$prefValue])) {
-                $accept[$prefValue] = array();
+                $accept[$prefValue] = [];
             }
             if ($prefValue) {
                 $accept[$prefValue][] = $value;
             }
         }
         krsort($accept);
+
         return $accept;
     }
 
@@ -1017,8 +1047,10 @@ class CakeRequest implements ArrayAccess
         $args = func_get_args();
         if (count($args) === 2) {
             $this->data = Hash::insert($this->data, $name, $args[1]);
+
             return $this;
         }
+
         return Hash::get($this->data, $name);
     }
 
@@ -1034,11 +1066,13 @@ class CakeRequest implements ArrayAccess
         $args = func_get_args();
         if (count($args) === 2) {
             $this->params = Hash::insert($this->params, $name, $args[1]);
+
             return $this;
         }
         if (!isset($this->params[$name])) {
             return Hash::get($this->params, $name, false);
         }
+
         return $this->params[$name];
     }
 
@@ -1068,8 +1102,10 @@ class CakeRequest implements ArrayAccess
         if (!empty($args)) {
             $callback = array_shift($args);
             array_unshift($args, $input);
+
             return call_user_func_array($callback, $args);
         }
+
         return $input;
     }
 
@@ -1115,6 +1151,7 @@ class CakeRequest implements ArrayAccess
         $allowed = strtoupper(implode(', ', $methods));
         $e = new MethodNotAllowedException();
         $e->responseHeader('Allow', $allowed);
+
         throw $e;
     }
 
@@ -1132,6 +1169,7 @@ class CakeRequest implements ArrayAccess
         if (!is_array($methods)) {
             $methods = func_get_args();
         }
+
         return $this->allowMethod($methods);
     }
 
@@ -1148,6 +1186,7 @@ class CakeRequest implements ArrayAccess
             fclose($fh);
             $this->_input = $content;
         }
+
         return $this->_input;
     }
 
@@ -1168,6 +1207,7 @@ class CakeRequest implements ArrayAccess
         if ($name === 'data') {
             return $this->data;
         }
+
         return null;
     }
 
@@ -1194,6 +1234,7 @@ class CakeRequest implements ArrayAccess
         if ($name === 'url' || $name === 'data') {
             return true;
         }
+
         return isset($this->params[$name]);
     }
 

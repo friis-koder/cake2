@@ -15,7 +15,6 @@
  * @since         CakePHP(tm) v 2.0
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('CakeSessionHandlerInterface', 'Model/Datasource/Session');
 App::uses('ClassRegistry', 'Utility');
 
@@ -26,11 +25,11 @@ App::uses('ClassRegistry', 'Utility');
  */
 class DatabaseSession implements CakeSessionHandlerInterface
 {
-/**
- * Reference to the model handling the session data
- *
- * @var Model
- */
+    /**
+     * Reference to the model handling the session data
+     *
+     * @var Model
+     */
     protected $_model;
 
     /**
@@ -49,16 +48,16 @@ class DatabaseSession implements CakeSessionHandlerInterface
         $modelName = Configure::read('Session.handler.model');
 
         if (empty($modelName)) {
-            $settings = array(
+            $settings = [
                 'class' => 'Session',
                 'alias' => 'Session',
                 'table' => 'cake_sessions',
-            );
+            ];
         } else {
-            $settings = array(
+            $settings = [
                 'class' => $modelName,
                 'alias' => 'Session',
-            );
+            ];
         }
         $this->_model = ClassRegistry::init($settings);
         $this->_timeout = Configure::read('Session.timeout') * 60;
@@ -92,9 +91,9 @@ class DatabaseSession implements CakeSessionHandlerInterface
      */
     public function read($id)
     {
-        $row = $this->_model->find('first', array(
-            'conditions' => array($this->_model->alias . '.' . $this->_model->primaryKey => $id)
-        ));
+        $row = $this->_model->find('first', [
+            'conditions' => [$this->_model->alias . '.' . $this->_model->primaryKey => $id]
+        ]);
 
         if (empty($row[$this->_model->alias])) {
             return '';
@@ -126,11 +125,12 @@ class DatabaseSession implements CakeSessionHandlerInterface
         $record = compact('id', 'data', 'expires');
         $record[$this->_model->primaryKey] = $id;
 
-        $options = array(
-            'validate' => false,
-            'callbacks' => false,
+        $options = [
+            'validate'     => false,
+            'callbacks'    => false,
             'counterCache' => false
-        );
+        ];
+
         try {
             return (bool)$this->_model->save($record, $options);
         } catch (PDOException $e) {
@@ -162,7 +162,8 @@ class DatabaseSession implements CakeSessionHandlerInterface
         } else {
             $expires = time() - $expires;
         }
-        $this->_model->deleteAll(array($this->_model->alias . ".expires <" => $expires), false, false);
+        $this->_model->deleteAll([$this->_model->alias . ".expires <" => $expires], false, false);
+
         return true;
     }
 }

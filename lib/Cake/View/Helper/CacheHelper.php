@@ -13,7 +13,6 @@
  * @since         CakePHP(tm) v 1.0.0.2277
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('AppHelper', 'View/Helper');
 
 /**
@@ -29,13 +28,13 @@ App::uses('AppHelper', 'View/Helper');
  */
 class CacheHelper extends AppHelper
 {
-/**
- * Array of strings replaced in cached views.
- * The strings are found between `<!--nocache--><!--/nocache-->` in views
- *
- * @var array
- */
-    protected $_replace = array();
+    /**
+     * Array of strings replaced in cached views.
+     * The strings are found between `<!--nocache--><!--/nocache-->` in views
+     *
+     * @var array
+     */
+    protected $_replace = [];
 
     /**
      * Array of string that are replace with there var replace above.
@@ -43,7 +42,7 @@ class CacheHelper extends AppHelper
      *
      * @var array
      */
-    protected $_match = array();
+    protected $_match = [];
 
     /**
      * Counter used for counting nocache section tags.
@@ -101,8 +100,9 @@ class CacheHelper extends AppHelper
      */
     protected function _parseContent($file, $out)
     {
-        $out = preg_replace_callback('/<!--nocache-->/', array($this, '_replaceSection'), $out);
+        $out = preg_replace_callback('/<!--nocache-->/', [$this, '_replaceSection'], $out);
         $this->_parseFile($file, $out);
+
         return $out;
     }
 
@@ -128,6 +128,7 @@ class CacheHelper extends AppHelper
             foreach ($keys as $action) {
                 if ($action === $this->request->params['action']) {
                     $index = $action;
+
                     break;
                 }
             }
@@ -139,7 +140,7 @@ class CacheHelper extends AppHelper
             $options = $cacheAction;
             if (isset($cacheAction[$index])) {
                 if (is_array($cacheAction[$index])) {
-                    $options = $cacheAction[$index] + array('duration' => 0, 'callbacks' => false);
+                    $options = $cacheAction[$index] + ['duration' => 0, 'callbacks' => false];
                 } else {
                     $cacheTime = $cacheAction[$index];
                 }
@@ -156,6 +157,7 @@ class CacheHelper extends AppHelper
 
         if ($cacheTime && $cacheTime > 0) {
             $cached = $this->_parseOutput($out);
+
             try {
                 $this->_writeFile($cached, $cacheTime, $useCallbacks);
             } catch (Exception $e) {
@@ -173,6 +175,7 @@ class CacheHelper extends AppHelper
             }
             $out = $this->_stripTags($out);
         }
+
         return $out;
     }
 
@@ -226,6 +229,7 @@ class CacheHelper extends AppHelper
     protected function _replaceSection()
     {
         $this->_counter += 1;
+
         return sprintf('<!--nocache:%03d-->', $this->_counter);
     }
 
@@ -270,8 +274,10 @@ class CacheHelper extends AppHelper
                 }
                 $count++;
             }
+
             return $cache;
         }
+
         return $cache;
     }
 
@@ -345,6 +351,7 @@ class CacheHelper extends AppHelper
 		?>';
         $content = preg_replace("/(<\\?xml)/", "<?php echo '$1'; ?>", $content);
         $file .= $content;
+
         return cache('views' . DS . $cache, $file, $timestamp);
     }
 }

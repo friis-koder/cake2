@@ -14,7 +14,6 @@
  * @since         CakePHP(tm) v 2.0
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('CakePlugin', 'Core');
 
 /**
@@ -28,11 +27,11 @@ App::uses('CakePlugin', 'Core');
  */
 class PhpReader implements ConfigReaderInterface
 {
-/**
- * The path this reader finds files on.
- *
- * @var string
- */
+    /**
+     * The path this reader finds files on.
+     *
+     * @var string
+     */
     protected $_path = null;
 
     /**
@@ -75,6 +74,7 @@ class PhpReader implements ConfigReaderInterface
         if (!isset($config)) {
             throw new ConfigureException(__d('cake_dev', 'No variable %s found in %s', '$config', $file));
         }
+
         return $config;
     }
 
@@ -92,6 +92,7 @@ class PhpReader implements ConfigReaderInterface
         $contents = '<?php' . "\n" . '$config = ' . var_export($data, true) . ';';
 
         $filename = $this->_getFilePath($key);
+
         return file_put_contents($filename, $contents);
     }
 

@@ -9,7 +9,7 @@ class Test2Source extends DataSource
 
     public function listSources($data = null)
     {
-        return array('test_source');
+        return ['test_source'];
     }
 
     public function create(Model $model, $fields = null, $values = null)
@@ -17,12 +17,12 @@ class Test2Source extends DataSource
         return compact('model', 'fields', 'values');
     }
 
-    public function read(Model $model, $queryData = array(), $recursive = null)
+    public function read(Model $model, $queryData = [], $recursive = null)
     {
         return compact('model', 'queryData');
     }
 
-    public function update(Model $model, $fields = array(), $values = array(), $conditions = null)
+    public function update(Model $model, $fields = [], $values = [], $conditions = null)
     {
         return compact('model', 'fields', 'values');
     }

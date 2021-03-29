@@ -23,26 +23,26 @@
  */
 class DeviceFixture extends CakeTestFixture
 {
-/**
- * fields property
- *
- * @var array
- */
-    public $fields = array(
-        'id' => array('type' => 'integer', 'key' => 'primary'),
-        'device_type_id' => array('type' => 'integer', 'null' => false),
-        'name' => array('type' => 'string', 'null' => false),
-        'typ' => array('type' => 'integer', 'null' => false),
-    );
+    /**
+     * fields property
+     *
+     * @var array
+     */
+    public $fields = [
+        'id'             => ['type' => 'integer', 'key' => 'primary'],
+        'device_type_id' => ['type' => 'integer', 'null' => false],
+        'name'           => ['type' => 'string', 'null' => false],
+        'typ'            => ['type' => 'integer', 'null' => false],
+    ];
 
     /**
      * records property
      *
      * @var array
      */
-    public $records = array(
-        array('device_type_id' => 1, 'name' => 'Device 1', 'typ' => 1),
-        array('device_type_id' => 1, 'name' => 'Device 2', 'typ' => 1),
-        array('device_type_id' => 1, 'name' => 'Device 3', 'typ' => 2)
-    );
+    public $records = [
+        ['device_type_id' => 1, 'name' => 'Device 1', 'typ' => 1],
+        ['device_type_id' => 1, 'name' => 'Device 2', 'typ' => 1],
+        ['device_type_id' => 1, 'name' => 'Device 3', 'typ' => 2]
+    ];
 }

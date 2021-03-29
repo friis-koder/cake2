@@ -15,7 +15,6 @@
  * @since         CakePHP(tm) v 2.0
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('ObjectCollection', 'Utility');
 
 /**
@@ -26,11 +25,11 @@ App::uses('ObjectCollection', 'Utility');
  */
 class TaskCollection extends ObjectCollection
 {
-/**
- * Shell to use to set params to tasks.
- *
- * @var Shell
- */
+    /**
+     * Shell to use to set params to tasks.
+     *
+     * @var Shell
+     */
     protected $_Shell;
 
     /**
@@ -68,7 +67,7 @@ class TaskCollection extends ObjectCollection
      * @return AppShell A task object, Either the existing loaded task or a new one.
      * @throws MissingTaskException when the task could not be found
      */
-    public function load($task, $settings = array())
+    public function load($task, $settings = [])
     {
         if (is_array($settings) && isset($settings['className'])) {
             $alias = $task;
@@ -87,10 +86,10 @@ class TaskCollection extends ObjectCollection
 
         $exists = class_exists($taskClass);
         if (!$exists) {
-            throw new MissingTaskException(array(
-                'class' => $taskClass,
+            throw new MissingTaskException([
+                'class'  => $taskClass,
                 'plugin' => substr($plugin, 0, -1)
-            ));
+            ]);
         }
 
         $this->_loaded[$alias] = new $taskClass(
@@ -98,6 +97,7 @@ class TaskCollection extends ObjectCollection
             $this->_Shell->stderr,
             $this->_Shell->stdin
         );
+
         return $this->_loaded[$alias];
     }
 }

@@ -17,7 +17,6 @@
  * @since         CakePHP(tm) v 2.0
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('AppController', 'Controller');
 
 /**
@@ -29,12 +28,12 @@ App::uses('AppController', 'Controller');
  */
 class CakeErrorController extends AppController
 {
-/**
- * Uses Property
- *
- * @var array
- */
-    public $uses = array();
+    /**
+     * Uses Property
+     *
+     * @var array
+     */
+    public $uses = [];
 
     /**
      * Constructor
@@ -57,6 +56,6 @@ class CakeErrorController extends AppController
         if ($this->Components->enabled('Security')) {
             $this->Components->disable('Security');
         }
-        $this->_set(array('cacheAction' => false, 'viewPath' => 'Errors'));
+        $this->_set(['cacheAction' => false, 'viewPath' => 'Errors']);
     }
 }

@@ -21,12 +21,12 @@
  */
 abstract class CacheEngine
 {
-/**
- * Settings of current engine instance
- *
- * @var array
- */
-    public $settings = array();
+    /**
+     * Settings of current engine instance
+     *
+     * @var array
+     */
+    public $settings = [];
 
     /**
      * Contains the compiled string with all groups
@@ -44,14 +44,14 @@ abstract class CacheEngine
      * @param array $settings Associative array of parameters for the engine
      * @return bool True if the engine has been successfully initialized, false if not
      */
-    public function init($settings = array())
+    public function init($settings = [])
     {
-        $settings += $this->settings + array(
-            'prefix' => 'cake_',
-            'duration' => 3600,
+        $settings += $this->settings + [
+            'prefix'      => 'cake_',
+            'duration'    => 3600,
             'probability' => 100,
-            'groups' => array()
-        );
+            'groups'      => []
+        ];
         $this->settings = $settings;
         if (!empty($this->settings['groups'])) {
             sort($this->settings['groups']);
@@ -60,6 +60,7 @@ abstract class CacheEngine
         if (!is_numeric($this->settings['duration'])) {
             $this->settings['duration'] = strtotime($this->settings['duration']) - time();
         }
+
         return true;
     }
 
@@ -191,7 +192,8 @@ abstract class CacheEngine
             $prefix = md5(implode('_', $this->groups()));
         }
 
-        $key = preg_replace('/[\s]+/', '_', strtolower(trim(str_replace(array(DS, '/', '.'), '_', strval($key)))));
+        $key = preg_replace('/[\s]+/', '_', strtolower(trim(str_replace([DS, '/', '.'], '_', strval($key)))));
+
         return $prefix . $key;
     }
 }

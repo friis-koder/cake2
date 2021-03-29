@@ -23,11 +23,11 @@
  */
 class ViewBlock
 {
-/**
- * Append content
- *
- * @var string
- */
+    /**
+     * Append content
+     *
+     * @var string
+     */
     public const APPEND = 'append';
 
     /**
@@ -42,14 +42,14 @@ class ViewBlock
      *
      * @var array
      */
-    protected $_blocks = array();
+    protected $_blocks = [];
 
     /**
      * The active blocks being captured.
      *
      * @var array
      */
-    protected $_active = array();
+    protected $_active = [];
 
     /**
      * Should the currently captured content be discarded on ViewBlock::end()
@@ -114,6 +114,7 @@ class ViewBlock
         if ($this->_discardActiveBufferOnEnd) {
             $this->_discardActiveBufferOnEnd = false;
             ob_end_clean();
+
             return;
         }
         if (!empty($this->_active)) {
@@ -200,6 +201,7 @@ class ViewBlock
         if (!isset($this->_blocks[$name])) {
             return $default;
         }
+
         return $this->_blocks[$name];
     }
 
