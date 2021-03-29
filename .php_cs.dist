@@ -1,0 +1,18 @@
+<?php
+
+$config = new PhpCsFixer\Config();
+
+return $config
+    ->setUsingCache(true)
+    ->setCacheFile(__DIR__ . DIRECTORY_SEPARATOR . '.cache' . DIRECTORY_SEPARATOR . 'php-cs-fixer.cache')
+    ->setHideProgress(false)
+    ->setRules([
+        '@PSR12' => true
+    ])
+    ->setFinder(PhpCsFixer\Finder::create()
+        ->files()
+        ->name('*.php')
+        ->ignoreVCS(true)
+        ->ignoreDotFiles(true)
+        ->in(__DIR__ . '/lib/Cake')
+    );
