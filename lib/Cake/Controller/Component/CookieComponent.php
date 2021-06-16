@@ -120,6 +120,15 @@ class CookieComponent extends Component
     public $httpOnly = false;
 
     /**
+     * SameSite
+     *
+     * Must be one of: None, Lax, or Strict
+     *
+     * @var string
+     */
+    public $sameSite = 'None';
+
+    /**
      * Values stored in the cookie.
      *
      * Accessed in the controller using $this->Cookie->read('Name.key');
@@ -416,7 +425,8 @@ class CookieComponent extends Component
             'path'     => $this->path,
             'domain'   => $this->domain,
             'secure'   => $this->secure,
-            'httpOnly' => $this->httpOnly
+            'httpOnly' => $this->httpOnly,
+            'sameSite' => $this->sameSite
         ]);
 
         if (!empty($this->_reset)) {
@@ -439,7 +449,8 @@ class CookieComponent extends Component
             'path'     => $this->path,
             'domain'   => $this->domain,
             'secure'   => $this->secure,
-            'httpOnly' => $this->httpOnly
+            'httpOnly' => $this->httpOnly,
+            'sameSite' => $this->sameSite
         ]);
     }
 

@@ -480,11 +480,14 @@ class CakeResponse
             setcookie(
                 $name,
                 $c['value'],
-                $c['expire'],
-                $c['path'],
-                $c['domain'],
-                $c['secure'],
-                $c['httpOnly']
+                [
+                    'expires'  => $c['expire'],
+                    'path'     => $c['path'],
+                    'domain'   => $c['domain'],
+                    'secure'   => $c['secure'],
+                    'httpOnly' => $c['httpOnly'],
+                    'sameSite' => $c['sameSite']
+                ]
             );
         }
     }
@@ -1351,7 +1354,8 @@ class CakeResponse
             'path'     => '/',
             'domain'   => '',
             'secure'   => false,
-            'httpOnly' => false
+            'httpOnly' => false,
+            'sameSite' => 'None'
         ];
         $options += $defaults;
 
