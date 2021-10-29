@@ -1017,6 +1017,10 @@ class Validation
             return true;
         }
 
+        if (is_string($regex) && is_object($check) && method_exists($check, '__toString') && preg_match($regex, (string) $check)) {
+            return true;
+        }
+
         return false;
     }
 
