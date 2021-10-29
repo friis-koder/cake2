@@ -730,7 +730,7 @@ class I18n
 
         // If there are no args to insert, bail out and returned the translated string.
         if ($len === 0 || ($len === 1 && $args[0] === null)) {
-            return $translated;
+            $args = [];
         }
 
         if (isset($args[0]) && is_array($args[0])) {
