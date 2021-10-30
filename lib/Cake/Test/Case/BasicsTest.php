@@ -502,8 +502,8 @@ class BasicsTest extends CakeTestCase
     {
         Configure::write('Config.language', 'rule_1_po');
 
-        $result = __n('%-5d = 1', '%-5d = 0 or > 1', 10);
-        $expected = '%-5d = 0 or > 1 (translated)';
+        $result = __n('%-5d = 1', '%-5d = 0 or > 1', 10, 10);
+        $expected = '10    = 0 or > 1 (translated)';
         $this->assertEquals($expected, $result);
     }
 
@@ -568,16 +568,16 @@ class BasicsTest extends CakeTestCase
     {
         Configure::write('Config.language', 'rule_1_po');
 
-        $result = __n('%d = 1', '%d = 0 or > 1', 0);
-        $expected = '%d = 0 or > 1 (translated)';
+        $result = __n('%d = 1', '%d = 0 or > 1', 0, 0);
+        $expected = '0 = 0 or > 1 (translated)';
         $this->assertEquals($expected, $result);
 
-        $result = __n('%d = 1', '%d = 0 or > 1', 1);
-        $expected = '%d = 1 (translated)';
+        $result = __n('%d = 1', '%d = 0 or > 1', 1, 1);
+        $expected = '1 = 1 (translated)';
         $this->assertEquals($expected, $result);
 
-        $result = __n('%d = 1 (from core)', '%d = 0 or > 1 (from core)', 2);
-        $expected = '%d = 0 or > 1 (from core translated)';
+        $result = __n('%d = 1 (from core)', '%d = 0 or > 1 (from core)', 2, 2);
+        $expected = '2 = 0 or > 1 (from core translated)';
         $this->assertEquals($expected, $result);
 
         $result = __n('%d item.', '%d items.', 1, 1);
@@ -632,20 +632,20 @@ class BasicsTest extends CakeTestCase
     {
         Configure::write('Config.language', 'rule_1_po');
 
-        $result = __dn('default', '%d = 1', '%d = 0 or > 1', 0);
-        $expected = '%d = 0 or > 1 (translated)';
+        $result = __dn('default', '%d = 1', '%d = 0 or > 1', 0, 0);
+        $expected = '0 = 0 or > 1 (translated)';
         $this->assertEquals($expected, $result);
 
-        $result = __dn('core', '%d = 1', '%d = 0 or > 1', 0);
-        $expected = '%d = 0 or > 1';
+        $result = __dn('core', '%d = 1', '%d = 0 or > 1', 0, 0);
+        $expected = '0 = 0 or > 1';
         $this->assertEquals($expected, $result);
 
-        $result = __dn('core', '%d = 1 (from core)', '%d = 0 or > 1 (from core)', 0);
-        $expected = '%d = 0 or > 1 (from core translated)';
+        $result = __dn('core', '%d = 1 (from core)', '%d = 0 or > 1 (from core)', 0, 0);
+        $expected = '0 = 0 or > 1 (from core translated)';
         $this->assertEquals($expected, $result);
 
-        $result = __dn('default', '%d = 1', '%d = 0 or > 1', 1);
-        $expected = '%d = 1 (translated)';
+        $result = __dn('default', '%d = 1', '%d = 0 or > 1', 1, 1);
+        $expected = '1 = 1 (translated)';
         $this->assertEquals($expected, $result);
 
         $result = __dn('core', '%d item.', '%d items.', 1, 1);
