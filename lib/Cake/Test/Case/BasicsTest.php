@@ -534,12 +534,12 @@ class BasicsTest extends CakeTestCase
     {
         Configure::write('Config.language', 'rule_1_po');
 
-        $result = __dcn('default', '%-5d = 1', '%-5d = 0 or > 1', 0, 6);
-        $expected = '%-5d = 0 or > 1 (translated)';
+        $result = __dcn('default', '%-5d = 1', '%-5d = 0 or > 1', 0, I18n::LC_MESSAGES, 0);
+        $expected = '0     = 0 or > 1 (translated)';
         $this->assertEquals($expected, $result);
 
-        $result = __dcn('default', '%-5d = 1', '%-5d = 0 or > 1', 1, 6);
-        $expected = '%-5d = 1 (translated)';
+        $result = __dcn('default', '%-5d = 1', '%-5d = 0 or > 1', 1, I18n::LC_MESSAGES, 1);
+        $expected = '1     = 1 (translated)';
         $this->assertEquals($expected, $result);
     }
 
@@ -732,16 +732,16 @@ class BasicsTest extends CakeTestCase
     {
         Configure::write('Config.language', 'rule_1_po');
 
-        $result = __dcn('default', '%d = 1', '%d = 0 or > 1', 0, 6);
-        $expected = '%d = 0 or > 1 (translated)';
+        $result = __dcn('default', '%d = 1', '%d = 0 or > 1', 0, I18n::LC_MESSAGES, 0);
+        $expected = '0 = 0 or > 1 (translated)';
         $this->assertEquals($expected, $result);
 
-        $result = __dcn('default', '%d = 1 (from core)', '%d = 0 or > 1 (from core)', 1, 6);
-        $expected = '%d = 1 (from core translated)';
+        $result = __dcn('default', '%d = 1 (from core)', '%d = 0 or > 1 (from core)', 1, I18n::LC_MESSAGES, 1);
+        $expected = '1 = 1 (from core translated)';
         $this->assertEquals($expected, $result);
 
-        $result = __dcn('core', '%d = 1', '%d = 0 or > 1', 0, 6);
-        $expected = '%d = 0 or > 1';
+        $result = __dcn('core', '%d = 1', '%d = 0 or > 1', 0, I18n::LC_MESSAGES, 0);
+        $expected = '0 = 0 or > 1';
         $this->assertEquals($expected, $result);
 
         $result = __dcn('core', '%d item.', '%d items.', 1, I18n::LC_MESSAGES, 1);
