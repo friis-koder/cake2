@@ -514,15 +514,15 @@ class BasicsTest extends CakeTestCase
     {
         Configure::write('Config.language', 'rule_1_po');
 
-        $result = __dc('default', '%+10s world', 6, 'hello');
+        $result = __dc('default', '%+10s world', I18n::LC_MESSAGES, 'hello');
         $expected = '     hello world';
         $this->assertEquals($expected, $result);
 
-        $result = __dc('default', '%-10s world', 6, 'hello');
+        $result = __dc('default', '%-10s world', I18n::LC_MESSAGES, 'hello');
         $expected = 'hello      world';
         $this->assertEquals($expected, $result);
 
-        $result = __dc('default', '%\'@-10s world', 6, 'hello');
+        $result = __dc('default', '%\'@-10s world', I18n::LC_MESSAGES, 'hello');
         $expected = 'hello@@@@@ world';
         $this->assertEquals($expected, $result);
     }
@@ -548,15 +548,15 @@ class BasicsTest extends CakeTestCase
      */
     public function testTranslateCategoryWithFormatSpecifiers()
     {
-        $result = __c('Some string with %+10s', 6, 'arguments');
+        $result = __c('Some string with %+10s', I18n::LC_MESSAGES, 'arguments');
         $expected = 'Some string with  arguments';
         $this->assertEquals($expected, $result);
 
-        $result = __c('Some string with %-10s: args', 6, 'arguments');
+        $result = __c('Some string with %-10s: args', I18n::LC_MESSAGES, 'arguments');
         $expected = 'Some string with arguments : args';
         $this->assertEquals($expected, $result);
 
-        $result = __c('Some string with %\'*-10s: args', 6, 'arguments');
+        $result = __c('Some string with %\'*-10s: args', I18n::LC_MESSAGES, 'arguments');
         $expected = 'Some string with arguments*: args';
         $this->assertEquals($expected, $result);
     }
@@ -668,23 +668,23 @@ class BasicsTest extends CakeTestCase
     {
         Configure::write('Config.language', 'rule_1_po');
 
-        $result = __c('Plural Rule 1', 6);
+        $result = __c('Plural Rule 1', I18n::LC_MESSAGES);
         $expected = 'Plural Rule 1 (translated)';
         $this->assertEquals($expected, $result);
 
-        $result = __c('Plural Rule 1 (from core)', 6);
+        $result = __c('Plural Rule 1 (from core)', I18n::LC_MESSAGES);
         $expected = 'Plural Rule 1 (from core translated)';
         $this->assertEquals($expected, $result);
 
-        $result = __c('Some string with %s', 6, 'arguments');
+        $result = __c('Some string with %s', I18n::LC_MESSAGES, 'arguments');
         $expected = 'Some string with arguments';
         $this->assertEquals($expected, $result);
 
-        $result = __c('Some string with %s %s', 6, 'multiple', 'arguments');
+        $result = __c('Some string with %s %s', I18n::LC_MESSAGES, 'multiple', 'arguments');
         $expected = 'Some string with multiple arguments';
         $this->assertEquals($expected, $result);
 
-        $result = __c('Some string with %s %s', 6, ['multiple', 'arguments']);
+        $result = __c('Some string with %s %s', I18n::LC_MESSAGES, ['multiple', 'arguments']);
         $expected = 'Some string with multiple arguments';
         $this->assertEquals($expected, $result);
     }
@@ -696,31 +696,31 @@ class BasicsTest extends CakeTestCase
     {
         Configure::write('Config.language', 'rule_1_po');
 
-        $result = __dc('default', 'Plural Rule 1', 6);
+        $result = __dc('default', 'Plural Rule 1', I18n::LC_MESSAGES);
         $expected = 'Plural Rule 1 (translated)';
         $this->assertEquals($expected, $result);
 
-        $result = __dc('default', 'Plural Rule 1 (from core)', 6);
+        $result = __dc('default', 'Plural Rule 1 (from core)', I18n::LC_MESSAGES);
         $expected = 'Plural Rule 1 (from core translated)';
         $this->assertEquals($expected, $result);
 
-        $result = __dc('core', 'Plural Rule 1', 6);
+        $result = __dc('core', 'Plural Rule 1', I18n::LC_MESSAGES);
         $expected = 'Plural Rule 1';
         $this->assertEquals($expected, $result);
 
-        $result = __dc('core', 'Plural Rule 1 (from core)', 6);
+        $result = __dc('core', 'Plural Rule 1 (from core)', I18n::LC_MESSAGES);
         $expected = 'Plural Rule 1 (from core translated)';
         $this->assertEquals($expected, $result);
 
-        $result = __dc('core', 'Some string with %s', 6, 'arguments');
+        $result = __dc('core', 'Some string with %s', I18n::LC_MESSAGES, 'arguments');
         $expected = 'Some string with arguments';
         $this->assertEquals($expected, $result);
 
-        $result = __dc('core', 'Some string with %s %s', 6, 'multiple', 'arguments');
+        $result = __dc('core', 'Some string with %s %s', I18n::LC_MESSAGES, 'multiple', 'arguments');
         $expected = 'Some string with multiple arguments';
         $this->assertEquals($expected, $result);
 
-        $result = __dc('core', 'Some string with %s %s', 6, ['multiple', 'arguments']);
+        $result = __dc('core', 'Some string with %s %s', I18n::LC_MESSAGES, ['multiple', 'arguments']);
         $expected = 'Some string with multiple arguments';
         $this->assertEquals($expected, $result);
     }
@@ -744,15 +744,15 @@ class BasicsTest extends CakeTestCase
         $expected = '%d = 0 or > 1';
         $this->assertEquals($expected, $result);
 
-        $result = __dcn('core', '%d item.', '%d items.', 1, 6, 1);
+        $result = __dcn('core', '%d item.', '%d items.', 1, I18n::LC_MESSAGES, 1);
         $expected = '1 item.';
         $this->assertEquals($expected, $result);
 
-        $result = __dcn('core', '%d item for id %s', '%d items for id %s', 2, 6, 2, '1234');
+        $result = __dcn('core', '%d item for id %s', '%d items for id %s', 2, I18n::LC_MESSAGES, 2, '1234');
         $expected = '2 items for id 1234';
         $this->assertEquals($expected, $result);
 
-        $result = __dcn('core', '%d item for id %s', '%d items for id %s', 2, 6, [2, '1234']);
+        $result = __dcn('core', '%d item for id %s', '%d items for id %s', 2, I18n::LC_MESSAGES, [2, '1234']);
         $expected = '2 items for id 1234';
         $this->assertEquals($expected, $result);
     }
