@@ -42,7 +42,7 @@
 			"@cs-check",
 			"@test"
 		],
-		"cs-check": "./vendors/bin/phpcs -p --extensions=php --standard=CakePHP ./lib/Cake",
-		"test": "./lib/Cake/Console/cake test core AllTests --stderr --verbose"
+		"cs-check": "./run-cs-fixer.sh",
+		"test": "./run-tests.sh"
 	}
 }
