@@ -205,6 +205,7 @@ class Shell extends CakeObject
         if (!$this->name) {
             $this->name = Inflector::camelize(str_replace(['Shell', 'Task'], '', get_class($this)));
         }
+
         $this->Tasks = new TaskCollection($this);
 
         $this->stdout = $stdout ?: new ConsoleOutput('php://stdout');
