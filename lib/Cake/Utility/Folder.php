@@ -881,11 +881,7 @@ class Folder
             return false;
         }
 
-        if (!empty($this->_errors)) {
-            return false;
-        }
-
-        return true;
+        return empty($this->_errors);
     }
 
     /**
