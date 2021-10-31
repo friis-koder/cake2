@@ -126,8 +126,8 @@ class ProjectTaskTest extends CakeTestCase
             'webroot' . DS . 'files',
             'webroot' . DS . 'img',
             'webroot' . DS . 'js',
-
         ];
+
         foreach ($dirs as $dir) {
             $this->assertTrue(is_dir($path . DS . $dir), 'Missing ' . $dir);
         }
