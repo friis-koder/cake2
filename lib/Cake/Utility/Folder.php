@@ -790,6 +790,7 @@ class Folder
      * - `mode` The mode to copy the files/directories with as integer, e.g. 0775.
      * - `skip` Files/directories to skip.
      * - `scheme` Folder::MERGE, Folder::OVERWRITE, Folder::SKIP
+     * - `recursive` Whether to copy recursively or not (default: true - recursive)
      *
      * @param array|string $options Either an array of options (see above) or a string of the destination directory.
      *
@@ -808,11 +809,12 @@ class Folder
             $options = [];
         }
         $options += [
-            'to'     => $to,
-            'from'   => $this->path,
-            'mode'   => $this->mode,
-            'skip'   => [],
-            'scheme' => Folder::MERGE
+            'to'        => $to,
+            'from'      => $this->path,
+            'mode'      => $this->mode,
+            'skip'      => [],
+            'scheme'    => Folder::MERGE,
+            'recursive' => true,
         ];
 
         $fromDir = $options['from'];
@@ -857,6 +859,10 @@ class Folder
                         $this->delete($to);
                     }
 
+                    if (is_dir($from) && $options['recursive'] === false) {
+                        continue;
+                    }
+
                     if (is_dir($from) && !file_exists($to)) {
                         $old = umask(0);
                         if (mkdir($to, $mode)) {
@@ -894,8 +900,9 @@ class Folder
      * - `chmod` The mode to copy the files/directories with.
      * - `skip` Files/directories to skip.
      * - `scheme` Folder::MERGE, Folder::OVERWRITE, Folder::SKIP
+     * - `recursive` Whether to copy recursively or not (default: true - recursive)
      *
-     * @param array $options (to, from, chmod, skip, scheme)
+     * @param array|string $options (to, from, chmod, skip, scheme)
      *
      * @return bool Success
      *
@@ -908,7 +915,7 @@ class Folder
             $to = $options;
             $options = (array)$options;
         }
-        $options += ['to' => $to, 'from' => $this->path, 'mode' => $this->mode, 'skip' => []];
+        $options += ['to' => $to, 'from' => $this->path, 'mode' => $this->mode, 'skip' => [], 'recursive' => true];
 
         if ($this->copy($options) && $this->delete($options['from'])) {
             return (bool)$this->cd($options['to']);
