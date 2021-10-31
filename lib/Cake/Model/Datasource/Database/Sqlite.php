@@ -158,7 +158,7 @@ class Sqlite extends DboSource
             return $cache;
         }
 
-        $result = $this->fetchAll('SELECT name FROM sqlite_master WHERE type=\'table\' AND tbl_name!=\'sqlite_sequence\' ORDER BY name;', false);
+        $result = $this->fetchAll('SELECT name FROM sqlite_master WHERE type=\'table\' ORDER BY name;', false);
 
         if (!$result || empty($result)) {
             return [];
