@@ -83,7 +83,7 @@ class ProjectTaskTest extends CakeTestCase
         $this->_setupTestProject();
         $path = $this->Task->path . 'bake_test_app';
 
-        $this->assertTrue(is_dir($path), 'No project dir %s');
+        $this->assertTrue(is_dir($path), sprintf('No project dir %s', $path));
         $dirs = [
             'Config',
             'Config' . DS . 'Schema',
