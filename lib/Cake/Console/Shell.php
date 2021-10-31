@@ -207,9 +207,9 @@ class Shell extends CakeObject
         }
         $this->Tasks = new TaskCollection($this);
 
-        $this->stdout = $stdout ? $stdout : new ConsoleOutput('php://stdout');
-        $this->stderr = $stderr ? $stderr : new ConsoleOutput('php://stderr');
-        $this->stdin = $stdin ? $stdin : new ConsoleInput('php://stdin');
+        $this->stdout = $stdout ?: new ConsoleOutput('php://stdout');
+        $this->stderr = $stderr ?: new ConsoleOutput('php://stderr');
+        $this->stdin = $stdin ?: new ConsoleInput('php://stdin');
 
         $this->_useLogger();
         $parent = get_parent_class($this);
