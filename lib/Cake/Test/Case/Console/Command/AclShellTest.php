@@ -42,6 +42,11 @@ class AclShellTest extends CakeTestCase
     public $fixtures = ['core.aco', 'core.aro', 'core.aros_aco'];
 
     /**
+     * @var AclShell
+     */
+    private $Task;
+
+    /**
      * setUp method
      */
     public function setUp()
