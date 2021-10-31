@@ -735,16 +735,16 @@ class Folder
 
             return false;
         }
-
         $pathname = rtrim($pathname, DS);
         $nextPathname = substr($pathname, 0, strrpos($pathname, DS));
 
         if ($this->create($nextPathname, $mode)) {
             if (!file_exists($pathname)) {
-                $old = umask();
+                $old = umask(0);
 
                 if (mkdir($pathname, $mode, true)) {
                     umask($old);
+
                     $this->_messages[] = __d('cake_dev', '%s created', $pathname);
 
                     return true;
