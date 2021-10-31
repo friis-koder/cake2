@@ -182,7 +182,7 @@ class Folder
     public function cd($path)
     {
         $path = $this->realpath($path);
-        if (is_dir($path)) {
+        if ($path && is_dir($path)) {
             return $this->path = $path;
         }
 
