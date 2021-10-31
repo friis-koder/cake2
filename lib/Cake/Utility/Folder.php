@@ -138,11 +138,12 @@ class Folder
      *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/file-folder.html#Folder
      */
-    public function __construct($path = false, $create = false, $mode = false)
+    public function __construct($path = null, $create = false, $mode = false)
     {
         if (empty($path)) {
             $path = TMP;
         }
+
         if ($mode) {
             $this->mode = $mode;
         }
@@ -150,9 +151,11 @@ class Folder
         if (!file_exists($path) && $create === true) {
             $this->create($path, $this->mode);
         }
+
         if (!Folder::isAbsolute($path)) {
             $path = realpath($path);
         }
+
         if (!empty($path)) {
             $this->cd($path);
         }
@@ -182,6 +185,7 @@ class Folder
     public function cd($path)
     {
         $path = $this->realpath($path);
+
         if ($path && is_dir($path)) {
             return $this->path = $path;
         }
@@ -209,9 +213,11 @@ class Folder
         if (!$this->pwd()) {
             return [$dirs, $files];
         }
+
         if (is_array($exceptions)) {
             $exceptions = array_flip($exceptions);
         }
+
         $skipHidden = isset($exceptions['.']) || $exceptions === true;
 
         try {
@@ -219,6 +225,7 @@ class Folder
         } catch (Exception $e) {
             return [$dirs, $files];
         }
+
         if (!is_bool($sort) && isset($this->_fsorts[$sort])) {
             $methodName = $this->_fsorts[$sort];
         } else {
@@ -229,13 +236,17 @@ class Folder
             if ($item->isDot()) {
                 continue;
             }
-            $name = $item->getFileName();
+
+            $name = $item->getFilename();
+
             if ($skipHidden && $name[0] === '.' || isset($exceptions[$name])) {
                 continue;
             }
+
             if ($fullPath) {
-                $name = $item->getPathName();
+                $name = $item->getPathname();
             }
+
             if ($item->isDir()) {
                 $dirs[$item->{$methodName}()][] = $name;
             } else {
@@ -291,6 +302,7 @@ class Folder
         if (!$this->pwd()) {
             return [];
         }
+
         $startsOn = $this->path;
         $out = $this->_findRecursive($pattern, $sort);
         $this->cd($startsOn);
@@ -316,6 +328,7 @@ class Folder
                 $found[] = Folder::addPathElement($this->path, $file);
             }
         }
+
         $start = $this->path;
 
         foreach ($dirs as $dir) {
@@ -722,19 +735,23 @@ class Folder
 
             return false;
         }
+
         $pathname = rtrim($pathname, DS);
         $nextPathname = substr($pathname, 0, strrpos($pathname, DS));
 
         if ($this->create($nextPathname, $mode)) {
             if (!file_exists($pathname)) {
                 $old = umask(0);
-                if (mkdir($pathname, $mode)) {
+
+                if (mkdir($pathname, $mode, true)) {
                     umask($old);
                     $this->_messages[] = __d('cake_dev', '%s created', $pathname);
 
                     return true;
                 }
+
                 umask($old);
+
                 $this->_errors[] = __d('cake_dev', '%s NOT created', $pathname);
 
                 return false;
@@ -757,26 +774,32 @@ class Folder
         $directory = Folder::slashTerm($this->path);
         $stack = [$directory];
         $count = count($stack);
-        for ($i = 0, $j = $count; $i < $j; ++$i) {
+
+        for ($i = 0, $j = $count; $i < $j; $i++) {
             if (is_file($stack[$i])) {
                 $size += filesize($stack[$i]);
             } elseif (is_dir($stack[$i])) {
                 $dir = dir($stack[$i]);
+
                 if ($dir) {
-                    while (false !== ($entry = $dir->read())) {
+                    while (($entry = $dir->read()) !== false) {
                         if ($entry === '.' || $entry === '..') {
                             continue;
                         }
+
                         $add = $stack[$i] . $entry;
 
                         if (is_dir($stack[$i] . $entry)) {
                             $add = Folder::slashTerm($add);
                         }
+
                         $stack[] = $add;
                     }
+
                     $dir->close();
                 }
             }
+
             $j = count($stack);
         }
 
@@ -786,7 +809,7 @@ class Folder
     /**
      * Recursively Remove directories if the system allows.
      *
-     * @param string $path Path of directory to delete
+     * @param string|null $path Path of directory to delete
      *
      * @return bool Success
      *
@@ -797,16 +820,20 @@ class Folder
         if (!$path) {
             $path = $this->pwd();
         }
+
         if (!$path) {
             return false;
         }
+
         $path = Folder::slashTerm($path);
+
         if (is_dir($path)) {
             try {
                 $directory = new RecursiveDirectoryIterator($path, RecursiveDirectoryIterator::CURRENT_AS_SELF);
                 $iterator = new RecursiveIteratorIterator($directory, RecursiveIteratorIterator::CHILD_FIRST);
             } catch (Exception $e) {
                 unset($directory, $iterator);
+
                 return false;
             }
 
@@ -829,6 +856,7 @@ class Folder
                         $this->_errors[] = __d('cake_dev', '%s NOT removed', $filePath);
 
                         unset($directory, $iterator, $item);
+
                         return false;
                     }
                 }
@@ -840,6 +868,7 @@ class Folder
             // unsetting iterators helps releasing possible locks in certain environments,
             // which could otherwise make `rmdir()` fail
             unset($directory, $iterator);
+
             $path = rtrim($path, DIRECTORY_SEPARATOR);
             //@codingStandardsIgnoreStart
             if (@rmdir($path)) {
@@ -878,11 +907,14 @@ class Folder
         if (!$this->pwd()) {
             return false;
         }
+
         $to = null;
+
         if (is_string($options)) {
             $to = $options;
             $options = [];
         }
+
         $options += [
             'to'        => $to,
             'from'      => $this->path,
@@ -957,6 +989,7 @@ class Folder
                     }
                 }
             }
+
             closedir($handle);
         } else {
             return false;
@@ -986,10 +1019,12 @@ class Folder
     public function move($options)
     {
         $to = null;
+
         if (is_string($options)) {
             $to = $options;
             $options = (array)$options;
         }
+
         $options += ['to' => $to, 'from' => $this->path, 'mode' => $this->mode, 'skip' => [], 'recursive' => true];
 
         if ($this->copy($options) && $this->delete($options['from'])) {
@@ -1011,6 +1046,7 @@ class Folder
     public function messages($reset = true)
     {
         $messages = $this->_messages;
+
         if ($reset) {
             $this->_messages = [];
         }
@@ -1030,6 +1066,7 @@ class Folder
     public function errors($reset = true)
     {
         $errors = $this->_errors;
+
         if ($reset) {
             $this->_errors = [];
         }
@@ -1055,10 +1092,12 @@ class Folder
 
             return $path;
         }
+
         $path = str_replace('/', DS, trim($path));
         $parts = explode(DS, $path);
         $newparts = [];
         $newpath = '';
+
         if ($path[0] === DS) {
             $newpath = DS;
         }
@@ -1067,6 +1106,7 @@ class Folder
             if ($part === '.' || $part === '') {
                 continue;
             }
+
             if ($part === '..') {
                 if (!empty($newparts)) {
                     array_pop($newparts);
@@ -1076,8 +1116,10 @@ class Folder
 
                 return false;
             }
+
             $newparts[] = $part;
         }
+
         $newpath .= implode(DS, $newparts);
 
         return Folder::slashTerm($newpath);
