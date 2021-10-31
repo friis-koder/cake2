@@ -166,7 +166,7 @@ class ProjectTask extends AppShell
      *
      * @param string $path Project path
      * @param string $skel Path to copy from
-     * @param string $skip array of directories to skip when copying
+     * @param array $skip array of directories to skip when copying
      *
      * @return mixed
      */
