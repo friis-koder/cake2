@@ -56,6 +56,7 @@ class ProjectTaskTest extends CakeTestCase
             [$out, $out, $in]
         );
         $this->Task->path = TMP . 'tests' . DS;
+        $this->Task->params['skip'] = 'bake_test_app';
     }
 
     /**
@@ -77,7 +78,7 @@ class ProjectTaskTest extends CakeTestCase
     {
         $skel = CAKE . 'Console' . DS . 'Templates' . DS . 'skel';
         $this->Task->expects($this->at(0))->method('in')->will($this->returnValue('y'));
-        $this->Task->bake($this->Task->path . 'bake_test_app', $skel);
+        $this->Task->bake($this->Task->path . 'bake_test_app', $skel, ['bake_test_app']);
     }
 
     /**
