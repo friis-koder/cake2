@@ -211,7 +211,9 @@ class ProjectTask extends AppShell
             case 'y':
                 $Folder = new Folder($skel);
                 if (!empty($this->params['empty'])) {
-                    $skip = [];
+                    array_filter($skip, function ($item) {
+                        return $item != 'empty';
+                    });
                 }
 
                 if ($Folder->copy(['to' => $path, 'skip' => $skip])) {
