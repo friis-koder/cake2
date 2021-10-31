@@ -865,7 +865,7 @@ class Folder
 
                     if (is_dir($from) && !file_exists($to)) {
                         $old = umask(0);
-                        if (mkdir($to, $mode)) {
+                        if (mkdir($to, $mode, true)) {
                             umask($old);
                             $old = umask(0);
                             chmod($to, $mode);
