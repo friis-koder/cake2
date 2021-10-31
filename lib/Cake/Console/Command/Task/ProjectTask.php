@@ -175,6 +175,11 @@ class ProjectTask extends AppShell
         if (!$skel && !empty($this->params['skel'])) {
             $skel = $this->params['skel'];
         }
+
+        if (!empty($this->params['skip'])) {
+            $skip[] = $this->params['skip'];
+        }
+
         while (!$skel) {
             $skel = $this->in(
                 __d('cake_console', 'What is the path to the directory layout you wish to copy?'),
