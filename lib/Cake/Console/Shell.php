@@ -214,9 +214,11 @@ class Shell extends CakeObject
 
         $this->_useLogger();
         $parent = get_parent_class($this);
-        if ($this->tasks !== null && $this->tasks !== false) {
+
+        if ($this->tasks) {
             $this->_mergeVars(['tasks'], $parent, true);
         }
+
         if (!empty($this->uses)) {
             $this->_mergeVars(['uses'], $parent, false);
         }
