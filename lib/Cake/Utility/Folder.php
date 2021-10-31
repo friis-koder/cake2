@@ -52,11 +52,15 @@ class Folder
 
     /**
      * Sort mode by name
+     *
+     * @var string
      */
     public const SORT_NAME = 'name';
 
     /**
      * Sort mode by time
+     *
+     * @var string
      */
     public const SORT_TIME = 'time';
 
@@ -67,7 +71,7 @@ class Folder
      *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/file-folder.html#Folder::$path
      */
-    public $path = null;
+    public $path;
 
     /**
      * Sortedness. Whether or not list results
@@ -80,7 +84,7 @@ class Folder
     public $sort = false;
 
     /**
-     * Mode to be used on create. Does nothing on Windows platforms.
+     * Mode to be used on create. Does nothing on windows platforms.
      *
      * @var int
      * https://book.cakephp.org/2.0/en/core-utility-libraries/file-folder.html#Folder::$mode
@@ -89,6 +93,8 @@ class Folder
 
     /**
      * Functions array to be called depending on the sort type chosen.
+     *
+     * @var string[]
      */
     protected $_fsorts = [
         self::SORT_NAME => 'getPathname',
