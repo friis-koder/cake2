@@ -945,9 +945,7 @@ class Folder
         }
 
         $exceptions = array_merge(['.', '..', '.svn'], $options['skip']);
-        //@codingStandardsIgnoreStart
-        if ($handle = @opendir($fromDir)) {
-            //@codingStandardsIgnoreEnd
+        if ($handle = opendir($fromDir)) {
             while (($item = readdir($handle)) !== false) {
                 $to = Folder::addPathElement($toDir, $item);
                 if (($options['scheme'] != Folder::SKIP || !is_dir($to)) && !in_array($item, $exceptions)) {
