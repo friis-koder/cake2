@@ -741,7 +741,7 @@ class Folder
 
         if ($this->create($nextPathname, $mode)) {
             if (!file_exists($pathname)) {
-                $old = umask(0);
+                $old = umask();
 
                 if (mkdir($pathname, $mode, true)) {
                     umask($old);
