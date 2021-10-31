@@ -132,9 +132,9 @@ class Folder
     /**
      * Constructor.
      *
-     * @param string $path Path to folder
+     * @param string|null $path Path to folder
      * @param bool $create Create folder if not found
-     * @param int|bool $mode Mode (CHMOD) to apply to created folder, false to ignore
+     * @param int|false $mode Mode (CHMOD) to apply to created folder, false to ignore
      *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/file-folder.html#Folder
      */
@@ -198,7 +198,7 @@ class Folder
      * @param array|bool $exceptions Either an array or boolean true will not grab dot files
      * @param bool $fullPath True returns the full path
      *
-     * @return mixed Contents of current directory as an array, an empty array on failure
+     * @return array Contents of current directory as an array, an empty array on failure
      *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/file-folder.html#Folder::read
      */
@@ -249,11 +249,11 @@ class Folder
         }
 
         if ($dirs) {
-            $dirs = call_user_func_array('array_merge', array_values($dirs));
+            $dirs = array_merge(...array_values($dirs));
         }
 
         if ($files) {
-            $files = call_user_func_array('array_merge', array_values($files));
+            $files = array_merge(...array_values($files));
         }
 
         return [$dirs, $files];
@@ -331,7 +331,7 @@ class Folder
      *
      * @param string $path Path to check
      *
-     * @return bool true if Windows path, false otherwise
+     * @return bool true if windows path, false otherwise
      *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/file-folder.html#Folder::isWindowsPath
      */
@@ -358,7 +358,7 @@ class Folder
         return $path[0] === '/' ||
             preg_match('/^[A-Z]:\\\\/i', $path) ||
             substr($path, 0, 2) === '\\\\' ||
-            static::isRegisteredStreamWrapper($path);
+            self::isRegisteredStreamWrapper($path);
     }
 
     /**
@@ -366,17 +366,12 @@ class Folder
      *
      * @param string $path Path to check
      *
-     * @return bool true If path is registered stream wrapper.
+     * @return bool True if path is registered stream wrapper.
      */
     public static function isRegisteredStreamWrapper($path)
     {
-        if (preg_match('/^[A-Z]+(?=:\/\/)/i', $path, $matches) &&
-            in_array($matches[0], stream_get_wrappers())
-        ) {
-            return true;
-        }
-
-        return false;
+        return preg_match('/^[^:\/\/]+?(?=:\/\/)/', $path, $matches) &&
+            in_array($matches[0], stream_get_wrappers());
     }
 
     /**
@@ -396,6 +391,21 @@ class Folder
     /**
      * Returns a correct set of slashes for given $path. (\\ for Windows paths and / for other paths.)
      *
+     * @param string $path Path to transform
+     *
+     * @return string Path with the correct set of slashes ("\\" or "/")
+     */
+    public static function normalizeFullPath($path)
+    {
+        $to = Folder::correctSlashFor($path);
+        $from = ($to == '/' ? '\\' : '/');
+
+        return str_replace($from, $to, $path);
+    }
+
+    /**
+     * Returns a correct set of slashes for given $path. (\\ for Windows paths and / for other paths.)
+     *
      * @param string $path Path to check
      *
      * @return string Set of slashes ("\\" or "/")
@@ -404,7 +414,7 @@ class Folder
      */
     public static function correctSlashFor($path)
     {
-        return (Folder::isWindowsPath($path)) ? '\\' : '/';
+        return Folder::isWindowsPath($path) ? '\\' : '/';
     }
 
     /**
@@ -472,7 +482,7 @@ class Folder
      *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/file-folder.html#Folder::inPath
      */
-    public function inPath($path = '', $reverse = false)
+    public function inPath($path, $reverse = false)
     {
         if (!Folder::isAbsolute($path)) {
             throw new InvalidArgumentException(__d('cake_dev', 'The $path argument is expected to be an absolute path.'));
@@ -494,7 +504,7 @@ class Folder
      * Change the mode on a directory structure recursively. This includes changing the mode on files as well.
      *
      * @param string $path The path to chmod.
-     * @param int $mode Octal value, e.g. 0755.
+     * @param int|bool $mode Octal value, e.g. 0755.
      * @param bool $recursive Chmod recursively, set to false to only change the current directory.
      * @param array $exceptions Array of files, directories to skip.
      *
@@ -502,7 +512,7 @@ class Folder
      *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/file-folder.html#Folder::chmod
      */
-    public function chmod($path, $mode = false, $recursive = true, $exceptions = [])
+    public function chmod($path, $mode = false, $recursive = true, array $exceptions = [])
     {
         if (!$mode) {
             $mode = $this->mode;
@@ -553,14 +563,47 @@ class Folder
     }
 
     /**
+     * Returns an array of subdirectories for the provided or current path.
+     *
+     * @param string|null $path The directory path to get subdirectories for.
+     * @param bool $fullPath Whether to return the full path or only the directory name.
+     *
+     * @return array Array of subdirectories for the provided or current path.
+     */
+    public function subdirectories($path = null, $fullPath = true)
+    {
+        if (!$path) {
+            $path = $this->path;
+        }
+
+        $subdirectories = [];
+
+        try {
+            $iterator = new DirectoryIterator($path);
+        } catch (Exception $e) {
+            return [];
+        }
+
+        foreach ($iterator as $item) {
+            if (!$item->isDir() || $item->isDot()) {
+                continue;
+            }
+
+            $subdirectories[] = $fullPath ? $item->getRealPath() : $item->getFilename();
+        }
+
+        return $subdirectories;
+    }
+
+    /**
      * Returns an array of nested directories and files in each directory
      *
-     * @param string $path the directory path to build the tree from
+     * @param string|null $path the directory path to build the tree from
      * @param array|bool $exceptions Either an array of files/folder to exclude
      *   or boolean true to not grab dot files/folders
-     * @param string $type either 'file' or 'dir'. null returns both files and directories
+     * @param string|null $type either 'file' or 'dir'. Null returns both files and directories
      *
-     * @return mixed array of nested directories and files in each directory
+     * @return array Array of nested directories and files in each directory
      *
      * @link https://book.cakephp.org/2.0/en/core-utility-libraries/file-folder.html#Folder::tree
      */
@@ -569,13 +612,16 @@ class Folder
         if (!$path) {
             $path = $this->path;
         }
+
         $files = [];
         $directories = [$path];
 
         if (is_array($exceptions)) {
             $exceptions = array_flip($exceptions);
         }
+
         $skipHidden = false;
+
         if ($exceptions === true) {
             $skipHidden = true;
         } elseif (isset($exceptions['.'])) {
@@ -587,6 +633,8 @@ class Folder
             $directory = new RecursiveDirectoryIterator($path, RecursiveDirectoryIterator::KEY_AS_PATHNAME | RecursiveDirectoryIterator::CURRENT_AS_SELF);
             $iterator = new RecursiveIteratorIterator($directory, RecursiveIteratorIterator::SELF_FIRST);
         } catch (Exception $e) {
+            unset($directory, $iterator);
+
             if ($type === null) {
                 return [[], []];
             }
@@ -594,15 +642,25 @@ class Folder
             return [];
         }
 
+        /**
+         * @var string $itemPath
+         * @var \RecursiveDirectoryIterator $fsIterator
+         */
         foreach ($iterator as $itemPath => $fsIterator) {
             if ($skipHidden) {
                 $subPathName = $fsIterator->getSubPathname();
-                if ($subPathName[0] === '.' || strpos($subPathName, DS . '.') !== false) {
+                if ($subPathName[0] === '.' || strpos($subPathName, DIRECTORY_SEPARATOR . '.') !== false) {
+                    unset($fsIterator);
+
                     continue;
                 }
             }
+
+            /** @var \FilesystemIterator $item */
             $item = $fsIterator->current();
             if (!empty($exceptions) && isset($exceptions[$item->getFilename()])) {
+                unset($fsIterator, $item);
+
                 continue;
             }
 
@@ -611,10 +669,19 @@ class Folder
             } elseif ($item->isDir() && !$item->isDot()) {
                 $directories[] = $itemPath;
             }
+
+            // inner iterators need to be unset too in order for locks on parents to be released
+            unset($fsIterator, $item);
         }
+
+        // unsetting iterators helps releasing possible locks in certain environments,
+        // which could otherwise make `rmdir()` fail
+        unset($directory, $iterator);
+
         if ($type === null) {
             return [$directories, $files];
         }
+
         if ($type === 'dir') {
             return $directories;
         }
@@ -642,8 +709,8 @@ class Folder
             return true;
         }
 
-        if (!static::isAbsolute($pathname)) {
-            $pathname = static::addPathElement($this->pwd(), $pathname);
+        if (!self::isAbsolute($pathname)) {
+            $pathname = self::addPathElement($this->pwd(), $pathname);
         }
 
         if (!$mode) {
@@ -739,6 +806,7 @@ class Folder
                 $directory = new RecursiveDirectoryIterator($path, RecursiveDirectoryIterator::CURRENT_AS_SELF);
                 $iterator = new RecursiveIteratorIterator($directory, RecursiveIteratorIterator::CHILD_FIRST);
             } catch (Exception $e) {
+                unset($directory, $iterator);
                 return false;
             }
 
@@ -760,12 +828,19 @@ class Folder
                     } else {
                         $this->_errors[] = __d('cake_dev', '%s NOT removed', $filePath);
 
+                        unset($directory, $iterator, $item);
                         return false;
                     }
                 }
+
+                // inner iterators need to be unset too in order for locks on parents to be released
+                unset($item);
             }
 
-            $path = rtrim($path, DS);
+            // unsetting iterators helps releasing possible locks in certain environments,
+            // which could otherwise make `rmdir()` fail
+            unset($directory, $iterator);
+            $path = rtrim($path, DIRECTORY_SEPARATOR);
             //@codingStandardsIgnoreStart
             if (@rmdir($path)) {
                 //@codingStandardsIgnoreEnd
