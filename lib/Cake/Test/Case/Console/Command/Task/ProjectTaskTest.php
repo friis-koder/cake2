@@ -37,6 +37,11 @@ App::uses('File', 'Utility');
 class ProjectTaskTest extends CakeTestCase
 {
     /**
+     * @var ProjectTask
+     */
+    private $Task;
+
+    /**
      * setUp method
      */
     public function setUp()
