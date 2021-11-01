@@ -412,12 +412,11 @@ class DboSource extends DataSource
                 if ((
                     (is_int($data) || $data === '0') || (
                         is_numeric($data) &&
-                    strpos($data, ',') === false &&
-                    $data[0] != '0' &&
-                    strpos($data, 'e') === false
+                        strpos($data, ',') === false &&
+                        $data[0] != '0' &&
+                        strpos($data, 'e') === false
                     )
-                ) && !$isStringEnum
-                ) {
+                ) && !$isStringEnum) {
                     return $data;
                 }
 
