@@ -191,7 +191,7 @@ class SchemaShell extends AppShell
 
             return $this->_stop();
         }
-        $this->err(__d('cake_console', 'Schema file: %s generated'));
+        $this->err(__d('cake_console', 'Schema file: %%s generated'));
 
         return $this->_stop();
     }

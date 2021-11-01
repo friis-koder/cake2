@@ -1027,13 +1027,13 @@ class FormHelper extends AppHelper
         }
 
         if ($legend === true) {
-            $actionName = __d('cake', 'New %s');
+            $actionName = __d('cake', 'New %%s');
             $isEdit = (
                 strpos($this->request->params['action'], 'update') !== false ||
                 strpos($this->request->params['action'], 'edit') !== false
             );
             if ($isEdit) {
-                $actionName = __d('cake', 'Edit %s');
+                $actionName = __d('cake', 'Edit %%s');
             }
             $modelName = Inflector::humanize(Inflector::underscore($model));
             $legend = sprintf($actionName, __($modelName));
