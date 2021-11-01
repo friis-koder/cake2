@@ -535,9 +535,7 @@ if (!function_exists('clearCache')) {
             $cache = CACHE . $type . DS . $params;
 
             if (is_file($cache . $ext)) {
-                //@codingStandardsIgnoreStart
-                @unlink($cache . $ext);
-                //@codingStandardsIgnoreEnd
+                unlink($cache . $ext);
                 return true;
             } elseif (is_dir($cache)) {
                 $files = glob($cache . '*');
@@ -548,9 +546,7 @@ if (!function_exists('clearCache')) {
 
                 foreach ($files as $file) {
                     if (is_file($file) && strrpos($file, DS . 'empty') !== strlen($file) - 6) {
-                        //@codingStandardsIgnoreStart
-                        @unlink($file);
-                        //@codingStandardsIgnoreEnd
+                        unlink($file);
                     }
                 }
 
@@ -572,9 +568,7 @@ if (!function_exists('clearCache')) {
             }
             foreach ($files as $file) {
                 if (is_file($file) && strrpos($file, DS . 'empty') !== strlen($file) - 6) {
-                    //@codingStandardsIgnoreStart
-                    @unlink($file);
-                    //@codingStandardsIgnoreEnd
+                    unlink($file);
                 }
             }
 
