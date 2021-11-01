@@ -195,7 +195,7 @@ class PluginTaskTest extends CakeTestCase
     public function testFindPathNonExistant()
     {
         $paths = App::path('plugins');
-        $last = count($paths) - 1;
+        $last = count($paths);
 
         array_unshift($paths, '/fake/path');
         $paths[] = '/fake/path2';
