@@ -288,7 +288,9 @@ class CookieComponentTest extends CakeTestCase
             'path'     => '/',
             'domain'   => '',
             'secure'   => false,
-            'httpOnly' => false];
+            'httpOnly' => false,
+            'sameSite' => 'None'
+        ];
         $result = $this->Controller->response->cookie($this->Cookie->name . '[Testing]');
 
         $this->assertEquals($future->format('U'), $result['expire'], '', 3);
@@ -312,7 +314,9 @@ class CookieComponentTest extends CakeTestCase
             'path'     => '/',
             'domain'   => '',
             'secure'   => false,
-            'httpOnly' => true];
+            'httpOnly' => true,
+            'sameSite' => 'None'
+        ];
         $result = $this->Controller->response->cookie($this->Cookie->name . '[Testing]');
         $this->assertEquals($expected, $result);
     }
@@ -332,7 +336,9 @@ class CookieComponentTest extends CakeTestCase
             'path'     => '/',
             'domain'   => '',
             'secure'   => false,
-            'httpOnly' => true];
+            'httpOnly' => true,
+            'sameSite' => 'None'
+        ];
         $result = $this->Controller->response->cookie($this->Cookie->name . '[Testing]');
         $this->assertEquals($expected, $result);
     }
@@ -366,7 +372,9 @@ class CookieComponentTest extends CakeTestCase
             'path'     => '/',
             'domain'   => '',
             'secure'   => false,
-            'httpOnly' => false];
+            'httpOnly' => false,
+            'sameSite' => 'None'
+        ];
         $result = $this->Controller->response->cookie($this->Cookie->name . '[Testing]');
 
         $this->assertWithinMargin($result['expire'], time() + 10, 1);
@@ -388,7 +396,8 @@ class CookieComponentTest extends CakeTestCase
             'path'     => '/',
             'domain'   => '',
             'secure'   => false,
-            'httpOnly' => false
+            'httpOnly' => false,
+            'sameSite' => 'None'
         ];
         $result = $this->Controller->response->cookie($this->Cookie->name . '[User]');
         unset($result['expire']);
@@ -403,7 +412,8 @@ class CookieComponentTest extends CakeTestCase
             'path'     => '/',
             'domain'   => '',
             'secure'   => false,
-            'httpOnly' => false
+            'httpOnly' => false,
+            'sameSite' => 'None'
         ];
         $result = $this->Controller->response->cookie($this->Cookie->name . '[User]');
         unset($result['expire']);
@@ -811,7 +821,8 @@ class CookieComponentTest extends CakeTestCase
                 'path'     => '/',
                 'domain'   => '',
                 'secure'   => false,
-                'httpOnly' => false
+                'httpOnly' => false,
+                'sameSite' => 'None'
             ],
         ];
 
@@ -848,7 +859,8 @@ class CookieComponentTest extends CakeTestCase
                 'path'     => '/',
                 'domain'   => '',
                 'secure'   => false,
-                'httpOnly' => false
+                'httpOnly' => false,
+                'sameSite' => 'None'
             ],
             'CakeTestCookie[other]' => [
                 'name'     => 'CakeTestCookie[other]',
@@ -856,7 +868,8 @@ class CookieComponentTest extends CakeTestCase
                 'path'     => '/',
                 'domain'   => '',
                 'secure'   => false,
-                'httpOnly' => false
+                'httpOnly' => false,
+                'sameSite' => 'None'
             ],
         ];
 
