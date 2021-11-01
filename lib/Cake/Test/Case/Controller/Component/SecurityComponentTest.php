@@ -615,7 +615,7 @@ class SecurityComponentTest extends CakeTestCase
         $this->Controller->request->data = [];
         $this->Controller->Security->startup($this->Controller);
         $result = $this->validatePost('AuthSecurityException', '\'_Token\' was not found in request data.');
-        $this->assertFalse($result, 'validatePost passed when empty form is submitted');
+        $this->assertTrue($result, 'validatePost failed when empty form is submitted');
     }
 
     /**
